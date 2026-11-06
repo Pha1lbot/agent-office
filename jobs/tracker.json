@@ -1505,11 +1505,21 @@
           "date": "2026-11-06",
           "status": "drafted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-06",
+          "status": "shortlisted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-06",
+          "status": "drafted",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
       "verdict": "skip",
-      "verdict_why": "Details only (no link): your notes say below your level and likely below the pay floor, though esports and UK remote"
+      "verdict_why": "Entry-level specialist role (2+ yrs exp, requires Chinese), far below Tim's Head of Department seniority"
     }
   ],
   "actions": [
@@ -1545,12 +1555,21 @@
       "id": "a5",
       "text": "Add the NetEase Esport Specialist advert (link via Edit details, or paste the text) so Wren can draft its CV",
       "role": "2026-11-05-netease-games-esport-specialist",
-      "done": false,
-      "created": "2026-11-06"
+      "done": true,
+      "created": "2026-11-06",
+      "completed": "2026-11-06"
     },
     {
       "id": "a6",
       "text": "Interview prep refresh also blocked: NetEase Esport Specialist has no advert/listing yet (same gap as a5)",
+      "role": "2026-11-05-netease-games-esport-specialist",
+      "done": true,
+      "created": "2026-11-06",
+      "completed": "2026-11-06"
+    },
+    {
+      "id": "a7",
+      "text": "NetEase Esport Specialist: Rita's read gives a skip verdict (entry-level, 2+ yrs exp, requires Chinese, below your seniority). Holding off on the CV/cover letter draft and interview prep refresh you requested until you confirm you still want them despite this.",
       "role": "2026-11-05-netease-games-esport-specialist",
       "done": false,
       "created": "2026-11-06"
@@ -1615,7 +1634,8 @@
       "task": "Give a verdict: worth applying?",
       "title": "Esport Specialist @ NetEase Games",
       "at": "2026-11-06T23:07",
-      "done": false
+      "done": true,
+      "handled": "2026-11-06T23:09"
     }
   ]
 }

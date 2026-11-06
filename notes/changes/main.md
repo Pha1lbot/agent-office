@@ -11,6 +11,29 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: NetEase role unblocked (Tim added the link) — but Rita's read says skip
+
+**What changed**
+- Tim added a LinkedIn link to `2026-11-05-netease-games-esport-specialist` (the previous blocker, a5/a6, is resolved). A new inbox item i7 ("Give a verdict: worth applying?") also arrived.
+- Briefed Rita for a full read since the role still had no `listing.md`. She wrote `jobs/roles/2026-11-05-netease-games-esport-specialist/listing.md` and confirmed a skip verdict, fit 2: entry-level specialist role (2+ yrs exp, requires Chinese), far below Tim's Head of Department seniority.
+- Set `fit=2 verdict=skip verdict_why="Entry-level specialist role (2+ yrs exp, requires Chinese), far below Tim's Head of Department seniority"` on the tracker.
+- Marked inbox i7 done, and actions a5/a6 done (their missing-advert blocker is resolved now `listing.md` exists).
+- Did **not** action i1 (refresh interview prep) or i6 (draft CV/cover letter) — Tim had already moved this role to `drafted`, but Rita's read turned up a hard mismatch (the role needs Chinese). Added action a7 asking Tim to confirm he still wants the draft and prep refresh despite the skip verdict, rather than spending a Wren and Cole hand-off on a role likely to be dropped.
+
+**Why**
+- Started automatically by the office after Tim's changes. Rule in CLAUDE.md/SKILL.md: Tim isn't watched in this mode, so open questions become actions, not drafted work.
+
+**Decisions**
+- Considered drafting anyway since the role was already in `drafted` status (Tim's call), but the skip reason is a hard requirement gap (language), not just a soft preference mismatch — holding off avoids a ~15k-token hand-off each to Wren and Cole for a role Tim is likely to pass on once he sees Rita's verdict.
+
+**How to check it**
+- `python shared/tools/tracker.py show 2026-11-05-netease-games-esport-specialist` shows the new fit/verdict.
+- `python shared/tools/tracker.py inbox list` shows only i1 and i6 remaining.
+- `python shared/tools/tracker.py action list` shows a7.
+
+**Open items**
+- Waiting on Tim to say whether to proceed with the CV/cover letter draft and interview prep refresh (i1, i6) despite the skip verdict.
+
 ### 2026-11-06: Office changes inbox — NetEase role blocked on missing advert
 
 **What changed**
