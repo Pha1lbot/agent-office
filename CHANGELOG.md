@@ -2,6 +2,8 @@
 
 One line per piece of work that reached `main`, newest first. Full details are in each branch's notes file under `notes/changes/`.
 
+- 2026-11-06: Hal's verdicts on all 37 To review roles; Wren drafted Vitality; Cole prepped Hexagon, Chelsea and Razer ([#14](https://github.com/Pha1lbot/agent-office/pull/14)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
+- 2026-11-06: To review ranked automatically; Hal gives Apply / Maybe / Skip verdicts, including on roles Tim adds or pastes in ([#13](https://github.com/Pha1lbot/agent-office/pull/13)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
 - 2026-11-06: Setting a role to Drafted (with no CV yet) sends it to Wren ([#12](https://github.com/Pha1lbot/agent-office/pull/12)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
 - 2026-11-06: The office launcher and setup run the GitHub sync in the background, so the office never waits on it ([#11](https://github.com/Pha1lbot/agent-office/pull/11)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
 - 2026-11-06: The sync gives up quickly when GitHub needs a sign-in; troubleshooting notes for a new laptop ([#10](https://github.com/Pha1lbot/agent-office/pull/10)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
