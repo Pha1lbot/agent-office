@@ -11,6 +11,26 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Job search set up (preferences and job sites)
+
+**What changed**
+- `shared/job-search/preferences.md`: filled in from Tim's CV (`shared/job-search/cv/Tim Everard CV 2026 v3.pdf`, which Tim uploaded) and his answers: £50k minimum, remote or hybrid near London (he lives in Epsom), some event travel. Assumed values are marked *(assumed)* for Tim to correct.
+- `shared/job-search/sources.md`: Hitmarker, Indeed UK, LinkedIn Jobs and company careers pages, as Tim chose.
+
+**Why**
+Tim ran `/cos start the day`. The setup check stopped it because these two files were still blank templates.
+
+**Decisions**
+- Roles and skills are taken from the CV so Tim didn't have to type them. Ideal pay is left open.
+- Same-company BLAST roles are skipped by default, since Tim has just left; he can change that.
+
+**How to check it**
+Read both files. Tim should correct anything marked *(assumed)*.
+
+**Open items**
+- The CV is a PDF, so new Word files use the default style rather than Tim's CV styling. A .docx copy named `default-cv.docx` would fix that.
+- The PDF's text layer is missing the letter "a" in places, so Senior Admin should work from the page images and have Tim check its text copy.
+
 ### 2026-11-06: Add a double-click launcher for the office
 
 **What changed**
