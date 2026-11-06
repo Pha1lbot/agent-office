@@ -1,7 +1,7 @@
 # Branch: dashboard-v2
 
 **Started:** 2026-11-06
-**Status:** In progress
+**Status:** In review ([PR #8](https://github.com/Pha1lbot/agent-office/pull/8)); merge after #7
 
 ## Purpose
 
@@ -15,6 +15,23 @@ Built on `team-v2` ([Pha1lbot/agent-office#7](https://github.com/Pha1lbot/agent-
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Open pull request
+
+**What changed**
+- This file: status set to "In review", with a link to [Pha1lbot/agent-office#8](https://github.com/Pha1lbot/agent-office/pull/8).
+
+**Why**
+Phase 2 is ready for Tim to merge, after #7.
+
+**Decisions**
+Tim merges it himself, with a merge commit.
+
+**How to check it**
+Open the pull request link.
+
+**Open items**
+After merging #7 and #8: CHANGELOG lines; Tim pulls and reopens the office.
 
 ### 2026-11-06: Teach Hal the new requests; update the READMEs
 
