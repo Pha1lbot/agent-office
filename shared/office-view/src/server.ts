@@ -21,6 +21,7 @@ import { Tracker, findClaude, findPython, repoOf, run } from "./tools.ts";
 import { Backup } from "./backup.ts";
 import { AutoCos } from "./auto-cos.ts";
 import { addUsage, emptyUsage, startOfUkDay, usageOfSession, type Usage } from "./tokens.ts";
+import { MAX_UPLOAD, ROLE_ID, docsOf, fileFor, listFiles, saveAttachment, saveTalkingPoints, textsOf, type Docs } from "./roles.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const APP = resolve(HERE, "..");
@@ -28,6 +29,11 @@ const REPO = resolve(APP, "..", "..");
 const TRACKER = process.env.OFFICE_TRACKER ? resolve(process.env.OFFICE_TRACKER) : join(REPO, "jobs", "tracker.json");
 const PUBLIC = join(APP, "public");
 const PIXI = join(APP, "node_modules", "pixi.js", "dist", "pixi.min.mjs");
+const VENDOR: Record<string, string> = {
+  "/vendor/pixi.mjs": PIXI,
+  "/vendor/marked.mjs": join(APP, "node_modules", "marked", "lib", "marked.esm.js"),
+  "/vendor/purify.mjs": join(APP, "node_modules", "dompurify", "dist", "purify.es.mjs"),
+};
 const HOST = "127.0.0.1";
 const PORT = Number(process.env.OFFICE_PORT || 4747);
 const MAX_BODY = 64 * 1024;
@@ -39,6 +45,13 @@ const TYPES: Record<string, string> = {
   ".css": "text/css; charset=utf-8",
   ".png": "image/png",
   ".svg": "image/svg+xml",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".pdf": "application/pdf",
+  ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  ".doc": "application/msword",
+  ".txt": "text/plain; charset=utf-8",
+  ".md": "text/markdown; charset=utf-8",
 };
 
 const office = new Office();
@@ -125,7 +138,7 @@ function pushAgents(ids: string[]) {
 }
 
 sockets.on("connection", (ws) => {
-  send(ws, { type: "snapshot", agents: office.snapshot(), tracker, system: systemStatus(), now: Date.now() });
+  send(ws, { type: "snapshot", agents: office.snapshot(), tracker, docs, system: systemStatus(), now: Date.now() });
 });
 const pushSystem = () => broadcast({ type: "system", system: systemStatus() });
 
@@ -160,7 +173,59 @@ function json(res: ServerResponse, code: number, body: object) {
   res.writeHead(code, { "Content-Type": "application/json" }).end(JSON.stringify(body));
 }
 
+// ---------- Role folders ----------
+// Which documents each role has, re-checked every few seconds so files Wren,
+// Cole or Ada make show up on the board without a reload.
+const ROLES_ROOT = join(dirname(TRACKER), "roles");
+let docs: Record<string, Docs> = {};
+async function rescanDocs() {
+  const next: Record<string, Docs> = {};
+  for (const r of tracker.roles) if (ROLE_ID.test(r.id)) next[r.id] = await docsOf(ROLES_ROOT, r.id);
+  if (JSON.stringify(next) !== JSON.stringify(docs)) {
+    docs = next;
+    broadcast({ type: "docs", docs });
+  }
+}
+
+/** Queue a request from the role page for Hal (and so Wren or Cole). */
+async function requestWork(role: { id: string; title: string; company: string }, task: string) {
+  const r = await tool!.call(["inbox", "add", "--role", role.id, "--task", task]);
+  if (!r.ok) throw new Error(r.out.split("\n").pop() || "Couldn't queue that");
+  await afterEdit(`asked: ${task.slice(0, 60)} (${role.company})`);
+}
+
 // ---------- HTTP ----------
+function readRaw(req: IncomingMessage, max: number): Promise<Buffer> {
+  return new Promise((ok, fail) => {
+    const chunks: Buffer[] = [];
+    let size = 0;
+    req.on("data", (chunk: Buffer) => {
+      size += chunk.length;
+      if (size > max) { fail(new Error("too large")); req.destroy(); return; }
+      chunks.push(chunk);
+    });
+    req.on("end", () => ok(Buffer.concat(chunks)));
+    req.on("error", fail);
+  });
+}
+
+async function serveDownload(res: ServerResponse, file: string) {
+  try {
+    const info = await stat(file);
+    if (!info.isFile()) throw new Error("not a file");
+    const name = file.split(/[\\/]/).pop()!;
+    res.writeHead(200, {
+      "Content-Type": TYPES[extname(file).toLowerCase()] || "application/octet-stream",
+      "Content-Disposition": `${extname(file) === ".pdf" ? "inline" : "attachment"}; filename="${name.replace(/"/g, "")}"`,
+      "Cache-Control": "no-cache",
+      "X-Content-Type-Options": "nosniff",
+    });
+    res.end(await readFile(file));
+  } catch {
+    res.writeHead(404, { "Content-Type": "text/plain" }).end("Not found");
+  }
+}
+
 function readBody(req: IncomingMessage): Promise<string> {
   return new Promise((ok, fail) => {
     let body = "";
@@ -213,6 +278,41 @@ const server = createServer(async (req, res) => {
 
   if (req.method === "POST" && url.pathname.startsWith("/api/")) {
     if (fromBrowserPage(req)) return void res.writeHead(403).end();
+
+    // Role page: attachments (raw file body), talking points, requests for Wren or Cole.
+    const sub = url.pathname.match(/^\/api\/roles\/([a-z0-9-]{1,120})\/(attachments|talking-points|request)$/);
+    if (sub) {
+      const role = tracker.roles.find((r) => r.id === sub[1]);
+      if (!role) return json(res, 404, { error: "No such role" });
+      try {
+        if (sub[2] === "attachments") {
+          const data = await readRaw(req, MAX_UPLOAD + 1);
+          const saved = await ada("Filing an attachment", () => saveAttachment(ROLES_ROOT, role.id, url.searchParams.get("name") || "", data));
+          await afterEdit(`attached ${saved} to ${role.company}: ${role.title}`);
+          await rescanDocs();
+          return json(res, 200, { ok: true, name: saved });
+        }
+        const body = JSON.parse((await readBody(req)) || "{}") as Record<string, unknown>;
+        if (sub[2] === "talking-points") {
+          await saveTalkingPoints(ROLES_ROOT, role.id, String(body.text ?? ""));
+          await afterEdit(`talking points for ${role.company}: ${role.title}`);
+          await rescanDocs();
+          return json(res, 200, { ok: true });
+        }
+        if (!tool) return json(res, 503, { error: "Asking the team needs Python 3 on this PC." });
+        const text = oneLine(body.text, 300);
+        if (body.kind === "revise") {
+          if (!text) return json(res, 400, { error: "Say what you'd like changed." });
+          await requestWork(role, `Revise documents: ${text}`);
+        } else if (body.kind === "prep") {
+          await requestWork(role, text ? `Refresh interview prep: ${text}` : "Refresh interview prep");
+        } else return json(res, 400, { error: "Unknown request" });
+        return json(res, 200, { ok: true });
+      } catch (e) {
+        return json(res, 400, { error: (e as Error).message === "too large" ? "Files can be up to 10 MB." : (e as Error).message });
+      }
+    }
+
     let body: Record<string, unknown>;
     try { body = JSON.parse((await readBody(req)) || "{}"); } catch { return json(res, 400, { error: "Bad request" }); }
 
@@ -259,7 +359,19 @@ const server = createServer(async (req, res) => {
     res.writeHead(200, { "Content-Type": "application/json" });
     return void res.end(JSON.stringify({ agents: office.snapshot(), tracker }));
   }
-  if (url.pathname === "/vendor/pixi.mjs") return serveFile(res, PIXI);
+  if (VENDOR[url.pathname]) return serveFile(res, VENDOR[url.pathname]);
+
+  const roleApi = url.pathname.match(/^\/api\/roles\/([a-z0-9-]{1,120})$/);
+  if (roleApi) {
+    const role = tracker.roles.find((r) => r.id === roleApi[1]);
+    if (!role) return json(res, 404, { error: "No such role" });
+    return json(res, 200, { role, files: await listFiles(ROLES_ROOT, role.id), texts: await textsOf(ROLES_ROOT, role.id), docs: await docsOf(ROLES_ROOT, role.id) });
+  }
+  const download = url.pathname.match(/^\/files\/roles\/([a-z0-9-]{1,120})\/(.+)$/);
+  if (download) {
+    const file = fileFor(ROLES_ROOT, download[1], decodeURIComponent(download[2]));
+    return file ? serveDownload(res, file) : void res.writeHead(404).end("Not found");
+  }
 
   const file = resolve(PUBLIC, "." + (url.pathname === "/" ? "/index.html" : url.pathname));
   if (!file.startsWith(PUBLIC)) return void res.writeHead(404).end();
@@ -276,6 +388,8 @@ server.on("upgrade", (req, socket, head) => {
 
 // ---------- Start ----------
 const initialInbox = await loadTracker();
+await rescanDocs();
+setInterval(() => void rescanDocs(), 5000);
 const gitRepo = await repoOf(TRACKER);
 let adaSaving = false;
 // Back up the whole jobs folder: the tracker plus PDFs and other files the office makes.

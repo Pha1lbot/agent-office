@@ -17,6 +17,7 @@ Usage:
   python3 shared/tools/tracker.py action list [--all]
   python3 shared/tools/tracker.py inbox list          Tim's office changes waiting for Chief of Staff
   python3 shared/tools/tracker.py inbox done <id>...  mark them handled (or --all)
+  python3 shared/tools/tracker.py inbox add --role <id> --task "Refresh interview prep"
 
 add and set take --by tim when Tim made the change himself (the office does this);
 changes that need work from the team then go into the inbox.
@@ -306,6 +307,15 @@ def cmd_action(args):
 
 def cmd_inbox(args):
     data = load()
+    if args.verb == "add":
+        if not args.role or not args.task:
+            sys.exit('Usage: inbox add --role <id> --task "what to do"')
+        role = find(data, args.role)
+        before = len(data["inbox"])
+        to_inbox(data, role, args.task.strip()[:400])
+        save(data)
+        print(data["inbox"][-1]["id"] if len(data["inbox"]) > before else "Already waiting")
+        return
     waiting = [i for i in data["inbox"] if not i["done"]]
     if args.verb == "list":
         for i in waiting:
@@ -459,7 +469,9 @@ def main():
     act.set_defaults(func=cmd_action)
 
     inb = sub.add_parser("inbox", help="Tim's office changes waiting for Chief of Staff")
-    inb.add_argument("verb", choices=["list", "done"])
+    inb.add_argument("verb", choices=["list", "done", "add"])
+    inb.add_argument("--role", help="add: the role the task is about")
+    inb.add_argument("--task", help="add: what Hal should get done")
     inb.add_argument("ids", nargs="*")
     inb.add_argument("--all", action="store_true")
     inb.set_defaults(func=cmd_inbox)
