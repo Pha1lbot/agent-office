@@ -16,6 +16,34 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Pull automatically on Tim's PC and at session start
+
+**What changed**
+- `.claude/settings.json`: new. A SessionStart hook runs `git pull --ff-only` when a Claude Code session starts or resumes (not on clear or compact). It times out after 30 seconds, never asks for a password, and always exits cleanly. If the pull fails, Claude is told to run `git status` and `git pull` and sort it out with Tim.
+- `shared/tools/sync.ps1`: new. Windows script that runs `git pull --ff-only` on this repo and logs the result to `%LOCALAPPDATA%\agent-office-sync.log`, keeping the last 500 lines.
+- `shared/tools/install-sync.ps1`: new. One-off setup that registers a Windows scheduled task, "agent-office git pull", running `sync.ps1` at log-on and every 15 minutes. The remove command is in the file and the README.
+- `README.md`: new "Keeping your PC up to date" section.
+- `CLAUDE.md`: start-of-session step 2 now mentions the hook and says to check its result.
+
+**Why**
+Tim asked to keep his local copy up to date after every merge. After choosing the after-merge rule, he asked for the scheduled pull and the start-up hook as well.
+
+**Decisions**
+- `--ff-only` everywhere, so an automatic pull never creates a merge commit or touches local changes. If Tim's copy has diverged it stops, and a person or Claude sorts it out, following CLAUDE.md's "never discard" rules.
+- `GIT_TERMINAL_PROMPT=0` and a timeout, so a credential prompt or a network problem can't hang the scheduled task or hold up a session.
+- The hook runs only on start and resume. Clear and compact happen mid-session, and pulling in the middle of work could surprise it.
+- The hook command is written inline in `settings.json` rather than as a separate script, to keep it to one small file.
+- Windows scripts, because Tim works from a PC. Task Scheduler needs no extra software.
+
+**How to check it**
+- Hook: tested in this session. In the repo it prints "Already up to date." and exits 0. Pointed at a folder that isn't a repo, it prints git's error and the "did not finish" message and still exits 0. On Tim's PC, start Claude Code in the folder; the first thing Claude sees is the pull result.
+- Scheduled task: not tested here (no Windows or PowerShell in the cloud sandbox). On the PC, run `install-sync.ps1`, then check that "agent-office git pull" appears in Task Scheduler and that the log file gets an "ok" line within 15 minutes.
+
+**Open items**
+- Check on Tim's PC that the hook runs. Claude Code on Windows runs hook commands through Git Bash, and the inline command uses bash syntax. If it doesn't run, move it into a small script.
+- PowerShell may flash a window briefly every 15 minutes. If that is annoying, it can be launched through a small VBScript wrapper instead.
+- The scheduled pull only updates the branch the PC is on, so the PC should stay on `main`.
+
 ### 2026-11-06: Pull main after every merge
 
 **What changed**

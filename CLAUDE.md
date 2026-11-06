@@ -27,7 +27,7 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 ### At the start of every session
 
 1. Run `git status`. If there are uncommitted changes left over from before, tell Tim what they are and ask whether to commit them before doing anything else.
-2. Run `git pull` so you are working on the latest version.
+2. Run `git pull` so you are working on the latest version. A start-up hook in `.claude/settings.json` already tries this; check its result, and if it failed, sort it out (ask Tim if unsure) before doing anything else.
 
 ### While working
 

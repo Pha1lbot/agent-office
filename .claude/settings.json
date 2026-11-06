@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "GIT_TERMINAL_PROMPT=0 git -C \"$CLAUDE_PROJECT_DIR\" pull --ff-only 2>&1 || echo 'Start-up git pull did not finish. Run git status and git pull, and sort out any problem with Tim before starting work.'",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

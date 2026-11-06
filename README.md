@@ -25,6 +25,20 @@ Tim's agent office: Claude Code agents and their setup
 3. Fill in `shared/job-search/preferences.md` and `shared/job-search/sources.md`.
 4. Commit and push them (or ask Claude to).
 
+### Keeping your PC up to date
+
+- **Automatic pull every 15 minutes (Windows):** run this once in the `agent-office` folder:
+
+  ```
+  powershell -ExecutionPolicy Bypass -File shared\tools\install-sync.ps1
+  ```
+
+  It sets up a scheduled task called "agent-office git pull" that runs at log-on and every 15 minutes. It never overwrites your local changes: if they clash, it does nothing and writes why to `%LOCALAPPDATA%\agent-office-sync.log`. To remove it: `Unregister-ScheduledTask -TaskName "agent-office git pull" -Confirm:$false`.
+- **Pull when Claude Code starts:** `.claude/settings.json` runs `git pull` whenever a Claude Code session starts or resumes in this folder, on your PC or in the cloud.
+- **After a merge:** if Claude merges a pull request, or you tell it one was merged, it switches to `main` and pulls (see CLAUDE.md).
+
+The automatic pull only updates the branch your PC is on, so keep your PC on `main`.
+
 ### Each day
 
 Open Claude Code in this folder and type:
