@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Office (mockup)</title>
+<style>
+  :root {
+    --bg: #1d1f2b; --panel: #272a3a; --panel-2: #30344a; --text: #eef0f6; --muted: #a3a8bd;
+    --line: #3d4260; --accent: #7aa2ff;
+    --typing: #4fbf7f; --walking: #3fa7d6; --waiting: #f2b134; --idle: #9aa0b5; --asleep: #6b7090;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; align-items: center; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; letter-spacing: .02em; }
+  .mock { font-size: 12px; color: #1d1f2b; background: var(--waiting); padding: 2px 8px; border-radius: 99px; font-weight: 600; }
+  .tabs { display: flex; gap: 4px; margin-left: auto; }
+  .tabs button { background: transparent; color: var(--muted); border: 1px solid var(--line); padding: 6px 14px; border-radius: 8px; font: inherit; cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--panel-2); color: var(--text); border-color: var(--accent); }
+  .live { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--typing); }
+  main { padding: 20px; max-width: 1240px; margin: 0 auto; }
+  .office { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 20px; }
+  .room { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+  canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; border-radius: 6px; cursor: pointer; }
+  .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+  .card { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; cursor: pointer; text-align: left; color: inherit; font: inherit; }
+  .card[aria-pressed="true"] { border-color: var(--accent); }
+  .card .who { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+  .dot { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .state { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 99px; color: #1d1f2b; }
+  .detail { font-size: 13px; color: var(--muted); margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  aside { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  aside h2 { margin: 0 0 2px; font-size: 16px; }
+  aside .sub { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+  .log { list-style: none; margin: 0; padding: 0; font-size: 13px; }
+  .log li { display: grid; grid-template-columns: 44px 1fr; gap: 8px; padding: 6px 0; border-top: 1px solid var(--line); }
+  .log time { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .stats { display: flex; gap: 12px; margin-top: 14px; font-size: 13px; color: var(--muted); }
+  .stats b { color: var(--text); }
+  /* Roles tab */
+  .summary { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+  .pill { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; }
+  .pill b { display: block; font-size: 22px; line-height: 1.1; }
+  .pill span { font-size: 12px; color: var(--muted); }
+  .todo { background: #3a3320; border: 1px solid #6b5a2a; border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; }
+  .todo h2 { font-size: 15px; margin: 0 0 6px; color: var(--waiting); }
+  .todo ul { margin: 0; padding-left: 18px; }
+  .filters { display: flex; gap: 6px; margin-bottom: 10px; }
+  .filters button { background: var(--panel); color: var(--muted); border: 1px solid var(--line); border-radius: 99px; padding: 4px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+  .filters button[aria-pressed="true"] { color: var(--text); border-color: var(--accent); }
+  .table-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 760px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  tr:last-child td { border-bottom: 0; }
+  td a { color: var(--accent); text-decoration: none; }
+  .status { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 99px; color: #1d1f2b; }
+  .fit { letter-spacing: 2px; color: var(--waiting); }
+  .fit i { color: var(--line); font-style: normal; }
+  [hidden] { display: none !important; }
+  @media (max-width: 900px) {
+    .office { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    main { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Agent Office</h1>
+  <span class="mock">Mockup · sample data</span>
+  <span class="live">Live</span>
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="office">Office</button>
+    <button role="tab" aria-selected="false" data-tab="roles">Roles</button>
+  </nav>
+</header>
+
+<main>
+  <section id="tab-office" class="office">
+    <div class="room">
+      <canvas id="scene" aria-label="Pixel-art office with four agents"></canvas>
+      <div class="cards" id="cards"></div>
+    </div>
+    <aside>
+      <h2 id="log-name"></h2>
+      <div class="sub" id="log-sub"></div>
+      <ul class="log" id="log"></ul>
+      <div class="stats" id="log-stats"></div>
+    </aside>
+  </section>
+
+  <section id="tab-roles" hidden>
+    <div class="todo">
+      <h2>Waiting on you</h2>
+      <ul>
+        <li>2 CVs to check: Acme Ltd (Data Analyst), Northwind (BI Analyst)</li>
+        <li>1 ready to apply: Contoso (Senior Data Analyst), closes 14 Nov</li>
+        <li>Pick from 3 new roles Chief of Staff has ranked for today</li>
+      </ul>
+    </div>
+    <div class="summary" id="summary"></div>
+    <div class="filters">
+      <button aria-pressed="true" data-filter="open">Open</button>
+      <button aria-pressed="false" data-filter="all">All</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Status</th><th>Priority</th><th>Role</th><th>Company</th><th>Pay</th><th>Location</th><th>Fit</th><th>Updated</th></tr></thead>
+        <tbody id="roles"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+// ---------- Sample data (the real page gets this from the bridge) ----------
+const STATE_COLOUR = { typing: "#4fbf7f", walking: "#3fa7d6", waiting: "#f2b134", idle: "#9aa0b5", asleep: "#6b7090" };
+const STATE_LABEL = { typing: "Working", walking: "Looking things up", waiting: "Waiting for you", idle: "Idle", asleep: "Asleep" };
+const agents = [
+  { id: "cos", name: "Chief of Staff", colour: "#4f6bed", hair: "#3b2a1a", state: "waiting", detail: "Your turn: pick today's roles", desk: 0, tools: 14,
+    log: [["09:12", "Tim sent a message"], ["09:12", "Briefed Lead Recruiter: find up to 10 roles"], ["09:19", "Briefed Admin: add 8 new roles"], ["09:21", "Wrote jobs/today.md"], ["09:21", "Finished, waiting for Tim"]] },
+  { id: "rec", name: "Lead Recruiter", colour: "#2f9e6e", hair: "#a0522d", state: "walking", place: "web", detail: "WebFetch reed.co.uk/jobs/data-analyst", desk: 1, tools: 31,
+    log: [["09:12", "Briefed by Chief of Staff: find up to 10 roles"], ["09:13", "Read shared/job-search/sources.md"], ["09:14", "WebSearch data analyst Manchester hybrid"], ["09:16", "Write jobs/roles/…-acme-ltd-data-analyst/listing.md"], ["09:18", "WebFetch reed.co.uk/jobs/data-analyst"]] },
+  { id: "sen", name: "Senior Admin", colour: "#d9822b", hair: "#1c1c1c", state: "typing", detail: "Writing CV: Acme Ltd, Data Analyst", desk: 2, tools: 9,
+    log: [["09:24", "Briefed by Chief of Staff: draft CVs for 2 roles"], ["09:24", "Read shared/job-search/cv/default-cv.md"], ["09:25", "Read jobs/roles/…-acme-ltd-data-analyst/listing.md"], ["09:26", "Write jobs/roles/…-acme-ltd-data-analyst/cv.md"]] },
+  { id: "adm", name: "Admin", colour: "#9b59b6", hair: "#e0b04a", state: "asleep", detail: "Dozing", desk: 3, tools: 8,
+    log: [["09:19", "Briefed by Chief of Staff: add 8 new roles"], ["09:19", "Bash tracker.py add --id …-acme-ltd-data-analyst"], ["09:20", "Bash tracker.py list --summary"], ["09:20", "Finished and reported back"]] },
+];
+const roles = [
+  ["drafted", 1, "Data Analyst", "Acme Ltd", "£40,000–£45,000", "Manchester, hybrid", 5, "06 Nov"],
+  ["drafted", 2, "BI Analyst", "Northwind", "£42,000", "Remote", 4, "06 Nov"],
+  ["approved", 1, "Senior Data Analyst", "Contoso", "£48,000", "Leeds, hybrid", 4, "05 Nov"],
+  ["applied", null, "Reporting Analyst", "Fabrikam", "£38,000", "Salford, office", 3, "03 Nov"],
+  ["interview", null, "Insight Analyst", "Tailspin", "£44,000", "Remote", 5, "04 Nov"],
+  ["found", null, "Data Analyst", "Globex", "Not stated", "Bolton, hybrid", 4, "06 Nov"],
+  ["found", null, "Analytics Engineer", "Initech", "£50,000", "Remote", 3, "06 Nov"],
+  ["found", null, "Data Officer", "Umbrella", "£33,000", "Stockport, office", 2, "06 Nov"],
+  ["skipped", null, "Data Manager", "Hooli", "£28,000", "Leeds, office", 2, "05 Nov"],
+  ["rejected", null, "Junior Analyst", "Vandelay", "£30,000", "Remote", 3, "01 Nov"],
+];
+const STATUS_COLOUR = { found: "#9aa0b5", shortlisted: "#7aa2ff", drafted: "#f2b134", approved: "#4fbf7f", applied: "#3fa7d6", interview: "#c38bff", offer: "#2ee6a6", rejected: "#e06c75", skipped: "#6b7090" };
+const OPEN = new Set(["found", "shortlisted", "drafted", "approved", "applied", "interview"]);
+
+// ---------- Office scene ----------
+const W = 200, H = 120, S = 4;              // art pixels, and screen pixels per art pixel
+const canvas = document.getElementById("scene");
+const ctx = canvas.getContext("2d");
+const dpr = Math.max(1, Math.round(window.devicePixelRatio || 1));
+canvas.width = W * S * dpr; canvas.height = H * S * dpr;
+const DESKS = [{ x: 18, y: 58 }, { x: 98, y: 58 }, { x: 18, y: 94 }, { x: 98, y: 94 }];
+const DW = 52; // desk width
+const PLACES = { web: { x: 182, y: 82 }, shelf: { x: 176, y: 48 } };
+let selected = "cos";
+
+function art() { ctx.setTransform(S * dpr, 0, 0, S * dpr, 0, 0); ctx.imageSmoothingEnabled = false; }
+function px(x, y, w, h, c) { ctx.fillStyle = c; ctx.fillRect(x, y, w, h); }
+function text(str, x, y, size, colour, align = "center", weight = 600) {
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.font = `${weight} ${size}px ui-monospace, "Cascadia Mono", Menlo, monospace`;
+  ctx.fillStyle = colour; ctx.textAlign = align; ctx.textBaseline = "middle";
+  ctx.fillText(str, x * S, y * S);
+  art();
+}
+
+function room(t) {
+  // wall
+  px(0, 0, W, 36, "#3b3f5c"); px(0, 34, W, 2, "#2c2f45");
+  // windows
+  for (const wx of [8, 150]) { px(wx, 6, 34, 20, "#2c2f45"); px(wx + 2, 8, 30, 16, "#8ec5ff"); px(wx + 2, 18, 30, 6, "#b5dcff"); px(wx + 16, 8, 2, 16, "#2c2f45"); }
+  // whiteboard with today's numbers
+  px(58, 5, 84, 24, "#d9dbe6"); px(60, 7, 80, 20, "#f7f8fc");
+  text("TODAY", 100, 11, 11, "#4f6bed");
+  text("8 found · 3 picked · 2 drafted", 100, 19, 10, "#30344a", "center", 500);
+  // clock
+  px(48, 8, 7, 7, "#f7f8fc"); px(51, 9, 1, 3, "#30344a"); px(51, 11, 2, 1, "#30344a");
+  // floor
+  for (let y = 36; y < H; y += 8) for (let x = 0; x < W; x += 8) px(x, y, 8, 8, ((x + y) / 8) % 2 ? "#c9b38f" : "#c1aa85");
+  // rug under Chief of Staff
+  px(10, 42, 68, 32, "#a65d57"); px(12, 44, 64, 28, "#b86b63");
+  // bookshelf (where agents read files)
+  px(170, 38, 26, 28, "#6b4428"); for (let r = 0; r < 3; r++) { px(172, 40 + r * 9, 22, 7, "#4a2e1a"); for (let b = 0; b < 6; b++) px(173 + b * 3.5, 41 + r * 9, 2.5, 6, ["#e06c75", "#7aa2ff", "#f2b134", "#4fbf7f", "#c38bff", "#e5e7ef"][(b + r) % 6]); }
+  text("FILES", 183, 69, 9, "#6b4428");
+  // web kiosk (where agents search the web)
+  px(160, 82, 20, 18, "#30344a"); px(162, 84, 16, 11, "#3fa7d6");
+  px(167, 86, 6, 6, "#8ee0ff"); px(169, 86, 2, 6, "#3fa7d6"); px(167, 88, 6, 2, "#3fa7d6");
+  px(168, 100, 4, 8, "#30344a"); text("WEB", 170, 112, 9, "#30344a");
+  // plant and water cooler
+  px(4, 104, 8, 8, "#8a5a3b"); px(2, 94, 12, 11, "#3c9a5f"); px(5, 90, 6, 6, "#4fbf7f");
+  px(84, 40, 8, 14, "#d9dbe6"); px(85, 36, 6, 6, "#8ec5ff");
+}
+
+function desk(d, on, t) {
+  // chair behind the desk
+  px(d.x + 20, d.y - 14, 12, 12, "#444a66");
+  // desk top and front
+  px(d.x, d.y, DW, 4, "#b07a50"); px(d.x, d.y + 4, DW, 10, "#8a5a3b"); px(d.x + 2, d.y + 14, 3, 4, "#6b4428"); px(d.x + DW - 5, d.y + 14, 3, 4, "#6b4428");
+  // monitor (seen from the side) and keyboard
+  px(d.x + 8, d.y - 12, 3, 12, "#22242f"); px(d.x + 11, d.y - 12, 2, 12, on ? "#6fd3ff" : "#3a3d50");
+  px(d.x + 6, d.y - 1, 9, 1, "#22242f");
+  px(d.x + 18, d.y + 1, 12, 2, "#e5e7ef");
+}
+
+function person(x, y, a, t) {
+  const skin = "#f1c27d", legs = "#2c3e50";
+  const asleep = a.state === "asleep";
+  const hy = asleep ? y + 3 : y;           // head drops onto the desk when asleep
+  px(x + 1, hy, 7, 7, skin); px(x + 1, hy, 7, 2, a.hair); px(x + 1, hy + 2, 1, 2, a.hair);
+  if (asleep) { px(x + 3, hy + 4, 2, 1, "#5a3b22"); px(x + 6, hy + 4, 1, 1, "#5a3b22"); }
+  else { px(x + 3, hy + 3, 1, 1, "#22242f"); px(x + 6, hy + 3, 1, 1, "#22242f"); px(x + 4, hy + 5, 2, 1, "#c98f5a"); }
+  px(x, y + 7, 9, 8, a.colour);           // body
+  if (a.state === "typing") {               // arms tapping the keyboard
+    const f = Math.floor(t / 180) % 2;
+    px(x - 1, y + 9 + f, 2, 5, a.colour); px(x + 8, y + 10 - f, 2, 5, a.colour);
+    px(x - 1, y + 14 + f, 2, 1, skin); px(x + 8, y + 15 - f, 2, 1, skin);
+  } else {
+    px(x - 1, y + 8, 2, 6, a.colour); px(x + 8, y + 8, 2, 6, a.colour);
+  }
+}
+
+function standing(x, y, a, t) {
+  person(x, y, a, t);
+  const f = Math.floor(t / 300) % 2;
+  px(x + 1, y + 15, 3, 6 - f, "#2c3e50"); px(x + 5, y + 15, 3, 5 + f, "#2c3e50");
+}
+
+function bubble(x, y, str, colour, t) {
+  const bob = Math.round(Math.sin(t / 300));
+  px(x, y + bob, 10, 9, "#f7f8fc"); px(x + 3, y + 9 + bob, 2, 2, "#f7f8fc");
+  text(str, x + 5, y + 4.7 + bob, 20, colour, "center", 800);
+}
+
+function draw(t) {
+  art();
+  room(t);
+  for (const a of agents) {
+    const d = DESKS[a.desk];
+    const atDesk = !a.place;
+    desk(d, a.state === "typing", t);
+    if (atDesk) person(d.x + 22, d.y - 15, a, t);
+    // redraw the desk front over the body so the person sits behind it
+    px(d.x, d.y, DW, 4, "#b07a50"); px(d.x, d.y + 4, DW, 10, "#8a5a3b"); px(d.x + 18, d.y + 1, 12, 2, "#e5e7ef");
+    if (a.state === "waiting") bubble(d.x + 34, d.y - 28, "?", "#c98a00", t);
+    if (a.state === "asleep") text(Math.floor(t / 600) % 2 ? "z Z" : "Z z", d.x + 38, d.y - 16, 14, "#b5c4ff");
+    // name plate on the desk front
+    text(a.name, d.x + DW / 2, d.y + 9, 11, "#fff3e0");
+    if (a.id === selected) { ctx.strokeStyle = "#7aa2ff"; ctx.lineWidth = 0.5; ctx.strokeRect(d.x - 2, d.y - 32, DW + 4, 52); }
+  }
+  // the Lead Recruiter, away from the desk at the web kiosk
+  for (const a of agents.filter((a) => a.place)) {
+    const p = PLACES[a.place];
+    standing(p.x, p.y, a, t);
+  }
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+
+canvas.addEventListener("click", (e) => {
+  const r = canvas.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width * W, y = (e.clientY - r.top) / r.height * H;
+  const hit = agents.find((a) => { const d = DESKS[a.desk]; return x >= d.x && x <= d.x + DW && y >= d.y - 32 && y <= d.y + 18; })
+    || (x > 156 && y > 76 ? agents.find((a) => a.place === "web") : null);
+  if (hit) select(hit.id);
+});
+
+// ---------- Cards and log ----------
+function select(id) {
+  selected = id;
+  const a = agents.find((a) => a.id === id);
+  document.getElementById("log-name").textContent = a.name;
+  document.getElementById("log-sub").textContent = `${STATE_LABEL[a.state]} · ${a.detail}`;
+  document.getElementById("log").innerHTML = a.log.slice().reverse().map(([t, s]) => `<li><time>${t}</time><span>${s}</span></li>`).join("");
+  document.getElementById("log-stats").innerHTML = `<span><b>${a.tools}</b> tool calls today</span>`;
+  renderCards();
+}
+function renderCards() {
+  document.getElementById("cards").innerHTML = agents.map((a) => `
+    <button class="card" aria-pressed="${a.id === selected}" data-id="${a.id}">
+      <div class="who"><span class="dot" style="background:${a.colour}"></span>${a.name}</div>
+      <span class="state" style="background:${STATE_COLOUR[a.state]}">${STATE_LABEL[a.state]}</span>
+      <div class="detail" title="${a.detail}">${a.detail}</div>
+    </button>`).join("");
+}
+document.getElementById("cards").addEventListener("click", (e) => { const c = e.target.closest(".card"); if (c) select(c.dataset.id); });
+select("cos");
+
+// ---------- Roles tab ----------
+function renderRoles(filter) {
+  const counts = {};
+  for (const r of roles) counts[r[0]] = (counts[r[0]] || 0) + 1;
+  document.getElementById("summary").innerHTML = ["found", "shortlisted", "drafted", "approved", "applied", "interview", "offer", "rejected"]
+    .filter((s) => counts[s]).map((s) => `<div class="pill" style="border-color:${STATUS_COLOUR[s]}"><b>${counts[s]}</b><span>${s}</span></div>`).join("");
+  const order = Object.keys(STATUS_COLOUR);
+  document.getElementById("roles").innerHTML = roles
+    .filter((r) => filter === "all" || OPEN.has(r[0]))
+    .sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0]) || (a[1] || 9) - (b[1] || 9))
+    .map(([status, p, title, company, pay, loc, fit, updated]) => `<tr>
+      <td><span class="status" style="background:${STATUS_COLOUR[status]}">${status}</span></td>
+      <td>${p || ""}</td><td><a href="#">${title}</a></td><td>${company}</td><td>${pay}</td><td>${loc}</td>
+      <td class="fit">${"●".repeat(fit)}<i>${"●".repeat(5 - fit)}</i></td><td>${updated}</td></tr>`).join("");
+}
+document.querySelector(".filters").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  document.querySelectorAll(".filters button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+  renderRoles(b.dataset.filter);
+});
+renderRoles("open");
+
+// ---------- Tabs ----------
+document.querySelector(".tabs").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  document.querySelectorAll(".tabs button").forEach((x) => x.setAttribute("aria-selected", x === b));
+  document.getElementById("tab-office").hidden = b.dataset.tab !== "office";
+  document.getElementById("tab-roles").hidden = b.dataset.tab !== "roles";
+});
+if (location.hash === "#roles") document.querySelector('[data-tab="roles"]').click();
+</script>
+</body>
+</html>

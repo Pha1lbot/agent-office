@@ -1,6 +1,6 @@
 # Plan: Office view for agents
 
-**Status:** Planned, agents first (see `notes/changes/claude-youthful-hopper-alwu7m.md`)
+**Status:** First version built on branch `office-view` (see `notes/changes/office-view.md`). Agents built earlier (see `notes/changes/claude-youthful-hopper-alwu7m.md`).
 **Written:** 2026-11-06, handed over from a Claude chat
 
 ## Goal

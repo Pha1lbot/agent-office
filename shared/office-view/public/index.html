@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Office</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>Agent Office</h1>
+  <span class="live off" id="live">Connecting…</span>
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="office">Office</button>
+    <button role="tab" aria-selected="false" data-tab="roles">Roles</button>
+  </nav>
+</header>
+
+<main>
+  <section id="tab-office" class="office">
+    <div class="room">
+      <div id="scene" role="img" aria-label="Pixel-art office showing what each agent is doing"></div>
+      <div class="cards" id="cards"></div>
+    </div>
+    <aside>
+      <h2 id="log-name"></h2>
+      <div class="sub" id="log-sub"></div>
+      <ul class="log" id="log"></ul>
+      <div class="stats" id="log-stats"></div>
+    </aside>
+  </section>
+
+  <section id="tab-roles" hidden>
+    <div class="todo" id="todo"><h2>Waiting on you</h2><ul id="todo-list"></ul></div>
+    <div class="summary" id="summary"></div>
+    <div class="filters">
+      <button aria-pressed="true" data-filter="open">Open</button>
+      <button aria-pressed="false" data-filter="all">All</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Status</th><th>Priority</th><th>Role</th><th>Company</th><th>Pay</th><th>Location</th><th>Fit</th><th>Updated</th></tr></thead>
+        <tbody id="roles"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+<script type="module" src="/office.js"></script>
+</body>
+</html>
