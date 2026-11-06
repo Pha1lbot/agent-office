@@ -1,24 +1,19 @@
-# Today's priorities: 2026-11-06
+# Today: 2026-11-06
 
-A thin first day: 7 roles found, none above 3/5 fit, and only 2 state pay. Site coverage was partial (see notes at the bottom).
+Hal gave verdicts on all 37 roles in To review: **1 Apply, 18 Maybe, 18 Skip**. Rita couldn't open LinkedIn from the cloud session, so these are based on the saved details (title, company, location, pay, your notes), except the 4 roles that already had listings. Ask Hal again from your PC for full reads of the top ones.
 
-## Top picks (choose up to 3)
+## Top picks
+1. **Senior Production Manager, The Crowd** (Apply, fit 4): live production, London hybrid, £60k–£70k.
+2. **Event Production Manager, Formula 1** (Maybe, fit 4): sport and broadcast production; pay unknown, may mean heavy travel.
+3. **Senior Operations & Event Producer, This is Beyond** (Maybe, fit 3): London hybrid, £60k–£65k; agency producer vs Head level unclear.
 
-1. **Director, Production (Fortnite ecosystem) @ Epic Games**: Greater London, pay not stated, fit 3. Senior gaming role; budgets and vendor work match. Shipping-games experience is a gap. `2026-11-06-epic-games-director-production-fortnite-ecosystem`
-2. **Head of Events and Experiences @ Vitality**: London, hybrid (2 office days), pay "competitive", fit 3. Head level, £1.5m events budget, suppliers. Corporate, not esports. `2026-11-06-vitality-head-of-events-and-experiences`
-3. **Director of Team Operations @ Hexagon World Series**: London or Madrid, pay not stated, fit 3. Senior team and player operations in a new sports league (padel). Office pattern and travel unclear. `2026-11-06-hexagon-world-series-director-of-team-operations`
+## Worth a look
+- Director of Soccer Aid (interim), UNICEF UK: £105k, fixed term, fundraising/partnership remit.
+- Event Director, Handle Recruitment: £70k–£90k, client unnamed.
+- Senior Producer, Big Global Events (£55k–£62k) and Senior Producer, Premier (£50k–£65k): below Head level.
 
-## The rest
+The other Maybes and the 18 Skips are on the board, best first.
 
-4. COO, Live Event Production @ Disrupt Search (agency client): London, pay not stated, fit 3. Operations leadership fits, but the company-wide P&L remit is a stretch.
-5. Head of Video, Events Production @ Blank Space Recruitment (client): London, up to £75k, fit 2. Head level, but very technical video design (Vectorworks, Barco).
-6. Production Manager, Brand Activations @ Blank Space Recruitment (client): London, from £50k, fit 2. Below Head level.
-7. Live Broadcast Producer (contract) @ ESL FACEIT Group: UK/London, pay not stated, fit 2. Hands-on show calling, fixed term to Feb 2027. Not confirmed still open.
-
-## Waiting on Tim
-- Pick which roles to go for (none drafted yet).
-- Check pay clears £50k for any you pick that don't state it.
-
-## Search notes
-- Indeed blocks automated access. Hitmarker was only partly searchable (its listings load by JavaScript). Company careers pages on Greenhouse were blocked. Runs from Tim's PC should reach more.
-- Ranked by fit, then by sector (esports/gaming first) and work style, since no closing dates were given and most pay is unstated.
+## Waiting on you
+- NetEase Esport Specialist is in Drafted but has no advert saved, so Wren can't tailor a CV yet. Add its link (Edit details) or paste the advert. Your own notes say it's below your level and probably below your pay floor, so you may prefer to skip it.
+- "Refresh interview prep" for NetEase is queued, but there's no interview yet. Did you mean it?

@@ -9,7 +9,7 @@
       "url": "https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821",
       "source": "LinkedIn Jobs",
       "fit": 3,
-      "priority": null,
+      "priority": 18,
       "status": "found",
       "notes": "Head-level events leader with budget and supplier work; corporate not esports. Listed as competitive, no figure; confirm GBP 50k.",
       "found": "2026-11-06",
@@ -19,7 +19,9 @@
           "date": "2026-11-06",
           "status": "found"
         }
-      ]
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Head-level events role with £1.5m budget and suppliers, hybrid 2 days; corporate not esports, pay not stated"
     },
     {
       "id": "2026-11-06-hexagon-world-series-director-of-team-operations",
@@ -89,7 +91,7 @@
       "url": "https://uk.linkedin.com/jobs/view/head-of-video-events-production-at-blank-space-recruitment-4484322630",
       "source": "LinkedIn Jobs",
       "fit": 2,
-      "priority": null,
+      "priority": 22,
       "status": "found",
       "notes": "Head-level live production but very technical video design; Vectorworks and Barco gaps.",
       "found": "2026-11-06",
@@ -100,7 +102,9 @@
           "status": "found"
         }
       ],
-      "list": "New matches"
+      "list": "New matches",
+      "verdict": "skip",
+      "verdict_why": "Pay up to £75k, but a technical video design role (Vectorworks, Barco, media servers) your CV doesn't show"
     },
     {
       "id": "2026-11-06-disrupt-search-chief-operating-officer-live-event-production",
@@ -111,7 +115,7 @@
       "url": "https://uk.linkedin.com/jobs/view/chief-operating-officer-live-event-production-at-disrupt-search-4480513001",
       "source": "LinkedIn Jobs",
       "fit": 3,
-      "priority": null,
+      "priority": 19,
       "status": "found",
       "notes": "Senior ops leadership across live production; agency-wide P&L remit is a stretch. Hybrid pattern not stated.",
       "found": "2026-11-06",
@@ -121,7 +125,9 @@
           "date": "2026-11-06",
           "status": "found"
         }
-      ]
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Operations leadership across live production suits you; agency P&L remit is a stretch, pay and work style unstated"
     },
     {
       "id": "2026-11-06-epic-games-director-production-fortnite-ecosystem",
@@ -159,7 +165,7 @@
       "url": "https://uk.linkedin.com/jobs/view/production-manager-live-events-at-blank-space-recruitment-4484319909",
       "source": "LinkedIn Jobs",
       "fit": 2,
-      "priority": null,
+      "priority": 23,
       "status": "found",
       "notes": "Live events production fits but below Head level; scenic build and AutoCAD gaps.",
       "found": "2026-11-06",
@@ -170,7 +176,9 @@
           "status": "found"
         }
       ],
-      "list": "Transition roles"
+      "list": "Transition roles",
+      "verdict": "skip",
+      "verdict_why": "Below Head level, pay only at the £50k minimum, scenic-build brand work needing CAD"
     },
     {
       "id": "2026-11-02-the-insights-group-the-esports-radar-events-executive-freelance",
@@ -474,18 +482,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 2 Nov",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 3,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "Details only: ops and event producer, London hybrid, pay clears the minimum and the ideal; agency producer scope vs Head level unclear"
     },
     {
       "id": "2026-11-05-convene-senior-conference-events-manager-live-ev",
@@ -501,18 +511,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 31 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 2,
+      "priority": 24,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: corporate conference venue events manager; below Head level and not esports or broadcast"
     },
     {
       "id": "2026-11-05-unicef-uk-director-of-soccer-aid-interim",
@@ -528,18 +540,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 30 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 4,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "Details only: £105k football and TV charity event, but interim fixed term with a fundraising/partnership remit"
     },
     {
       "id": "2026-11-05-wpp-production-global-hub-operations-director",
@@ -555,18 +569,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 30 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 8,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "Details only: director-level operations, London hybrid, but agency/production and pay unknown"
     },
     {
       "id": "2026-11-05-handle-recruitment-client-unnamed-event-director",
@@ -582,18 +598,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 29 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 5,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "Details only: Event Director pay and hybrid work suit you, but client and sector are unnamed and may not be esports or live production"
     },
     {
       "id": "2026-11-05-lta-head-of-delivery-central-east",
@@ -609,18 +627,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 29 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 9,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "Details only: Head-level sport delivery, but a tennis participation remit; pay and work style unknown"
     },
     {
       "id": "2026-11-05-soho-house-co-event-director-uk-eu-asia-12-month-mater",
@@ -636,18 +656,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 28 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 10,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "From saved details: Event Director level fits, but members-club events, 12-month maternity cover, pay unknown"
     },
     {
       "id": "2026-11-05-hyve-group-senior-event-operations-manager-possible",
@@ -663,18 +685,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 28 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 11,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "From saved details: senior event operations fits your skills; exhibition/conference sector, pay unknown"
     },
     {
       "id": "2026-11-05-the-conservative-party-head-of-political-events-and-operations",
@@ -690,18 +714,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 27 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 12,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "From saved details: Head of events and operations is the right level; political sector, pay unknown"
     },
     {
       "id": "2026-11-05-prose-on-pixels-uk-operations-director",
@@ -717,18 +743,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 27 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 13,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "From saved details: UK Operations Director is the right level and discipline; sector unclear, pay unknown"
     },
     {
       "id": "2026-11-05-infopro-digital-head-of-eventtech",
@@ -744,18 +772,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 23 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 14,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "From saved details: Head-level and hybrid; event tech fits your ops tools work, but likely product-focused"
     },
     {
       "id": "2026-11-05-amazon-senior-program-activation-manager-twitch",
@@ -771,18 +801,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 22 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 15,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "Details only: Twitch gaming brand is relevant, but it is a marketing activation role and pay and work style are unknown"
     },
     {
       "id": "2026-11-05-hyve-group-event-director-hlth-europe",
@@ -798,18 +830,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 21 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 2,
+      "priority": 25,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "Details only: healthcare conference and exhibition director; wrong sector, no esports or broadcast link"
     },
     {
       "id": "2026-11-05-surrey-county-cricket-club-the-oval-head-of-facilities-operations",
@@ -825,18 +859,20 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 20 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 2,
+      "priority": 26,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: facilities management, not events, tournament or broadcast operations"
     },
     {
       "id": "2026-11-05-big-global-events-senior-producer",
@@ -852,18 +888,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 2 Nov",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 6,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "Details only: Senior Producer, London hybrid, pay in range; below Head level and corporate-events leaning"
     },
     {
       "id": "2026-11-05-great-ormond-street-hospital-charity-gaming-streaming-senior-manager",
@@ -879,18 +917,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 2 Nov",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 20,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: gaming and streaming fits, but £49.9k is below your £50k minimum, and fundraising-led"
     },
     {
       "id": "2026-11-05-scopely-producer-star-trek-fleet-command",
@@ -906,18 +946,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 2 Nov",
-      "fit": null,
-      "priority": null,
+      "fit": 1,
+      "priority": 33,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: mobile game development producer; wrong discipline"
     },
     {
       "id": "2026-11-05-snap-inc-manager-marketing-operations",
@@ -933,18 +975,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 31 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 1,
+      "priority": 34,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: marketing operations (campaigns/process); wrong discipline"
     },
     {
       "id": "2026-11-05-convene-venue-manager-live-events-new-opening",
@@ -960,18 +1004,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 31 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 2,
+      "priority": 27,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: conference venue management; wrong discipline and below your level"
     },
     {
       "id": "2026-11-05-formula-1-event-production-manager",
@@ -987,18 +1033,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 30 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 4,
+      "priority": 2,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "From saved details: live event production in sport and broadcast suits you; pay unknown and F1 may mean heavy travel"
     },
     {
       "id": "2026-11-05-stripe-marketing-operations-manager-emea-events",
@@ -1014,18 +1062,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 30 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 2,
+      "priority": 21,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: great pay, but marketing operations for events, not production or tournament ops"
     },
     {
       "id": "2026-11-05-premier-senior-producer-events",
@@ -1041,18 +1091,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 29 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 7,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "From saved details: Senior Producer, London hybrid, pay in range; below Head level, likely corporate events"
     },
     {
       "id": "2026-11-05-the-crowd-senior-production-manager",
@@ -1068,18 +1120,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 28 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 4,
+      "priority": 1,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "apply",
+      "verdict_why": "Details only: Senior Production Manager, live production, London hybrid, pay above ideal; one of the better fits"
     },
     {
       "id": "2026-11-05-tiktok-tiktok-shop-creator-operations-manager",
@@ -1095,18 +1149,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 28 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 1,
+      "priority": 35,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: e-commerce creator operations; wrong discipline"
     },
     {
       "id": "2026-11-05-snap-inc-lead-global-brand-experience",
@@ -1122,18 +1178,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 27 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 2,
+      "priority": 28,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: brand marketing experiences, not operations or production"
     },
     {
       "id": "2026-11-05-england-wales-cricket-board-event-manager-core-fixed-term",
@@ -1149,18 +1207,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 26 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 2,
+      "priority": 29,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: fixed-term Event Manager is below your Head level, and cricket isn't your sector"
     },
     {
       "id": "2026-11-05-prime-video-amazon-mgm-studios-marketing-production-manager-sports",
@@ -1176,18 +1236,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 24 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 16,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "From saved details: sports production management suits you, but it's marketing content production; pay unknown"
     },
     {
       "id": "2026-11-05-ges-uk-europe-senior-core-services-delivery-manager-ex",
@@ -1203,18 +1265,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 23 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 2,
+      "priority": 30,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: exhibition venue services at ExCeL; likely on site, wrong discipline"
     },
     {
       "id": "2026-11-05-meta-global-brand-experiences-manager-emea",
@@ -1230,18 +1294,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 22 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 2,
+      "priority": 31,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: brand marketing experiences, mid-level; not operations or production"
     },
     {
       "id": "2026-11-05-futurlab-producer-games-uk-only",
@@ -1257,18 +1323,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 27 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 1,
+      "priority": 36,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: game development producer; wrong discipline"
     },
     {
       "id": "2026-11-05-relevent-football-partners-ticketing-manager",
@@ -1284,18 +1352,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 20 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 1,
+      "priority": 37,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: ticketing management; wrong discipline"
     },
     {
       "id": "2026-11-05-formula-e-senior-premium-experience-manager-fixed",
@@ -1311,18 +1381,20 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 20 Oct",
-      "fit": null,
-      "priority": null,
+      "fit": 2,
+      "priority": 32,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "From saved details: premium hospitality experience on a fixed term; not operations or production"
     },
     {
       "id": "2026-11-05-chess-com-director-of-event-operations",
@@ -1370,18 +1442,20 @@
       "interview_with": "",
       "list": "Other leads",
       "notes": "Why it fits: Senior, remote Concern: Needs iGaming, mobile gaming or competitions background",
-      "fit": null,
-      "priority": null,
+      "fit": 3,
+      "priority": 17,
       "status": "found",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "verdict_why": "Details only: senior and remote UK, but your notes say it needs an iGaming, mobile gaming or competitions background"
     },
     {
       "id": "2026-11-05-netease-games-esport-specialist",
@@ -1397,7 +1471,7 @@
       "interview_with": "",
       "list": "Other leads",
       "notes": "Why it fits: Tournament delivery and partner work Concern: Below your level and likely below pay floor",
-      "fit": null,
+      "fit": 2,
       "priority": null,
       "status": "drafted",
       "found": "2026-11-05",
@@ -1413,7 +1487,9 @@
           "by": "tim"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "Details only (no link): your notes say below your level and likely below the pay floor, though esports and UK remote"
     }
   ],
   "actions": [
@@ -1444,6 +1520,13 @@
       "role": "",
       "done": false,
       "created": "2026-11-05"
+    },
+    {
+      "id": "a5",
+      "text": "Add the NetEase Esport Specialist advert (link via Edit details, or paste the text) so Wren can draft its CV",
+      "role": "2026-11-05-netease-games-esport-specialist",
+      "done": false,
+      "created": "2026-11-06"
     }
   ],
   "inbox": [
@@ -1453,6 +1536,14 @@
       "task": "Refresh interview prep",
       "title": "Esport Specialist @ NetEase Games",
       "at": "2026-11-06T22:13",
+      "done": false
+    },
+    {
+      "id": "i2",
+      "role": "2026-11-05-netease-games-esport-specialist",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "Esport Specialist @ NetEase Games",
+      "at": "2026-11-06T22:45",
       "done": false
     }
   ]

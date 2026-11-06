@@ -19,3 +19,8 @@ operations leadership, restructuring, process improvement, production, technical
 - P&L and margin ownership of a whole agency
 - Agency and client-led events background
 - Location, hybrid pattern and pay not stated
+
+## Verdict
+Maybe: Senior ops leadership across live production suits Tim, but agency P&L remit is a stretch and pay/location are unstated.
+- For: Operations leadership and restructuring match; budgets and team development
+- Against: Agency-wide margin ownership; pay and work style not stated; COO level is a step up

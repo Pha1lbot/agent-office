@@ -16,6 +16,31 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Job search: verdicts for all 37 To review roles
+
+**What changed**
+- `jobs/tracker.json` / `tracker.md`:
+  - `fit`, `verdict` and `verdict_why` set on all 37 To review roles and on NetEase (Drafted): 1 Apply, 18 Maybe, 18 Skip.
+  - Ada re-ranked To review.
+  - An inbox task asks Wren to draft NetEase (i2, left open), and an action asks Tim for the NetEase advert.
+- Rita appended a `## Verdict` section to the 4 existing listings: Vitality, the two Blank Space roles and Disrupt Search.
+- `jobs/today.md`: today's top picks.
+
+**Why**
+Tim ran `/hal give verdicts on everything in To review`, and chose full reads for the top 10 with details-only verdicts for the rest. He also pointed out that NetEase is Drafted with no CV. He moved it to Drafted before [Pha1lbot/agent-office#12](https://github.com/Pha1lbot/agent-office/pull/12), so Wren was never asked.
+
+**Decisions**
+- LinkedIn is not reachable from this cloud session's network, so Rita's 9 full reads fell back to details only. I didn't widen the network: Tim can ask for the full reads from his PC, where LinkedIn works.
+- Wren wasn't briefed on NetEase. There's no link, advert or listing to tailor to, and Tim's own notes say the role is below his level and pay floor.
+
+**How to check it**
+`tracker.py list --status found`: every role has a verdict, P1 is The Crowd (Apply) and the Skips are at the bottom.
+
+**Open items**
+- NetEase: Tim adds the advert or skips the role. Inbox i1 ("Refresh interview prep") is still open, as there's no interview.
+- Full reads of the top Maybes from Tim's PC.
+- Hal's automatic runs don't seem to be happening on Tim's PC: i1 has been waiting since 22:13. Check that Claude Code is installed and signed in there.
+
 ### 2026-11-06: To review is ranked automatically, and Hal gives verdicts on roles
 
 **What changed**

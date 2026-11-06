@@ -20,3 +20,8 @@ events portfolio, events strategy, budgets, supplier and agency partnerships, te
 - Corporate and insurance-sector events; incentive travel
 - Event strategy and measurement of business impact
 - Pay unknown; confirm it clears GBP 50,000
+
+## Verdict
+Maybe: Head-level events role with budget and supplier work, but corporate not esports and pay unknown.
+- For: Head-level team leadership; GBP 1.5m budget and supplier management; hybrid, 2 office days
+- Against: Pay not stated; corporate/insurance sector; strategy and impact-measurement focus
