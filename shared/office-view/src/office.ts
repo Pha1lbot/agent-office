@@ -15,6 +15,7 @@ export interface Report {
   description?: string; // short task description for Task/Agent calls
   target?: string; // short file path, command, URL or search
   message?: string; // Notification text
+  transcript_path?: string; // where Claude Code keeps this session's transcript (for the token meter)
 }
 
 export interface LogEntry {
@@ -34,6 +35,8 @@ export interface Agent {
   since: number; // when the state last changed
   lastSeen: number; // last report of any kind (0 = never)
   tools: number; // tool calls today, a rough measure of how busy it has been
+  tokens: number; // fresh tokens used today (new input + output), from the token meter
+  cacheRead: number; // tokens re-read from cache today (much cheaper)
   log: LogEntry[];
 }
 
@@ -92,7 +95,7 @@ export class Office {
   private blank(id: string, name: string, colour: number, team: boolean, now: number): Agent {
     return {
       id, name, role: "", colour, team, state: "asleep", place: "desk", detail: "Not started yet",
-      since: now, lastSeen: 0, tools: 0, log: [],
+      since: now, lastSeen: 0, tools: 0, tokens: 0, cacheRead: 0, log: [],
     };
   }
 
@@ -265,6 +268,16 @@ export class Office {
       changed.push(agent.id);
     }
     return changed;
+  }
+
+  /** The office agent id for a session's main conversation (creating it if new). */
+  mainOf(report: Report, now = Date.now()): string {
+    return this.session(report, now).mainId;
+  }
+
+  /** The office agent id for a subagent type (creating a visitor desk if new). */
+  subagentId(type: string, now = Date.now()): string {
+    return this.subagent(type, now).id;
   }
 
   /** Ada (Admin) is automation, not a Claude agent: show her at work while a script runs. */

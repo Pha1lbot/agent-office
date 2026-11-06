@@ -20,6 +20,7 @@ import { Office, type Report } from "./office.ts";
 import { Tracker, findClaude, findPython, repoOf, run } from "./tools.ts";
 import { Backup } from "./backup.ts";
 import { AutoCos } from "./auto-cos.ts";
+import { addUsage, emptyUsage, startOfUkDay, usageOfSession, type Usage } from "./tokens.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const APP = resolve(HERE, "..");
@@ -55,8 +56,51 @@ async function loadTracker() {
   return (tracker.inbox || []).filter((i) => !i.done).length;
 }
 
+// ---------- Token meter ----------
+// Optional daily budget of fresh tokens; when reached, Hal stops starting by himself.
+const DAILY_BUDGET = Number(process.env.OFFICE_DAILY_TOKEN_BUDGET || 0) || null;
+const meterSessions = new Map<string, { transcript: string; mainId: string }>();
+let tokensToday: Usage = emptyUsage();
+let meterTimer: NodeJS.Timeout | null = null;
+let meterDay = startOfUkDay();
+
+function trackTokens(report: Report) {
+  if (!report.transcript_path || !report.session_id) return;
+  meterSessions.set(report.session_id, { transcript: report.transcript_path, mainId: office.mainOf(report) });
+  if (!meterTimer) meterTimer = setTimeout(() => { meterTimer = null; void recountTokens(); }, 3000);
+}
+
+async function recountTokens() {
+  const since = startOfUkDay();
+  const per = new Map<string, Usage>();
+  const add = (id: string, u: Usage) => { if (!per.has(id)) per.set(id, emptyUsage()); addUsage(per.get(id)!, u); };
+  for (const [sessionId, s] of meterSessions) {
+    const u = await usageOfSession(s.transcript, since);
+    add(s.mainId, u.main);
+    for (const [type, su] of u.subagents) add(office.subagentId(type), su);
+    if (!u.main.fresh && !u.subagents.size) meterSessions.delete(sessionId); // nothing today
+  }
+  const total = emptyUsage();
+  const changed: string[] = [];
+  for (const a of office.agents.values()) {
+    const u = per.get(a.id) || emptyUsage();
+    addUsage(total, u);
+    if (a.tokens !== u.fresh || a.cacheRead !== u.cacheRead) {
+      a.tokens = u.fresh;
+      a.cacheRead = u.cacheRead;
+      changed.push(a.id);
+    }
+  }
+  tokensToday = total;
+  pushAgents(changed);
+  pushSystem();
+}
+
 function systemStatus() {
-  return { editing: !!tool, backup: backup?.status, cos: cos?.status ?? null };
+  return {
+    editing: !!tool, backup: backup?.status, cos: cos?.status ?? null,
+    tokens: { today: tokensToday.fresh, cacheRead: tokensToday.cacheRead, budget: DAILY_BUDGET },
+  };
 }
 
 // Fields Tim can change from the page, with a length limit each.
@@ -159,6 +203,7 @@ const server = createServer(async (req, res) => {
       const report = JSON.parse(await readBody(req)) as Report;
       if (typeof report?.hook_event_name !== "string") throw new Error("no hook_event_name");
       pushAgents(office.handle(report));
+      trackTokens(report);
       res.writeHead(204).end();
     } catch {
       res.writeHead(400).end();
@@ -251,6 +296,7 @@ if (python) {
     before: async () => { backup.hold = true; await backup.flush(); },
     after: async () => { backup.hold = false; const n = await loadTracker(); broadcast({ type: "tracker", tracker }); return n; },
     changed: pushSystem,
+    budgetLeft: () => (DAILY_BUDGET ? DAILY_BUDGET - tokensToday.fresh : null),
   });
   cos.inboxChanged(initialInbox, false);
 }
@@ -261,7 +307,10 @@ watchFile(TRACKER, { interval: 2000 }, async () => {
   broadcast({ type: "tracker", tracker });
   cos?.inboxChanged(waiting, false);
 });
-setInterval(() => pushAgents(office.tick()), 15_000);
+setInterval(() => {
+  pushAgents(office.tick());
+  if (startOfUkDay() !== meterDay) { meterDay = startOfUkDay(); void recountTokens(); } // a new day starts at zero
+}, 15_000);
 
 server.on("error", (error: NodeJS.ErrnoException) => {
   if (error.code === "EADDRINUSE") {

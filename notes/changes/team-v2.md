@@ -18,6 +18,33 @@ It also makes a CV text bank so agents stop re-reading the PDF, adds a token met
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Token meter and daily budget
+
+**What changed**
+- `shared/office-view/src/tokens.ts`: new. Reads Claude Code transcripts and adds up today's usage (UK day).
+  - Covers the main conversation, plus each subagent from `<session>/subagents/agent-*.jsonl`, credited by the agent type in its `.meta.json`.
+  - Each message is counted once, even though it appears on several lines.
+  - Splits **fresh tokens** (new input + cache writes + output) from **cache reads** (re-reading the same context, much cheaper).
+- `shared/office-view/test/tokens.test.ts`: 5 tests (counting once, skipping older days, subagents by type, missing files, labels, UK midnight in winter and summer).
+- `shared/office-view/hooks/report.mjs`: also sends `transcript_path`, the file's location only, never its contents.
+- `shared/office-view/src/office.ts`: agents gain `tokens` and `cacheRead` (today), plus `mainOf()` and `subagentId()` so the meter credits the right character.
+- `shared/office-view/src/server.ts`: recounts a session 3 seconds after its reports arrive (they include Stop and SubagentStop) and resets at UK midnight. Sends per-agent totals and the day's total (`system.tokens`) to the page.
+- `shared/office-view/src/auto-cos.ts`: optional daily budget (`OFFICE_DAILY_TOKEN_BUDGET`, in fresh tokens). When it's used up, Hal stops starting by himself and the office says why.
+
+**Why**
+The plan's "caps and visibility" rule: Tim should see what each member of staff costs and be able to cap automatic spending.
+
+**Decisions**
+- The headline figure is fresh tokens; cache reads are shown alongside. Counting cache reads in full would make every long session look hundreds of times more expensive than it is, and leaving them out entirely would hide real costs on long runs.
+- Measured today from this session's transcripts: the Admin hand-off used about 20k fresh tokens (38k including re-reads) to add 7 roles, and Rita's search about 75k fresh (760k including re-reads). That confirms the plan's choice to script Admin and feed Rita from data feeds.
+
+**How to check it**
+- `npm test` (20 pass).
+- Tested against this session's real transcript: Rita 75,501 fresh and Ada 19,913 fresh, matching a hand count. The day's total and the budget reached the page.
+
+**Open items**
+The page doesn't show the numbers yet; that comes with the office rebuild.
+
 ### 2026-11-06: Ada (Admin) becomes automation: PDFs, follow-ups and her character
 
 **What changed**

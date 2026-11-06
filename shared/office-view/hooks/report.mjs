@@ -46,6 +46,8 @@ async function main() {
     description: delegating ? short(input.description, 60) : undefined,
     target: delegating ? undefined : targetOf(hook.tool_name, input, hook.cwd),
     message: hook.message ? short(hook.message, 100) : undefined,
+    // Only where the transcript is, never its contents; the office reads token totals from it.
+    transcript_path: typeof hook.transcript_path === "string" ? hook.transcript_path : undefined,
   };
   await fetch(BRIDGE, {
     method: "POST",
