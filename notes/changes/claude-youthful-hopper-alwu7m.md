@@ -16,6 +16,23 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Keep Tim's PC on main
+
+**What changed**
+- `CLAUDE.md`: new "Tim's PC stays on `main`" section in the backup routine. On the PC, Claude uses a branch only when needed and switches back to `main` once the branch is pushed and its pull request is open. Cloud sessions can still use their own branches.
+
+**Why**
+Tim said "Keep pc on main", after hearing that the automatic pulls only update the branch the PC is on.
+
+**Decisions**
+This is written as a rule for Claude rather than enforced by a script. A script that switched branches automatically could get in the way of work in progress. A pull request is opened for this branch so `main` gets the job-search team and the sync setup; Tim merges it himself.
+
+**How to check it**
+After the pull request is merged, run `git checkout main` and `git pull` on the PC. `git status` should say "On branch main" and up to date.
+
+**Open items**
+Tim to merge the pull request. After the merge, add this branch's line to `CHANGELOG.md` (the "After a merge" routine).
+
 ### 2026-11-06: Pull automatically on Tim's PC and at session start
 
 **What changed**

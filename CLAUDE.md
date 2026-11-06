@@ -50,6 +50,10 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 
 For large restructures, or anything Tim may want to review first, work on a new branch (e.g. `git checkout -b restructure-agents`), push the branch, and open a pull request instead of committing straight to `main`.
 
+### Tim's PC stays on `main`
+
+Tim's PC should always be on `main`, because the automatic pulls only update the branch it is on. When working on Tim's PC, use a branch only when needed (see "Bigger or risky changes"). Once that branch is pushed and its pull request is open, run `git checkout main` again before finishing. Cloud sessions can work on their own branches.
+
 ### After a merge
 
 Whenever Claude merges a pull request, or Tim says one has been merged:
