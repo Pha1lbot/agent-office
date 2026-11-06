@@ -1,7 +1,7 @@
 # Branch: office-view
 
 **Started:** 2026-11-06
-**Status:** In progress
+**Status:** In review ([PR #4](https://github.com/Pha1lbot/agent-office/pull/4))
 
 ## Purpose
 
@@ -10,6 +10,23 @@ Build the office view planned in `notes/plans/office-view.md`: a browser page th
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Open pull request
+
+**What changed**
+- This file: status set to "In review", with a link to [Pha1lbot/agent-office#4](https://github.com/Pha1lbot/agent-office/pull/4).
+
+**Why**
+The office view is ready for Tim to merge into `main`, which his PC stays on.
+
+**Decisions**
+Tim merges it himself, with a merge commit.
+
+**How to check it**
+Open the pull request link.
+
+**Open items**
+After merging: add the CHANGELOG line; on the PC run `npm install` and `npm start` in `shared/office-view`.
 
 ### 2026-11-06: Connect Claude Code to the office and document it
 
