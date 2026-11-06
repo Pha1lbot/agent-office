@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress
+**Status:** In review ([PR #2](https://github.com/Pha1lbot/agent-office/pull/2))
 
 ## Purpose
 
@@ -15,6 +15,105 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Fix merge conflict with main
+
+**What changed**
+- Merged `main` into this branch to clear the conflict that stopped [Pha1lbot/agent-office#2](https://github.com/Pha1lbot/agent-office/pull/2) merging. `README.md` and this notes file conflicted; this branch's versions were kept.
+- `CHANGELOG.md`: added the line for the work merged in [Pha1lbot/agent-office#1](https://github.com/Pha1lbot/agent-office/pull/1), which was missing.
+
+**Why**
+Tim couldn't merge #2 because of a conflict. An earlier pull request from this same branch, #1, had already been squash-merged into `main`. It contained the commits up to "Document the new layout". Because a squash merge turns them into one new commit, git saw the same two files changed on both sides.
+
+**Decisions**
+- Checked first that `main` was exactly this branch at commit 238b8a8 ("Document job-search team layout and daily use"). So this branch's version of both files is simply the newer one, and nothing on `main` is lost by keeping it. After the merge, the branch's files are identical to before.
+- Merged rather than rebased. A rebase would need a force push, which CLAUDE.md forbids without Tim's say-so.
+- This entry and the CHANGELOG line go in the merge commit itself, so the change and its note are in the same commit.
+
+**How to check it**
+#2 should now show "no conflicts" on GitHub. `git diff 238b8a8 origin/main` is empty, which confirms `main` held nothing beyond this branch.
+
+**Open items**
+Tim to merge #2. To avoid this next time, keep merging with "Create a merge commit" rather than "Squash and merge", or start a fresh branch after each squash merge.
+
+### 2026-11-06: Open pull request
+
+**What changed**
+- `notes/changes/claude-youthful-hopper-alwu7m.md`: status set to "In review", with a link to the pull request.
+
+**Why**
+Tim wants his PC kept on `main`, so this branch needs merging. A pull request was opened as [Pha1lbot/agent-office#2](https://github.com/Pha1lbot/agent-office/pull/2), with a summary of these notes, as CLAUDE.md requires.
+
+**Decisions**
+Tim merges it himself; Claude does not push to `main`.
+
+**How to check it**
+Open the pull request link.
+
+**Open items**
+After merging: on the PC run `git checkout main`, `git pull` and `install-sync.ps1`; add the CHANGELOG line.
+
+### 2026-11-06: Keep Tim's PC on main
+
+**What changed**
+- `CLAUDE.md`: new "Tim's PC stays on `main`" section in the backup routine. On the PC, Claude uses a branch only when needed and switches back to `main` once the branch is pushed and its pull request is open. Cloud sessions can still use their own branches.
+
+**Why**
+Tim said "Keep pc on main", after hearing that the automatic pulls only update the branch the PC is on.
+
+**Decisions**
+This is written as a rule for Claude rather than enforced by a script. A script that switched branches automatically could get in the way of work in progress. A pull request is opened for this branch so `main` gets the job-search team and the sync setup; Tim merges it himself.
+
+**How to check it**
+After the pull request is merged, run `git checkout main` and `git pull` on the PC. `git status` should say "On branch main" and up to date.
+
+**Open items**
+Tim to merge the pull request. After the merge, add this branch's line to `CHANGELOG.md` (the "After a merge" routine).
+
+### 2026-11-06: Pull automatically on Tim's PC and at session start
+
+**What changed**
+- `.claude/settings.json`: new. A SessionStart hook runs `git pull --ff-only` when a Claude Code session starts or resumes (not on clear or compact). It times out after 30 seconds, never asks for a password, and always exits cleanly. If the pull fails, Claude is told to run `git status` and `git pull` and sort it out with Tim.
+- `shared/tools/sync.ps1`: new. Windows script that runs `git pull --ff-only` on this repo and logs the result to `%LOCALAPPDATA%\agent-office-sync.log`, keeping the last 500 lines.
+- `shared/tools/install-sync.ps1`: new. One-off setup that registers a Windows scheduled task, "agent-office git pull", running `sync.ps1` at log-on and every 15 minutes. The remove command is in the file and the README.
+- `README.md`: new "Keeping your PC up to date" section.
+- `CLAUDE.md`: start-of-session step 2 now mentions the hook and says to check its result.
+
+**Why**
+Tim asked to keep his local copy up to date after every merge. After choosing the after-merge rule, he asked for the scheduled pull and the start-up hook as well.
+
+**Decisions**
+- `--ff-only` everywhere, so an automatic pull never creates a merge commit or touches local changes. If Tim's copy has diverged it stops, and a person or Claude sorts it out, following CLAUDE.md's "never discard" rules.
+- `GIT_TERMINAL_PROMPT=0` and a timeout, so a credential prompt or a network problem can't hang the scheduled task or hold up a session.
+- The hook runs only on start and resume. Clear and compact happen mid-session, and pulling in the middle of work could surprise it.
+- The hook command is written inline in `settings.json` rather than as a separate script, to keep it to one small file.
+- Windows scripts, because Tim works from a PC. Task Scheduler needs no extra software.
+
+**How to check it**
+- Hook: tested in this session. In the repo it prints "Already up to date." and exits 0. Pointed at a folder that isn't a repo, it prints git's error and the "did not finish" message and still exits 0. On Tim's PC, start Claude Code in the folder; the first thing Claude sees is the pull result.
+- Scheduled task: not tested here (no Windows or PowerShell in the cloud sandbox). On the PC, run `install-sync.ps1`, then check that "agent-office git pull" appears in Task Scheduler and that the log file gets an "ok" line within 15 minutes.
+
+**Open items**
+- Check on Tim's PC that the hook runs. Claude Code on Windows runs hook commands through Git Bash, and the inline command uses bash syntax. If it doesn't run, move it into a small script.
+- PowerShell may flash a window briefly every 15 minutes. If that is annoying, it can be launched through a small VBScript wrapper instead.
+- The scheduled pull only updates the branch the PC is on, so the PC should stay on `main`.
+
+### 2026-11-06: Pull main after every merge
+
+**What changed**
+- `CLAUDE.md`: new "After a merge" section in the backup routine. After Claude merges a pull request, or Tim says one has been merged, Claude checks for uncommitted changes, switches to `main`, runs `git pull`, adds the CHANGELOG line, pushes, and tells Tim the copy is up to date.
+
+**Why**
+Tim asked how to keep his local copy up to date and whether it could pull after every merge. He chose this option (pull after merges Claude does or is told about).
+
+**Decisions**
+Options offered: a scheduled pull on Tim's PC every 15 minutes, a Claude Code start-up hook that pulls at the start of every session, or this rule in CLAUDE.md. Tim picked the CLAUDE.md rule. It needs nothing installed, but it only works when Claude does the merge or is told about it. A merge clicked on GitHub with no Claude session running is picked up by the existing "pull at the start of every session" step. The CHANGELOG step from "Change notes" was folded in, since it also happens straight after a merge.
+
+**How to check it**
+After the next pull request is merged, say "it's merged" in Claude Code on the PC. Claude should switch to `main`, pull, add the CHANGELOG line, push, and report that `main` is up to date.
+
+**Open items**
+The scheduled pull and the start-up hook were not added. Either can be added later if merges made on GitHub keep being missed.
 
 ### 2026-11-06: Document the new layout and how to run the job search
 

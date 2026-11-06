@@ -27,7 +27,7 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 ### At the start of every session
 
 1. Run `git status`. If there are uncommitted changes left over from before, tell Tim what they are and ask whether to commit them before doing anything else.
-2. Run `git pull` so you are working on the latest version.
+2. Run `git pull` so you are working on the latest version. A start-up hook in `.claude/settings.json` already tries this; check its result, and if it failed, sort it out (ask Tim if unsure) before doing anything else.
 
 ### While working
 
@@ -49,6 +49,19 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 ### Bigger or risky changes
 
 For large restructures, or anything Tim may want to review first, work on a new branch (e.g. `git checkout -b restructure-agents`), push the branch, and open a pull request instead of committing straight to `main`.
+
+### Tim's PC stays on `main`
+
+Tim's PC should always be on `main`, because the automatic pulls only update the branch it is on. When working on Tim's PC, use a branch only when needed (see "Bigger or risky changes"). Once that branch is pushed and its pull request is open, run `git checkout main` again before finishing. Cloud sessions can work on their own branches.
+
+### After a merge
+
+Whenever Claude merges a pull request, or Tim says one has been merged:
+
+1. Run `git status`. If there are uncommitted changes, tell Tim and ask what to do with them before going on.
+2. Run `git checkout main`, then `git pull`, so this copy has the merged work.
+3. Add the one-line `CHANGELOG.md` entry for the merged branch (see "Change notes" below), then commit and push it.
+4. Check `git status` shows `main` up to date with origin, and tell Tim this copy is now up to date.
 
 ## Change notes (always follow)
 
