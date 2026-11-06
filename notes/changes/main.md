@@ -11,6 +11,70 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Move CV into the cv folder
+
+**What changed**
+- `shared/job-search/cvdefault-cv.pdf` moved to `shared/job-search/cv/default-cv.pdf`.
+- The CV path given in the entry below ("Job search set up") is now out of date; the CV is at `shared/job-search/cv/default-cv.pdf`.
+
+**Why**
+Tim renamed the CV on GitHub to `default-cv.pdf`, but the slash was lost (`cvdefault-cv.pdf`), so the file ended up outside the `cv` folder where the agents look.
+
+**Decisions**
+The intended name was clear, so the file was moved rather than asking first.
+
+**How to check it**
+`shared/job-search/cv/` contains `default-cv.pdf` and `README.md`.
+
+**Open items**
+None.
+
+### 2026-11-06: Job search set up (preferences and job sites)
+
+**What changed**
+- `shared/job-search/preferences.md`: filled in from Tim's CV (`shared/job-search/cv/Tim Everard CV 2026 v3.pdf`, which Tim uploaded) and his answers: £50k minimum, remote or hybrid near London (he lives in Epsom), some event travel. Assumed values are marked *(assumed)* for Tim to correct.
+- `shared/job-search/sources.md`: Hitmarker, Indeed UK, LinkedIn Jobs and company careers pages, as Tim chose.
+
+**Why**
+Tim ran `/cos start the day`. The setup check stopped it because these two files were still blank templates.
+
+**Decisions**
+- Roles and skills are taken from the CV so Tim didn't have to type them. Ideal pay is left open.
+- Same-company BLAST roles are skipped by default, since Tim has just left; he can change that.
+
+**How to check it**
+Read both files. Tim should correct anything marked *(assumed)*.
+
+**Open items**
+- The CV is a PDF, so new Word files use the default style rather than Tim's CV styling. A .docx copy named `default-cv.docx` would fix that.
+- The PDF's text layer is missing the letter "a" in places, so Senior Admin should work from the page images and have Tim check its text copy.
+
+### 2026-11-06: Add a double-click launcher for the office
+
+**What changed**
+- `shared/office-view/Open Office.cmd`: new Windows launcher. It moves to its own folder, checks Node.js is installed, and just opens the browser if the office is already running. Otherwise it runs `npm.cmd install` quietly (quick when nothing has changed), opens the browser as soon as the office answers (waiting up to 30 seconds) and starts the office. Closing its window closes the office.
+- `.gitattributes`: new. `.cmd` and `.bat` files get Windows line endings when checked out.
+- `shared/office-view/README.md`: the launcher, desktop shortcut and start-at-login steps, plus a "Problems" section (PowerShell "running scripts is disabled", "Could not read package.json", port already in use).
+- `README.md`: points to the launcher.
+- `CHANGELOG.md`: line for [Pha1lbot/agent-office#4](https://github.com/Pha1lbot/agent-office/pull/4) (the office view), which was merged.
+- `notes/changes/office-view.md`: status set to merged.
+
+**Why**
+On his PC, Tim hit PowerShell's script block (`npm.ps1 cannot be loaded`), then a window that opened in `system32` ("Could not read package.json"). He asked for something like a .bat that loads the office automatically.
+
+**Decisions**
+- A `.cmd` file, because cmd.exe isn't affected by PowerShell's script policy. It calls `npm.cmd` directly and always runs from its own folder (`%~dp0`), which avoids both problems.
+- It runs `npm install` every time rather than only the first time, so it stays correct after a `git pull` changes the packages; when nothing has changed it takes a few seconds.
+- It checks whether the office is already running, so double-clicking twice doesn't fail with "port in use".
+- The line-ending rule covers only `.cmd` and `.bat`. Adding `.ps1` would have changed existing files, which might show as modified on Tim's PC and block the automatic `git pull --ff-only`.
+- Committed straight to `main`, because it is one small file and Tim wanted it straight away.
+
+**How to check it**
+Not tested here (no Windows in the cloud sandbox). The file was checked to have Windows line endings. On the PC: `git pull`, then double-click `shared\office-view\Open Office.cmd`. The browser should open http://127.0.0.1:4747 once the office is ready, and a second double-click should just open the browser.
+
+**Open items**
+Tim to try it and report anything odd. If PowerShell is blocked entirely on his PC, the "already open" check and the browser opening would fail; the office would still start and he could open the address by hand.
+
 ### 2026-11-06: Record merge of preference reviews
 
 **What changed**
