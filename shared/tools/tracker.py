@@ -11,6 +11,7 @@ Usage:
   python3 shared/tools/tracker.py set <id> status=shortlisted priority=1 notes="..."
   python3 shared/tools/tracker.py list [--status found] [--summary]
   python3 shared/tools/tracker.py show <id>
+  python3 shared/tools/tracker.py insights [--since YYYY-MM-DD]
   python3 shared/tools/tracker.py render
 
 Standard library only. Set JOBS_DIR to use a different jobs folder (for testing).
@@ -19,7 +20,9 @@ import argparse
 import json
 import os
 import re
+import statistics
 import sys
+from collections import Counter
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -42,7 +45,11 @@ STATUSES = [
 ]
 OPEN = {"found", "shortlisted", "drafted", "approved", "applied", "interview"}
 FIELDS = ["title", "company", "location", "pay", "url", "source", "fit",
-          "priority", "status", "notes"]
+          "priority", "status", "notes", "reason"]
+# Tim's decisions, used by insights to learn his preferences.
+PICKED = {"shortlisted", "drafted", "approved", "applied", "interview", "offer"}
+PASSED = {"skipped"}
+TITLE_SKIP = {"and", "of", "the", "a", "an", "to", "in", "for", "with", "uk", "x", "-"}
 
 
 def today():
@@ -183,6 +190,94 @@ def cmd_show(args):
     print(json.dumps(find(load(), args.id), indent=2, ensure_ascii=False))
 
 
+def yearly_pay(text):
+    """Lowest yearly figure in a pay string like '£35,000 - £45,000' or '40k'. None if unclear."""
+    if not text or re.search(r"(?i)\b(day|daily|hour|hourly|ph|pd)\b", text):
+        return None
+    figures = []
+    for number, k in re.findall(r"(\d[\d,]*(?:\.\d+)?)\s*(k)?", text.lower()):
+        value = float(number.replace(",", ""))
+        if k:
+            value *= 1000
+        if value >= 5000:
+            figures.append(value)
+    return min(figures) if figures else None
+
+
+def work_style(location):
+    text = (location or "").lower()
+    if "remote" in text:
+        return "remote"
+    if "hybrid" in text:
+        return "hybrid"
+    return "office/unstated"
+
+
+def decided_on(role, statuses, since):
+    """True if the role reached one of these statuses on or after since."""
+    return any(h["status"] in statuses and h["date"] >= since for h in role["history"])
+
+
+def money(value):
+    return f"£{value / 1000:.0f}k"
+
+
+def cmd_insights(args):
+    since = args.since or "0000-00-00"
+    roles = load()["roles"]
+    picked = [r for r in roles if decided_on(r, PICKED, since)]
+    passed = [r for r in roles if decided_on(r, PASSED, since) and r not in picked]
+    outcomes = Counter(r["status"] for r in roles
+                       if r["status"] in {"interview", "offer", "rejected"}
+                       and decided_on(r, {r["status"]}, since))
+    print(f"Decisions since {args.since or 'the start'}: {len(picked)} picked, {len(passed)} skipped"
+          + (", outcomes: " + ", ".join(f"{n} {s}" for s, n in outcomes.items()) if outcomes else ""))
+    if not picked and not passed:
+        return
+
+    def pay_line(label, group):
+        pays = [p for p in (yearly_pay(r.get("pay")) for r in group) if p]
+        if not pays:
+            return f"  {label}: no yearly pay stated"
+        return (f"  {label}: median {money(statistics.median(pays))}, lowest {money(min(pays))}"
+                f" ({len(pays)} of {len(group)} stated)")
+    print("Pay (lowest yearly figure):")
+    print(pay_line("picked", picked))
+    print(pay_line("skipped", passed))
+
+    def count_line(label, values):
+        counts = Counter(values).most_common(6)
+        return f"  {label}: " + (", ".join(f"{v} {n}" for v, n in counts) or "none")
+    print("Work style:")
+    print(count_line("picked", [work_style(r.get("location")) for r in picked]))
+    print(count_line("skipped", [work_style(r.get("location")) for r in passed]))
+
+    def words(group):
+        return [w for r in group for w in set(re.findall(r"[a-z]+", r["title"].lower()))
+                if w not in TITLE_SKIP]
+    print("Title words:")
+    print(count_line("picked", words(picked)))
+    print(count_line("skipped", words(passed)))
+    print("Sources:")
+    print(count_line("picked", [r.get("source") or "unknown" for r in picked]))
+    print(count_line("skipped", [r.get("source") or "unknown" for r in passed]))
+
+    def fit_line(label, group):
+        fits = [r["fit"] for r in group if r.get("fit")]
+        return f"  {label}: " + (f"average {statistics.mean(fits):.1f}" if fits else "no scores")
+    print("Fit score:")
+    print(fit_line("picked", picked))
+    print(fit_line("skipped", passed))
+
+    reasons = Counter((r.get("reason") or "").strip().lower() for r in roles
+                      if r.get("reason") and (r in picked or r in passed or r["status"] == "rejected"))
+    print("Reasons Tim gave:")
+    for reason, n in reasons.most_common(10):
+        print(f"  - {reason} ({n})")
+    if not reasons:
+        print("  none")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Job-search role tracker")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -208,6 +303,10 @@ def main():
     sh = sub.add_parser("show", help="show one role in full")
     sh.add_argument("id")
     sh.set_defaults(func=cmd_show)
+
+    ins = sub.add_parser("insights", help="patterns in Tim's decisions, for preference reviews")
+    ins.add_argument("--since", help="only decisions on or after this date (YYYY-MM-DD)")
+    ins.set_defaults(func=cmd_insights)
 
     rd = sub.add_parser("render", help="rebuild tracker.md from tracker.json")
     rd.set_defaults(func=lambda a: render(load()))

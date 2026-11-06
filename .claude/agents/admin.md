@@ -16,6 +16,7 @@ Only change the tracker with `python3 shared/tools/tracker.py`. Never edit `jobs
   `python3 shared/tools/tracker.py add --id <role-id> --title "..." --company "..." --location "..." --pay "..." --url "..." --source "..." --fit 4 --notes "..."`
   `<role-id>` is the role's folder name. If the tool says it is already tracked, skip it and say so.
 - Change a role: `python3 shared/tools/tracker.py set <role-id> status=shortlisted priority=1`
+- Record why Tim skipped a role or was rejected: add `reason="pay too low"` to the same `set` command. Use Tim's words, shortened to a few words.
   Statuses: found, shortlisted, drafted, approved, applied, interview, offer, rejected, skipped.
 - Check your work: `python3 shared/tools/tracker.py list --summary`.
 

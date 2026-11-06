@@ -48,5 +48,8 @@ Open Claude Code in this folder and type:
 - `/cos approve <role>`: makes the PDFs once you're happy with the Word files. Or describe the changes you want.
 - `/cos I applied to <role>` (or interview, rejected, offer): records the outcome.
 - `/cos how's it going?`: a quick summary.
+- `/cos review my preferences`: suggests changes to `preferences.md` based on which roles you picked and skipped. Nothing changes until you say yes. It also offers this once you've made 10 or more decisions since the last review.
+
+When you skip a role, give a few words of reason if you can ("pay too low", "too far"). That's what the reviews learn from.
 
 The agents never apply, email or fill in forms for you. Using Sonnet for the session (`/model sonnet`) keeps token use down.

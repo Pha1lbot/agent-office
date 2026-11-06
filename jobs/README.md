@@ -5,6 +5,7 @@ The job-search team's working data.
 - `tracker.json`: one record per role. The source of truth, and what the office view's dashboard will read. Only change it with `shared/tools/tracker.py` (the Admin agent does this).
 - `tracker.md`: a readable table built from `tracker.json`. Do not edit by hand.
 - `today.md`: Chief of Staff's priority list for the day.
+- `preference-reviews.md`: suggested changes to Tim's preferences and which he accepted.
 - `roles/<role-id>/`: one folder per role:
   - `listing.md`: Lead Recruiter's short summary of the advert, with the link.
   - `cv.md`, `cover-letter.md`: Senior Admin's drafts.
