@@ -11,6 +11,29 @@ Build the office view planned in `notes/plans/office-view.md`: a browser page th
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Connect Claude Code to the office and document it
+
+**What changed**
+- `.claude/settings.json`: added hooks that run `shared/office-view/hooks/report.mjs` on SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Notification, Stop, SubagentStop and SessionEnd, each with a 3-second limit. The existing start-up `git pull` hook is unchanged.
+- `shared/office-view/README.md`: how to open the office (`npm install`, `npm start`, http://127.0.0.1:4747), the fake agents, what each animation means, how it works, its inputs and outputs, settings, and developer commands.
+- `README.md`: new "Watch them in the office" section.
+- `notes/plans/office-view.md`: status updated to "first version built".
+
+**Why**
+So that real Claude Code sessions in the agent-office folder show up in the office without Tim setting anything up, and so Tim knows how to open it.
+
+**Decisions**
+- The hooks go in the project's settings, so they work as soon as Tim pulls `main`. They also run in cloud sessions, where there is no office: they fail quietly in well under a second.
+- Hooks are not added to Tim's user settings, so other projects are not affected. The README says how to add them if he wants visitors from other folders.
+- Each tool call starts a short Node process, about 0.07 s when the office is closed, which is fine for this use.
+
+**How to check it**
+Tested in this session: the hook command, run the way Claude Code runs it, exits 0 in about 0.07 s with the office closed. `npm test` passes (13 tests) and `npm run check` passes. On Tim's PC: pull `main` after merging, open the office, start Claude Code in the repo, and watch Chief of Staff wake up.
+
+**Open items**
+- Still to confirm on Tim's PC with real sessions that the hook data names the subagent (`agent_type`). If not, the fallback credits tool calls to the running subagent.
+- Later: token and context use per character (plan step 4), real sprite art, and a one-click way to start the office on Windows.
+
 ### 2026-11-06: Add the live office page and fake agents
 
 **What changed**

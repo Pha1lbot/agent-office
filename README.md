@@ -52,4 +52,8 @@ Open Claude Code in this folder and type:
 
 When you skip a role, give a few words of reason if you can ("pay too low", "too far"). That's what the reviews learn from.
 
+### Watch them in the office
+
+In `shared/office-view`, run `npm install` once, then `npm start`, and open http://127.0.0.1:4747. You'll see each agent as a pixel-art coworker, plus a **Roles** tab with your tracker. See `shared/office-view/README.md`.
+
 The agents never apply, email or fill in forms for you. Using Sonnet for the session (`/model sonnet`) keeps token use down.
