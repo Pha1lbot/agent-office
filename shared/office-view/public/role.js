@@ -4,7 +4,7 @@
 import { marked } from "/vendor/marked.mjs";
 import DOMPurify from "/vendor/purify.mjs";
 import { store, on, roleById, queuedFor } from "./store.js";
-import { $, esc, post, safeUrl, fitDots, closing, overdue, shortDate, longWhen, STATUS_ORDER, STATUS_LABEL, STATUS_COLOUR } from "./util.js";
+import { $, esc, post, safeUrl, fitDots, verdictBadge, closing, overdue, shortDate, longWhen, STATUS_ORDER, STATUS_LABEL, STATUS_COLOUR } from "./util.js";
 import { openEdit } from "./dashboard.js";
 
 const SECTIONS = [["overview", "Overview"], ["documents", "Documents"], ["interview", "Interview"], ["activity", "Activity"]];
@@ -123,7 +123,17 @@ function renderNotice() {
 function overview() {
   const { role, texts } = current.data;
   const editing = store.system.editing;
-  return `
+  const asked = queuedFor(role.id).some((i) => /verdict|read the advert/i.test(i.task));
+  const verdict = `
+    <section class="panel verdict-panel">
+      <h3>Hal's verdict: worth applying?</h3>
+      ${role.verdict ? `<p class="verdict-line">${verdictBadge(role, "")} ${esc(role.verdict_why || "")}</p><p class="muted">Rita's reasons for and against are under "The role, from Rita".</p>`
+        : `<p class="muted">No verdict yet.</p>`}
+      ${asked ? `<p class="hal-on">● Hal is on it</p>` : editing ? `<button type="button" class="btn${role.verdict ? "" : " primary"}" data-request="verdict">${role.verdict ? "Ask again" : "Ask Hal: worth applying?"}</button>` : ""}
+    </section>`;
+  const advert = !texts["listing.md"] && texts["advert.txt"]
+    ? `<h4>The advert you pasted</h4><pre class="advert">${esc(texts["advert.txt"])}</pre>` : "";
+  return `${verdict}
     <div class="ov-grid">
       <section class="panel">
         <h3>Next step</h3>
@@ -142,7 +152,7 @@ function overview() {
       </section>
       <section class="panel md">
         <h3>The role, from Rita</h3>
-        ${texts["listing.md"] ? md(texts["listing.md"]) : `<p class="muted">No listing yet. Rita writes one when she finds a role or when you add one.</p>`}
+        ${texts["listing.md"] ? md(texts["listing.md"]) : `<p class="muted">No listing yet. Rita writes one when she finds a role or when you add one.</p>${advert}`}
       </section>
     </div>`;
 }
@@ -250,6 +260,11 @@ page.addEventListener("click", async (e) => {
   const req = t.closest("[data-request]");
   if (req) {
     const kind = req.dataset.request;
+    if (kind === "verdict") {
+      try { await post(`/api/roles/${current.id}/request`, { kind }); say("Sent: Hal will ask Rita whether it's worth applying for."); }
+      catch (err) { say(err.message); }
+      return;
+    }
     const box = kind === "revise" ? $("revise") : $("prep-note");
     const msg = $(kind === "revise" ? "revise-msg" : "prep-msg");
     if (kind === "revise" && !box.value.trim()) { msg.textContent = "Say what you'd like changed first."; return; }

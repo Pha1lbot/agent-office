@@ -32,7 +32,8 @@ Tim changes statuses and adds roles in the office's Roles tab. Changes that need
 
 1. Run `tracker.py inbox list`. Each line has an inbox id, a role id and a task.
 2. Group the work and brief each subagent once:
-   - **"Read the advert, write the listing and score the fit"** (Tim added the role): brief **Rita** with the role ids. She reads each role's link, writes `listing.md` and returns a fit score. Then you set `fit=` (and `closing_date=` if she found one).
+   - **"Read the advert, write the listing, score the fit and give a verdict"** (Tim added the role; older inbox items say "…and score the fit"): brief **Rita** with the role ids. She reads `advert.txt` if Tim pasted one, otherwise the link, writes `listing.md` and returns a fit score and verdict. Then set `fit=N verdict=<apply|maybe|skip> verdict_why="<her one line>"` (and `closing_date=` if she found one).
+   - **"Give a verdict: worth applying?"** (Tim pressed "Ask Hal" on the role page): brief **Rita** in verdict-only mode with the role ids (she reads only `listing.md` and `preferences.md`; no web), or the full read if a role has no `listing.md`. Then set `verdict=` and `verdict_why=` as above.
    - **"Draft a tailored CV and cover letter"** (Tim shortlisted it, or set it to drafted before any documents existed): brief **Wren**, then set the role to `drafted` (if it isn't already). If the role has no `listing.md` yet, get Rita to write one first.
    - **"Draft first, then PDFs"** (Tim approved a role that has no documents yet; Ada makes PDFs herself when the Word files exist): brief **Wren** to draft, set the role back to `drafted`, and add an action for Tim to check and approve again.
    - **"Write interview prep notes"**: brief **Cole**. He writes `interview-prep.md` and, if it doesn't exist yet, `talking-points.md`.
@@ -47,8 +48,8 @@ If you were started automatically, Tim isn't there to answer. Don't ask question
 1. Follow the start-of-session steps in CLAUDE.md (git status, git pull). If the inbox has items, handle them first (see "Office changes").
 2. `tracker.py list --summary`. Note anything waiting on Tim: drafted roles to check, approved roles to apply for, next actions, upcoming interviews, and next steps that look due.
 3. Brief **Rita**: find up to the daily limit of new roles.
-4. Add each new role yourself: `tracker.py add --id <folder> --title ... --company ... --pay ... --location ... --url ... --source ... --fit N`.
-5. Rank today's new roles (the Recruiter's reply; `tracker.py list --status found` lists every unreviewed one, including older imports). Order: fit first, then pay (£60k+ ideal ranks above £50k–£60k), then closing date. Write `jobs/today.md`: date, the top picks (up to the daily shortlist limit) with one line each, the rest below, and anything waiting on Tim.
+4. Add each new role yourself: `tracker.py add --id <folder> --title ... --company ... --pay ... --location ... --url ... --source ... --fit N`, then `tracker.py set <id> verdict=<apply|maybe|skip> verdict_why="..."` from Rita's line.
+5. Don't rank by hand: Ada numbers every To review role on each tracker save (verdict, then fit, then pay band, then closing date; priorities Tim set himself are kept). `tracker.py list --status found` shows them, best first. Write `jobs/today.md`: date, the top picks (up to the daily shortlist limit) with one line each, the rest below, and anything waiting on Tim.
 6. Show Tim the top picks and ask which to go for. **Stop and wait.** Do not draft anything until Tim says which.
 
 ## Tim picks roles

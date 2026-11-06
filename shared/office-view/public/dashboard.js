@@ -3,7 +3,7 @@
 // "Waiting on you" box, and the edit and add-role dialogs.
 import { store, on, roleById, queuedFor } from "./store.js";
 import {
-  $, esc, clock, short, safeUrl, roleName, post, fitDots, closing, overdue, shortDate, longWhen,
+  $, esc, clock, short, safeUrl, roleName, post, fitDots, verdictBadge, VERDICT_RANK, closing, overdue, shortDate, longWhen,
   STATUS_ORDER, STATUS_LABEL, STATUS_COLOUR, OPEN, CLOSED,
 } from "./util.js";
 
@@ -46,7 +46,7 @@ function card(r) {
     <div class="pc-top"><span class="pc-title">${esc(r.title)}</span>${r.priority ? `<span class="prio" title="Priority">P${esc(r.priority)}</span>` : ""}</div>
     <div class="pc-co">${esc(r.company)}</div>
     <div class="meta">${esc(r.pay || "Pay not stated")}${r.location ? ` · ${esc(r.location)}` : ""}</div>
-    <div class="meta row">${fitDots(r.fit)}${c ? `<span class="close ${c.level}">${esc(c.text)}</span>` : ""}</div>
+    <div class="meta row">${fitDots(r.fit)}${verdictBadge(r)}${c ? `<span class="close ${c.level}">${esc(c.text)}</span>` : ""}</div>
     ${iv}
     ${["found", "shortlisted"].includes(r.status) ? "" : docTicks(r.id)}
     ${r.next ? `<div class="next ${late ? "late" : ""}" title="${esc(r.next)}">${late ? "⚠ " : ""}${esc(r.next)}</div>` : ""}
@@ -80,6 +80,7 @@ function sortValue(r) {
     case "pay": return payNumber(r.pay);
     case "closing": return r.closing_date || "9999";
     case "updated": return r.updated || "";
+    case "verdict": return VERDICT_RANK[r.verdict] ?? 2;
     default: return r.priority || 99;
   }
 }
@@ -97,11 +98,12 @@ function renderList(roles) {
       <td>${esc(r.title)}${r.list ? `<div class="list-tag">${esc(r.list)}</div>` : ""}</td>
       <td title="${esc(r.company)}">${esc(r.company)}</td><td title="${esc(r.pay)}">${esc(r.pay || "Not stated")}</td><td title="${esc(r.location)}">${esc(r.location)}</td>
       <td>${fitDots(r.fit)}</td>
+      <td>${verdictBadge(r, "")}</td>
       <td>${c ? `<span class="close ${c.level}">${esc(shortDate(r.closing_date))}</span>` : ""}</td>
       <td class="docs-cell">${d.cv ? "CV " : ""}${d.letter ? "Letter " : ""}${d.cvPdf ? "PDF " : ""}${d.attachments ? `📎${d.attachments}` : ""}</td>
       <td class="next ${overdue(r.next) ? "late" : ""}" title="${esc(r.next)}">${esc(r.next)}</td>
       <td>${esc(shortDate(r.updated))}${url ? ` <a href="${esc(url)}" target="_blank" rel="noopener" title="Open the advert">↗</a>` : ""}</td></tr>`;
-  }).join("") : `<tr><td colspan="11" class="empty">${(store.tracker.roles || []).length ? "No roles match." : "No roles yet. Run /hal start the day in Claude Code."}</td></tr>`;
+  }).join("") : `<tr><td colspan="12" class="empty">${(store.tracker.roles || []).length ? "No roles match." : "No roles yet. Run /hal start the day in Claude Code."}</td></tr>`;
 }
 
 export function renderPipeline() {

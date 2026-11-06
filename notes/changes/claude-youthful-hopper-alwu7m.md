@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (drafted sends to Wren); earlier: [PR #11](https://github.com/Pha1lbot/agent-office/pull/11), [PR #10](https://github.com/Pha1lbot/agent-office/pull/10), [PR #9](https://github.com/Pha1lbot/agent-office/pull/9) and [PR #3](https://github.com/Pha1lbot/agent-office/pull/3) merged 2026-11-06
+**Status:** In progress (ranking and verdicts); earlier: [PR #12](https://github.com/Pha1lbot/agent-office/pull/12), [PR #11](https://github.com/Pha1lbot/agent-office/pull/11), [PR #10](https://github.com/Pha1lbot/agent-office/pull/10), [PR #9](https://github.com/Pha1lbot/agent-office/pull/9) and [PR #3](https://github.com/Pha1lbot/agent-office/pull/3) merged 2026-11-06
 
 ## Purpose
 
@@ -15,6 +15,63 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: To review is ranked automatically, and Hal gives verdicts on roles
+
+**What changed**
+- `shared/tools/tracker.py`:
+  - New fields `verdict` (`apply`, `maybe` or `skip`, checked) and `verdict_why` (one line, at most 300 characters).
+  - New `rank()` runs on every save. It numbers every `found` role best first: verdict (apply, maybe, none, skip), then fit, then pay band (£60k+, £50k+, other, using `yearly_pay`), then closing date, then oldest. A priority Tim sets with `--by tim` gets `priority_by_tim` and is kept; the others are numbered around it.
+  - New `rank` command.
+  - The add task is now "Read the advert, write the listing, score the fit and give a verdict" (`READ_TASK`).
+- `shared/office-view/src/roles.ts`: `advert.txt` added to the allowed and text files. New `saveAdvert()`, using the same id and path checks, with a 20,000-character limit.
+- `shared/office-view/src/server.ts`:
+  - `POST /api/roles` takes optional `advert` text and saves it as `advert.txt`. A link or the text is now required.
+  - `POST /api/roles/<id>/request` takes `kind: "verdict"`, which queues "Give a verdict: worth applying?".
+- Office page:
+  - `util.js`: `verdictBadge()`.
+  - `dashboard.js`: a badge on cards and a sortable "Hal" column in the list.
+  - `index.html`: an "Or paste the advert text" box in Add role.
+  - `role.js`: a "Hal's verdict" panel on Overview, with "Ask Hal: worth applying?" (or "Ask again"), and the pasted advert shown until Rita's listing exists.
+  - `style.css`: badge colours.
+- `.claude/agents/lead-recruiter.md` (Rita):
+  - a `## Verdict` section in every listing, with For and Against bullets
+  - rules for Apply, Maybe and Skip
+  - reads `advert.txt` when present
+  - a verdict-only mode that reads only `listing.md` and `preferences.md`, with no web
+- `.claude/skills/cos/SKILL.md` (Hal):
+  - sets `verdict` and `verdict_why` from Rita's replies
+  - new "Give a verdict" office task
+  - "Start the day" uses Ada's ranking instead of ranking by hand
+- `test/roles.test.ts`: a test for `saveAdvert` and `advert.txt`.
+- READMEs (root, office view, Rita, Hal).
+- `CHANGELOG.md`: line for #12.
+
+**Why**
+Tim asked for Hal to "auto arrange jobs from Rita", and chose ranking (P1, P2…) over auto-shortlisting or auto-skipping. He also wanted to give Hal jobs himself and hear whether they're worth applying for. He chose the office route with Apply / Maybe / Skip verdicts, and pasted text for pages that need a login.
+
+**Decisions**
+- Ranking is done by the tracker (Ada), with no tokens, rather than by Hal. It's re-run on every save, so the order can't go stale.
+- Rita gives the verdict, as she already reads the advert, and Hal records it. A verdict-only request avoids web lookups to keep the hand-off cheap.
+- Tim's real tracker had no priorities on its 37 To review roles, so the first ranking overwrites nothing of his.
+
+**How to check it**
+- Tracker, in a temporary `JOBS_DIR`:
+  - four roles ranked as expected
+  - a priority Tim set (1) was kept
+  - shortlisting renumbered the rest
+  - `verdict=great` was refused
+- `npm test`: 26 pass. `tsc --noEmit` is clean.
+- End to end, against a throwaway copy of the repo with a fake Claude, using Playwright:
+  - Add role refuses an entry with neither link nor text
+  - with pasted text, it saves `advert.txt` and queues the read task
+  - verdicts set through the tracker show as badges, and To review is ordered P1 Apply, P2 Maybe…
+  - the role page shows the verdict panel, and the pasted `<script>` appears as plain text
+  - "Ask again" queued "Give a verdict: worth applying?"
+- A first run found `verdictBadge` missing from `dashboard.js`'s imports (the board didn't draw). Fixed, then re-tested.
+
+**Open items**
+- 33 of Tim's 37 To review roles have no fit or verdict yet (imported from his old dashboard), so for now they're ranked by pay and closing date. Tim can ask Hal to give verdicts on them in one batch, which costs one Rita hand-off.
 
 ### 2026-11-06: Setting a role to Drafted sends it to Wren
 

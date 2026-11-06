@@ -17,6 +17,6 @@ Tim named his Chief of Staff **Hal** on 2026-11-06. Start a session with `/cos`.
 **Outputs**
 - `jobs/today.md`: the day's priority list.
 - Short briefs to Rita (Lead Recruiter), Wren (Writer) and Cole (Interview Coach), one per batch.
-- Tracker changes, made himself with `tracker.py` (no Admin hand-off).
+- Tracker changes, made himself with `tracker.py` (no Admin hand-off), including each role's verdict (`verdict=apply|maybe|skip`, `verdict_why=`). Ada ranks the To review roles from these automatically.
 - PDFs of approved documents (via `make_docs.py --pdf`).
 - Commits and pushes after each step.

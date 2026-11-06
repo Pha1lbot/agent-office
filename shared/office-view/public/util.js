@@ -15,6 +15,14 @@ export const OPEN = new Set(["found", "shortlisted", "drafted", "approved", "app
 export const PICKED = new Set(["shortlisted", "drafted", "approved", "applied", "interview", "offer"]);
 export const CLOSED = new Set(["rejected", "skipped"]);
 
+export const VERDICT_LABEL = { apply: "Apply", maybe: "Maybe", skip: "Skip" };
+export const VERDICT_RANK = { apply: 0, maybe: 1, skip: 3 };
+/** Hal's verdict as a small coloured badge, with the reason on hover. */
+export function verdictBadge(r, prefix = "Hal: ") {
+  if (!VERDICT_LABEL[r.verdict]) return "";
+  return `<span class="verdict v-${r.verdict}" title="${esc(r.verdict_why || "")}">${prefix}${VERDICT_LABEL[r.verdict]}</span>`;
+}
+
 /** Fit as five dots. */
 export function fitDots(fit) {
   const n = Math.max(0, Math.min(5, Number(fit) || 0));

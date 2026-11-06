@@ -48,7 +48,7 @@
       <table>
         <thead><tr>
           <th>Status</th><th data-sort="priority" title="Priority">P</th><th>Role</th><th>Company</th><th data-sort="pay">Pay</th><th>Location</th>
-          <th data-sort="fit">Fit</th><th data-sort="closing">Closes</th><th>Docs</th><th>Next step</th><th data-sort="updated">Updated</th>
+          <th data-sort="fit">Fit</th><th data-sort="verdict" title="Hal's verdict">Hal</th><th data-sort="closing">Closes</th><th>Docs</th><th>Next step</th><th data-sort="updated">Updated</th>
         </tr></thead>
         <tbody id="roles"></tbody>
       </table>
@@ -80,12 +80,13 @@
 <dialog id="add-dlg" aria-labelledby="add-title">
   <form method="dialog" id="add-form">
     <h2 id="add-title">Add a role</h2>
-    <p class="dlg-sub">Hal will get the Lead Recruiter to read the advert and score the fit.</p>
+    <p class="dlg-sub">Rita reads the advert and scores the fit, and Hal tells you if it's worth applying for.</p>
     <div class="dlg-grid">
       <label class="full">Role title<input name="title" required maxlength="200"></label>
       <label>Company<input name="company" required maxlength="200"></label>
       <label>Pay<input name="pay" maxlength="120" placeholder="e.g. £55k–£65k"></label>
       <label class="full">Advert link<input name="url" type="url" maxlength="500" placeholder="https://"></label>
+      <label class="full">Or paste the advert text<textarea name="advert" rows="5" maxlength="20000" placeholder="Useful when the page needs a login, like LinkedIn"></textarea></label>
       <label class="full">Location<input name="location" maxlength="160" placeholder="e.g. London, hybrid"></label>
       <label class="full">Notes<textarea name="notes" rows="2" maxlength="2000"></textarea></label>
     </div>

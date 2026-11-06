@@ -59,10 +59,13 @@ Click a character or its card to see what it has been doing. Click a **name** to
 - **document ticks**: ✓ CV, ✓ Letter, ✓ PDF, ✓ Prep, and 📎 attachments
 - the next step, red ⚠ when a follow-up is overdue
 - "Hal is on it" while the team is working on it
+- Hal's verdict: **Apply** (green), **Maybe** (amber) or **Skip** (red); hover for why
+
+**To review is always in order.** Ada numbers every role in it (P1, P2…) each time the tracker changes: Hal's verdict first, then fit, then pay (£60k+, then £50k+), then closing date. If you set a priority yourself on a To review role, it's kept.
 
 **Drag a card** to another column to change its status, or use the menu on the card. Dropping a card on Closed asks for an optional reason, which helps Hal tune your searches.
 
-**List:** the same roles in a table you can sort by priority, pay, fit, closing date or last update. Search and filter by list or work style in either view. **+ Add role** adds one you found yourself.
+**List:** the same roles in a table you can sort by priority, pay, fit, Hal's verdict, closing date or last update. Search and filter by list or work style in either view. **+ Add role** adds one you found yourself.
 
 **Click any role** to open its page:
 - **Overview:** Rita's summary of the advert, with your next step and notes, which you can edit there.
@@ -93,7 +96,8 @@ Your edits are **backed up to GitHub automatically**, about 15 seconds after you
 | set a role to **approved** | **Ada** (automation) makes the PDFs straight away. If there are no Word files yet, Hal gets Wren to draft them first | none, if the Word files exist |
 | set a role to **applied** | **Ada** sets the next step to "Follow up if no reply by …" (7 days later) | none |
 | set a role to **interview** | Hal gets **Cole** (Interview Coach) to write key talking points and prep notes | yes |
-| **add a role** | Hal gets **Rita** (Lead Recruiter) to read the advert and score the fit | yes |
+| **add a role** (with a link, or the advert text pasted in) | Hal gets **Rita** (Lead Recruiter) to read the advert, score the fit and give a verdict: worth applying or not | yes |
+| press **Ask Hal: worth applying?** on a role's Overview | Rita gives a verdict from the role's listing (no web searching, so it's cheap) | yes |
 | **Ask Wren for changes** on a role page | Hal gets **Wren** to revise the CV and letter, in your words | yes |
 | **Refresh prep** on a role page | Hal gets **Cole** to refresh the prep notes (your talking points are kept) | yes |
 | attach a file, or edit talking points or notes | saved and backed up | none |

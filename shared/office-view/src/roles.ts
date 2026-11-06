@@ -10,11 +10,11 @@ export const ROLE_ID = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 /** Files the team makes in a role folder, which the page may read or download. */
 export const ROLE_FILES = [
-  "listing.md", "cv.md", "cover-letter.md", "notes.md", "talking-points.md", "interview-prep.md",
+  "listing.md", "advert.txt", "cv.md", "cover-letter.md", "notes.md", "talking-points.md", "interview-prep.md",
   "cv.docx", "cover-letter.docx", "cv.pdf", "cover-letter.pdf",
 ] as const;
 /** The markdown files sent to the role page as text. */
-export const TEXT_FILES = ["listing.md", "cv.md", "cover-letter.md", "notes.md", "talking-points.md", "interview-prep.md"];
+export const TEXT_FILES = ["listing.md", "advert.txt", "cv.md", "cover-letter.md", "notes.md", "talking-points.md", "interview-prep.md"];
 export const UPLOAD_TYPES = new Set([".pdf", ".docx", ".doc", ".txt", ".md", ".png", ".jpg", ".jpeg"]);
 export const MAX_UPLOAD = 10 * 1024 * 1024;
 const MAX_TEXT = 200 * 1024;
@@ -133,4 +133,13 @@ export async function saveTalkingPoints(rolesRoot: string, id: string, text: str
   if (text.length > 20_000) throw new Error("That's too long to save.");
   await mkdir(dir, { recursive: true });
   await writeFile(join(dir, "talking-points.md"), text.replace(/\r\n/g, "\n").trimEnd() + "\n", "utf8");
+}
+
+/** Save advert text Tim pasted in when adding a role (for pages Rita can't open, like LinkedIn). */
+export async function saveAdvert(rolesRoot: string, id: string, text: string): Promise<void> {
+  const dir = roleDir(rolesRoot, id);
+  if (!dir) throw new Error("No such role");
+  if (text.length > 20_000) throw new Error("The advert text is too long (20,000 characters at most).");
+  await mkdir(dir, { recursive: true });
+  await writeFile(join(dir, "advert.txt"), text.replace(/\r\n/g, "\n").trim() + "\n", "utf8");
 }
