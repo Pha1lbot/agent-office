@@ -36,6 +36,8 @@ Tim changes statuses and adds roles in the office's Roles tab. Changes that need
    - **"Draft a tailored CV and cover letter"** (Tim shortlisted it): brief **Wren**, then set the role to `drafted`. If the role has no `listing.md` yet, get Rita to write one first.
    - **"Draft first, then PDFs"** (Tim approved a role that has no documents yet; Ada makes PDFs herself when the Word files exist): brief **Wren** to draft, set the role back to `drafted`, and add an action for Tim to check and approve again.
    - **"Write interview prep notes"**: brief **Cole**. He writes `interview-prep.md` and, if it doesn't exist yet, `talking-points.md`.
+   - **"Revise documents: <Tim's words>"** (from the role page's "Ask Wren for changes"): brief **Wren** with the role id and Tim's words exactly. She edits `cv.md` / `cover-letter.md` and rebuilds the Word files. If the role was *approved*, set it back to `drafted` so Tim checks again.
+   - **"Refresh interview prep"** (optionally with Tim's focus after a colon): brief **Cole** to refresh `interview-prep.md`. He must keep Tim's talking points as they are and only add suggestions.
 3. Run `tracker.py inbox done <ids>` for what you finished.
 4. Commit and push (see Backups), then reply in a few lines: what was done, which files Tim should look at, and anything left for him.
 

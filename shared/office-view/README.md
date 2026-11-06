@@ -1,6 +1,6 @@
 # Agent Office (office view)
 
-Shows Tim's agents as pixel-art coworkers in an office, so he can see at a glance who is working, who is waiting for him and who has finished. A **Roles** tab shows the job-search tracker as a dashboard.
+Shows Tim's agents as pixel-art coworkers in an office, so he can see at a glance who is working, who is waiting for him and who has finished. A **Pipeline** tab shows every role on a board, with a page for each role holding its CV, cover letter, attachments and interview talking points.
 
 ![Office](mockup/screenshot-office.png)
 
@@ -47,14 +47,40 @@ It acts out a job-search day on a loop. `npm run fake -- --fast` plays it three 
 | Sitting still | Idle: finished, or waiting on a teammate |
 | Head down, `z Z` | Asleep: not used for a while |
 
-Click a character or its card to see what it has been doing. Click a **name** to see that person's (novelty) contract. The whiteboard and the **Roles** tab read `jobs/tracker.json` and update within a few seconds of any change.
+Click a character or its card to see what it has been doing. Click a **name** to see that person's (novelty) contract. The whiteboard and the **Pipeline** tab read `jobs/tracker.json` and update within a few seconds of any change.
 
-## Editing roles, and Hal
+## The Pipeline
 
-In the **Roles** tab:
-- **Status:** change it with the dropdown on each row. For "skipped" or "rejected" it asks for an optional reason, which helps Hal tune your searches.
-- **Other details:** click a row to edit next step, priority, interview date and who it's with, reason and notes.
-- **+ Add role:** add a role you found yourself.
+**Board** (the default view): a column per stage, from To review to Offer, plus a **Closed** strip for rejected and skipped roles. Each card shows:
+- title, company, pay and location
+- fit dots and priority
+- the **closing date** ("closes in 3 days" turns amber within a week)
+- the **interview date**
+- **document ticks**: ✓ CV, ✓ Letter, ✓ PDF, ✓ Prep, and 📎 attachments
+- the next step, red ⚠ when a follow-up is overdue
+- "Hal is on it" while the team is working on it
+
+**Drag a card** to another column to change its status, or use the menu on the card. Dropping a card on Closed asks for an optional reason, which helps Hal tune your searches.
+
+**List:** the same roles in a table you can sort by priority, pay, fit, closing date or last update. Search and filter by list or work style in either view. **+ Add role** adds one you found yourself.
+
+**Click any role** to open its page:
+- **Overview:** Rita's summary of the advert, with your next step and notes, which you can edit there.
+- **Documents:**
+  - the CV and cover letter as documents, with **Download Word** and **PDF** buttons
+  - Wren's notes on gaps
+  - **attachments**: attach the exact CV you sent, or the advert saved as a PDF
+  - **Ask Wren for changes**, in your own words
+- **Interview:**
+  - date and who it's with
+  - your **key talking points**: edit, reorder, add or delete them, then save. Cole never overwrites them; his ideas appear as suggestions you can add with one click.
+  - Cole's prep notes: the company, likely questions with answer plans, gaps, and questions to ask
+  - **Refresh prep**
+- **Activity:** who changed what and when, and what Hal was asked to do.
+
+## Editing, backups and Hal
+
+- **Edit details:** priority, next step, closing date, interview date and who it's with, reason and notes. Use **Edit details** on a role's page, or the reason dialog.
 
 Your edits are **backed up to GitHub automatically**, about 15 seconds after you stop editing. The strip at the top of the tab shows "Saved to GitHub", or what went wrong.
 
@@ -67,6 +93,9 @@ Your edits are **backed up to GitHub automatically**, about 15 seconds after you
 | set a role to **applied** | **Ada** sets the next step to "Follow up if no reply by …" (7 days later) | none |
 | set a role to **interview** | Hal gets **Cole** (Interview Coach) to write key talking points and prep notes | yes |
 | **add a role** | Hal gets **Rita** (Lead Recruiter) to read the advert and score the fit | yes |
+| **Ask Wren for changes** on a role page | Hal gets **Wren** to revise the CV and letter, in your words | yes |
+| **Refresh prep** on a role page | Hal gets **Cole** to refresh the prep notes (your talking points are kept) | yes |
+| attach a file, or edit talking points or notes | saved and backed up | none |
 
 Hal starts **2 minutes after your last change**, so several changes share one run. He runs on Sonnet to save tokens, and at most **8 times a day**. Other changes (notes, next steps, applied, skipped) don't start him. The strip shows when he'll start, with **Run now** and an **Auto start** on/off switch. Anything he needs to ask you appears under "Waiting on you". Each run's log is saved in `logs/`.
 

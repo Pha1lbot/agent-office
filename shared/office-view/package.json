@@ -11,6 +11,8 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
+    "dompurify": "3.4.17",
+    "marked": "15.0.12",
     "pixi.js": "8.22.0",
     "tsx": "4.23.15",
     "ws": "8.22.1"
