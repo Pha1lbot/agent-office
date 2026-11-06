@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 36 · shortlisted: 7 · drafted: 1 · applied: 3 · skipped: 5
+found: 36 · shortlisted: 6 · drafted: 2 · applied: 3 · skipped: 5
 
 ## Next actions
 
@@ -50,13 +50,13 @@ found: 36 · shortlisted: 7 · drafted: 1 · applied: 3 · skipped: 5
 | found | 34 | [Ticketing Manager](https://www.linkedin.com/jobs/view/4481596263/) | Relevent Football Partners | Not listed | London |  |  | 2026-11-05 |
 | found | 35 | [Senior Premium Experience Manager, fixed term](https://www.linkedin.com/jobs/view/4481587358/) | Formula E | Not listed | London, hybrid |  |  | 2026-11-05 |
 | found | 36 | Director of Live Operations | Bauer Media |  | Remote, UK or Germany |  |  | 2026-11-05 |
-| shortlisted | 1 | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-06 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | shortlisted |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-05 |
 | shortlisted |  | Senior Operations Resource Planning Manager | British Airways | Similar BA planning role listed at £50k–£70k, unconfirmed | Heathrow, on-site |  | Long shot; apply if the pay and location suit | 2026-11-05 |
 | shortlisted |  | [AI Programme Manager (12-month fixed term)](https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v) | techUK | Not shown | London, hybrid |  |  | 2026-11-05 |
 | shortlisted |  | [AI Enablement Manager](https://ats.rippling.com/livewire/jobs/c5df0138-76a1-4a31-8bed-b4afd7ad0a56) | Livewire (gaming media) | Not shown | Not shown |  |  | 2026-11-05 |
 | shortlisted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London |  |  | 2026-11-05 |
+| drafted | 1 | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-06 |
 | drafted |  | Esport Specialist | NetEase Games |  | UK remote |  |  | 2026-11-06 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Apply via LinkedIn; ask about UK or remote | 2026-11-05 |
 | applied |  | [Director of Team Operations](https://uk.linkedin.com/jobs/view/director-of-team-operations-at-hexagon-world-series-4476411854) | Hexagon World Series | not stated | London, UK or Madrid, Spain | 3 | Apply today (Easy Apply on LinkedIn) | 2026-11-06 |
