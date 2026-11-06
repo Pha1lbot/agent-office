@@ -1,7 +1,7 @@
 # Branch: team-v2
 
 **Started:** 2026-11-06
-**Status:** In progress
+**Status:** In review ([PR #7](https://github.com/Pha1lbot/agent-office/pull/7))
 
 ## Purpose
 
@@ -17,6 +17,23 @@ It also makes a CV text bank so agents stop re-reading the PDF, adds a token met
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Open pull request
+
+**What changed**
+- This file: status set to "In review", with a link to [Pha1lbot/agent-office#7](https://github.com/Pha1lbot/agent-office/pull/7).
+
+**Why**
+Phase 1 is ready for Tim to merge.
+
+**Decisions**
+Tim merges it himself, with a merge commit.
+
+**How to check it**
+Open the pull request link.
+
+**Open items**
+After merging: CHANGELOG line, then phase 2 (`dashboard-v2`).
 
 ### 2026-11-06: Update the READMEs and CLAUDE.md for the new team
 
