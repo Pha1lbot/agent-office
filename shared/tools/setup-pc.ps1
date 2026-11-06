@@ -43,7 +43,9 @@ if ($branch -ne "main") {
     if (git status --porcelain) { Write-Host "   On branch $branch with unsaved changes, so leaving it. Switch to main when you can." -ForegroundColor Yellow }
     else { git checkout main }
 }
-& (Join-Path $PSScriptRoot "sync.ps1")
+# Run the sync in the background so setup never waits on GitHub.
+Start-Process powershell.exe -WindowStyle Hidden -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$(Join-Path $PSScriptRoot 'sync.ps1')`""
+Write-Host "   Getting the latest from GitHub in the background (log: $env:LOCALAPPDATA\agent-office-sync.log)"
 Write-Host "   Latest: $(git log -1 --format='%h %s')"
 
 Write-Host "`n4. Office packages" -ForegroundColor Cyan

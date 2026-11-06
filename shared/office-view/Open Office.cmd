@@ -20,8 +20,8 @@ if not errorlevel 1 (
   exit /b 0
 )
 
-echo Getting the latest from GitHub (skipped if it can't connect)...
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0..\tools\sync.ps1"
+rem Get the latest from GitHub in the background, so the office never waits for it.
+start "" /b powershell -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "%~dp0..\tools\sync.ps1"
 
 echo Checking everything is installed...
 call npm.cmd install --no-audit --no-fund --loglevel=error
