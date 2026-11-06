@@ -15,7 +15,7 @@ Newest entries first. Never delete or rewrite old entries.
 
 **What changed**
 - `shared/job-search/cvdefault-cv.pdf` moved to `shared/job-search/cv/default-cv.pdf`.
-- The entry below was corrected to point to the CV's new path. That is a factual path fix only.
+- The CV path given in the entry below ("Job search set up") is now out of date; the CV is at `shared/job-search/cv/default-cv.pdf`.
 
 **Why**
 Tim renamed the CV on GitHub to `default-cv.pdf`, but the slash was lost (`cvdefault-cv.pdf`), so the file ended up outside the `cv` folder where the agents look.
@@ -32,7 +32,7 @@ None.
 ### 2026-11-06: Job search set up (preferences and job sites)
 
 **What changed**
-- `shared/job-search/preferences.md`: filled in from Tim's CV (uploaded as `Tim Everard CV 2026 v3.pdf`, now `shared/job-search/cv/default-cv.pdf`) and his answers: £50k minimum, remote or hybrid near London (he lives in Epsom), some event travel. Assumed values are marked *(assumed)* for Tim to correct.
+- `shared/job-search/preferences.md`: filled in from Tim's CV (`shared/job-search/cv/Tim Everard CV 2026 v3.pdf`, which Tim uploaded) and his answers: £50k minimum, remote or hybrid near London (he lives in Epsom), some event travel. Assumed values are marked *(assumed)* for Tim to correct.
 - `shared/job-search/sources.md`: Hitmarker, Indeed UK, LinkedIn Jobs and company careers pages, as Tim chose.
 
 **Why**
