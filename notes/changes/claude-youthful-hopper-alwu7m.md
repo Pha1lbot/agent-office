@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (follow-up work after [PR #1](https://github.com/Pha1lbot/agent-office/pull/1) and [PR #2](https://github.com/Pha1lbot/agent-office/pull/2) were merged on 2026-11-06)
+**Status:** In review ([PR #3](https://github.com/Pha1lbot/agent-office/pull/3)); follow-up work after [PR #1](https://github.com/Pha1lbot/agent-office/pull/1) and [PR #2](https://github.com/Pha1lbot/agent-office/pull/2) were merged on 2026-11-06
 
 ## Purpose
 
@@ -15,6 +15,23 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Open pull request for preference reviews
+
+**What changed**
+- This file: status set to "In review", with a link to [Pha1lbot/agent-office#3](https://github.com/Pha1lbot/agent-office/pull/3).
+
+**Why**
+The preference-review work needs merging into `main`, because Tim's PC stays on `main`.
+
+**Decisions**
+Tim merges it himself; the PR asks for a merge commit, not a squash.
+
+**How to check it**
+Open the pull request link.
+
+**Open items**
+After merging: add the CHANGELOG line (the "After a merge" routine).
 
 ### 2026-11-06: Suggest preference updates from what Tim does with roles
 
