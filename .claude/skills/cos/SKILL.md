@@ -25,10 +25,10 @@ If `preferences.md` or `sources.md` is still the blank template, or there is no 
 
 ## "Start the day"
 1. Follow the start-of-session steps in CLAUDE.md (git status, git pull).
-2. `tracker.py list --summary`. Note anything waiting on Tim (drafted roles to check, approved roles to apply for).
+2. `tracker.py list --summary`. Note anything waiting on Tim: drafted roles to check, approved roles to apply for, next actions, upcoming interviews, and next steps that look due.
 3. Brief **lead-recruiter**: find up to the daily limit of new roles.
 4. Brief **admin**: add each new role from its listing.md (status found, with fit).
-5. Rank the found roles: fit first, then pay, then closing date. Write `jobs/today.md`: date, the top picks (up to the daily shortlist limit) with one line each, the rest below, and anything waiting on Tim.
+5. Rank today's new roles (the Recruiter's reply; `tracker.py list --status found` lists every unreviewed one, including older imports). Order: fit first, then pay (£60k+ ideal ranks above £50k–£60k), then closing date. Write `jobs/today.md`: date, the top picks (up to the daily shortlist limit) with one line each, the rest below, and anything waiting on Tim.
 6. Show Tim the top picks and ask which to go for. **Stop and wait.** Do not draft anything until Tim says which.
 
 ## Tim picks roles
@@ -41,6 +41,9 @@ If `preferences.md` or `sources.md` is still the blank template, or there is no 
 ## Tim reviews drafts
 - **Changes:** brief **senior-admin** with the role id and Tim's changes in his words, then tell Tim it is ready to check again.
 - **"Approve <role>":** run `python3 shared/tools/make_docs.py --pdf <role-id>`, brief **admin** to set `approved`, and give Tim the PDF paths and the advert link from `listing.md`.
+
+## Tim tells you about next steps, actions or interviews
+Brief **admin**: e.g. `next="..."` on a role, an interview date with `interview_at` and `interview_with`, or `action add` / `action done` for things Tim has to do. These show in the office's Roles tab.
 
 ## Tim reports an outcome
 "Applied", "interview", "offer", "rejected" or "skip": brief **admin** with the role id, status and any note. For "rejected" or "skip", record Tim's reason with `reason=` if he gives one (it may be the employer's feedback).
