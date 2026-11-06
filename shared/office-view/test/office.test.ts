@@ -7,10 +7,10 @@ const r = (hook_event_name: string, extra: Partial<Report> = {}): Report => ({ .
 const brief = (type: string, extra: Partial<Report> = {}) =>
   r("PreToolUse", { tool_name: "Task", subagent_type: type, description: "Find 10 roles", ...extra });
 
-test("the four team members start asleep at their desks", () => {
+test("the five team members start asleep at their desks", () => {
   const o = new Office(0);
   assert.deepEqual(o.snapshot().map((a) => [a.id, a.state]), [
-    ["chief-of-staff", "asleep"], ["lead-recruiter", "asleep"], ["senior-admin", "asleep"], ["admin", "asleep"],
+    ["chief-of-staff", "asleep"], ["lead-recruiter", "asleep"], ["writer", "asleep"], ["interview-coach", "asleep"], ["admin", "asleep"],
   ]);
 });
 
@@ -38,8 +38,8 @@ test("briefing a subagent puts it to work and Chief of Staff waits on it", () =>
   assert.equal(rec.state, "typing");
   assert.equal(rec.detail, "Find 10 roles");
   assert.equal(cos.state, "idle");
-  assert.equal(cos.detail, "Waiting on Lead Recruiter");
-  assert.match(cos.log.at(-1)!.text, /Briefed Lead Recruiter/);
+  assert.equal(cos.detail, "Waiting on Rita");
+  assert.match(cos.log.at(-1)!.text, /Briefed Rita/);
 });
 
 test("tool calls go to the subagent named in the hook", () => {
@@ -68,10 +68,10 @@ test("without a subagent name, tool calls go to the running subagent", () => {
 
 test("when the subagent reports back it goes idle and Chief of Staff reads the report", () => {
   const o = new Office(0);
-  o.handle(brief("senior-admin"), 1);
-  o.handle(r("PostToolUse", { tool_name: "Task", subagent_type: "senior-admin" }), 2);
-  assert.equal(o.agents.get("senior-admin")!.state, "idle");
-  assert.equal(o.agents.get("chief-of-staff")!.detail, "Reading Senior Admin's report");
+  o.handle(brief("writer"), 1);
+  o.handle(r("PostToolUse", { tool_name: "Task", subagent_type: "writer" }), 2);
+  assert.equal(o.agents.get("writer")!.state, "idle");
+  assert.equal(o.agents.get("chief-of-staff")!.detail, "Reading Wren's report");
   // later tool calls are the main session's again
   o.handle(r("PreToolUse", { tool_name: "Write", target: "jobs/today.md" }), 3);
   assert.equal(o.agents.get("chief-of-staff")!.detail, "Write jobs/today.md");
@@ -112,12 +112,12 @@ test("agents doze off, and busy agents that go quiet become idle", () => {
   const o = new Office(0);
   o.handle(r("Stop"), 0);                                         // COS waiting
   o.handle(r("SubagentStop", { agent_type: "admin" }), 0);        // Admin idle
-  o.handle(r("PreToolUse", { tool_name: "Bash", agent_type: "senior-admin" }), 0);
+  o.handle(r("PreToolUse", { tool_name: "Bash", agent_type: "writer" }), 0);
   assert.deepEqual(o.tick(IDLE_TO_ASLEEP_MS - 1), []);
   assert.deepEqual(o.tick(IDLE_TO_ASLEEP_MS + 1), ["admin"]);
-  assert.deepEqual(o.tick(BUSY_TIMEOUT_MS + 1), ["senior-admin"]);
+  assert.deepEqual(o.tick(BUSY_TIMEOUT_MS + 1), ["writer"]);
   assert.deepEqual(o.tick(WAITING_TO_ASLEEP_MS + 1), ["chief-of-staff"]);
-  assert.deepEqual(o.tick(BUSY_TIMEOUT_MS + IDLE_TO_ASLEEP_MS + 2), ["senior-admin"]);
+  assert.deepEqual(o.tick(BUSY_TIMEOUT_MS + IDLE_TO_ASLEEP_MS + 2), ["writer"]);
   assert.equal(o.agents.get("chief-of-staff")!.detail, "Dozing until Tim's back");
 });
 
@@ -129,4 +129,23 @@ test("logs keep the latest 50 lines and long text is shortened", () => {
   assert.match(cos.log[0].text, /^Bash step 10 /);
   assert.ok(cos.log[0].text.length <= 120);
   assert.ok(cos.detail.length <= 60);
+});
+
+test("Ada shows as working while a script runs, then idle", () => {
+  const o = new Office(0);
+  assert.deepEqual(o.ada(true, "Making PDFs for Acme", 1), ["admin"]);
+  const ada = o.agents.get("admin")!;
+  assert.equal(ada.name, "Ada");
+  assert.equal(ada.state, "typing");
+  assert.equal(ada.log.at(-1)!.text, "Making PDFs for Acme");
+  o.ada(false, "PDFs ready", 2);
+  assert.equal(ada.state, "idle");
+  assert.equal(ada.detail, "PDFs ready");
+});
+
+test("the team has names and job titles", () => {
+  const o = new Office(0);
+  assert.deepEqual(o.snapshot().map((a) => `${a.name} (${a.role})`), [
+    "Hal (Chief of Staff)", "Rita (Lead Recruiter)", "Wren (Writer)", "Cole (Interview Coach)", "Ada (Admin (automatic))",
+  ]);
 });

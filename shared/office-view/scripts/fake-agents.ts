@@ -67,10 +67,9 @@ async function day() {
     await tool("Write", "jobs/roles/northwind-bi-analyst/listing.md", 2500, r);
   });
 
-  await delegate("admin", "Add 8 new roles to the tracker", async () => {
-    await tool("Bash", "Add roles to the tracker", 3500, "admin");
-    await tool("Bash", "List open roles in the tracker", 1500, "admin");
-  });
+  // Hal adds the roles himself; Ada (automation) shows the tracker being updated.
+  await tool("Bash", "Add 8 new roles to the tracker", 2500);
+  await tool("Bash", "Updating the tracker", 1500, "admin");
 
   await tool("Write", "jobs/today.md", 2500);
   await send("Stop");
@@ -78,20 +77,31 @@ async function day() {
   await sleep(10000);
 
   await send("UserPromptSubmit");
-  await delegate("senior-admin", "Draft CVs for 2 shortlisted roles", async () => {
-    const s = "senior-admin";
-    await tool("Read", "shared/job-search/cv/default-cv.md", 2500, s);
+  await delegate("writer", "Draft CVs for 2 shortlisted roles", async () => {
+    const s = "writer";
+    await tool("Read", "shared/job-search/cv/cv-bank.md", 2500, s);
     await tool("Read", "jobs/roles/acme-ltd-data-analyst/listing.md", 2000, s);
     await tool("Write", "jobs/roles/acme-ltd-data-analyst/cv.md", 5000, s);
     await tool("Write", "jobs/roles/acme-ltd-data-analyst/cover-letter.md", 4000, s);
     await tool("Bash", "Build the Word files", 2500, s);
   });
-  await delegate("admin", "Mark 2 roles as drafted", async () => {
-    await tool("Bash", "Set status to drafted", 2500, "admin");
-  });
+  await tool("Bash", "Set 2 roles to drafted", 1500);
+  await tool("Bash", "Updating the tracker", 1200, "admin");
   await send("Stop");
   console.log("Drafts ready for Tim to check");
-  await sleep(12000);
+  await sleep(8000);
+
+  console.log("Tim gets an interview: Cole preps");
+  await send("UserPromptSubmit");
+  await delegate("interview-coach", "Interview prep for Acme Ltd", async () => {
+    const c = "interview-coach";
+    await tool("Read", "jobs/roles/acme-ltd-data-analyst/listing.md", 2000, c);
+    await tool("WebSearch", "Acme Ltd news", 3000, c);
+    await tool("Write", "jobs/roles/acme-ltd-data-analyst/talking-points.md", 3500, c);
+    await tool("Write", "jobs/roles/acme-ltd-data-analyst/interview-prep.md", 4000, c);
+  });
+  await send("Stop");
+  await sleep(10000);
 }
 
 console.log(`Sending fake agents to the office at ${BRIDGE}${SPEED > 1 ? " (fast)" : ""}`);

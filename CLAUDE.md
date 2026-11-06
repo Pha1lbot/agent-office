@@ -10,6 +10,8 @@ agents/ holds one folder per agent, each with its own instructions.
 
 shared/ holds prompts, tools and conventions used by more than one agent.
 
+The job-search team is Hal (Chief of Staff), Rita (Lead Recruiter), Wren (Writer), Cole (Interview Coach) and Ada (Admin, automation only). Their plan, including the token-saving rules, is in notes/plans/agent-office-v2.md.
+
 jobs/ holds the job-search team's working data: the role tracker, the daily priority list and one folder per role with its advert summary, CV and cover letter.
 
 .claude/ holds what Claude Code loads directly: subagent prompts in .claude/agents/ and skills (such as /cos) in .claude/skills/. Each one is documented by a README in its agents/ folder.
@@ -48,7 +50,7 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 
 ### Edits made in the office
 
-Tim edits roles in the Agent Office (`shared/office-view`). The office commits and pushes those changes to `jobs/tracker.json` and `jobs/tracker.md` itself, with messages starting "Office:". These commits don't get a notes entry: the tracker records each change, with its date and who made it, in the role's history. Every other commit still needs its notes entry.
+Tim edits roles in the Agent Office (`shared/office-view`). The office commits and pushes those changes to the `jobs/` folder itself (the tracker, plus files it makes such as PDFs), with messages starting "Office:". These commits don't get a notes entry: the tracker records each change, with its date and who made it, in the role's history. Every other commit still needs its notes entry.
 
 ### Bigger or risky changes
 

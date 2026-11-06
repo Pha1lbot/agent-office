@@ -12,10 +12,11 @@ Tim named his Chief of Staff **Hal** on 2026-11-06. Start a session with `/cos`.
 - Tim's requests ("start the day", "approve <role>", "I applied to <role>").
 - `shared/job-search/preferences.md` (daily limits and what Tim wants).
 - `python3 shared/tools/tracker.py list --summary`.
-- Short replies from the other agents.
+- Short replies from Rita, Wren and Cole.
 
 **Outputs**
 - `jobs/today.md`: the day's priority list.
-- Short briefs to Lead Recruiter, Senior Admin and Admin.
+- Short briefs to Rita (Lead Recruiter), Wren (Writer) and Cole (Interview Coach), one per batch.
+- Tracker changes, made himself with `tracker.py` (no Admin hand-off).
 - PDFs of approved documents (via `make_docs.py --pdf`).
 - Commits and pushes after each step.

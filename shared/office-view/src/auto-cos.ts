@@ -38,7 +38,7 @@ export class AutoCos {
     private repo: string,
     private python: string,
     private appDir: string,
-    private hooks: { before: () => Promise<void>; after: () => Promise<number>; changed: () => void },
+    private hooks: { before: () => Promise<void>; after: () => Promise<number>; changed: () => void; budgetLeft: () => number | null },
   ) {
     this.settingsFile = join(appDir, ".office-settings.json");
     let auto = true;
@@ -83,6 +83,11 @@ export class AutoCos {
     if (ukDay() !== this.day) { this.day = ukDay(); this.status.runsToday = 0; }
     if (this.status.runsToday >= MAX_PER_DAY) {
       this.status.last = { at: Date.now(), ok: false, message: `Daily limit of ${MAX_PER_DAY} automatic runs reached. Run /cos yourself, or wait until tomorrow.` };
+      return this.hooks.changed();
+    }
+    const left = this.hooks.budgetLeft();
+    if (left !== null && left <= 0) {
+      this.status.last = { at: Date.now(), ok: false, message: "Today's token budget is used up, so Hal won't start by himself until tomorrow. Run /hal yourself if it can't wait." };
       return this.hooks.changed();
     }
     await this.hooks.before();
