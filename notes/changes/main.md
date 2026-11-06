@@ -11,6 +11,27 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Job search: first day, 7 roles found
+
+**What changed**
+- `jobs/roles/2026-11-06-*/listing.md`: 7 listings from Lead Recruiter (Epic Games, Hexagon World Series, Vitality, Disrupt Search, 2 × Blank Space Recruitment, ESL FACEIT Group).
+- `jobs/tracker.json`, `jobs/tracker.md`: 7 roles added as `found` by Admin.
+- `jobs/today.md`: ranked list with top 3 picks (Epic, Vitality, Hexagon).
+
+**Why**
+Tim ran `/cos start the day`.
+
+**Decisions**
+- Ranked by fit (none above 3), then by sector and work style, because no closing dates were given and most pay is unstated.
+- The first search was blocked by the cloud network. Tim approved a new "agent-office" cloud environment allowing the job sites, and the search was re-run.
+
+**How to check it**
+`python3 shared/tools/tracker.py list --summary` shows 7 found. Read `jobs/today.md`.
+
+**Open items**
+- Tim to pick roles.
+- Coverage was partial: Indeed returned 403, Hitmarker listings load by JavaScript, and Greenhouse careers boards returned 403. Running from Tim's PC, or allowing `boards-api.greenhouse.io`, should help.
+
 ### 2026-11-06: Move CV into the cv folder
 
 **What changed**
