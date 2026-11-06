@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (ranking and verdicts); earlier: [PR #12](https://github.com/Pha1lbot/agent-office/pull/12), [PR #11](https://github.com/Pha1lbot/agent-office/pull/11), [PR #10](https://github.com/Pha1lbot/agent-office/pull/10), [PR #9](https://github.com/Pha1lbot/agent-office/pull/9) and [PR #3](https://github.com/Pha1lbot/agent-office/pull/3) merged 2026-11-06
+**Status:** In progress (edit role details); earlier work merged in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3), [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#14](https://github.com/Pha1lbot/agent-office/pull/14), 2026-11-06
 
 ## Purpose
 
@@ -15,6 +15,30 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Edit a role's details, link and advert text in the office
+
+**What changed**
+- `shared/office-view/public/index.html` and `dashboard.js`: the "Edit details" dialog gains Role title, Company, Pay, Location, Advert link and "Paste the advert text". Only changed fields are sent; the advert box always starts empty.
+- `shared/office-view/src/server.ts`:
+  - `POST /api/roles/<id>` takes optional `advert` text and saves it with `saveAdvert()`. It checks the link starts with http(s).
+  - When Tim changes the link or pastes an advert, "Read the advert, write the listing, score the fit and give a verdict" is queued for Hal. The reply says so, and the page tells Tim.
+  - Fix: `closing_date` was missing from `EDITABLE`, so closing dates set in the dialog were silently dropped. It's now saved.
+- `shared/office-view/README.md`: a row for the new trigger.
+- `CHANGELOG.md`: lines for #13 and #14.
+
+**Why**
+Tim needs to edit roles and add details, such as NetEase's job link. NetEase was stuck because it had no link or advert for Rita or Wren to work from.
+
+**Decisions**
+- A new link or advert always triggers a fresh read, even if a listing exists, because it's new information. A role waiting for Wren is drafted once the listing exists: Hal's existing rule is "no listing, get Rita first".
+
+**How to check it**
+- `tsc` is clean, and `npm test` passes (26).
+- Playwright against a throwaway copy, on NetEase's role page with "Edit details": set the link, pay, closing date and advert text, then Save. The tracker had the new url, pay and closing_date, `advert.txt` was written, and the inbox gained the read task.
+
+**Open items**
+None.
 
 ### 2026-11-06: Job search: Cole's interview prep for the three applied roles
 

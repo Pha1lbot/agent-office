@@ -97,6 +97,7 @@ Your edits are **backed up to GitHub automatically**, about 15 seconds after you
 | set a role to **applied** | **Ada** sets the next step to "Follow up if no reply by …" (7 days later) | none |
 | set a role to **interview** | Hal gets **Cole** (Interview Coach) to write key talking points and prep notes | yes |
 | **add a role** (with a link, or the advert text pasted in) | Hal gets **Rita** (Lead Recruiter) to read the advert, score the fit and give a verdict: worth applying or not | yes |
+| add or change a role's **advert link**, or paste its advert text, in **Edit details** | Rita reads the advert and writes the listing, and Hal gives a fresh verdict. If the role is waiting for Wren, she drafts once the listing is there | yes |
 | press **Ask Hal: worth applying?** on a role's Overview | Rita gives a verdict from the role's listing (no web searching, so it's cheap) | yes |
 | **Ask Wren for changes** on a role page | Hal gets **Wren** to revise the CV and letter, in your words | yes |
 | **Refresh prep** on a role page | Hal gets **Cole** to refresh the prep notes (your talking points are kept) | yes |

@@ -254,7 +254,7 @@ $("sysbar").addEventListener("click", async (e) => {
 });
 
 // ---------- Edit dialog (also used by the role page) ----------
-const FIELDS = ["status", "priority", "next", "reason", "closing_date", "interview_at", "interview_with", "notes"];
+const FIELDS = ["title", "company", "pay", "location", "url", "status", "priority", "next", "reason", "closing_date", "interview_at", "interview_with", "notes"];
 const editForm = $("edit-form");
 let editing = null;
 export function openEdit(id, status) {
@@ -266,6 +266,7 @@ export function openEdit(id, status) {
   $("edit-status").innerHTML = STATUS_ORDER.map((st) => `<option value="${st}">${STATUS_LABEL[st]}</option>`).join("");
   for (const name of FIELDS) editForm.elements[name].value = role[name] ?? "";
   if (status) editForm.elements.status.value = status;
+  editForm.elements.advert.value = "";
   $("edit-err").textContent = "";
   editHints();
   $("edit-dlg").showModal();
@@ -290,8 +291,13 @@ editForm.addEventListener("submit", async (e) => {
     const value = editForm.elements[name].value.trim();
     if (value !== String(editing[name] ?? "")) changes[name] = value;
   }
-  if (!Object.keys(changes).length) return $("edit-dlg").close();
-  try { await post(`/api/roles/${editing.id}`, { changes }); $("edit-dlg").close(); }
+  const advert = editForm.elements.advert.value.trim();
+  if (!Object.keys(changes).length && !advert) return $("edit-dlg").close();
+  try {
+    const out = await post(`/api/roles/${editing.id}`, { changes, advert });
+    $("edit-dlg").close();
+    if (out.read) alert("Saved. Rita will read the advert and Hal will give a fresh verdict.");
+  }
   catch (err) { $("edit-err").textContent = err.message; }
 });
 $("edit-dlg").addEventListener("close", () => renderPipeline());

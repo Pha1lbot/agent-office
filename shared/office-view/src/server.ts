@@ -119,8 +119,9 @@ function systemStatus() {
 // Fields Tim can change from the page, with a length limit each.
 const EDITABLE: Record<string, number> = {
   status: 20, priority: 3, next: 300, notes: 2000, reason: 300, interview_at: 16, interview_with: 200,
-  list: 60, pay: 120, location: 160, cv: 120, fit: 1, title: 200, company: 200, url: 500,
+  list: 60, pay: 120, location: 160, cv: 120, fit: 1, title: 200, company: 200, url: 500, closing_date: 10,
 };
+const READ_TASK = "Read the advert, write the listing, score the fit and give a verdict";
 const ADDABLE = ["title", "company", "url", "location", "pay", "notes"];
 const oneLine = (v: unknown, max: number) => String(v ?? "").replace(/[\r\n]+/g, " ").trim().slice(0, max);
 
@@ -325,15 +326,27 @@ const server = createServer(async (req, res) => {
         const id = roleMatch[1];
         const role = tracker.roles.find((r) => r.id === id);
         if (!role) return json(res, 404, { error: "No such role" });
-        const changes = Object.entries((body.changes as Record<string, unknown>) || {})
+        const asked = (body.changes as Record<string, unknown>) || {};
+        const changes = Object.entries(asked)
           .filter(([k]) => k in EDITABLE).map(([k, v]) => `${k}=${oneLine(v, EDITABLE[k])}`);
-        if (!changes.length) return json(res, 400, { error: "Nothing to change" });
-        const r = await ada("Updating the tracker", () => tool!.call(["set", id, ...changes, "--by", "tim"]));
-        if (!r.ok) return json(res, 400, { error: r.out.split("\n").pop() || "Couldn't save" });
-        const status = (body.changes as Record<string, unknown>).status;
+        const advert = String(body.advert ?? "").trim();
+        if (!changes.length && !advert) return json(res, 400, { error: "Nothing to change" });
+        const newUrl = "url" in asked ? oneLine(asked.url, 500) : null;
+        if (newUrl && !/^https?:\/\//i.test(newUrl)) return json(res, 400, { error: "The link must start with http:// or https://" });
+        if (advert.length > 20_000) return json(res, 400, { error: "The advert text is too long (20,000 characters at most)." });
+        if (changes.length) {
+          const r = await ada("Updating the tracker", () => tool!.call(["set", id, ...changes, "--by", "tim"]));
+          if (!r.ok) return json(res, 400, { error: r.out.split("\n").pop() || "Couldn't save" });
+        }
+        if (advert) { await saveAdvert(ROLES_ROOT, id, advert); await rescanDocs(); }
+        const status = asked.status;
         await afterEdit(`${role.company}: ${role.title}${status ? ` → ${status}` : " updated"}`);
         if (status === "approved") void adaPdfs(role);
-        return json(res, 200, { ok: true });
+        // A new link or pasted advert: Rita reads it and Hal gives a fresh verdict.
+        const oldUrl = String((role as { url?: string }).url || "");
+        const read = !!(advert || (newUrl && newUrl !== oldUrl));
+        if (read) await requestWork(role, READ_TASK);
+        return json(res, 200, { ok: true, read });
       }
       const title = oneLine(body.title, 200), company = oneLine(body.company, 200);
       if (!title || !company) return json(res, 400, { error: "A role needs a title and a company." });
