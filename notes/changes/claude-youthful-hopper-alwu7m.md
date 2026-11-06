@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (edit role details); earlier work merged in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3), [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#14](https://github.com/Pha1lbot/agent-office/pull/14), 2026-11-06
+**Status:** In progress (office redesign mockups); earlier work merged in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3), [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#15](https://github.com/Pha1lbot/agent-office/pull/15), 2026-11-06
 
 ## Purpose
 
@@ -15,6 +15,37 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Mockups for the redesigned office (3D and isometric)
+
+**What changed**
+- New `shared/office-view/mockup/office-sim.js`. It holds the floor plan in metres (24 × 16):
+  - an open plan with four desks, plus Hal's desk in a glass office
+  - Ada's server box, the files shelf and the web kiosk
+  - a kitchen with counters, a coffee machine, a fridge, and a table with stools
+  - a lounge with an L-shaped sofa, a coffee table, a TV and a rug
+
+  It also holds the places people go, with routes along an aisle so nobody walks through furniture, and a made-up day: working, looking things up, waiting, coffee (with a mug), the sofa when idle, and napping when asleep.
+- New `office-3d.html`: low-poly 3D in Three.js 0.170.0, from jsDelivr through an import map. It has soft shadows, rounded furniture and capsule people with walk, sit and lie poses, typing arms and a mug, and name tags with `!` or `z Z`. Screens light up while their owner works. It uses OrbitControls.
+- New `office-iso.html`: the same scene as isometric canvas 2D, with shaded boxes sorted by depth and people drawn larger than life.
+- `mockup/README.md`, plus the two screenshots.
+
+**Why**
+Tim asked for a redesign: a large open-plan office with an office for Hal, a staff kitchen and a sofa area, where staff fetch coffee or relax on the sofas when they're not working, in a more 3D, less pixel-art style. He asked to see both styles before anything is built, as a mockup first, with downtime that mixes kitchen and sofa.
+
+**Decisions**
+- One shared floor plan and routine, so the two styles compare like for like, and the live version can reuse it.
+- Desks were turned so staff face the camera; the first version showed their backs.
+- No external models or art: everything is built from simple shapes, so there are no licences to worry about.
+
+**How to check it**
+- Open either page. Playwright screenshots of both are in the mockup folder.
+- The iso version runs at 60 fps headless.
+- The test browser couldn't reach the CDN, so the 3D version was tested with the same Three.js version served locally.
+
+**Open items**
+- Tim picks a style. He also shared a Reddit post as the look he's after, which couldn't be opened from the cloud session, so he's been asked for a screenshot.
+- Then the chosen one gets wired to the live office: agent states from the hooks, the cards and the log.
 
 ### 2026-11-06: Edit a role's details, link and advert text in the office
 

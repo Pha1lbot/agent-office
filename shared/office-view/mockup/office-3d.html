@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Office mockup (3D)</title>
+<style>
+  :root { --bg: #1d1f2b; --panel: #262938; --text: #e8e9f0; --muted: #9aa0b5; --accent: #7aa2ff; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; align-items: baseline; gap: 12px; padding: 14px 20px; border-bottom: 1px solid #333748; flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; }
+  header p { margin: 0; color: var(--muted); }
+  header a { color: var(--accent); }
+  main { display: grid; grid-template-columns: 1fr 280px; gap: 16px; padding: 16px; }
+  #scene { position: relative; height: min(72vh, 680px); border-radius: 12px; overflow: hidden; background: #2a2d3d; }
+  #scene canvas { display: block; }
+  .hint { position: absolute; left: 12px; bottom: 10px; color: #c9cbd6; font-size: 12px; background: #0008; padding: 4px 8px; border-radius: 6px; }
+  aside { background: var(--panel); border-radius: 12px; padding: 14px; align-self: start; }
+  aside h2 { margin: 0 0 10px; font-size: 15px; }
+  .who { display: flex; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid #333748; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+  .who b { display: block; }
+  .who span { color: var(--muted); font-size: 13px; }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; } #scene { height: 60vh; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Agent Office, low-poly 3D</h1>
+  <p>Mockup with a made-up day. Nothing here is live. Compare with the <a href="office-iso.html">isometric version</a>.</p>
+</header>
+<main>
+  <div id="scene"><div class="hint">Drag to turn · scroll to zoom · right-drag to move</div></div>
+  <aside><h2>Who's doing what</h2><div id="people"></div></aside>
+</main>
+<script src="office-sim.js"></script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+const { BOXES, ZONES, GLASS, LABEL, create, W, D } = window.OfficeSim;
+const host = document.getElementById("scene");
+
+// ---------- Renderer, camera, light ----------
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+host.prepend(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x2a2d3d);
+const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
+camera.position.set(W / 2 + 9, 18, D + 11);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(W / 2, 0, D / 2);
+controls.enableDamping = true;
+controls.maxPolarAngle = Math.PI * 0.42;
+controls.minDistance = 10; controls.maxDistance = 55;
+
+scene.add(new THREE.HemisphereLight(0xfff4e6, 0x404660, 1.3));
+const sun = new THREE.DirectionalLight(0xffffff, 2.2);
+sun.position.set(W / 2 + 8, 20, D / 2 + 10);
+sun.target.position.set(W / 2, 0, D / 2);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+Object.assign(sun.shadow.camera, { left: -18, right: 18, top: 14, bottom: -14, near: 1, far: 60 });
+sun.shadow.bias = -0.0005; sun.shadow.normalBias = 0.02;
+scene.add(sun, sun.target);
+
+function resize() {
+  const { clientWidth: w, clientHeight: h } = host;
+  renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+addEventListener("resize", resize); resize();
+
+// ---------- Room ----------
+const mat = (colour, extra = {}) => new THREE.MeshStandardMaterial({ color: colour, roughness: 0.75, ...extra });
+const box = (w, h, d, colour, r = 0.04) => {
+  const m = new THREE.Mesh(r ? new RoundedBoxGeometry(w, h, d, 2, Math.min(r, w / 2, h / 2, d / 2)) : new THREE.BoxGeometry(w, h, d), mat(colour));
+  m.castShadow = true; m.receiveShadow = true; return m;
+};
+const place = (m, x, y, z) => { m.position.set(x, y, z); scene.add(m); return m; };
+
+for (const z of ZONES) {
+  const rug = z.name.includes("rug"), base = z.name === "floor";
+  const th = base ? 0.2 : rug ? 0.03 : 0.02;
+  const m = box(z.w, th, z.d, z.colour, rug ? 0.01 : 0);
+  m.castShadow = false;
+  place(m, z.x + z.w / 2, base ? -0.1 : th / 2 + (rug ? 0.02 : 0), z.z + z.d / 2);
+}
+// Back and left walls only, so the room is open towards the camera (like a doll's house).
+const WALL = 0xe9e5f0, WH = 2.8;
+place(box(W, WH, 0.25, WALL, 0), W / 2, WH / 2, -0.125);
+place(box(0.25, WH, D, WALL, 0), -0.125, WH / 2, D / 2);
+// Windows along the back wall, with a soft glow.
+for (const x of [8, 12, 16, 20]) {
+  const win = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 1.3), new THREE.MeshStandardMaterial({ color: 0xbfe0ff, emissive: 0x8fc4ff, emissiveIntensity: 0.6 }));
+  place(win, x, 1.7, 0.01);
+}
+// Kitchen splashback, and a sign for each area.
+place(box(0.05, 0.7, 5.6, 0x8fc1b5, 0), 0.03, 1.27, 12.8);
+function sign(text, x, z, rotY = 0) {
+  const c = document.createElement("canvas"); c.width = 512; c.height = 128;
+  const g = c.getContext("2d");
+  g.fillStyle = "#2b2f40"; g.roundRect(0, 0, 512, 128, 28); g.fill();
+  g.fillStyle = "#fff"; g.font = "600 64px system-ui, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle";
+  g.fillText(text, 256, 68);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.4), new THREE.MeshBasicMaterial({ map: t, transparent: true }));
+  m.rotation.y = rotY; place(m, x, 2.35, z);
+}
+sign("HAL", 3, 0.02); sign("FILES", 18.4, 0.02); sign("KITCHEN", 0.02, 12.8, Math.PI / 2);
+
+// Glass for Hal's office.
+const glass = new THREE.MeshPhysicalMaterial({ color: 0xcfe8ff, transmission: 0.6, opacity: 0.35, transparent: true, roughness: 0.05, metalness: 0 });
+for (const g of GLASS) {
+  const m = new THREE.Mesh(new THREE.BoxGeometry(Math.max(g.w, 0.04), 2.4, Math.max(g.d, 0.04)), glass);
+  place(m, g.x + g.w / 2, 1.2, g.z + g.d / 2);
+  const frame = box(Math.max(g.w, 0.06), 0.06, Math.max(g.d, 0.06), 0x3a3f52, 0);
+  place(frame, g.x + g.w / 2, 2.4, g.z + g.d / 2);
+}
+
+// ---------- Furniture ----------
+const screens = [];
+for (const b of BOXES) {
+  const cx = b.x + b.w / 2, cz = b.z + b.d / 2, y0 = b.y || 0;
+  if (b.kind === "desk" || b.kind === "table") {
+    place(box(b.w, 0.06, b.d, b.colour), cx, y0 + b.h - 0.03, cz);
+    for (const [lx, lz] of [[0.08, 0.08], [b.w - 0.08, 0.08], [0.08, b.d - 0.08], [b.w - 0.08, b.d - 0.08]])
+      place(box(0.06, b.h - 0.06, 0.06, 0x4a4e5c, 0.01), b.x + lx, (b.h - 0.06) / 2, b.z + lz);
+    // Chairs go behind the desk; the person sits facing the front.
+    if (b.kind === "desk" && b.colour !== 0x6b4426) { place(box(0.5, 0.45, 0.5, 0x3d4255, 0.08), cx - 0.2, 0.25, b.z - 0.5); place(box(0.5, 0.55, 0.1, 0x3d4255, 0.04), cx - 0.2, 0.75, b.z - 0.78); }
+    if (b.colour === 0x6b4426) { place(box(0.6, 0.5, 0.6, 0x24262f, 0.1), cx - 0.2, 0.28, b.z - 0.55); place(box(0.6, 0.8, 0.14, 0x24262f, 0.06), cx - 0.2, 0.85, b.z - 0.86); }
+  } else if (b.kind === "screen") {
+    const m = box(b.w, b.h, b.d, b.colour, 0.02);
+    place(m, cx, y0 + b.h / 2 + 0.06, cz);
+    const glow = new THREE.Mesh(new THREE.PlaneGeometry(b.w - 0.08, b.h - 0.08), new THREE.MeshStandardMaterial({ color: 0x1b2a40, emissive: 0x3f7fff, emissiveIntensity: 0 }));
+    glow.position.set(cx, y0 + b.h / 2 + 0.06, cz - b.d / 2 - 0.005);
+    glow.rotation.y = Math.PI; // the screen faces the person sitting behind the desk
+    scene.add(glow); screens.push({ glow, x: cx, z: cz });
+  } else if (b.kind === "plant") {
+    place(box(b.w * 0.7, 0.45, b.d * 0.7, 0xc9805a, 0.06), cx, 0.225, cz);
+    const leaves = new THREE.Mesh(new THREE.IcosahedronGeometry(b.w * 0.6, 0), mat(b.colour, { flatShading: true }));
+    leaves.castShadow = true; leaves.scale.y = (b.h - 0.45) / (b.w * 1.1); place(leaves, cx, 0.45 + (b.h - 0.45) / 2, cz);
+  } else if (b.kind === "shelf") {
+    place(box(b.w, b.h, b.d, b.colour, 0.03), cx, b.h / 2, cz);
+    const cols = [0xe06c75, 0x7aa2ff, 0xf2b134, 0x4fbf7f, 0xc38bff, 0xffffff];
+    for (let row = 0; row < 3; row++) for (let i = 0; i < 9; i++)
+      place(box(0.18, 0.42, 0.3, cols[(i + row * 2) % cols.length], 0.01), b.x + 0.25 + i * 0.24, 0.45 + row * 0.6, b.z + b.d / 2 + 0.06);
+  } else if (b.kind === "kiosk") {
+    place(box(0.25, 1.1, 0.25, 0x3a3f52, 0.03), cx, 0.55, cz);
+    const sc = box(b.w, 0.55, 0.08, 0x22252f, 0.02); sc.rotation.x = -0.25; place(sc, cx, 1.25, cz + 0.1);
+    const g = new THREE.Mesh(new THREE.PlaneGeometry(b.w - 0.1, 0.45), new THREE.MeshStandardMaterial({ color: 0x5aa0e6, emissive: 0x5aa0e6, emissiveIntensity: 0.8 }));
+    g.rotation.x = -0.25; g.position.set(cx, 1.25, cz + 0.15); scene.add(g);
+  } else if (b.kind === "server") {
+    place(box(b.w, b.h, b.d, b.colour, 0.04), cx, b.h / 2, cz);
+    for (let i = 0; i < 4; i++) {
+      const led = new THREE.Mesh(new THREE.SphereGeometry(0.03, 8, 8), new THREE.MeshBasicMaterial({ color: i % 2 ? 0x4fbf7f : 0x7aa2ff }));
+      led.position.set(cx - 0.15 + i * 0.1, 1.2, b.z + b.d + 0.01); scene.add(led);
+    }
+  } else if (b.kind === "coffee") {
+    place(box(b.w, b.h, b.d, b.colour, 0.05), cx, y0 + b.h / 2, cz);
+    const cup = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.05, 0.1, 12), mat(0xffffff));
+    place(cup, cx, y0 + 0.1, cz + 0.2);
+  } else if (b.kind === "tv") {
+    place(box(b.w, b.h, b.d, b.colour, 0.03), cx, y0 + b.h / 2, cz);
+    const tvg = new THREE.Mesh(new THREE.PlaneGeometry(b.w - 0.15, b.h - 0.15), new THREE.MeshStandardMaterial({ color: 0x223, emissive: 0x7a5cff, emissiveIntensity: 0.5 }));
+    tvg.position.set(cx, y0 + b.h / 2, cz + b.d / 2 + 0.005); scene.add(tvg);
+    place(box(b.w + 0.4, 0.5, 0.45, 0x5a3b22, 0.04), cx, 0.25, cz + 0.2);
+  } else {
+    place(box(b.w, b.h, b.d, b.colour, b.kind.startsWith("sofa") ? 0.12 : 0.04), cx, y0 + b.h / 2, cz);
+  }
+}
+// Cushions on the sofas.
+for (const x of [17.4, 18.9, 20.4]) place(box(1.2, 0.18, 0.75, 0x5d7dbd, 0.08), x, 0.54, 15.3);
+for (const z of [11.6, 13.6]) place(box(0.75, 0.18, 1.6, 0x5d7dbd, 0.08), 22.85, 0.54, z);
+
+// ---------- People ----------
+const people = new Map();
+function makePerson(t) {
+  const g = new THREE.Group();
+  const m = (c) => mat(c, { roughness: 0.6 });
+  const part = (geo, c) => { const p = new THREE.Mesh(geo, m(c)); p.castShadow = true; return p; };
+  const torso = part(new THREE.CapsuleGeometry(0.22, 0.4, 4, 12), t.body); torso.position.y = 0.95;
+  const head = part(new THREE.SphereGeometry(0.2, 20, 16), t.skin); head.position.y = 1.47;
+  const hair = part(new THREE.SphereGeometry(0.215, 20, 12, 0, Math.PI * 2, 0, Math.PI * 0.55), t.hair); hair.position.y = 1.49; hair.rotation.x = -0.25;
+  const eyes = new THREE.Group();
+  for (const s of [-1, 1]) { const e = part(new THREE.SphereGeometry(0.025, 8, 8), 0x1d1f2b); e.position.set(s * 0.07, 1.49, 0.18); eyes.add(e); }
+  const legs = [], arms = [];
+  for (const s of [-1, 1]) {
+    const hip = new THREE.Group(); hip.position.set(s * 0.1, 0.62, 0);
+    const leg = part(new THREE.CapsuleGeometry(0.085, 0.42, 4, 8), 0x2f3446); leg.position.y = -0.3; hip.add(leg);
+    const shoe = part(new THREE.BoxGeometry(0.14, 0.08, 0.24), 0x1b1d26); shoe.position.set(0, -0.58, 0.05); hip.add(shoe);
+    legs.push(hip);
+    const sh = new THREE.Group(); sh.position.set(s * 0.29, 1.17, 0);
+    const arm = part(new THREE.CapsuleGeometry(0.07, 0.36, 4, 8), t.body); arm.position.y = -0.22; sh.add(arm);
+    const hand = part(new THREE.SphereGeometry(0.065, 10, 8), t.skin); hand.position.y = -0.46; sh.add(hand);
+    arms.push(sh);
+  }
+  const mug = part(new THREE.CylinderGeometry(0.06, 0.055, 0.12, 12), 0xffffff); mug.position.set(0, -0.48, 0.08); arms[1].add(mug);
+  const body = new THREE.Group(); body.add(torso, head, hair, eyes, ...legs, ...arms);
+  g.add(body);
+  // A label above the head: name, plus ! (waiting) or z (asleep).
+  const c = document.createElement("canvas"); c.width = 256; c.height = 96;
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+  const tag = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, depthTest: false }));
+  tag.scale.set(1.9, 0.71, 1); tag.position.y = 2.05; tag.renderOrder = 10; g.add(tag);
+  scene.add(g);
+  return { g, body, legs, arms, mug, tag, c, tex, lastTag: "" };
+}
+function drawTag(p, a) {
+  const icon = a.state === "waiting" ? "!" : a.state === "asleep" ? "z Z" : a.state === "coffee" ? "☕" : "";
+  const key = a.name + icon;
+  if (key === p.lastTag) return;
+  p.lastTag = key;
+  const g = p.c.getContext("2d"); g.clearRect(0, 0, 256, 96);
+  g.font = "700 46px system-ui, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle";
+  const text = icon ? `${a.name} ${icon}` : a.name, w = g.measureText(text).width + 36;
+  g.fillStyle = a.state === "waiting" ? "#f2b134" : "#1d1f2bdd"; g.beginPath(); g.roundRect(128 - w / 2, 14, w, 64, 32); g.fill();
+  g.fillStyle = a.state === "waiting" ? "#1d1f2b" : "#fff"; g.fillText(text, 128, 48);
+  p.tex.needsUpdate = true;
+}
+
+function pose(p, a, t) {
+  const { g, body, legs, arms } = p;
+  g.position.set(a.x, 0, a.z);
+  g.rotation.set(0, a.face, 0);
+  body.position.set(0, 0, 0); body.rotation.set(0, 0, 0);
+  for (const l of legs) l.rotation.set(0, 0, 0);
+  for (const r of arms) r.rotation.set(0, 0, 0);
+  p.mug.visible = a.cup;
+  if (a.pose === "walk") {
+    const s = Math.sin(a.walkPhase);
+    legs[0].rotation.x = s * 0.6; legs[1].rotation.x = -s * 0.6;
+    arms[0].rotation.x = -s * 0.5; arms[1].rotation.x = a.cup ? -0.9 : s * 0.5;
+    body.position.y = Math.abs(Math.cos(a.walkPhase)) * 0.04;
+  } else if (a.pose === "sit") {
+    body.position.y = -0.18;
+    for (const l of legs) l.rotation.x = -1.45;
+    const typing = a.state === "working";
+    arms[0].rotation.x = typing ? -1.1 + Math.sin(t * 14) * 0.08 : -0.3;
+    arms[1].rotation.x = a.cup ? -1.2 : typing ? -1.1 + Math.cos(t * 14) * 0.08 : -0.3;
+    if (a.state === "chilling") { body.rotation.x = -0.18; arms[0].rotation.z = 0.5; }
+  } else if (a.pose === "lie") {
+    body.rotation.x = -Math.PI / 2; body.position.set(0, 0.62, 0.78); // along the sofa, head towards the back
+    legs[0].rotation.x = 0.1; arms[0].rotation.x = -0.4;
+  } else if (a.pose === "stand") {
+    if (a.cup) arms[1].rotation.x = -0.9 + Math.sin(t * 1.5) * 0.05;
+    if (a.state === "looking") arms[0].rotation.x = -0.7 + Math.sin(t * 3) * 0.15;
+  }
+  if (a.state === "asleep") body.position.y += Math.sin(t * 1.6) * 0.01;
+  p.tag.position.y = a.pose === "lie" ? 1.25 : a.pose === "sit" ? 1.85 : 2.05;
+  p.tag.position.y += a.state === "waiting" ? Math.abs(Math.sin(t * 3)) * 0.1 : 0;
+  drawTag(p, a);
+}
+
+// ---------- Run the fake day ----------
+const sim = create();
+for (const a of sim.agents) people.set(a.id, makePerson(a));
+const list = document.getElementById("people");
+function renderList() {
+  list.innerHTML = sim.agents.map((a) => `<div class="who"><span class="dot" style="background:#${a.body.toString(16).padStart(6, "0")}"></span><div><b>${a.name}</b><span>${a.role} · ${LABEL[a.state]}</span></div></div>`).join("");
+}
+let last = performance.now() / 1000, listAt = 0;
+renderer.setAnimationLoop(() => {
+  const now = performance.now() / 1000, dt = Math.min(0.05, now - last); last = now;
+  sim.step(dt, now);
+  for (const a of sim.agents) pose(people.get(a.id), a, now);
+  // A desk screen lights up while its owner is working at it.
+  for (const s of screens) {
+    const busy = sim.agents.some((a) => a.state === "working" && Math.abs(a.x - s.x) < 1.2 && Math.abs(a.z - s.z) < 2);
+    s.glow.material.emissiveIntensity += ((busy ? 0.9 : 0.05) - s.glow.material.emissiveIntensity) * 0.1;
+  }
+  if (now - listAt > 0.5) { renderList(); listAt = now; }
+  controls.update();
+  renderer.render(scene, camera);
+});
+</script>
+</body>
+</html>
