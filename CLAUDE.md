@@ -45,3 +45,19 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 ### Bigger or risky changes
 
 For large restructures, or anything Tim may want to review first, work on a new branch (e.g. `git checkout -b restructure-agents`), push the branch, and open a pull request instead of committing straight to `main`.
+
+## Change notes (always follow)
+
+Every branch, including `main`, has a detailed notes file at `notes/changes/<branch-name>.md`. Replace any `/` in the branch name with `-` (e.g. `feature/research-agent` becomes `notes/changes/feature-research-agent.md`). Anyone reading it, including a future Claude session with no memory of this one, should understand exactly what was done on that branch and why.
+
+1. When you start work on a branch, create its notes file from `notes/changes/TEMPLATE.md` if it does not exist yet. Fill in the purpose section.
+2. Add an entry to the notes file in the same commit as every change, before pushing. Never commit a change without its note.
+3. Each entry is dated (YYYY-MM-DD, UK time) and covers:
+   - **What changed:** the specific files and what was added, edited or removed in each.
+   - **Why:** the reason or request behind it, including what Tim asked for.
+   - **Decisions:** options considered and why this one was chosen.
+   - **How to check it:** how to test or confirm it works.
+   - **Open items:** anything unfinished, known issues, or follow-ups.
+4. Add new entries at the top of the log so the latest is first. Never delete or rewrite old entries; if something was wrong, add a new entry that corrects it.
+5. When a branch is opened as a pull request, put a summary of its notes in the PR description and link to the notes file.
+6. When a branch is merged into `main`, add a one-line summary to `CHANGELOG.md` at the repo root, linking to the branch's notes file. Keep the branch's notes file; it is the permanent record.
