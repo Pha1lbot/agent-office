@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { cleanUploadName, docsOf, fileFor, listFiles, saveAttachment, saveTalkingPoints, textsOf } from "../src/roles.ts";
+import { cleanUploadName, docsOf, fileFor, listFiles, saveAdvert, saveAttachment, saveTalkingPoints, textsOf } from "../src/roles.ts";
 
 function sample() {
   const root = mkdtempSync(join(tmpdir(), "roles-"));
@@ -59,4 +59,14 @@ test("talking points are saved to talking-points.md only", async () => {
   await saveTalkingPoints(root, "acme-analyst", "# Key talking points\r\n\r\n- One\r\n- Two\r\n\r\n");
   assert.equal(readFileSync(join(root, "acme-analyst", "talking-points.md"), "utf8"), "# Key talking points\n\n- One\n- Two\n");
   await assert.rejects(saveTalkingPoints(root, "../x", "hi"));
+});
+
+test("pasted advert text is saved as advert.txt and sent to the role page", async () => {
+  const root = sample();
+  await saveAdvert(root, "acme-analyst", "  Analyst wanted\r\nRemote  \n");
+  assert.equal(readFileSync(join(root, "acme-analyst", "advert.txt"), "utf8"), "Analyst wanted\nRemote\n");
+  assert.ok(fileFor(root, "acme-analyst", "advert.txt"));
+  assert.ok("advert.txt" in (await textsOf(root, "acme-analyst")));
+  await assert.rejects(saveAdvert(root, "../x", "hi"));
+  await assert.rejects(saveAdvert(root, "acme-analyst", "x".repeat(20_001)));
 });

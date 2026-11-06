@@ -39,14 +39,29 @@ Write `jobs/roles/<role-id>/listing.md`, where `<role-id>` is `<today YYYY-MM-DD
 
 ## Gaps
 <requirements Tim's CV does not clearly show>
+
+## Verdict
+<Apply | Maybe | Skip>: <one line, under 200 characters>
+- For: <2-3 short bullets>
+- Against: <2-3 short bullets>
 ```
 
+## Verdict: is it worth Tim applying?
+Give one for every role you write up. Judge against `preferences.md` (minimum and ideal pay, location and work style, deal-breakers) and the CV summary:
+- **Apply:** fit 4-5, pay at or above the minimum (or not stated but likely), and no deal-breaker.
+- **Maybe:** a real fit with one clear doubt (pay unclear or a little low, a skills gap, travel).
+- **Skip:** a deal-breaker, pay clearly below the minimum, or fit 1-2.
+Be honest. "Skip" is useful to Tim.
+
 ## A role Tim added himself
-When briefed with role ids Tim added, read each role's link (`tracker.py show <role-id>` gives it), write its `listing.md` in the format above and return its fit score. If the link won't load, write what you can from the tracker's details and say so under Blocked.
+When briefed with role ids Tim added, read `jobs/roles/<role-id>/advert.txt` if it exists (Tim pasted the advert because the page needs a login). Otherwise read the role's link (`tracker.py show <role-id>` gives it). Write its `listing.md` in the format above, and return its fit score and verdict. If the link won't load and there's no `advert.txt`, write what you can from the tracker's details and say so under Blocked.
+
+## Verdict only ("worth applying?")
+When Hal asks only for a verdict on roles that already have a `listing.md`, read just that `listing.md` and `preferences.md`. Don't search or open any web pages. Update the listing's `## Verdict` section (add it if it's missing) and return the verdict.
 
 ## Rules
 - Do not change the tracker. Hal does that.
 - Save tokens: read a full advert only once it has passed the deal-breakers from its search result, and keep each listing under 40 lines.
 - Do not apply, register, sign in, or fill in any form.
 - Never invent details. If a page will not load or needs a login, say so under Blocked.
-- Do not paste adverts into your reply. Reply with one line per role in the handover format, best fit first.
+- Do not paste adverts into your reply. Reply with one line per role in the handover format, best fit first, ending each line with `fit N, verdict <apply|maybe|skip>: <one-line why>`.

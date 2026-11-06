@@ -259,3 +259,13 @@ dialog.contract-dlg { width: min(720px, calc(100vw - 32px)); background: #f5f0e4
 /* Each column scrolls on its own, so the whole board (and the Closed strip) fits on screen. */
 .board .col-body { max-height: max(320px, calc(100vh - 300px)); overflow-y: auto; }
 .board .closed .col-body { max-height: 260px; }
+
+/* Hal's verdict on a role */
+.verdict { border-radius: 6px; padding: 0 6px; font-size: 11px; font-weight: 700; color: #1d1f2b; white-space: nowrap; }
+.verdict.v-apply { background: #4fbf7f; }
+.verdict.v-maybe { background: #f2b134; }
+.verdict.v-skip { background: #e06c75; }
+.verdict-panel { margin-bottom: 16px; }
+.verdict-line { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.verdict-line .verdict { font-size: 13px; padding: 2px 8px; }
+pre.advert { white-space: pre-wrap; word-break: break-word; max-height: 400px; overflow-y: auto; font: inherit; font-size: 13px; }

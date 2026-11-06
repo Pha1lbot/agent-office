@@ -60,7 +60,10 @@ FIELDS = ["title", "company", "location", "pay", "url", "source", "fit",
           "interview_at",    # YYYY-MM-DDTHH:MM, UK time
           "interview_with",  # who the interview is with
           "list",            # Tim's own grouping, e.g. "Shortlist", "Transition roles"
-          "closing_date"]    # YYYY-MM-DD, when the advert closes
+          "closing_date",    # YYYY-MM-DD, when the advert closes
+          "verdict",         # Hal's view: apply, maybe or skip
+          "verdict_why"]     # one line on why
+VERDICTS = ["apply", "maybe", "skip"]
 # Tim's decisions, used by insights to learn his preferences.
 PICKED = {"shortlisted", "drafted", "approved", "applied", "interview", "offer"}
 PASSED = {"skipped"}
@@ -72,6 +75,8 @@ INBOX_TASKS = {
     "approved": "Draft first, then PDFs",
     "interview": "Write interview prep notes",
 }
+READ_TASK = "Read the advert, write the listing, score the fit and give a verdict"
+VERDICT_TASK = "Give a verdict: worth applying?"
 FOLLOW_UP_DAYS = 7
 TITLE_SKIP = {"and", "of", "the", "a", "an", "to", "in", "for", "with", "uk", "x", "-"}
 
@@ -115,7 +120,30 @@ def to_inbox(data, role, task):
                           "title": f"{role['title']} @ {role['company']}", "at": now_stamp(), "done": False})
 
 
+def rank(data):
+    """Ada: number every role in To review (found) best first, so the board is in order.
+    Order: Hal's verdict, fit, pay band (£60k+, £50k+, other), closing date, then oldest.
+    A priority Tim set himself on a found role is kept; the others are numbered around it."""
+    found = [r for r in data["roles"] if r["status"] == "found"]
+    pinned = {r["priority"] for r in found if r.get("priority_by_tim") and r.get("priority")}
+    order = {"apply": 0, "maybe": 1, None: 2, "skip": 3}
+
+    def key(r):
+        pay = yearly_pay(r.get("pay")) or 0
+        band = 0 if pay >= 60000 else 1 if pay >= 50000 else 2
+        return (order.get(r.get("verdict"), 2), -(r.get("fit") or 0), band,
+                r.get("closing_date") or "9999-99-99", r.get("found") or "")
+
+    n = 0
+    for r in sorted((r for r in found if not (r.get("priority_by_tim") and r.get("priority"))), key=key):
+        n += 1
+        while n in pinned:
+            n += 1
+        r["priority"] = n
+
+
 def save(data):
+    rank(data)
     JOBS.mkdir(parents=True, exist_ok=True)
     DATA.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     render(data)
@@ -180,6 +208,15 @@ def parse_value(key, value):
         if key == "fit" and not 1 <= number <= 5:
             sys.exit("fit must be 1 to 5")
         return number
+    if key == "verdict":
+        value = value.strip().lower()
+        if value == "":
+            return None
+        if value not in VERDICTS:
+            sys.exit(f"verdict must be one of: {', '.join(VERDICTS)}")
+        return value
+    if key == "verdict_why":
+        return " ".join(value.split())[:300]
     if key == "status" and value not in STATUSES:
         sys.exit(f"status must be one of: {', '.join(STATUSES)}")
     return value
@@ -211,7 +248,7 @@ def cmd_add(args):
     }
     data["roles"].append(role)
     if args.by == "tim":
-        to_inbox(data, role, "Read the advert, write the listing and score the fit")
+        to_inbox(data, role, READ_TASK)
     save(data)
     print(role_id)
 
@@ -236,6 +273,9 @@ def cmd_set(args):
                 if not role.get("next") or re.match(r"(?i)\s*apply", role["next"]):
                     when = uk_now() + timedelta(days=FOLLOW_UP_DAYS)
                     role["next"] = f"Follow up if no reply by {when.day} {when:%b}"
+        if key == "priority":
+            # Tim's own priority on a To review role is kept when Ada ranks the rest.
+            role["priority_by_tim"] = bool(args.by == "tim" and value)
         role[key] = value
     role["updated"] = today()
     save(data)
@@ -476,6 +516,9 @@ def main():
     inb.add_argument("ids", nargs="*")
     inb.add_argument("--all", action="store_true")
     inb.set_defaults(func=cmd_inbox)
+
+    rk = sub.add_parser("rank", help="number the To review roles best first (also done on every save)")
+    rk.set_defaults(func=lambda a: (save(load()), cmd_list(argparse.Namespace(status="found", summary=False))))
 
     rd = sub.add_parser("render", help="rebuild tracker.md from tracker.json")
     rd.set_defaults(func=lambda a: render(load()))

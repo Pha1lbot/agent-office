@@ -21,7 +21,7 @@ import { Tracker, findClaude, findPython, repoOf, run } from "./tools.ts";
 import { Backup } from "./backup.ts";
 import { AutoCos } from "./auto-cos.ts";
 import { addUsage, emptyUsage, startOfUkDay, usageOfSession, type Usage } from "./tokens.ts";
-import { MAX_UPLOAD, ROLE_ID, docsOf, fileFor, listFiles, saveAttachment, saveTalkingPoints, textsOf, type Docs } from "./roles.ts";
+import { MAX_UPLOAD, ROLE_ID, docsOf, fileFor, listFiles, saveAttachment, saveTalkingPoints, saveAdvert, textsOf, type Docs } from "./roles.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const APP = resolve(HERE, "..");
@@ -304,6 +304,8 @@ const server = createServer(async (req, res) => {
         if (body.kind === "revise") {
           if (!text) return json(res, 400, { error: "Say what you'd like changed." });
           await requestWork(role, `Revise documents: ${text}`);
+        } else if (body.kind === "verdict") {
+          await requestWork(role, "Give a verdict: worth applying?");
         } else if (body.kind === "prep") {
           await requestWork(role, text ? `Refresh interview prep: ${text}` : "Refresh interview prep");
         } else return json(res, 400, { error: "Unknown request" });
@@ -339,10 +341,15 @@ const server = createServer(async (req, res) => {
       for (const k of ADDABLE) { const v = oneLine(body[k], EDITABLE[k] ?? 500); if (v) args.push(`--${k}`, v); }
       const url2 = oneLine(body.url, 500);
       if (url2 && !/^https?:\/\//i.test(url2)) return json(res, 400, { error: "The link must start with http:// or https://" });
+      const advert = String(body.advert ?? "").trim();
+      if (!url2 && !advert) return json(res, 400, { error: "Add the advert's link, or paste its text, so Rita can read it." });
+      if (advert.length > 20_000) return json(res, 400, { error: "The advert text is too long (20,000 characters at most)." });
       const r = await ada("Adding a role", () => tool!.call(args));
       if (!r.ok) return json(res, 400, { error: r.out.split("\n").pop() || "Couldn't add the role" });
+      const id = r.out.trim().split("\n").pop()!;
+      if (advert) { await saveAdvert(ROLES_ROOT, id, advert); await rescanDocs(); }
       await afterEdit(`added ${company}: ${title}`);
-      return json(res, 200, { ok: true, id: r.out.trim().split("\n").pop() });
+      return json(res, 200, { ok: true, id });
     }
 
     if (url.pathname === "/api/cos") {
