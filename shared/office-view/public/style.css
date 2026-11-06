@@ -20,7 +20,7 @@ main { padding: 20px; max-width: 1240px; margin: 0 auto; }
 .room { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
 #scene { aspect-ratio: 200 / 120; }
 #scene canvas { display: block; width: 100% !important; height: auto !important; border-radius: 6px; cursor: pointer; }
-.cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+.cards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
 .card { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; cursor: pointer; text-align: left; color: inherit; font: inherit; }
 .card[aria-pressed="true"] { border-color: var(--accent); }
 .card .who { display: flex; align-items: center; gap: 8px; font-weight: 600; }
@@ -127,3 +127,5 @@ dialog.contract-dlg { width: min(720px, calc(100vw - 32px)); background: #f5f0e4
 .contract-close button { background: #2b2a28; color: #f5f0e4; border: 0; border-radius: 6px; padding: 8px 18px; font: inherit; cursor: pointer; }
 @media (max-width: 560px) { .contract { padding: 24px 20px 4px; } .contract th { width: 105px; } .c-sign { grid-template-columns: 1fr; } .contract-close { padding: 0 20px 20px; } }
 .contract:focus { outline: none; }
+.card .tokens { font-size: 12px; color: var(--muted); margin-top: 4px; font-variant-numeric: tabular-nums; }
+.card .role { display: block; margin-left: 0; }

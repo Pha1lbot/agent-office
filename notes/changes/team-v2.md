@@ -18,6 +18,36 @@ It also makes a CV text bank so agents stop re-reading the PDF, adds a token met
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Five-desk office, token figures on screen, and contracts for everyone
+
+**What changed**
+- `shared/office-view/public/office.js`:
+  - New layout: Hal, Rita and Wren on the top row; Cole and Ada below. Desks are narrower (44 art pixels); the plant and water cooler moved.
+  - Ada's desk has a server box whose lights blink while her scripts run.
+  - Cards show "N tokens today"; Ada's says "No tokens (automatic)".
+  - The side panel shows tokens today and re-reads.
+  - The whiteboard has a "Tokens today" line, and the Roles strip shows the total with the budget if one is set.
+- `shared/office-view/public/style.css`: five cards in a row (two on a phone), a token line on each card, job titles under names.
+- `shared/office-view/public/contracts.js`: contracts for Rita (Lead Recruiter, £85k plus "one biscuit per interview landed"), Wren (Writer, £70k), Cole (Interview Coach, £75k) and Ada (a "Contract of Service": no salary, runs on electricity, notice period "Unplugging"), with duties taken from each agent's instructions. Click any name to open one.
+- `shared/office-view/scripts/fake-agents.ts`: the fake day uses the new team. Hal does tracker work himself with Ada's lights blinking, Wren reads `cv-bank.md`, and Cole preps for an interview at the end.
+
+**Why**
+The plan's office changes: five named desks, Ada visible as automation, and token use on screen.
+
+**Decisions**
+Ada keeps a character even though she isn't an AI, so Tim can see automatic work happen and see that it costs nothing.
+
+**How to check it**
+- `npm start` then `npm run fake -- --fast`, and open http://127.0.0.1:4747.
+- Checked in a headless browser:
+  - five desks, Wren walking to the shelf, Ada working
+  - token figures on the cards and the whiteboard
+  - Ada's contract opens
+  - no page errors, no sideways scroll on a phone
+
+**Open items**
+None for this part.
+
 ### 2026-11-06: Token meter and daily budget
 
 **What changed**

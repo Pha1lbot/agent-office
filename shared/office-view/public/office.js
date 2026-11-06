@@ -5,11 +5,16 @@ import { CONTRACTS } from "/contracts.js";
 
 // ---------- Settings ----------
 const W = 200, H = 120, S = 4; // art pixels, and screen pixels per art pixel
-const DW = 52; // desk width
-const DESKS = { "chief-of-staff": { x: 18, y: 58 }, "lead-recruiter": { x: 98, y: 58 }, "senior-admin": { x: 18, y: 94 }, admin: { x: 98, y: 94 } };
+const DW = 44; // desk width
+// Hal, Rita and Wren along the top row; Cole and Ada below.
+const DESKS = {
+  "chief-of-staff": { x: 6, y: 58 }, "lead-recruiter": { x: 58, y: 58 }, writer: { x: 110, y: 58 },
+  "interview-coach": { x: 6, y: 94 }, admin: { x: 58, y: 94 },
+};
 const PLACES = { shelf: { x: 176, y: 48 }, web: { x: 182, y: 82 } };
-const VISITOR_SPOTS = [{ x: 80, y: 76 }, { x: 82, y: 98 }, { x: 150, y: 42 }, { x: 60, y: 98 }];
-const HAIR = { "chief-of-staff": 0x3b2a1a, "lead-recruiter": 0xa0522d, "senior-admin": 0x1c1c1c, admin: 0xe0b04a };
+const VISITOR_SPOTS = [{ x: 132, y: 92 }, { x: 146, y: 70 }, { x: 108, y: 76 }, { x: 52, y: 76 }];
+const HAIR = { "chief-of-staff": 0x3b2a1a, "lead-recruiter": 0xa0522d, writer: 0x1c1c1c, "interview-coach": 0x6b4a2b, admin: 0xe0b04a };
+const short = (n) => (n < 1000 ? String(n) : n < 1e6 ? `${Math.round(n / 1000)}k` : `${(n / 1e6).toFixed(1)}M`);
 const WALK_SPEED = 45; // art pixels per second
 const STATE_COLOUR = { typing: "#4fbf7f", walking: "#3fa7d6", waiting: "#f2b134", idle: "#9aa0b5", asleep: "#6b7090" };
 const STATE_LABEL = { typing: "Working", walking: "Looking things up", waiting: "Waiting for you", idle: "Idle", asleep: "Asleep" };
@@ -34,7 +39,7 @@ const clock = (ts) => new Date(ts).toLocaleTimeString("en-GB", { hour: "2-digit"
 
 function seatOf(a) {
   const d = DESKS[a.id];
-  return d ? { x: d.x + 22, y: d.y - 15 } : null;
+  return d ? { x: d.x + 18, y: d.y - 15 } : null;
 }
 function targetOf(a) {
   if (a.place !== "desk" && PLACES[a.place]) return PLACES[a.place];
@@ -103,27 +108,28 @@ function drawRoom() {
   rect(g, 58, 5, 84, 24, 0xd9dbe6); rect(g, 60, 7, 80, 20, 0xf7f8fc);
   rect(g, 48, 8, 7, 7, 0xf7f8fc); rect(g, 51, 9, 1, 3, 0x30344a); rect(g, 51, 11, 2, 1, 0x30344a);
   for (let y = 36; y < H; y += 8) for (let x = 0; x < W; x += 8) rect(g, x, y, 8, 8, ((x + y) / 8) % 2 ? 0xc9b38f : 0xc1aa85);
-  rect(g, 10, 42, 68, 32, 0xa65d57); rect(g, 12, 44, 64, 28, 0xb86b63);
+  rect(g, 2, 42, 52, 32, 0xa65d57); rect(g, 4, 44, 48, 28, 0xb86b63);
   rect(g, 170, 38, 26, 28, 0x6b4428);
   const books = [0xe06c75, 0x7aa2ff, 0xf2b134, 0x4fbf7f, 0xc38bff, 0xe5e7ef];
   for (let r = 0; r < 3; r++) { rect(g, 172, 40 + r * 9, 22, 7, 0x4a2e1a); for (let b = 0; b < 6; b++) rect(g, 173 + b * 3.5, 41 + r * 9, 2.5, 6, books[(b + r) % 6]); }
   rect(g, 160, 82, 20, 18, 0x30344a); rect(g, 162, 84, 16, 11, 0x3fa7d6);
   rect(g, 167, 86, 6, 6, 0x8ee0ff); rect(g, 169, 86, 2, 6, 0x3fa7d6); rect(g, 167, 88, 6, 2, 0x3fa7d6);
   rect(g, 168, 100, 4, 8, 0x30344a);
-  rect(g, 4, 104, 8, 8, 0x8a5a3b); rect(g, 2, 94, 12, 11, 0x3c9a5f); rect(g, 5, 90, 6, 6, 0x4fbf7f);
-  rect(g, 84, 40, 8, 14, 0xd9dbe6); rect(g, 85, 36, 6, 6, 0x8ec5ff);
+  rect(g, 114, 106, 8, 8, 0x8a5a3b); rect(g, 112, 96, 12, 11, 0x3c9a5f); rect(g, 115, 92, 6, 6, 0x4fbf7f);
+  rect(g, 158, 40, 8, 14, 0xd9dbe6); rect(g, 159, 36, 6, 6, 0x8ec5ff);
   label("TODAY", 100, 11, 11, 0x4f6bed);
   label("FILES", 183, 69, 9, 0x6b4428);
   label("WEB", 170, 112, 9, 0x30344a);
   for (const [id, d] of Object.entries(DESKS)) {
     rect(front, d.x, d.y, DW, 4, 0xb07a50); rect(front, d.x, d.y + 4, DW, 10, 0x8a5a3b);
     rect(front, d.x + 2, d.y + 14, 3, 4, 0x6b4428); rect(front, d.x + DW - 5, d.y + 14, 3, 4, 0x6b4428);
-    rect(front, d.x + 18, d.y + 1, 12, 2, 0xe5e7ef);
+    rect(front, d.x + 16, d.y + 1, 12, 2, 0xe5e7ef);
     plates[id] = label("", d.x + DW / 2, d.y + 9, 11, 0xfff3e0);
   }
 }
 const plates = {};
-const board = label("", 100, 19, 10, 0x30344a, "500");
+const board = label("", 100, 18, 10, 0x30344a, "500");
+const boardTokens = label("", 100, 24, 8, 0x6b7090, "500");
 drawRoom();
 
 function person(g, x, y, a, t, sitting) {
@@ -161,7 +167,12 @@ app.ticker.add(() => {
   back.clear(); top.clear();
   for (const [id, d] of Object.entries(DESKS)) {
     const a = agents.get(id);
-    rect(back, d.x + 20, d.y - 14, 12, 12, 0x444a66);
+    rect(back, d.x + 16, d.y - 14, 12, 12, 0x444a66);
+    if (id === "admin") { // Ada's server box: lights blink while her scripts run
+      const busy = a && a.state === "typing";
+      rect(back, d.x + 32, d.y - 13, 9, 13, 0x2c2f45); rect(back, d.x + 33, d.y - 12, 7, 11, 0x3a3d50);
+      for (let i = 0; i < 4; i++) rect(back, d.x + 34 + (i % 2) * 3, d.y - 10 + Math.floor(i / 2) * 4, 2, 1, busy && (Math.floor(t / 120) + i) % 3 ? 0x4fbf7f : 0x22242f);
+    }
     rect(back, d.x + 8, d.y - 12, 3, 12, 0x22242f);
     rect(back, d.x + 11, d.y - 12, 2, 12, a && a.state === "typing" && !a.moving ? 0x6fd3ff : 0x3a3d50);
     rect(back, d.x + 6, d.y - 1, 9, 1, 0x22242f);
@@ -212,6 +223,7 @@ function renderCards() {
       <div class="who"><span class="dot" style="background:${hex(a.colour)}"></span>${CONTRACTS[a.id] ? `<span class="name-link" data-contract="${esc(a.id)}" title="View ${esc(a.name)}'s contract">${esc(a.name)}</span>` : esc(a.name)}${a.role ? `<span class="role">${esc(a.role)}</span>` : ""}</div>
       <span class="state" style="background:${STATE_COLOUR[a.state]}">${STATE_LABEL[a.state]}</span>
       <div class="detail" title="${esc(a.detail)}">${esc(a.detail)}</div>
+      <div class="tokens">${a.id === "admin" ? "No tokens (automatic)" : `${short(a.tokens || 0)} tokens today`}</div>
     </button>`).join("");
 }
 $("cards").addEventListener("click", (e) => {
@@ -253,7 +265,8 @@ function renderLog() {
   $("log").innerHTML = a.log.length
     ? a.log.slice().reverse().map((l) => `<li><time>${clock(l.ts)}</time><span>${esc(l.text)}</span></li>`).join("")
     : `<li><time></time><span>Nothing yet today</span></li>`;
-  $("log-stats").innerHTML = `<span><b>${a.tools}</b> tool calls so far</span>`;
+  $("log-stats").innerHTML = `<span><b>${a.tools}</b> tool calls so far</span>` +
+    (a.id === "admin" ? `<span>Automatic: uses no tokens</span>` : `<span><b>${short(a.tokens || 0)}</b> tokens today${a.cacheRead ? ` (+${short(a.cacheRead)} re-read)` : ""}</span>`);
 }
 
 // ---------- Roles tab ----------
@@ -418,10 +431,13 @@ function renderSystem() {
     const err = c.last && !c.last.ok && !c.running && !c.startsAt;
     parts.push(`<span class="${err ? "err" : ""}"><b>Hal</b>: ${state}</span>`);
     parts.push(`<span>${c.runsToday} of ${c.maxPerDay} automatic runs today</span>`);
+    const tk = system.tokens;
+    if (tk) parts.push(`<span class="${tk.budget && tk.today >= tk.budget ? "err" : ""}">Tokens today: <b>${short(tk.today)}</b>${tk.budget ? ` of ${short(tk.budget)} budget` : ""}</span>`);
     if (c.inbox && !c.running) parts.push(`<button type="button" data-cos="run">Run now</button>`);
     parts.push(`<button type="button" data-cos="auto" aria-pressed="${c.auto}">Auto start: ${c.auto ? "on" : "off"}</button>`);
   }
   $("sysbar").innerHTML = parts.join("");
+  boardTokens.text = system.tokens ? `Tokens today: ${short(system.tokens.today)}` : "";
   clearTimeout(renderSystem.t);
   if (c?.startsAt) renderSystem.t = setTimeout(renderSystem, 1000);
 }
