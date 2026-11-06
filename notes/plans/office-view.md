@@ -1,6 +1,6 @@
 # Plan: Office view for agents
 
-**Status:** Idea / not started
+**Status:** Planned, agents first (see `notes/changes/claude-youthful-hopper-alwu7m.md`)
 **Written:** 2026-11-06, handed over from a Claude chat
 
 ## Goal
@@ -43,6 +43,16 @@ Three layers:
 
 ## Open questions for Tim
 
-- Browser view, VS Code panel or terminal?
-- Fork an existing project or build from scratch?
-- Which agents go in the office first?
+Answered on 2026-11-06 (see below).
+
+## Tim's answers (2026-11-06)
+
+- **View:** a browser page using PixiJS, fed by a Node/TypeScript bridge. Code goes in `shared/office-view/`.
+- **Fork or build:** build our own small version and borrow ideas from Pixel Agents and Bit Office.
+- **Art:** simple shapes drawn in code first; real sprites later.
+- **First agents:** a job-search team, run in one Claude Code session where Chief of Staff calls the others:
+  - **Chief of Staff:** runs the agents, keeps handovers short to save tokens, sets the day's priorities.
+  - **Lead Recruiter:** finds new roles that match Tim's skills, experience and pay, on sites Tim names.
+  - **Senior Admin:** takes Chief of Staff's priority list and writes a tailored CV and cover letter for each role from Tim's default CV (Word, then PDF once Tim confirms).
+  - **Admin:** keeps the role tracker up to date. The tracker becomes a dashboard tab in the office view.
+- **Order:** build the agents first, then the office view on the next branch, with one character per agent.
