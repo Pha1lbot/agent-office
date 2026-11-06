@@ -18,3 +18,8 @@ video department, live event video, team leadership, project management, stakeho
 ## Gaps
 - Vectorworks, Barco, media servers, video network design
 - Conference, awards and fashion show experience
+
+## Verdict
+Skip: Pay up to GBP 75k, but the role is video system design (Vectorworks, Barco, media servers) which Tim's CV does not show.
+- For: Head-level; good pay; leads a department
+- Against: Heavy technical video design gaps; reports to Technical Director; office/hybrid not stated

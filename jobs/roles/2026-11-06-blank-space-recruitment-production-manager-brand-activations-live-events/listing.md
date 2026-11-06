@@ -19,3 +19,8 @@ production manager, live events, budget management, project management, technica
 - AutoCAD or Vectorworks
 - Scenic build and brand activation experience
 - Seniority below Tim's target; pay only at the minimum
+
+## Verdict
+Skip: Below Head level, pay only at the GBP 50k minimum, and scenic-build brand work with CAD needs Tim lacks.
+- For: Live events production; budget management; pay at the minimum
+- Against: Below target seniority; AutoCAD/Vectorworks and scenic build gaps; office/hybrid not stated

@@ -16,6 +16,78 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Job search: Cole's interview prep for the three applied roles
+
+**What changed**
+- `interview-prep.md` and `talking-points.md` for:
+  - Hexagon World Series (`2026-11-06-hexagon-world-series-director-of-team-operations`)
+  - Chelsea FC (`2026-11-06-chelsea-fc-senior-manager-admin-operations-football`)
+  - Razer (`2026-11-02-razer-associate-manager-marketing-operations-e`, new folder)
+- Their three "Refresh interview prep" inbox items are done. NetEase's (i1) is still open: no advert, no interview.
+
+**Why**
+Tim pressed "Refresh interview prep" on these roles in the office, at 22:45.
+
+**Decisions**
+- Cole used no web lookups.
+- Razer's prep is generic, as it has no advert on file.
+
+**How to check it**
+Each role page's Interview tab.
+
+**Open items**
+- Tim to add interview dates and interviewers when he has them.
+- Paste Razer's advert so Cole can refresh it.
+- Cole flagged claims in the Hexagon and Chelsea `cv.md` files that aren't in the CV bank: "from one title to six", and the Airtable booking system "with AI support". Tim should only use them if he can back them up.
+
+### 2026-11-06: Job search: merged Tim's office changes; Wren drafted Vitality
+
+**What changed**
+- Merged `origin/main` into this branch (Tim's office edits).
+  - The conflict in `jobs/tracker.json` and `jobs/tracker.md` was resolved by taking main's version and re-running Hal's 38 verdict updates on top. Nothing of Tim's was lost.
+  - The NetEase action is now a5.
+- `jobs/roles/2026-11-06-vitality-head-of-events-and-experiences/`: Wren's `cv.md`, `cover-letter.md`, `notes.md`, `cv.docx` and `cover-letter.docx`. Its inbox task is done.
+
+**Why**
+Tim shortlisted Vitality and moved it to Drafted in the office. Hal's automatic runs aren't happening on his PC, so Hal handled the inbox from this session.
+
+**Decisions**
+- NetEase is still not drafted: there's no advert.
+- Cole was briefed for the "Refresh interview prep" requests on the three applied roles (Hexagon, Razer, Chelsea). That work is in a later entry.
+
+**How to check it**
+The Vitality role page's Documents tab shows the CV and letter. `notes.md` lists Wren's gaps for Tim.
+
+**Open items**
+- Cole's prep.
+- NetEase advert.
+- Hal's automatic runs on Tim's PC.
+
+### 2026-11-06: Job search: verdicts for all 37 To review roles
+
+**What changed**
+- `jobs/tracker.json` / `tracker.md`:
+  - `fit`, `verdict` and `verdict_why` set on all 37 To review roles and on NetEase (Drafted): 1 Apply, 18 Maybe, 18 Skip.
+  - Ada re-ranked To review.
+  - An inbox task asks Wren to draft NetEase (i2, left open), and an action asks Tim for the NetEase advert.
+- Rita appended a `## Verdict` section to the 4 existing listings: Vitality, the two Blank Space roles and Disrupt Search.
+- `jobs/today.md`: today's top picks.
+
+**Why**
+Tim ran `/hal give verdicts on everything in To review`, and chose full reads for the top 10 with details-only verdicts for the rest. He also pointed out that NetEase is Drafted with no CV. He moved it to Drafted before [Pha1lbot/agent-office#12](https://github.com/Pha1lbot/agent-office/pull/12), so Wren was never asked.
+
+**Decisions**
+- LinkedIn is not reachable from this cloud session's network, so Rita's 9 full reads fell back to details only. I didn't widen the network: Tim can ask for the full reads from his PC, where LinkedIn works.
+- Wren wasn't briefed on NetEase. There's no link, advert or listing to tailor to, and Tim's own notes say the role is below his level and pay floor.
+
+**How to check it**
+`tracker.py list --status found`: every role has a verdict, P1 is The Crowd (Apply) and the Skips are at the bottom.
+
+**Open items**
+- NetEase: Tim adds the advert or skips the role. Inbox i1 ("Refresh interview prep") is still open, as there's no interview.
+- Full reads of the top Maybes from Tim's PC.
+- Hal's automatic runs don't seem to be happening on Tim's PC: i1 has been waiting since 22:13. Check that Claude Code is installed and signed in there.
+
 ### 2026-11-06: To review is ranked automatically, and Hal gives verdicts on roles
 
 **What changed**
