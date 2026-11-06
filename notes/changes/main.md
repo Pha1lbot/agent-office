@@ -11,7 +11,31 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
-### 2026-11-06: Move CV into the cv folder
+HEAD
+
+2026-11-06: Job search: first day, 7 roles found
+
+**What changed**
+- `jobs/roles/2026-11-06-*/listing.md`: 7 listings from Lead Recruiter (Epic Games, Hexagon World Series, Vitality, Disrupt Search, 2 × Blank Space Recruitment, ESL FACEIT Group).
+- `jobs/tracker.json`, `jobs/tracker.md`: 7 roles added as `found` by Admin.
+- `jobs/today.md`: ranked list with top 3 picks (Epic, Vitality, Hexagon).
+
+**Why**
+Tim ran `/cos start the day`.
+
+**Decisions**
+- Ranked by fit (none above 3), then by sector and work style, because no closing dates were given and most pay is unstated.
+- The first search was blocked by the cloud network. Tim approved a new "agent-office" cloud environment allowing the job sites, and the search was re-run.
+
+**How to check it**
+`python3 shared/tools/tracker.py list --summary` shows 7 found. Read `jobs/today.md`.
+
+**Open items**
+- Tim to pick roles.
+- Coverage was partial: Indeed returned 403, Hitmarker listings load by JavaScript, and Greenhouse careers boards returned 403. Running from Tim's PC, or allowing `boards-api.greenhouse.io`, should help.
+
+8c49ce7b9d46e600f101d60eb7863ca45d3dfbc3
+2026-11-06: Move CV into the cv folder
 
 **What changed**
 - `shared/job-search/cvdefault-cv.pdf` moved to `shared/job-search/cv/default-cv.pdf`.
@@ -29,7 +53,7 @@ The intended name was clear, so the file was moved rather than asking first.
 **Open items**
 None.
 
-### 2026-11-06: Job search set up (preferences and job sites)
+2026-11-06: Job search set up (preferences and job sites)
 
 **What changed**
 - `shared/job-search/preferences.md`: filled in from Tim's CV (`shared/job-search/cv/Tim Everard CV 2026 v3.pdf`, which Tim uploaded) and his answers: £50k minimum, remote or hybrid near London (he lives in Epsom), some event travel. Assumed values are marked *(assumed)* for Tim to correct.
@@ -49,7 +73,7 @@ Read both files. Tim should correct anything marked *(assumed)*.
 - The CV is a PDF, so new Word files use the default style rather than Tim's CV styling. A .docx copy named `default-cv.docx` would fix that.
 - The PDF's text layer is missing the letter "a" in places, so Senior Admin should work from the page images and have Tim check its text copy.
 
-### 2026-11-06: Add a double-click launcher for the office
+2026-11-06: Add a double-click launcher for the office
 
 **What changed**
 - `shared/office-view/Open Office.cmd`: new Windows launcher. It moves to its own folder, checks Node.js is installed, and just opens the browser if the office is already running. Otherwise it runs `npm.cmd install` quietly (quick when nothing has changed), opens the browser as soon as the office answers (waiting up to 30 seconds) and starts the office. Closing its window closes the office.
@@ -75,7 +99,7 @@ Not tested here (no Windows in the cloud sandbox). The file was checked to have 
 **Open items**
 Tim to try it and report anything odd. If PowerShell is blocked entirely on his PC, the "already open" check and the browser opening would fail; the office would still start and he could open the address by hand.
 
-### 2026-11-06: Record merge of preference reviews
+2026-11-06: Record merge of preference reviews
 
 **What changed**
 - `CHANGELOG.md`: added the line for [Pha1lbot/agent-office#3](https://github.com/Pha1lbot/agent-office/pull/3) (preference reviews).
@@ -93,7 +117,7 @@ A small notes-only commit, made straight on `main`.
 **Open items**
 Office view to be built on a fresh `office-view` branch, as Tim asked.
 
-### 2026-11-06: Record merge of the job-search branch
+2026-11-06: Record merge of the job-search branch
 
 **What changed**
 - `CHANGELOG.md`: added the line for [Pha1lbot/agent-office#2](https://github.com/Pha1lbot/agent-office/pull/2) (keeping local copies in sync, and the merge-conflict fix).
@@ -113,7 +137,7 @@ Committed straight to `main`, because it is a small notes-only change, as CLAUDE
 - Tim to fill in `shared/job-search/preferences.md` and `sources.md` and add his CV, then try `/cos start the day`.
 - Next: the office view branch.
 
-### 2026-11-06: Add office view plan
+2026-11-06: Add office view plan
 
 **What changed**
 - `notes/plans/office-view.md`: new plan for showing agents as pixel-art coworkers in an office. It covers existing projects (Pixel Agents, Bit Office, pixtuoid), the three-layer design (agents, bridge, office view), decisions so far, notes on tokens and weekly limits, first steps and open questions.
@@ -130,7 +154,7 @@ Open `notes/plans/office-view.md` on GitHub or in Claude Code.
 **Open items**
 Tim still needs to answer the open questions in the plan (view type, fork or build, which agents go first) before any build starts.
 
-### 2026-11-06: Add change notes system
+2026-11-06: Add change notes system
 
 **What changed**
 - `CLAUDE.md`: added a "Change notes" section requiring a detailed notes file per branch, updated in the same commit as every change.
@@ -150,7 +174,7 @@ Open `CLAUDE.md` and read the "Change notes" section. Future commits should each
 **Open items**
 None.
 
-### 2026-11-06: Add backup routine and .gitignore
+2026-11-06: Add backup routine and .gitignore
 
 **What changed**
 - `CLAUDE.md`: added a "Backup routine" section (pull at start, commit and push after each piece of work, check nothing is unpushed before finishing, never force-push or commit secrets, use branches and PRs for big changes).
@@ -168,7 +192,7 @@ Read the "Backup routine" section of `CLAUDE.md`; run `git status` after a sessi
 **Open items**
 None.
 
-### 2026-11-06: Create repository
+2026-11-06: Create repository
 
 **What changed**
 - `README.md`: created by GitHub with the repo description.
