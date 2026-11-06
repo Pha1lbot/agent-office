@@ -1462,6 +1462,22 @@
       "title": "Director of Team Operations @ Hexagon World Series",
       "at": "2026-11-06T22:45",
       "done": false
+    },
+    {
+      "id": "i3",
+      "role": "2026-11-02-razer-associate-manager-marketing-operations-e",
+      "task": "Refresh interview prep",
+      "title": "Associate Manager, Marketing Operations (EMEA) @ Razer",
+      "at": "2026-11-06T22:45",
+      "done": false
+    },
+    {
+      "id": "i4",
+      "role": "2026-11-06-chelsea-fc-senior-manager-admin-operations-football",
+      "task": "Refresh interview prep",
+      "title": "Senior Manager, Admin & Operations (Football Schools) @ Chelsea FC",
+      "at": "2026-11-06T22:45",
+      "done": false
     }
   ]
 }
