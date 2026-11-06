@@ -11,6 +11,28 @@ Build the office view planned in `notes/plans/office-view.md`: a browser page th
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Add bridge server and hook reporter
+
+**What changed**
+- `shared/office-view/src/server.ts`: the bridge. `POST /report` takes a report and updates the office state. `GET /api/state` returns everything. `/live` is a WebSocket: a full snapshot on connect, then updates for changed agents and for the tracker. It serves the page from `public/` and PixiJS from `node_modules` at `/vendor/pixi.mjs`. It watches `jobs/tracker.json` every 2 seconds and runs the dozing timers every 15 seconds. If the port is taken, it says so clearly.
+- `shared/office-view/hooks/report.mjs`: the Claude Code hook. It reads the hook JSON from stdin and keeps only what the office needs: event, session, folder, tool, subagent, a short description, and a short target (file path relative to the project, search, URL, or the Bash command's description). It posts that to the bridge with a 500 ms timeout and a 1-second hard stop, never prints anything and always exits 0.
+
+**Why**
+These connect Claude Code to the office. They are the "bridge" layer in `notes/plans/office-view.md`.
+
+**Decisions**
+- Listens on 127.0.0.1 only, so nothing outside Tim's PC can reach it. Reports carrying a web page's `Origin` header are refused, so a website open in Tim's browser can't send fake events.
+- The reporter sends a trimmed copy and never the full tool input (prompts, file contents), so long text never leaves the hook. For Bash it sends Claude's short description of the command rather than the command itself, so tokens or passwords in commands aren't shown on screen.
+- PixiJS is served from the installed package, so the page works offline and needs no build step.
+- Plain Node `http` plus `ws`, no web framework, to keep it small.
+- Polls the tracker file rather than using `fs.watch`, which behaves differently on Windows.
+
+**How to check it**
+Tested in this session on port 4799. A Task-briefing report and a Read report piped through `report.mjs` showed up in `/api/state` as Chief of Staff "Waiting on Lead Recruiter" and Lead Recruiter walking to the shelf with the path relative to the project. A post with a website's Origin got 403, bad JSON got 400, PixiJS was served (200), and a `../` path got 404. With the server closed, the reporter exited 0 in 0.1 seconds; with bad input it also exited 0.
+
+**Open items**
+Hook settings, page, fake agents, README.
+
 ### 2026-11-06: Add tests for the state logic
 
 **What changed**
