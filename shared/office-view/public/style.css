@@ -101,3 +101,29 @@ dialog h2 { margin: 0; font-size: 18px; }
 .dlg-buttons .primary { background: var(--accent); color: #1d1f2b; border-color: var(--accent); font-weight: 600; }
 .card .role { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: 2px; }
 @media (max-width: 560px) { .dlg-grid { grid-template-columns: 1fr; } .add-role { margin-left: 0; } }
+
+/* Contracts */
+.name-link { cursor: pointer; text-decoration: underline dotted; text-underline-offset: 3px; }
+.name-link:hover { color: var(--accent); }
+dialog.contract-dlg { width: min(720px, calc(100vw - 32px)); background: #f5f0e4; color: #2b2a28; border: 0; border-radius: 6px; box-shadow: 0 30px 80px rgba(0, 0, 0, .6); max-height: calc(100vh - 48px); }
+.contract { padding: 40px 48px 8px; font: 15px/1.55 Georgia, "Times New Roman", serif; }
+.contract header { display: block; padding: 0 0 14px; text-align: center; border-bottom: 2px solid #2b2a28; margin-bottom: 18px; }
+.contract .c-org { margin: 0; letter-spacing: .2em; text-transform: uppercase; font-size: 12px; color: #6b6455; }
+.contract h2 { margin: 6px 0 0; font-size: 26px; font-weight: 700; letter-spacing: .02em; }
+.contract h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .08em; margin: 20px 0 8px; color: #4a453b; }
+.contract table { width: 100%; border-collapse: collapse; min-width: 0; font-size: 15px; }
+.contract th, .contract td { text-align: left; vertical-align: top; padding: 5px 0; border: 0; white-space: normal; max-width: none; overflow: visible; color: inherit; text-transform: none; letter-spacing: 0; font-size: 15px; }
+.contract th { width: 150px; font-weight: 700; padding-right: 14px; color: #2b2a28; }
+.contract ol, .contract ul { margin: 6px 0; padding-left: 22px; }
+.contract li { margin: 4px 0; }
+.contract p { margin: 6px 0; }
+.c-sign { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 28px; }
+.c-sign div { display: flex; flex-direction: column; }
+.c-sign .sig { font: italic 28px/1.2 "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive; color: #1f3a7a; padding: 0 6px; }
+.c-sign .line { border-top: 1px solid #2b2a28; padding-top: 4px; font-size: 12px; color: #6b6455; }
+.c-sign .c-date { grid-column: 1 / -1; font-size: 13px; color: #6b6455; margin: 0; }
+.contract footer { margin-top: 22px; padding-top: 10px; border-top: 1px solid #cfc6b2; font-size: 11px; color: #8a8270; text-align: center; font-style: italic; }
+.contract-close { display: flex; justify-content: flex-end; padding: 0 48px 28px; }
+.contract-close button { background: #2b2a28; color: #f5f0e4; border: 0; border-radius: 6px; padding: 8px 18px; font: inherit; cursor: pointer; }
+@media (max-width: 560px) { .contract { padding: 24px 20px 4px; } .contract th { width: 105px; } .c-sign { grid-template-columns: 1fr; } .contract-close { padding: 0 20px 20px; } }
+.contract:focus { outline: none; }

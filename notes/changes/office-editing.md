@@ -11,6 +11,32 @@ Tim asked to be able to edit roles in the office himself, especially to change t
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Hal's contract, and the tracker working without Windows time zone data
+
+**What changed**
+- `shared/office-view/public/contracts.js`: new. A novelty "Contract of Employment" for Hal: parties, terms (Chief of Staff, start date 6 November 2026, reports to Tim, line manager of the other three, salary **£200,000 per annum**, hours), duties and responsibilities taken from his instructions, gross misconduct (applying or emailing for Tim, inventing experience, force-pushing), holiday, benefits, notice period ("Ctrl+C"), and signatures. The footer says it is a novelty, not a legal contract.
+- `shared/office-view/public/office.js`, `index.html`, `style.css`: Hal's name on his card and in the side panel is now a link that opens the contract, styled as a printed document. It opens at the top and works at phone width.
+- `shared/tools/tracker.py`: if Python has no time zone data (normal on Windows unless the `tzdata` package is installed), the tracker uses the PC's own clock instead of crashing on `ZoneInfo("Europe/London")`.
+
+**Why**
+- Tim asked for Hal's name to open a fake contract with his roles and responsibilities and a £200k salary.
+- Tim is about to install Python on Windows, where the tracker's UK time zone lookup would fail without `tzdata`.
+
+**Decisions**
+- The contracts live in their own file, keyed by agent id, so the others can get one later without touching the page code.
+- The time zone fallback uses the PC clock, which is UK time on Tim's PC, rather than asking him to install an extra package.
+
+**How to check it**
+In a headless browser:
+- Clicking Hal's name on the card or in the side panel opens the contract; Close shuts it.
+- It opens scrolled to the top, with no sideways scrolling at phone width and no page errors.
+- The first version opened at the bottom (the browser focused the Close button), and the page's header style put "The Agent Office" beside the title. Both were fixed.
+
+The tracker was run with the time zone lookup forced to fail, and it still worked. `npm test` passes.
+
+**Open items**
+None.
+
 ### 2026-11-06: Open pull request
 
 **What changed**

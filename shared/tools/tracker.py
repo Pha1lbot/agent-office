@@ -71,8 +71,18 @@ INBOX_TASKS = {
 TITLE_SKIP = {"and", "of", "the", "a", "an", "to", "in", "for", "with", "uk", "x", "-"}
 
 
+try:
+    UK = ZoneInfo("Europe/London")
+except Exception:  # Python on Windows has no time zone data unless the tzdata package is installed
+    UK = None  # then use the PC's own clock, which is on UK time for Tim
+
+
+def uk_now():
+    return datetime.now(UK) if UK else datetime.now()
+
+
 def today():
-    return datetime.now(ZoneInfo("Europe/London")).strftime("%Y-%m-%d")
+    return uk_now().strftime("%Y-%m-%d")
 
 
 def slug(text):
@@ -89,7 +99,7 @@ def load():
 
 
 def now_stamp():
-    return datetime.now(ZoneInfo("Europe/London")).strftime("%Y-%m-%dT%H:%M")
+    return uk_now().strftime("%Y-%m-%dT%H:%M")
 
 
 def to_inbox(data, role, task):

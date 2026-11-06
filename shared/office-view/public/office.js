@@ -1,6 +1,7 @@
 // Agent Office page: draws the office with PixiJS and keeps it live from the bridge.
 // Layout and look follow mockup/index.html.
 import { Application, Container, Graphics, Text } from "/vendor/pixi.mjs";
+import { CONTRACTS } from "/contracts.js";
 
 // ---------- Settings ----------
 const W = 200, H = 120, S = 4; // art pixels, and screen pixels per art pixel
@@ -208,17 +209,46 @@ function select(id) {
 function renderCards() {
   $("cards").innerHTML = [...agents.values()].map((a) => `
     <button class="card" aria-pressed="${a.id === selected}" data-id="${esc(a.id)}">
-      <div class="who"><span class="dot" style="background:${hex(a.colour)}"></span>${esc(a.name)}${a.role ? `<span class="role">${esc(a.role)}</span>` : ""}</div>
+      <div class="who"><span class="dot" style="background:${hex(a.colour)}"></span>${CONTRACTS[a.id] ? `<span class="name-link" data-contract="${esc(a.id)}" title="View ${esc(a.name)}'s contract">${esc(a.name)}</span>` : esc(a.name)}${a.role ? `<span class="role">${esc(a.role)}</span>` : ""}</div>
       <span class="state" style="background:${STATE_COLOUR[a.state]}">${STATE_LABEL[a.state]}</span>
       <div class="detail" title="${esc(a.detail)}">${esc(a.detail)}</div>
     </button>`).join("");
 }
-$("cards").addEventListener("click", (e) => { const c = e.target.closest(".card"); if (c) select(c.dataset.id); });
+$("cards").addEventListener("click", (e) => {
+  const link = e.target.closest("[data-contract]");
+  if (link) return openContract(link.dataset.contract);
+  const c = e.target.closest(".card"); if (c) select(c.dataset.id);
+});
+$("log-name").addEventListener("click", () => { if (CONTRACTS[selected]) openContract(selected); });
+
+function openContract(id) {
+  const c = CONTRACTS[id];
+  if (!c) return;
+  const rows = (list) => list.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join("");
+  $("contract").innerHTML = `
+    <header><p class="c-org">The Agent Office</p><h2 id="contract-heading">${esc(c.title)}</h2></header>
+    <section><h3>1. The parties</h3><table>${rows(c.parties)}</table></section>
+    <section><h3>2. Terms</h3><table>${rows(c.terms)}</table></section>
+    <section><h3>3. Duties and responsibilities</h3><ol>${c.duties.map((d) => `<li>${esc(d)}</li>`).join("")}</ol></section>
+    <section><h3>4. Gross misconduct</h3><p>The following will result in immediate dismissal:</p><ul>${c.conduct.map((d) => `<li>${esc(d)}</li>`).join("")}</ul></section>
+    <section><h3>5. Other terms</h3><table>${rows(c.extras)}</table></section>
+    <section class="c-sign">
+      <div><span class="sig">${esc(c.signed.employer)}</span><span class="line">Signed for the Employer</span></div>
+      <div><span class="sig">${esc(c.signed.employee)}</span><span class="line">Signed by the Employee</span></div>
+      <p class="c-date">Dated ${esc(c.signed.date)}</p>
+    </section>
+    <footer>A novelty document for the Agent Office. Not a legal contract.</footer>`;
+  $("contract-dlg").showModal();
+  $("contract").focus(); // start at the top, not at the Close button
+  $("contract-dlg").scrollTop = 0;
+}
 
 function renderLog() {
   const a = agents.get(selected);
   if (!a) return;
   $("log-name").textContent = a.name;
+  $("log-name").classList.toggle("name-link", !!CONTRACTS[a.id]);
+  $("log-name").title = CONTRACTS[a.id] ? `View ${a.name}'s contract` : "";
   $("log-sub").textContent = `${STATE_LABEL[a.state]} · ${a.detail}`;
   $("log").innerHTML = a.log.length
     ? a.log.slice().reverse().map((l) => `<li><time>${clock(l.ts)}</time><span>${esc(l.text)}</span></li>`).join("")
