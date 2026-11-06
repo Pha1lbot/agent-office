@@ -12,12 +12,12 @@
 
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { readFile, stat } from "node:fs/promises";
-import { watchFile } from "node:fs";
+import { existsSync, watchFile } from "node:fs";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { WebSocketServer, WebSocket } from "ws";
 import { Office, type Report } from "./office.ts";
-import { Tracker, findClaude, findPython, repoOf } from "./tools.ts";
+import { Tracker, findClaude, findPython, repoOf, run } from "./tools.ts";
 import { Backup } from "./backup.ts";
 import { AutoCos } from "./auto-cos.ts";
 
@@ -86,6 +86,25 @@ sockets.on("connection", (ws) => {
 const pushSystem = () => broadcast({ type: "system", system: systemStatus() });
 
 /** After a change through the tracker tool: reload, tell the page, back up, maybe wake Hal. */
+/** Ada (Admin) is automation: animate her while a script runs. */
+function ada<T>(text: string, work: () => Promise<T>, done = "Done"): Promise<T> {
+  pushAgents(office.ada(true, text));
+  return work().finally(() => pushAgents(office.ada(false, done)));
+}
+
+/** Ada makes the PDFs as soon as Tim approves a role that has Word files. No tokens. */
+async function adaPdfs(role: { id: string; title: string; company: string }) {
+  if (!tool || !existsSync(join(dirname(TRACKER), "roles", role.id, "cv.docx"))) return;
+  const r = await ada(`Making PDFs: ${role.company}`, () =>
+    run(tool!.python, [join(REPO, "shared", "tools", "make_docs.py"), "--pdf", role.id], REPO,
+      { JOBS_DIR: dirname(TRACKER), PYTHONIOENCODING: "utf-8" }, 180_000), "PDFs done");
+  if (!r.ok) {
+    const why = r.out.split("\n").filter(Boolean).pop() || "unknown error";
+    await tool.call(["action", "add", `PDFs for ${role.company} (${role.title}) failed: ${why.slice(0, 160)}. Install LibreOffice, or ask Hal.`, "--role", role.id]);
+  }
+  await afterEdit(r.ok ? `PDFs made for ${role.company}: ${role.title}` : `PDFs failed for ${role.company}`);
+}
+
 async function afterEdit(summary: string) {
   const waiting = await loadTracker();
   broadcast({ type: "tracker", tracker });
@@ -162,10 +181,11 @@ const server = createServer(async (req, res) => {
         const changes = Object.entries((body.changes as Record<string, unknown>) || {})
           .filter(([k]) => k in EDITABLE).map(([k, v]) => `${k}=${oneLine(v, EDITABLE[k])}`);
         if (!changes.length) return json(res, 400, { error: "Nothing to change" });
-        const r = await tool.call(["set", id, ...changes, "--by", "tim"]);
+        const r = await ada("Updating the tracker", () => tool!.call(["set", id, ...changes, "--by", "tim"]));
         if (!r.ok) return json(res, 400, { error: r.out.split("\n").pop() || "Couldn't save" });
         const status = (body.changes as Record<string, unknown>).status;
         await afterEdit(`${role.company}: ${role.title}${status ? ` → ${status}` : " updated"}`);
+        if (status === "approved") void adaPdfs(role);
         return json(res, 200, { ok: true });
       }
       const title = oneLine(body.title, 200), company = oneLine(body.company, 200);
@@ -174,7 +194,7 @@ const server = createServer(async (req, res) => {
       for (const k of ADDABLE) { const v = oneLine(body[k], EDITABLE[k] ?? 500); if (v) args.push(`--${k}`, v); }
       const url2 = oneLine(body.url, 500);
       if (url2 && !/^https?:\/\//i.test(url2)) return json(res, 400, { error: "The link must start with http:// or https://" });
-      const r = await tool.call(args);
+      const r = await ada("Adding a role", () => tool!.call(args));
       if (!r.ok) return json(res, 400, { error: r.out.split("\n").pop() || "Couldn't add the role" });
       await afterEdit(`added ${company}: ${title}`);
       return json(res, 200, { ok: true, id: r.out.trim().split("\n").pop() });
@@ -212,7 +232,16 @@ server.on("upgrade", (req, socket, head) => {
 // ---------- Start ----------
 const initialInbox = await loadTracker();
 const gitRepo = await repoOf(TRACKER);
-backup = new Backup(gitRepo, [TRACKER, join(dirname(TRACKER), "tracker.md")], pushSystem);
+let adaSaving = false;
+// Back up the whole jobs folder: the tracker plus PDFs and other files the office makes.
+backup = new Backup(gitRepo, [dirname(TRACKER)], () => {
+  pushSystem();
+  const saving = backup?.status.state === "saving";
+  if (saving !== adaSaving) {
+    adaSaving = saving;
+    pushAgents(office.ada(saving, saving ? "Backing up to GitHub" : backup.status.message));
+  }
+});
 const python = await findPython(REPO);
 if (python) tool = new Tracker(python, REPO, TRACKER);
 else console.log("Python 3 not found: the office will show roles but can't edit them. Install Python from python.org.");

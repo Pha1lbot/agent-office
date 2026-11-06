@@ -48,7 +48,7 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 
 ### Edits made in the office
 
-Tim edits roles in the Agent Office (`shared/office-view`). The office commits and pushes those changes to `jobs/tracker.json` and `jobs/tracker.md` itself, with messages starting "Office:". These commits don't get a notes entry: the tracker records each change, with its date and who made it, in the role's history. Every other commit still needs its notes entry.
+Tim edits roles in the Agent Office (`shared/office-view`). The office commits and pushes those changes to the `jobs/` folder itself (the tracker, plus files it makes such as PDFs), with messages starting "Office:". These commits don't get a notes entry: the tracker records each change, with its date and who made it, in the role's history. Every other commit still needs its notes entry.
 
 ### Bigger or risky changes
 

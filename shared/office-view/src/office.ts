@@ -39,9 +39,10 @@ export interface Agent {
 
 export const TEAM = [
   { id: "chief-of-staff", name: "Hal", role: "Chief of Staff", colour: 0x4f6bed },
-  { id: "lead-recruiter", name: "Lead Recruiter", role: "", colour: 0x2f9e6e },
-  { id: "senior-admin", name: "Senior Admin", role: "", colour: 0xd9822b },
-  { id: "admin", name: "Admin", role: "", colour: 0x9b59b6 },
+  { id: "lead-recruiter", name: "Rita", role: "Lead Recruiter", colour: 0x2f9e6e },
+  { id: "writer", name: "Wren", role: "Writer", colour: 0xd9822b },
+  { id: "interview-coach", name: "Cole", role: "Interview Coach", colour: 0xc0392b },
+  { id: "admin", name: "Ada", role: "Admin (automatic)", colour: 0x9b59b6 },
 ];
 const VISITOR_COLOURS = [0xc0392b, 0x16a085, 0x7f8c8d, 0xb7950b];
 
@@ -264,6 +265,19 @@ export class Office {
       changed.push(agent.id);
     }
     return changed;
+  }
+
+  /** Ada (Admin) is automation, not a Claude agent: show her at work while a script runs. */
+  ada(working: boolean, text: string, now = Date.now()): string[] {
+    const ada = this.agents.get("admin")!;
+    if (working) {
+      this.set(ada, "typing", text, now);
+      ada.tools++;
+      this.note(ada, text, now);
+    } else {
+      this.set(ada, "idle", text, now);
+    }
+    return [ada.id];
   }
 
   snapshot(): Agent[] {

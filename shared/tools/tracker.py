@@ -31,7 +31,7 @@ import re
 import statistics
 import sys
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -58,16 +58,19 @@ FIELDS = ["title", "company", "location", "pay", "url", "source", "fit",
           "cv",              # which CV was or will be used
           "interview_at",    # YYYY-MM-DDTHH:MM, UK time
           "interview_with",  # who the interview is with
-          "list"]            # Tim's own grouping, e.g. "Shortlist", "Transition roles"
+          "list",            # Tim's own grouping, e.g. "Shortlist", "Transition roles"
+          "closing_date"]    # YYYY-MM-DD, when the advert closes
 # Tim's decisions, used by insights to learn his preferences.
 PICKED = {"shortlisted", "drafted", "approved", "applied", "interview", "offer"}
 PASSED = {"skipped"}
-# When Tim moves a role to one of these, Chief of Staff has work to do.
+# When Tim moves a role to one of these, Hal has work to do. (Approved roles that
+# already have Word files need no Hal: Ada, the office's automation, makes the PDFs.)
 INBOX_TASKS = {
     "shortlisted": "Draft a tailored CV and cover letter",
-    "approved": "Make the PDFs",
+    "approved": "Draft first, then PDFs",
     "interview": "Write interview prep notes",
 }
+FOLLOW_UP_DAYS = 7
 TITLE_SKIP = {"and", "of", "the", "a", "an", "to", "in", "for", "with", "uk", "x", "-"}
 
 
@@ -223,8 +226,14 @@ def cmd_set(args):
         value = parse_value(key, value)
         if key == "status" and value != role["status"]:
             role["history"].append({"date": today(), "status": value, **({"by": args.by} if args.by else {})})
-            if args.by == "tim" and value in INBOX_TASKS:
+            has_docs = (JOBS / "roles" / role["id"] / "cv.docx").exists()
+            if args.by == "tim" and value in INBOX_TASKS and not (value == "approved" and has_docs):
                 to_inbox(data, role, INBOX_TASKS[value])
+            if value == "applied" and not any(p.startswith("next=") for p in args.changes):
+                # Ada: a follow-up date, unless Tim already set a real next step
+                if not role.get("next") or re.match(r"(?i)\s*apply", role["next"]):
+                    when = uk_now() + timedelta(days=FOLLOW_UP_DAYS)
+                    role["next"] = f"Follow up if no reply by {when.day} {when:%b}"
         role[key] = value
     role["updated"] = today()
     save(data)

@@ -18,6 +18,44 @@ It also makes a CV text bank so agents stop re-reading the PDF, adds a token met
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Ada (Admin) becomes automation: PDFs, follow-ups and her character
+
+**What changed**
+- `shared/tools/tracker.py`:
+  - **Follow-ups:** when a role goes to *applied*, the next step becomes "Follow up if no reply by <7 days later>", unless a real next step is already set or is given in the same command.
+  - **Approved roles:** they only queue Hal ("Draft first, then PDFs") when they have no Word files.
+  - New `closing_date` field (YYYY-MM-DD).
+- `shared/office-view/src/server.ts`:
+  - **Ada makes the PDFs** (`make_docs.py --pdf`) as soon as Tim approves a role that has Word files. No Hal run, no tokens. If it fails (for example LibreOffice isn't installed), an action explaining why appears under "Waiting on you".
+  - Ada's character "types" while the tracker is updated, a role is added, PDFs are made or the backup runs.
+  - The backup now covers the whole `jobs/` folder, so PDFs and other generated files reach GitHub too.
+- `shared/office-view/src/office.ts`: the team is now Hal, Rita (`lead-recruiter`), Wren (`writer`), Cole (`interview-coach`, new) and Ada (`admin`), each with a job title. New `Office.ada()` shows Ada working or idle.
+- `shared/office-view/test/office.test.ts`: updated for the new team and ids; new tests for Ada and for the team's names and titles (15 tests).
+- `CLAUDE.md`: the "Edits made in the office" section now says the office backs up the `jobs/` folder, not just the tracker files.
+
+**Why**
+The plan moves rule-based steps from Hal to Ada so they cost nothing. Before, approving a role meant an automatic Hal run (~15k+ tokens) just to call one script.
+
+**Decisions**
+- Follow-ups are set in `tracker.py`, so they work whether Tim, Hal or the office makes the change.
+- A failed PDF becomes an action for Tim rather than a silent error, because LibreOffice may not be installed on his PC yet.
+
+**How to check it**
+- `tracker.py` tested in a scratch folder:
+  - applied with "Apply today" gives "Follow up if no reply by 13 Nov"
+  - a custom next step is kept
+  - approved without Word files queues "Draft first, then PDFs"
+  - approved with Word files queues nothing
+- End to end against a throwaway git repo:
+  - approving Vitality (with Word files) made `cv.pdf` and `cover-letter.pdf` with an empty inbox
+  - Epic set to applied got its follow-up date
+  - Ada's log showed "Updating the tracker", "Making PDFs: Vitality" and "Backing up to GitHub"
+  - the PDFs were pushed in the "Office:" commit
+- `npm test` passes (15) and the TypeScript check passes.
+
+**Open items**
+Tim needs pandoc and LibreOffice on his PC for Word files and PDFs.
+
 ### 2026-11-06: Add the CV text bank
 
 **What changed**
