@@ -1,7 +1,7 @@
 # Branch: office-editing
 
 **Started:** 2026-11-06
-**Status:** In progress
+**Status:** In review ([PR #6](https://github.com/Pha1lbot/agent-office/pull/6)); merge after #5
 
 ## Purpose
 
@@ -10,6 +10,23 @@ Tim asked to be able to edit roles in the office himself, especially to change t
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Open pull request
+
+**What changed**
+- This file: status set to "In review", with a link to [Pha1lbot/agent-office#6](https://github.com/Pha1lbot/agent-office/pull/6).
+
+**Why**
+Ready for Tim to merge, after [Pha1lbot/agent-office#5](https://github.com/Pha1lbot/agent-office/pull/5).
+
+**Decisions**
+The PR targets `main`; until #5 is merged it also shows #5's commits.
+
+**How to check it**
+Open the pull request link.
+
+**Open items**
+After merging both: CHANGELOG lines for #5 and #6; Tim pulls, reopens the office, and tries a status change.
 
 ### 2026-11-06: Editable Roles tab, automatic backup, Hal starts by himself, and the Chief of Staff renamed Hal
 
