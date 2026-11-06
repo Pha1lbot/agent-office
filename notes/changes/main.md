@@ -11,10 +11,28 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Move CV into the cv folder
+
+**What changed**
+- `shared/job-search/cvdefault-cv.pdf` moved to `shared/job-search/cv/default-cv.pdf`.
+- The entry below was corrected to point to the CV's new path. That is a factual path fix only.
+
+**Why**
+Tim renamed the CV on GitHub to `default-cv.pdf`, but the slash was lost (`cvdefault-cv.pdf`), so the file ended up outside the `cv` folder where the agents look.
+
+**Decisions**
+The intended name was clear, so the file was moved rather than asking first.
+
+**How to check it**
+`shared/job-search/cv/` contains `default-cv.pdf` and `README.md`.
+
+**Open items**
+None.
+
 ### 2026-11-06: Job search set up (preferences and job sites)
 
 **What changed**
-- `shared/job-search/preferences.md`: filled in from Tim's CV (`shared/job-search/cv/Tim Everard CV 2026 v3.pdf`, which Tim uploaded) and his answers: £50k minimum, remote or hybrid near London (he lives in Epsom), some event travel. Assumed values are marked *(assumed)* for Tim to correct.
+- `shared/job-search/preferences.md`: filled in from Tim's CV (uploaded as `Tim Everard CV 2026 v3.pdf`, now `shared/job-search/cv/default-cv.pdf`) and his answers: £50k minimum, remote or hybrid near London (he lives in Epsom), some event travel. Assumed values are marked *(assumed)* for Tim to correct.
 - `shared/job-search/sources.md`: Hitmarker, Indeed UK, LinkedIn Jobs and company careers pages, as Tim chose.
 
 **Why**
