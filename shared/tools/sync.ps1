@@ -12,6 +12,7 @@
 $repo = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
 $log = Join-Path $env:LOCALAPPDATA "agent-office-sync.log"
 $env:GIT_TERMINAL_PROMPT = "0"
+$env:GCM_INTERACTIVE = "never"  # never wait on a sign-in window; fail and log instead
 $ErrorActionPreference = "Continue"  # git writes progress to stderr; don't treat it as an error
 
 function Git { & git -C $repo @args 2>&1 | Out-String }
@@ -21,13 +22,17 @@ function Write-Log($result, $text) {
     if ($result -ne "ok") { Write-Host "Sync: $result $($text.Trim())" }
 }
 
-$out = Git fetch origin --prune
-if ($LASTEXITCODE -ne 0) { Write-Log "FAILED" "Couldn't reach GitHub: $out"; exit 1 }
+# Give up on a stalled connection after about 20 seconds.
+$out = Git -c http.lowSpeedLimit=1000 -c http.lowSpeedTime=20 fetch origin --prune
+if ($LASTEXITCODE -ne 0) {
+    Write-Log "FAILED" "Couldn't sign in to or reach GitHub. Open PowerShell in the agent-office folder and run 'git fetch' once to sign in. $out"
+    exit 1
+}
 
 $branch = (Git rev-parse --abbrev-ref HEAD).Trim()
 if ($branch -ne "main") {
     # Fast-forward the local main without switching to it.
-    $out = Git fetch origin main:main
+    $out = Git -c http.lowSpeedLimit=1000 -c http.lowSpeedTime=20 fetch origin main:main
     if ($LASTEXITCODE -ne 0) { Write-Log "FAILED" "On branch $branch; local main couldn't be updated: $out"; exit 1 }
     Write-Log "ok" "On branch $branch (not main); local main updated. Run 'git checkout main' to use it."
     exit 0

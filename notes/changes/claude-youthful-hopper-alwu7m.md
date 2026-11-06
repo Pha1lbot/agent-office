@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** Merged 2026-11-06 ([PR #9](https://github.com/Pha1lbot/agent-office/pull/9)); earlier work merged in [PR #3](https://github.com/Pha1lbot/agent-office/pull/3)
+**Status:** In progress (launcher fix); earlier: Merged 2026-11-06 ([PR #9](https://github.com/Pha1lbot/agent-office/pull/9)); earlier work merged in [PR #3](https://github.com/Pha1lbot/agent-office/pull/3)
 
 ## Purpose
 
@@ -15,6 +15,26 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: The sync never holds up the office
+
+**What changed**
+- `shared/tools/sync.ps1`: sets `GCM_INTERACTIVE=never`, so Git's sign-in helper fails at once instead of waiting for a login window. Fetches use `http.lowSpeedLimit=1000` and `http.lowSpeedTime=20`, so a stalled connection gives up after about 20 seconds. The failure message in the log now tells Tim to run `git fetch` once to sign in.
+- `shared/office-view/Open Office.cmd`: the message says the step is skipped if it can't connect. The office already starts whatever the result.
+- `README.md`: "If something goes wrong" lines for Smart App Control blocking the launcher, and for signing in to GitHub.
+
+**Why**
+On Tim's new laptop the launcher stopped at "Getting the latest from GitHub...". That was most likely Git Credential Manager waiting on a sign-in window that was hidden, or that never appeared. Smart App Control had also blocked the launcher at first.
+
+**Decisions**
+- The sync doesn't try to sign in. Signing in is a one-off, done by hand with `git fetch`.
+- There's no way round Smart App Control for one file, short of turning it off, so the README gives the PowerShell route.
+
+**How to check it**
+In bash against a throwaway repo, a remote that asks for a password made the fetch fail at once rather than prompt.
+
+**Open items**
+- Tim runs `git fetch` once on the new laptop to sign in, then reopens the office.
 
 ### 2026-11-06: Record the merge of #9
 
