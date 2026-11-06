@@ -1564,7 +1564,8 @@
       "task": "Refresh interview prep",
       "title": "Director of Team Operations @ Hexagon World Series",
       "at": "2026-11-06T22:45",
-      "done": false
+      "done": true,
+      "handled": "2026-11-06T22:51"
     },
     {
       "id": "i3",
@@ -1572,7 +1573,8 @@
       "task": "Refresh interview prep",
       "title": "Associate Manager, Marketing Operations (EMEA) @ Razer",
       "at": "2026-11-06T22:45",
-      "done": false
+      "done": true,
+      "handled": "2026-11-06T22:51"
     },
     {
       "id": "i4",
@@ -1580,7 +1582,8 @@
       "task": "Refresh interview prep",
       "title": "Senior Manager, Admin & Operations (Football Schools) @ Chelsea FC",
       "at": "2026-11-06T22:45",
-      "done": false
+      "done": true,
+      "handled": "2026-11-06T22:51"
     },
     {
       "id": "i5",

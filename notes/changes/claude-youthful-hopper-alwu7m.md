@@ -16,6 +16,30 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Job search: Cole's interview prep for the three applied roles
+
+**What changed**
+- `interview-prep.md` and `talking-points.md` for:
+  - Hexagon World Series (`2026-11-06-hexagon-world-series-director-of-team-operations`)
+  - Chelsea FC (`2026-11-06-chelsea-fc-senior-manager-admin-operations-football`)
+  - Razer (`2026-11-02-razer-associate-manager-marketing-operations-e`, new folder)
+- Their three "Refresh interview prep" inbox items are done. NetEase's (i1) is still open: no advert, no interview.
+
+**Why**
+Tim pressed "Refresh interview prep" on these roles in the office, at 22:45.
+
+**Decisions**
+- Cole used no web lookups.
+- Razer's prep is generic, as it has no advert on file.
+
+**How to check it**
+Each role page's Interview tab.
+
+**Open items**
+- Tim to add interview dates and interviewers when he has them.
+- Paste Razer's advert so Cole can refresh it.
+- Cole flagged claims in the Hexagon and Chelsea `cv.md` files that aren't in the CV bank: "from one title to six", and the Airtable booking system "with AI support". Tim should only use them if he can back them up.
+
 ### 2026-11-06: Job search: merged Tim's office changes; Wren drafted Vitality
 
 **What changed**
