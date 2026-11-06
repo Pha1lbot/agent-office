@@ -1,6 +1,7 @@
 // Agent Office page: draws the office with PixiJS and keeps it live from the bridge.
 // Layout and look follow mockup/index.html.
 import { Application, Container, Graphics, Text } from "/vendor/pixi.mjs";
+import { CONTRACTS } from "/contracts.js";
 
 // ---------- Settings ----------
 const W = 200, H = 120, S = 4; // art pixels, and screen pixels per art pixel
@@ -22,6 +23,9 @@ const agents = new Map(); // id -> agent from the bridge, plus drawing position
 let tracker = { roles: [] };
 let selected = "chief-of-staff";
 let rolesFilter = "progress";
+let system = { editing: false, backup: null, cos: null };
+const REASON_STATUSES = new Set(["skipped", "rejected"]);
+const HAL_TASK = { shortlisted: "Hal will get a tailored CV and cover letter drafted.", approved: "Hal will make the PDFs.", interview: "Hal will get interview prep notes written." };
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -59,7 +63,8 @@ function connect() {
   ws.onopen = () => { $("live").textContent = "Live"; $("live").classList.remove("off"); };
   ws.onmessage = (e) => {
     const m = JSON.parse(e.data);
-    if (m.type === "snapshot") { tracker = m.tracker; agents.clear(); update(m.agents); renderRoles(); }
+    if (m.type === "snapshot") { tracker = m.tracker; system = m.system || system; agents.clear(); update(m.agents); renderRoles(); renderSystem(); }
+    if (m.type === "system") { const could = system.editing; system = m.system; renderSystem(); if (could !== system.editing) renderRoles(); }
     if (m.type === "agents") update(m.agents);
     if (m.type === "tracker") { tracker = m.tracker; renderRoles(); renderTodo(); }
   };
@@ -204,17 +209,46 @@ function select(id) {
 function renderCards() {
   $("cards").innerHTML = [...agents.values()].map((a) => `
     <button class="card" aria-pressed="${a.id === selected}" data-id="${esc(a.id)}">
-      <div class="who"><span class="dot" style="background:${hex(a.colour)}"></span>${esc(a.name)}</div>
+      <div class="who"><span class="dot" style="background:${hex(a.colour)}"></span>${CONTRACTS[a.id] ? `<span class="name-link" data-contract="${esc(a.id)}" title="View ${esc(a.name)}'s contract">${esc(a.name)}</span>` : esc(a.name)}${a.role ? `<span class="role">${esc(a.role)}</span>` : ""}</div>
       <span class="state" style="background:${STATE_COLOUR[a.state]}">${STATE_LABEL[a.state]}</span>
       <div class="detail" title="${esc(a.detail)}">${esc(a.detail)}</div>
     </button>`).join("");
 }
-$("cards").addEventListener("click", (e) => { const c = e.target.closest(".card"); if (c) select(c.dataset.id); });
+$("cards").addEventListener("click", (e) => {
+  const link = e.target.closest("[data-contract]");
+  if (link) return openContract(link.dataset.contract);
+  const c = e.target.closest(".card"); if (c) select(c.dataset.id);
+});
+$("log-name").addEventListener("click", () => { if (CONTRACTS[selected]) openContract(selected); });
+
+function openContract(id) {
+  const c = CONTRACTS[id];
+  if (!c) return;
+  const rows = (list) => list.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join("");
+  $("contract").innerHTML = `
+    <header><p class="c-org">The Agent Office</p><h2 id="contract-heading">${esc(c.title)}</h2></header>
+    <section><h3>1. The parties</h3><table>${rows(c.parties)}</table></section>
+    <section><h3>2. Terms</h3><table>${rows(c.terms)}</table></section>
+    <section><h3>3. Duties and responsibilities</h3><ol>${c.duties.map((d) => `<li>${esc(d)}</li>`).join("")}</ol></section>
+    <section><h3>4. Gross misconduct</h3><p>The following will result in immediate dismissal:</p><ul>${c.conduct.map((d) => `<li>${esc(d)}</li>`).join("")}</ul></section>
+    <section><h3>5. Other terms</h3><table>${rows(c.extras)}</table></section>
+    <section class="c-sign">
+      <div><span class="sig">${esc(c.signed.employer)}</span><span class="line">Signed for the Employer</span></div>
+      <div><span class="sig">${esc(c.signed.employee)}</span><span class="line">Signed by the Employee</span></div>
+      <p class="c-date">Dated ${esc(c.signed.date)}</p>
+    </section>
+    <footer>A novelty document for the Agent Office. Not a legal contract.</footer>`;
+  $("contract-dlg").showModal();
+  $("contract").focus(); // start at the top, not at the Close button
+  $("contract-dlg").scrollTop = 0;
+}
 
 function renderLog() {
   const a = agents.get(selected);
   if (!a) return;
   $("log-name").textContent = a.name;
+  $("log-name").classList.toggle("name-link", !!CONTRACTS[a.id]);
+  $("log-name").title = CONTRACTS[a.id] ? `View ${a.name}'s contract` : "";
   $("log-sub").textContent = `${STATE_LABEL[a.state]} · ${a.detail}`;
   $("log").innerHTML = a.log.length
     ? a.log.slice().reverse().map((l) => `<li><time>${clock(l.ts)}</time><span>${esc(l.text)}</span></li>`).join("")
@@ -244,6 +278,8 @@ function renderTodo() {
     items.push(`Interview ${esc(when.toLocaleString("en-GB", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }))}: ${roleName(r)}${r.interview_with ? ` with ${esc(r.interview_with)}` : ""}`);
   }
   for (const a of (tracker.actions || []).filter((a) => !a.done)) items.push(`To do: ${esc(a.text)}`);
+  const queued = (tracker.inbox || []).filter((i) => !i.done).length;
+  if (queued) items.push(`${queued} change${queued > 1 ? "s" : ""} queued for Hal`);
   $("todo").classList.toggle("clear", !items.length);
   $("todo-list").innerHTML = items.length ? items.map((i) => `<li>${i}</li>`).join("") : "<li>Nothing waiting on you.</li>";
 }
@@ -262,8 +298,11 @@ function renderRoles() {
   $("roles").innerHTML = shown.length ? shown.map((r) => {
     const url = safeUrl(r.url), fit = Math.max(0, Math.min(5, Number(r.fit) || 0));
     const updated = r.updated ? new Date(r.updated + "T12:00:00").toLocaleDateString("en-GB", { day: "2-digit", month: "short" }) : "";
-    return `<tr>
-      <td><span class="status" style="background:${STATUS_COLOUR[r.status] || "#9aa0b5"}">${esc(r.status)}</span></td>
+    const statusCell = system.editing
+      ? `<select class="status-select" data-id="${esc(r.id)}" aria-label="Status of ${esc(r.title)}" style="background-color:${STATUS_COLOUR[r.status] || "#9aa0b5"}">${STATUS_ORDER.map((st) => `<option value="${st}"${st === r.status ? " selected" : ""}>${st}</option>`).join("")}</select>`
+      : `<span class="status" style="background:${STATUS_COLOUR[r.status] || "#9aa0b5"}">${esc(r.status)}</span>`;
+    return `<tr class="${system.editing ? "editable" : ""}" data-id="${esc(r.id)}">
+      <td>${statusCell}</td>
       <td>${esc(r.priority ?? "")}</td>
       <td>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title)}${r.list ? `<div class="list-tag">${esc(r.list)}</div>` : ""}</td>
       <td title="${esc(r.company)}">${esc(r.company)}</td><td title="${esc(r.pay)}">${esc(r.pay || "Not stated")}</td><td title="${esc(r.location)}">${esc(r.location)}</td>
@@ -274,10 +313,123 @@ function renderRoles() {
 }
 
 document.querySelector(".filters").addEventListener("click", (e) => {
-  const b = e.target.closest("button"); if (!b) return;
-  document.querySelectorAll(".filters button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+  const b = e.target.closest("button[data-filter]"); if (!b) return;
+  document.querySelectorAll(".filters button[data-filter]").forEach((x) => x.setAttribute("aria-pressed", x === b));
   rolesFilter = b.dataset.filter;
   renderRoles();
+});
+
+// ---------- Editing ----------
+async function post(path, body) {
+  const res = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const out = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(out.error || "Couldn't save");
+  return out;
+}
+const roleById = (id) => (tracker.roles || []).find((r) => r.id === id);
+
+$("roles").addEventListener("change", async (e) => {
+  const sel = e.target.closest("select.status-select");
+  if (!sel) return;
+  const role = roleById(sel.dataset.id);
+  if (REASON_STATUSES.has(sel.value)) { const status = sel.value; sel.value = role.status; return openEdit(role.id, status); }
+  sel.disabled = true;
+  try { await post(`/api/roles/${role.id}`, { changes: { status: sel.value } }); }
+  catch (err) { alert(err.message); sel.value = role.status; }
+  finally { sel.disabled = false; }
+});
+$("roles").addEventListener("click", (e) => {
+  if (!system.editing || e.target.closest("a, select")) return;
+  const row = e.target.closest("tr[data-id]");
+  if (row) openEdit(row.dataset.id);
+});
+
+const editForm = $("edit-form");
+let editing = null;
+function openEdit(id, status) {
+  const role = roleById(id);
+  if (!role) return;
+  editing = role;
+  $("edit-title").textContent = role.title;
+  $("edit-sub").textContent = role.company;
+  $("edit-status").innerHTML = STATUS_ORDER.map((st) => `<option value="${st}">${st}</option>`).join("");
+  for (const name of ["status", "priority", "next", "reason", "interview_at", "interview_with", "notes"]) {
+    editForm.elements[name].value = role[name] ?? "";
+  }
+  if (status) editForm.elements.status.value = status;
+  $("edit-err").textContent = "";
+  editHints();
+  $("edit-dlg").showModal();
+  if (status && REASON_STATUSES.has(status)) editForm.elements.reason.focus();
+}
+function editHints() {
+  const st = editForm.elements.status.value;
+  $("reason-wrap").hidden = !REASON_STATUSES.has(st) && !editing?.reason;
+  const changed = editing && st !== editing.status;
+  const cos = system.cos;
+  $("edit-hint").textContent = changed && HAL_TASK[st] ? HAL_TASK[st] + (cos?.available && cos.auto ? " He starts by himself a couple of minutes after your last change." : " Run /cos in Claude Code to start him.") : "";
+}
+editForm.elements.status.addEventListener("change", editHints);
+editForm.addEventListener("submit", async (e) => {
+  if (e.submitter?.value !== "save") return;
+  e.preventDefault();
+  const changes = {};
+  for (const name of ["status", "priority", "next", "reason", "interview_at", "interview_with", "notes"]) {
+    const value = editForm.elements[name].value.trim();
+    if (value !== String(editing[name] ?? "")) changes[name] = value;
+  }
+  if (!Object.keys(changes).length) return $("edit-dlg").close();
+  try { await post(`/api/roles/${editing.id}`, { changes }); $("edit-dlg").close(); }
+  catch (err) { $("edit-err").textContent = err.message; }
+});
+
+const addForm = $("add-form");
+$("add-role").addEventListener("click", () => {
+  if (!system.editing) return alert("Editing needs the office running on your PC with Python 3 installed.");
+  addForm.reset();
+  $("add-err").textContent = "";
+  $("add-dlg").showModal();
+});
+addForm.addEventListener("submit", async (e) => {
+  if (e.submitter?.value !== "save") return;
+  e.preventDefault();
+  const body = Object.fromEntries(new FormData(addForm));
+  try { await post("/api/roles", body); $("add-dlg").close(); rolesFilter = "review"; document.querySelectorAll(".filters button[data-filter]").forEach((x) => x.setAttribute("aria-pressed", x.dataset.filter === "review")); renderRoles(); }
+  catch (err) { $("add-err").textContent = err.message; }
+});
+
+// ---------- Hal and backup status ----------
+function renderSystem() {
+  const parts = [];
+  const b = system.backup;
+  if (b && b.state !== "idle") {
+    const when = b.at ? ` ${clock(b.at)}` : "";
+    parts.push(b.state === "error" ? `<span class="err">Backup: ${esc(b.message)}</span>` : `<span>Backup: ${esc(b.message)}${b.state === "saved" ? when : ""}</span>`);
+  }
+  const c = system.cos;
+  if (!system.editing) parts.push("<span>Viewing only: editing needs Python 3 on this PC.</span>");
+  else if (!c?.available) parts.push("<span><b>Hal</b>: Claude Code isn't installed here, so run /cos yourself.</span>");
+  else {
+    let state;
+    if (c.running) state = `working on ${c.inbox} change${c.inbox === 1 ? "" : "s"}…`;
+    else if (c.startsAt) { const s = Math.max(0, Math.round((c.startsAt - Date.now()) / 1000)); state = `starts in ${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")} (${c.inbox} change${c.inbox === 1 ? "" : "s"})`; }
+    else if (c.inbox) state = `${c.inbox} change${c.inbox === 1 ? "" : "s"} waiting`;
+    else state = c.last ? `${esc(c.last.message)} ${clock(c.last.at)}` : "nothing to do";
+    const err = c.last && !c.last.ok && !c.running && !c.startsAt;
+    parts.push(`<span class="${err ? "err" : ""}"><b>Hal</b>: ${state}</span>`);
+    parts.push(`<span>${c.runsToday} of ${c.maxPerDay} automatic runs today</span>`);
+    if (c.inbox && !c.running) parts.push(`<button type="button" data-cos="run">Run now</button>`);
+    parts.push(`<button type="button" data-cos="auto" aria-pressed="${c.auto}">Auto start: ${c.auto ? "on" : "off"}</button>`);
+  }
+  $("sysbar").innerHTML = parts.join("");
+  clearTimeout(renderSystem.t);
+  if (c?.startsAt) renderSystem.t = setTimeout(renderSystem, 1000);
+}
+$("sysbar").addEventListener("click", async (e) => {
+  const b = e.target.closest("button[data-cos]");
+  if (!b) return;
+  try { await post("/api/cos", b.dataset.cos === "run" ? { run: true } : { auto: !system.cos.auto }); }
+  catch (err) { alert(err.message); }
 });
 
 // ---------- Tabs ----------

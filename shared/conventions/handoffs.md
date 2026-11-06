@@ -9,7 +9,7 @@ How the job-search agents pass work to each other. The aim is to use as few toke
 
 ## Asking a subagent to do something
 
-Chief of Staff's brief to a subagent is a few lines:
+Hal's (the Chief of Staff's) brief to a subagent is a few lines:
 
 ```
 Task: <one sentence>
