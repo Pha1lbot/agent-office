@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 40 · shortlisted: 6 · drafted: 1 · applied: 3 · skipped: 2
+found: 37 · shortlisted: 6 · drafted: 1 · applied: 3 · skipped: 5
 
 ## Next actions
 
@@ -46,13 +46,10 @@ found: 40 · shortlisted: 6 · drafted: 1 · applied: 3 · skipped: 2
 | found |  | [Producer (Games), UK only](https://hitmarker.net/jobs/futurlab-producer-games-uk-only-remote-hybrid-brighton-5408504) | FuturLab | Not listed | Remote UK or hybrid Brighton |  |  | 2026-11-05 |
 | found |  | [Ticketing Manager](https://www.linkedin.com/jobs/view/4481596263/) | Relevent Football Partners | Not listed | London |  |  | 2026-11-05 |
 | found |  | [Senior Premium Experience Manager, fixed term](https://www.linkedin.com/jobs/view/4481587358/) | Formula E | Not listed | London, hybrid |  |  | 2026-11-05 |
-| found |  | Director of Event Operations | Chess.com |  | Fully remote, US or EU applicants |  |  | 2026-11-05 |
 | found |  | Director of Live Operations | Bauer Media |  | Remote, UK or Germany |  |  | 2026-11-05 |
 | found |  | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-06 |
-| found |  | [Live Broadcast Producer (Contractor Role)](https://hitmarker.net/jobs/esl-live-broadcast-producer-contractor-role-5058011) | ESL FACEIT Group | not stated | UK-based, London listed | 2 |  | 2026-11-06 |
 | found |  | [Head of Video - Events Production](https://uk.linkedin.com/jobs/view/head-of-video-events-production-at-blank-space-recruitment-4484322630) | Blank Space Recruitment (events production agency client) | up to GBP 75,000 DOE | London | 2 |  | 2026-11-06 |
 | found |  | [Chief Operating Officer - Live event production](https://uk.linkedin.com/jobs/view/chief-operating-officer-live-event-production-at-disrupt-search-4480513001) | Disrupt Search (agency client) | not stated | London Area | 3 |  | 2026-11-06 |
-| found |  | [Director, Production (Licensed IP and Partner Titles - Fortnite Ecosystem)](https://uk.linkedin.com/jobs/view/director-production-licensed-ip-and-partner-titles-fortnite-ecosystem-at-epic-games-4484131731) | Epic Games | not stated | Greater London | 3 |  | 2026-11-06 |
 | found |  | [Production Manager - Brand Activations and Live Events](https://uk.linkedin.com/jobs/view/production-manager-live-events-at-blank-space-recruitment-4484319909) | Blank Space Recruitment (events agency client) | from GBP 50,000 plus benefits | London | 2 |  | 2026-11-06 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | shortlisted |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-05 |
@@ -66,3 +63,6 @@ found: 40 · shortlisted: 6 · drafted: 1 · applied: 3 · skipped: 2
 | applied |  | [Senior Manager, Admin & Operations (Football Schools)](https://www.linkedin.com/jobs/view/4475254089/) | Chelsea FC | Not shown | Cobham and Stamford Bridge, on-site |  | Apply today: closes 6 Nov | 2026-11-06 |
 | skipped |  | Global E-Sports & Gaming Strategy Lead | Placements24 · client unnamed | £90k–£130k | Remote or hybrid, London |  | Ask who the employer is; find the original advert | 2026-11-05 |
 | skipped |  | Esports Coordinator / Team Manager | Wolves Esports | Unpaid |  |  | Declined: unpaid. Door left open if budget changes | 2026-11-04 |
+| skipped |  | Director of Event Operations | Chess.com |  | Fully remote, US or EU applicants |  |  | 2026-11-06 |
+| skipped |  | [Live Broadcast Producer (Contractor Role)](https://hitmarker.net/jobs/esl-live-broadcast-producer-contractor-role-5058011) | ESL FACEIT Group | not stated | UK-based, London listed | 2 |  | 2026-11-06 |
+| skipped |  | [Director, Production (Licensed IP and Partner Titles - Fortnite Ecosystem)](https://uk.linkedin.com/jobs/view/director-production-licensed-ip-and-partner-titles-fortnite-ecosystem-at-epic-games-4484131731) | Epic Games | not stated | Greater London | 3 |  | 2026-11-06 |

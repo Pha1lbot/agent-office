@@ -64,7 +64,7 @@
       "source": "Hitmarker",
       "fit": 2,
       "priority": null,
-      "status": "found",
+      "status": "skipped",
       "notes": "Esports broadcast but hands-on show-calling contract; fixed term Oct 2026 to Feb 2027.",
       "found": "2026-11-06",
       "updated": "2026-11-06",
@@ -72,6 +72,11 @@
         {
           "date": "2026-11-06",
           "status": "found"
+        },
+        {
+          "date": "2026-11-06",
+          "status": "skipped",
+          "by": "tim"
         }
       ]
     },
@@ -128,7 +133,7 @@
       "source": "LinkedIn Jobs",
       "fit": 3,
       "priority": null,
-      "status": "found",
+      "status": "skipped",
       "notes": "Senior gaming production; budgets and vendors match, game shipping does not. Office pattern not stated.",
       "found": "2026-11-06",
       "updated": "2026-11-06",
@@ -136,6 +141,11 @@
         {
           "date": "2026-11-06",
           "status": "found"
+        },
+        {
+          "date": "2026-11-06",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "list": "New matches"
@@ -1330,13 +1340,18 @@
       "notes": "Why it fits: Right seniority Concern: Unclear if still live; UK eligibility to check",
       "fit": null,
       "priority": null,
-      "status": "found",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-06",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead"
