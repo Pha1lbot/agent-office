@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** Merged 2026-11-06 ([PR #1](https://github.com/Pha1lbot/agent-office/pull/1) squash-merged, [PR #2](https://github.com/Pha1lbot/agent-office/pull/2) merged)
+**Status:** In progress (follow-up work after [PR #1](https://github.com/Pha1lbot/agent-office/pull/1) and [PR #2](https://github.com/Pha1lbot/agent-office/pull/2) were merged on 2026-11-06)
 
 ## Purpose
 
@@ -15,6 +15,32 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Suggest preference updates from what Tim does with roles
+
+**What changed**
+- `shared/tools/tracker.py`: new `reason` field (why Tim skipped a role or was rejected). New `insights [--since DATE]` command that summarises Tim's decisions: picked vs skipped counts, outcomes, pay (lowest yearly figure; day rates and "competitive" are left out), work style (remote, hybrid, office), title words, sources, average fit score and the reasons Tim gave.
+- `.claude/skills/cos/SKILL.md`: Chief of Staff asks once for an optional reason when Tim passes on roles. New "Preference reviews" section: runs when Tim asks, or is offered in one line once 10 or more decisions have been made since the last review. It makes up to 5 suggestions, each with evidence and at least 3 decisions behind it, edits `preferences.md` only for the ones Tim accepts, and logs the result.
+- `.claude/agents/admin.md`: how to record a reason.
+- `jobs/preference-reviews.md`: new log of suggestions and Tim's answers. The top entry's date is where the next review starts.
+- `jobs/README.md`, `README.md`, `shared/job-search/preferences.md`: explain the reviews and the `/cos review my preferences` command.
+- This file: status set back to "In progress", because the branch was restarted from `main` for this follow-up.
+
+**Why**
+Tim asked whether his preferences could update automatically from the details on his dashboard. He chose to learn from what he does with roles (picks, skips, outcomes), with changes suggested for him to approve rather than made automatically.
+
+**Decisions**
+- The patterns are worked out by `tracker.py insights`, not by the model reading every role, so a review costs a few hundred tokens however big the tracker gets.
+- Suggest-and-approve, so the search can't drift from what Tim wants without him knowing. At least 3 decisions are needed behind each suggestion, so a single odd choice isn't over-read.
+- Reviews are offered, never run unasked, to save tokens.
+- Reasons are optional and asked once, so skipping roles stays quick.
+- The branch was restarted from `main` after #1 and #2 merged, as a fresh change (fast-forward, no force push).
+
+**How to check it**
+Tested in this session on sample data in the scratchpad: 5 roles (2 picked, one of them reaching interview, and 3 skipped with reasons). `insights` reported the right counts, pay medians, work styles, title words, sources, fit averages and reasons, and `--since` a future date reports nothing. Pay parsing was checked on ranges, "40k", day and hour rates, "Up to £55,000" and "competitive". On the PC: skip a few roles with reasons, then run `/cos review my preferences`.
+
+**Open items**
+Pay parsing is approximate (it uses the lowest figure in the text). Unusual formats are left out rather than guessed. The office view's dashboard could show these insights later.
 
 ### 2026-11-06: Fix merge conflict with main
 

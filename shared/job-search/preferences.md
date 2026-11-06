@@ -2,6 +2,8 @@
 
 **Tim: please fill this in.** Lead Recruiter and Chief of Staff read it to choose and rank roles. Short bullet points are fine.
 
+Chief of Staff will suggest changes based on which roles you pick and skip, and only saves the ones you agree to. Past suggestions are logged in `jobs/preference-reviews.md`.
+
 ## Roles I want
 - Job titles:
 - Sectors or industries:
