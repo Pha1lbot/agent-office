@@ -1,7 +1,7 @@
 # Branch: import-dashboard
 
 **Started:** 2026-11-06
-**Status:** In progress
+**Status:** In review ([PR #5](https://github.com/Pha1lbot/agent-office/pull/5))
 
 ## Purpose
 
@@ -10,6 +10,23 @@ Tim had already built a job-tracking dashboard as a claude.ai artifact ("Job Hun
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Open pull request
+
+**What changed**
+- This file: status set to "In review", with a link to [Pha1lbot/agent-office#5](https://github.com/Pha1lbot/agent-office/pull/5).
+
+**Why**
+The import is ready for Tim to merge into `main`.
+
+**Decisions**
+Tim merges it himself, with a merge commit.
+
+**How to check it**
+Open the pull request link.
+
+**Open items**
+After merging: add the CHANGELOG line; Tim pulls on his PC.
 
 ### 2026-11-06: Show next steps, actions and interviews in the office
 
