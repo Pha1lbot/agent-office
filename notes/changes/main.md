@@ -11,6 +11,25 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Record merges of #5 and #6, and add /hal
+
+**What changed**
+- `CHANGELOG.md`: lines for [Pha1lbot/agent-office#5](https://github.com/Pha1lbot/agent-office/pull/5) (dashboard import) and [Pha1lbot/agent-office#6](https://github.com/Pha1lbot/agent-office/pull/6) (office editing, Hal).
+- `notes/changes/import-dashboard.md`, `notes/changes/office-editing.md`: status set to merged.
+- `.claude/skills/hal/SKILL.md`: new `/hal` command, another name for `/cos`. It points to the cos skill rather than copying it, so there is only one set of instructions to keep up to date.
+
+**Why**
+Tim merged both PRs and typed `/hal start of day`, which didn't exist.
+
+**Decisions**
+The new command points to `/cos` rather than replacing it, so the office's automatic runs (which send `/cos office changes`) keep working.
+
+**How to check it**
+In Claude Code in the repo, `/hal start the day` behaves like `/cos start the day`.
+
+**Open items**
+Tim to pull on his PC and reopen the office to get editing and the contract.
+
 ### 2026-11-06: Repair notes file and remove duplicate CV after a merge
 
 **What changed**
