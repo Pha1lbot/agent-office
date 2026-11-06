@@ -11,12 +11,15 @@ Tim's agent office: Claude Code agents and their setup
 
 ## The job-search team
 
-| Agent | Does |
+| Who | Does |
 |---|---|
-| Hal (Chief of Staff) | Runs the team and sets the day's priorities. The one you talk to. |
-| Lead Recruiter | Finds roles that fit your skills, experience and pay. |
-| Senior Admin | Writes a tailored CV and cover letter for each chosen role. |
-| Admin | Keeps the role tracker (`jobs/tracker.md`) up to date. |
+| **Hal**, Chief of Staff | Runs the team and sets the day's priorities. The one you talk to (`/hal` or `/cos`). |
+| **Rita**, Lead Recruiter | Finds and scores roles that fit your skills, experience and pay. |
+| **Wren**, Writer | Writes a tailored CV and cover letter for each role you shortlist. |
+| **Cole**, Interview Coach | Writes interview prep and key talking points when you get an interview. |
+| **Ada**, Admin | The office's automation (no AI, no tokens): tracker updates, PDFs, follow-up dates, backups. |
+
+The team's plan, including how it keeps token use down, is in `notes/plans/agent-office-v2.md`.
 
 ### One-off setup on your PC
 

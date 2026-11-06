@@ -1,13 +1,18 @@
-# Admin
+# Ada (Admin)
 
-**Purpose:** keeps the role tracker up to date. The tracker is the data behind Tim's dashboard (a tab in the office view, coming next).
+Named Ada (after Ada Lovelace) on 2026-11-06. **Since then Ada is automation, not an AI agent: she costs no tokens.**
 
-**Instructions:** `.claude/agents/admin.md` (a Claude Code subagent, model: Haiku, the cheapest). Called by Chief of Staff.
+**Purpose:** all the rule-based office work that used to need an Admin subagent. Each Admin hand-off cost about 15k tokens for work a script does for free.
 
-**Inputs**
-- Briefs from Chief of Staff: new roles to add, statuses, priorities and notes to change.
-- `jobs/roles/<role-id>/listing.md` for new roles' details.
+**What she does**
+- **Tracker updates** through `shared/tools/tracker.py`, run by Hal or by the office when Tim edits roles.
+- **PDFs** made by the office server (`shared/tools/make_docs.py --pdf`) as soon as Tim sets a role with Word files to *approved*.
+- **Follow-up dates:** when Tim sets a role to *applied*, the next step becomes "Follow up if no reply by <7 days later>".
+- **The inbox** of Tim's changes for Hal, the duplicate checks, and the **GitHub backup** of office edits.
 
-**Outputs**
-- `jobs/tracker.json` and `jobs/tracker.md`, changed only through `shared/tools/tracker.py`.
-- A one-line totals summary back to Chief of Staff.
+**In the office:** Ada's desk has a little server box. Her character "types" whenever these scripts run.
+
+**Inputs:** Tim's office edits; Hal's tracker commands.
+**Outputs:** `jobs/tracker.json` and `tracker.md`, PDFs in `jobs/roles/<id>/`, "Office:" commits.
+
+**Instructions:** none (code in `shared/tools/` and `shared/office-view/src/`). The old subagent prompt `.claude/agents/admin.md` was removed.

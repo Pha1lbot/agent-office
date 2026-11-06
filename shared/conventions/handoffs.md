@@ -1,5 +1,7 @@
 # Handover rules
 
+The team: **Hal** (Chief of Staff), **Rita** (Lead Recruiter), **Wren** (Writer), **Cole** (Interview Coach) and **Ada** (Admin, automation only).
+
 How the job-search agents pass work to each other. The aim is to use as few tokens as possible: every word passed between agents is read again by the next one.
 
 ## Pass paths, not contents
@@ -41,7 +43,11 @@ When listing roles, use:
 
 ## Team rules
 
-- Only Admin changes the tracker, and only through `tracker.py`.
+- Only Hal (and Tim, from the office) change the tracker, always through `tracker.py`. Subagents never do.
 - No agent applies for jobs, sends emails or fills in forms. Tim does that.
-- Senior Admin never invents experience, dates, qualifications or skills. It only uses what is in Tim's default CV.
+- Wren and Cole never invent experience, dates, numbers, qualifications or skills. They only use what is in the CV text bank (`shared/job-search/cv/cv-bank.md`).
 - Nothing is spent on CVs until Tim has said which roles to go for.
+
+## Why hand-offs are expensive
+
+Starting a subagent costs about 15k tokens before it does any work (measured on 2026-11-06). So Hal makes one hand-off per specialist per run, does tracker work himself, and leaves rule-based work to scripts.

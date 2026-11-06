@@ -18,6 +18,37 @@ It also makes a CV text bank so agents stop re-reading the PDF, adds a token met
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Name the team and make it leaner
+
+**What changed**
+- `.claude/skills/cos/SKILL.md` (Hal):
+  - Introduces the team by name.
+  - **Hal now changes the tracker himself** with `tracker.py`; every "brief Admin" step is a direct command.
+  - One hand-off per specialist per run.
+  - Subagents are pointed at the CV text bank, not the PDF.
+  - Interview prep goes to Cole.
+  - The "Make the PDFs" inbox task becomes "Draft first, then PDFs" (only when an approved role has no documents, because Ada makes PDFs herself).
+- `.claude/agents/writer.md` (moved from `senior-admin.md`): now **Wren**. Works from `cv-bank.md` and never reads the PDF; interview prep moved out; PDFs are Ada's job and tracker changes are Hal's.
+- `.claude/agents/interview-coach.md`: new, **Cole**. Writes `talking-points.md` (5–7 key points; **never overwrites Tim's edits**, only adds "Suggestions from Cole") and `interview-prep.md` (company, likely questions with answer plans, gaps, questions to ask, practical details; keeps any "Tim's notes" section). At most two web lookups per role.
+- `.claude/agents/lead-recruiter.md`: now **Rita**. Uses the CV bank's matching summary, reads a full advert only after it passes the deal-breakers, and doesn't touch the tracker.
+- `.claude/agents/admin.md`: removed. Ada is now automation.
+- `agents/writer/` (moved from `agents/senior-admin/`), `agents/interview-coach/` (new), `agents/admin/`, `agents/lead-recruiter/`, `agents/chief-of-staff/`: READMEs updated for the names and new jobs.
+- `shared/conventions/handoffs.md`: team names; only Hal (and Tim from the office) change the tracker; why hand-offs are expensive.
+- `README.md`: team table with names and the new jobs.
+
+**Why**
+The approved plan, and Tim's request for every member of staff to have a name.
+
+**Decisions**
+- Subagent ids stay descriptive (`lead-recruiter`, `writer`, `interview-coach`). Names are what Tim sees, and each agent starts its reply with its name.
+- The Admin subagent is removed, not just unused, so Hal can't fall back to an expensive hand-off.
+
+**How to check it**
+In Claude Code, `/agents` lists lead-recruiter, writer and interview-coach. Hal's instructions contain no "brief admin" steps.
+
+**Open items**
+CV text bank, Ada's automation, token meter and the five-desk office follow in this branch.
+
 ### 2026-11-06: Save the approved v2 plan
 
 **What changed**
