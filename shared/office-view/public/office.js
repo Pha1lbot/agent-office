@@ -1,7 +1,9 @@
-// Agent Office page: draws the office with PixiJS and keeps it live from the bridge.
-// Layout and look follow mockup/index.html.
+// Agent Office: the office scene (PixiJS), the team's cards, the activity log and contracts.
+// Layout and look follow mockup/index.html. Live data comes from store.js.
 import { Application, Container, Graphics, Text } from "/vendor/pixi.mjs";
 import { CONTRACTS } from "/contracts.js";
+import { store, on } from "./store.js";
+import { $, esc, hex, clock, short, PICKED } from "./util.js";
 
 // ---------- Settings ----------
 const W = 200, H = 120, S = 4; // art pixels, and screen pixels per art pixel
@@ -14,28 +16,12 @@ const DESKS = {
 const PLACES = { shelf: { x: 176, y: 48 }, web: { x: 182, y: 82 } };
 const VISITOR_SPOTS = [{ x: 132, y: 92 }, { x: 146, y: 70 }, { x: 108, y: 76 }, { x: 52, y: 76 }];
 const HAIR = { "chief-of-staff": 0x3b2a1a, "lead-recruiter": 0xa0522d, writer: 0x1c1c1c, "interview-coach": 0x6b4a2b, admin: 0xe0b04a };
-const short = (n) => (n < 1000 ? String(n) : n < 1e6 ? `${Math.round(n / 1000)}k` : `${(n / 1e6).toFixed(1)}M`);
 const WALK_SPEED = 45; // art pixels per second
 const STATE_COLOUR = { typing: "#4fbf7f", walking: "#3fa7d6", waiting: "#f2b134", idle: "#9aa0b5", asleep: "#6b7090" };
 const STATE_LABEL = { typing: "Working", walking: "Looking things up", waiting: "Waiting for you", idle: "Idle", asleep: "Asleep" };
-const STATUS_ORDER = ["found", "shortlisted", "drafted", "approved", "applied", "interview", "offer", "rejected", "skipped"];
-const STATUS_COLOUR = { found: "#9aa0b5", shortlisted: "#7aa2ff", drafted: "#f2b134", approved: "#4fbf7f", applied: "#3fa7d6", interview: "#c38bff", offer: "#2ee6a6", rejected: "#e06c75", skipped: "#6b7090" };
-const OPEN = new Set(["found", "shortlisted", "drafted", "approved", "applied", "interview"]);
-const PICKED = new Set(["shortlisted", "drafted", "approved", "applied", "interview", "offer"]);
 
-// ---------- Live data ----------
-const agents = new Map(); // id -> agent from the bridge, plus drawing position
-let tracker = { roles: [] };
+const agents = store.agents;
 let selected = "chief-of-staff";
-let rolesFilter = "progress";
-let system = { editing: false, backup: null, cos: null };
-const REASON_STATUSES = new Set(["skipped", "rejected"]);
-const HAL_TASK = { shortlisted: "Hal will get a tailored CV and cover letter drafted.", approved: "Hal will make the PDFs.", interview: "Hal will get interview prep notes written." };
-
-const $ = (id) => document.getElementById(id);
-const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const hex = (n) => "#" + n.toString(16).padStart(6, "0");
-const clock = (ts) => new Date(ts).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
 
 function seatOf(a) {
   const d = DESKS[a.id];
@@ -46,7 +32,7 @@ function targetOf(a) {
   return seatOf(a) || VISITOR_SPOTS[a.visitor % VISITOR_SPOTS.length];
 }
 function update(list) {
-  for (const incoming of list) {
+  for (const incoming of list || []) {
     const known = agents.get(incoming.id);
     if (known) Object.assign(known, incoming);
     else {
@@ -59,25 +45,6 @@ function update(list) {
   }
   renderCards();
   renderLog();
-  renderTodo();
-}
-
-// ---------- Connection ----------
-function connect() {
-  const ws = new WebSocket(`ws://${location.host}/live`);
-  ws.onopen = () => { $("live").textContent = "Live"; $("live").classList.remove("off"); };
-  ws.onmessage = (e) => {
-    const m = JSON.parse(e.data);
-    if (m.type === "snapshot") { tracker = m.tracker; system = m.system || system; agents.clear(); update(m.agents); renderRoles(); renderSystem(); }
-    if (m.type === "system") { const could = system.editing; system = m.system; renderSystem(); if (could !== system.editing) renderRoles(); }
-    if (m.type === "agents") update(m.agents);
-    if (m.type === "tracker") { tracker = m.tracker; renderRoles(); renderTodo(); }
-  };
-  ws.onclose = () => {
-    $("live").textContent = "Reconnecting…";
-    $("live").classList.add("off");
-    setTimeout(connect, 2000);
-  };
 }
 
 // ---------- Scene ----------
@@ -269,195 +236,15 @@ function renderLog() {
     (a.id === "admin" ? `<span>Automatic: uses no tokens</span>` : `<span><b>${short(a.tokens || 0)}</b> tokens today${a.cacheRead ? ` (+${short(a.cacheRead)} re-read)` : ""}</span>`);
 }
 
-// ---------- Roles tab ----------
-const roleName = (r) => `${esc(r.company)} (${esc(r.title)})`;
-const safeUrl = (u) => (/^https?:\/\//i.test(u || "") ? u : null);
-
-function renderTodo() {
-  const roles = tracker.roles || [];
-  const items = [];
-  for (const a of agents.values()) {
-    if (a.state === "waiting") items.push(a.detail === "Your turn" ? `${esc(a.name)} is waiting for your reply` : `${esc(a.name)}: ${esc(a.detail)}`);
-  }
-  const by = (s) => roles.filter((r) => r.status === s);
-  const drafted = by("drafted"), approved = by("approved"), found = by("found");
-  if (drafted.length) items.push(`${drafted.length} CV${drafted.length > 1 ? "s" : ""} to check: ${drafted.map(roleName).join(", ")}`);
-  if (approved.length) items.push(`Ready to apply: ${approved.map(roleName).join(", ")}`);
-  if (found.length) items.push(`${found.length} role${found.length > 1 ? "s" : ""} to review (see To review)`);
-  const soon = Date.now() + 14 * 864e5;
-  for (const r of roles.filter((r) => r.interview_at && OPEN.has(r.status)).sort((a, b) => a.interview_at.localeCompare(b.interview_at))) {
-    const when = new Date(r.interview_at);
-    if (when.getTime() < Date.now() - 864e5 || when.getTime() > soon) continue;
-    items.push(`Interview ${esc(when.toLocaleString("en-GB", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }))}: ${roleName(r)}${r.interview_with ? ` with ${esc(r.interview_with)}` : ""}`);
-  }
-  for (const a of (tracker.actions || []).filter((a) => !a.done)) items.push(`To do: ${esc(a.text)}`);
-  const queued = (tracker.inbox || []).filter((i) => !i.done).length;
-  if (queued) items.push(`${queued} change${queued > 1 ? "s" : ""} queued for Hal`);
-  $("todo").classList.toggle("clear", !items.length);
-  $("todo-list").innerHTML = items.length ? items.map((i) => `<li>${i}</li>`).join("") : "<li>Nothing waiting on you.</li>";
-}
-
-function renderRoles() {
-  const roles = tracker.roles || [];
+// ---------- Live updates ----------
+function renderBoard() {
+  const roles = store.tracker.roles || [];
   const counts = {};
   for (const r of roles) counts[r.status] = (counts[r.status] || 0) + 1;
   const picked = roles.filter((r) => PICKED.has(r.status)).length;
   board.text = roles.length ? `${counts.found || 0} found · ${picked} picked · ${counts.drafted || 0} drafted` : "No roles yet";
-  $("summary").innerHTML = STATUS_ORDER.filter((s) => counts[s] && s !== "skipped")
-    .map((s) => `<div class="pill" style="border-color:${STATUS_COLOUR[s]}"><b>${counts[s]}</b><span>${s}</span></div>`).join("");
-  const shown = roles
-    .filter((r) => rolesFilter === "all" || (rolesFilter === "review" ? r.status === "found" : OPEN.has(r.status) && r.status !== "found"))
-    .sort((a, b) => STATUS_ORDER.indexOf(a.status) - STATUS_ORDER.indexOf(b.status) || (a.priority || 99) - (b.priority || 99) || String(b.updated).localeCompare(String(a.updated)));
-  $("roles").innerHTML = shown.length ? shown.map((r) => {
-    const url = safeUrl(r.url), fit = Math.max(0, Math.min(5, Number(r.fit) || 0));
-    const updated = r.updated ? new Date(r.updated + "T12:00:00").toLocaleDateString("en-GB", { day: "2-digit", month: "short" }) : "";
-    const statusCell = system.editing
-      ? `<select class="status-select" data-id="${esc(r.id)}" aria-label="Status of ${esc(r.title)}" style="background-color:${STATUS_COLOUR[r.status] || "#9aa0b5"}">${STATUS_ORDER.map((st) => `<option value="${st}"${st === r.status ? " selected" : ""}>${st}</option>`).join("")}</select>`
-      : `<span class="status" style="background:${STATUS_COLOUR[r.status] || "#9aa0b5"}">${esc(r.status)}</span>`;
-    return `<tr class="${system.editing ? "editable" : ""}" data-id="${esc(r.id)}">
-      <td>${statusCell}</td>
-      <td>${esc(r.priority ?? "")}</td>
-      <td>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title)}${r.list ? `<div class="list-tag">${esc(r.list)}</div>` : ""}</td>
-      <td title="${esc(r.company)}">${esc(r.company)}</td><td title="${esc(r.pay)}">${esc(r.pay || "Not stated")}</td><td title="${esc(r.location)}">${esc(r.location)}</td>
-      <td class="fit" aria-label="fit ${fit} of 5">${fit ? "●".repeat(fit) + `<i>${"●".repeat(5 - fit)}</i>` : ""}</td>
-      <td class="next" title="${esc(r.next)}">${esc(r.next)}</td>
-      <td>${esc(updated)}</td></tr>`;
-  }).join("") : `<tr><td colspan="9" class="empty">${!roles.length ? "No roles yet. Run /cos start the day in Claude Code." : rolesFilter === "review" ? "Nothing to review." : "Nothing in progress. See To review or All."}</td></tr>`;
 }
-
-document.querySelector(".filters").addEventListener("click", (e) => {
-  const b = e.target.closest("button[data-filter]"); if (!b) return;
-  document.querySelectorAll(".filters button[data-filter]").forEach((x) => x.setAttribute("aria-pressed", x === b));
-  rolesFilter = b.dataset.filter;
-  renderRoles();
-});
-
-// ---------- Editing ----------
-async function post(path, body) {
-  const res = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-  const out = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(out.error || "Couldn't save");
-  return out;
-}
-const roleById = (id) => (tracker.roles || []).find((r) => r.id === id);
-
-$("roles").addEventListener("change", async (e) => {
-  const sel = e.target.closest("select.status-select");
-  if (!sel) return;
-  const role = roleById(sel.dataset.id);
-  if (REASON_STATUSES.has(sel.value)) { const status = sel.value; sel.value = role.status; return openEdit(role.id, status); }
-  sel.disabled = true;
-  try { await post(`/api/roles/${role.id}`, { changes: { status: sel.value } }); }
-  catch (err) { alert(err.message); sel.value = role.status; }
-  finally { sel.disabled = false; }
-});
-$("roles").addEventListener("click", (e) => {
-  if (!system.editing || e.target.closest("a, select")) return;
-  const row = e.target.closest("tr[data-id]");
-  if (row) openEdit(row.dataset.id);
-});
-
-const editForm = $("edit-form");
-let editing = null;
-function openEdit(id, status) {
-  const role = roleById(id);
-  if (!role) return;
-  editing = role;
-  $("edit-title").textContent = role.title;
-  $("edit-sub").textContent = role.company;
-  $("edit-status").innerHTML = STATUS_ORDER.map((st) => `<option value="${st}">${st}</option>`).join("");
-  for (const name of ["status", "priority", "next", "reason", "interview_at", "interview_with", "notes"]) {
-    editForm.elements[name].value = role[name] ?? "";
-  }
-  if (status) editForm.elements.status.value = status;
-  $("edit-err").textContent = "";
-  editHints();
-  $("edit-dlg").showModal();
-  if (status && REASON_STATUSES.has(status)) editForm.elements.reason.focus();
-}
-function editHints() {
-  const st = editForm.elements.status.value;
-  $("reason-wrap").hidden = !REASON_STATUSES.has(st) && !editing?.reason;
-  const changed = editing && st !== editing.status;
-  const cos = system.cos;
-  $("edit-hint").textContent = changed && HAL_TASK[st] ? HAL_TASK[st] + (cos?.available && cos.auto ? " He starts by himself a couple of minutes after your last change." : " Run /cos in Claude Code to start him.") : "";
-}
-editForm.elements.status.addEventListener("change", editHints);
-editForm.addEventListener("submit", async (e) => {
-  if (e.submitter?.value !== "save") return;
-  e.preventDefault();
-  const changes = {};
-  for (const name of ["status", "priority", "next", "reason", "interview_at", "interview_with", "notes"]) {
-    const value = editForm.elements[name].value.trim();
-    if (value !== String(editing[name] ?? "")) changes[name] = value;
-  }
-  if (!Object.keys(changes).length) return $("edit-dlg").close();
-  try { await post(`/api/roles/${editing.id}`, { changes }); $("edit-dlg").close(); }
-  catch (err) { $("edit-err").textContent = err.message; }
-});
-
-const addForm = $("add-form");
-$("add-role").addEventListener("click", () => {
-  if (!system.editing) return alert("Editing needs the office running on your PC with Python 3 installed.");
-  addForm.reset();
-  $("add-err").textContent = "";
-  $("add-dlg").showModal();
-});
-addForm.addEventListener("submit", async (e) => {
-  if (e.submitter?.value !== "save") return;
-  e.preventDefault();
-  const body = Object.fromEntries(new FormData(addForm));
-  try { await post("/api/roles", body); $("add-dlg").close(); rolesFilter = "review"; document.querySelectorAll(".filters button[data-filter]").forEach((x) => x.setAttribute("aria-pressed", x.dataset.filter === "review")); renderRoles(); }
-  catch (err) { $("add-err").textContent = err.message; }
-});
-
-// ---------- Hal and backup status ----------
-function renderSystem() {
-  const parts = [];
-  const b = system.backup;
-  if (b && b.state !== "idle") {
-    const when = b.at ? ` ${clock(b.at)}` : "";
-    parts.push(b.state === "error" ? `<span class="err">Backup: ${esc(b.message)}</span>` : `<span>Backup: ${esc(b.message)}${b.state === "saved" ? when : ""}</span>`);
-  }
-  const c = system.cos;
-  if (!system.editing) parts.push("<span>Viewing only: editing needs Python 3 on this PC.</span>");
-  else if (!c?.available) parts.push("<span><b>Hal</b>: Claude Code isn't installed here, so run /cos yourself.</span>");
-  else {
-    let state;
-    if (c.running) state = `working on ${c.inbox} change${c.inbox === 1 ? "" : "s"}…`;
-    else if (c.startsAt) { const s = Math.max(0, Math.round((c.startsAt - Date.now()) / 1000)); state = `starts in ${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")} (${c.inbox} change${c.inbox === 1 ? "" : "s"})`; }
-    else if (c.inbox) state = `${c.inbox} change${c.inbox === 1 ? "" : "s"} waiting`;
-    else state = c.last ? `${esc(c.last.message)} ${clock(c.last.at)}` : "nothing to do";
-    const err = c.last && !c.last.ok && !c.running && !c.startsAt;
-    parts.push(`<span class="${err ? "err" : ""}"><b>Hal</b>: ${state}</span>`);
-    parts.push(`<span>${c.runsToday} of ${c.maxPerDay} automatic runs today</span>`);
-    const tk = system.tokens;
-    if (tk) parts.push(`<span class="${tk.budget && tk.today >= tk.budget ? "err" : ""}">Tokens today: <b>${short(tk.today)}</b>${tk.budget ? ` of ${short(tk.budget)} budget` : ""}</span>`);
-    if (c.inbox && !c.running) parts.push(`<button type="button" data-cos="run">Run now</button>`);
-    parts.push(`<button type="button" data-cos="auto" aria-pressed="${c.auto}">Auto start: ${c.auto ? "on" : "off"}</button>`);
-  }
-  $("sysbar").innerHTML = parts.join("");
-  boardTokens.text = system.tokens ? `Tokens today: ${short(system.tokens.today)}` : "";
-  clearTimeout(renderSystem.t);
-  if (c?.startsAt) renderSystem.t = setTimeout(renderSystem, 1000);
-}
-$("sysbar").addEventListener("click", async (e) => {
-  const b = e.target.closest("button[data-cos]");
-  if (!b) return;
-  try { await post("/api/cos", b.dataset.cos === "run" ? { run: true } : { auto: !system.cos.auto }); }
-  catch (err) { alert(err.message); }
-});
-
-// ---------- Tabs ----------
-function showTab(name) {
-  document.querySelectorAll(".tabs button").forEach((x) => x.setAttribute("aria-selected", x.dataset.tab === name));
-  $("tab-office").hidden = name !== "office";
-  $("tab-roles").hidden = name !== "roles";
-  history.replaceState(null, "", name === "roles" ? "#roles" : "#");
-}
-document.querySelector(".tabs").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) showTab(b.dataset.tab); });
-showTab(location.hash === "#roles" ? "roles" : "office");
-
-renderRoles();
-renderTodo();
-connect();
+on("agents", update);
+on("tracker", renderBoard);
+on("system", () => { boardTokens.text = store.system.tokens ? `Tokens today: ${short(store.system.tokens.today)}` : ""; });
+renderBoard();
