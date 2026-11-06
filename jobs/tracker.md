@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 41 · shortlisted: 6 · approved: 1 · applied: 2 · skipped: 2
+found: 41 · shortlisted: 6 · applied: 3 · skipped: 2
 
 ## Next actions
 
@@ -61,8 +61,8 @@ found: 41 · shortlisted: 6 · approved: 1 · applied: 2 · skipped: 2
 | shortlisted |  | [AI Programme Manager (12-month fixed term)](https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v) | techUK | Not shown | London, hybrid |  |  | 2026-11-05 |
 | shortlisted |  | [AI Enablement Manager](https://ats.rippling.com/livewire/jobs/c5df0138-76a1-4a31-8bed-b4afd7ad0a56) | Livewire (gaming media) | Not shown | Not shown |  |  | 2026-11-05 |
 | shortlisted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London |  |  | 2026-11-05 |
-| approved |  | [Director of Team Operations](https://uk.linkedin.com/jobs/view/director-of-team-operations-at-hexagon-world-series-4476411854) | Hexagon World Series | not stated | London, UK or Madrid, Spain | 3 | Apply today (Easy Apply on LinkedIn) | 2026-11-06 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Apply via LinkedIn; ask about UK or remote | 2026-11-05 |
+| applied |  | [Director of Team Operations](https://uk.linkedin.com/jobs/view/director-of-team-operations-at-hexagon-world-series-4476411854) | Hexagon World Series | not stated | London, UK or Madrid, Spain | 3 | Apply today (Easy Apply on LinkedIn) | 2026-11-06 |
 | applied |  | [Senior Manager, Admin & Operations (Football Schools)](https://www.linkedin.com/jobs/view/4475254089/) | Chelsea FC | Not shown | Cobham and Stamford Bridge, on-site |  | Apply today: closes 6 Nov | 2026-11-06 |
 | skipped |  | Global E-Sports & Gaming Strategy Lead | Placements24 · client unnamed | £90k–£130k | Remote or hybrid, London |  | Ask who the employer is; find the original advert | 2026-11-05 |
 | skipped |  | Esports Coordinator / Team Manager | Wolves Esports | Unpaid |  |  | Declined: unpaid. Door left open if budget changes | 2026-11-04 |

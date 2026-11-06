@@ -31,7 +31,7 @@
       "source": "LinkedIn Jobs",
       "fit": 3,
       "priority": null,
-      "status": "approved",
+      "status": "applied",
       "notes": "Senior team ops in sport; commercial and padel focus. Travel amount unclear.",
       "found": "2026-11-06",
       "updated": "2026-11-06",
@@ -43,6 +43,11 @@
         {
           "date": "2026-11-06",
           "status": "approved"
+        },
+        {
+          "date": "2026-11-06",
+          "status": "applied",
+          "by": "tim"
         }
       ],
       "next": "Apply today (Easy Apply on LinkedIn)",
@@ -1420,5 +1425,6 @@
       "done": false,
       "created": "2026-11-05"
     }
-  ]
+  ],
+  "inbox": []
 }
