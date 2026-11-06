@@ -34,12 +34,13 @@
     <div class="todo" id="todo"><h2>Waiting on you</h2><ul id="todo-list"></ul></div>
     <div class="summary" id="summary"></div>
     <div class="filters">
-      <button aria-pressed="true" data-filter="open">Open</button>
+      <button aria-pressed="true" data-filter="progress">In progress</button>
+      <button aria-pressed="false" data-filter="review">To review</button>
       <button aria-pressed="false" data-filter="all">All</button>
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Status</th><th>Priority</th><th>Role</th><th>Company</th><th>Pay</th><th>Location</th><th>Fit</th><th>Updated</th></tr></thead>
+        <thead><tr><th>Status</th><th title="Priority">P</th><th>Role</th><th>Company</th><th>Pay</th><th>Location</th><th>Fit</th><th>Next step</th><th>Updated</th></tr></thead>
         <tbody id="roles"></tbody>
       </table>
     </div>

@@ -21,7 +21,7 @@ const PICKED = new Set(["shortlisted", "drafted", "approved", "applied", "interv
 const agents = new Map(); // id -> agent from the bridge, plus drawing position
 let tracker = { roles: [] };
 let selected = "chief-of-staff";
-let rolesFilter = "open";
+let rolesFilter = "progress";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -59,7 +59,7 @@ function connect() {
   ws.onopen = () => { $("live").textContent = "Live"; $("live").classList.remove("off"); };
   ws.onmessage = (e) => {
     const m = JSON.parse(e.data);
-    if (m.type === "snapshot") { agents.clear(); update(m.agents); tracker = m.tracker; renderRoles(); }
+    if (m.type === "snapshot") { tracker = m.tracker; agents.clear(); update(m.agents); renderRoles(); }
     if (m.type === "agents") update(m.agents);
     if (m.type === "tracker") { tracker = m.tracker; renderRoles(); renderTodo(); }
   };
@@ -236,7 +236,14 @@ function renderTodo() {
   const drafted = by("drafted"), approved = by("approved"), found = by("found");
   if (drafted.length) items.push(`${drafted.length} CV${drafted.length > 1 ? "s" : ""} to check: ${drafted.map(roleName).join(", ")}`);
   if (approved.length) items.push(`Ready to apply: ${approved.map(roleName).join(", ")}`);
-  if (found.length) items.push(`${found.length} new role${found.length > 1 ? "s" : ""} to pick from`);
+  if (found.length) items.push(`${found.length} role${found.length > 1 ? "s" : ""} to review (see To review)`);
+  const soon = Date.now() + 14 * 864e5;
+  for (const r of roles.filter((r) => r.interview_at && OPEN.has(r.status)).sort((a, b) => a.interview_at.localeCompare(b.interview_at))) {
+    const when = new Date(r.interview_at);
+    if (when.getTime() < Date.now() - 864e5 || when.getTime() > soon) continue;
+    items.push(`Interview ${esc(when.toLocaleString("en-GB", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }))}: ${roleName(r)}${r.interview_with ? ` with ${esc(r.interview_with)}` : ""}`);
+  }
+  for (const a of (tracker.actions || []).filter((a) => !a.done)) items.push(`To do: ${esc(a.text)}`);
   $("todo").classList.toggle("clear", !items.length);
   $("todo-list").innerHTML = items.length ? items.map((i) => `<li>${i}</li>`).join("") : "<li>Nothing waiting on you.</li>";
 }
@@ -250,7 +257,7 @@ function renderRoles() {
   $("summary").innerHTML = STATUS_ORDER.filter((s) => counts[s] && s !== "skipped")
     .map((s) => `<div class="pill" style="border-color:${STATUS_COLOUR[s]}"><b>${counts[s]}</b><span>${s}</span></div>`).join("");
   const shown = roles
-    .filter((r) => rolesFilter === "all" || OPEN.has(r.status))
+    .filter((r) => rolesFilter === "all" || (rolesFilter === "review" ? r.status === "found" : OPEN.has(r.status) && r.status !== "found"))
     .sort((a, b) => STATUS_ORDER.indexOf(a.status) - STATUS_ORDER.indexOf(b.status) || (a.priority || 99) - (b.priority || 99) || String(b.updated).localeCompare(String(a.updated)));
   $("roles").innerHTML = shown.length ? shown.map((r) => {
     const url = safeUrl(r.url), fit = Math.max(0, Math.min(5, Number(r.fit) || 0));
@@ -258,11 +265,12 @@ function renderRoles() {
     return `<tr>
       <td><span class="status" style="background:${STATUS_COLOUR[r.status] || "#9aa0b5"}">${esc(r.status)}</span></td>
       <td>${esc(r.priority ?? "")}</td>
-      <td>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title)}</td>
-      <td>${esc(r.company)}</td><td>${esc(r.pay || "Not stated")}</td><td>${esc(r.location)}</td>
+      <td>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title)}${r.list ? `<div class="list-tag">${esc(r.list)}</div>` : ""}</td>
+      <td title="${esc(r.company)}">${esc(r.company)}</td><td title="${esc(r.pay)}">${esc(r.pay || "Not stated")}</td><td title="${esc(r.location)}">${esc(r.location)}</td>
       <td class="fit" aria-label="fit ${fit} of 5">${fit ? "●".repeat(fit) + `<i>${"●".repeat(5 - fit)}</i>` : ""}</td>
+      <td class="next" title="${esc(r.next)}">${esc(r.next)}</td>
       <td>${esc(updated)}</td></tr>`;
-  }).join("") : `<tr><td colspan="8" class="empty">${roles.length ? "No open roles. Switch to All to see the rest." : "No roles yet. Run /cos start the day in Claude Code."}</td></tr>`;
+  }).join("") : `<tr><td colspan="9" class="empty">${!roles.length ? "No roles yet. Run /cos start the day in Claude Code." : rolesFilter === "review" ? "Nothing to review." : "Nothing in progress. See To review or All."}</td></tr>`;
 }
 
 document.querySelector(".filters").addEventListener("click", (e) => {

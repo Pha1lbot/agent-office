@@ -56,6 +56,11 @@ td a { color: var(--accent); text-decoration: none; }
 .fit { letter-spacing: 2px; color: var(--waiting); }
 .fit i { color: var(--line); font-style: normal; }
 .empty { color: var(--muted); padding: 24px; text-align: center; }
+td { max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+th, td { padding-left: 10px; padding-right: 10px; }
+td:nth-child(3) { min-width: 240px; max-width: 320px; white-space: normal; }
+td.next { max-width: 240px; color: var(--muted); }
+.list-tag { font-size: 12px; color: var(--muted); margin-top: 2px; }
 .todo.clear { background: var(--panel); border-color: var(--line); }
 .todo.clear h2 { color: var(--muted); }
 [hidden] { display: none !important; }

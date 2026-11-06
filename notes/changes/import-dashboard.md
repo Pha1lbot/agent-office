@@ -11,6 +11,29 @@ Tim had already built a job-tracking dashboard as a claude.ai artifact ("Job Hun
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Show next steps, actions and interviews in the office
+
+**What changed**
+- `shared/office-view/public/office.js`:
+  - "Waiting on you" now also lists Tim's open next actions and any interview in the next 14 days.
+  - The Roles table has a Next step column, and Tim's list name (e.g. "Shortlist", "AI operations") under each title.
+  - New filters: In progress (default: shortlisted through interview), To review (found) and All.
+  - Fixed a bug: on first load "Waiting on you" was built before the tracker data arrived, so it said "Nothing waiting on you". It now uses the tracker from the first snapshot.
+- `shared/office-view/public/index.html`: the new filters and column. The Priority header is shortened to "P".
+- `shared/office-view/public/style.css`: long cells are cut off with "…" (hover shows the full text) so the Next step column fits; the Role column gets a minimum width.
+
+**Why**
+With 52 roles imported, the Roles tab needs to show what to do next and keep the 41 unreviewed roles out of the way.
+
+**Decisions**
+"In progress" is the default so the Roles tab opens on work that is moving, not the long review backlog.
+
+**How to check it**
+In a headless browser against the real tracker: no page errors; "Waiting on you" shows Hexagon ready to apply, 41 to review and 3 to-dos; the filters show 9, 41 and 52 rows; no sideways page scroll at phone width. `npm test` passes (13).
+
+**Open items**
+On a 1280 px wide screen the Updated column is partly off the edge of the table, which scrolls sideways to show it.
+
 ### 2026-11-06: Import the Job Hunt dashboard into the tracker
 
 **What changed**
