@@ -7,7 +7,7 @@ the commands that change the tracker (add, set).
 
 Usage:
   python3 shared/tools/tracker.py add --title "Data Analyst" --company "Acme" \
-      [--location ...] [--pay ...] [--url ...] [--source ...] [--fit 1-5] [--notes ...]
+      [--id <folder-name>] [--location ...] [--pay ...] [--url ...] [--source ...] [--fit 1-5] [--notes ...]
   python3 shared/tools/tracker.py set <id> status=shortlisted priority=1 notes="..."
   python3 shared/tools/tracker.py list [--status found] [--summary]
   python3 shared/tools/tracker.py show <id>
@@ -121,11 +121,18 @@ def cmd_add(args):
     data = load()
     if args.url and any(r.get("url") == args.url for r in data["roles"]):
         sys.exit(f"Already tracked: {args.url}")
-    base = f"{today()}-{slug(args.company)}-{slug(args.title)}"
-    role_id, n = base, 2
     ids = {r["id"] for r in data["roles"]}
-    while role_id in ids:
-        role_id, n = f"{base}-{n}", n + 1
+    if args.id:
+        role_id = args.id
+        if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", role_id):
+            sys.exit("id must be lower case letters, numbers and hyphens")
+        if role_id in ids:
+            sys.exit(f"Already tracked: {role_id}")
+    else:
+        base = f"{today()}-{slug(args.company)}-{slug(args.title)}"
+        role_id, n = base, 2
+        while role_id in ids:
+            role_id, n = f"{base}-{n}", n + 1
     role = {
         "id": role_id, "title": args.title, "company": args.company,
         "location": args.location, "pay": args.pay, "url": args.url,
@@ -183,6 +190,7 @@ def main():
     add = sub.add_parser("add", help="add a newly found role")
     add.add_argument("--title", required=True)
     add.add_argument("--company", required=True)
+    add.add_argument("--id", default="", help="use this id (the role's folder name)")
     for name in ("location", "pay", "url", "source", "fit", "notes"):
         add.add_argument(f"--{name}", default="")
     add.set_defaults(func=cmd_add)

@@ -16,6 +16,33 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Add the four job-search agents
+
+**What changed**
+- `.claude/skills/cos/SKILL.md`: Chief of Staff, started with `/cos`. It covers the daily routine (find roles, add them to the tracker, rank them, ask Tim, draft, approve, record outcomes), token-saving rules, checking the setup first, and committing and pushing after each step.
+- `.claude/agents/lead-recruiter.md`: subagent (Sonnet) that searches the sites in `sources.md`, skips roles already tracked, scores fit 1 to 5 and writes a short `listing.md` per role.
+- `.claude/agents/senior-admin.md`: subagent (Sonnet) that writes a tailored `cv.md` and `cover-letter.md` from Tim's default CV, notes gaps in `notes.md` and builds the Word files. It makes a text copy of a Word CV with pandoc so the CV is cheap to reread.
+- `.claude/agents/admin.md`: subagent (Haiku) that changes the tracker only through `tracker.py`.
+- `agents/chief-of-staff/`, `agents/lead-recruiter/`, `agents/senior-admin/`, `agents/admin/`: a README for each with purpose, inputs, outputs and model, as CLAUDE.md requires.
+- `shared/tools/tracker.py`: new `--id` option on `add`, so the tracker id matches the folder name the Recruiter chose. Ids must be lower case letters, numbers and hyphens.
+
+**Why**
+Tim asked for these four roles: Chief of Staff to run the agents, keep handovers token-efficient and set the day's priorities; Lead Recruiter to find roles by skills, experience and pay; Senior Admin to make CVs and cover letters from his default CV for COS's priority list; Admin to keep the dashboard's role statuses up to date.
+
+**Decisions**
+- Chief of Staff is a skill, not a subagent, because it runs in the main session Tim talks to, and subagents cannot call other subagents.
+- The prompts live in `.claude/` because that is where Claude Code looks for them. `agents/<name>/README.md` documents each one, so the prompt text is not duplicated.
+- Models: Sonnet for judgement and writing, Haiku for Admin's simple tracker updates.
+- Tools are limited per agent: Admin has no web access or file writing, and only the Recruiter can browse.
+- COS stops and asks Tim before any CV is drafted, so tokens are not spent on roles he doesn't want.
+- Job-search commits get a short line in the branch notes file to follow CLAUDE.md's "every commit has a note" rule. Tim may want to relax this for routine job data later.
+
+**How to check it**
+Front matter checked in this session (name, description, tools, model on each subagent; name and description on the skill). The `--id` option was tested: duplicates and badly formed ids are refused. To try the team: on Tim's PC, open Claude Code in the repo, check `/agents` lists the three subagents, and run `/cos start the day`.
+
+**Open items**
+Not yet run end to end: that needs Tim's CV, preferences and job sites. The office view comes on the next branch.
+
 ### 2026-11-06: Add Word and PDF document tool
 
 **What changed**
