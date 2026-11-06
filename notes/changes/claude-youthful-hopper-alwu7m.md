@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (second-laptop setup and faster sync); earlier: Merged 2026-11-06 ([PR #3](https://github.com/Pha1lbot/agent-office/pull/3))
+**Status:** Merged 2026-11-06 ([PR #9](https://github.com/Pha1lbot/agent-office/pull/9)); earlier work merged in [PR #3](https://github.com/Pha1lbot/agent-office/pull/3)
 
 ## Purpose
 
@@ -15,6 +15,24 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Record the merge of #9
+
+**What changed**
+- `CHANGELOG.md`: line for [Pha1lbot/agent-office#9](https://github.com/Pha1lbot/agent-office/pull/9).
+- This file: status set to merged.
+
+**Why**
+The "After a merge" routine in CLAUDE.md.
+
+**Decisions**
+None.
+
+**How to check it**
+Read the top of `CHANGELOG.md`.
+
+**Open items**
+- On the new laptop, the clone failed with "Repository not found" (a sign-in problem). Tim is retrying with `https://Pha1lbot@github.com/...` so Git asks him to sign in, then runs `setup-pc.ps1`.
 
 ### 2026-11-06: Set-up for a second laptop, and main kept up to date after every merge
 
