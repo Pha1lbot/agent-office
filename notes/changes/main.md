@@ -11,6 +11,26 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Record merge of the job-search branch
+
+**What changed**
+- `CHANGELOG.md`: added the line for [Pha1lbot/agent-office#2](https://github.com/Pha1lbot/agent-office/pull/2) (keeping local copies in sync, and the merge-conflict fix).
+- `notes/changes/claude-youthful-hopper-alwu7m.md`: status set to merged. Old entries are unchanged.
+
+**Why**
+Tim merged #2 and said "we are updated now". CLAUDE.md's "After a merge" routine asks for a CHANGELOG line straight after each merge.
+
+**Decisions**
+Committed straight to `main`, because it is a small notes-only change, as CLAUDE.md allows. #2 was merged with a merge commit, so every commit from the branch is on `main`.
+
+**How to check it**
+`CHANGELOG.md` lists both #1 and #2. `git status` on `main` shows it up to date with origin.
+
+**Open items**
+- On Tim's PC: confirm it is on `main` (`git status`) and run `install-sync.ps1` once for the 15-minute pull, if not done yet.
+- Tim to fill in `shared/job-search/preferences.md` and `sources.md` and add his CV, then try `/cos start the day`.
+- Next: the office view branch.
+
 ### 2026-11-06: Add office view plan
 
 **What changed**
