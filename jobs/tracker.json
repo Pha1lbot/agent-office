@@ -1473,7 +1473,7 @@
       "company": "NetEase Games",
       "location": "UK remote",
       "pay": "",
-      "url": "https://www.linkedin.com/jobs/view/4477803685/",
+      "url": "https://www.linkedin.com/jobs/view/4308233024/",
       "source": "NetEase Greenhouse board",
       "next": "",
       "cv": "",
@@ -1607,6 +1607,14 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Esport Specialist @ NetEase Games",
       "at": "2026-11-06T22:47",
+      "done": false
+    },
+    {
+      "id": "i7",
+      "role": "2026-11-05-netease-games-esport-specialist",
+      "task": "Give a verdict: worth applying?",
+      "title": "Esport Specialist @ NetEase Games",
+      "at": "2026-11-06T23:07",
       "done": false
     }
   ]
