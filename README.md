@@ -21,26 +21,35 @@ Tim's agent office: Claude Code agents and their setup
 
 The team's plan, including how it keeps token use down, is in `notes/plans/agent-office-v2.md`.
 
-### One-off setup on your PC
+### Setting up a new PC or laptop
 
-1. Install Python 3, [pandoc](https://pandoc.org/installing.html) (for Word files) and [LibreOffice](https://www.libreoffice.org/download/) (for PDFs).
-2. Put your CV in `shared/job-search/cv/` as `default-cv.docx` (or `.pdf` / `.md`).
-3. Fill in `shared/job-search/preferences.md` and `shared/job-search/sources.md`.
-4. Commit and push them (or ask Claude to).
+1. Install Git: open PowerShell and run `winget install --id Git.Git -e`, then close and reopen PowerShell.
+2. Clone the repo where you want it (it's private, so a GitHub sign-in window opens the first time):
 
-### Keeping your PC up to date
+   ```
+   cd $HOME\Documents
+   git clone https://github.com/Pha1lbot/agent-office.git
+   cd agent-office
+   ```
 
-- **Automatic pull every 15 minutes (Windows):** run this once in the `agent-office` folder:
+3. Run the setup script. It installs whatever is missing (Node.js, Python, pandoc, LibreOffice), sets your git name and email, installs the office's packages, puts this copy on `main` and turns on the automatic pull. It's safe to run again:
 
-  ```
-  powershell -ExecutionPolicy Bypass -File shared\tools\install-sync.ps1
-  ```
+   ```
+   powershell -ExecutionPolicy Bypass -File shared\tools\setup-pc.ps1
+   ```
 
-  It sets up a scheduled task called "agent-office git pull" that runs at log-on and every 15 minutes. It never overwrites your local changes: if they clash, it does nothing and writes why to `%LOCALAPPDATA%\agent-office-sync.log`. To remove it: `Unregister-ScheduledTask -TaskName "agent-office git pull" -Confirm:$false`.
-- **Pull when Claude Code starts:** `.claude/settings.json` runs `git pull` whenever a Claude Code session starts or resumes in this folder, on your PC or in the cloud.
+4. Install Claude Code if it isn't already (https://code.claude.com/docs/en/setup) and run `claude` once to sign in. Hal's automatic runs need it.
+
+Your CV, preferences and every role's files are in the repo, so they come across with the clone.
+
+### Keeping each PC up to date
+
+- **Automatic pull every 5 minutes (Windows):** set up by `setup-pc.ps1` (or on its own with `powershell -ExecutionPolicy Bypass -File shared\tools\install-sync.ps1`). A scheduled task called "agent-office git pull" runs at log-on and every 5 minutes, so a merged pull request reaches your PC within about 5 minutes, with nothing to do by hand. If you're on another branch, it still updates your local `main`. If this PC has its own commits that aren't on GitHub yet, it merges the two. It never overwrites your work: if something clashes, it changes nothing and writes why to `%LOCALAPPDATA%\agent-office-sync.log`. To remove it: `Unregister-ScheduledTask -TaskName "agent-office git pull" -Confirm:$false`.
+- **When you open the office:** `Open Office.cmd` pulls first.
+- **When Claude Code starts:** `.claude/settings.json` runs `git pull` whenever a session starts or resumes in this folder, on your PC or in the cloud.
 - **After a merge:** if Claude merges a pull request, or you tell it one was merged, it switches to `main` and pulls (see CLAUDE.md).
 
-The automatic pull only updates the branch your PC is on, so keep your PC on `main`.
+Keep each PC on `main`. Both laptops can run the office: each one's backups are pushed to GitHub and pulled by the other.
 
 ### Each day
 

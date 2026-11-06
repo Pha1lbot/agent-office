@@ -20,6 +20,9 @@ if not errorlevel 1 (
   exit /b 0
 )
 
+echo Getting the latest from GitHub...
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0..\tools\sync.ps1"
+
 echo Checking everything is installed...
 call npm.cmd install --no-audit --no-fund --loglevel=error
 if errorlevel 1 (

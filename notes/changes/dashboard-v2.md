@@ -1,7 +1,7 @@
 # Branch: dashboard-v2
 
 **Started:** 2026-11-06
-**Status:** In review ([PR #8](https://github.com/Pha1lbot/agent-office/pull/8)); merge after #7
+**Status:** Merged 2026-11-06 ([PR #8](https://github.com/Pha1lbot/agent-office/pull/8))
 
 ## Purpose
 

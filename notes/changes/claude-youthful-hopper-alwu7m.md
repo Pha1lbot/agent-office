@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** Merged 2026-11-06 ([PR #3](https://github.com/Pha1lbot/agent-office/pull/3)); follow-up work after [PR #1](https://github.com/Pha1lbot/agent-office/pull/1) and [PR #2](https://github.com/Pha1lbot/agent-office/pull/2) were merged on 2026-11-06
+**Status:** In progress (second-laptop setup and faster sync); earlier: Merged 2026-11-06 ([PR #3](https://github.com/Pha1lbot/agent-office/pull/3))
 
 ## Purpose
 
@@ -15,6 +15,30 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Set-up for a second laptop, and main kept up to date after every merge
+
+**What changed**
+- New `shared/tools/setup-pc.ps1`: one-off set-up for a new Windows PC. Installs any missing Node.js, Python, pandoc and LibreOffice with winget, sets the git name and email if unset, puts the copy on `main`, runs a sync, installs the office's npm packages, sets up the scheduled pull, and checks for Claude Code. Safe to run again.
+- `shared/tools/sync.ps1`: rewritten. It fetches first, then: on `main`, fast-forwards; on another branch, updates local `main` with `git fetch origin main:main`; with local commits not yet on GitHub, merges (`--no-edit`), and on a clash runs `git merge --abort` and logs it. Never forces or discards anything.
+- `shared/tools/install-sync.ps1`: the scheduled task now runs every 5 minutes instead of 15.
+- `shared/office-view/Open Office.cmd`: runs `sync.ps1` before starting the office.
+- `README.md`: new "Setting up a new PC or laptop" steps, and the sync section updated.
+- Restarted this branch from `main`, as its earlier work was merged. Also did the after-merge routine for #7 and #8: CHANGELOG lines and both notes files marked merged.
+
+**Why**
+Tim is setting up a second laptop. On the first one he was updating `main` by hand after merges. Possible causes: the scheduled task was never installed, the laptop was on another branch (the old script only pulled the current branch), or a local office-backup commit had made `--ff-only` refuse. The new script handles the last two, and the setup script installs the task.
+
+**Decisions**
+- Polling every 5 minutes rather than a push from GitHub: GitHub can't reach a laptop without exposing it to the internet, and a `git fetch` with nothing new is very cheap.
+- The sync merges but doesn't push. Pushing stays with the office backup and Claude sessions.
+- The setup script doesn't install Claude Code itself; it points to the official instructions.
+
+**How to check it**
+The git steps were tested in bash against a throwaway repo: on a branch, local `main` updates; one local commit plus one new on GitHub merges; a clash is aborted with nothing changed. PowerShell isn't available here, so the scripts haven't been run on Windows yet.
+
+**Open items**
+- Tim runs `setup-pc.ps1` on the new laptop, and re-runs `install-sync.ps1` on the old one to get the 5-minute task.
 
 ### 2026-11-06: Open pull request for preference reviews
 
