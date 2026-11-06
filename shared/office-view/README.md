@@ -6,7 +6,13 @@ Shows Tim's agents as pixel-art coworkers in an office, so he can see at a glanc
 
 ## Open the office
 
-One-off, in this folder (`shared/office-view`), with Node.js 20 or newer installed:
+**On Windows, the easy way:** double-click **`Open Office.cmd`** in this folder. The first time, it installs what's needed (about a minute), then starts the office and opens it in your browser. Leave its window open while you use the office; closing the window closes the office. If the office is already open, it just shows it.
+
+- **Desktop shortcut:** right-click `Open Office.cmd` → *Show more options* → *Send to* → *Desktop (create shortcut)*.
+- **Open automatically when you log in:** press Win+R, type `shell:startup`, press Enter, and put a shortcut to `Open Office.cmd` in the folder that opens.
+- You need [Node.js](https://nodejs.org) (the LTS version) installed.
+
+**From a terminal**, one-off, in this folder (`shared/office-view`), with Node.js 20 or newer installed:
 
 ```
 npm install
@@ -53,6 +59,12 @@ A session started in the `agent-office` folder is Chief of Staff. Subagents it c
 
 **Inputs:** Claude Code hook events; `jobs/tracker.json`.
 **Outputs:** the web page. Nothing is written to disk. The office keeps no history once it is closed.
+
+## Problems
+
+- **"running scripts is disabled on this system"** (PowerShell): use `npm.cmd` instead of `npm`, or run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once. `Open Office.cmd` avoids this.
+- **"Could not read package.json"**: the terminal isn't in this folder. `cd` into `shared\office-view` first, or use `Open Office.cmd`.
+- **"Port 4747 is already in use"**: the office is already open somewhere; go to http://127.0.0.1:4747.
 
 ## Settings
 
