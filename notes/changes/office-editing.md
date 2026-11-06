@@ -1,7 +1,7 @@
 # Branch: office-editing
 
 **Started:** 2026-11-06
-**Status:** In review ([PR #6](https://github.com/Pha1lbot/agent-office/pull/6)); merge after #5
+**Status:** Merged 2026-11-06 ([PR #6](https://github.com/Pha1lbot/agent-office/pull/6))
 
 ## Purpose
 
