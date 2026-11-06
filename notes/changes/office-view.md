@@ -11,6 +11,40 @@ Build the office view planned in `notes/plans/office-view.md`: a browser page th
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Add the live office page and fake agents
+
+**What changed**
+- `shared/office-view/public/index.html`, `style.css`: the real page, with the same layout and styles as the mockup (Office and Roles tabs, cards, activity panel).
+- `shared/office-view/public/office.js`: draws the office with PixiJS 8, the same room as the mockup. It keeps the page live from the bridge over WebSocket and reconnects every 2 seconds if the bridge restarts; the header shows "Live" or "Reconnecting…".
+  - Characters walk to the FILES shelf or the WEB kiosk and back.
+  - The screen lights up while an agent types. Waiting agents get a bobbing `?` and sleeping ones `z Z`.
+  - Agents from other folders stand in visitor spots.
+  - Click a character or a card to see its log.
+  - The whiteboard and the Roles tab come from the tracker. "Waiting on you" lists agents waiting for Tim, CVs to check, roles ready to apply for and new roles to pick.
+- `shared/office-view/scripts/fake-agents.ts`: acts out a job-search day (start, Recruiter searching with one permission prompt, Admin logging roles, Chief of Staff waiting for Tim, Senior Admin drafting, Admin marking drafted). Sends the same reports as the real hooks. Options: `--once`, `--fast`.
+- `shared/office-view/src/server.ts`: new `OFFICE_TRACKER` setting to show a different tracker file (for testing).
+
+**Why**
+The office view Tim asked for, built from the mockup he approved ("This is a good start").
+
+**Decisions**
+- Text is drawn at screen size above the scaled-up art, so it stays sharp while the art stays blocky.
+- Everything from the tracker is escaped before it is shown, and only `http(s)` links are clickable, because job adverts come from the web.
+- The fake agents go through the real `/report` path, so a fake run tests the same code the real hooks use.
+
+**How to check it**
+In `shared/office-view/`: `npm start`, then `npm run fake` in a second terminal, and open http://127.0.0.1:4747. Checked in this session with a headless browser:
+- No page errors and the header shows "Live".
+- Mid-day shots showed the Recruiter walking to the kiosk, Chief of Staff waiting with `?`, and Admin and Senior Admin asleep.
+- With a sample tracker, the Roles tab showed counts, the "Waiting on you" list and the table. A title containing `<b>` showed as plain text and a `javascript:` link was not made clickable.
+- Changing a role's status in the tracker reached the bridge within 3 seconds.
+- No sideways scrolling at phone width.
+
+The first run showed the sleeping `z Z` too high (drifting toward the desk above); it was moved next to the head.
+
+**Open items**
+Hook settings and README next.
+
 ### 2026-11-06: Add bridge server and hook reporter
 
 **What changed**

@@ -4,6 +4,7 @@
 //
 //   npm start            then open http://127.0.0.1:4747
 //   OFFICE_PORT=5000 npm start   to use another port
+//   OFFICE_TRACKER=path/to/tracker.json npm start   to show another tracker (for testing)
 
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { readFile, stat } from "node:fs/promises";
@@ -16,7 +17,7 @@ import { Office, type Report } from "./office.ts";
 const HERE = dirname(fileURLToPath(import.meta.url));
 const APP = resolve(HERE, "..");
 const REPO = resolve(APP, "..", "..");
-const TRACKER = join(REPO, "jobs", "tracker.json");
+const TRACKER = process.env.OFFICE_TRACKER ? resolve(process.env.OFFICE_TRACKER) : join(REPO, "jobs", "tracker.json");
 const PUBLIC = join(APP, "public");
 const PIXI = join(APP, "node_modules", "pixi.js", "dist", "pixi.min.mjs");
 const HOST = "127.0.0.1";
