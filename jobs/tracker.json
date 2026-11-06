@@ -1573,6 +1573,13 @@
       "role": "2026-11-05-netease-games-esport-specialist",
       "done": false,
       "created": "2026-11-06"
+    },
+    {
+      "id": "a8",
+      "text": "NetEase Esport Specialist: Rita's skip verdict stands (entry-level, Chinese required). Drafted CV/cover letter and interview prep anyway since you set the role to drafted three times today. Check files are honest about the seniority/language gaps before deciding to apply.",
+      "role": "2026-11-05-netease-games-esport-specialist",
+      "done": false,
+      "created": "2026-11-06"
     }
   ],
   "inbox": [
@@ -1582,7 +1589,8 @@
       "task": "Refresh interview prep",
       "title": "Esport Specialist @ NetEase Games",
       "at": "2026-11-06T22:13",
-      "done": false
+      "done": true,
+      "handled": "2026-11-06T23:12"
     },
     {
       "id": "i2",
@@ -1626,7 +1634,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Esport Specialist @ NetEase Games",
       "at": "2026-11-06T22:47",
-      "done": false
+      "done": true,
+      "handled": "2026-11-06T23:12"
     },
     {
       "id": "i7",

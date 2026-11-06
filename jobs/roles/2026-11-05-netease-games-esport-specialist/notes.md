@@ -1,0 +1,4 @@
+# Notes for Tim
+
+- The advert states Chinese language proficiency is required to work with China-based dev teams. Nothing in your CV bank shows Chinese language ability, so none has been added to the CV or cover letter. If you do have any relevant proficiency, let us know and we can add it.
+- This is a "Specialist" / individual-contributor role seeking 2+ years' experience, below your Head of Department level. The CV profile has been reworded to foreground your hands-on tournament and player operations work (including CS2/CS:GO as shooting titles) rather than departmental leadership scale, but your actual title and management scope are still shown accurately in the Experience section, since we can't remove true facts from the CV.

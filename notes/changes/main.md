@@ -11,6 +11,24 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: NetEase CV, cover letter and interview prep drafted despite skip verdict
+
+**What changed**
+- `jobs/roles/2026-11-05-netease-games-esport-specialist/`: Wren added `cv.md`, `cv.docx`, `cover-letter.md`, `cover-letter.docx`, `notes.md`. Cole added `interview-prep.md`, `talking-points.md`.
+- `jobs/tracker.json` / `jobs/tracker.md`: inbox items i1 and i6 marked done; added action a8 for Tim to check the documents are honest about the seniority/language gaps.
+
+**Why**
+Tim's office changes queued two inbox items (refresh interview prep, draft CV/cover letter) for this role despite Rita's earlier skip verdict (entry-level specialist role, requires Chinese, below Tim's Head of Department seniority). He wasn't watching this session, but the tracker history showed him setting the role to "drafted" three times today, which Hal treated as confirmation he wanted the documents anyway rather than holding them again.
+
+**Decisions**
+Briefed Wren and Cole to be honest about the gaps rather than oversell fit: no Chinese language claimed, no entry-level reframing, seniority mismatch and language gap addressed directly in interview prep.
+
+**How to check it**
+Read the new files in the role folder; check action a8 in the tracker for the flag to Tim.
+
+**Open items**
+Tim still needs to decide whether to actually apply, given the skip verdict stands.
+
 ### 2026-11-06: NetEase role unblocked (Tim added the link) — but Rita's read says skip
 
 **What changed**
