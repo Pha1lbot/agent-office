@@ -68,6 +68,7 @@ PASSED = {"skipped"}
 # already have Word files need no Hal: Ada, the office's automation, makes the PDFs.)
 INBOX_TASKS = {
     "shortlisted": "Draft a tailored CV and cover letter",
+    "drafted": "Draft a tailored CV and cover letter",  # only when there's no CV yet
     "approved": "Draft first, then PDFs",
     "interview": "Write interview prep notes",
 }
@@ -228,7 +229,7 @@ def cmd_set(args):
         if key == "status" and value != role["status"]:
             role["history"].append({"date": today(), "status": value, **({"by": args.by} if args.by else {})})
             has_docs = (JOBS / "roles" / role["id"] / "cv.docx").exists()
-            if args.by == "tim" and value in INBOX_TASKS and not (value == "approved" and has_docs):
+            if args.by == "tim" and value in INBOX_TASKS and not (value in ("drafted", "approved") and has_docs):
                 to_inbox(data, role, INBOX_TASKS[value])
             if value == "applied" and not any(p.startswith("next=") for p in args.changes):
                 # Ada: a follow-up date, unless Tim already set a real next step

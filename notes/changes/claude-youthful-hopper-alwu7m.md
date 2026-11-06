@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (launcher runs the sync in the background); earlier: [PR #10](https://github.com/Pha1lbot/agent-office/pull/10) merged 2026-11-06, [PR #9](https://github.com/Pha1lbot/agent-office/pull/9)); earlier work merged in [PR #3](https://github.com/Pha1lbot/agent-office/pull/3)
+**Status:** In progress (drafted sends to Wren); earlier: [PR #11](https://github.com/Pha1lbot/agent-office/pull/11), [PR #10](https://github.com/Pha1lbot/agent-office/pull/10), [PR #9](https://github.com/Pha1lbot/agent-office/pull/9) and [PR #3](https://github.com/Pha1lbot/agent-office/pull/3) merged 2026-11-06
 
 ## Purpose
 
@@ -15,6 +15,27 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Setting a role to Drafted sends it to Wren
+
+**What changed**
+- `shared/tools/tracker.py`: `INBOX_TASKS` gains `drafted` → "Draft a tailored CV and cover letter". Like `approved`, it's queued only when Tim makes the change and the role has no `cv.docx` yet. So it never re-drafts documents that exist, and the team setting `drafted` after Wren finishes doesn't queue anything.
+- `.claude/skills/cos/SKILL.md`: Hal's drafting task also covers roles Tim set to drafted.
+- `shared/office-view/public/role.js`: the Documents tab's "nothing drafted yet" note shows "Wren drafts… when Hal next runs" for drafted roles too.
+- `shared/office-view/README.md`: a row for the new trigger.
+- `CHANGELOG.md`: line for [Pha1lbot/agent-office#11](https://github.com/Pha1lbot/agent-office/pull/11).
+
+**Why**
+Tim drags roles straight to Drafted, and expected that to get Wren writing. Before, only Shortlisted did.
+
+**Decisions**
+Drafted with documents already there does nothing, as Tim is probably just recording that they exist.
+
+**How to check it**
+In a temporary `JOBS_DIR`, setting a role to drafted with `--by tim` queued one task (and only one when repeated). A role with `cv.docx` queued nothing. The office tests (25) pass.
+
+**Open items**
+None.
 
 ### 2026-11-06: Launcher and setup no longer wait for the sync
 

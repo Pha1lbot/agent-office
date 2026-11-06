@@ -89,6 +89,7 @@ Your edits are **backed up to GitHub automatically**, about 15 seconds after you
 | You… | What happens | Tokens |
 |---|---|---|
 | set a role to **shortlisted** | Hal gets **Wren** (Writer) to draft a tailored CV and cover letter | yes |
+| set a role to **drafted** before it has a CV | the same: **Wren** drafts the CV and cover letter | yes |
 | set a role to **approved** | **Ada** (automation) makes the PDFs straight away. If there are no Word files yet, Hal gets Wren to draft them first | none, if the Word files exist |
 | set a role to **applied** | **Ada** sets the next step to "Follow up if no reply by …" (7 days later) | none |
 | set a role to **interview** | Hal gets **Cole** (Interview Coach) to write key talking points and prep notes | yes |
