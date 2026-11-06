@@ -11,6 +11,23 @@ Build the office view planned in `notes/plans/office-view.md`: a browser page th
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Add tests for the state logic
+
+**What changed**
+- `shared/office-view/test/office.test.ts`: 13 tests covering the starting state, Chief of Staff detection with Windows and Unix paths, visitor desks, briefing a subagent, crediting tool calls (named subagent, or the running one), walking to the shelf or kiosk and back, reporting back, Stop meaning "Your turn", permission notifications, unknown subagents, SessionEnd, dozing timers and log trimming.
+
+**Why**
+The state logic decides what Tim sees, so it needs tests before the server and page are built on it.
+
+**Decisions**
+Uses Node's built-in test runner through tsx, so no test framework is needed.
+
+**How to check it**
+`npm test` in `shared/office-view/`: 13 pass. One test's expectation was wrong at first (it expected Senior Admin to doze at exactly 5 minutes idle, but the rule is "more than 5 minutes"). The test was corrected; the logic was right.
+
+**Open items**
+Bridge server, hook reporter, page, fake agents, README.
+
 ### 2026-11-06: Set up the office-view project and its state logic
 
 **What changed**
