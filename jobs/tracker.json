@@ -1588,7 +1588,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Head of Events and Experiences @ Vitality",
       "at": "2026-11-06T22:47",
-      "done": false
+      "done": true,
+      "handled": "2026-11-06T22:50"
     },
     {
       "id": "i6",

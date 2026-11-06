@@ -16,6 +16,29 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Job search: merged Tim's office changes; Wren drafted Vitality
+
+**What changed**
+- Merged `origin/main` into this branch (Tim's office edits).
+  - The conflict in `jobs/tracker.json` and `jobs/tracker.md` was resolved by taking main's version and re-running Hal's 38 verdict updates on top. Nothing of Tim's was lost.
+  - The NetEase action is now a5.
+- `jobs/roles/2026-11-06-vitality-head-of-events-and-experiences/`: Wren's `cv.md`, `cover-letter.md`, `notes.md`, `cv.docx` and `cover-letter.docx`. Its inbox task is done.
+
+**Why**
+Tim shortlisted Vitality and moved it to Drafted in the office. Hal's automatic runs aren't happening on his PC, so Hal handled the inbox from this session.
+
+**Decisions**
+- NetEase is still not drafted: there's no advert.
+- Cole was briefed for the "Refresh interview prep" requests on the three applied roles (Hexagon, Razer, Chelsea). That work is in a later entry.
+
+**How to check it**
+The Vitality role page's Documents tab shows the CV and letter. `notes.md` lists Wren's gaps for Tim.
+
+**Open items**
+- Cole's prep.
+- NetEase advert.
+- Hal's automatic runs on Tim's PC.
+
 ### 2026-11-06: Job search: verdicts for all 37 To review roles
 
 **What changed**
