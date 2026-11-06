@@ -16,6 +16,26 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Fix merge conflict with main
+
+**What changed**
+- Merged `main` into this branch to clear the conflict that stopped [Pha1lbot/agent-office#2](https://github.com/Pha1lbot/agent-office/pull/2) merging. `README.md` and this notes file conflicted; this branch's versions were kept.
+- `CHANGELOG.md`: added the line for the work merged in [Pha1lbot/agent-office#1](https://github.com/Pha1lbot/agent-office/pull/1), which was missing.
+
+**Why**
+Tim couldn't merge #2 because of a conflict. An earlier pull request from this same branch, #1, had already been squash-merged into `main`. It contained the commits up to "Document the new layout". Because a squash merge turns them into one new commit, git saw the same two files changed on both sides.
+
+**Decisions**
+- Checked first that `main` was exactly this branch at commit 238b8a8 ("Document job-search team layout and daily use"). So this branch's version of both files is simply the newer one, and nothing on `main` is lost by keeping it. After the merge, the branch's files are identical to before.
+- Merged rather than rebased. A rebase would need a force push, which CLAUDE.md forbids without Tim's say-so.
+- This entry and the CHANGELOG line go in the merge commit itself, so the change and its note are in the same commit.
+
+**How to check it**
+#2 should now show "no conflicts" on GitHub. `git diff 238b8a8 origin/main` is empty, which confirms `main` held nothing beyond this branch.
+
+**Open items**
+Tim to merge #2. To avoid this next time, keep merging with "Create a merge commit" rather than "Squash and merge", or start a fresh branch after each squash merge.
+
 ### 2026-11-06: Open pull request
 
 **What changed**
