@@ -16,6 +16,23 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Pull main after every merge
+
+**What changed**
+- `CLAUDE.md`: new "After a merge" section in the backup routine. After Claude merges a pull request, or Tim says one has been merged, Claude checks for uncommitted changes, switches to `main`, runs `git pull`, adds the CHANGELOG line, pushes, and tells Tim the copy is up to date.
+
+**Why**
+Tim asked how to keep his local copy up to date and whether it could pull after every merge. He chose this option (pull after merges Claude does or is told about).
+
+**Decisions**
+Options offered: a scheduled pull on Tim's PC every 15 minutes, a Claude Code start-up hook that pulls at the start of every session, or this rule in CLAUDE.md. Tim picked the CLAUDE.md rule. It needs nothing installed, but it only works when Claude does the merge or is told about it. A merge clicked on GitHub with no Claude session running is picked up by the existing "pull at the start of every session" step. The CHANGELOG step from "Change notes" was folded in, since it also happens straight after a merge.
+
+**How to check it**
+After the next pull request is merged, say "it's merged" in Claude Code on the PC. Claude should switch to `main`, pull, add the CHANGELOG line, push, and report that `main` is up to date.
+
+**Open items**
+The scheduled pull and the start-up hook were not added. Either can be added later if merges made on GitHub keep being missed.
+
 ### 2026-11-06: Document the new layout and how to run the job search
 
 **What changed**
