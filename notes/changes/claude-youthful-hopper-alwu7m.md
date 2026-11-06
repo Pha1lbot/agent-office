@@ -16,6 +16,33 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: 3D mockup restyled after Tim's reference
+
+**What changed**
+- `shared/office-view/mockup/office-3d.html` rewritten:
+  - **Camera:** an orthographic isometric camera with zoom, quarter-turn, recentre and full-screen buttons. Drag pans, and the walls nearest you hide as the room turns.
+  - **Room:** dark walls with skirting, windows onto greenery, a door, and wooden floor tiles from a canvas texture, with kitchen floor tiles and a woven rug.
+  - **Furniture:** desks with metal frames and drawers, swivel chairs with five-star bases, monitors with a glowing interface (lit while their owner works), a shelf with books and boxes, a server rack with LEDs, a coffee machine with mugs, a fridge, a floor lamp that gives off light, a darker sofa with cushions, a TV, a whiteboard and Hal's name plate.
+  - **People:** larger than life (×1.25), with hair, ears, eyes and a smile, and each person's own trouser colour.
+  - **Name tags:** HTML pills with a status dot (CSS2DRenderer), yellow when waiting, plus floating "Z z" when asleep.
+  - **Testing:** `?speed=` runs the day faster for screenshots.
+- `office-sim.js`: a full floor zone, and desks turned so staff face the front.
+- Mockup README, plus the new screenshot.
+
+**Why**
+Tim shared a screenshot of the look he wants: an isometric illustrated office with robot coworkers. He then said to keep people, not robots.
+
+**Decisions**
+- People stay, as Tim asked; everything else follows the reference.
+- Staff still face the camera, so monitors are seen from behind, unlike the reference where screens face you. To revisit if Tim prefers the screens visible.
+
+**How to check it**
+Open `office-3d.html` (add `?speed=10` to see the day go by). Playwright screenshot in the mockup folder.
+
+**Open items**
+- Tim picks this or the flat isometric version.
+- Then wire the chosen one into the live office.
+
 ### 2026-11-06: Mockups for the redesigned office (3D and isometric)
 
 **What changed**
