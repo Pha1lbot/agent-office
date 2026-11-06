@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (launcher fix); earlier: Merged 2026-11-06 ([PR #9](https://github.com/Pha1lbot/agent-office/pull/9)); earlier work merged in [PR #3](https://github.com/Pha1lbot/agent-office/pull/3)
+**Status:** In progress (launcher runs the sync in the background); earlier: [PR #10](https://github.com/Pha1lbot/agent-office/pull/10) merged 2026-11-06, [PR #9](https://github.com/Pha1lbot/agent-office/pull/9)); earlier work merged in [PR #3](https://github.com/Pha1lbot/agent-office/pull/3)
 
 ## Purpose
 
@@ -15,6 +15,26 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Launcher and setup no longer wait for the sync
+
+**What changed**
+- `shared/office-view/Open Office.cmd`: runs `sync.ps1` hidden in the background (`start "" /b`) instead of waiting for it.
+- `shared/tools/setup-pc.ps1`: step 3 also starts the sync in the background.
+- `README.md`: wording to match, and where to look in the sync log.
+- `CHANGELOG.md`: line for [Pha1lbot/agent-office#10](https://github.com/Pha1lbot/agent-office/pull/10). This file also notes #10 as merged in its status.
+
+**Why**
+Even with #10 merged, the launcher on Tim's new laptop still sat on "Getting the latest from GitHub". So it wasn't only a sign-in wait: `git fetch` hangs there for a reason still unknown. Whatever the cause, the office shouldn't depend on it. The scheduled task keeps pulling, and has a 5-minute limit.
+
+**Decisions**
+Background rather than a timeout inside `sync.ps1`. It's simpler and works whatever makes git hang.
+
+**How to check it**
+Double-click the launcher: it goes straight to "Checking everything is installed...".
+
+**Open items**
+- Find out why `git fetch` hangs on the new laptop. Tim runs `git fetch -v` and checks the credential helper.
 
 ### 2026-11-06: The sync never holds up the office
 

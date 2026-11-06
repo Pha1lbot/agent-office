@@ -45,13 +45,13 @@ Your CV, preferences and every role's files are in the repo, so they come across
 ### Keeping each PC up to date
 
 - **Automatic pull every 5 minutes (Windows):** set up by `setup-pc.ps1` (or on its own with `powershell -ExecutionPolicy Bypass -File shared\tools\install-sync.ps1`). A scheduled task called "agent-office git pull" runs at log-on and every 5 minutes, so a merged pull request reaches your PC within about 5 minutes, with nothing to do by hand. If you're on another branch, it still updates your local `main`. If this PC has its own commits that aren't on GitHub yet, it merges the two. It never overwrites your work: if something clashes, it changes nothing and writes why to `%LOCALAPPDATA%\agent-office-sync.log`. To remove it: `Unregister-ScheduledTask -TaskName "agent-office git pull" -Confirm:$false`.
-- **When you open the office:** `Open Office.cmd` pulls first.
+- **When you open the office:** `Open Office.cmd` pulls in the background while the office starts.
 - **When Claude Code starts:** `.claude/settings.json` runs `git pull` whenever a session starts or resumes in this folder, on your PC or in the cloud.
 - **After a merge:** if Claude merges a pull request, or you tell it one was merged, it switches to `main` and pulls (see CLAUDE.md).
 
 **If something goes wrong:**
 - **"Smart App Control blocked" `Open Office.cmd`:** open the office from PowerShell instead. In the `agent-office` folder run `cd shared\office-view`, then `npm install` (first time only), then `npm start`, and open http://127.0.0.1:4747.
-- **The launcher or sync can't get past GitHub:** Git needs you to sign in once on each PC. In PowerShell, in the `agent-office` folder, run `git fetch` and sign in when asked. The sync never waits for a sign-in; it logs the problem and the office opens anyway.
+- **The sync can't get past GitHub (the log at `%LOCALAPPDATA%\agent-office-sync.log` shows FAILED, or nothing new):** Git needs you to sign in once on each PC. In PowerShell, in the `agent-office` folder, run `git fetch` and sign in when asked. The sync never waits for a sign-in; it logs the problem and the office opens anyway.
 
 Keep each PC on `main`. Both laptops can run the office: each one's backups are pushed to GitHub and pulled by the other.
 
