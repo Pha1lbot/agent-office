@@ -18,6 +18,27 @@ It also makes a CV text bank so agents stop re-reading the PDF, adds a token met
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Update the READMEs and CLAUDE.md for the new team
+
+**What changed**
+- `shared/office-view/README.md`:
+  - The "acts on your changes" table now says who does what, and whether it costs tokens. Ada handles PDFs and follow-ups for free; Wren, Cole and Rita do the token work through Hal.
+  - New paragraph on the token meter, a note that names open contracts, and the `OFFICE_DAILY_TOKEN_BUDGET` setting.
+- `CLAUDE.md`: the Layout section names the team and points to the v2 plan.
+
+**Why**
+So the docs match what the office now does.
+
+**Decisions**
+None.
+
+**How to check it**
+Read the "Editing roles, and Hal" section of `shared/office-view/README.md`.
+
+**Open items**
+- Phase 2 (`dashboard-v2`) and phase 3 (`job-scout`) follow as separate branches.
+- Tim should check `cv-bank.md` against his CV and, for the Job Scout, sign up for the Reed and Adzuna API keys.
+
 ### 2026-11-06: Five-desk office, token figures on screen, and contracts for everyone
 
 **What changed**

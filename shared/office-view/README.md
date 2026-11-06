@@ -43,11 +43,11 @@ It acts out a job-search day on a loop. `npm run fake -- --fast` plays it three 
 | Typing at the desk, screen on | Working |
 | At the FILES shelf | Reading or searching files |
 | At the WEB kiosk | Searching or reading the web |
-| Bobbing `?` | Waiting for you: Chief of Staff's "Your turn", or a permission prompt |
+| Bobbing `?` | Waiting for you: Hal's "Your turn", or a permission prompt |
 | Sitting still | Idle: finished, or waiting on a teammate |
 | Head down, `z Z` | Asleep: not used for a while |
 
-Click a character or its card to see what it has been doing. The whiteboard and the **Roles** tab read `jobs/tracker.json` and update within a few seconds of any change.
+Click a character or its card to see what it has been doing. Click a **name** to see that person's (novelty) contract. The whiteboard and the **Roles** tab read `jobs/tracker.json` and update within a few seconds of any change.
 
 ## Editing roles, and Hal
 
@@ -58,14 +58,15 @@ In the **Roles** tab:
 
 Your edits are **backed up to GitHub automatically**, about 15 seconds after you stop editing. The strip at the top of the tab shows "Saved to GitHub", or what went wrong.
 
-**Hal (your Chief of Staff) acts on your changes automatically:**
+**The team acts on your changes automatically:**
 
-| You… | Hal… |
-|---|---|
-| set a role to **shortlisted** | gets Senior Admin to draft a tailored CV and cover letter |
-| set a role to **approved** | makes the PDFs |
-| set a role to **interview** | gets interview prep notes written (`interview-prep.md`) |
-| **add a role** | gets the Lead Recruiter to read the advert and score the fit |
+| You… | What happens | Tokens |
+|---|---|---|
+| set a role to **shortlisted** | Hal gets **Wren** (Writer) to draft a tailored CV and cover letter | yes |
+| set a role to **approved** | **Ada** (automation) makes the PDFs straight away. If there are no Word files yet, Hal gets Wren to draft them first | none, if the Word files exist |
+| set a role to **applied** | **Ada** sets the next step to "Follow up if no reply by …" (7 days later) | none |
+| set a role to **interview** | Hal gets **Cole** (Interview Coach) to write key talking points and prep notes | yes |
+| **add a role** | Hal gets **Rita** (Lead Recruiter) to read the advert and score the fit | yes |
 
 Hal starts **2 minutes after your last change**, so several changes share one run. He runs on Sonnet to save tokens, and at most **8 times a day**. Other changes (notes, next steps, applied, skipped) don't start him. The strip shows when he'll start, with **Run now** and an **Auto start** on/off switch. Anything he needs to ask you appears under "Waiting on you". Each run's log is saved in `logs/`.
 
@@ -81,7 +82,9 @@ Automatic runs can only use the job-search tools: reading and writing files, the
 - **Bridge:** `src/server.ts` turns the reports into what each agent is doing (logic in `src/office.ts`), watches the tracker and pushes updates to the page. It only listens on this PC (127.0.0.1).
 - **Page:** `public/` draws the office with PixiJS.
 
-A session started in the `agent-office` folder is Chief of Staff. Subagents it calls (Lead Recruiter, Senior Admin, Admin) get their own characters. Sessions from other folders appear as visitors, but only if you also add the hooks to your user settings.
+A session started in the `agent-office` folder is Hal. The subagents he calls (Rita, Wren, Cole) get their own desks, and Ada's desk shows the office's automatic work.
+
+**Token meter:** each card shows that person's **fresh tokens today** (new input + output), from Claude Code's own transcripts. Re-reads of the same context are much cheaper and shown separately in the side panel. The whiteboard and the Roles strip show the day's total. Ada always shows "No tokens". Sessions from other folders appear as visitors, but only if you also add the hooks to your user settings.
 
 **Inputs:** Claude Code hook events; `jobs/tracker.json`.
 **Outputs:** the web page. Nothing is written to disk. The office keeps no history once it is closed.
@@ -97,6 +100,7 @@ A session started in the `agent-office` folder is Chief of Staff. Subagents it c
 - `OFFICE_PORT`: use a different port (default 4747). Set it for both the office and Claude Code.
 - `OFFICE_TRACKER`: show a different tracker file (for testing).
 - `OFFICE_COS_MAX_PER_DAY`: Hal's daily limit of automatic runs (default 8).
+- `OFFICE_DAILY_TOKEN_BUDGET`: optional daily budget of fresh tokens, e.g. `200000`. When it's used up, Hal stops starting by himself until tomorrow (you can still run `/hal`).
 - `OFFICE_PYTHON`, `OFFICE_CLAUDE`: the commands for Python and Claude Code, if the office can't find them.
 
 ## For developers
