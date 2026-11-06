@@ -10,6 +10,10 @@ agents/ holds one folder per agent, each with its own instructions.
 
 shared/ holds prompts, tools and conventions used by more than one agent.
 
+jobs/ holds the job-search team's working data: the role tracker, the daily priority list and one folder per role with its advert summary, CV and cover letter.
+
+.claude/ holds what Claude Code loads directly: subagent prompts in .claude/agents/ and skills (such as /cos) in .claude/skills/. Each one is documented by a README in its agents/ folder.
+
 ## Working here
 
 Keep each agent's purpose, inputs and outputs written down in its folder.

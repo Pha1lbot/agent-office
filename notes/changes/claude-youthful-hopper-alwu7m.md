@@ -16,6 +16,26 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Document the new layout and how to run the job search
+
+**What changed**
+- `CLAUDE.md`: Layout section now describes `jobs/` and `.claude/`. No other rules changed.
+- `README.md`: added the repo layout, the job-search team, one-off setup on Tim's PC (Python, pandoc, LibreOffice, CV, preferences, sources) and the daily `/cos` commands.
+
+**Why**
+The plan Tim approved adds two top-level folders, and CLAUDE.md's layout section should match the repo. Tim also needs a short guide to start using the team.
+
+**Decisions**
+The guide goes in the README so it is the first thing seen on GitHub, rather than a separate file.
+
+**How to check it**
+Read `README.md` on GitHub and follow the setup steps on Tim's PC.
+
+**Open items**
+- Tim: add his CV, fill in `preferences.md` and `sources.md`, then run `/cos start the day`.
+- Next branch: the office view (PixiJS page, Node/TypeScript bridge, Claude Code hooks) with one character per agent and a dashboard tab reading `jobs/tracker.json`. First check whether hook data says which subagent made each tool call.
+- This branch is not merged into `main` yet. When it is, add a line to `CHANGELOG.md`.
+
 ### 2026-11-06: Add the four job-search agents
 
 **What changed**
