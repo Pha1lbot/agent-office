@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress
+**Status:** In review ([PR #2](https://github.com/Pha1lbot/agent-office/pull/2))
 
 ## Purpose
 
@@ -15,6 +15,23 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-06: Open pull request
+
+**What changed**
+- `notes/changes/claude-youthful-hopper-alwu7m.md`: status set to "In review", with a link to the pull request.
+
+**Why**
+Tim wants his PC kept on `main`, so this branch needs merging. A pull request was opened as [Pha1lbot/agent-office#2](https://github.com/Pha1lbot/agent-office/pull/2), with a summary of these notes, as CLAUDE.md requires.
+
+**Decisions**
+Tim merges it himself; Claude does not push to `main`.
+
+**How to check it**
+Open the pull request link.
+
+**Open items**
+After merging: on the PC run `git checkout main`, `git pull` and `install-sync.ps1`; add the CHANGELOG line.
 
 ### 2026-11-06: Keep Tim's PC on main
 
