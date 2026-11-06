@@ -11,6 +11,23 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Office changes inbox — NetEase role blocked on missing advert
+
+**What changed**
+- Checked the two office-changes inbox items (i1: refresh interview prep, i6: draft CV/cover letter), both for `2026-11-05-netease-games-esport-specialist`. Neither Wren nor Cole can do this work: the role has no `url`, no pasted advert text, and no `jobs/roles/` folder at all.
+- Left i1 and i6 open in the inbox (nothing to mark done).
+- Added action a6 noting the interview-prep refresh is blocked for the same reason as the existing action a5 (missing advert/link).
+
+**Why**
+- Started automatically by the office after Tim changed role statuses; this role already has `verdict: skip` and an open action (a5) asking Tim to add the advert, so the gap was already known but the new inbox items repeat work that's still blocked.
+
+**How to check it**
+- `python shared/tools/tracker.py inbox list` still shows i1 and i6.
+- `python shared/tools/tracker.py action list` shows a5 and a6, both pointing at the same missing-advert gap.
+
+**Open items**
+- Waiting on Tim to add the NetEase advert link or paste its text before Wren/Cole can act.
+
 ### 2026-11-06: Record merges of #5 and #6, and add /hal
 
 **What changed**

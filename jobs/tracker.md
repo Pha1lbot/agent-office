@@ -10,6 +10,7 @@ found: 36 · shortlisted: 6 · drafted: 2 · applied: 3 · skipped: 5
 - Ask Placements24 who the employer is
 - Make a strategy-led CV
 - Add the NetEase Esport Specialist advert (link via Edit details, or paste the text) so Wren can draft its CV
+- Interview prep refresh also blocked: NetEase Esport Specialist has no advert/listing yet (same gap as a5)
 
 ## Roles
 
