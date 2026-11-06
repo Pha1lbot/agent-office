@@ -11,6 +11,33 @@ Build the office view planned in `notes/plans/office-view.md`: a browser page th
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Set up the office-view project and its state logic
+
+**What changed**
+- `shared/office-view/package.json`, `package-lock.json`: new Node project. Pinned dependencies: pixi.js 8.22.0, ws 8.22.1, tsx 4.23.15. Dev dependencies: typescript 5.9.3 and type definitions. Scripts: `start`, `fake`, `test`, `check`. (`node_modules/` is already ignored by `.gitignore`.)
+- `shared/office-view/tsconfig.json`: strict TypeScript settings, type checking only.
+- `shared/office-view/src/office.ts`: the office's state logic. It turns Claude Code hook reports into what each character is doing (typing, walking to the FILES shelf or WEB kiosk, waiting, idle, asleep) and keeps the last 50 log lines and a tool-call count per agent. How it works:
+  - A session started in the agent-office folder is Chief of Staff.
+  - A `Task`/`Agent` tool call with a `subagent_type` puts that subagent to work and shows Chief of Staff "Waiting on …".
+  - Tool calls are credited to the subagent named in the hook, or else to the subagent that is running.
+  - `Stop` means "Your turn" (waiting for Tim).
+  - Idle agents doze after 5 minutes, waiting ones after 15. Busy agents with no news for 10 minutes go idle.
+  - Sessions from other folders get visitor desks.
+
+**Why**
+The first part of the build Tim asked for. It's committed now, while Tim looks at the mockup, so the work is backed up.
+
+**Decisions**
+- The state logic is kept apart from the server so it can be tested without a network.
+- Reports use a trimmed-down copy of Claude Code's hook data (event, session, folder, tool, subagent, short target), so the same format can later be sent by Agent SDK agents too.
+- Tool calls are credited to the running subagent as a fallback, in case hook data doesn't name the subagent. Still to confirm on Tim's version of Claude Code.
+
+**How to check it**
+`npm run check` passes (type check). A quick run in this session: after "Chief of Staff briefs Lead Recruiter" followed by a web search, the Recruiter shows as walking to the WEB kiosk and Chief of Staff as "Waiting on Lead Recruiter"; after `Stop`, Chief of Staff is "waiting" and the Recruiter idle. Unit tests come next.
+
+**Open items**
+Still to do: unit tests, bridge server, hook reporter and hook settings, PixiJS page following the mockup, fake agents, README. Waiting on Tim's mockup feedback before building the page.
+
 ### 2026-11-06: Add mockup of the office and Roles dashboard
 
 **What changed**
