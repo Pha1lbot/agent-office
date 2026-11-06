@@ -16,6 +16,29 @@ Built on `team-v2` ([Pha1lbot/agent-office#7](https://github.com/Pha1lbot/agent-
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Teach Hal the new requests; update the READMEs
+
+**What changed**
+- `.claude/skills/cos/SKILL.md`: the "Office changes" section handles two new inbox tasks from the role page.
+  - **"Revise documents: <Tim's words>"**: brief Wren with Tim's exact words, rebuild the Word files, and move an approved role back to drafted.
+  - **"Refresh interview prep"**: brief Cole, keeping Tim's talking points.
+- `shared/office-view/README.md`:
+  - New "The Pipeline" section: the board, cards, dragging, the list and the role page's four sections.
+  - The automatic-actions table gains "Ask Wren for changes", "Refresh prep", and the free actions (attachments, talking points, notes).
+- `README.md`: the office paragraph describes the Pipeline and role pages.
+
+**Why**
+So Hal knows what to do with the new requests, and Tim knows how to use the dashboard.
+
+**Decisions**
+A revision of an approved role sends it back to drafted, so the PDFs Tim sends always match the latest text.
+
+**How to check it**
+Read the "Office changes" section of the cos skill and "The Pipeline" in `shared/office-view/README.md`.
+
+**Open items**
+Pull request next (merge after #7). Phase 3 (Job Scout) needs Tim's Reed and Adzuna API keys.
+
 ### 2026-11-06: Pipeline board and role pages
 
 **What changed**
