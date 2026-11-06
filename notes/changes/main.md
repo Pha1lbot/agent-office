@@ -11,6 +11,24 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Record merge of preference reviews
+
+**What changed**
+- `CHANGELOG.md`: added the line for [Pha1lbot/agent-office#3](https://github.com/Pha1lbot/agent-office/pull/3) (preference reviews).
+- `notes/changes/claude-youthful-hopper-alwu7m.md`: status set to merged.
+
+**Why**
+#3 was merged; this is the "After a merge" routine in CLAUDE.md.
+
+**Decisions**
+A small notes-only commit, made straight on `main`.
+
+**How to check it**
+`CHANGELOG.md` lists #1, #2 and #3.
+
+**Open items**
+Office view to be built on a fresh `office-view` branch, as Tim asked.
+
 ### 2026-11-06: Record merge of the job-search branch
 
 **What changed**
