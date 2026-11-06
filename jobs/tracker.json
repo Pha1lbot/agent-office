@@ -1431,5 +1431,14 @@
       "created": "2026-11-05"
     }
   ],
-  "inbox": []
+  "inbox": [
+    {
+      "id": "i1",
+      "role": "2026-11-05-netease-games-esport-specialist",
+      "task": "Refresh interview prep",
+      "title": "Esport Specialist @ NetEase Games",
+      "at": "2026-11-06T22:13",
+      "done": false
+    }
+  ]
 }
