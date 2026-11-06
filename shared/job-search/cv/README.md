@@ -7,3 +7,7 @@
 - Any extra material Senior Admin may draw on (longer job histories, project lists, references to mention) can go here as `extra-*.md`.
 
 This repo is private, but the CV is personal data: don't put anything here you wouldn't want stored on GitHub.
+
+## The CV text bank
+
+`cv-bank.md` in this folder is a plain-text copy of the CV that the agents use instead of the PDF. The PDF is read as page images, which costs far more tokens each time. It starts with a short "Summary for matching" that Rita uses to judge fit. **Keep it in step with your CV**: when your CV changes, update `cv-bank.md` too, or ask Hal to.

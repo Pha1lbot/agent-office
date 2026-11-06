@@ -18,6 +18,26 @@ It also makes a CV text bank so agents stop re-reading the PDF, adds a token met
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Add the CV text bank
+
+**What changed**
+- `shared/job-search/cv/cv-bank.md`: new. A word-for-word transcription of `default-cv.pdf` (both pages: profile, numbers, six roles, key skills, certifications), with a short "Summary for matching" at the top for Rita.
+- `shared/job-search/cv/README.md`: explains the text bank and asks Tim to keep it in step with his CV.
+
+**Why**
+Part of the plan's token rules. Agents were reading the PDF, which comes through as page images on every read. Its text layer also drops the letter "a" ("Hed of Esports Opertions"), so a pandoc text copy wasn't usable.
+
+**Decisions**
+- Transcribed from the page images rather than the broken text layer.
+- The matching summary is a separate section, so Rita reads a few lines instead of the whole CV.
+- The bank states that nothing outside it may go into a CV, which keeps Wren and Cole honest.
+
+**How to check it**
+Tim compares `cv-bank.md` with his PDF once.
+
+**Open items**
+Tim to check the transcription. He can add `extra-*.md` files with more material for Wren and Cole.
+
 ### 2026-11-06: Name the team and make it leaner
 
 **What changed**
