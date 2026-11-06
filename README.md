@@ -49,6 +49,10 @@ Your CV, preferences and every role's files are in the repo, so they come across
 - **When Claude Code starts:** `.claude/settings.json` runs `git pull` whenever a session starts or resumes in this folder, on your PC or in the cloud.
 - **After a merge:** if Claude merges a pull request, or you tell it one was merged, it switches to `main` and pulls (see CLAUDE.md).
 
+**If something goes wrong:**
+- **"Smart App Control blocked" `Open Office.cmd`:** open the office from PowerShell instead. In the `agent-office` folder run `cd shared\office-view`, then `npm install` (first time only), then `npm start`, and open http://127.0.0.1:4747.
+- **The launcher or sync can't get past GitHub:** Git needs you to sign in once on each PC. In PowerShell, in the `agent-office` folder, run `git fetch` and sign in when asked. The sync never waits for a sign-in; it logs the problem and the office opens anyway.
+
 Keep each PC on `main`. Both laptops can run the office: each one's backups are pushed to GitHub and pulled by the other.
 
 ### Each day
