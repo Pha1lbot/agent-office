@@ -1384,13 +1384,18 @@
       "notes": "Why it fits: Tournament delivery and partner work Concern: Below your level and likely below pay floor",
       "fit": null,
       "priority": null,
-      "status": "found",
+      "status": "drafted",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-06",
+          "status": "drafted",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead"

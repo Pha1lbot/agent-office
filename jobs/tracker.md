@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 41 · shortlisted: 6 · applied: 3 · skipped: 2
+found: 40 · shortlisted: 6 · drafted: 1 · applied: 3 · skipped: 2
 
 ## Next actions
 
@@ -48,7 +48,6 @@ found: 41 · shortlisted: 6 · applied: 3 · skipped: 2
 | found |  | [Senior Premium Experience Manager, fixed term](https://www.linkedin.com/jobs/view/4481587358/) | Formula E | Not listed | London, hybrid |  |  | 2026-11-05 |
 | found |  | Director of Event Operations | Chess.com |  | Fully remote, US or EU applicants |  |  | 2026-11-05 |
 | found |  | Director of Live Operations | Bauer Media |  | Remote, UK or Germany |  |  | 2026-11-05 |
-| found |  | Esport Specialist | NetEase Games |  | UK remote |  |  | 2026-11-05 |
 | found |  | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-06 |
 | found |  | [Live Broadcast Producer (Contractor Role)](https://hitmarker.net/jobs/esl-live-broadcast-producer-contractor-role-5058011) | ESL FACEIT Group | not stated | UK-based, London listed | 2 |  | 2026-11-06 |
 | found |  | [Head of Video - Events Production](https://uk.linkedin.com/jobs/view/head-of-video-events-production-at-blank-space-recruitment-4484322630) | Blank Space Recruitment (events production agency client) | up to GBP 75,000 DOE | London | 2 |  | 2026-11-06 |
@@ -61,6 +60,7 @@ found: 41 · shortlisted: 6 · applied: 3 · skipped: 2
 | shortlisted |  | [AI Programme Manager (12-month fixed term)](https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v) | techUK | Not shown | London, hybrid |  |  | 2026-11-05 |
 | shortlisted |  | [AI Enablement Manager](https://ats.rippling.com/livewire/jobs/c5df0138-76a1-4a31-8bed-b4afd7ad0a56) | Livewire (gaming media) | Not shown | Not shown |  |  | 2026-11-05 |
 | shortlisted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London |  |  | 2026-11-05 |
+| drafted |  | Esport Specialist | NetEase Games |  | UK remote |  |  | 2026-11-06 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Apply via LinkedIn; ask about UK or remote | 2026-11-05 |
 | applied |  | [Director of Team Operations](https://uk.linkedin.com/jobs/view/director-of-team-operations-at-hexagon-world-series-4476411854) | Hexagon World Series | not stated | London, UK or Madrid, Spain | 3 | Apply today (Easy Apply on LinkedIn) | 2026-11-06 |
 | applied |  | [Senior Manager, Admin & Operations (Football Schools)](https://www.linkedin.com/jobs/view/4475254089/) | Chelsea FC | Not shown | Cobham and Stamford Bridge, on-site |  | Apply today: closes 6 Nov | 2026-11-06 |
