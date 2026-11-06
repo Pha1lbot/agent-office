@@ -11,6 +11,23 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Add office view plan
+
+**What changed**
+- `notes/plans/office-view.md`: new plan for showing agents as pixel-art coworkers in an office. It covers existing projects (Pixel Agents, Bit Office, pixtuoid), the three-layer design (agents, bridge, office view), decisions so far, notes on tokens and weekly limits, first steps and open questions.
+
+**Why**
+Tim explored the idea in a Claude chat and asked to move it over to Claude Code. This file carries that discussion into the repo so a Claude Code session can pick it up.
+
+**Decisions**
+Put it under `notes/plans/` rather than a new top-level folder, so the repo layout in CLAUDE.md doesn't change without Tim agreeing. It's committed straight to `main` because it is a single new notes file, not code.
+
+**How to check it**
+Open `notes/plans/office-view.md` on GitHub or in Claude Code.
+
+**Open items**
+Tim still needs to answer the open questions in the plan (view type, fork or build, which agents go first) before any build starts.
+
 ### 2026-11-06: Add change notes system
 
 **What changed**
