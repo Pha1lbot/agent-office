@@ -18,6 +18,8 @@ Only change the tracker with `python3 shared/tools/tracker.py`. Never edit `jobs
 - Change a role: `python3 shared/tools/tracker.py set <role-id> status=shortlisted priority=1`
 - Record why Tim skipped a role or was rejected: add `reason="pay too low"` to the same `set` command. Use Tim's words, shortened to a few words.
   Statuses: found, shortlisted, drafted, approved, applied, interview, offer, rejected, skipped.
+- Other fields you can set the same way: `next="Chase the recruiter"` (next step, a few words), `cv="Main CV v3"`, `interview_at=2026-11-12T14:00` (UK time), `interview_with="Jo Smith, Head of Ops"`, `list="Shortlist"`.
+- Tim's next actions (things he must do, not tied to a status): `python3 shared/tools/tracker.py action add "Ask the recruiter who the employer is" --role <role-id>`, `action done <action-id>`, `action list`.
 - Check your work: `python3 shared/tools/tracker.py list --summary`.
 
 ## Rules

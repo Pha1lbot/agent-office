@@ -6,7 +6,7 @@ Chief of Staff will suggest changes based on which roles you pick and skip, and 
 
 ## Roles I want
 - Job titles: Head of Esports Operations, Head of Event / Tournament Operations, Esports or Live Events Operations Director / Manager, Tournament Operations Lead, Head of Production or Production Manager (live events, broadcast)
-- Sectors or industries: esports and gaming first; then live events, broadcast / TV and sport
+- Sectors or industries: esports and gaming first; then sport, live events and broadcast / TV
 - Seniority: Head of / senior manager, leading a team
 
 ## Skills to match on
@@ -16,7 +16,7 @@ Chief of Staff will suggest changes based on which roles you pick and skip, and 
 
 ## Pay
 - Minimum salary (or day rate): £50,000
-- Ideal salary: not given yet (higher ranks first)
+- Ideal salary: £60,000+ (rank these higher)
 
 ## Location and hours
 - Where (towns, regions, countries): based in Epsom, Surrey. London and Surrey for hybrid roles; remote roles anywhere in the UK

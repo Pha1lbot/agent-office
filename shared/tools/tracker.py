@@ -12,6 +12,9 @@ Usage:
   python3 shared/tools/tracker.py list [--status found] [--summary]
   python3 shared/tools/tracker.py show <id>
   python3 shared/tools/tracker.py insights [--since YYYY-MM-DD]
+  python3 shared/tools/tracker.py action add "Ask the recruiter who the employer is" [--role <id>]
+  python3 shared/tools/tracker.py action done <action-id>
+  python3 shared/tools/tracker.py action list [--all]
   python3 shared/tools/tracker.py render
 
 Standard library only. Set JOBS_DIR to use a different jobs folder (for testing).
@@ -45,7 +48,12 @@ STATUSES = [
 ]
 OPEN = {"found", "shortlisted", "drafted", "approved", "applied", "interview"}
 FIELDS = ["title", "company", "location", "pay", "url", "source", "fit",
-          "priority", "status", "notes", "reason"]
+          "priority", "status", "notes", "reason",
+          "next",            # the next step for this role, in a few words
+          "cv",              # which CV was or will be used
+          "interview_at",    # YYYY-MM-DDTHH:MM, UK time
+          "interview_with",  # who the interview is with
+          "list"]            # Tim's own grouping, e.g. "Shortlist", "Transition roles"
 # Tim's decisions, used by insights to learn his preferences.
 PICKED = {"shortlisted", "drafted", "approved", "applied", "interview", "offer"}
 PASSED = {"skipped"}
@@ -62,8 +70,10 @@ def slug(text):
 
 def load():
     if not DATA.exists():
-        return {"roles": []}
-    return json.loads(DATA.read_text(encoding="utf-8"))
+        return {"roles": [], "actions": []}
+    data = json.loads(DATA.read_text(encoding="utf-8"))
+    data.setdefault("actions", [])
+    return data
 
 
 def save(data):
@@ -96,9 +106,21 @@ def render(data):
     counts = {s: sum(r["status"] == s for r in roles) for s in STATUSES}
     lines.append(" · ".join(f"{s}: {n}" for s, n in counts.items() if n) or "No roles yet.")
     lines.append("")
+    todo = [a for a in data.get("actions", []) if not a.get("done")]
+    if todo:
+        lines += ["## Next actions", ""] + [f"- {cell(a['text'])}" for a in todo] + [""]
+    interviews = sorted((r for r in roles if r.get("interview_at") and r["status"] in OPEN),
+                        key=lambda r: r["interview_at"])
+    if interviews:
+        lines += ["## Interviews", ""] + [
+            f"- {r['interview_at'].replace('T', ' ')}: {cell(r['title'])} @ {cell(r['company'])}"
+            + (f" (with {cell(r['interview_with'])})" if r.get("interview_with") else "")
+            for r in interviews] + [""]
     if roles:
         lines += [
-            "| Status | Priority | Role | Company | Pay | Location | Fit | Found | Updated |",
+            "## Roles",
+            "",
+            "| Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |",
             "|---|---|---|---|---|---|---|---|---|",
         ]
         for r in roles:
@@ -106,7 +128,7 @@ def render(data):
             lines.append("| " + " | ".join([
                 r["status"], cell(r.get("priority")), title, cell(r["company"]),
                 cell(r.get("pay")), cell(r.get("location")), cell(r.get("fit")),
-                r["found"], r["updated"],
+                cell(r.get("next")), r["updated"],
             ]) + " |")
     TABLE.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -172,7 +194,8 @@ def cmd_set(args):
 
 
 def cmd_list(args):
-    roles = load()["roles"]
+    data = load()
+    roles = data["roles"]
     if args.status:
         roles = [r for r in roles if r["status"] == args.status]
     if args.summary:
@@ -180,10 +203,55 @@ def cmd_list(args):
         for r in roles:
             counts[r["status"]] = counts.get(r["status"], 0) + 1
         print("Totals: " + (", ".join(f"{s} {counts[s]}" for s in STATUSES if s in counts) or "none"))
-        roles = [r for r in roles if r["status"] in OPEN]
+        todo = [a for a in data["actions"] if not a.get("done")]
+        if todo:
+            print(f"Next actions ({len(todo)}): " + "; ".join(a["text"] for a in todo[:5]))
+        upcoming = sorted((r for r in roles if r.get("interview_at") and r["status"] in OPEN),
+                          key=lambda r: r["interview_at"])
+        for r in upcoming:
+            print(f"Interview {r['interview_at'].replace('T', ' ')}: {r['title']} @ {r['company']}")
+        # Found roles are many and unreviewed; summarise them rather than list each one.
+        found = [r for r in roles if r["status"] == "found"]
+        roles = [r for r in roles if r["status"] in OPEN and r["status"] != "found"]
+        if found:
+            print(f"Found, not yet reviewed: {len(found)} (see `list --status found`)")
     for r in roles:
+        next_step = f" | next: {r['next']}" if r.get("next") else ""
         print(f"{r['id']} | {r['status']} | p{r.get('priority') or '-'} | fit {r.get('fit') or '-'} | "
-              f"{r['title']} @ {r['company']} | {r.get('pay') or '?'}")
+              f"{r['title']} @ {r['company']} | {r.get('pay') or '?'}{next_step}")
+
+
+def cmd_action(args):
+    data = load()
+    actions = data["actions"]
+    if args.verb == "add":
+        if not args.text:
+            sys.exit('Usage: action add "what to do" [--role <id>]')
+        if args.role:
+            find(data, args.role)
+        action = {"id": f"a{len(actions) + 1}", "text": " ".join(args.text), "role": args.role or "",
+                  "done": False, "created": today()}
+        while any(a["id"] == action["id"] for a in actions):
+            action["id"] = "a" + str(int(action["id"][1:]) + 1)
+        actions.append(action)
+        save(data)
+        print(action["id"])
+    elif args.verb == "done":
+        if not args.text:
+            sys.exit("Usage: action done <action-id>")
+        for action in actions:
+            if action["id"] == args.text[0]:
+                action["done"] = True
+                action["completed"] = today()
+                save(data)
+                print(f"{action['id']}: done")
+                return
+        sys.exit(f"No action with id {args.text[0]}")
+    else:
+        for a in actions:
+            if args.all or not a.get("done"):
+                role = f" (role {a['role']})" if a.get("role") else ""
+                print(f"{a['id']} | {'done' if a.get('done') else 'todo'} | {a['text']}{role}")
 
 
 def cmd_show(args):
@@ -307,6 +375,13 @@ def main():
     ins = sub.add_parser("insights", help="patterns in Tim's decisions, for preference reviews")
     ins.add_argument("--since", help="only decisions on or after this date (YYYY-MM-DD)")
     ins.set_defaults(func=cmd_insights)
+
+    act = sub.add_parser("action", help="Tim's next actions: add, done, list")
+    act.add_argument("verb", choices=["add", "done", "list"])
+    act.add_argument("text", nargs="*", help="the action's text (add) or id (done)")
+    act.add_argument("--role", help="the role this action is about (add)")
+    act.add_argument("--all", action="store_true", help="include done actions (list)")
+    act.set_defaults(func=cmd_action)
 
     rd = sub.add_parser("render", help="rebuild tracker.md from tracker.json")
     rd.set_defaults(func=lambda a: render(load()))

@@ -31,7 +31,7 @@
       "source": "LinkedIn Jobs",
       "fit": 3,
       "priority": null,
-      "status": "found",
+      "status": "approved",
       "notes": "Senior team ops in sport; commercial and padel focus. Travel amount unclear.",
       "found": "2026-11-06",
       "updated": "2026-11-06",
@@ -39,8 +39,15 @@
         {
           "date": "2026-11-06",
           "status": "found"
+        },
+        {
+          "date": "2026-11-06",
+          "status": "approved"
         }
-      ]
+      ],
+      "next": "Apply today (Easy Apply on LinkedIn)",
+      "cv": "CV – Hexagon World Series, Team Operations",
+      "list": "Shortlist"
     },
     {
       "id": "2026-11-06-esl-live-broadcast-producer-contractor",
@@ -82,7 +89,8 @@
           "date": "2026-11-06",
           "status": "found"
         }
-      ]
+      ],
+      "list": "New matches"
     },
     {
       "id": "2026-11-06-disrupt-search-chief-operating-officer-live-event-production",
@@ -124,7 +132,8 @@
           "date": "2026-11-06",
           "status": "found"
         }
-      ]
+      ],
+      "list": "New matches"
     },
     {
       "id": "2026-11-06-blank-space-recruitment-production-manager-brand-activations-live-events",
@@ -145,7 +154,1271 @@
           "date": "2026-11-06",
           "status": "found"
         }
-      ]
+      ],
+      "list": "Transition roles"
+    },
+    {
+      "id": "2026-11-02-the-insights-group-the-esports-radar-events-executive-freelance",
+      "title": "Events Executive (freelance)",
+      "company": "The Insights Group · The Esports Radar",
+      "location": "Remote, UK + international travel",
+      "pay": "Day rate to agree",
+      "url": "",
+      "source": "Job Hunt dashboard",
+      "next": "Agree day rate and days per month",
+      "cv": "Main CV v3",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "",
+      "notes": "",
+      "fit": null,
+      "priority": null,
+      "status": "shortlisted",
+      "found": "2026-11-02",
+      "updated": "2026-11-02",
+      "history": [
+        {
+          "date": "2026-11-02",
+          "status": "shortlisted"
+        }
+      ],
+      "imported_from": "dashboard role"
+    },
+    {
+      "id": "2026-11-02-placements24-client-unnamed-global-e-sports-gaming-strategy-lead",
+      "title": "Global E-Sports & Gaming Strategy Lead",
+      "company": "Placements24 · client unnamed",
+      "location": "Remote or hybrid, London",
+      "pay": "£90k–£130k",
+      "url": "",
+      "source": "Job Hunt dashboard",
+      "next": "Ask who the employer is; find the original advert",
+      "cv": "Strategy-led CV (to make)",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "",
+      "notes": "",
+      "reason": "Ask who the employer is; find the original advert",
+      "fit": null,
+      "priority": null,
+      "status": "skipped",
+      "found": "2026-11-02",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-02",
+          "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-05",
+          "status": "skipped"
+        }
+      ],
+      "imported_from": "dashboard role"
+    },
+    {
+      "id": "2026-11-02-razer-associate-manager-marketing-operations-e",
+      "title": "Associate Manager, Marketing Operations (EMEA)",
+      "company": "Razer",
+      "location": "Amsterdam or Hamburg",
+      "pay": "€65k–€92k",
+      "url": "",
+      "source": "Job Hunt dashboard",
+      "next": "Apply via LinkedIn; ask about UK or remote",
+      "cv": "Razer CV",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "",
+      "notes": "",
+      "fit": null,
+      "priority": null,
+      "status": "applied",
+      "found": "2026-11-02",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-02",
+          "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-05",
+          "status": "applied"
+        }
+      ],
+      "imported_from": "dashboard role"
+    },
+    {
+      "id": "2026-11-03-wolves-esports-esports-coordinator-team-manager",
+      "title": "Esports Coordinator / Team Manager",
+      "company": "Wolves Esports",
+      "location": "",
+      "pay": "Unpaid",
+      "url": "",
+      "source": "Job Hunt dashboard",
+      "next": "Declined: unpaid. Door left open if budget changes",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "",
+      "notes": "",
+      "reason": "Declined: unpaid. Door left open if budget changes",
+      "fit": null,
+      "priority": null,
+      "status": "skipped",
+      "found": "2026-11-03",
+      "updated": "2026-11-04",
+      "history": [
+        {
+          "date": "2026-11-03",
+          "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-04",
+          "status": "skipped"
+        }
+      ],
+      "imported_from": "dashboard role"
+    },
+    {
+      "id": "2026-11-06-chelsea-fc-senior-manager-admin-operations-football",
+      "title": "Senior Manager, Admin & Operations (Football Schools)",
+      "company": "Chelsea FC",
+      "location": "Cobham and Stamford Bridge, on-site",
+      "pay": "Not shown",
+      "url": "https://www.linkedin.com/jobs/view/4475254089/",
+      "source": "Job Hunt dashboard",
+      "next": "Apply today: closes 6 Nov",
+      "cv": "CV – Chelsea FC, Admin & Operations",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Shortlist",
+      "notes": "Notes: Gaps to cover in the application: monthly MI and P&L reporting, billing and collections at volume, UK GDPR and consent, CRM/ERP platform selection, Power BI.",
+      "fit": null,
+      "priority": null,
+      "status": "applied",
+      "found": "2026-11-06",
+      "updated": "2026-11-06",
+      "history": [
+        {
+          "date": "2026-11-06",
+          "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-06",
+          "status": "applied"
+        }
+      ],
+      "imported_from": "dashboard role"
+    },
+    {
+      "id": "2026-11-05-invisible-blue-ltd-event-production-head-of-operations",
+      "title": "Event Production Head of Operations",
+      "company": "Invisible Blue Ltd",
+      "location": "Not known",
+      "pay": "Not known",
+      "url": "",
+      "source": "Job Hunt dashboard",
+      "next": "Read the advert; check pay",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Shortlist",
+      "notes": "Why it fits: Right seniority for event operations Concern: Couldn't find the advert; agency or in-house unknown",
+      "fit": null,
+      "priority": null,
+      "status": "shortlisted",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "shortlisted"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-british-airways-senior-operations-resource-planning-mana",
+      "title": "Senior Operations Resource Planning Manager",
+      "company": "British Airways",
+      "location": "Heathrow, on-site",
+      "pay": "Similar BA planning role listed at £50k–£70k, unconfirmed",
+      "url": "",
+      "source": "Job Hunt dashboard",
+      "next": "Long shot; apply if the pay and location suit",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Shortlist",
+      "notes": "Why it fits: Workforce planning and budgets across 2,000+ freelancers Concern: No airline or union experience; heavy Excel; on-site",
+      "fit": null,
+      "priority": null,
+      "status": "shortlisted",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "shortlisted"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-techuk-ai-programme-manager-12-month-fixed-term",
+      "title": "AI Programme Manager (12-month fixed term)",
+      "company": "techUK",
+      "location": "London, hybrid",
+      "pay": "Not shown",
+      "url": "https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "AI operations",
+      "notes": "Why it fits: Delivers events, roundtables and member activity that speed up AI adoption; close to your event and programme delivery Concern: Fixed term; pay to check",
+      "fit": null,
+      "priority": null,
+      "status": "shortlisted",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "shortlisted"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-livewire-gaming-media-ai-enablement-manager",
+      "title": "AI Enablement Manager",
+      "company": "Livewire (gaming media)",
+      "location": "Not shown",
+      "pay": "Not shown",
+      "url": "https://ats.rippling.com/livewire/jobs/c5df0138-76a1-4a31-8bed-b4afd7ad0a56",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "AI operations",
+      "notes": "Why it fits: Gaming sector; hands-on role embedding AI into everyday operations Concern: Asks for proven experience leading AI adoption, so a stretch",
+      "fit": null,
+      "priority": null,
+      "status": "shortlisted",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "shortlisted"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-capital-com-senior-operations-manager-ai-automation",
+      "title": "Senior Operations Manager: AI Automation",
+      "company": "Capital.com",
+      "location": "Remote or hybrid, London",
+      "pay": "Not shown",
+      "url": "https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "AI operations",
+      "notes": "Why it fits: Owns the automation roadmap across Operations and leads a team of one or two Concern: Wants hands-on experience building automation in live operations",
+      "fit": null,
+      "priority": null,
+      "status": "shortlisted",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "shortlisted"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-this-is-beyond-senior-operations-event-producer",
+      "title": "Senior Operations & Event Producer",
+      "company": "This is Beyond",
+      "location": "London area, hybrid",
+      "pay": "£60k–£65k",
+      "url": "https://www.linkedin.com/jobs/view/4473635792/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 2 Nov",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-convene-senior-conference-events-manager-live-ev",
+      "title": "Senior Conference & Events Manager, Live Events",
+      "company": "Convene",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4466280604/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 31 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-unicef-uk-director-of-soccer-aid-interim",
+      "title": "Director of Soccer Aid (interim)",
+      "company": "UNICEF UK",
+      "location": "London area",
+      "pay": "£105k, fixed term",
+      "url": "https://www.linkedin.com/jobs/view/4483454939/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 30 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-wpp-production-global-hub-operations-director",
+      "title": "Global Hub Operations Director",
+      "company": "WPP Production",
+      "location": "London, hybrid",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4477453462/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 30 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-handle-recruitment-client-unnamed-event-director",
+      "title": "Event Director",
+      "company": "Handle Recruitment (client unnamed)",
+      "location": "London, hybrid",
+      "pay": "£70k–£90k",
+      "url": "https://www.linkedin.com/jobs/view/4484516383/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 29 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-lta-head-of-delivery-central-east",
+      "title": "Head of Delivery, Central & East",
+      "company": "LTA",
+      "location": "London area",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4483015001/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 29 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-soho-house-co-event-director-uk-eu-asia-12-month-mater",
+      "title": "Event Director UK, EU + Asia (12-month maternity cover)",
+      "company": "Soho House & Co",
+      "location": "London area",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4467403208/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 28 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-hyve-group-senior-event-operations-manager-possible",
+      "title": "Senior Event Operations Manager, POSSIBLE Europe",
+      "company": "Hyve Group",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4482511217/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 28 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-the-conservative-party-head-of-political-events-and-operations",
+      "title": "Head of Political Events and Operations",
+      "company": "The Conservative Party",
+      "location": "London area",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4483585204/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 27 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-prose-on-pixels-uk-operations-director",
+      "title": "UK Operations Director",
+      "company": "Prose on Pixels",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4475864821/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 27 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-infopro-digital-head-of-eventtech",
+      "title": "Head of EventTech",
+      "company": "Infopro Digital",
+      "location": "London, hybrid",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4482835745/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 23 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-amazon-senior-program-activation-manager-twitch",
+      "title": "Senior Program Activation Manager, Twitch Brand",
+      "company": "Amazon",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4455794115/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 22 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-hyve-group-event-director-hlth-europe",
+      "title": "Event Director, HLTH Europe",
+      "company": "Hyve Group",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4479433111/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 21 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-surrey-county-cricket-club-the-oval-head-of-facilities-operations",
+      "title": "Head of Facilities Operations",
+      "company": "Surrey County Cricket Club (The Oval)",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4478693926/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "New matches",
+      "notes": "Posted: 20 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-big-global-events-senior-producer",
+      "title": "Senior Producer",
+      "company": "Big Global Events",
+      "location": "London, hybrid",
+      "pay": "£55k–£62k",
+      "url": "https://www.linkedin.com/jobs/view/4486100319/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 2 Nov",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-great-ormond-street-hospital-charity-gaming-streaming-senior-manager",
+      "title": "Gaming & Streaming Senior Manager",
+      "company": "Great Ormond Street Hospital Charity",
+      "location": "London, hybrid",
+      "pay": "£49.9k",
+      "url": "https://www.linkedin.com/jobs/view/4484381283/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 2 Nov",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-scopely-producer-star-trek-fleet-command",
+      "title": "Producer, Star Trek Fleet Command",
+      "company": "Scopely",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://hitmarker.net/jobs/scopely-producer-star-trek-fleet-command-5472927",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 2 Nov",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-snap-inc-manager-marketing-operations",
+      "title": "Manager, Marketing Operations",
+      "company": "Snap Inc.",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4485604099/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 31 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-convene-venue-manager-live-events-new-opening",
+      "title": "Venue Manager, Live Events (new opening)",
+      "company": "Convene",
+      "location": "London, hybrid",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4466283486/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 31 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-formula-1-event-production-manager",
+      "title": "Event Production Manager",
+      "company": "Formula 1",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4485388728/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 30 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-stripe-marketing-operations-manager-emea-events",
+      "title": "Marketing Operations Manager, EMEA Events",
+      "company": "Stripe",
+      "location": "London",
+      "pay": "£81.4k–£122k",
+      "url": "https://www.linkedin.com/jobs/view/4477803685/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 30 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-premier-senior-producer-events",
+      "title": "Senior Producer, Events",
+      "company": "Premier",
+      "location": "London area, hybrid",
+      "pay": "£50k–£65k",
+      "url": "https://www.linkedin.com/jobs/view/4483027028/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 29 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-the-crowd-senior-production-manager",
+      "title": "Senior Production Manager",
+      "company": "The Crowd",
+      "location": "London area, hybrid",
+      "pay": "£60k–£70k",
+      "url": "https://www.linkedin.com/jobs/view/4482124492/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 28 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-tiktok-tiktok-shop-creator-operations-manager",
+      "title": "TikTok Shop Creator Operations Manager",
+      "company": "TikTok",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4484128473/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 28 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-snap-inc-lead-global-brand-experience",
+      "title": "Lead, Global Brand Experience",
+      "company": "Snap Inc.",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4484062364/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 27 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-england-wales-cricket-board-event-manager-core-fixed-term",
+      "title": "Event Manager (Core), fixed term",
+      "company": "England & Wales Cricket Board",
+      "location": "London area",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4481451695/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 26 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-prime-video-amazon-mgm-studios-marketing-production-manager-sports",
+      "title": "Marketing Production Manager, Sports",
+      "company": "Prime Video & Amazon MGM Studios",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4475056502/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 24 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-ges-uk-europe-senior-core-services-delivery-manager-ex",
+      "title": "Senior Core Services Delivery Manager (ExCeL London)",
+      "company": "GES UK & Europe",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4481683436/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 23 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-meta-global-brand-experiences-manager-emea",
+      "title": "Global Brand Experiences Manager, EMEA",
+      "company": "Meta",
+      "location": "London, hybrid",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4479480680/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 22 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-futurlab-producer-games-uk-only",
+      "title": "Producer (Games), UK only",
+      "company": "FuturLab",
+      "location": "Remote UK or hybrid Brighton",
+      "pay": "Not listed",
+      "url": "https://hitmarker.net/jobs/futurlab-producer-games-uk-only-remote-hybrid-brighton-5408504",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 27 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-relevent-football-partners-ticketing-manager",
+      "title": "Ticketing Manager",
+      "company": "Relevent Football Partners",
+      "location": "London",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4481596263/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 20 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-formula-e-senior-premium-experience-manager-fixed",
+      "title": "Senior Premium Experience Manager, fixed term",
+      "company": "Formula E",
+      "location": "London, hybrid",
+      "pay": "Not listed",
+      "url": "https://www.linkedin.com/jobs/view/4481587358/",
+      "source": "Job Hunt dashboard",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Transition roles",
+      "notes": "Posted: 20 Oct",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-chess-com-director-of-event-operations",
+      "title": "Director of Event Operations",
+      "company": "Chess.com",
+      "location": "Fully remote, US or EU applicants",
+      "pay": "",
+      "url": "",
+      "source": "escapethecity.org listing",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Other leads",
+      "notes": "Why it fits: Right seniority Concern: Unclear if still live; UK eligibility to check",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-bauer-media-director-of-live-operations",
+      "title": "Director of Live Operations",
+      "company": "Bauer Media",
+      "location": "Remote, UK or Germany",
+      "pay": "",
+      "url": "",
+      "source": "itjobswatch.co.uk listing",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Other leads",
+      "notes": "Why it fits: Senior, remote Concern: Needs iGaming, mobile gaming or competitions background",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    },
+    {
+      "id": "2026-11-05-netease-games-esport-specialist",
+      "title": "Esport Specialist",
+      "company": "NetEase Games",
+      "location": "UK remote",
+      "pay": "",
+      "url": "",
+      "source": "NetEase Greenhouse board",
+      "next": "",
+      "cv": "",
+      "interview_at": "",
+      "interview_with": "",
+      "list": "Other leads",
+      "notes": "Why it fits: Tournament delivery and partner work Concern: Below your level and likely below pay floor",
+      "fit": null,
+      "priority": null,
+      "status": "found",
+      "found": "2026-11-05",
+      "updated": "2026-11-05",
+      "history": [
+        {
+          "date": "2026-11-05",
+          "status": "found"
+        }
+      ],
+      "imported_from": "dashboard lead"
+    }
+  ],
+  "actions": [
+    {
+      "id": "a1",
+      "text": "Agree day rate and days per month",
+      "role": "",
+      "done": false,
+      "created": "2026-11-05"
+    },
+    {
+      "id": "a2",
+      "text": "Ask Placements24 who the employer is",
+      "role": "",
+      "done": false,
+      "created": "2026-11-05"
+    },
+    {
+      "id": "a3",
+      "text": "Apply on LinkedIn and ask about UK or remote",
+      "role": "",
+      "done": true,
+      "created": "2026-11-05"
+    },
+    {
+      "id": "a4",
+      "text": "Make a strategy-led CV",
+      "role": "",
+      "done": false,
+      "created": "2026-11-05"
     }
   ]
 }
