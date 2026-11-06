@@ -13,7 +13,7 @@ Tim's agent office: Claude Code agents and their setup
 
 | Agent | Does |
 |---|---|
-| Chief of Staff | Runs the team and sets the day's priorities. The one you talk to. |
+| Hal (Chief of Staff) | Runs the team and sets the day's priorities. The one you talk to. |
 | Lead Recruiter | Finds roles that fit your skills, experience and pay. |
 | Senior Admin | Writes a tailored CV and cover letter for each chosen role. |
 | Admin | Keeps the role tracker (`jobs/tracker.md`) up to date. |
@@ -54,6 +54,6 @@ When you skip a role, give a few words of reason if you can ("pay too low", "too
 
 ### Watch them in the office
 
-Double-click `shared/office-view/Open Office.cmd`. It starts the office and opens http://127.0.0.1:4747 in your browser. (Or, in that folder, run `npm install` once, then `npm start`.) You'll see each agent as a pixel-art coworker, plus a **Roles** tab with your tracker. See `shared/office-view/README.md`.
+Double-click `shared/office-view/Open Office.cmd`. It starts the office and opens http://127.0.0.1:4747 in your browser. (Or, in that folder, run `npm install` once, then `npm start`.) You'll see each agent as a pixel-art coworker, plus a **Roles** tab where you can change statuses and add roles; Hal acts on your changes automatically. See `shared/office-view/README.md`.
 
 The agents never apply, email or fill in forms for you. Using Sonnet for the session (`/model sonnet`) keeps token use down.

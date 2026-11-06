@@ -25,6 +25,7 @@ export interface LogEntry {
 export interface Agent {
   id: string;
   name: string;
+  role: string; // job title shown under the name, when it differs from the name
   colour: number;
   team: boolean; // one of Tim's named agents (always has a desk)
   state: State;
@@ -37,14 +38,14 @@ export interface Agent {
 }
 
 export const TEAM = [
-  { id: "chief-of-staff", name: "Chief of Staff", colour: 0x4f6bed },
-  { id: "lead-recruiter", name: "Lead Recruiter", colour: 0x2f9e6e },
-  { id: "senior-admin", name: "Senior Admin", colour: 0xd9822b },
-  { id: "admin", name: "Admin", colour: 0x9b59b6 },
+  { id: "chief-of-staff", name: "Hal", role: "Chief of Staff", colour: 0x4f6bed },
+  { id: "lead-recruiter", name: "Lead Recruiter", role: "", colour: 0x2f9e6e },
+  { id: "senior-admin", name: "Senior Admin", role: "", colour: 0xd9822b },
+  { id: "admin", name: "Admin", role: "", colour: 0x9b59b6 },
 ];
 const VISITOR_COLOURS = [0xc0392b, 0x16a085, 0x7f8c8d, 0xb7950b];
 
-/** Folder name that marks a session as the main agent-office session (Chief of Staff). */
+/** Folder name that marks a session as the main agent-office session (Hal, the Chief of Staff). */
 export const REPO_NAME = "agent-office";
 const DELEGATE_TOOLS = new Set(["Task", "Agent"]);
 const SHELF_TOOLS = new Set(["Read", "Grep", "Glob", "LS", "NotebookRead"]);
@@ -81,13 +82,15 @@ export class Office {
 
   constructor(now = Date.now()) {
     for (const member of TEAM) {
-      this.agents.set(member.id, this.blank(member.id, member.name, member.colour, true, now));
+      const agent = this.blank(member.id, member.name, member.colour, true, now);
+      agent.role = member.role;
+      this.agents.set(member.id, agent);
     }
   }
 
   private blank(id: string, name: string, colour: number, team: boolean, now: number): Agent {
     return {
-      id, name, colour, team, state: "asleep", place: "desk", detail: "Not started yet",
+      id, name, role: "", colour, team, state: "asleep", place: "desk", detail: "Not started yet",
       since: now, lastSeen: 0, tools: 0, log: [],
     };
   }

@@ -46,6 +46,10 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 - Never delete branches, files or folders in bulk without asking Tim first.
 - Never commit passwords, API keys, tokens or other secrets. Keep them in `.env` files, which are excluded by `.gitignore`. If a secret is committed by mistake, stop and tell Tim straight away. Deleting it in a later commit does not remove it from history.
 
+### Edits made in the office
+
+Tim edits roles in the Agent Office (`shared/office-view`). The office commits and pushes those changes to `jobs/tracker.json` and `jobs/tracker.md` itself, with messages starting "Office:". These commits don't get a notes entry: the tracker records each change, with its date and who made it, in the role's history. Every other commit still needs its notes entry.
+
 ### Bigger or risky changes
 
 For large restructures, or anything Tim may want to review first, work on a new branch (e.g. `git checkout -b restructure-agents`), push the branch, and open a pull request instead of committing straight to `main`.

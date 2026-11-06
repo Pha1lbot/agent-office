@@ -15,6 +15,11 @@ Usage:
   python3 shared/tools/tracker.py action add "Ask the recruiter who the employer is" [--role <id>]
   python3 shared/tools/tracker.py action done <action-id>
   python3 shared/tools/tracker.py action list [--all]
+  python3 shared/tools/tracker.py inbox list          Tim's office changes waiting for Chief of Staff
+  python3 shared/tools/tracker.py inbox done <id>...  mark them handled (or --all)
+
+add and set take --by tim when Tim made the change himself (the office does this);
+changes that need work from the team then go into the inbox.
   python3 shared/tools/tracker.py render
 
 Standard library only. Set JOBS_DIR to use a different jobs folder (for testing).
@@ -57,6 +62,12 @@ FIELDS = ["title", "company", "location", "pay", "url", "source", "fit",
 # Tim's decisions, used by insights to learn his preferences.
 PICKED = {"shortlisted", "drafted", "approved", "applied", "interview", "offer"}
 PASSED = {"skipped"}
+# When Tim moves a role to one of these, Chief of Staff has work to do.
+INBOX_TASKS = {
+    "shortlisted": "Draft a tailored CV and cover letter",
+    "approved": "Make the PDFs",
+    "interview": "Write interview prep notes",
+}
 TITLE_SKIP = {"and", "of", "the", "a", "an", "to", "in", "for", "with", "uk", "x", "-"}
 
 
@@ -73,7 +84,20 @@ def load():
         return {"roles": [], "actions": []}
     data = json.loads(DATA.read_text(encoding="utf-8"))
     data.setdefault("actions", [])
+    data.setdefault("inbox", [])
     return data
+
+
+def now_stamp():
+    return datetime.now(ZoneInfo("Europe/London")).strftime("%Y-%m-%dT%H:%M")
+
+
+def to_inbox(data, role, task):
+    """Queue work for Chief of Staff, once per role and task."""
+    if any(i["role"] == role["id"] and i["task"] == task and not i["done"] for i in data["inbox"]):
+        return
+    data["inbox"].append({"id": f"i{len(data['inbox']) + 1}", "role": role["id"], "task": task,
+                          "title": f"{role['title']} @ {role['company']}", "at": now_stamp(), "done": False})
 
 
 def save(data):
@@ -168,9 +192,11 @@ def cmd_add(args):
         "source": args.source, "fit": parse_value("fit", args.fit or ""),
         "priority": None, "status": "found", "notes": args.notes,
         "found": today(), "updated": today(),
-        "history": [{"date": today(), "status": "found"}],
+        "history": [{"date": today(), "status": "found", **({"by": args.by} if args.by else {})}],
     }
     data["roles"].append(role)
+    if args.by == "tim":
+        to_inbox(data, role, "Read the advert, write the listing and score the fit")
     save(data)
     print(role_id)
 
@@ -186,7 +212,9 @@ def cmd_set(args):
             sys.exit(f"Unknown field {key}. Fields: {', '.join(FIELDS)}")
         value = parse_value(key, value)
         if key == "status" and value != role["status"]:
-            role["history"].append({"date": today(), "status": value})
+            role["history"].append({"date": today(), "status": value, **({"by": args.by} if args.by else {})})
+            if args.by == "tim" and value in INBOX_TASKS:
+                to_inbox(data, role, INBOX_TASKS[value])
         role[key] = value
     role["updated"] = today()
     save(data)
@@ -203,6 +231,9 @@ def cmd_list(args):
         for r in roles:
             counts[r["status"]] = counts.get(r["status"], 0) + 1
         print("Totals: " + (", ".join(f"{s} {counts[s]}" for s in STATUSES if s in counts) or "none"))
+        waiting = [i for i in data["inbox"] if not i["done"]]
+        if waiting:
+            print(f"Inbox from Tim's office changes ({len(waiting)}): see `inbox list`")
         todo = [a for a in data["actions"] if not a.get("done")]
         if todo:
             print(f"Next actions ({len(todo)}): " + "; ".join(a["text"] for a in todo[:5]))
@@ -252,6 +283,29 @@ def cmd_action(args):
             if args.all or not a.get("done"):
                 role = f" (role {a['role']})" if a.get("role") else ""
                 print(f"{a['id']} | {'done' if a.get('done') else 'todo'} | {a['text']}{role}")
+
+
+def cmd_inbox(args):
+    data = load()
+    waiting = [i for i in data["inbox"] if not i["done"]]
+    if args.verb == "list":
+        for i in waiting:
+            print(f"{i['id']} | {i['role']} | {i['task']} | {i['title']} | {i['at']}")
+        if not waiting:
+            print("Inbox empty")
+        return
+    ids = {i["id"] for i in waiting} if args.all else set(args.ids)
+    if not ids:
+        sys.exit("Usage: inbox done <id>... (or --all)")
+    unknown = ids - {i["id"] for i in data["inbox"]}
+    if unknown:
+        sys.exit(f"No inbox item {', '.join(sorted(unknown))}")
+    for i in data["inbox"]:
+        if i["id"] in ids:
+            i["done"] = True
+            i["handled"] = now_stamp()
+    save(data)
+    print(f"{len(ids)} done")
 
 
 def cmd_show(args):
@@ -356,11 +410,13 @@ def main():
     add.add_argument("--id", default="", help="use this id (the role's folder name)")
     for name in ("location", "pay", "url", "source", "fit", "notes"):
         add.add_argument(f"--{name}", default="")
+    add.add_argument("--by", choices=["tim"], help="Tim added it himself (from the office)")
     add.set_defaults(func=cmd_add)
 
     st = sub.add_parser("set", help="change fields on a role, e.g. status=shortlisted")
     st.add_argument("id")
     st.add_argument("changes", nargs="+")
+    st.add_argument("--by", choices=["tim"], help="Tim made the change himself (from the office)")
     st.set_defaults(func=cmd_set)
 
     ls = sub.add_parser("list", help="list roles, one line each")
@@ -382,6 +438,12 @@ def main():
     act.add_argument("--role", help="the role this action is about (add)")
     act.add_argument("--all", action="store_true", help="include done actions (list)")
     act.set_defaults(func=cmd_action)
+
+    inb = sub.add_parser("inbox", help="Tim's office changes waiting for Chief of Staff")
+    inb.add_argument("verb", choices=["list", "done"])
+    inb.add_argument("ids", nargs="*")
+    inb.add_argument("--all", action="store_true")
+    inb.set_defaults(func=cmd_inbox)
 
     rd = sub.add_parser("render", help="rebuild tracker.md from tracker.json")
     rd.set_defaults(func=lambda a: render(load()))

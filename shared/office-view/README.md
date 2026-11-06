@@ -49,6 +49,32 @@ It acts out a job-search day on a loop. `npm run fake -- --fast` plays it three 
 
 Click a character or its card to see what it has been doing. The whiteboard and the **Roles** tab read `jobs/tracker.json` and update within a few seconds of any change.
 
+## Editing roles, and Hal
+
+In the **Roles** tab:
+- **Status:** change it with the dropdown on each row. For "skipped" or "rejected" it asks for an optional reason, which helps Hal tune your searches.
+- **Other details:** click a row to edit next step, priority, interview date and who it's with, reason and notes.
+- **+ Add role:** add a role you found yourself.
+
+Your edits are **backed up to GitHub automatically**, about 15 seconds after you stop editing. The strip at the top of the tab shows "Saved to GitHub", or what went wrong.
+
+**Hal (your Chief of Staff) acts on your changes automatically:**
+
+| You… | Hal… |
+|---|---|
+| set a role to **shortlisted** | gets Senior Admin to draft a tailored CV and cover letter |
+| set a role to **approved** | makes the PDFs |
+| set a role to **interview** | gets interview prep notes written (`interview-prep.md`) |
+| **add a role** | gets the Lead Recruiter to read the advert and score the fit |
+
+Hal starts **2 minutes after your last change**, so several changes share one run. He runs on Sonnet to save tokens, and at most **8 times a day**. Other changes (notes, next steps, applied, skipped) don't start him. The strip shows when he'll start, with **Run now** and an **Auto start** on/off switch. Anything he needs to ask you appears under "Waiting on you". Each run's log is saved in `logs/`.
+
+Needs, on this PC:
+- **Python 3**, for editing.
+- **Claude Code**, signed in, for Hal's automatic runs. Without it, run `/cos` yourself.
+
+Automatic runs can only use the job-search tools: reading and writing files, the tracker, git, documents and the web.
+
 ## How it works
 
 - **Agents:** Claude Code hooks in `.claude/settings.json` run `hooks/report.mjs` on each event (session start, prompt, tool use, notification, stop, subagent stop, session end). It sends a few short fields to the bridge. If the office isn't open, it gives up within half a second and does nothing.
@@ -70,6 +96,8 @@ A session started in the `agent-office` folder is Chief of Staff. Subagents it c
 
 - `OFFICE_PORT`: use a different port (default 4747). Set it for both the office and Claude Code.
 - `OFFICE_TRACKER`: show a different tracker file (for testing).
+- `OFFICE_COS_MAX_PER_DAY`: Hal's daily limit of automatic runs (default 8).
+- `OFFICE_PYTHON`, `OFFICE_CLAUDE`: the commands for Python and Claude Code, if the office can't find them.
 
 ## For developers
 

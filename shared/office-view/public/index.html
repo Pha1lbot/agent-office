@@ -31,12 +31,14 @@
   </section>
 
   <section id="tab-roles" hidden>
+    <div class="sysbar" id="sysbar"></div>
     <div class="todo" id="todo"><h2>Waiting on you</h2><ul id="todo-list"></ul></div>
     <div class="summary" id="summary"></div>
     <div class="filters">
       <button aria-pressed="true" data-filter="progress">In progress</button>
       <button aria-pressed="false" data-filter="review">To review</button>
       <button aria-pressed="false" data-filter="all">All</button>
+      <button class="add-role" id="add-role" type="button">+ Add role</button>
     </div>
     <div class="table-wrap">
       <table>
@@ -46,6 +48,41 @@
     </div>
   </section>
 </main>
+<dialog id="edit-dlg" aria-labelledby="edit-title">
+  <form method="dialog" id="edit-form">
+    <h2 id="edit-title">Edit role</h2>
+    <p class="dlg-sub" id="edit-sub"></p>
+    <div class="dlg-grid">
+      <label>Status<select name="status" id="edit-status"></select></label>
+      <label>Priority<input name="priority" type="number" min="1" max="99" placeholder="1 = top"></label>
+      <label class="full">Next step<input name="next" maxlength="300" placeholder="What needs to happen next?"></label>
+      <label class="full" id="reason-wrap">Reason (optional)<input name="reason" maxlength="300" placeholder="e.g. pay too low, too far, wrong sector"></label>
+      <label>Interview date and time<input name="interview_at" type="datetime-local"></label>
+      <label>Interview with<input name="interview_with" maxlength="200" placeholder="Names or panel"></label>
+      <label class="full">Notes<textarea name="notes" rows="3" maxlength="2000"></textarea></label>
+    </div>
+    <p class="dlg-hint" id="edit-hint"></p>
+    <p class="dlg-err" id="edit-err" role="alert"></p>
+    <div class="dlg-buttons"><button value="cancel" formnovalidate>Cancel</button><button value="save" class="primary">Save</button></div>
+  </form>
+</dialog>
+
+<dialog id="add-dlg" aria-labelledby="add-title">
+  <form method="dialog" id="add-form">
+    <h2 id="add-title">Add a role</h2>
+    <p class="dlg-sub">Hal will get the Lead Recruiter to read the advert and score the fit.</p>
+    <div class="dlg-grid">
+      <label class="full">Role title<input name="title" required maxlength="200"></label>
+      <label>Company<input name="company" required maxlength="200"></label>
+      <label>Pay<input name="pay" maxlength="120" placeholder="e.g. £55k–£65k"></label>
+      <label class="full">Advert link<input name="url" type="url" maxlength="500" placeholder="https://"></label>
+      <label class="full">Location<input name="location" maxlength="160" placeholder="e.g. London, hybrid"></label>
+      <label class="full">Notes<textarea name="notes" rows="2" maxlength="2000"></textarea></label>
+    </div>
+    <p class="dlg-err" id="add-err" role="alert"></p>
+    <div class="dlg-buttons"><button value="cancel" formnovalidate>Cancel</button><button value="save" class="primary">Add role</button></div>
+  </form>
+</dialog>
 <script type="module" src="/office.js"></script>
 </body>
 </html>
