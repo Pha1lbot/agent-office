@@ -16,6 +16,26 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-06: Add Word and PDF document tool
+
+**What changed**
+- `shared/tools/make_docs.py`: new tool. `make_docs.py <role-id>` turns `jobs/roles/<role-id>/cv.md` and `cover-letter.md` into `.docx` with pandoc. `make_docs.py --pdf <role-id>` turns those `.docx` files into PDFs with LibreOffice. If `shared/job-search/cv/default-cv.docx` exists it is used as the style file (fonts, styles, page size); otherwise A4 with 2 cm margins is set.
+
+**Why**
+Tim wants CVs and cover letters made as Word files, with the option to confirm each one and then get a PDF.
+
+**Decisions**
+- Senior Admin writes markdown and the script makes the Word file. This is cheaper on tokens and more reliable than having the model build Word files directly, and Tim's CV styling is applied the same way every time.
+- The PDF is made from the approved Word file, not from the markdown, so the PDF matches exactly what Tim checked, including any edits he made in Word.
+- LibreOffice runs with a temporary profile, so it works even when LibreOffice is already open on Tim's PC. It also checks the usual Windows install folders.
+- A4 is the fallback because pandoc's default style leaves the page size out and LibreOffice then picks US Letter.
+
+**How to check it**
+Checked in this session with a sample CV and cover letter in the scratchpad: both `.docx` files and both PDFs were made, the PDF text and layout looked right, the page is A4 (595 x 842 pt) without a style file, and a style file's own page size is kept. A missing role folder gives a clear error.
+
+**Open items**
+Tim needs pandoc and LibreOffice installed on his PC (install links are in the script's error messages; setup steps will go in the guide).
+
 ### 2026-11-06: Add handover rules, job-search files and role tracker
 
 **What changed**
