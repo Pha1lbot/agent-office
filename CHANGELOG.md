@@ -2,6 +2,7 @@
 
 One line per piece of work that reached `main`, newest first. Full details are in each branch's notes file under `notes/changes/`.
 
+- 2026-11-07: CHANGELOG line for #19, so `main` is complete; this PR carries its own line too ([#20](https://github.com/Pha1lbot/agent-office/pull/20)). See [branch notes](notes/changes/claude-compassionate-ptolemy-vc0jj2.md).
 - 2026-11-07: Git routine: branch work on Tim's PC in a separate `agent-office-work` folder so the main folder stays on `main`, pull before each new piece of work, delete merged branches, a pull request template, and the missing CHANGELOG lines for #15 to #17 ([#19](https://github.com/Pha1lbot/agent-office/pull/19)). See [branch notes](notes/changes/claude-compassionate-ptolemy-vc0jj2.md).
 - 2026-11-07: Learnings from the "first AI team" blueprint: old team names fixed, Hal's automatic runs can't rewrite or throw away git history, and Ada fact-checks every CV and cover letter against the CV bank ([#18](https://github.com/Pha1lbot/agent-office/pull/18)). See [branch notes](notes/changes/claude-compassionate-ptolemy-vc0jj2.md).
 - 2026-11-07: The live office is now the 3D open-plan office, with Hal's glass office, kitchen and lounge, and the team moving by their live state ([#17](https://github.com/Pha1lbot/agent-office/pull/17)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).

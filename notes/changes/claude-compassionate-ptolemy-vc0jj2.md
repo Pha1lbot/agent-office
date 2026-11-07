@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** Merged 2026-11-07 ([PR #18](https://github.com/Pha1lbot/agent-office/pull/18) and [PR #19](https://github.com/Pha1lbot/agent-office/pull/19)). Restarted from `main` for the #19 CHANGELOG line, which reaches `main` with the next PR.
+**Status:** In review ([PR #20](https://github.com/Pha1lbot/agent-office/pull/20), CHANGELOG lines only). Earlier work merged 2026-11-07 in [PR #18](https://github.com/Pha1lbot/agent-office/pull/18) and [PR #19](https://github.com/Pha1lbot/agent-office/pull/19).
 
 ## Purpose
 
@@ -10,6 +10,24 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-07: PR #20 for the CHANGELOG lines
+
+**What changed**
+- `CHANGELOG.md`: a line for #20 itself, above the #19 line added in the entry below.
+- This notes file: status is "In review" with PR #20.
+
+**Why**
+Tim asked to close off #19's CHANGELOG line tonight, before moving on to something else. That replaces the plan in the entry below to wait for the next PR.
+
+**Decisions**
+PR #20 records its own merge in its own CHANGELOG line, added once GitHub had given it a number. Without that, every bookkeeping PR would need another one after it. The line reaches `main` at the moment of the merge it describes, so the CHANGELOG stays accurate.
+
+**How to check it**
+`CHANGELOG.md` starts with #20, then #19, then #18.
+
+**Open items**
+None once #20 is merged and its branch deleted.
 
 ### 2026-11-07: After the merge of PR #19
 
