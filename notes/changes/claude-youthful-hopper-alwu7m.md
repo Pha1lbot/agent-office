@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (office redesign mockups); earlier work merged in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3), [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#15](https://github.com/Pha1lbot/agent-office/pull/15), 2026-11-06
+**Status:** In progress (3D office); earlier work merged in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3), [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#15](https://github.com/Pha1lbot/agent-office/pull/15), 2026-11-06
 
 ## Purpose
 
@@ -15,6 +15,42 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-07: The live office is now the 3D office
+
+**What changed**
+- New `shared/office-view/public/floorplan.js`: the mockup's floor plan as an ES module. It adds a meeting table with four stools in the middle of the floor (spots `meet:0-3`, where visiting subagents sit) and a `door` spot where visitors arrive. It exports `path()`.
+- New `shared/office-view/public/scene.js`: the 3D scene in Three.js, built from the restyled mockup.
+  - **Room:** an orthographic isometric camera, the room, furniture and people, and HTML name tags. The TODAY board on the back wall shows the tracker counts and today's tokens (`setBoard`).
+  - **Controls:** zoom, turn, recentre and full-screen buttons. Drag pans; scroll-zoom is off, so the page still scrolls.
+  - **Picking:** a click picks the nearest person on screen within 48 px. Raycasting missed too often at this size.
+  - **No WebGL:** a message shows instead, and the cards still work.
+  - **Live behaviour:** `typing` and `waiting` go to the desk (`waiting` gets a yellow tag with !). `walking` goes to the shelf or the web kiosk, by `place`. `idle` wanders: coffee 40%, sofa 40% or desk, for 25–60 s each. `asleep` takes a nap on a sofa (Ada dozes at her desk). Visitors take a meeting-table seat, in their own colour. Routes are only recalculated once someone reaches a spot.
+- `shared/office-view/public/office.js`: the PixiJS scene is removed. It keeps the cards, log and contracts, and calls `start` / `follow` / `setSelected` / `setBoard`.
+- `public/index.html`: an import map for `three`, and a new scene label.
+- `public/style.css`: the scene's size, tool buttons, tags and `Z z`, with reduced motion respected.
+- `src/server.ts`: serves `/vendor/three.mjs` plus OrbitControls, RoundedBoxGeometry and CSS2DRenderer from `node_modules/three`; the PixiJS route is removed.
+- `package.json`: `three` 0.170.0 (exact) added and `pixi.js` removed. The description is updated.
+- READMEs (root and office view): what you see, how to move around, and a new screenshot (`mockup/screenshot-office-live.png`).
+
+**Why**
+Tim was happy with the restyled mockup and said "Ready to build".
+
+**Decisions**
+- Staff go for coffee or the sofa only when the live state is idle or asleep, so the office still tells the truth at a glance. The tag's dot gives the exact state.
+- Live `agents` messages carry only changed agents, so the page never removes agents that are missing from an update (a first draft did, and was fixed before committing).
+
+**How to check it**
+- `tsc` is clean and `npm test` passes (26).
+- Against a throwaway copy, with `scripts/fake-agents.ts --fast`:
+  - the scene drew all five, and all vendor files returned 200
+  - cards and the log updated
+  - clicking Wren, Ada and Cole in the scene selected each one
+  - at 390 px wide there's no sideways scroll
+
+**Open items**
+- Not yet seen on Tim's laptops. It needs WebGL, which any recent browser has.
+- After merging, `Open Office.cmd` runs `npm install`, which fetches Three.js and removes PixiJS.
 
 ### 2026-11-06: 3D mockup restyled after Tim's reference
 

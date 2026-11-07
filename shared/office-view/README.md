@@ -1,8 +1,8 @@
 # Agent Office (office view)
 
-Shows Tim's agents as pixel-art coworkers in an office, so he can see at a glance who is working, who is waiting for him and who has finished. A **Pipeline** tab shows every role on a board, with a page for each role holding its CV, cover letter, attachments and interview talking points.
+Shows Tim's agents as coworkers in a 3D open-plan office (Hal's glass office, desks, a kitchen and a lounge), so he can see at a glance who is working, who is waiting for him and who has finished. A **Pipeline** tab shows every role on a board, with a page for each role holding its CV, cover letter, attachments and interview talking points.
 
-![Office](mockup/screenshot-office.png)
+![Office](mockup/screenshot-office-live.png)
 
 ## Open the office
 
@@ -40,14 +40,19 @@ It acts out a job-search day on a loop. `npm run fake -- --fast` plays it three 
 
 | On screen | Means |
 |---|---|
-| Typing at the desk, screen on | Working |
-| At the FILES shelf | Reading or searching files |
-| At the WEB kiosk | Searching or reading the web |
-| Bobbing `?` | Waiting for you: Hal's "Your turn", or a permission prompt |
-| Sitting still | Idle: finished, or waiting on a teammate |
-| Head down, `z Z` | Asleep: not used for a while |
+| Typing at the desk, screen lit | Working |
+| At the bookshelf | Reading or searching files |
+| At the web screen by the window | Searching or reading the web |
+| Yellow name tag with `!` | Waiting for you: Hal's "Your turn", or a permission prompt |
+| Getting a coffee, or on the sofas | Idle: finished, or waiting on a teammate. They wander between the kitchen, the sofas and their desk |
+| Lying on a sofa, `Z z` | Asleep: not used for a while (Ada dozes at her desk) |
+| Someone at the meeting table | A visiting helper: a subagent that isn't one of the team |
 
-Click a character or its card to see what it has been doing. Click a **name** to see that person's (novelty) contract. The whiteboard and the **Pipeline** tab read `jobs/tracker.json` and update within a few seconds of any change.
+The dot on each name tag shows the same: green working, blue looking things up, amber waiting, grey idle or asleep.
+
+**Moving around:** drag to move. The buttons zoom in and out, turn the room a quarter at a time (the walls nearest you hide), recentre and go full screen.
+
+Click a person or their card to see what they've been doing. Click a **name** to see that person's (novelty) contract. The TODAY board on the back wall and the **Pipeline** tab read `jobs/tracker.json` and update within a few seconds of any change.
 
 ## The Pipeline
 
@@ -115,11 +120,11 @@ Automatic runs can only use the job-search tools: reading and writing files, the
 
 - **Agents:** Claude Code hooks in `.claude/settings.json` run `hooks/report.mjs` on each event (session start, prompt, tool use, notification, stop, subagent stop, session end). It sends a few short fields to the bridge. If the office isn't open, it gives up within half a second and does nothing.
 - **Bridge:** `src/server.ts` turns the reports into what each agent is doing (logic in `src/office.ts`), watches the tracker and pushes updates to the page. It only listens on this PC (127.0.0.1).
-- **Page:** `public/` draws the office with PixiJS.
+- **Page:** `public/scene.js` draws the office in 3D with Three.js (pinned in `package.json`, served from `/vendor`), using the floor plan in `public/floorplan.js`. `public/office.js` holds the cards, log and contracts.
 
 A session started in the `agent-office` folder is Hal. The subagents he calls (Rita, Wren, Cole) get their own desks, and Ada's desk shows the office's automatic work.
 
-**Token meter:** each card shows that person's **fresh tokens today** (new input + output), from Claude Code's own transcripts. Re-reads of the same context are much cheaper and shown separately in the side panel. The whiteboard and the Roles strip show the day's total. Ada always shows "No tokens". Sessions from other folders appear as visitors, but only if you also add the hooks to your user settings.
+**Token meter:** each card shows that person's **fresh tokens today** (new input + output), from Claude Code's own transcripts. Re-reads of the same context are much cheaper and shown separately in the side panel. The TODAY board and the Pipeline strip show the day's total. Ada always shows "No tokens". Sessions from other folders appear as visitors, but only if you also add the hooks to your user settings.
 
 **Inputs:** Claude Code hook events; `jobs/tracker.json`.
 **Outputs:** the web page. Nothing is written to disk. The office keeps no history once it is closed.
