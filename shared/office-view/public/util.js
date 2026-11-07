@@ -9,7 +9,7 @@ export const safeUrl = (u) => (/^https?:\/\//i.test(u || "") ? u : null);
 export const roleName = (r) => `${esc(r.company)} (${esc(r.title)})`;
 
 export const STATUS_ORDER = ["found", "shortlisted", "drafted", "approved", "applied", "interview", "offer", "rejected", "skipped"];
-export const STATUS_LABEL = { found: "To review", shortlisted: "Shortlisted", drafted: "Drafted", approved: "Approved", applied: "Applied", interview: "Interview", offer: "Offer", rejected: "Rejected", skipped: "Skipped" };
+export const STATUS_LABEL = { found: "Lead", shortlisted: "Shortlisted", drafted: "Drafted", approved: "Approved", applied: "Applied", interview: "Interview", offer: "Offer", rejected: "Rejected", skipped: "Dismissed" };
 export const STATUS_COLOUR = { found: "#9aa0b5", shortlisted: "#7aa2ff", drafted: "#f2b134", approved: "#4fbf7f", applied: "#3fa7d6", interview: "#c38bff", offer: "#2ee6a6", rejected: "#e06c75", skipped: "#6b7090" };
 export const OPEN = new Set(["found", "shortlisted", "drafted", "approved", "applied", "interview"]);
 export const PICKED = new Set(["shortlisted", "drafted", "approved", "applied", "interview", "offer"]);
@@ -59,4 +59,41 @@ export async function post(path, body) {
   const out = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(out.error || "Couldn't save");
   return out;
+}
+
+/** A short message at the bottom of the screen, with an optional Undo. */
+let toastTimer = 0;
+export function toast(text, undo) {
+  const el = $("toast");
+  if (!el) return;
+  $("toast-msg").textContent = text;
+  const b = $("toast-undo");
+  b.hidden = !undo;
+  b.onclick = undo ? () => { el.classList.remove("show"); undo(); } : null;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("show"), undo ? 7000 : 3500);
+}
+
+/** A small line icon (paths from the artifact's icon set). */
+export const ICON = {
+  spark: "M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z",
+  arrow: "M5 12h14M13 6l6 6-6 6",
+  x: "M6 6l12 12M18 6L6 18",
+  edit: "M4 20h4L19 9l-4-4L4 16zM14 6l4 4",
+  plus: "M12 5v14M5 12h14",
+  check: "M20 6L9 17l-5-5",
+  search: "M11 18a7 7 0 100-14 7 7 0 000 14zM20 20l-3.5-3.5",
+  doc: "M6 3h9l4 4v14H6zM14 3v5h5",
+  leads: "M3 13h5l2 3h4l2-3h5M5 5h14l2 8v6H3v-6z",
+  calendar: "M4 6h16v14H4zM4 10h16M9 3v4M15 3v4",
+};
+export const svg = (path, size = 18, sw = 1.8) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg>`;
+
+/** Lowest yearly pay in a string like "£55k–£65k", or null (day rates and "competitive" are left out). */
+export function yearlyPay(text) {
+  const t = String(text || "");
+  if (/\b(day|daily|hour|hourly|p\/?d|p\/?h)\b/i.test(t)) return null;
+  const nums = [...t.replace(/,/g, "").matchAll(/(\d+(?:\.\d+)?)\s*(k)?/gi)].map((m) => Number(m[1]) * (m[2] ? 1000 : 1)).filter((n) => n >= 5000);
+  return nums.length ? Math.min(...nums) : null;
 }

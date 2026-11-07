@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (3D office); earlier work merged in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3), [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#15](https://github.com/Pha1lbot/agent-office/pull/15), 2026-11-06
+**Status:** In progress (Job Hunt v3, phase 1: the dashboard in the artifact's design); earlier work merged in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3), [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#17](https://github.com/Pha1lbot/agent-office/pull/17)
 
 ## Purpose
 
@@ -15,6 +15,74 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-07: Job Hunt v3, phase 1: the office dashboard in the style of Tim's artifact
+
+**What changed**
+- New `notes/plans/job-hunt-v3.md`: the approved four-phase plan to combine Tim's Job Hunt artifact (claude.ai) with the office, including what each stage means. The phases:
+  1. this dashboard
+  2. Tim's CV template and rules
+  3. lead finding, with Hal triaging the queue
+  4. sync with the artifact as his phone view
+- `shared/office-view/public/index.html`: a new shell in the artifact's design.
+  - **Sidebar:** Overview, Roles, Leads, Interviews, Next actions, CVs, The office, plus the Target card. It collapses, and becomes a top strip on phones.
+  - **Header:** the greeting and date, Live, search (`/`) and Add role.
+  - **Dialogs:** new Tailor and CV-bank dialogs, and a toast.
+- `public/style.css`: rebuilt on the artifact's tokens and components (Geist, cards, KPI tiles, bar charts, chips, pills, tables, empty states, dialogs, toasts, skeletons). The older parts (office, board, role page, contracts) are re-themed with the same tokens. Class clashes were renamed: the office cards are now `.agent`, and the artifact's tag is `.tg`.
+- New `public/views.js`:
+  - **Overview:** KPIs with count-up, the pipeline and weekly charts, upcoming interviews and next actions.
+  - **Leads:** ranked, verdict and fit chips, To pipeline, Dismiss, Restore, Tailor, all with Undo toasts.
+  - **Interviews:** listed, with prep links.
+  - **Next actions:** add, tick and untick.
+  - **CVs:** the CV bank, editable rules, and tailored CVs with View, PDF and Word.
+  - **Also here:** the Target card (from `preferences.md`), the nav counts, and the Tailor dialog.
+- `public/app.js`: a router for `#overview`, `#roles`, `#leads`, `#interviews`, `#actions`, `#cvs`, `#office` and `#role/<id>[/<tab>]`. The old `#pipeline` still works.
+- `public/dashboard.js`: the board is now the Roles view. It starts at Shortlisted, leads live in Leads, and the Closed strip is now Rejected. Waiting on you links to Leads and Next actions.
+- `public/role.js`: the back link goes to Leads or Roles, and a link can open a chosen tab.
+- `public/office.js`: the agent cards' class is renamed.
+- `public/util.js`: stage labels "Lead" and "Dismissed", plus `toast()`, `svg()`, `ICON` and `yearlyPay()`.
+- `src/server.ts`:
+  - `POST /api/actions` (add, done, reopen)
+  - `POST /api/cv-rules`, with `cv-rules.md` now included in the office backup
+  - `GET /api/job-search` (rules, preferences, CV bank) and `GET /files/cv/default-cv.pdf`
+  - the role request `kind: "tailor"`: saves the job description, queues Wren (or a redo if documents exist), and shortlists a lead
+- `shared/tools/tracker.py`:
+  - `action reopen`
+  - inbox tasks count as the same work when one is the other plus details after a colon, so a tailor request and a shortlist queue Wren once
+  - moving a role back to found or skipped cancels drafting not yet started
+- New `shared/tools/test_tracker.py`.
+- `.claude/skills/cos/SKILL.md`: Hal passes the Tailor dialog's details to Wren word for word.
+- READMEs: the dashboard section, now with what each stage means, and new screenshots `mockup/screenshot-dashboard-*.png`.
+
+**Why**
+Tim prefers his artifact dashboard's function, feel and look and asked to use it as the template, combined with the office's CVs, cover letters and interview prep. He chose:
+- both, kept in sync
+- Wren does the tailoring
+- a review queue handled by Hal, a daily search, and the email scan
+
+He asked what each stage means, and to name CVs `Tim_Everard_<Job_Title>_cv.pdf` (phase 2).
+
+**Decisions**
+- Tracker statuses are unchanged; the views group them. Leads are found and skipped; Roles are Shortlisted onwards. The finer stages stay on the board.
+- **Tailoring:**
+  - It goes to Wren rather than running in the page, so CVs follow the CV bank and the fact-check, and come with a cover letter.
+  - A PDF or Word job description is attached to the role for Wren rather than read in the browser, so no new libraries are needed in this phase.
+
+**How to check it**
+- `npm test` (30 pass) and `tsc` are clean, and `test_tracker.py` and `test_fact_check.py` pass.
+- Playwright against a throwaway copy, with no page errors:
+  - every view shows real tracker data
+  - To pipeline and Undo work, as do Dismiss and Restore
+  - Tailor from a lead saved `advert.txt`, queued "Draft a tailored CV and cover letter: bring out budget ownership" and shortlisted the role
+  - adding and ticking an action work
+  - a lead row opens the role page, with "← Leads"
+  - the office shows all 5 cards
+  - at 390 px wide, Overview, Leads, Roles and CVs have no sideways scroll
+- That run found that Undo left Wren's drafting task queued. It's fixed (the cancel rule above) and tested.
+
+**Open items**
+- Phases 2 to 4. Phase 2 needs Tim's `cv_template.py` and `example-content.json`.
+- Not yet seen on Tim's PC.
 
 ### 2026-11-07: The live office is now the 3D office
 

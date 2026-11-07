@@ -1,6 +1,6 @@
 # Agent Office (office view)
 
-Shows Tim's agents as coworkers in a 3D open-plan office (Hal's glass office, desks, a kitchen and a lounge), so he can see at a glance who is working, who is waiting for him and who has finished. A **Pipeline** tab shows every role on a board, with a page for each role holding its CV, cover letter, attachments and interview talking points.
+Shows Tim's agents as coworkers in a 3D open-plan office (Hal's glass office, desks, a kitchen and a lounge), so he can see at a glance who is working, who is waiting for him and who has finished. A dashboard in the style of Tim's Job Hunt artifact (Overview, Roles, Leads, Interviews, Next actions, CVs) shows every role, with a page for each holding its CV, cover letter, attachments and interview talking points.
 
 ![Office](mockup/screenshot-office-live.png)
 
@@ -52,25 +52,39 @@ The dot on each name tag shows the same: green working, blue looking things up, 
 
 **Moving around:** drag to move. The buttons zoom in and out, turn the room a quarter at a time (the walls nearest you hide), recentre and go full screen.
 
-Click a person or their card to see what they've been doing. Click a **name** to see that person's (novelty) contract. The TODAY board on the back wall and the **Pipeline** tab read `jobs/tracker.json` and update within a few seconds of any change.
+Click a person or their card to see what they've been doing. Click a **name** to see that person's (novelty) contract. The TODAY board on the back wall and the dashboard read `jobs/tracker.json` and update within a few seconds of any change.
 
-## The Pipeline
+## The dashboard
 
-**Board** (the default view): a column per stage, from To review to Offer, plus a **Closed** strip for rejected and skipped roles. Each card shows:
-- title, company, pay and location
-- fit dots and priority
-- the **closing date** ("closes in 3 days" turns amber within a week)
-- the **interview date**
-- **document ticks**: ✓ CV, ✓ Letter, ✓ PDF, ✓ Prep, and 📎 attachments
-- the next step, red ⚠ when a follow-up is overdue
-- "Hal is on it" while the team is working on it
-- Hal's verdict: **Apply** (green), **Maybe** (amber) or **Skip** (red); hover for why
+The dashboard follows Tim's Job Hunt artifact: dark, with a sidebar (collapse it with the arrow) and the same cards, charts and dialogs. On a phone the sidebar becomes a strip along the top. Press `/` to search.
 
-**To review is always in order.** Ada numbers every role in it (P1, P2…) each time the tracker changes: Hal's verdict first, then fit, then pay (£60k+, then £50k+), then closing date. If you set a priority yourself on a To review role, it's kept.
+| Sidebar | What it shows |
+|---|---|
+| **Overview** | Key numbers (active roles, applications sent, interviews, top of the pay range), the pipeline chart, applications per week, **Waiting on you**, upcoming interviews and next actions. A banner shows how many leads are waiting. The strip at the top shows Hal, the backup and today's tokens. |
+| **Roles** | Every role from Shortlisted on, as a **board** (drag a card to change its stage) or a **list** (sort by priority, pay, fit, Hal's verdict, closing date or last update). Dropping a card on **Rejected** asks for an optional reason. |
+| **Leads** | Roles found but not picked yet, best first, with Hal's verdict, fit and reason. Filter by verdict or list. **To pipeline** shortlists one (Wren starts writing); **✕** dismisses it; the sparkle opens **Tailor a CV**. Every move has an **Undo**. Dismissed leads can be restored. |
+| **Interviews** | Upcoming interviews first; each opens Cole's prep and your talking points. |
+| **Next actions** | Your to-do list: add, tick and untick. Hal adds questions here when he runs on his own. |
+| **CVs** | Your CV bank (what Wren may use), your CV writing rules (editable), and every tailored CV and cover letter, with View, PDF and Word. |
+| **The office** | The 3D office, the team's cards and the activity log. |
 
-**Drag a card** to another column to change its status, or use the menu on the card. Dropping a card on Closed asks for an optional reason, which helps Hal tune your searches.
+The **Target** card in the sidebar comes from `shared/job-search/preferences.md` (ask Hal to change it).
 
-**List:** the same roles in a table you can sort by priority, pay, fit, Hal's verdict, closing date or last update. Search and filter by list or work style in either view. **+ Add role** adds one you found yourself.
+**Tailor a CV** (CVs page, or the sparkle on a lead or a tailored CV): pick the role, paste the job description or upload it (a .txt or .md is read straight in; a PDF or Word file is attached to the role for Wren to read), and say what to bring out. It goes to **Wren**, who writes the CV and cover letter from the CV bank; Ada fact-checks them. Tailoring a lead shortlists it. If the role already has documents, Wren redoes them. Your CV writing rules can be edited in the same dialog; Wren follows them every time.
+
+**What each stage means:**
+
+| Stage | What happens automatically |
+|---|---|
+| **Lead** | Ranked best first (P1, P2…: Hal's verdict, then fit, pay and closing date). Rita reads roles you add and Hal gives a verdict. |
+| **Shortlisted** | Wren writes the tailored CV and cover letter; Ada checks the facts and builds the Word files; then the role moves to Drafted. |
+| **Drafted** | The documents are ready for you to check. Approve, or ask Wren for changes. |
+| **Approved** | Ada makes the PDFs, ready for you to apply. |
+| **Applied** | Ada sets a follow-up date a week ahead. |
+| **Interview** | Cole writes your prep and key talking points. |
+| **Offer / Rejected / Dismissed** | Recorded with any reason, which feeds the preference reviews. Moving a role back to Leads (or Dismissed) cancels drafting nobody has started. |
+
+Board cards show title, company, pay and location; fit dots and priority; the **closing date** (amber within a week); the **interview date**; **document ticks** (✓ CV, ✓ Letter, ✓ PDF, ✓ Prep, 📎 attachments); the next step (red ⚠ when a follow-up is overdue); "Hal is on it"; and Hal's verdict.
 
 **Click any role** to open its page:
 - **Overview:** Rita's summary of the advert, with your next step and notes, which you can edit there.
@@ -126,7 +140,7 @@ They also can't rewrite or throw away git history (force-push, hard reset, delet
 
 A session started in the `agent-office` folder is Hal. The subagents he calls (Rita, Wren, Cole) get their own desks, and Ada's desk shows the office's automatic work.
 
-**Token meter:** each card shows that person's **fresh tokens today** (new input + output), from Claude Code's own transcripts. Re-reads of the same context are much cheaper and shown separately in the side panel. The TODAY board and the Pipeline strip show the day's total. Ada always shows "No tokens". Sessions from other folders appear as visitors, but only if you also add the hooks to your user settings.
+**Token meter:** each card shows that person's **fresh tokens today** (new input + output), from Claude Code's own transcripts. Re-reads of the same context are much cheaper and shown separately in the side panel. The TODAY board and the Overview strip show the day's total. Ada always shows "No tokens". Sessions from other folders appear as visitors, but only if you also add the hooks to your user settings.
 
 **Inputs:** Claude Code hook events; `jobs/tracker.json`.
 **Outputs:** the web page. Nothing is written to disk. The office keeps no history once it is closed.
