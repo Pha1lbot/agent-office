@@ -45,7 +45,7 @@ When listing roles, use:
 
 - Only Hal (and Tim, from the office) change the tracker, always through `tracker.py`. Subagents never do.
 - No agent applies for jobs, sends emails or fills in forms. Tim does that.
-- Wren and Cole never invent experience, dates, numbers, qualifications or skills. They only use what is in the CV text bank (`shared/job-search/cv/cv-bank.md`).
+- Wren and Cole never invent experience, dates, numbers, qualifications or skills. They only use what is in the CV text bank (`shared/job-search/cv/cv-bank.md`). Ada's fact check (`shared/tools/fact_check.py`) compares Wren's drafts with the bank each time the Word files are built, and lists anything it can't find in the role's `notes.md`.
 - Nothing is spent on CVs until Tim has said which roles to go for.
 
 ## Why hand-offs are expensive

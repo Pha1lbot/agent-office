@@ -1,6 +1,6 @@
 # CV writing rules
 
-Senior Admin follows these for every CV and cover letter. Tim wrote them in his Job Hunt dashboard (imported 2026-11-06); edit them here.
+Wren (the Writer) follows these for every CV and cover letter. Tim wrote them in his Job Hunt dashboard (imported 2026-11-06); edit them here.
 
 - Plain, human writing. It must not sound AI-written.
 - Never invent numbers, achievements or experience.

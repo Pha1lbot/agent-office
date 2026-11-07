@@ -109,7 +109,10 @@ export class AutoCos {
     ].join("\n");
     const quote = (a: string) => (process.platform === "win32" ? `"${a}"` : a);
     const args = ["-p", "--model", "sonnet", "--permission-mode", "acceptEdits", "--allowedTools", ...ALLOWED_TOOLS].map(quote);
-    const child = spawn(this.claude, args, { cwd: this.repo, shell: process.platform === "win32", windowsHide: true });
+    // OFFICE_AUTO_RUN turns on hooks/guard.mjs, which refuses git commands that
+    // rewrite or throw away history: Tim isn't there to say yes to them.
+    const env = { ...process.env, OFFICE_AUTO_RUN: "1" };
+    const child = spawn(this.claude, args, { cwd: this.repo, env, shell: process.platform === "win32", windowsHide: true });
     this.child = child;
     const kill = setTimeout(() => child.kill(), MAX_RUN_MS);
     child.stdout?.pipe(log);

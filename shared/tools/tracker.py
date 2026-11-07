@@ -2,8 +2,9 @@
 """Role tracker for the job-search team.
 
 jobs/tracker.json holds one record per role. jobs/tracker.md is rebuilt from it
-after every change so it can be read on GitHub. Only the Admin agent should run
-the commands that change the tracker (add, set).
+after every change so it can be read on GitHub. Only Hal (and the office, when
+Tim edits roles) should run the commands that change the tracker (add, set).
+Subagents never do.
 
 Usage:
   python3 shared/tools/tracker.py add --title "Data Analyst" --company "Acme" \

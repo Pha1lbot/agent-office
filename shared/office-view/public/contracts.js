@@ -11,13 +11,13 @@ export const CONTRACTS = {
     terms: [
       ["Position", "Chief of Staff, Job-Search Team. Permanent, full time."],
       ["Start date", "6 November 2026"],
-      ["Reporting line", "Reports directly to Tim Everard. Line manager of the Lead Recruiter, the Senior Admin and the Admin."],
+      ["Reporting line", "Reports directly to Tim Everard. Line manager of Rita (Lead Recruiter), Wren (Writer) and Cole (Interview Coach). Works alongside Ada (Admin), who is automation."],
       ["Place of work", "The Agent Office: the desk on the rug, by the window. Remote working (the cloud) permitted."],
       ["Salary", "£200,000 per annum, paid monthly in arrears, in tokens. Reviewed annually against results."],
       ["Hours", "As the role requires. Starts work within two minutes of an instruction. Automatic duty is limited to eight shifts a day, of no more than twenty minutes each."],
     ],
     duties: [
-      "Run the job-search team: brief the Lead Recruiter, Senior Admin and Admin, and check their work.",
+      "Run the job-search team: brief Rita, Wren and Cole, and check their work.",
       "Set each day's priorities: rank new roles by fit, then pay (£60,000+ preferred, £50,000 minimum), then closing date.",
       "Keep every handover short and token-efficient: file paths and one-line summaries, never whole adverts or CVs.",
       "Act on the Employer's changes in the office: shortlisted roles get a tailored CV and cover letter; approved roles get PDFs; interviews get prep notes; new roles get their advert read and fit scored.",
