@@ -81,7 +81,7 @@ Whenever Claude merges a pull request, or Tim says one has been merged:
 1. Run `git status`. If there are uncommitted changes, tell Tim and ask what to do with them before going on.
 2. Run `git checkout main`, then `git pull`, so this copy has the merged work. If the work was done in a separate work folder on Tim's PC, remove it as described in "Tim's PC stays on `main`".
 3. Add the one-line `CHANGELOG.md` entry for the merged branch (see "Change notes" below), then commit and push it.
-4. Delete the merged branch on GitHub (the "Delete branch" button on the pull request, or `git push origin --delete <branch>`). Tim agreed on 2026-11-07 that merged branches can go: the branch's notes file and the pull request keep the record. Only delete a branch that is fully merged, with nothing newer on it.
+4. Delete the merged branch on GitHub (the "Delete branch" button on the pull request, or `git push origin --delete <branch>`). Tim agreed on 2026-11-07 that merged branches can go: the branch's notes file and the pull request keep the record. Only delete a branch that is fully merged, with nothing newer on it. Cloud sessions can't delete branches (GitHub refuses them), so there Tim does it with the button, or GitHub's "Automatically delete head branches" setting does it for him.
 5. Check `git status` shows `main` up to date with origin, and tell Tim this copy is now up to date.
 
 ## Change notes (always follow)

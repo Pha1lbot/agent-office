@@ -11,6 +11,33 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-07: Merged branches: deletion refused from the cloud session
+
+**What changed**
+- `CLAUDE.md`, "After a merge" step 4: cloud sessions can't delete branches, so Tim deletes them with the PR's button, or turns on GitHub's "Automatically delete head branches".
+- No branches were deleted.
+
+**Why**
+Tim gave permission to delete the merged branches (learning 4). Six were checked first: each fully merged into `main` (`git merge-base --is-ancestor`) and none with an open PR:
+- `claude/youthful-hopper-alwu7m` (607d770)
+- `dashboard-v2` (ac28429)
+- `import-dashboard` (dd84aa3)
+- `office-editing` (c1a06d1)
+- `office-view` (b53987c)
+- `team-v2` (92c543c)
+
+`git push origin --delete` was refused with HTTP 403: this session's GitHub access only allows pushing to its own branch. Per the session's rules, a refusal like this is reported, not retried another way. The seventh branch, `claude/compassionate-ptolemy-vc0jj2`, now carries new work, so it stays until its PR is merged.
+
+**Decisions**
+Didn't look for another route (for example the GitHub API from the command line): the refusal is a deliberate limit of this session.
+
+**How to check it**
+`git ls-remote --heads origin` still lists the six branches.
+
+**Open items**
+- Tim: delete the six branches at https://github.com/Pha1lbot/agent-office/branches (the bin icon on each). Every commit on them is already in `main`.
+- Tim (optional): turn on Settings, General, "Automatically delete head branches", so merged branches go by themselves from now on.
+
 ### 2026-11-07: Pull request template
 
 **What changed**
