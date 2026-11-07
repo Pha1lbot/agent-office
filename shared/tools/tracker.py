@@ -113,9 +113,15 @@ def now_stamp():
     return uk_now().strftime("%Y-%m-%dT%H:%M")
 
 
+def same_task(a, b):
+    """True if two inbox tasks ask for the same work: equal, or one is the other plus
+    details after a colon ("Draft a tailored CV and cover letter: bring out budgets")."""
+    return a == b or a.startswith(b + ":") or b.startswith(a + ":")
+
+
 def to_inbox(data, role, task):
     """Queue work for Chief of Staff, once per role and task."""
-    if any(i["role"] == role["id"] and i["task"] == task and not i["done"] for i in data["inbox"]):
+    if any(i["role"] == role["id"] and same_task(i["task"], task) and not i["done"] for i in data["inbox"]):
         return
     data["inbox"].append({"id": f"i{len(data['inbox']) + 1}", "role": role["id"], "task": task,
                           "title": f"{role['title']} @ {role['company']}", "at": now_stamp(), "done": False})
@@ -269,6 +275,12 @@ def cmd_set(args):
             has_docs = (JOBS / "roles" / role["id"] / "cv.docx").exists()
             if args.by == "tim" and value in INBOX_TASKS and not (value in ("drafted", "approved") and has_docs):
                 to_inbox(data, role, INBOX_TASKS[value])
+            if args.by == "tim" and value in ("found", "skipped"):
+                # Tim took the role back out of the pipeline (or undid a move): cancel drafting nobody has started.
+                for i in data["inbox"]:
+                    if i["role"] == role["id"] and not i["done"] and i["task"].startswith(("Draft a tailored CV", "Draft first")):
+                        i["done"] = True
+                        i["cancelled"] = True
             if value == "applied" and not any(p.startswith("next=") for p in args.changes):
                 # Ada: a follow-up date, unless Tim already set a real next step
                 if not role.get("next") or re.match(r"(?i)\s*apply", role["next"]):
@@ -329,15 +341,18 @@ def cmd_action(args):
         actions.append(action)
         save(data)
         print(action["id"])
-    elif args.verb == "done":
+    elif args.verb in ("done", "reopen"):
         if not args.text:
-            sys.exit("Usage: action done <action-id>")
+            sys.exit(f"Usage: action {args.verb} <action-id>")
         for action in actions:
             if action["id"] == args.text[0]:
-                action["done"] = True
-                action["completed"] = today()
+                action["done"] = args.verb == "done"
+                if action["done"]:
+                    action["completed"] = today()
+                else:
+                    action.pop("completed", None)
                 save(data)
-                print(f"{action['id']}: done")
+                print(f"{action['id']}: {'done' if action['done'] else 'to do'}")
                 return
         sys.exit(f"No action with id {args.text[0]}")
     else:
@@ -504,7 +519,7 @@ def main():
     ins.set_defaults(func=cmd_insights)
 
     act = sub.add_parser("action", help="Tim's next actions: add, done, list")
-    act.add_argument("verb", choices=["add", "done", "list"])
+    act.add_argument("verb", choices=["add", "done", "reopen", "list"])
     act.add_argument("text", nargs="*", help="the action's text (add) or id (done)")
     act.add_argument("--role", help="the role this action is about (add)")
     act.add_argument("--all", action="store_true", help="include done actions (list)")

@@ -1,25 +1,26 @@
-// Page start-up: loads each part and switches between the Office, the Pipeline
-// and a role's page (#role/<id>), using the address so Back works.
+// Page start-up: loads each part and shows one view at a time, using the address
+// (#overview, #roles, #leads, #interviews, #actions, #cvs, #office, #role/<id>[/<tab>])
+// so Back works.
 import { connect } from "./store.js";
 import { $ } from "./util.js";
 import "./office.js";
 import "./dashboard.js";
+import { showView } from "./views.js";
 import { showRole, hideRole } from "./role.js";
 
+const VIEWS = ["overview", "roles", "leads", "interviews", "actions", "cvs", "office"];
+
 function route() {
-  const hash = location.hash.replace(/^#/, "");
-  const role = /^role\/([a-z0-9-]+)$/.exec(hash);
-  const tab = role ? "pipeline" : hash === "pipeline" || hash === "roles" ? "pipeline" : "office";
-  document.querySelectorAll(".tabs button").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
-  $("tab-office").hidden = tab !== "office";
-  $("tab-pipeline").hidden = tab !== "pipeline" || !!role;
-  if (role) showRole(role[1]); else hideRole();
+  let hash = location.hash.replace(/^#/, "");
+  if (hash === "pipeline") hash = "roles"; // the old Pipeline tab
+  const role = /^role\/([a-z0-9-]+)(?:\/([a-z]+))?$/.exec(hash);
+  const view = role ? null : VIEWS.includes(hash) ? hash : "overview";
+  for (const v of VIEWS) $(`v-${v}`).hidden = v !== view;
+  if (role) showRole(role[1], role[2]); else hideRole();
+  if (view) showView(view);
+  else document.querySelectorAll("[data-nav]").forEach((a) => a.removeAttribute("aria-current"));
   window.scrollTo(0, 0);
 }
-document.querySelector(".tabs").addEventListener("click", (e) => {
-  const b = e.target.closest("button[data-tab]");
-  if (b) location.hash = b.dataset.tab === "office" ? "" : b.dataset.tab;
-});
 window.addEventListener("hashchange", route);
 route();
 connect();

@@ -21,9 +21,10 @@ const hasFile = (name) => current?.data.files.some((f) => f.name === name);
 const fileUrl = (name) => `/files/roles/${encodeURIComponent(current.id)}/${name.split("/").map(encodeURIComponent).join("/")}`;
 const kb = (n) => (n < 1024 * 1024 ? `${Math.max(1, Math.round(n / 1024))} KB` : `${(n / 1024 / 1024).toFixed(1)} MB`);
 
-export async function showRole(id) {
+export async function showRole(id, want) {
   page.hidden = false;
   if (current?.id !== id) { section = "overview"; points = null; }
+  if (want && SECTIONS.some(([k]) => k === want)) section = want;
   current = { id, data: null };
   page.innerHTML = `<p class="loading">Loading…</p>`;
   await load();
@@ -40,7 +41,7 @@ async function load() {
   const res = await fetch(`/api/roles/${encodeURIComponent(id)}`);
   if (current?.id !== id) return;
   if (!res.ok) {
-    page.innerHTML = `<p class="empty">That role isn't in the tracker. <a href="#pipeline">Back to the pipeline</a></p>`;
+    page.innerHTML = `<p class="muted">That role isn't in the tracker. <a href="#roles">Back to Roles</a></p>`;
     return;
   }
   current.data = await res.json();
@@ -85,8 +86,8 @@ function render() {
   const c = closing(role.closing_date);
   const editing = store.system.editing;
   page.innerHTML = `
-    <nav class="crumbs"><a href="#pipeline">← Pipeline</a></nav>
-    <header class="role-head">
+    <nav class="crumbs">${["found", "skipped"].includes(role.status) ? `<a href="#leads">← Leads</a>` : `<a href="#roles">← Roles</a>`}</nav>
+    <div class="role-head">
       <div>
         <h2>${esc(role.title)}</h2>
         <p class="role-co">${esc(role.company)}</p>
@@ -99,7 +100,7 @@ function render() {
         ${editing ? `<button type="button" class="btn" id="role-edit">Edit details</button>` : ""}
         <span id="role-hal"></span>
       </div>
-    </header>
+    </div>
     <div id="role-notice"></div>
     <nav class="role-tabs" role="tablist">${SECTIONS.map(([k, label]) => `<button role="tab" data-section="${k}" aria-selected="${k === section}">${label}${k === "documents" && (docs.cv || docs.letter) ? " ✓" : ""}${k === "interview" && (docs.prep || docs.points) ? " ✓" : ""}</button>`).join("")}</nav>
     <div class="role-body">${({ overview, documents, interview, activity })[section]()}</div>`;

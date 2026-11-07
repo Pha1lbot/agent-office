@@ -11,7 +11,7 @@
 // the Chief of Staff, in the background (auto-cos.ts).
 
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
-import { readFile, stat } from "node:fs/promises";
+import { readFile, stat, writeFile } from "node:fs/promises";
 import { existsSync, watchFile } from "node:fs";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -58,7 +58,7 @@ const TYPES: Record<string, string> = {
 };
 
 const office = new Office();
-let tracker: { roles: { id: string; title: string; company: string }[]; inbox?: { done: boolean }[]; error?: string } = { roles: [] };
+let tracker: { roles: { id: string; title: string; company: string; status?: string; url?: string }[]; inbox?: { done: boolean }[]; error?: string } = { roles: [] };
 let tool: Tracker | null = null;
 let backup: Backup;
 let cos: AutoCos | null = null;
@@ -181,6 +181,14 @@ function json(res: ServerResponse, code: number, body: object) {
 // Which documents each role has, re-checked every few seconds so files Wren,
 // Cole or Ada make show up on the board without a reload.
 const ROLES_ROOT = join(dirname(TRACKER), "roles");
+// Tim's job-search settings, shown on the dashboard (target card, CVs page, Tailor dialog).
+const JOB_SEARCH = join(REPO, "shared", "job-search");
+const CV_RULES = join(JOB_SEARCH, "cv-rules.md");
+const JS_FILES: Record<string, string> = {
+  rules: CV_RULES, prefs: join(JOB_SEARCH, "preferences.md"), cvBank: join(JOB_SEARCH, "cv", "cv-bank.md"),
+};
+const DEFAULT_CV = join(JOB_SEARCH, "cv", "default-cv.pdf");
+const readText = (f: string) => readFile(f, "utf8").catch(() => "");
 let docs: Record<string, Docs> = {};
 async function rescanDocs() {
   const next: Record<string, Docs> = {};
@@ -310,6 +318,19 @@ const server = createServer(async (req, res) => {
           await requestWork(role, `Revise documents: ${text}`);
         } else if (body.kind === "verdict") {
           await requestWork(role, "Give a verdict: worth applying?");
+        } else if (body.kind === "tailor") {
+          // The Tailor dialog: save the job description, then Wren drafts (or redrafts) with Tim's focus.
+          const advert = String(body.advert ?? "").trim();
+          if (advert.length > 20_000) return json(res, 400, { error: "The job description is too long (20,000 characters at most)." });
+          if (advert) { await saveAdvert(ROLES_ROOT, role.id, advert); await rescanDocs(); }
+          const hasCv = (await docsOf(ROLES_ROOT, role.id)).cv;
+          if (hasCv) await requestWork(role, `Revise documents: tailor the CV and cover letter again${text ? `, bringing out ${text}` : ""}`);
+          else await requestWork(role, text ? `Draft a tailored CV and cover letter: bring out ${text}` : "Draft a tailored CV and cover letter");
+          if (role.status === "found" || role.status === "skipped") {
+            const r = await ada("Updating the tracker", () => tool!.call(["set", role.id, "status=shortlisted", "--by", "tim"]));
+            if (!r.ok) return json(res, 400, { error: r.out.split("\n").pop() || "Couldn't shortlist it" });
+            await afterEdit(`${role.company}: ${role.title} → shortlisted`);
+          }
         } else if (body.kind === "prep") {
           await requestWork(role, text ? `Refresh interview prep: ${text}` : "Refresh interview prep");
         } else return json(res, 400, { error: "Unknown request" });
@@ -346,7 +367,7 @@ const server = createServer(async (req, res) => {
         await afterEdit(`${role.company}: ${role.title}${status ? ` → ${status}` : " updated"}`);
         if (status === "approved") void adaPdfs(role);
         // A new link or pasted advert: Rita reads it and Hal gives a fresh verdict.
-        const oldUrl = String((role as { url?: string }).url || "");
+        const oldUrl = String(role.url || "");
         const read = !!(advert || (newUrl && newUrl !== oldUrl));
         if (read) await requestWork(role, READ_TASK);
         return json(res, 200, { ok: true, read });
@@ -368,6 +389,30 @@ const server = createServer(async (req, res) => {
       return json(res, 200, { ok: true, id });
     }
 
+    if (url.pathname === "/api/actions") {
+      if (!tool) return json(res, 503, { error: "Editing needs Python 3 on this PC." });
+      let r;
+      if (typeof body.id === "string" && /^a\d{1,6}$/.test(body.id)) {
+        r = await ada("Updating the to-do list", () => tool!.call(["action", body.done ? "done" : "reopen", body.id as string]));
+      } else {
+        const text = oneLine(body.text, 300);
+        if (!text) return json(res, 400, { error: "Write the action first." });
+        const role = typeof body.role === "string" && tracker.roles.some((x) => x.id === body.role) ? ["--role", body.role] : [];
+        r = await ada("Adding a to-do", () => tool!.call(["action", "add", text, ...role]));
+      }
+      if (!r.ok) return json(res, 400, { error: r.out.split("\n").pop() || "Couldn't save" });
+      await afterEdit(typeof body.id === "string" ? `action ${body.id} ${body.done ? "done" : "reopened"}` : `new action: ${oneLine(body.text, 60)}`);
+      return json(res, 200, { ok: true });
+    }
+
+    if (url.pathname === "/api/cv-rules") {
+      const text = String(body.text ?? "").replace(/\r\n/g, "\n").trim();
+      if (!text || text.length > 20_000) return json(res, 400, { error: "The rules can't be empty or longer than 20,000 characters." });
+      await writeFile(CV_RULES, text + "\n", "utf8");
+      await afterEdit("CV writing rules updated");
+      return json(res, 200, { ok: true });
+    }
+
     if (url.pathname === "/api/cos") {
       if (!cos) return json(res, 503, { error: "Claude Code isn't installed on this PC." });
       if (typeof body.auto === "boolean") cos.setAuto(body.auto);
@@ -383,6 +428,13 @@ const server = createServer(async (req, res) => {
     return void res.end(JSON.stringify({ agents: office.snapshot(), tracker }));
   }
   if (VENDOR[url.pathname]) return serveFile(res, VENDOR[url.pathname]);
+
+  if (url.pathname === "/api/job-search") {
+    const out: Record<string, string> = {};
+    for (const [k, f] of Object.entries(JS_FILES)) out[k] = (await readText(f)).slice(0, 200_000);
+    return json(res, 200, { ...out, hasDefaultCv: existsSync(DEFAULT_CV) });
+  }
+  if (url.pathname === "/files/cv/default-cv.pdf") return existsSync(DEFAULT_CV) ? serveDownload(res, DEFAULT_CV) : void res.writeHead(404).end("Not found");
 
   const roleApi = url.pathname.match(/^\/api\/roles\/([a-z0-9-]{1,120})$/);
   if (roleApi) {
@@ -416,7 +468,7 @@ setInterval(() => void rescanDocs(), 5000);
 const gitRepo = await repoOf(TRACKER);
 let adaSaving = false;
 // Back up the whole jobs folder: the tracker plus PDFs and other files the office makes.
-backup = new Backup(gitRepo, [dirname(TRACKER)], () => {
+backup = new Backup(gitRepo, [dirname(TRACKER), CV_RULES], () => {
   pushSystem();
   const saving = backup?.status.state === "saving";
   if (saving !== adaSaving) {

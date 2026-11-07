@@ -34,7 +34,7 @@ function select(id) {
 }
 function renderCards() {
   $("cards").innerHTML = [...agents.values()].map((a) => `
-    <button class="card" aria-pressed="${a.id === selected}" data-id="${esc(a.id)}">
+    <button class="agent" aria-pressed="${a.id === selected}" data-id="${esc(a.id)}">
       <div class="who"><span class="dot" style="background:${hex(a.colour)}"></span>${CONTRACTS[a.id] ? `<span class="name-link" data-contract="${esc(a.id)}" title="View ${esc(a.name)}'s contract">${esc(a.name)}</span>` : esc(a.name)}${a.role ? `<span class="role">${esc(a.role)}</span>` : ""}</div>
       <span class="state" style="background:${STATE_COLOUR[a.state]}">${STATE_LABEL[a.state]}</span>
       <div class="detail" title="${esc(a.detail)}">${esc(a.detail)}</div>
@@ -44,7 +44,7 @@ function renderCards() {
 $("cards").addEventListener("click", (e) => {
   const link = e.target.closest("[data-contract]");
   if (link) return openContract(link.dataset.contract);
-  const c = e.target.closest(".card"); if (c) select(c.dataset.id);
+  const c = e.target.closest(".agent"); if (c) select(c.dataset.id);
 });
 $("log-name").addEventListener("click", () => { if (CONTRACTS[selected]) openContract(selected); });
 

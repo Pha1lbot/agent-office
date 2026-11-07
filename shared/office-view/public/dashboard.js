@@ -1,4 +1,4 @@
-// Pipeline tab: a board (a column per stage) and a sortable list of every role,
+// Roles view: a board (a column per stage) and a sortable list of every role,
 // with the key details at a glance. Also the strip (Hal, backup, tokens), the
 // "Waiting on you" box, and the edit and add-role dialogs.
 import { store, on, roleById, queuedFor } from "./store.js";
@@ -7,7 +7,9 @@ import {
   STATUS_ORDER, STATUS_LABEL, STATUS_COLOUR, OPEN, CLOSED,
 } from "./util.js";
 
-const COLUMNS = ["found", "shortlisted", "drafted", "approved", "applied", "interview", "offer"];
+// Leads (found, skipped) have their own view (views.js); the board starts at Shortlisted.
+const COLUMNS = ["shortlisted", "drafted", "approved", "applied", "interview", "offer"];
+const LEAD = new Set(["found", "skipped"]);
 const REASON_STATUSES = new Set(["skipped", "rejected"]);
 const HAL_TASK = {
   shortlisted: "Hal will get Wren to draft a tailored CV and cover letter.",
@@ -25,7 +27,7 @@ const payNumber = (p) => { const m = String(p || "").replace(/,/g, "").match(/(\
 
 function filtered() {
   const q = ui.q.trim().toLowerCase();
-  return (store.tracker.roles || []).filter((r) =>
+  return (store.tracker.roles || []).filter((r) => !LEAD.has(r.status) &&
     (!q || `${r.title} ${r.company} ${r.location} ${r.notes || ""}`.toLowerCase().includes(q)) &&
     (!ui.list || r.list === ui.list) &&
     (!ui.style || workStyle(r) === ui.style));
@@ -66,9 +68,9 @@ function renderBoard(roles) {
   };
   const closed = roles.filter((r) => CLOSED.has(r.status));
   $("board").innerHTML = `<div class="cols">${COLUMNS.map(col).join("")}</div>
-    <details class="closed col" data-status="skipped" ${ui.closedOpen ? "open" : ""}>
-      <summary><span class="dot" style="background:${STATUS_COLOUR.skipped}"></span>Closed (rejected or skipped)<span class="count">${closed.length}</span>
-        <span class="hint">Drop a card here to close it</span></summary>
+    <details class="closed col" data-status="rejected" ${ui.closedOpen ? "open" : ""}>
+      <summary><span class="dot" style="background:${STATUS_COLOUR.rejected}"></span>Rejected<span class="count">${closed.length}</span>
+        <span class="hint">Drop a card here to close it. Roles you decide not to go for move to Leads → Dismissed.</span></summary>
       <div class="col-body closed-body">${closed.map(card).join("") || `<p class="col-empty">Nothing closed yet</p>`}</div>
     </details>`;
 }
@@ -115,7 +117,7 @@ export function renderPipeline() {
   const roles = filtered();
   $("board").hidden = ui.view !== "board";
   $("list").hidden = ui.view !== "list";
-  document.querySelectorAll(".seg [data-view]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.view === ui.view));
+  document.querySelectorAll("#roles-seg [data-view]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.view === ui.view));
   $("add-role").disabled = !store.system.editing;
   if (ui.view === "board") renderBoard(roles); else renderList(roles);
 }
@@ -179,7 +181,7 @@ document.querySelector("#list thead").addEventListener("click", (e) => {
   remember();
   renderPipeline();
 });
-document.querySelector(".seg").addEventListener("click", (e) => {
+$("roles-seg").addEventListener("click", (e) => {
   const b = e.target.closest("[data-view]");
   if (b) { ui.view = b.dataset.view; remember(); renderPipeline(); }
 });
@@ -203,18 +205,19 @@ function renderTodo() {
   if (late.length) items.push(`Follow-ups due: ${late.map(link).join(", ")}`);
   const closingSoon = roles.filter((r) => ["shortlisted", "drafted", "approved"].includes(r.status) && closing(r.closing_date)?.level === "soon");
   if (closingSoon.length) items.push(`Closing soon: ${closingSoon.map((r) => `${link(r)} (${esc(closing(r.closing_date).text)})`).join(", ")}`);
-  if (found.length) items.push(`${found.length} role${found.length > 1 ? "s" : ""} to review (the To review column)`);
+  if (found.length) items.push(`<a href="#leads">${found.length} lead${found.length > 1 ? "s" : ""} to look at</a>`);
   const soon = Date.now() + 14 * 864e5;
   for (const r of roles.filter((r) => r.interview_at && OPEN.has(r.status)).sort((a, b) => a.interview_at.localeCompare(b.interview_at))) {
     const when = new Date(r.interview_at);
     if (when.getTime() < Date.now() - 864e5 || when.getTime() > soon) continue;
     items.push(`Interview ${esc(longWhen(r.interview_at))}: ${link(r)}${r.interview_with ? ` with ${esc(r.interview_with)}` : ""}`);
   }
-  for (const a of (store.tracker.actions || []).filter((a) => !a.done)) items.push(`To do: ${esc(a.text)}`);
+  const todo = (store.tracker.actions || []).filter((a) => !a.done).length;
+  if (todo) items.push(`<a href="#actions">${todo} next action${todo > 1 ? "s" : ""}</a>`);
   const queued = (store.tracker.inbox || []).filter((i) => !i.done).length;
   if (queued) items.push(`${queued} request${queued > 1 ? "s" : ""} queued for Hal`);
   $("todo").classList.toggle("clear", !items.length);
-  $("todo-list").innerHTML = items.length ? items.map((i) => `<li>${i}</li>`).join("") : "<li>Nothing waiting on you.</li>";
+  $("todo-list").innerHTML = items.length ? items.map((i) => `<li>${i}</li>`).join("") : `<li class="sub">Nothing waiting on you.</li>`;
 }
 
 // ---------- Strip: backup, Hal, tokens ----------
