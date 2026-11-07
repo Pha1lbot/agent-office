@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agent Office</title>
 <link rel="stylesheet" href="/style.css">
+<script type="importmap">{ "imports": { "three": "/vendor/three.mjs" } }</script>
 </head>
 <body>
 <header>
@@ -19,7 +20,7 @@
 <main>
   <section id="tab-office" class="office">
     <div class="room">
-      <div id="scene" role="img" aria-label="Pixel-art office showing what each agent is doing"></div>
+      <div id="scene" role="img" aria-label="3D office showing what each member of the team is doing. Drag to move around; click a person to see their activity."></div>
       <div class="cards" id="cards"></div>
     </div>
     <aside>

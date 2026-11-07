@@ -28,9 +28,12 @@ const APP = resolve(HERE, "..");
 const REPO = resolve(APP, "..", "..");
 const TRACKER = process.env.OFFICE_TRACKER ? resolve(process.env.OFFICE_TRACKER) : join(REPO, "jobs", "tracker.json");
 const PUBLIC = join(APP, "public");
-const PIXI = join(APP, "node_modules", "pixi.js", "dist", "pixi.min.mjs");
+const THREE = join(APP, "node_modules", "three");
 const VENDOR: Record<string, string> = {
-  "/vendor/pixi.mjs": PIXI,
+  "/vendor/three.mjs": join(THREE, "build", "three.module.min.js"),
+  "/vendor/three/OrbitControls.js": join(THREE, "examples", "jsm", "controls", "OrbitControls.js"),
+  "/vendor/three/RoundedBoxGeometry.js": join(THREE, "examples", "jsm", "geometries", "RoundedBoxGeometry.js"),
+  "/vendor/three/CSS2DRenderer.js": join(THREE, "examples", "jsm", "renderers", "CSS2DRenderer.js"),
   "/vendor/marked.mjs": join(APP, "node_modules", "marked", "lib", "marked.esm.js"),
   "/vendor/purify.mjs": join(APP, "node_modules", "dompurify", "dist", "purify.es.mjs"),
 };

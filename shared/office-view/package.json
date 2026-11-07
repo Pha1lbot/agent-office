@@ -2,7 +2,7 @@
   "name": "office-view",
   "version": "0.1.0",
   "private": true,
-  "description": "Shows Tim's agents as pixel-art coworkers in an office, plus a dashboard of tracked roles",
+  "description": "Shows Tim's agents as coworkers in a 3D office, plus a dashboard of tracked roles",
   "type": "module",
   "scripts": {
     "start": "tsx src/server.ts",
@@ -13,7 +13,7 @@
   "dependencies": {
     "dompurify": "3.4.17",
     "marked": "15.0.12",
-    "pixi.js": "8.22.0",
+    "three": "0.170.0",
     "tsx": "4.23.15",
     "ws": "8.22.1"
   },
