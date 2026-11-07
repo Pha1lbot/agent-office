@@ -10,6 +10,9 @@ its fonts, styles and page size are used;
 otherwise A4 is used. PDFs are made from the Word files with LibreOffice,
 so the PDF matches the Word file Tim approved.
 
+Before making the Word files it runs Ada's fact check (fact_check.py): anything
+in the CV or letter that isn't in the CV bank is printed and listed in notes.md.
+
 Needs pandoc (Word) and LibreOffice (PDF). Set JOBS_DIR to use a different jobs folder.
 """
 import os
@@ -71,9 +74,19 @@ def ensure_page_size(path):
             new.writestr(item, data)
 
 
+def fact_check_role(role_id):
+    """Ada's fact check. It reports; it never stops the Word files being made."""
+    try:
+        import fact_check
+        fact_check.report(role_id, jobs=JOBS)
+    except (Exception, SystemExit) as error:
+        print(f"Fact check didn't run: {error}")
+
+
 def make_word(role_id):
-    pandoc = need(["pandoc"], "Install it from https://pandoc.org/installing.html")
     folder = role_dir(role_id)
+    fact_check_role(role_id)
+    pandoc = need(["pandoc"], "Install it from https://pandoc.org/installing.html")
     made = []
     for name in DOCS:
         source = folder / f"{name}.md"

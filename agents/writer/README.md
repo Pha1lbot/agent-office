@@ -16,4 +16,4 @@ Formerly "Senior Admin". Named Wren on 2026-11-06.
 - `jobs/roles/<role-id>/cv.md` and `cover-letter.md`, then `cv.docx` and `cover-letter.docx` (via `shared/tools/make_docs.py`).
 - `jobs/roles/<role-id>/notes.md` when the advert asks for something the CV doesn't show.
 
-**Rules:** never invents experience. PDFs are Ada's job, once Tim approves. Interview prep is Cole's job.
+**Rules:** never invents experience. Ada's fact check runs each time the Word files are built and lists anything not in the CV bank in `notes.md`. PDFs are Ada's job, once Tim approves. Interview prep is Cole's job.

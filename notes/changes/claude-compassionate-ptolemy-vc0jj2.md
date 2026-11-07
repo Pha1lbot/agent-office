@@ -11,6 +11,45 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-07: Improvement 3: Ada fact-checks every draft against the CV bank
+
+**What changed**
+- `shared/tools/fact_check.py`: new, standard library only, no tokens. Compares a role's `cv.md` and `cover-letter.md` with `cv-bank.md` and any `extra-*.md`:
+  - figures, including money and percentages, so "more than 2,000" matches "2,000+", "€12 million" matches "€12m", and a swapped currency is caught ("£12m": the bank has "€12m")
+  - job titles, employers, places and dates in job headings, part by part, so a different layout passes but a changed title, employer or date doesn't
+  - certifications, with their year
+  - well-known qualifications (degree, PRINCE2, CIPD, NEBOSH...)
+  - email addresses
+
+  Anything not found goes into a "## Fact check (Ada)" section at the end of the role's `notes.md`. A figure that is also in `listing.md` is marked as probably about the employer. The section is replaced on each run and removed once clean, and Wren's own notes are kept. It never changes the CV or letter. `--all` checks every drafted role.
+- `shared/tools/test_fact_check.py`: new, 10 tests (`python3 shared/tools/test_fact_check.py`).
+- `shared/tools/make_docs.py`: runs the fact check before building the Word files. A failure in the check never stops the Word files.
+- `.claude/agents/writer.md` (Wren): step 4 says what the fact check does: fix her own mistakes, leave figures quoted from the advert, mention any flags left.
+- `.claude/skills/cos/SKILL.md` (Hal): tells Tim about fact-check flags with the drafts, and reminds him in one line before making PDFs if flags remain.
+- `shared/conventions/handoffs.md`, `agents/admin/README.md`, `agents/writer/README.md`, `README.md`: describe the check.
+- `shared/office-view/public/role.js`: the notes panel heading is now "Notes: Wren's questions and Ada's fact check".
+- `notes/plans/learnings-ai-team-blueprint.md`: status says 1 to 3 are done.
+
+**Why**
+Improvement 3 of `notes/plans/learnings-ai-team-blueprint.md`, approved by Tim. "Never invent experience" was the team's most important rule and was only enforced by Wren's prompt.
+
+**Decisions**
+- A script (Ada), not another agent pass: no tokens, and it runs every time without anyone remembering to ask.
+- It reports and never blocks: some flags are fine (a figure about the employer), and Tim decides.
+- Headings are checked part by part, not as whole lines. A first version matched whole headings and raised 5 false flags each on the Chelsea and Hexagon CVs, which came from Tim's old dashboard in a different layout ("BLAST · Jan 2020 – Oct 2026"). Long bold lines are treated as prose, not headings.
+- "BA", "MA" and plain "degree" are left out of the qualification list: they'd flag British Airways and "a high degree of".
+- Ran it on every drafted role. NetEase and Vitality pass. Chelsea and Hexagon each have one flag: "Mole Valley District Council" (the employer in the Dorking Halls heading) isn't in the CV bank. Both are already applied for, so their `notes.md` files were left unchanged.
+
+**How to check it**
+- `python3 shared/tools/test_fact_check.py` (10 tests pass).
+- `python3 shared/tools/fact_check.py --all` lists the two Mole Valley flags (and writes them to those roles' notes).
+- Done on 2026-11-07: a copy of the Vitality role with "3,000+ freelancers and £12m+" built with `JOBS_DIR=<copy> make_docs.py`. Both were flagged in the output and in `notes.md`, and the Word files were still made.
+
+**Open items**
+- Tim: if it's right, add "Mole Valley District Council" to `cv-bank.md` so these flags clear.
+- The Chelsea and Hexagon CVs also contain other material that isn't in the CV bank and that the check can't see, because it is prose: monthly budget meetings, the Airtable and HTML booking system, growing from one title to six, touring from 2011 to 2012. It is probably true, as it came from Tim's own CV. If so, an `extra-*.md` file would let Wren use it for other roles.
+- The check can't tell whether a reworded sentence is true. That's still Wren's rule and Tim's read.
+
 ### 2026-11-07: Improvement 2: automatic runs can't rewrite or throw away git history
 
 **What changed**

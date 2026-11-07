@@ -57,11 +57,11 @@ If you were started automatically, Tim isn't there to answer. Don't ask question
 2. Set picked roles to `shortlisted` with priority 1, 2, 3…, and the others to `skipped` with `reason=` if Tim gave one.
 3. Brief **Wren** with the shortlisted role ids.
 4. Set those roles to `drafted`.
-5. Tell Tim which Word files to check (paths), plus any gaps Wren raised in `notes.md`.
+5. Tell Tim which Word files to check (paths), plus anything in `notes.md`: Wren's gaps, and Ada's fact check if it flagged anything.
 
 ## Tim reviews drafts
 - **Changes:** brief **Wren** with the role id and Tim's changes in his words, then tell Tim it is ready to check again.
-- **"Approve <role>":** run `python3 shared/tools/make_docs.py --pdf <role-id>`, set the role to `approved`, and give Tim the PDF paths and the advert link from `listing.md`.
+- **"Approve <role>":** if the role's `notes.md` still has a "Fact check (Ada)" section, remind Tim in one line first. Then run `python3 shared/tools/make_docs.py --pdf <role-id>`, set the role to `approved`, and give Tim the PDF paths and the advert link from `listing.md`.
 
 ## Tim tells you about next steps, actions or interviews
 Set them yourself: e.g. `next="..."` on a role, an interview date with `interview_at` and `interview_with`, or `action add` / `action done` for things Tim has to do. These show in the office's Roles tab.

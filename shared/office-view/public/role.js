@@ -172,7 +172,7 @@ function documents() {
   const nothing = !docs.cv && !docs.letter;
   return `
     ${nothing ? `<div class="panel callout"><p>Nothing drafted yet.</p>${editing && role.status === "found" ? `<button type="button" class="btn primary" data-status="shortlisted">Shortlist this role: Wren drafts a CV and letter</button>` : role.status === "shortlisted" || role.status === "drafted" ? `<p class="muted">Wren drafts a CV and letter when Hal next runs.</p>` : ""}</div>` : ""}
-    ${texts["notes.md"] ? `<section class="panel md notes"><h3>Wren's notes: gaps and questions</h3>${md(texts["notes.md"])}</section>` : ""}
+    ${texts["notes.md"] ? `<section class="panel md notes"><h3>Notes: Wren's questions and Ada's fact check</h3>${md(texts["notes.md"])}</section>` : ""}
     <div class="docs-grid">${doc("CV", "cv.md", "cv.docx", "cv.pdf")}${doc("Cover letter", "cover-letter.md", "cover-letter.docx", "cover-letter.pdf")}</div>
     <div class="ov-grid">
       <section class="panel">

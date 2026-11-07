@@ -1,7 +1,7 @@
 # Learnings from the "first AI team" blueprint prompt
 
 **Date:** 2026-11-07
-**Status:** Review only. Nothing here changes the team until Tim says which improvements to make.
+**Status:** Tim approved improvements 1 to 3 on 2026-11-07; they are made on branch `claude/compassionate-ptolemy-vc0jj2` (see its notes). 4 to 10 are still suggestions.
 
 ## Where this came from
 
