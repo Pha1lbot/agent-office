@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #19](https://github.com/Pha1lbot/agent-office/pull/19)). Earlier work merged 2026-11-07 in [PR #18](https://github.com/Pha1lbot/agent-office/pull/18).
+**Status:** Merged 2026-11-07 ([PR #18](https://github.com/Pha1lbot/agent-office/pull/18) and [PR #19](https://github.com/Pha1lbot/agent-office/pull/19)). Restarted from `main` for the #19 CHANGELOG line, which reaches `main` with the next PR.
 
 ## Purpose
 
@@ -10,6 +10,26 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-07: After the merge of PR #19
+
+**What changed**
+- `CHANGELOG.md`: the line for #19.
+- This notes file: status is "Merged".
+- The branch was restarted from `main` (all its commits were already merged).
+
+**Why**
+CLAUDE.md's "After a merge" step. Tim merged PR #19 and said it was all done.
+
+**Decisions**
+As for #18, the CHANGELOG line goes on the branch and reaches `main` with the next pull request. That avoids a PR just for one line, whose own merge would need another line.
+
+**How to check it**
+- `git ls-remote --heads origin` lists only `main`: Tim has deleted all seven merged branches, closing the open item below.
+- `CHANGELOG.md` has #19 at the top.
+
+**Open items**
+- This commit needs a pull request to reach `main`. It can go with the next piece of work.
 
 ### 2026-11-07: Pull request #19 opened
 
