@@ -11,6 +11,28 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-07: Improvement 1: old team names corrected
+
+**What changed**
+- `shared/job-search/cv-rules.md`: "Senior Admin follows these" is now "Wren (the Writer) follows these". Wren reads this file for every draft.
+- `shared/job-search/cv/README.md`: says Wren works from `cv-bank.md`, never the PDF (it said Senior Admin reads the PDF); extra material is for Wren and Cole.
+- `shared/job-search/preferences.md`: the two intro lines name Rita and Hal. Tim's preferences themselves are unchanged.
+- `jobs/README.md`: Hal and the office change the tracker (not "the Admin agent"); Rita, Wren and Ada named; the role folder list now includes `advert.txt`, `talking-points.md`, `interview-prep.md` and `attachments/`, which were missing.
+- `shared/tools/tracker.py`: docstring says only Hal and the office change the tracker.
+- `shared/office-view/public/contracts.js`: Hal's novelty contract names Rita, Wren and Cole as his team, with Ada as automation (it still listed the Senior Admin and the Admin).
+
+**Why**
+Tim approved improvements 1 to 3 from `notes/plans/learnings-ai-team-blueprint.md`. These files still used names from before the team was renamed on 2026-11-06, and two of them are read by agents.
+
+**Decisions**
+Left history alone: `CHANGELOG.md` and older notes keep the old names, because they describe what was true then. `agents/writer/README.md` keeps "Formerly Senior Admin" on purpose.
+
+**How to check it**
+`grep -rn -i "senior admin" --exclude-dir=notes .` finds only the CHANGELOG, the writer README's "Formerly" line and the old mockup.
+
+**Open items**
+None.
+
 ### 2026-11-07: Review of the office against the "first AI team" blueprint prompt
 
 **What changed**

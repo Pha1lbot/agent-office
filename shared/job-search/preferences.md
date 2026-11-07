@@ -1,8 +1,8 @@
 # Tim's job preferences
 
-Lead Recruiter and Chief of Staff read this to choose and rank roles. First filled in on 2026-11-06 from Tim's CV and his answers; anything marked *(assumed)* is a guess for Tim to correct.
+Rita (Lead Recruiter) and Hal (Chief of Staff) read this to choose and rank roles. First filled in on 2026-11-06 from Tim's CV and his answers; anything marked *(assumed)* is a guess for Tim to correct.
 
-Chief of Staff will suggest changes based on which roles you pick and skip, and only saves the ones you agree to. Past suggestions are logged in `jobs/preference-reviews.md`.
+Hal will suggest changes based on which roles you pick and skip, and only saves the ones you agree to. Past suggestions are logged in `jobs/preference-reviews.md`.
 
 ## Roles I want
 - Job titles: Head of Esports Operations, Head of Event / Tournament Operations, Esports or Live Events Operations Director / Manager, Tournament Operations Lead, Head of Production or Production Manager (live events, broadcast)
