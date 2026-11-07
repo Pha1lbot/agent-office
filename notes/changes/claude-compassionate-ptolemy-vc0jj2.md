@@ -11,6 +11,35 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-07: Git routine: branch work in a separate folder on Tim's PC; pull before each piece of work
+
+**What changed**
+- `CLAUDE.md`:
+  - "While working" has a new step 3: pull again before each new piece of work and before making a branch, not only at session start. On a branch, branch from `origin/main`. The later steps are renumbered 4 to 8.
+  - "Tim's PC stays on `main`" is rewritten. Branch work on Tim's PC happens in a separate linked folder (`git worktree add ../agent-office-work -b <branch> origin/main`). The main folder never changes branch. The work folder is removed once the PR is merged or dropped, and never forced.
+  - "Bigger or risky changes" says to branch from an up-to-date `main`, fill in the PR template, and use the work folder on Tim's PC.
+  - "After a merge" removes the work folder, and has a new step 4: delete the merged branch on GitHub, as Tim agreed today. Only fully merged branches.
+- `README.md`: one sentence telling Tim about the `agent-office-work` folder.
+
+**Why**
+Tim approved learnings 1, 2 and 4 from another project's CLAUDE.md (BLAST Esports Ops Workshop), which has two people's agents in one repo:
+- Learning 1 matters more here than there. `shared/office-view/src/backup.ts` commits and pushes Tim's office edits on whatever branch the folder has checked out. The old rule ("switch back to `main` before finishing") left a window where office edits and Hal's automatic runs went to the feature branch.
+- Learning 2: `main` takes office backups 15 seconds after each edit, Hal's automatic runs, and pushes from both laptops.
+
+**Decisions**
+- Kept "commit small changes straight to `main`" rather than copying the other project's "every change through a PR". The office backs up job data to `main` all day, so PRs for everything would be absurd.
+- Did not copy its fix for a drifted `main` (`git reset --hard origin/main`). It conflicts with "Never" above, and `sync.ps1` already merges safely or stops.
+- One fixed work-folder name (`agent-office-work`), beside the repo, not inside it. That keeps the instructions simple for one person, and the main folder never sees it as untracked files.
+- Branch deletion is limited to fully merged branches with nothing newer on them.
+
+**How to check it**
+Tested on 2026-11-07 in a throwaway repo with a local remote:
+- `worktree add` left the main folder on `main`, and the work folder pushed its own branch.
+- `worktree remove` refused while the work folder had unsaved changes, and removed it once clean.
+
+**Open items**
+None.
+
 ### 2026-11-07: After the merge of PR #18: CHANGELOG lines
 
 **What changed**

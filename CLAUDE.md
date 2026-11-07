@@ -33,14 +33,15 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 
 ### While working
 
-3. Commit after each meaningful piece of work (a new agent, an updated instruction file, a finished fix), not just at the end. Small, frequent commits are the backup.
-4. Write commit messages that say what changed in plain English, e.g. "Add research agent instructions".
-5. Push after every commit with `git push`. Do not batch up commits locally.
+3. Pull again before starting each new piece of work, not only at the start of the session, and always before making a branch. `main` moves during the day (the office's backups, Hal's automatic runs, other PCs), so a long session can otherwise build on an old copy. On `main`, run `git pull`. On a branch, run `git fetch origin main` and make any new branch from `origin/main`.
+4. Commit after each meaningful piece of work (a new agent, an updated instruction file, a finished fix), not just at the end. Small, frequent commits are the backup.
+5. Write commit messages that say what changed in plain English, e.g. "Add research agent instructions".
+6. Push after every commit with `git push`. Do not batch up commits locally.
 
 ### Before finishing
 
-6. Make sure `git status` shows nothing left to commit and the branch is not ahead of origin. Then tell Tim the work is pushed.
-7. If a push fails, never leave it. Run `git pull`, resolve any conflicts (ask Tim if it is unclear which version to keep), then push again.
+7. Make sure `git status` shows nothing left to commit and the branch is not ahead of origin. Then tell Tim the work is pushed.
+8. If a push fails, never leave it. Run `git pull`, resolve any conflicts (ask Tim if it is unclear which version to keep), then push again.
 
 ### Never
 
@@ -54,20 +55,32 @@ Tim edits roles in the Agent Office (`shared/office-view`). The office commits a
 
 ### Bigger or risky changes
 
-For large restructures, or anything Tim may want to review first, work on a new branch (e.g. `git checkout -b restructure-agents`), push the branch, and open a pull request instead of committing straight to `main`.
+For large restructures, or anything Tim may want to review first, work on a new branch made from an up-to-date `main` (e.g. `restructure-agents`), push the branch, and open a pull request instead of committing straight to `main`. Fill in the pull request template (`.github/pull_request_template.md`). On Tim's PC, make the branch in a separate folder (see below), never by switching the main folder's branch.
 
 ### Tim's PC stays on `main`
 
-Tim's PC should always be on `main`, because the automatic pulls only update the branch it is on. When working on Tim's PC, use a branch only when needed (see "Bigger or risky changes"). Once that branch is pushed and its pull request is open, run `git checkout main` again before finishing. Cloud sessions can work on their own branches.
+The `agent-office` folder on Tim's PC always stays on `main`. Its automatic pulls only update the branch it is on, and the office's backups and Hal's automatic runs commit to whatever branch that folder has checked out. If it were switched to another branch, Tim's office edits would be saved to that branch instead of `main`.
+
+So when branch work is needed on Tim's PC, do it in a separate linked folder (a git worktree) beside the main one:
+
+```
+git fetch origin main
+git worktree add ../agent-office-work -b <branch> origin/main
+```
+
+Open Claude Code in `agent-office-work`, then work, commit and push there (`git push -u origin <branch>`) and open the pull request. The main folder, the office and the automatic pulls carry on as normal. Once the pull request is merged or dropped, and `git status` in the work folder shows nothing to commit, remove it from the main folder with `git worktree remove ../agent-office-work`. Git refuses if anything there is unsaved; never force it. Only one work folder at a time: finish or remove the old one first.
+
+Cloud sessions can work on their own branches directly.
 
 ### After a merge
 
 Whenever Claude merges a pull request, or Tim says one has been merged:
 
 1. Run `git status`. If there are uncommitted changes, tell Tim and ask what to do with them before going on.
-2. Run `git checkout main`, then `git pull`, so this copy has the merged work.
+2. Run `git checkout main`, then `git pull`, so this copy has the merged work. If the work was done in a separate work folder on Tim's PC, remove it as described in "Tim's PC stays on `main`".
 3. Add the one-line `CHANGELOG.md` entry for the merged branch (see "Change notes" below), then commit and push it.
-4. Check `git status` shows `main` up to date with origin, and tell Tim this copy is now up to date.
+4. Delete the merged branch on GitHub (the "Delete branch" button on the pull request, or `git push origin --delete <branch>`). Tim agreed on 2026-11-07 that merged branches can go: the branch's notes file and the pull request keep the record. Only delete a branch that is fully merged, with nothing newer on it.
+5. Check `git status` shows `main` up to date with origin, and tell Tim this copy is now up to date.
 
 ## Change notes (always follow)
 

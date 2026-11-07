@@ -53,7 +53,7 @@ Your CV, preferences and every role's files are in the repo, so they come across
 - **"Smart App Control blocked" `Open Office.cmd`:** open the office from PowerShell instead. In the `agent-office` folder run `cd shared\office-view`, then `npm install` (first time only), then `npm start`, and open http://127.0.0.1:4747.
 - **The sync can't get past GitHub (the log at `%LOCALAPPDATA%\agent-office-sync.log` shows FAILED, or nothing new):** Git needs you to sign in once on each PC. In PowerShell, in the `agent-office` folder, run `git fetch` and sign in when asked. The sync never waits for a sign-in; it logs the problem and the office opens anyway.
 
-Keep each PC on `main`. Both laptops can run the office: each one's backups are pushed to GitHub and pulled by the other.
+Keep each PC on `main`. When Claude needs a branch on your PC, it works in a separate `agent-office-work` folder beside this one, so this folder never changes branch and your office edits always go to `main`. Both laptops can run the office: each one's backups are pushed to GitHub and pulled by the other.
 
 ### Each day
 
