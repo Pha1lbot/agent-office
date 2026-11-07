@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #18](https://github.com/Pha1lbot/agent-office/pull/18))
+**Status:** In review ([PR #19](https://github.com/Pha1lbot/agent-office/pull/19)). Earlier work merged 2026-11-07 in [PR #18](https://github.com/Pha1lbot/agent-office/pull/18).
 
 ## Purpose
 
@@ -10,6 +10,118 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-07: Pull request #19 opened
+
+**What changed**
+- This notes file: status is "In review", linking to [PR #19](https://github.com/Pha1lbot/agent-office/pull/19). The PR covers the CHANGELOG lines, the git-routine changes, the PR template and the branch-deletion note. Its description uses the new template.
+
+**Why**
+Tim asked for one PR with these changes.
+
+**Decisions**
+None.
+
+**How to check it**
+Open PR #19.
+
+**Open items**
+After merging: the CHANGELOG line for #19, and Tim deletes the six merged branches (see the entry below).
+
+### 2026-11-07: Merged branches: deletion refused from the cloud session
+
+**What changed**
+- `CLAUDE.md`, "After a merge" step 4: cloud sessions can't delete branches, so Tim deletes them with the PR's button, or turns on GitHub's "Automatically delete head branches".
+- No branches were deleted.
+
+**Why**
+Tim gave permission to delete the merged branches (learning 4). Six were checked first: each fully merged into `main` (`git merge-base --is-ancestor`) and none with an open PR:
+- `claude/youthful-hopper-alwu7m` (607d770)
+- `dashboard-v2` (ac28429)
+- `import-dashboard` (dd84aa3)
+- `office-editing` (c1a06d1)
+- `office-view` (b53987c)
+- `team-v2` (92c543c)
+
+`git push origin --delete` was refused with HTTP 403: this session's GitHub access only allows pushing to its own branch. Per the session's rules, a refusal like this is reported, not retried another way. The seventh branch, `claude/compassionate-ptolemy-vc0jj2`, now carries new work, so it stays until its PR is merged.
+
+**Decisions**
+Didn't look for another route (for example the GitHub API from the command line): the refusal is a deliberate limit of this session.
+
+**How to check it**
+`git ls-remote --heads origin` still lists the six branches.
+
+**Open items**
+- Tim: delete the six branches at https://github.com/Pha1lbot/agent-office/branches (the bin icon on each). Every commit on them is already in `main`.
+- Tim (optional): turn on Settings, General, "Automatically delete head branches", so merged branches go by themselves from now on.
+
+### 2026-11-07: Pull request template
+
+**What changed**
+- `.github/pull_request_template.md`: new. Sections match the notes file: Summary with the notes link, What changed, Why, Decisions, How it was tested ("Tested it" is not enough), and Open items. It ends with an "After merging" checklist: CHANGELOG line, delete the branch, remove the `agent-office-work` folder.
+- `CLAUDE.md`: change-notes step 5 says to use the template, and to rewrite a PR description made some other way. The Layout section mentions `.github/`.
+
+**Why**
+Learning 3, approved by Tim. PR #18 was opened from the Claude Code app with a description that left out the notes link and the test evidence, and had to be rewritten by hand. Also, #15, #16 and #17 were merged without their CHANGELOG lines; the checklist puts that step on every PR page.
+
+**Decisions**
+- Followed the other project's "Test plan" section, renamed "How it was tested" to match our notes' "How to check it" style.
+- The notes link is a full GitHub URL with placeholders, because relative links in PR descriptions don't reliably point at the branch.
+- GitHub's website fills in the template. It isn't certain that the Claude Code app's PR button does, hence the CLAUDE.md line to rewrite such descriptions.
+
+**How to check it**
+Open a new PR on GitHub's website from any branch: the description box starts with these headings.
+
+**Open items**
+None.
+
+### 2026-11-07: Git routine: branch work in a separate folder on Tim's PC; pull before each piece of work
+
+**What changed**
+- `CLAUDE.md`:
+  - "While working" has a new step 3: pull again before each new piece of work and before making a branch, not only at session start. On a branch, branch from `origin/main`. The later steps are renumbered 4 to 8.
+  - "Tim's PC stays on `main`" is rewritten. Branch work on Tim's PC happens in a separate linked folder (`git worktree add ../agent-office-work -b <branch> origin/main`). The main folder never changes branch. The work folder is removed once the PR is merged or dropped, and never forced.
+  - "Bigger or risky changes" says to branch from an up-to-date `main`, fill in the PR template, and use the work folder on Tim's PC.
+  - "After a merge" removes the work folder, and has a new step 4: delete the merged branch on GitHub, as Tim agreed today. Only fully merged branches.
+- `README.md`: one sentence telling Tim about the `agent-office-work` folder.
+
+**Why**
+Tim approved learnings 1, 2 and 4 from another project's CLAUDE.md (BLAST Esports Ops Workshop), which has two people's agents in one repo:
+- Learning 1 matters more here than there. `shared/office-view/src/backup.ts` commits and pushes Tim's office edits on whatever branch the folder has checked out. The old rule ("switch back to `main` before finishing") left a window where office edits and Hal's automatic runs went to the feature branch.
+- Learning 2: `main` takes office backups 15 seconds after each edit, Hal's automatic runs, and pushes from both laptops.
+
+**Decisions**
+- Kept "commit small changes straight to `main`" rather than copying the other project's "every change through a PR". The office backs up job data to `main` all day, so PRs for everything would be absurd.
+- Did not copy its fix for a drifted `main` (`git reset --hard origin/main`). It conflicts with "Never" above, and `sync.ps1` already merges safely or stops.
+- One fixed work-folder name (`agent-office-work`), beside the repo, not inside it. That keeps the instructions simple for one person, and the main folder never sees it as untracked files.
+- Branch deletion is limited to fully merged branches with nothing newer on them.
+
+**How to check it**
+Tested on 2026-11-07 in a throwaway repo with a local remote:
+- `worktree add` left the main folder on `main`, and the work folder pushed its own branch.
+- `worktree remove` refused while the work folder had unsaved changes, and removed it once clean.
+
+**Open items**
+None.
+
+### 2026-11-07: After the merge of PR #18: CHANGELOG lines
+
+**What changed**
+- `CHANGELOG.md`: lines for #18 (this branch), and for #15, #16 and #17 (from `claude/youthful-hopper-alwu7m`), which were merged without their lines.
+- This notes file: status is now "Merged".
+- The branch was restarted from `main` (all its commits were already merged), as cloud sessions do after a merge.
+
+**Why**
+CLAUDE.md's "After a merge" step. Tim merged PR #18 at 22:23 UK time.
+
+**Decisions**
+Earlier CHANGELOG lines reached `main` with the next pull request, not as direct pushes to `main`, so this follows the same route. These lines reach `main` with this branch's next PR.
+
+**How to check it**
+`CHANGELOG.md` lists #15 to #18 in date order above #14.
+
+**Open items**
+Needs a PR to reach `main`. It can go with the git-workflow changes Tim is deciding on.
 
 ### 2026-11-07: Pull request opened
 
