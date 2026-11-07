@@ -116,6 +116,8 @@ Needs, on this PC:
 
 Automatic runs can only use the job-search tools: reading and writing files, the tracker, git, documents and the web.
 
+They also can't rewrite or throw away git history (force-push, hard reset, deleting branches, `git clean` and the like). `hooks/guard.mjs` refuses those commands whenever the office started the run, because CLAUDE.md only allows them when Tim asks, and he isn't watching. Hal is told to add an action for Tim instead. In sessions Tim starts himself, the guard does nothing.
+
 ## How it works
 
 - **Agents:** Claude Code hooks in `.claude/settings.json` run `hooks/report.mjs` on each event (session start, prompt, tool use, notification, stop, subagent stop, session end). It sends a few short fields to the bridge. If the office isn't open, it gives up within half a second and does nothing.

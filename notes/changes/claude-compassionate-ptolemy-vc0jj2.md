@@ -11,6 +11,30 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-07: Improvement 2: automatic runs can't rewrite or throw away git history
+
+**What changed**
+- `shared/office-view/hooks/guard.mjs`: new Claude Code hook. Before each Bash command in an automatic run, it reads the command and refuses git commands that rewrite or throw away history: force or delete pushes (including `+` and `:` refspecs), `reset --hard`, `clean` (unless a dry run), deleting or overwriting branches, `checkout`/`switch`/`restore` that discard changes, `stash drop`/`clear`, `commit --amend`, `rebase`, `filter-branch`, and `add --force` (which could commit a git-ignored `.env`). Claude is told why and to add an action for Tim instead. It ignores commit messages, heredoc bodies and comments, and understands `git -C <path>` and full paths to git, including Windows ones.
+- `.claude/settings.json`: runs the guard before every Bash command (`PreToolUse`, matcher `Bash`).
+- `shared/office-view/src/auto-cos.ts`: Hal's automatic runs start with `OFFICE_AUTO_RUN=1`, which switches the guard on. Subagents in that run inherit it.
+- `shared/office-view/test/guard.test.ts`: new. Everyday commands pass, 33 risky forms are refused, words in messages, heredocs and comments are ignored, and the hook exits with code 2 only when `OFFICE_AUTO_RUN=1`.
+- `shared/office-view/README.md`: says what automatic runs can't do, and why.
+
+**Why**
+Improvement 2 of `notes/plans/learnings-ai-team-blueprint.md`, approved by Tim. Automatic runs were allowed every git command (`Bash(git:*)`), so CLAUDE.md's "never force-push or hard reset" rule was only a request.
+
+**Decisions**
+- A hook rather than `--disallowedTools` patterns: permission patterns match on text prefixes and are easy to get round by reordering flags (`git push origin main -f`). The hook reads the command properly and has unit tests.
+- On only in automatic runs: CLAUDE.md allows these commands when Tim asks, so his own sessions are untouched. Outside automatic runs the hook exits straight away.
+- It doesn't try to catch git run from inside Python or another shell. It stops mistakes, not someone set on getting round it. Automatic runs can't run `bash` or `rm` anyway (not in their allowed tools).
+
+**How to check it**
+- `cd shared/office-view && npm test` (30 tests pass) and `npm run check` (no type errors).
+- End to end, done on 2026-11-07: in a throwaway repo with these settings and a local remote, `OFFICE_AUTO_RUN=1 claude -p ... --allowedTools "Bash(git:*)"` was told to run `git push --force origin main` over a rewritten commit. The hook refused it, Claude reported the reason, and the remote kept the original commit.
+
+**Open items**
+None.
+
 ### 2026-11-07: Improvement 1: old team names corrected
 
 **What changed**
