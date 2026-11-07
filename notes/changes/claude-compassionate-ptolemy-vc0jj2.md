@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** Merged 2026-11-07 ([PR #18](https://github.com/Pha1lbot/agent-office/pull/18)). Restarted from `main` for follow-ups, which will need a new PR.
+**Status:** In review ([PR #19](https://github.com/Pha1lbot/agent-office/pull/19)). Earlier work merged 2026-11-07 in [PR #18](https://github.com/Pha1lbot/agent-office/pull/18).
 
 ## Purpose
 
@@ -10,6 +10,23 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-07: Pull request #19 opened
+
+**What changed**
+- This notes file: status is "In review", linking to [PR #19](https://github.com/Pha1lbot/agent-office/pull/19). The PR covers the CHANGELOG lines, the git-routine changes, the PR template and the branch-deletion note. Its description uses the new template.
+
+**Why**
+Tim asked for one PR with these changes.
+
+**Decisions**
+None.
+
+**How to check it**
+Open PR #19.
+
+**Open items**
+After merging: the CHANGELOG line for #19, and Tim deletes the six merged branches (see the entry below).
 
 ### 2026-11-07: Merged branches: deletion refused from the cloud session
 
