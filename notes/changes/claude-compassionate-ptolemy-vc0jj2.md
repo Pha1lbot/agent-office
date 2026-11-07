@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #18](https://github.com/Pha1lbot/agent-office/pull/18))
+**Status:** Merged 2026-11-07 ([PR #18](https://github.com/Pha1lbot/agent-office/pull/18)). Restarted from `main` for follow-ups, which will need a new PR.
 
 ## Purpose
 
@@ -10,6 +10,25 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-07: After the merge of PR #18: CHANGELOG lines
+
+**What changed**
+- `CHANGELOG.md`: lines for #18 (this branch), and for #15, #16 and #17 (from `claude/youthful-hopper-alwu7m`), which were merged without their lines.
+- This notes file: status is now "Merged".
+- The branch was restarted from `main` (all its commits were already merged), as cloud sessions do after a merge.
+
+**Why**
+CLAUDE.md's "After a merge" step. Tim merged PR #18 at 22:23 UK time.
+
+**Decisions**
+Earlier CHANGELOG lines reached `main` with the next pull request, not as direct pushes to `main`, so this follows the same route. These lines reach `main` with this branch's next PR.
+
+**How to check it**
+`CHANGELOG.md` lists #15 to #18 in date order above #14.
+
+**Open items**
+Needs a PR to reach `main`. It can go with the git-workflow changes Tim is deciding on.
 
 ### 2026-11-07: Pull request opened
 

@@ -2,6 +2,10 @@
 
 One line per piece of work that reached `main`, newest first. Full details are in each branch's notes file under `notes/changes/`.
 
+- 2026-11-07: Learnings from the "first AI team" blueprint: old team names fixed, Hal's automatic runs can't rewrite or throw away git history, and Ada fact-checks every CV and cover letter against the CV bank ([#18](https://github.com/Pha1lbot/agent-office/pull/18)). See [branch notes](notes/changes/claude-compassionate-ptolemy-vc0jj2.md).
+- 2026-11-07: The live office is now the 3D open-plan office, with Hal's glass office, kitchen and lounge, and the team moving by their live state ([#17](https://github.com/Pha1lbot/agent-office/pull/17)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
+- 2026-11-07: Office redesign mockups (3D and isometric), restyled after Tim's reference ([#16](https://github.com/Pha1lbot/agent-office/pull/16)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
+- 2026-11-06: Edit a role's details, link and advert text in the office; a new link or advert sends it to Rita; closing dates save again ([#15](https://github.com/Pha1lbot/agent-office/pull/15)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
 - 2026-11-06: Hal's verdicts on all 37 To review roles; Wren drafted Vitality; Cole prepped Hexagon, Chelsea and Razer ([#14](https://github.com/Pha1lbot/agent-office/pull/14)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
 - 2026-11-06: To review ranked automatically; Hal gives Apply / Maybe / Skip verdicts, including on roles Tim adds or pastes in ([#13](https://github.com/Pha1lbot/agent-office/pull/13)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
 - 2026-11-06: Setting a role to Drafted (with no CV yet) sends it to Wren ([#12](https://github.com/Pha1lbot/agent-office/pull/12)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
