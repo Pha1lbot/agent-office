@@ -14,6 +14,8 @@ The job-search team is Hal (Chief of Staff), Rita (Lead Recruiter), Wren (Writer
 
 jobs/ holds the job-search team's working data: the role tracker, the daily priority list and one folder per role with its advert summary, CV and cover letter.
 
+.github/ holds the pull request template, which every PR description follows.
+
 .claude/ holds what Claude Code loads directly: subagent prompts in .claude/agents/ and skills (such as /cos) in .claude/skills/. Each one is documented by a README in its agents/ folder.
 
 ## Working here
@@ -95,5 +97,5 @@ Every branch, including `main`, has a detailed notes file at `notes/changes/<bra
    - **How to check it:** how to test or confirm it works.
    - **Open items:** anything unfinished, known issues, or follow-ups.
 4. Add new entries at the top of the log so the latest is first. Never delete or rewrite old entries; if something was wrong, add a new entry that corrects it.
-5. When a branch is opened as a pull request, put a summary of its notes in the PR description and link to the notes file.
+5. When a branch is opened as a pull request, put a summary of its notes in the PR description and link to the notes file, using the headings in `.github/pull_request_template.md`. If the PR was opened some other way (for example from the Claude Code app) with a different description, rewrite it to the template.
 6. When a branch is merged into `main`, add a one-line summary to `CHANGELOG.md` at the repo root, linking to the branch's notes file. Keep the branch's notes file; it is the permanent record.

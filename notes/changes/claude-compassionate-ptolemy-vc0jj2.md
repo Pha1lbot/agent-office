@@ -11,6 +11,26 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-07: Pull request template
+
+**What changed**
+- `.github/pull_request_template.md`: new. Sections match the notes file: Summary with the notes link, What changed, Why, Decisions, How it was tested ("Tested it" is not enough), and Open items. It ends with an "After merging" checklist: CHANGELOG line, delete the branch, remove the `agent-office-work` folder.
+- `CLAUDE.md`: change-notes step 5 says to use the template, and to rewrite a PR description made some other way. The Layout section mentions `.github/`.
+
+**Why**
+Learning 3, approved by Tim. PR #18 was opened from the Claude Code app with a description that left out the notes link and the test evidence, and had to be rewritten by hand. Also, #15, #16 and #17 were merged without their CHANGELOG lines; the checklist puts that step on every PR page.
+
+**Decisions**
+- Followed the other project's "Test plan" section, renamed "How it was tested" to match our notes' "How to check it" style.
+- The notes link is a full GitHub URL with placeholders, because relative links in PR descriptions don't reliably point at the branch.
+- GitHub's website fills in the template. It isn't certain that the Claude Code app's PR button does, hence the CLAUDE.md line to rewrite such descriptions.
+
+**How to check it**
+Open a new PR on GitHub's website from any branch: the description box starts with these headings.
+
+**Open items**
+None.
+
 ### 2026-11-07: Git routine: branch work in a separate folder on Tim's PC; pull before each piece of work
 
 **What changed**
