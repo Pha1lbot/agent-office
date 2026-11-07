@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In progress
+**Status:** In review ([PR #18](https://github.com/Pha1lbot/agent-office/pull/18))
 
 ## Purpose
 
@@ -10,6 +10,24 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-07: Pull request opened
+
+**What changed**
+- `notes/changes/claude-compassionate-ptolemy-vc0jj2.md`: status is now "In review", linking to [PR #18](https://github.com/Pha1lbot/agent-office/pull/18).
+- PR #18's description, which was written automatically, was replaced with a summary of these notes and a link to this file, as CLAUDE.md asks.
+
+**Why**
+Tim opened PR #18 for this branch from the Claude Code app.
+
+**Decisions**
+The automatic description left out improvement 1, the test evidence and the notes link, so it was rewritten.
+
+**How to check it**
+Open PR #18 and check that the description links here.
+
+**Open items**
+After merging: the CHANGELOG line, and the open items from the fact-check entry below.
 
 ### 2026-11-07: Improvement 3: Ada fact-checks every draft against the CV bank
 
