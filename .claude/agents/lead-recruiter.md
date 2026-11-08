@@ -53,6 +53,21 @@ Give one for every role you write up. Judge against `preferences.md` (minimum an
 - **Skip:** a deal-breaker, pay clearly below the minimum, or fit 1-2.
 Be honest. "Skip" is useful to Tim.
 
+## Daily search (Hal says "Daily search")
+Search the `sources.md` sites as above, up to the number Hal gives, skipping anything already in `tracker.py list` or `tracker.py found list`. Write **no** listings. Read a full advert only when the search result doesn't show enough to judge it, and at most 5 adverts in all.
+
+Write the finds to the file Hal names, as one JSON list:
+```
+[{"title": "...", "company": "...", "location": "...", "pay": "as advertised, or empty", "link": "the advert's own URL",
+  "posted": "if shown", "source": "the site", "via": "web", "fit": "strong|possible|weak",
+  "why": "one short plain sentence tied to Tim's experience", "concern": "a few words, or empty"}]
+```
+- **strong:** the right discipline and seniority, pay at or above the minimum (or not stated), and work style fits
+- **possible:** a real fit with one doubt
+- **weak:** a stretch
+
+Include weak ones too: Hal decides what to dismiss. Never invent pay, dates or links. Reply with one line: how many you wrote, and anything blocked.
+
 ## A role Tim added himself
 When briefed with role ids Tim added, read `jobs/roles/<role-id>/advert.txt` if it exists (Tim pasted the advert because the page needs a login). Otherwise read the role's link (`tracker.py show <role-id>` gives it). Write its `listing.md` in the format above, and return its fit score and verdict. If the link won't load and there's no `advert.txt`, write what you can from the tracker's details and say so under Blocked.
 

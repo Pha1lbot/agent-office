@@ -22,6 +22,19 @@ let jobSearch = null; // { rules, prefs, cvBank, hasDefaultCv } from /api/job-se
 const ever = (r, s) => r.status === s || (r.history || []).some((h) => h.status === s);
 const matches = (r) => !ui.q || `${r.title} ${r.company} ${r.location} ${r.notes || ""} ${r.verdict_why || ""}`.toLowerCase().includes(ui.q);
 const halOn = (r) => queuedFor(r.id).length > 0;
+const todayKey = () => new Date().toLocaleDateString("en-CA"); // YYYY-MM-DD, local (UK) date
+const FIT_LABEL = { strong: "Strong", possible: "Possible", weak: "Weak" };
+const isNewLead = (r) => r.found === todayKey() && (r.history || [])[0]?.by === "hal";
+/** The latest batch of finds: today's, or else the most recent day's. */
+function latestFinds() {
+  const f = store.tracker.found || { items: [], runs: [] };
+  const days = [...new Set(f.items.map((i) => (i.found_at || "").slice(0, 10)))].sort();
+  const day = days.includes(todayKey()) ? todayKey() : days[days.length - 1];
+  const items = day ? f.items.filter((i) => (i.found_at || "").startsWith(day)) : [];
+  return { day, items, added: items.filter((i) => i.triage?.action === "added"), dismissed: items.filter((i) => i.triage?.action === "dismissed"),
+    pending: items.filter((i) => !i.triage), runs: f.runs || [], lastRun: (f.runs || [])[(f.runs || []).length - 1] };
+}
+const dayWord = (day) => (day === todayKey() ? "this morning" : day ? `on ${shortDate(day)}` : "");
 function docLabel(r) {
   const d = store.docs[r.id] || {};
   if (halOn(r) && ["shortlisted", "drafted"].includes(r.status)) return `<span class="tg">Wren writing</span>`;
@@ -161,7 +174,10 @@ function addActionForm() {
 function renderOverview() {
   const leads = roles().filter((r) => r.status === "found");
   const fresh = leads.filter((r) => r.verdict === "apply").length;
-  $("ov-callout").innerHTML = leads.length ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong style="color:var(--text)">${plural(leads.length, "lead")}</strong> to look at${fresh ? `, ${fresh} that Hal says to apply for` : ""}.</span><a class="btn sm primary" href="#leads">Review</a></div>` : "";
+  const fb = latestFinds();
+  const findLine = fb.items.length && fb.day === todayKey()
+    ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong style="color:var(--text)">Rita found ${plural(fb.items.length, "new role")} ${dayWord(fb.day)}</strong>: ${fb.added.length} added to Leads, ${fb.dismissed.length} dismissed by Hal${fb.pending.length ? `, ${fb.pending.length} still to sort` : ""}.</span><button type="button" class="btn sm primary" data-found="open">Review</button></div>` : "";
+  $("ov-callout").innerHTML = findLine || (leads.length ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong style="color:var(--text)">${plural(leads.length, "lead")}</strong> to look at${fresh ? `, ${fresh} that Hal says to apply for` : ""}.</span><a class="btn sm primary" href="#leads">Review</a></div>` : "");
   $("ov-kpis").innerHTML = kpis();
   $("ov-pipe").innerHTML = pipelineChart();
   $("ov-week").innerHTML = weeklyChart();
@@ -187,7 +203,7 @@ function renderLeads() {
     ["none", "No verdict yet", open.filter((r) => !r.verdict).length], ...lists.map((l) => [`list:${l}`, l, open.filter((r) => r.list === l).length])].filter((c) => c[0] === "all" || c[2]);
   const editing = store.system.editing;
   const head = `<div class="tbl-head"><div class="row1"><div><h2>${ui.leadShow === "dismissed" ? "Dismissed leads" : "Leads"}</h2><span class="sub">${ui.leadShow === "dismissed" ? "Roles you or Hal ruled out, in case you change your mind" : `${plural(open.length, "role")} to look at, best first. Moving one to the pipeline gets Wren writing.`}</span></div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">${dismissed.length ? `<button type="button" class="btn sm ghost" data-lead="toggle">${ui.leadShow === "dismissed" ? "Back to leads" : `Dismissed (${dismissed.length})`}</button>` : ""}${editing ? `<button type="button" class="btn sm" data-lead="add">${svg(ICON.plus, 14, 2.2)}Add lead</button>` : ""}</div></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">${latestFinds().items.length ? `<button type="button" class="btn sm${latestFinds().day === todayKey() ? " primary" : ""}" data-found="open">New leads<span class="n-badge">${latestFinds().items.length}</span></button>` : ""}${dismissed.length ? `<button type="button" class="btn sm ghost" data-lead="toggle">${ui.leadShow === "dismissed" ? "Back to leads" : `Dismissed (${dismissed.length})`}</button>` : ""}${editing ? `<button type="button" class="btn sm" data-lead="add">${svg(ICON.plus, 14, 2.2)}Add lead</button>` : ""}</div></div>
     ${ui.leadShow === "open" && open.length ? `<div class="chips" role="group" aria-label="Filter leads">${chips.map(([k, l, n]) => `<button type="button" class="chip" data-chip="${esc(k)}" aria-pressed="${ui.leadFilter === k}">${esc(l)}<span class="n">${n}</span></button>`).join("")}</div>` : ""}</div>`;
   const rows = leadRows();
   let body;
@@ -196,7 +212,7 @@ function renderLeads() {
   } else {
     body = `<div class="tbl-wrap"><table class="tbl" style="min-width:1000px"><thead><tr><th style="width:30%">Role</th><th>Location</th><th>Pay</th><th style="width:30%">Hal's view</th><th></th></tr></thead><tbody>${rows.map((r) => {
       const url = safeUrl(r.url), c = closing(r.closing_date);
-      const tags = [r.priority && ui.leadShow === "open" ? `<span class="tg star">P${esc(r.priority)}</span>` : "", r.list ? `<span class="tg">${esc(r.list)}</span>` : "", r.source && r.source !== "Job Hunt dashboard" ? `<span class="tg">${esc(r.source)}</span>` : "", c ? `<span class="tg close ${c.level}">${esc(c.text)}</span>` : "", halOn(r) ? `<span class="tg" style="color:var(--accent)">Hal is on it</span>` : ""].join("");
+      const tags = [isNewLead(r) ? `<span class="tg new">New</span>` : "", r.priority && ui.leadShow === "open" ? `<span class="tg star">P${esc(r.priority)}</span>` : "", r.list ? `<span class="tg">${esc(r.list)}</span>` : "", r.source && r.source !== "Job Hunt dashboard" ? `<span class="tg">${esc(r.source)}</span>` : "", c ? `<span class="tg close ${c.level}">${esc(c.text)}</span>` : "", halOn(r) ? `<span class="tg" style="color:var(--accent)">Hal is on it</span>` : ""].join("");
       const why = r.verdict_why || r.notes || "";
       const acts = ui.leadShow === "dismissed"
         ? (editing ? `<button type="button" class="btn sm" data-lead="restore" data-id="${esc(r.id)}">Restore</button>` : "")
@@ -339,6 +355,37 @@ tForm.addEventListener("submit", async (e) => {
     toast(`Sent to Wren. The CV and cover letter will appear on ${roleById(id)?.company || "the role"}'s Documents tab.`);
   } catch (ex) { err.textContent = ex.message; }
 });
+
+// ---------- New leads (the review queue Hal triaged) ----------
+function renderFound() {
+  const fb = latestFinds(), run = fb.lastRun;
+  const row = (i) => {
+    const r = i.triage?.role && roleById(i.triage.role);
+    const decision = !i.triage ? `<span class="sub">Waiting for Hal</span>`
+      : i.triage.action === "added" ? `<span class="tg docs">Added to Leads</span>${r && r.status !== "found" ? ` <span class="sub">(now ${esc(STATUS_LABEL[r.status])})</span>` : ""}`
+      : `<span class="tg">Dismissed</span>${i.triage.reason ? ` <span class="sub">${esc(i.triage.reason)}</span>` : ""}`;
+    const undo = !store.system.editing || !r ? ""
+      : r.status === "found" ? `<button type="button" class="btn sm ghost" data-found="dismiss" data-id="${esc(r.id)}">Dismiss</button>`
+      : r.status === "skipped" ? `<button type="button" class="btn sm" data-found="restore" data-id="${esc(r.id)}">Add to Leads</button>` : "";
+    return `<div class="found"><div class="f-main"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="fitb ${esc(i.fit)}">${FIT_LABEL[i.fit] || "Possible"}</span><span class="r-title">${esc(i.title)}</span></div>
+      <span class="r-co">${esc(i.company)}${i.location ? ` · ${esc(i.location)}` : ""}${i.pay ? ` · ${esc(i.pay)}` : ""} · ${esc(i.source || (i.via === "email" ? "Job alert email" : "Web search"))}${safeUrl(i.link) ? ` · <a class="r-link" href="${esc(i.link)}" target="_blank" rel="noopener noreferrer">Advert</a>` : ""}</span>
+      ${i.why ? `<span class="clamp c-fit">${esc(i.why)}</span>` : ""}<div>${decision}</div></div>
+      <div class="f-acts">${undo}${r ? `<a class="btn sm ghost" href="#role/${esc(r.id)}">Open</a>` : ""}</div></div>`;
+  };
+  const runLine = run ? `Last run ${esc(longWhen(run.at.length <= 16 ? run.at + ":00" : run.at))} (${run.via === "email" ? "email scan" : "web search"}, ${plural(run.found || 0, "new find")})${run.note ? `: ${esc(run.note)}` : ""}.` : "No search has run yet.";
+  $("found-body").innerHTML = `<p class="sub" style="margin:0 0 12px">${runLine} Rita searches your job sites and job-alert emails at 6:31 on weekdays; Hal sorts what she finds.</p>
+    ${fb.items.length ? `<h3 class="found-h">${dayWord(fb.day) === "this morning" ? "This morning" : `Found ${dayWord(fb.day)}`}: ${fb.added.length} added, ${fb.dismissed.length} dismissed</h3><div class="list">${[...fb.added, ...fb.pending, ...fb.dismissed].map(row).join("")}</div>` : emptyBox("Nothing new yet", "New finds appear here after the morning search.")}`;
+}
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-found]");
+  if (!b) { if (e.target === $("found-dlg")) $("found-dlg").close(); return; }
+  const act = b.dataset.found, r = b.dataset.id && roleById(b.dataset.id);
+  if (act === "open") { renderFound(); $("found-dlg").showModal(); }
+  else if (act === "close") $("found-dlg").close();
+  else if (act === "dismiss" && r) setStatus(r.id, "skipped", `Dismissed ${r.company}.`, "found");
+  else if (act === "restore" && r) setStatus(r.id, "found", `${r.company} added to Leads.`, "skipped");
+});
+on("tracker", () => { if ($("found-dlg").open) renderFound(); });
 
 // ---------- Rendering ----------
 const RENDER = { overview: renderOverview, leads: renderLeads, interviews: renderInterviews, actions: renderActions, cvs: renderCVs };
