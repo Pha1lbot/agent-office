@@ -72,4 +72,6 @@ When you skip a role, give a few words of reason if you can ("pay too low", "too
 
 Double-click `shared/office-view/Open Office.cmd`. It starts the office and opens http://127.0.0.1:4747 in your browser. (Or, in that folder, run `npm install` once, then `npm start`.) You'll see the team as coworkers in a 3D open-plan office (working at their desks, fetching coffee, relaxing on the sofas), plus a dashboard in the style of your Job Hunt artifact (Overview, Roles, Leads, Interviews, Next actions, CVs) and a page for each role with its CV, cover letter, attachments and interview talking points. Hal acts on your changes automatically. See `shared/office-view/README.md`.
 
+Every weekday at 6:31, Rita searches your job sites and Hal reads your job-alert emails, in the cloud, so your PC can be off. Hal sorts the finds into Leads (or Dismissed, with his reason) before you start.
+
 The agents never apply, email or fill in forms for you. Using Sonnet for the session (`/model sonnet`) keeps token use down.

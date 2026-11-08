@@ -488,3 +488,18 @@ details.rules textarea { width: 100%; margin-top: 8px; min-height: 140px; }
 .tg.close.past { color: var(--s-rejected); }
 .wait { margin: 0; padding-left: 18px; color: var(--text-2); }
 #todo { margin: 0; }
+
+/* ---------- New leads (review queue) ---------- */
+.fitb { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 6px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.fitb.strong { background: #10291F; color: #5EE0AC; }
+.fitb.possible { background: #2A2414; color: #F2C46D; }
+.fitb.weak { background: #1E2632; color: #B4C0D3; }
+.found { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-top: 1px solid var(--line-1); }
+.found:first-child { border-top: 0; }
+.found .f-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.found .f-acts { display: flex; gap: 6px; flex-shrink: 0; align-items: center; }
+.found-h { font-size: 13px; color: var(--text-2); font-weight: 600; margin: 8px 0 4px; }
+.n-badge { min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; background: rgba(10, 12, 16, .25); font-family: var(--mono); font-size: 11px; display: inline-grid; place-items: center; }
+.btn:not(.primary) .n-badge { background: var(--hover); color: var(--text-2); }
+.tg.new { color: #8EC1FF; border-color: #1f3554; background: #14243A; }
+@media (max-width: 760px) { .found { flex-direction: column; } }

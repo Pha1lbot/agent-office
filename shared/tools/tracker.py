@@ -229,35 +229,161 @@ def parse_value(key, value):
     return value
 
 
-def cmd_add(args):
-    data = load()
-    if args.url and any(r.get("url") == args.url for r in data["roles"]):
-        sys.exit(f"Already tracked: {args.url}")
+def add_role(data, title, company, location="", pay="", url="", source="", fit="", notes="", by=None, role_id=""):
+    """Add a new role (status found) to data and return it. Exits if it's already tracked."""
+    if url and any(r.get("url") == url for r in data["roles"]):
+        sys.exit(f"Already tracked: {url}")
     ids = {r["id"] for r in data["roles"]}
-    if args.id:
-        role_id = args.id
+    if role_id:
         if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", role_id):
             sys.exit("id must be lower case letters, numbers and hyphens")
         if role_id in ids:
             sys.exit(f"Already tracked: {role_id}")
     else:
-        base = f"{today()}-{slug(args.company)}-{slug(args.title)}"
+        base = f"{today()}-{slug(company)}-{slug(title)}"
         role_id, n = base, 2
         while role_id in ids:
             role_id, n = f"{base}-{n}", n + 1
     role = {
-        "id": role_id, "title": args.title, "company": args.company,
-        "location": args.location, "pay": args.pay, "url": args.url,
-        "source": args.source, "fit": parse_value("fit", args.fit or ""),
-        "priority": None, "status": "found", "notes": args.notes,
+        "id": role_id, "title": title, "company": company,
+        "location": location, "pay": pay, "url": url,
+        "source": source, "fit": parse_value("fit", str(fit or "")),
+        "priority": None, "status": "found", "notes": notes,
         "found": today(), "updated": today(),
-        "history": [{"date": today(), "status": "found", **({"by": args.by} if args.by else {})}],
+        "history": [{"date": today(), "status": "found", **({"by": by} if by else {})}],
     }
     data["roles"].append(role)
+    return role
+
+
+def cmd_add(args):
+    data = load()
+    role = add_role(data, args.title, args.company, args.location, args.pay, args.url, args.source,
+                    args.fit, args.notes, args.by, args.id)
     if args.by == "tim":
         to_inbox(data, role, READ_TASK)
     save(data)
-    print(role_id)
+    print(role["id"])
+
+
+# ---------- The review queue: jobs/found.json ----------
+# Rita's daily search and the job-alert email scan add finds here; Hal triages each
+# one into Leads (status found) or Dismissed (skipped), with his reason.
+FOUND = JOBS / "found.json"
+FITS = {"strong": 4, "possible": 3, "weak": 2}
+FOUND_KEEP_DAYS = 45
+
+
+def load_found():
+    if not FOUND.exists():
+        return {"items": [], "runs": [], "last_email_scan": ""}
+    found = json.loads(FOUND.read_text(encoding="utf-8"))
+    found.setdefault("items", [])
+    found.setdefault("runs", [])
+    found.setdefault("last_email_scan", "")
+    return found
+
+
+def save_found(found):
+    cutoff = (uk_now() - timedelta(days=FOUND_KEEP_DAYS)).strftime("%Y-%m-%dT%H:%M")
+    found["items"] = [i for i in found["items"] if i.get("found_at", "") >= cutoff][-300:]
+    found["runs"] = found["runs"][-30:]
+    JOBS.mkdir(parents=True, exist_ok=True)
+    FOUND.write_text(json.dumps(found, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def norm(text):
+    return re.sub(r"[^a-z0-9]+", " ", (text or "").lower()).strip()
+
+
+def find_key(company, title):
+    return f"{norm(company)}|{norm(title)}"
+
+
+def clip(value, n):
+    return " ".join(str(value or "").split())[:n]
+
+
+def cmd_found(args):
+    data, found = load(), load_found()
+    if args.verb == "add":
+        if not args.file:
+            sys.exit("Usage: found add --file <items.json> [--via web|email]")
+        raw = json.loads(Path(args.file).read_text(encoding="utf-8"))
+        items = raw.get("items", []) if isinstance(raw, dict) else raw
+        known = {find_key(r["company"], r["title"]) for r in data["roles"]} | {find_key(i["company"], i["title"]) for i in found["items"]}
+        links = {r.get("url") for r in data["roles"] if r.get("url")} | {i.get("link") for i in found["items"] if i.get("link")}
+        n = max([int(i["id"][1:]) for i in found["items"] if re.fullmatch(r"f\d+", i.get("id", ""))] + [0])
+        added = skipped = 0
+        for j in items:
+            if not isinstance(j, dict) or not clip(j.get("title"), 200) or not clip(j.get("company"), 120):
+                skipped += 1
+                continue
+            key, link = find_key(j["company"], j["title"]), clip(j.get("link"), 1500)
+            if not re.match(r"https?://", link):
+                link = ""
+            if key in known or (link and link in links):
+                skipped += 1
+                continue
+            known.add(key)
+            if link:
+                links.add(link)
+            n += 1
+            fit = j.get("fit") if j.get("fit") in FITS else "possible"
+            found["items"].append({
+                "id": f"f{n}", "title": clip(j["title"], 200), "company": clip(j["company"], 120),
+                "location": clip(j.get("location"), 120), "pay": clip(j.get("pay"), 80), "link": link,
+                "posted": clip(j.get("posted"), 40), "source": clip(j.get("source"), 60),
+                "via": j.get("via") if j.get("via") in ("web", "email") else (args.via or "web"),
+                "fit": fit, "why": clip(j.get("why"), 300), "concern": clip(j.get("concern"), 200),
+                "found_at": now_stamp(),
+            })
+            added += 1
+        save_found(found)
+        print(f"added {added}, skipped {skipped} (already known or incomplete)")
+    elif args.verb == "list":
+        for i in found["items"]:
+            t = i.get("triage")
+            if args.pending and t:
+                continue
+            state = f"{t['action']}: {t.get('role', '')}" if t else "pending"
+            print(f"{i['id']} | {i['fit']} | {i['title']} @ {i['company']} | {i['location'] or '?'} | {i['pay'] or '?'} | {i['source'] or i['via']} | {state}")
+        if not found["items"]:
+            print("Queue empty")
+    elif args.verb == "take":
+        if not args.ids or args.ids[0] not in {i["id"] for i in found["items"]}:
+            sys.exit("Usage: found take <item-id> --as lead|dismissed [--verdict ...] [--why ...] [--reason ...]")
+        item = next(i for i in found["items"] if i["id"] == args.ids[0])
+        if item.get("triage"):
+            sys.exit(f"{item['id']} was already {item['triage']['action']} ({item['triage'].get('role', '')})")
+        if args.take_as not in ("lead", "dismissed"):
+            sys.exit("--as must be lead or dismissed")
+        notes = f"Concern: {item['concern']}" if item.get("concern") else ""
+        role = add_role(data, item["title"], item["company"], item["location"], item["pay"], item["link"],
+                        item["source"] or ("Job alert email" if item["via"] == "email" else "Rita's daily search"),
+                        FITS.get(item["fit"], ""), notes, "hal")
+        verdict = parse_value("verdict", args.verdict or ("apply" if item["fit"] == "strong" else "maybe"))
+        if args.take_as == "dismissed" and not args.verdict:
+            verdict = "skip"
+        role["verdict"] = verdict
+        role["verdict_why"] = parse_value("verdict_why", args.why or item.get("why", ""))
+        if item.get("posted"):
+            role["notes"] = "; ".join(x for x in (role["notes"], f"Posted {item['posted']}") if x)
+        if args.take_as == "dismissed":
+            role["status"] = "skipped"
+            role["reason"] = clip(args.reason or "Hal: not a fit", 300)
+            role["history"].append({"date": today(), "status": "skipped", "by": "hal"})
+        item["triage"] = {"action": "added" if args.take_as == "lead" else "dismissed", "role": role["id"],
+                          "reason": role.get("reason", ""), "at": now_stamp()}
+        save(data)
+        save_found(found)
+        print(role["id"])
+    elif args.verb == "run":
+        found["runs"].append({"at": now_stamp(), "via": args.via or "web", "found": args.count or 0, "note": clip(args.note, 300)})
+        if args.email_scan_at:
+            found["last_email_scan"] = args.email_scan_at
+        save_found(found)
+        print("logged")
 
 
 def cmd_set(args):
@@ -535,6 +661,21 @@ def main():
 
     rk = sub.add_parser("rank", help="number the To review roles best first (also done on every save)")
     rk.set_defaults(func=lambda a: (save(load()), cmd_list(argparse.Namespace(status="found", summary=False))))
+
+    fd = sub.add_parser("found", help="the review queue of new finds (jobs/found.json)")
+    fd.add_argument("verb", choices=["add", "list", "take", "run"])
+    fd.add_argument("ids", nargs="*", help="take: the item id")
+    fd.add_argument("--file", help="add: a JSON list of finds")
+    fd.add_argument("--via", choices=["web", "email"], help="add/run: where the finds came from")
+    fd.add_argument("--pending", action="store_true", help="list: only finds Hal hasn't triaged")
+    fd.add_argument("--as", dest="take_as", help="take: lead or dismissed")
+    fd.add_argument("--verdict", help="take: apply, maybe or skip (default from fit)")
+    fd.add_argument("--why", help="take: one line on why (default: the find's own)")
+    fd.add_argument("--reason", help="take --as dismissed: why it was dismissed")
+    fd.add_argument("--found", dest="count", type=int, help="run: how many new finds")
+    fd.add_argument("--note", help="run: anything worth knowing, e.g. Outlook not connected")
+    fd.add_argument("--email-scan-at", help="run: when the email scan started (ISO)")
+    fd.set_defaults(func=cmd_found)
 
     rd = sub.add_parser("render", help="rebuild tracker.md from tracker.json")
     rd.set_defaults(func=lambda a: render(load()))

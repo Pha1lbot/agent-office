@@ -108,7 +108,7 @@ Work goes on branch `claude/youthful-hopper-alwu7m`, recreated from `main`. The 
   - the file-name pattern `Tim_Everard_<Job_Title>_cv.pdf` (replacing the handover's `Tim Everard CV - <Company>.pdf`, at Tim's request)
   - two pages, page 1 with a sidebar
 
-### Phase 3: Lead finding, with the review queue handled by Hal
+### Phase 3: Lead finding, with the review queue handled by Hal (built 2026-11-08: see the branch notes)
 - **Queue:** a new `jobs/found.json` holds items (title, company, location, pay, link, posted, source, fit, why, concern, found_at), deduped by company and title against the tracker. A new `tracker.py found add|list|take|dismiss` manages it.
 - **Daily search:** a scheduled cloud task, "Rita's daily search". It replaces the artifact's 06:31 task, whose prompt becomes this one with Tim's OK. It runs Rita's search of the `sources.md` sites (plus the email scan below), writes to `found.json`, commits and pushes.
 - **Job-alert email scan:** the same task, with the Microsoft 365 connector granted. It reads the "Job Alerts" folder and the last two weeks of job emails, and pulls out roles, following the artifact's prompt.

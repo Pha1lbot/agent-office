@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (Job Hunt v3, phase 1: the dashboard in the artifact's design); earlier work merged in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3), [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#17](https://github.com/Pha1lbot/agent-office/pull/17)
+**Status:** In progress (Job Hunt v3, phase 3: lead finding); phase 1 merged in [PR #21](https://github.com/Pha1lbot/agent-office/pull/21), earlier work in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3) and [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#17](https://github.com/Pha1lbot/agent-office/pull/17)
 
 ## Purpose
 
@@ -15,6 +15,68 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-08: Job Hunt v3, phase 3: daily lead finding, with Hal sorting the review queue
+
+**What changed**
+- `shared/tools/tracker.py`:
+  - **Review queue `jobs/found.json`**, through `tracker.py found add|list|take|run`.
+    - `add` dedupes finds by normalised company and title, and by link, against both the queue and the tracker.
+    - `take <id> --as lead|dismissed` creates the role, with history `by: hal`, fit mapped (strong 4, possible 3, weak 2), a verdict (Apply, Maybe or Skip), `verdict_why` and the reason. It marks the item triaged, and Ada ranks it.
+    - `run` logs each search (via web or email, how many found, a note), plus `last_email_scan`.
+    - Finds older than 45 days are pruned, and the queue keeps at most 300.
+  - `cmd_add`'s logic is now `add_role()`, shared with `found take`.
+- `shared/tools/test_tracker.py`: tests for dedupe, taking a find as a lead or dismissed, and refusing to take one twice.
+- `shared/office-view/src/server.ts`: reads `jobs/found.json` (the last 7 days of finds and the last 10 runs) into the tracker snapshot as `tracker.found`, and watches it.
+- `public/views.js`, `index.html` and `style.css`:
+  - the Overview callout "Rita found N new roles this morning: A added to Leads, D dismissed by Hal"
+  - a **New leads** dialog on Leads, in the style of the artifact's review queue: the last run, each find with its Strong / Possible / Weak badge, source and link, and Hal's decision and reason, with **Add to Leads** / **Dismiss** and **Open**
+  - a **New** tag on leads Hal added today
+- `.claude/skills/cos/SKILL.md` (and the `hal` alias description): a new **"Daily search"** routine.
+  - Rita's search goes to a JSON file.
+  - Hal scans job-alert emails himself with the Microsoft 365 tools (subagents can't use connectors).
+  - Both go through `found add` and `found run`, then Hal triages each find: dismiss deal-breakers, pay under the minimum, Weak fits and the wrong discipline, with a reason; keep the rest as leads; never shortlist.
+  - He writes `today.md` and commits `jobs/` to `main`, merging (never rebasing or forcing) if the push is refused.
+  - Token rules: one Rita brief, no listings, at most 6 emails.
+  - "Start the day" now runs the search if it hasn't run today.
+- `.claude/agents/lead-recruiter.md`: a "Daily search" mode with the JSON format and the fit rules. She writes no listings and reads at most 5 adverts.
+- READMEs (root, office view, Rita, Hal), `sources.md` (job-alert emails), and the plan marked as built. `CHANGELOG.md` gets the line for #21.
+
+**Why**
+Tim asked to proceed with phase 3 of `notes/plans/job-hunt-v3.md`. He chose:
+- 06:31 on weekdays, in the cloud
+- pausing the artifact's old 06:31 search after the new one's first good run
+- finds Hal dismisses going to Leads → Dismissed with his reason
+
+**Decisions**
+- **One queue** (`found.json`) separate from the tracker, so the same job is never found twice, and Tim can see what was found and what Hal did with it.
+- **Hal does the email scan himself:** subagents don't get connector tools.
+- **The email rules came from a real read-only test of Tim's Outlook.**
+  - Alerts are in the Inbox (there's no Job Alerts folder), so Hal searches "jobs" since the last scan.
+  - The results included non-alert emails (a benefits email, "application sent", "saved job expiring"), so those are now skipped.
+  - One LinkedIn email was about 12k tokens of HTML, so Hal reads at most 6 a day (not the 12 planned).
+  - LinkedIn links carry long tracking codes, so they're trimmed to `/jobs/view/<number>/`.
+
+**How to check it**
+- `test_tracker.py` (5) and `test_fact_check.py` pass. `npm test` (30) and `tsc` are clean.
+- **A dry run against a throwaway copy of the tracker:**
+  - Rita's real capped search returned 3 roles in the right JSON (about 27k tokens), and `found add` queued them.
+  - A real LinkedIn alert email was read and its job extracted; `found add` skipped it, because Razer is already tracked.
+  - Triaged as Hal: 2 to Leads (ranked) and 1 dismissed with a reason.
+- **Playwright, with no page errors:**
+  - the Overview callout counts
+  - the New leads dialog lists each find with Hal's decision
+  - Add to Leads on a dismissed find works
+  - the New tags show
+  - there's no sideways scroll at 390 px wide
+
+**Open items**
+- **After the merge:**
+  - create the scheduled task "Rita's daily search" (`CRON_TZ=Europe/London 31 6 * * 1-5`, a new cloud session each time, with the Microsoft 365 connector and push notifications)
+  - fire it once and check it pushes to `main`
+  - then pause the artifact's old task `trig_01JmHmGcgHAyaRFj75jCN6BA`
+- The cloud network doesn't allow some boards Rita's search turned up (jobleads.com, builtinlondon.uk), so those finds come from search snippets. Add hosts if Tim wants full reads of them.
+- Phase 2 (Tim's CV template) still needs `cv_template.py` and `example-content.json`. Phase 4 is the artifact sync.
 
 ### 2026-11-07: Job Hunt v3, phase 1: the office dashboard in the style of Tim's artifact
 

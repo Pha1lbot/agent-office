@@ -58,7 +58,10 @@ const TYPES: Record<string, string> = {
 };
 
 const office = new Office();
-let tracker: { roles: { id: string; title: string; company: string; status?: string; url?: string }[]; inbox?: { done: boolean }[]; error?: string } = { roles: [] };
+let tracker: { roles: { id: string; title: string; company: string; status?: string; url?: string }[]; inbox?: { done: boolean }[]; error?: string; found?: Found } = { roles: [] };
+// The review queue from Rita's daily search and the job-alert email scan (jobs/found.json).
+type Found = { items: { found_at?: string }[]; runs: unknown[]; last_email_scan?: string };
+const FOUND = join(dirname(TRACKER), "found.json");
 let tool: Tracker | null = null;
 let backup: Backup;
 let cos: AutoCos | null = null;
@@ -69,6 +72,12 @@ async function loadTracker() {
   } catch {
     tracker = { roles: [], error: "Couldn't read jobs/tracker.json" };
   }
+  try {
+    const f = JSON.parse(await readFile(FOUND, "utf8")) as Found;
+    const week = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 16);
+    // The page only needs the last week's finds and runs.
+    tracker.found = { items: (f.items || []).filter((i) => (i.found_at || "") >= week), runs: (f.runs || []).slice(-10), last_email_scan: f.last_email_scan || "" };
+  } catch { tracker.found = { items: [], runs: [] }; }
   return (tracker.inbox || []).filter((i) => !i.done).length;
 }
 
@@ -491,6 +500,10 @@ if (python) {
 }
 if (!claude) console.log("Claude Code not found: Hal won't start automatically. Run /cos yourself.");
 // Polling works the same on Windows, macOS and Linux, and survives the file being replaced.
+watchFile(FOUND, { interval: 2000 }, async () => {
+  await loadTracker();
+  broadcast({ type: "tracker", tracker });
+});
 watchFile(TRACKER, { interval: 2000 }, async () => {
   const waiting = await loadTracker();
   broadcast({ type: "tracker", tracker });
