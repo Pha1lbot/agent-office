@@ -1,33 +1,51 @@
 #!/usr/bin/env python3
-"""Turn a role's drafted CV and cover letter into Word files, and into PDFs once approved.
+"""Ada: turn a role's drafted CV and cover letter into Tim's documents.
 
 Usage:
-  python3 shared/tools/make_docs.py <role-id>         cv.md, cover-letter.md -> .docx
-  python3 shared/tools/make_docs.py --pdf <role-id>   cv.docx, cover-letter.docx -> .pdf
+  python3 shared/tools/make_docs.py <role-id>         when Wren has drafted (or redrafted)
+  python3 shared/tools/make_docs.py --force <role-id> the same, replacing Word files Tim edited
+  python3 shared/tools/make_docs.py --pdf <role-id>   when Tim approves
 
-Word files are made with pandoc. If shared/job-search/cv/default-cv.docx exists,
-its fonts, styles and page size are used;
-otherwise A4 is used. PDFs are made from the Word files with LibreOffice,
-so the PDF matches the Word file Tim approved.
+Wren writes cv.json (the CV in Tim's template format: see cv_template.py and
+shared/job-search/cv/base-cv.json) and cover-letter.md. From those, <role-id> makes:
+- cv.md: the CV as text, for the office and the fact check. Made from cv.json, so
+  edit cv.json, not cv.md. Roles drafted before the template have only cv.md.
+- Ada's fact check (fact_check.py): anything in the CV or letter that isn't in the
+  CV bank is printed and listed in notes.md.
+- cv.docx and cover-letter.docx with pandoc: plain Word copies Tim can edit.
+- Tim_Everard_<Job_Title>_cv.pdf and Tim_Everard_<Job_Title>_cover_letter.pdf in
+  Tim's template (cv_template.py, printed by Chrome or Edge), so Tim reviews the
+  real thing. If no browser is found, the Word files are still made.
 
-Before making the Word files it runs Ada's fact check (fact_check.py): anything
-in the CV or letter that isn't in the CV bank is printed and listed in notes.md.
+--pdf rebuilds the PDFs when Tim approves. If Tim has edited a Word file since Ada
+made it, that PDF is made from his Word file with LibreOffice instead, so his edits
+are kept. Roles from before the template (no cv.json) also go through LibreOffice.
 
-Needs pandoc (Word) and LibreOffice (PDF). Set JOBS_DIR to use a different jobs folder.
+Needs pandoc (Word), and Chrome/Edge or LibreOffice (PDF). Set JOBS_DIR to use a
+different jobs folder.
 """
+import hashlib
+import json
 import os
 import re
 import shutil
 import subprocess
 import sys
 import tempfile
+import unicodedata
 import zipfile
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import cv_template  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[2]
 JOBS = Path(os.environ.get("JOBS_DIR", REPO / "jobs"))
 STYLE = REPO / "shared" / "job-search" / "cv" / "default-cv.docx"
 DOCS = ["cv", "cover-letter"]
+PDF_KIND = {"cv": "cv", "cover-letter": "cover_letter"}
+BUILT = ".ada-built.json"  # fingerprints of the Word files Ada made, to spot Tim's edits
+GENERATED = "<!-- Made from cv.json by make_docs.py: edit cv.json, not this file. -->"
 # A4 with 2 cm margins, in twentieths of a point (Word's unit).
 A4 = ('<w:sectPr><w:pgSz w:w="11906" w:h="16838"/>'
       '<w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" '
@@ -83,8 +101,116 @@ def fact_check_role(role_id):
         print(f"Fact check didn't run: {error}")
 
 
-def make_word(role_id):
+def role_info(role_id):
+    """The role's title and company from the tracker."""
+    try:
+        data = json.loads((JOBS / "tracker.json").read_text(encoding="utf-8"))
+        role = next((r for r in data.get("roles", []) if r.get("id") == role_id), {})
+    except (OSError, ValueError):
+        role = {}
+    return role.get("title") or role_id, role.get("company") or ""
+
+
+def file_title(title, limit=60):
+    """'Senior Manager, Admin & Operations' -> 'Senior_Manager_Admin_and_Operations'.
+    The office does the same in roles.ts (fileTitle), so downloads match."""
+    text = unicodedata.normalize("NFKD", title).encode("ascii", "ignore").decode()
+    text = re.sub(r"[^A-Za-z0-9-]+", " ", text.replace("&", " and "))
+    words, out = [w.strip("-") for w in text.split()], []
+    for word in filter(None, words):
+        if out and len("_".join(out + [word])) > limit:
+            break
+        out.append(word)
+    return "_".join(out) or "Role"
+
+
+def pdf_name(title, doc):
+    return f"Tim_Everard_{file_title(title)}_{PDF_KIND[doc]}.pdf"
+
+
+def fingerprint(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def read_built(folder):
+    try:
+        return json.loads((folder / BUILT).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def cv_from_json(folder):
+    """Write cv.md from cv.json. Returns True if there is a cv.json."""
+    source = folder / "cv.json"
+    if not source.exists():
+        return False
+    try:
+        data = cv_template.load_content(source)
+    except cv_template.ContentError as error:
+        sys.exit(f"cv.json can't be used: {error}. Fix it and run this again.")
+    (folder / "cv.md").write_text(GENERATED + "\n\n" + cv_template.to_markdown(data), encoding="utf-8")
+    return True
+
+
+def clear_old_pdfs(folder, doc, keep):
+    """Remove PDFs Ada made under an older job title, so only one is left."""
+    for old in folder.glob(f"Tim_Everard_*_{PDF_KIND[doc]}.pdf"):
+        if old.name != keep:
+            old.unlink()
+
+
+def template_pdf(role_id, doc):
+    """Make one PDF in Tim's template. Returns the path, or None if it can't be made from the template."""
     folder = role_dir(role_id)
+    title, company = role_info(role_id)
+    out = folder / pdf_name(title, doc)
+    source = folder / ("cv.json" if doc == "cv" else "cover-letter.md")
+    if not source.exists():
+        return None
+    clear_old_pdfs(folder, doc, out.name)
+    if doc == "cv":
+        cv_template.build_cv(source, out)
+    else:
+        cv_json = folder / "cv.json"
+        subject = f"{title}, {company}" if company else title
+        cv_template.build_letter(source, out, subject, content=cv_json if cv_json.exists() else None)
+    return out
+
+
+def word_pdf(role_id, doc):
+    """Make one PDF from its Word file with LibreOffice, under Tim's file name."""
+    soffice = need(["soffice", "libreoffice", *WINDOWS_SOFFICE],
+                   "Install LibreOffice from https://www.libreoffice.org/download/")
+    folder = role_dir(role_id)
+    source = folder / f"{doc}.docx"
+    out = folder / pdf_name(role_info(role_id)[0], doc)
+    # A separate LibreOffice profile lets this run even if LibreOffice is already open.
+    with tempfile.TemporaryDirectory() as tmp:
+        subprocess.run([
+            soffice, f"-env:UserInstallation={(Path(tmp) / 'profile').as_uri()}",
+            "--headless", "--convert-to", "pdf", "--outdir", tmp, str(source),
+        ], check=True, stdout=subprocess.DEVNULL)
+        made = Path(tmp) / f"{doc}.pdf"
+        if not made.exists():
+            sys.exit(f"PDF not made for {source.name}")
+        clear_old_pdfs(folder, doc, out.name)
+        shutil.move(str(made), out)
+    return out
+
+
+def show(path):
+    return path.relative_to(REPO) if path.is_relative_to(REPO) else path
+
+
+def make_word(role_id, force=False):
+    folder = role_dir(role_id)
+    built = read_built(folder)
+    edited = [f"{d}.docx" for d in DOCS if (folder / f"{d}.docx").exists() and f"{d}.docx" in built
+              and built[f"{d}.docx"] != fingerprint(folder / f"{d}.docx")]
+    if edited and not force:
+        sys.exit(f"Tim has edited {' and '.join(edited)} since Ada made it, so it wasn't replaced. "
+                 "Ask Tim, then run with --force to replace it.")
+    cv_from_json(folder)
     fact_check_role(role_id)
     pandoc = need(["pandoc"], "Install it from https://pandoc.org/installing.html")
     made = []
@@ -99,38 +225,49 @@ def make_word(role_id):
             command += ["--reference-doc", str(STYLE)]
         subprocess.run(command, check=True)
         ensure_page_size(target)
+        built[target.name] = fingerprint(target)
         made.append(target)
-    for path in made:
-        print(f"Made {path.relative_to(REPO) if path.is_relative_to(REPO) else path}")
     if not made:
         sys.exit("Nothing to make")
+    (folder / BUILT).write_text(json.dumps(built, indent=2) + "\n", encoding="utf-8")
+    for doc in DOCS:
+        try:
+            pdf = template_pdf(role_id, doc)
+        except SystemExit as error:  # no browser: the Word files still count
+            print(f"PDF not made for {doc}: {error}")
+            continue
+        if pdf:
+            made.append(pdf)
+    for path in made:
+        print(f"Made {show(path)}")
 
 
 def make_pdf(role_id):
-    soffice = need(["soffice", "libreoffice", *WINDOWS_SOFFICE],
-                   "Install LibreOffice from https://www.libreoffice.org/download/")
     folder = role_dir(role_id)
-    sources = [folder / f"{name}.docx" for name in DOCS if (folder / f"{name}.docx").exists()]
-    if not sources:
-        sys.exit("No Word files to convert. Run without --pdf first.")
-    # A separate LibreOffice profile lets this run even if LibreOffice is already open.
-    with tempfile.TemporaryDirectory() as profile:
-        subprocess.run([
-            soffice, f"-env:UserInstallation={Path(profile).as_uri()}",
-            "--headless", "--convert-to", "pdf", "--outdir", str(folder),
-            *map(str, sources),
-        ], check=True, stdout=subprocess.DEVNULL)
-    for source in sources:
-        pdf = source.with_suffix(".pdf")
-        if not pdf.exists():
-            sys.exit(f"PDF not made for {source.name}")
-        print(f"Made {pdf.relative_to(REPO) if pdf.is_relative_to(REPO) else pdf}")
+    built = read_built(folder)
+    made = []
+    for doc in DOCS:
+        docx = folder / f"{doc}.docx"
+        source = folder / ("cv.json" if doc == "cv" else "cover-letter.md")
+        ours = docx.exists() and built.get(docx.name) == fingerprint(docx)
+        if source.exists() and (ours or not docx.exists()):
+            made.append(template_pdf(role_id, doc))
+        elif docx.exists():
+            if docx.name in built:
+                print(f"{docx.name} was edited after Ada made it: its PDF is made from the Word file.")
+            made.append(word_pdf(role_id, doc))
+    if not made:
+        sys.exit("Nothing to make a PDF from. Run without --pdf first.")
+    for path in made:
+        print(f"Made {show(path)}")
 
 
 def main():
     args = sys.argv[1:]
     if args[:1] == ["--pdf"] and len(args) == 2:
         make_pdf(args[1])
+    elif args[:1] == ["--force"] and len(args) == 2:
+        make_word(args[1], force=True)
     elif len(args) == 1 and not args[0].startswith("-"):
         make_word(args[0])
     else:

@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (Job Hunt v3, phase 3: lead finding); phase 1 merged in [PR #21](https://github.com/Pha1lbot/agent-office/pull/21), earlier work in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3) and [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#17](https://github.com/Pha1lbot/agent-office/pull/17)
+**Status:** In progress (Job Hunt v3, phase 2: CV template); phase 1 merged in [PR #21](https://github.com/Pha1lbot/agent-office/pull/21), phase 3 in [PR #22](https://github.com/Pha1lbot/agent-office/pull/22), earlier work in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3) and [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#17](https://github.com/Pha1lbot/agent-office/pull/17)
 
 ## Purpose
 
@@ -15,6 +15,70 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-08: Job Hunt v3, phase 2: Tim's CV template, `Tim_Everard_<Job_Title>_cv.pdf` names, CV rules
+
+**What changed**
+- `shared/tools/cv_template.py` (new): Tim's default CV template.
+  - Builds CVs from JSON and cover letters from Markdown, as HTML printed to PDF by headless Chrome, Chromium or Edge.
+  - The layout copies `default-cv.pdf`: two A4 pages, Inter, blue accent `#2b5fd9`. Page 1 has the header, rule, profile, a row of up to five figures and the first job, beside a grey Key skills and Certifications sidebar. Page 2 has the other jobs.
+  - Letters use the same header, then the date, a subject line ("Role, Company") and the letter.
+  - A role's content is laid over `base-cv.json`. Name and contact always come from the base.
+  - It validates the content with plain-English errors, writes the CV as Markdown (`to_markdown`), and warns if a CV runs past two pages or a letter past one.
+  - The browser can be chosen with `CV_BROWSER`. It prefers Playwright's headless shell when present: in cloud sessions the full Chromium hangs on print-to-PDF.
+- `shared/tools/cv-fonts/` (new): Latin subsets of Inter 4 (Regular, Medium, SemiBold, Bold, Display Bold) as woff2, about 22 KB each, with `OFL.txt`. They're embedded in the page, so the PDF looks the same on Tim's PC, where Inter isn't installed.
+- `shared/job-search/cv/base-cv.json` (new): Tim's default CV in the template format, transcribed from `default-cv.pdf`. The email is now `tim.everard91@gmail.com`; the LinkedIn is `linkedin.com/in/tim-everard`.
+- `shared/tools/make_docs.py`:
+  - **Drafting (`make_docs.py <role-id>`):** writes `cv.md` from `cv.json`, marked as generated. Then the fact check (unchanged), the Word copies with pandoc, and the PDFs `Tim_Everard_<Job_Title>_cv.pdf` and `Tim_Everard_<Job_Title>_cover_letter.pdf`, with the job title from the tracker. If there's no browser, the Word files are still made.
+  - **Edit guard:** `.ada-built.json` keeps fingerprints of the Word files Ada made. A redraft refuses to overwrite a Word file Tim has edited unless `--force` is given.
+  - **Approving (`--pdf`):** rebuilds the PDFs from the template. If Tim edited a Word file, or a role from before the template has no `cv.json`, that PDF is made from the Word file with LibreOffice, under the same name.
+  - PDFs made under an older job title are removed.
+- `shared/tools/test_cv_template.py` (new): 10 tests covering merging over the base, bad content, base text passing the fact check, escaping, two-page split, letter body, file names, the full drafting run, a title change, the Word-edit guard and a bad `cv.json`. The PDF tests are skipped without Chrome or Edge and pandoc.
+- `shared/office-view/src/roles.ts`:
+  - `cv.pdf` and `cover-letter.pdf` map to Ada's newest named PDF, falling back to the old names. `listFiles` and `docsOf` follow.
+  - New `fileTitle()`, the same as `file_title()` in Python, and `downloadName()`.
+- `shared/office-view/src/server.ts`: role downloads use `Tim_Everard_<Job_Title>_cv.pdf/.docx` and `_cover_letter` names.
+- `shared/office-view/test/roles.test.ts`: 2 new tests, for the named PDFs and the download names.
+- `shared/office-view/public/dashboard.js`: the Approved hint says "final PDFs".
+- `.claude/agents/writer.md`: Wren writes `cv.json` (only what changes from the base) and a body-only `cover-letter.md`, then runs Ada. Her instructions cover:
+  - the key-by-key format and fitting two pages
+  - short figure labels, and keeping jobs in the base's order
+  - claims in old `cv.md` files that aren't in the bank, which go to `notes.md` as questions
+  - the `--force` rule
+- `shared/job-search/cv-rules.md`: a new section from the handover: template only, contact details, "References available on request", and the file-name pattern.
+- `shared/job-search/cv/cv-bank.md`: the contact line now has the Gmail address, so the fact check accepts it.
+- `CHANGELOG.md`: the line for #22 (phase 3), which Tim merged while this was being built. The branch was restarted from the new `main`, as GitHub had deleted it after the merge.
+- READMEs updated: `shared/job-search/cv/README.md` (the template), `agents/writer`, `agents/admin`, `jobs/README.md` (role folder files), the office view (stages, downloads) and Hal's skill (Ada's job).
+
+**Why**
+- Tim asked to proceed with phase 2 of `notes/plans/job-hunt-v3.md`: use his default CV template for every CV and cover letter, and name files `Tim_Everard_<Job_Title>_cv.pdf` (his request, replacing the handover's `Tim Everard CV - <Company>.pdf`).
+
+**Decisions**
+- **The template was rebuilt, not uploaded.** The handover's `cv_template.py` and `example-content.json` weren't in the session's uploads, Google Drive or Outlook. The repo's `default-cv.pdf` was printed by Chromium from that template, so I rebuilt the template from it: fonts from the PDF's font list, sizes from word widths, and positions and colours from the page.
+  - A line-by-line comparison shows every line breaks at the same word on both pages, with positions within 2–4pt.
+  - The JSON format is my own (documented in `base-cv.json`, `cv_template.py` and Wren's instructions). If Tim uploads the original files later, the format can be matched or kept.
+- **PDFs at draft time, not only on approve.** Tim now reviews the real document, not a Markdown preview. Approving still rebuilds them, and keeps his Word edits through LibreOffice.
+- **`cv.md` is made from `cv.json`,** so the office, the fact check and the Word copy need no changes, and Wren writes the CV only once (no extra tokens).
+- **Name and contact always from the base,** so a draft can't carry the old hotmail address or LinkedIn link.
+- **"References available on request" sits at the foot of the sidebar,** which has room on page 1, and appears in `cv.md`.
+- **Word copies stay plain (pandoc).** The PDF is the document to send; Word is for Tim's own edits.
+- **Fonts are embedded as data, not loaded from Google Fonts,** so it works offline and the same everywhere.
+- **`default-cv.pdf` is left as Tim's original** (it still has the hotmail address). `python3 shared/tools/cv_template.py shared/job-search/cv/base-cv.json <out.pdf>` makes the Gmail version.
+
+**How to check it**
+- `python3 shared/tools/test_cv_template.py` (10 pass), `test_fact_check.py` (10) and `test_tracker.py` (5). In `shared/office-view`: `npm test` (32 pass) and `npm run check` (clean).
+- `python3 shared/tools/cv_template.py shared/job-search/cv/base-cv.json out.pdf`: compare with `default-cv.pdf`. The only differences are the email and the references line.
+- **A live Wren run on a copy of the Chelsea role:**
+  - she wrote a valid `cv.json` first time
+  - the fact check was clean
+  - the CV came to 2 pages and the letter to 1
+  - she listed the old dashboard CV's claims that aren't in the CV bank as questions in `notes.md`
+  - she was still on her old instructions (subagent prompts load when a session starts); the clarifications she asked for are now in them
+
+**Open items**
+- Tim's real roles keep their current files. The Chelsea and Hexagon CVs were already sent, so they weren't redone. A role is redrafted in the template the next time Wren is asked to tailor it.
+- Tim's PC needs Chrome or Edge, which Windows has, and pandoc as before. LibreOffice is now needed only when he edits a Word file before approving.
+- If Tim's original `cv_template.py` turns up, compare its output with this one.
 
 ### 2026-11-08: Job Hunt v3, phase 3: daily lead finding, with Hal sorting the review queue
 

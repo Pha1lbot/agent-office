@@ -3,7 +3,7 @@
 // Everything here checks names and paths so nothing outside a role folder can
 // be read or written.
 import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync, statSync } from "node:fs";
 import { extname, join, resolve, sep } from "node:path";
 
 export const ROLE_ID = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -13,6 +13,47 @@ export const ROLE_FILES = [
   "listing.md", "advert.txt", "cv.md", "cover-letter.md", "notes.md", "talking-points.md", "interview-prep.md",
   "cv.docx", "cover-letter.docx", "cv.pdf", "cover-letter.pdf",
 ] as const;
+/** Ada names the PDFs Tim sends Tim_Everard_<Job_Title>_cv.pdf and ..._cover_letter.pdf
+ * (make_docs.py). The page still asks for "cv.pdf" and "cover-letter.pdf"; these map
+ * to the named file, or to an older plain cv.pdf. */
+const PDF_KIND: Record<string, string> = { "cv.pdf": "cv", "cover-letter.pdf": "cover_letter" };
+const DOC_KIND: Record<string, string> = { ...PDF_KIND, "cv.docx": "cv", "cover-letter.docx": "cover_letter" };
+
+/** "Senior Manager, Admin & Operations" -> "Senior_Manager_Admin_and_Operations".
+ * The same as file_title() in shared/tools/make_docs.py. */
+export function fileTitle(title: string, limit = 60): string {
+  const text = title.normalize("NFKD").replace(/[^\x00-\x7f]/g, "").replace(/&/g, " and ")
+    .replace(/[^A-Za-z0-9-]+/g, " ");
+  const out: string[] = [];
+  for (const raw of text.split(/\s+/)) {
+    const word = raw.replace(/^-+|-+$/g, "");
+    if (!word) continue;
+    if (out.length && [...out, word].join("_").length > limit) break;
+    out.push(word);
+  }
+  return out.join("_") || "Role";
+}
+
+/** The name Tim gets when he downloads a role's CV or letter, e.g. Tim_Everard_Producer_cv.docx. */
+export function downloadName(title: string, name: string): string | null {
+  const kind = DOC_KIND[name];
+  return kind ? `Tim_Everard_${fileTitle(title)}_${kind}${extname(name)}` : null;
+}
+
+/** The file on disk behind "cv.pdf" or "cover-letter.pdf": Ada's named PDF (newest), else the old name. */
+function pdfOnDisk(dir: string, name: string): string {
+  const kind = PDF_KIND[name];
+  let best = name, newest = -1;
+  try {
+    for (const f of readdirSync(dir)) {
+      if (!f.startsWith("Tim_Everard_") || !f.endsWith(`_${kind}.pdf`)) continue;
+      const t = statSync(join(dir, f)).mtimeMs;
+      if (t > newest) { best = f; newest = t; }
+    }
+  } catch { /* no folder */ }
+  return best;
+}
+
 /** The markdown files sent to the role page as text. */
 export const TEXT_FILES = ["listing.md", "advert.txt", "cv.md", "cover-letter.md", "notes.md", "talking-points.md", "interview-prep.md"];
 export const UPLOAD_TYPES = new Set([".pdf", ".docx", ".doc", ".txt", ".md", ".png", ".jpg", ".jpeg"]);
@@ -44,7 +85,8 @@ export function fileFor(rolesRoot: string, id: string, name: string): string | n
   const dir = roleDir(rolesRoot, id);
   if (!dir) return null;
   let target: string;
-  if ((ROLE_FILES as readonly string[]).includes(name)) target = join(dir, name);
+  if (PDF_KIND[name]) target = join(dir, pdfOnDisk(dir, name));
+  else if ((ROLE_FILES as readonly string[]).includes(name)) target = join(dir, name);
   else if (/^attachments\/[^/\\]+$/.test(name) && !name.includes("..")) target = join(dir, name);
   else return null;
   const full = resolve(target);
@@ -71,7 +113,7 @@ export async function listFiles(rolesRoot: string, id: string): Promise<FileInfo
   const files: FileInfo[] = [];
   const add = async (name: string) => {
     try {
-      const s = await stat(join(dir, name));
+      const s = await stat(join(dir, PDF_KIND[name] ? pdfOnDisk(dir, name) : name));
       if (s.isFile()) files.push({ name, size: s.size, modified: s.mtimeMs });
     } catch { /* not there */ }
   };
@@ -91,8 +133,8 @@ export async function docsOf(rolesRoot: string, id: string): Promise<Docs> {
   return {
     cv: await exists(join(dir, "cv.docx")) || await exists(join(dir, "cv.md")),
     letter: await exists(join(dir, "cover-letter.docx")) || await exists(join(dir, "cover-letter.md")),
-    cvPdf: await exists(join(dir, "cv.pdf")),
-    letterPdf: await exists(join(dir, "cover-letter.pdf")),
+    cvPdf: await exists(join(dir, pdfOnDisk(dir, "cv.pdf"))),
+    letterPdf: await exists(join(dir, pdfOnDisk(dir, "cover-letter.pdf"))),
     prep: await exists(join(dir, "interview-prep.md")),
     points: await exists(join(dir, "talking-points.md")),
     attachments,

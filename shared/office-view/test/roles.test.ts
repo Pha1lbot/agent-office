@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { cleanUploadName, docsOf, fileFor, listFiles, saveAdvert, saveAttachment, saveTalkingPoints, textsOf } from "../src/roles.ts";
+import { cleanUploadName, docsOf, downloadName, fileFor, fileTitle, listFiles, saveAdvert, saveAttachment, saveTalkingPoints, textsOf } from "../src/roles.ts";
 
 function sample() {
   const root = mkdtempSync(join(tmpdir(), "roles-"));
@@ -69,4 +69,31 @@ test("pasted advert text is saved as advert.txt and sent to the role page", asyn
   assert.ok("advert.txt" in (await textsOf(root, "acme-analyst")));
   await assert.rejects(saveAdvert(root, "../x", "hi"));
   await assert.rejects(saveAdvert(root, "acme-analyst", "x".repeat(20_001)));
+});
+
+test("Ada's named PDFs stand in for cv.pdf and cover-letter.pdf", async () => {
+  const root = mkdtempSync(join(tmpdir(), "roles-"));
+  const dir = join(root, "acme-producer");
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, "cv.md"), "# CV\n");
+  writeFileSync(join(dir, "Tim_Everard_Producer_cv.pdf"), "%PDF new");
+  writeFileSync(join(dir, "Tim_Everard_Producer_cover_letter.pdf"), "%PDF letter");
+  assert.ok(fileFor(root, "acme-producer", "cv.pdf")?.endsWith("Tim_Everard_Producer_cv.pdf"));
+  assert.ok(fileFor(root, "acme-producer", "cover-letter.pdf")?.endsWith("Tim_Everard_Producer_cover_letter.pdf"));
+  assert.equal(fileFor(root, "acme-producer", "Tim_Everard_Producer_cv.pdf"), null); // only through the plain name
+  const docs = await docsOf(root, "acme-producer");
+  assert.equal(docs.cvPdf, true);
+  assert.equal(docs.letterPdf, true);
+  assert.deepEqual((await listFiles(root, "acme-producer")).map((f) => f.name).sort(), ["cover-letter.pdf", "cv.md", "cv.pdf"]);
+});
+
+test("download names follow Tim_Everard_<Job_Title>_cv, like make_docs.py", () => {
+  assert.equal(fileTitle("Senior Manager, Admin & Operations – Football Schools"),
+    "Senior_Manager_Admin_and_Operations_Football_Schools");
+  assert.equal(fileTitle("Head of Esports (Co-ordinator) / Café"), "Head_of_Esports_Co-ordinator_Cafe");
+  assert.equal(fileTitle("!!!"), "Role");
+  assert.ok(fileTitle("Word ".repeat(40)).length <= 60);
+  assert.equal(downloadName("Producer", "cv.docx"), "Tim_Everard_Producer_cv.docx");
+  assert.equal(downloadName("Producer", "cover-letter.pdf"), "Tim_Everard_Producer_cover_letter.pdf");
+  assert.equal(downloadName("Producer", "listing.md"), null);
 });
