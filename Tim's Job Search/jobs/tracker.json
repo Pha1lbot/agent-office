@@ -1480,7 +1480,7 @@
       "pay": "",
       "url": "https://www.linkedin.com/jobs/view/4308233024/",
       "source": "NetEase Greenhouse board",
-      "next": "",
+      "next": "Follow up if no reply by 15 Nov",
       "cv": "",
       "interview_at": "",
       "interview_with": "",
@@ -1488,7 +1488,7 @@
       "notes": "",
       "fit": 2,
       "priority": null,
-      "status": "approved",
+      "status": "applied",
       "found": "2026-11-05",
       "updated": "2026-11-08",
       "history": [
@@ -1524,6 +1524,11 @@
         {
           "date": "2026-11-08",
           "status": "approved",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-08",
+          "status": "applied",
           "by": "tim"
         }
       ],
