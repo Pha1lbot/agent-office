@@ -1,7 +1,7 @@
 # Branch: claude/youthful-hopper-alwu7m
 
 **Started:** 2026-11-06
-**Status:** In progress (Job Hunt v3, phase 2: CV template); phase 1 merged in [PR #21](https://github.com/Pha1lbot/agent-office/pull/21), phase 3 in [PR #22](https://github.com/Pha1lbot/agent-office/pull/22), earlier work in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3) and [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#17](https://github.com/Pha1lbot/agent-office/pull/17)
+**Status:** Job Hunt v3 phases 1–3 merged ([PR #21](https://github.com/Pha1lbot/agent-office/pull/21), [#22](https://github.com/Pha1lbot/agent-office/pull/22), [#23](https://github.com/Pha1lbot/agent-office/pull/23)); phase 4 next, earlier work in PRs [#3](https://github.com/Pha1lbot/agent-office/pull/3) and [#9](https://github.com/Pha1lbot/agent-office/pull/9)–[#17](https://github.com/Pha1lbot/agent-office/pull/17)
 
 ## Purpose
 
@@ -15,6 +15,25 @@ This branch sets up:
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-08: #23 merged; CHANGELOG line, and Tim's desktop found on this branch
+
+**What changed**
+- `CHANGELOG.md`: the line for #23 (phase 2 CV template, Hotmail default, build label).
+
+**Why**
+- CLAUDE.md "After a merge": Tim merged #23. The branch was recreated from the new `main` for this line, because cloud sessions can't push to `main` and GitHub deleted the merged branch.
+- Tim's desktop showed an old office. His `git status -sb` showed `desktop\agent-office` on `claude/youthful-hopper-alwu7m`, not `main`. Merged work never reached it, and since the office backs up to whatever branch is checked out, his desktop edits may have been committed to that branch only.
+
+**Decisions**
+- **Steps given to Tim:** `git fetch origin --prune`, `git status`, `git log --oneline origin/main..HEAD` (to see desktop-only commits), then `git checkout main`, `git pull`, `git merge claude/youthful-hopper-alwu7m` (to carry those commits over) and `git push`.
+- **Not done yet:** making the office refuse or warn before backing up to a branch other than `main`. The build label already shows red "not on main". Offered to Tim as a follow-up.
+
+**How to check it**
+- On the desktop, `git status -sb` shows `## main...origin/main`, and the office's build label is green.
+
+**Open items**
+- Tim to run the desktop steps. Then the old local branch there can be removed with `git branch -d claude/youthful-hopper-alwu7m`.
 
 ### 2026-11-08: Build label at the top left of the office
 
