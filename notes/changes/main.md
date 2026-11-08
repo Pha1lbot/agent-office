@@ -11,6 +11,25 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-08: Verdicts for two roles Tim added from the office (TikTok, Activision Blizzard)
+
+**What changed**
+- `jobs/roles/2026-11-05-tiktok-tiktok-shop-creator-operations-manager/listing.md`: new, Rita's read of the TikTok Shop Creator Operations Manager advert.
+- `jobs/roles/2026-11-08-activision-blizzard-marketing-senior-specialist-call-of-duty/listing.md`: new, Rita's read of the Activision Blizzard Marketing Senior Specialist advert.
+- `jobs/tracker.json` / `jobs/tracker.md`: set fit and skip verdicts for both roles; inbox items i8 and i9 marked done.
+
+**Why**
+Tim added both roles from the office and asked for a verdict (i8: "Ask Hal" on TikTok Shop; i9: full read request on Activision Blizzard). The office started this session automatically for the inbox items.
+
+**Decisions**
+Briefed Rita once for both roles together (neither had a listing.md yet, so both needed the full read rather than verdict-only) to keep it to one hand-off.
+
+**How to check it**
+`python shared/tools/tracker.py show <id>` for either role id, or open the listing.md files above.
+
+**Open items**
+Both came back skip: TikTok Shop role is e-commerce creator ops (wrong discipline) and no longer accepting applications; Activision Blizzard role is a marketing/GTM IC role, not esports ops leadership. No action needed from Tim.
+
 ### 2026-11-06: NetEase CV, cover letter and interview prep drafted despite skip verdict
 
 **What changed**
