@@ -7,7 +7,6 @@ found: 34 · shortlisted: 7 · drafted: 2 · applied: 4 · skipped: 6
 ## Next actions
 
 - Make a strategy-led CV
-- NetEase Esport Specialist: Rita's read gives a skip verdict (entry-level, 2+ yrs exp, requires Chinese, below your seniority). Holding off on the CV/cover letter draft and interview prep refresh you requested until you confirm you still want them despite this.
 - NetEase Esport Specialist: Rita's skip verdict stands (entry-level, Chinese required). Drafted CV/cover letter and interview prep anyway since you set the role to drafted three times today. Check files are honest about the seniority/language gaps before deciding to apply.
 
 ## Roles
