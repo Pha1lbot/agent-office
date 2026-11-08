@@ -16,6 +16,39 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-08: NetEase and Vitality redone in Tim's CV template
+
+All paths are inside `Tim's Job Search/`.
+
+**What changed**
+- `jobs/roles/2026-11-05-netease-games-esport-specialist/` and `jobs/roles/2026-11-06-vitality-head-of-events-and-experiences/`: Wren redid both from their old `cv.md` and `cover-letter.md`.
+  - New `cv.json` in each, and a body-only `cover-letter.md`.
+  - Ada rebuilt `cv.md`, the Word copies, `.ada-built.json` and the named PDFs (`Tim_Everard_Esport_Specialist_cv.pdf` and `_cover_letter.pdf`, `Tim_Everard_Head_of_Events_and_Experiences_cv.pdf` and `_cover_letter.pdf`).
+  - Each CV is 2 pages and each letter 1. The fact check passed.
+  - `notes.md` keeps its old questions and gains new ones.
+- `shared/tools/make_docs.py`: approving a role with no `cv.json` now prints a note, "drafted before Tim's CV template ... Ask Wren to redo it", instead of quietly using the old Word style.
+- `shared/tools/test_cv_template.py`: a test for that note (11 tests now).
+- `shared/job-search/cv/base-cv.json`: "Altitude Angles" is now "Altitude Angels", as in the CV bank.
+
+**Why**
+- Tim sent two screenshots: his template CV, and the NetEase CV, which was in the old 3-page plain Word style: "They are not in the same style or format". NetEase and Vitality were drafted before the template, so approving them went through LibreOffice. Tim chose to have Wren redo both.
+
+**Decisions**
+- **Wren redo, not an auto-convert:** her redraft tailors the sidebar skills and keeps to the CV bank. Tim chose it.
+- **NetEase keeps its gaps:** Rita's skip verdict stands. Chinese language, seniority and degree questions stay in `notes.md`. Wren dropped "to hit delivery deadlines" from the profile, as it isn't in the CV bank. The letter has one line noting the role sits below Tim's last title, which Tim can cut.
+- **Vitality:** new question for Tim in `notes.md`: the advert wants "hybrid events", which his CV doesn't show.
+- **"Altitude Angels":** Tim's original `default-cv.pdf` says "Angles", the CV bank says "Angels" (the real company). Wren's CVs use the bank's spelling, so the base now matches. Tim can say if his original is right.
+- **Hal's office:** its copy of `make_docs.py`, `test_cv_template.py` and `base-cv.json` has the same code and may need the same changes. Not touched (CLAUDE.md: tell Tim, don't change it).
+
+**How to check it**
+- `python3 shared/tools/test_cv_template.py` (11 pass) and `test_fact_check.py` and `test_tracker.py`, in `Tim's Job Search/`.
+- Open the four PDFs: 2-page CVs in the template layout, 1-page letters.
+
+**Open items**
+- Tim to answer the new questions in the two roles' `notes.md`, and say whether "Altitude Angles" or "Angels" is right.
+- The same changes for Hal's office, if wanted.
+- The earlier note about Tim's desktop being on this branch: the "Office:" commits in `main` suggest it's back on `main`.
+
 ### 2026-11-08: #23 merged; CHANGELOG line, and Tim's desktop found on this branch
 
 **What changed**

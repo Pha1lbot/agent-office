@@ -11,3 +11,9 @@ The advert asks for things the CV does not show. None have been added.
 - Closing date not given.
 
 The letter states plainly that Tim's background is esports and broadcast, not corporate. Remove that line if you would rather not say it.
+
+## Wren, 2026-11-08 (redo in Tim's CV template)
+
+- Rebuilt from the old cv.md and cover-letter.md as cv.json; everything used is in the CV bank. Nothing from the old cv.md was left out for being outside the bank.
+- "Hybrid events" (an advert keyword) is not on the CV: the CV says "in person and online" only. Any hybrid or digital event experience to add?
+- Cover letter is now body-only (no name, contact details or date; the template adds them).

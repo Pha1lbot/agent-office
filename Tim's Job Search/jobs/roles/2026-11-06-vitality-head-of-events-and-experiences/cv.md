@@ -1,12 +1,14 @@
+<!-- Made from cv.json by make_docs.py: edit cv.json, not this file. -->
+
 # Tim Everard
 
-**Head of Events and Experiences**
+**Live Events and Operations Leader**
 
 Epsom, Surrey · 07872 571569 · tim.everard@hotmail.co.uk · linkedin.com/in/tim-everard
 
 ## Profile
 
-Events and operations leader with 15 years' experience, from theatre lighting and TV studio builds to heading Esports Operations at BLAST. Led a six-person department delivering a large live events portfolio: 60+ flagship events and 300+ qualifiers in 13 countries, in person and online, with 2,000+ freelancers and €12m+ in budgets. Experienced in managing suppliers and freelancers, controlling budgets, setting standards and documentation, and building the tools that let a team deliver consistently. Having worked every side of a live show, on the ground and in the office, I focus on making event day run smoothly for the people on site.
+Events and operations leader with 15 years' experience, from theatre lighting and TV studio builds to heading Esports Operations at BLAST. Led a six-person department delivering a large live events portfolio: 60+ flagship events and 300+ qualifiers in 13 countries, in person and online, with 2,000+ freelancers and €12m+ in budgets. Experienced in managing suppliers and freelancers, controlling budgets, setting standards and documentation, and building the tools that let a team deliver consistently. Comfortable costing and pitching new events with commercial teams and stakeholders. Having worked every side of a live show, on the ground and in the office, I focus on making event day run smoothly for the people on site.
 
 **In numbers:** 60+ flagship events · 300+ qualifiers · 13 countries · 2,000+ freelancers · €12m+ in budgets
 
@@ -22,31 +24,29 @@ Events and operations leader with 15 years' experience, from theatre lighting an
 - Designed and built the department's own tools for event and equipment tracking, freelancer calendars, bookings and contracting, and event budgets and deadlines
 - Set technical requirements for commercial partnerships
 
-### Tournament Operations Manager, BLAST (Jan 2020 – Jun 2023)
-
-*Contractor to Mar 2021, then permanent.*
+### Tournament Operations Manager, BLAST · Contractor to Mar 2021, then permanent (Jan 2020 – Jun 2023)
 
 - Managed event equipment and staffing budgets across CS:GO, Dota 2, Apex Legends, FIFA, Fortnite and Rainbow Six
 - Booked and managed freelancers for internal, external and online productions
 - Approved equipment and staffing invoices, and decided when to hire, buy or repair kit
-- Arranged venues and equipment for team bootcamps
 - Main tournament-level contact for FACEIT, ESIC and BLAST Premier teams
+- Arranged venues and equipment for team bootcamps
 - Designated Safeguarding Lead and first aider at live events
 
-### Broadcast Freelancer, self-employed, alongside Jam Television (Jan 2018 – Jan 2020)
+### Broadcast Freelancer, Self-employed · Alongside Jam Television (Jan 2018 – Jan 2020)
 
 - Crewed broadcasts and live events for clients including BLAST Pro Series, ESL UK and ESL Germany, BBC, Sky Sports, ITV, Immediate Media, NATS, Big Ben (WRC), Altitude Angels and Create Broadcasting
 - Worked in the gallery as technical director, producer and graphics operator on live shows
 - Consulted on production and technical setups for clients
 
-### Broadcast and Studio Manager, Jam Television, Birmingham (Mar 2018 – Jan 2019)
+### Broadcast and Studio Manager, Jam Television · Birmingham (Mar 2018 – Jan 2019)
 
 - Designed a multi-camera TV studio from scratch, bought the equipment, and managed installation and testing
 - Controlled the studio budget, including equipment purchasing
 - Hired freelancers and ran staff rotas to keep a 24-hour TV channel on air
 - Managed suppliers and invoice approval, and trained staff on equipment and workflows
 
-### Production Manager, ESL UK, Leicester (Jul 2015 – Dec 2017)
+### Production Manager, ESL UK · Leicester (Jul 2015 – Dec 2017)
 
 - Built the technical infrastructure for two ESL UK studios and managed production for both
 - Managed production at external events including MCM, EGX and Formula E
@@ -54,9 +54,7 @@ Events and operations leader with 15 years' experience, from theatre lighting an
 - Hired freelance crew, managed rotas and supervised internal and external staff on live shows
 - Ran equipment hire, installation, testing and maintenance, and trained crew
 
-### Senior Lighting and Event Technician, Dorking Halls (Jun 2012 – Jun 2015)
-
-*Earlier: Casual Technician, Dorking Halls (Mar 2010 – Jan 2011).*
+### Senior Lighting and Event Technician, Dorking Halls · Casual Technician Mar 2010 – Jan 2011 (Jun 2012 – Jun 2015)
 
 - Controlled the equipment and training budget, and ran in-house lighting training
 - Set up and ran touring and in-house performances
@@ -66,11 +64,12 @@ Events and operations leader with 15 years' experience, from theatre lighting an
 
 ## Key skills
 
-- **Events and leadership:** events portfolio delivery, team leadership, restructuring, process improvement, standards
-- **Suppliers and freelancers:** vendor management, freelancer booking, contracting and payments, rotas
-- **Commercial and finance:** budgets, pitch costings, invoices, business cases, stakeholder management
+- **Events and leadership:** Events portfolio delivery, team leadership, restructuring, process improvement, standards
+- **Suppliers and freelancers:** Vendor management, freelancer booking, contracting and payments, rotas
+- **Commercial and finance:** Budgets, pitch costings, invoices, business cases, stakeholder management
+- **Event management:** Event logistics, site visits, bootcamps, in-person and online events
 - **Systems and tooling:** Airtable, Google Workspace, Microsoft Office
-- **Broadcast and technical:** studio builds, Blackmagic, vMix, Ross Video, lighting, audio
+- **Broadcast and technical:** Studio builds, Blackmagic, vMix, Ross Video, lighting, audio
 - **Safeguarding and safety:** Designated Safeguarding Lead, first aider, fire marshal
 
 ## Certifications
@@ -85,3 +84,5 @@ Events and operations leader with 15 years' experience, from theatre lighting an
 | Fire Marshal | 2018 |
 | PAT Testing | 2016 |
 | IPAF | 2012 |
+
+References available on request.
