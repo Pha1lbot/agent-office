@@ -264,6 +264,9 @@ def make_pdf(role_id):
         elif docx.exists():
             if docx.name in built:
                 print(f"{docx.name} was edited after Ada made it: its PDF is made from the Word file.")
+            elif not source.exists():
+                print(f"Note: {doc} was drafted before Tim's CV template, so its PDF comes out in the old "
+                      f"Word style. Ask Wren to redo it (she writes {source.name}) to get the template layout.")
             made.append(word_pdf(role_id, doc))
     if not made:
         sys.exit("Nothing to make a PDF from. Run without --pdf first.")

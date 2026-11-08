@@ -133,6 +133,14 @@ class MakeDocsTests(unittest.TestCase):
         self.assertIn("edited cv.docx", out.stderr)
         self.run_m("--force", self.ROLE)
 
+    def test_old_draft_without_cv_json_says_so(self):
+        self.run_m(self.ROLE)
+        (self.folder / "cv.json").unlink()
+        (self.folder / make_docs.BUILT).unlink()  # drafted before Ada kept fingerprints
+        out = self.run_m("--pdf", self.ROLE)
+        self.assertIn("drafted before Tim's CV template", out.stdout)
+        self.assertIn("Ask Wren", out.stdout)
+
     def test_bad_cv_json_stops_with_a_reason(self):
         (self.folder / "cv.json").write_text(json.dumps({"jobs": []}), encoding="utf-8")
         out = self.run_m(self.ROLE, ok=False)
