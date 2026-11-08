@@ -49,7 +49,13 @@ Your CV, preferences and every role's files are in the repo, so they come across
 - **When Claude Code starts:** `.claude/settings.json` runs `git pull` whenever a session starts or resumes in this folder, on your PC or in the cloud.
 - **After a merge:** if Claude merges a pull request, or you tell it one was merged, it switches to `main` and pulls (see CLAUDE.md).
 
+**Check the build:** the office shows its build at the top left, under "Job Hunt" (on a phone, at the foot of the Overview). It goes up with every merge, and the dot tells you whether that PC is current: green is up to date. Hover over it for the commit, branch and folder. An office with no build label at all is older than 8 November 2026.
+
 **If something goes wrong:**
+- **The office looks old, or the build label isn't green:** in PowerShell, in this PC's `agent-office` folder:
+  1. Run `git status -sb`. The first line should be `## main...origin/main`; if it names another branch, run `git checkout main`.
+  2. Run `Get-Content $env:LOCALAPPDATA\agent-office-sync.log -Tail 5` to see why the automatic sync stopped, then `git pull`. If it asks you to sign in, do. If it says your changes would be overwritten, stop and ask Claude.
+  3. Close the black "Agent Office" window and open `shared\office-view\Open Office.cmd` from **this** folder. Check your shortcut doesn't point at an old copy, such as an `agent-office-main` folder from a ZIP download.
 - **"Smart App Control blocked" `Open Office.cmd`:** open the office from PowerShell instead. In the `agent-office` folder run `cd shared\office-view`, then `npm install` (first time only), then `npm start`, and open http://127.0.0.1:4747.
 - **The sync can't get past GitHub (the log at `%LOCALAPPDATA%\agent-office-sync.log` shows FAILED, or nothing new):** Git needs you to sign in once on each PC. In PowerShell, in the `agent-office` folder, run `git fetch` and sign in when asked. The sync never waits for a sign-in; it logs the problem and the office opens anyway.
 

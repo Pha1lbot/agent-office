@@ -19,6 +19,7 @@ import { WebSocketServer, WebSocket } from "ws";
 import { Office, type Report } from "./office.ts";
 import { Tracker, findClaude, findPython, repoOf, run } from "./tools.ts";
 import { Backup } from "./backup.ts";
+import { checkBuild, readBuild, type Build } from "./build.ts";
 import { AutoCos } from "./auto-cos.ts";
 import { addUsage, emptyUsage, startOfUkDay, usageOfSession, type Usage } from "./tokens.ts";
 import { MAX_UPLOAD, ROLE_ID, docsOf, downloadName, fileFor, listFiles, saveAttachment, saveTalkingPoints, saveAdvert, textsOf, type Docs } from "./roles.ts";
@@ -121,9 +122,10 @@ async function recountTokens() {
   pushSystem();
 }
 
+let build: Build | null = null;
 function systemStatus() {
   return {
-    editing: !!tool, backup: backup?.status, cos: cos?.status ?? null,
+    editing: !!tool, backup: backup?.status, cos: cos?.status ?? null, build,
     tokens: { today: tokensToday.fresh, cacheRead: tokensToday.cacheRead, budget: DAILY_BUDGET },
   };
 }
@@ -478,6 +480,18 @@ const initialInbox = await loadTracker();
 await rescanDocs();
 setInterval(() => void rescanDocs(), 5000);
 const gitRepo = await repoOf(TRACKER);
+// The build label: which commit this server started from, and whether it's current.
+const codeRepo = await repoOf(fileURLToPath(import.meta.url));
+if (codeRepo) {
+  const git = (args: string[]) => run("git", args, codeRepo, {}, 15_000);
+  build = await readBuild(git, codeRepo);
+  setInterval(async () => {
+    if (!build) return;
+    const next = await checkBuild(git, build);
+    if (next !== build) { build = next; pushSystem(); }
+  }, 60_000);
+  if (build) build = await checkBuild(git, build);
+}
 let adaSaving = false;
 // Back up the whole jobs folder: the tracker plus PDFs and other files the office makes.
 backup = new Backup(gitRepo, [dirname(TRACKER), CV_RULES], () => {

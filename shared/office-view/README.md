@@ -147,6 +147,20 @@ A session started in the `agent-office` folder is Hal. The subagents he calls (R
 **Inputs:** Claude Code hook events; `jobs/tracker.json`.
 **Outputs:** the web page. Nothing is written to disk. The office keeps no history once it is closed.
 
+## The build label
+
+The top left, under "Job Hunt", shows the build: `Build 214 · 8 Nov`. The number is the number of commits in this copy, so it goes up with every merge, and two PCs on the same build show the same number. On a phone it's at the foot of the Overview. When the sidebar is collapsed, a dot on the expand button shows the state. Hover for the commit, date, branch and folder.
+
+| Label | Means | Do |
+|---|---|---|
+| Green dot, `Build 214 · 8 Nov` | Up to date with what this PC last fetched from GitHub | Nothing |
+| Amber, "restart to update" (or "Restart the office to update") | Newer files arrived in this folder, but the office is still running the old build | Close the office window and open it again |
+| Amber, "3 updates on GitHub" | GitHub's `main` is ahead, and this folder hasn't pulled it | The automatic sync is stuck: see "Keeping each PC up to date" in the main README |
+| Red, "not on main (branch)" | This folder is on a branch, so it won't get merged work | `git checkout main` |
+| "Build unknown" | Not a git folder (a ZIP download, say) | Clone it with git instead |
+
+The server reads it from git when it starts and re-checks every minute, with no network: `shared/tools/sync.ps1` fetches from GitHub every few minutes, and the label compares with that. The code is in `src/build.ts` and `public/build.js`.
+
 ## Problems
 
 - **"running scripts is disabled on this system"** (PowerShell): use `npm.cmd` instead of `npm`, or run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once. `Open Office.cmd` avoids this.

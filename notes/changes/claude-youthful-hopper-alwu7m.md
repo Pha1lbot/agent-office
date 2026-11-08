@@ -16,6 +16,43 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-08: Build label at the top left of the office
+
+**What changed**
+- `shared/office-view/src/build.ts` (new): `readBuild()` reads the running copy's build when the office starts: commit count (the build number), short hash, date, branch and folder. `checkBuild()` re-checks every minute whether:
+  - `HEAD` has moved, meaning a restart is needed
+  - the folder is behind `origin/main`, from the last fetch, so there's no network use
+  - the branch has changed
+- `shared/office-view/src/server.ts`: sends `system.build` with the existing system status, and pushes it again when it changes. It reads the build from the office code's own repo, not the tracker's.
+- `shared/office-view/public/build.js` (new), `index.html`, `style.css` and `app.js`:
+  - **Where it shows:**
+    - under "Job Hunt" at the top left, e.g. `Build 214 · 8 Nov`
+    - as a dot on the expand button when the sidebar is collapsed
+    - at the foot of the Overview on a phone
+  - **What it shows:** a green, amber or red dot with a short message, and the commit, branch and folder on hover. A server too old to report a build shows "Restart the office to update".
+- `shared/office-view/test/build.test.ts` (new): 5 tests with a fake git: reading a build, no git folder, up to date, restart, behind, branch change, and never having fetched.
+- `README.md`: a "Check the build" paragraph, and steps for when the office looks old.
+- `shared/office-view/README.md`: a "The build label" section.
+
+**Why**
+- Tim: "My main on desktop loads an old build. How do i fix this? Can we add a build number onto the page in the top left so i can always check if im up to date". His screenshot showed the pre-phase-1 office (Office | Pipeline tabs).
+
+**Decisions**
+- **Why the desktop is old:** the office serves its pages straight from disk with no caching, so an old page means the folder it runs from is old. That happens when the sync is failing, the folder is on a branch, or the office was started from another copy. The label shows which, and the README gives the fix steps.
+- **Build number = commit count,** so it goes up with every merge and matches across PCs. A date alone wouldn't show two builds on the same day apart.
+- **No `git fetch` from the office:** `sync.ps1` already fetches every 5 minutes, so "behind" is as fresh as that.
+
+**How to check it**
+- `npm test` (37 pass) and `npm run check` (clean).
+- **Playwright on a test office** (`OFFICE_TRACKER` set to a copy, port 4799):
+  - the label read "Build 123 · not on main (claude/youthful-hopper-alwu7m)", correct for this cloud branch, with commit, branch and folder on hover
+  - the collapsed sidebar shows the dot
+  - on a phone the label is at the foot of the Overview, with no sideways scroll
+  - after this commit, the running test office switched to "restart to update" within a minute
+
+**Open items**
+- Tim's desktop still needs the fix steps in the README ("The office looks old") once, to get onto the current build.
+
 ### 2026-11-08: Correction: the default email on CVs is Hotmail
 
 **What changed**

@@ -36,6 +36,15 @@ a { color: var(--accent); }
 .lbl { white-space: nowrap; opacity: 1; transition: opacity 180ms var(--ease) 80ms; }
 .app.collapsed .lbl { opacity: 0; pointer-events: none; transition-delay: 0ms; }
 .brand-name { font-weight: 600; font-size: 15px; }
+.brand-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.2; }
+.build { font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
+.build::before, .build-foot::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 5px; vertical-align: 1px; background: var(--bstate, var(--muted)); }
+.build.warn, .build-foot.warn { color: var(--waiting); }
+.build.bad, .build-foot.bad { color: var(--danger); }
+.collapse-btn { position: relative; }
+.bdot { position: absolute; right: -3px; bottom: -3px; width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--side); background: var(--bstate, var(--muted)); display: none; }
+.app.collapsed .bdot { display: block; }
+.build-foot { display: none; font-size: 12px; color: var(--muted); margin: 8px 2px 0; }
 .collapse-btn { width: 32px; height: 32px; flex: 0 0 32px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--card); color: var(--text-2); display: grid; place-items: center; padding: 0; }
 .collapse-btn:hover { background: var(--raised); color: var(--text); }
 .collapse-btn svg { transition: transform 280ms var(--ease); }
@@ -228,7 +237,8 @@ details.rules summary { cursor: pointer; font-size: 12px; color: var(--text-2); 
   .side, .app.collapsed .side { position: sticky; top: 0; z-index: 20; height: auto; width: 100%; flex: 0 0 auto; flex-direction: row; align-items: center; padding: 8px 10px; gap: 4px; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line-1); }
   .brand, .app.collapsed .brand { margin: 0; height: 44px; padding: 0 6px; }
   .app.collapsed .brand-l { flex: 1 1 auto; opacity: 1; }
-  .brand-name, .collapse-btn, .side-spacer, .target, .nav-sep { display: none; }
+  .brand-text, .collapse-btn, .side-spacer, .target, .nav-sep { display: none; }
+  .build-foot { display: block; }
   .nav-item { width: auto; flex: 0 0 auto; padding: 0 12px; }
   .nav-item .lbl, .app.collapsed .nav-item .lbl { opacity: 1; }
   .nav-item .count { display: none; }
