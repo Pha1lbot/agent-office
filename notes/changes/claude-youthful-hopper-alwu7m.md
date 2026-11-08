@@ -16,6 +16,27 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-08: Correction: the default email on CVs is Hotmail
+
+**What changed**
+- `shared/job-search/cv/base-cv.json`: the email is `tim.everard@hotmail.co.uk` again.
+- `shared/job-search/cv/cv-bank.md`: the contact line is back to Hotmail, plus a note that Gmail was used only for Chelsea FC, so the fact check still accepts the Chelsea documents.
+- `shared/job-search/cv-rules.md`: the contact-details rule now gives Hotmail as the default, and the "never use hotmail" wording is gone.
+- `shared/tools/test_cv_template.py`: the tests expect Hotmail.
+
+**Why**
+- Tim: "Template should have @hotmail as default email address. Only had to use gmail for Chelsea due to technical issues." The earlier phase 2 entry took Gmail from the handover's contact details. That was wrong for the default.
+
+**Decisions**
+- Gmail stays in the CV bank as a note, not removed, because the Chelsea CV and letter use it and the fact check compares emails with the bank.
+- This also settles the handover's open item on the Hexagon CV email: Hotmail stays.
+
+**How to check it**
+- `python3 shared/tools/test_cv_template.py` and `test_fact_check.py` pass. `cv_template.py shared/job-search/cv/base-cv.json out.pdf` shows the Hotmail address.
+
+**Open items**
+- None.
+
 ### 2026-11-08: Job Hunt v3, phase 2: Tim's CV template, `Tim_Everard_<Job_Title>_cv.pdf` names, CV rules
 
 **What changed**

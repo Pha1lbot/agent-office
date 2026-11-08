@@ -33,7 +33,7 @@ class ContentTests(unittest.TestCase):
         data = cv_template.load_content(self.write({
             "headline": "Live Events Lead", "contact": {"email": "wrong@example.com"}, "name": "Someone"}))
         self.assertEqual(data["headline"], "Live Events Lead")
-        self.assertEqual(data["contact"]["email"], "tim.everard91@gmail.com")
+        self.assertEqual(data["contact"]["email"], "tim.everard@hotmail.co.uk")
         self.assertEqual(data["contact"]["linkedin"], "linkedin.com/in/tim-everard")
         self.assertEqual(data["name"], "Tim Everard")
         self.assertEqual(data["jobs"], BASE["jobs"])  # left out, so from the base
@@ -68,7 +68,7 @@ class ContentTests(unittest.TestCase):
         self.assertEqual(page.count("class='job'"), len(BASE["jobs"]))
 
     def test_letter_drops_its_own_header_and_keeps_paragraphs(self):
-        body = cv_template.letter_body("# Tim Everard\n\ntim.everard91@gmail.com · 07872 571569\n\n"
+        body = cv_template.letter_body("# Tim Everard\n\ntim.everard@hotmail.co.uk · 07872 571569\n\n"
                                        "Dear Ms Smith,\n\nI am **keen** on this.\n\nYours sincerely,\nTim Everard")
         self.assertTrue(body.startswith("<p>Dear Ms Smith,</p>"))
         self.assertIn("<strong>keen</strong>", body)

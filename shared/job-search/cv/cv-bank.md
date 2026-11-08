@@ -19,7 +19,9 @@ Everything in this file is true and may be used. Nothing outside it may be added
 
 **Head of Esports Operations**
 
-Epsom, Surrey · 07872 571569 · tim.everard91@gmail.com · linkedin.com/in/tim-everard
+Epsom, Surrey · 07872 571569 · tim.everard@hotmail.co.uk · linkedin.com/in/tim-everard
+
+*Hotmail is the default email for every CV and letter. Gmail (tim.everard91@gmail.com) was used only for the Chelsea FC application, because of a technical problem.*
 
 ## Profile
 
