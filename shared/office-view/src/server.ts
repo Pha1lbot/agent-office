@@ -19,9 +19,10 @@ import { WebSocketServer, WebSocket } from "ws";
 import { Office, type Report } from "./office.ts";
 import { Tracker, findClaude, findPython, repoOf, run } from "./tools.ts";
 import { Backup } from "./backup.ts";
+import { checkBuild, readBuild, type Build } from "./build.ts";
 import { AutoCos } from "./auto-cos.ts";
 import { addUsage, emptyUsage, startOfUkDay, usageOfSession, type Usage } from "./tokens.ts";
-import { MAX_UPLOAD, ROLE_ID, docsOf, fileFor, listFiles, saveAttachment, saveTalkingPoints, saveAdvert, textsOf, type Docs } from "./roles.ts";
+import { MAX_UPLOAD, ROLE_ID, docsOf, downloadName, fileFor, listFiles, saveAttachment, saveTalkingPoints, saveAdvert, textsOf, type Docs } from "./roles.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const APP = resolve(HERE, "..");
@@ -121,9 +122,10 @@ async function recountTokens() {
   pushSystem();
 }
 
+let build: Build | null = null;
 function systemStatus() {
   return {
-    editing: !!tool, backup: backup?.status, cos: cos?.status ?? null,
+    editing: !!tool, backup: backup?.status, cos: cos?.status ?? null, build,
     tokens: { today: tokensToday.fresh, cacheRead: tokensToday.cacheRead, budget: DAILY_BUDGET },
   };
 }
@@ -230,11 +232,11 @@ function readRaw(req: IncomingMessage, max: number): Promise<Buffer> {
   });
 }
 
-async function serveDownload(res: ServerResponse, file: string) {
+async function serveDownload(res: ServerResponse, file: string, as?: string) {
   try {
     const info = await stat(file);
     if (!info.isFile()) throw new Error("not a file");
-    const name = file.split(/[\\/]/).pop()!;
+    const name = as || file.split(/[\\/]/).pop()!;
     res.writeHead(200, {
       "Content-Type": TYPES[extname(file).toLowerCase()] || "application/octet-stream",
       "Content-Disposition": `${extname(file) === ".pdf" ? "inline" : "attachment"}; filename="${name.replace(/"/g, "")}"`,
@@ -453,8 +455,11 @@ const server = createServer(async (req, res) => {
   }
   const download = url.pathname.match(/^\/files\/roles\/([a-z0-9-]{1,120})\/(.+)$/);
   if (download) {
-    const file = fileFor(ROLES_ROOT, download[1], decodeURIComponent(download[2]));
-    return file ? serveDownload(res, file) : void res.writeHead(404).end("Not found");
+    const name = decodeURIComponent(download[2]);
+    const file = fileFor(ROLES_ROOT, download[1], name);
+    const role = tracker.roles.find((r) => r.id === download[1]);
+    // CVs and letters download as Tim_Everard_<Job_Title>_cv.pdf and so on.
+    return file ? serveDownload(res, file, (role && downloadName(role.title, name)) || undefined) : void res.writeHead(404).end("Not found");
   }
 
   const file = resolve(PUBLIC, "." + (url.pathname === "/" ? "/index.html" : url.pathname));
@@ -475,6 +480,18 @@ const initialInbox = await loadTracker();
 await rescanDocs();
 setInterval(() => void rescanDocs(), 5000);
 const gitRepo = await repoOf(TRACKER);
+// The build label: which commit this server started from, and whether it's current.
+const codeRepo = await repoOf(fileURLToPath(import.meta.url));
+if (codeRepo) {
+  const git = (args: string[]) => run("git", args, codeRepo, {}, 15_000);
+  build = await readBuild(git, codeRepo);
+  setInterval(async () => {
+    if (!build) return;
+    const next = await checkBuild(git, build);
+    if (next !== build) { build = next; pushSystem(); }
+  }, 60_000);
+  if (build) build = await checkBuild(git, build);
+}
 let adaSaving = false;
 // Back up the whole jobs folder: the tracker plus PDFs and other files the office makes.
 backup = new Backup(gitRepo, [dirname(TRACKER), CV_RULES], () => {

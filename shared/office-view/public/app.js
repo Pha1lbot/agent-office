@@ -5,6 +5,7 @@ import { connect } from "./store.js";
 import { $ } from "./util.js";
 import "./office.js";
 import "./dashboard.js";
+import "./build.js";
 import { showView } from "./views.js";
 import { showRole, hideRole } from "./role.js";
 

@@ -96,7 +96,7 @@ Work goes on branch `claude/youthful-hopper-alwu7m`, recreated from `main`. The 
   - text pulled from an uploaded CV with the existing upload, then `mammoth` and `pdfjs` on the page, pinned and served from `/vendor`
 - **Kept:** today's `dashboard.js` and `role.js` logic where possible (drag-and-drop, talking points editor, uploads, `say()`), reused under the new shell.
 
-### Phase 2: Tim's CV template and rules
+### Phase 2: Tim's CV template and rules (built 2026-11-08: see the branch notes. The template was rebuilt from `default-cv.pdf`, as the pack's files weren't available)
 - **Tim's files:** he uploads `cv_template.py` and `example-content.json` from the handover pack. They're not in this session. They go in `shared/tools/`.
 - **Wren** (`.claude/agents/writer.md`) writes `cv.json` in that format, as well as `cv.md`.
 - **Ada:**

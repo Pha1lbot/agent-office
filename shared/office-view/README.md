@@ -79,9 +79,9 @@ The **Target** card in the sidebar comes from `shared/job-search/preferences.md`
 | Stage | What happens automatically |
 |---|---|
 | **Lead** | Ranked best first (P1, P2…: Hal's verdict, then fit, pay and closing date). Rita reads roles you add and Hal gives a verdict. |
-| **Shortlisted** | Wren writes the tailored CV and cover letter; Ada checks the facts and builds the Word files; then the role moves to Drafted. |
-| **Drafted** | The documents are ready for you to check. Approve, or ask Wren for changes. |
-| **Approved** | Ada makes the PDFs, ready for you to apply. |
+| **Shortlisted** | Wren writes the tailored CV and cover letter; Ada checks the facts and builds the PDFs in your CV template (`Tim_Everard_<Job_Title>_cv.pdf` and `_cover_letter.pdf`) and Word copies; then the role moves to Drafted. |
+| **Drafted** | The documents are ready for you to check. Approve, or ask Wren for changes. You can also edit the Word copy yourself. |
+| **Approved** | Ada rebuilds the final PDFs, ready for you to apply. If you edited a Word file, its PDF is made from your Word file. |
 | **Applied** | Ada sets a follow-up date a week ahead. |
 | **Interview** | Cole writes your prep and key talking points. |
 | **Offer / Rejected / Dismissed** | Recorded with any reason, which feeds the preference reviews. Moving a role back to Leads (or Dismissed) cancels drafting nobody has started. |
@@ -91,7 +91,7 @@ Board cards show title, company, pay and location; fit dots and priority; the **
 **Click any role** to open its page:
 - **Overview:** Rita's summary of the advert, with your next step and notes, which you can edit there.
 - **Documents:**
-  - the CV and cover letter as documents, with **Download Word** and **PDF** buttons
+  - the CV and cover letter as documents, with **Download Word** and **PDF** buttons. Downloads are named for the job, ready to attach: `Tim_Everard_<Job_Title>_cv.pdf`, `Tim_Everard_<Job_Title>_cover_letter.pdf` (and `.docx`)
   - Wren's notes on gaps
   - **attachments**: attach the exact CV you sent, or the advert saved as a PDF
   - **Ask Wren for changes**, in your own words
@@ -114,7 +114,7 @@ Your edits are **backed up to GitHub automatically**, about 15 seconds after you
 |---|---|---|
 | set a role to **shortlisted** | Hal gets **Wren** (Writer) to draft a tailored CV and cover letter | yes |
 | set a role to **drafted** before it has a CV | the same: **Wren** drafts the CV and cover letter | yes |
-| set a role to **approved** | **Ada** (automation) makes the PDFs straight away. If there are no Word files yet, Hal gets Wren to draft them first | none, if the Word files exist |
+| set a role to **approved** | **Ada** (automation) rebuilds the final PDFs straight away (from your Word file if you edited it). If there are no Word files yet, Hal gets Wren to draft them first | none, if the Word files exist |
 | set a role to **applied** | **Ada** sets the next step to "Follow up if no reply by …" (7 days later) | none |
 | set a role to **interview** | Hal gets **Cole** (Interview Coach) to write key talking points and prep notes | yes |
 | **add a role** (with a link, or the advert text pasted in) | Hal gets **Rita** (Lead Recruiter) to read the advert, score the fit and give a verdict: worth applying or not | yes |
@@ -146,6 +146,20 @@ A session started in the `agent-office` folder is Hal. The subagents he calls (R
 
 **Inputs:** Claude Code hook events; `jobs/tracker.json`.
 **Outputs:** the web page. Nothing is written to disk. The office keeps no history once it is closed.
+
+## The build label
+
+The top left, under "Job Hunt", shows the build: `Build 214 · 8 Nov`. The number is the number of commits in this copy, so it goes up with every merge, and two PCs on the same build show the same number. On a phone it's at the foot of the Overview. When the sidebar is collapsed, a dot on the expand button shows the state. Hover for the commit, date, branch and folder.
+
+| Label | Means | Do |
+|---|---|---|
+| Green dot, `Build 214 · 8 Nov` | Up to date with what this PC last fetched from GitHub | Nothing |
+| Amber, "restart to update" (or "Restart the office to update") | Newer files arrived in this folder, but the office is still running the old build | Close the office window and open it again |
+| Amber, "3 updates on GitHub" | GitHub's `main` is ahead, and this folder hasn't pulled it | The automatic sync is stuck: see "Keeping each PC up to date" in the main README |
+| Red, "not on main (branch)" | This folder is on a branch, so it won't get merged work | `git checkout main` |
+| "Build unknown" | Not a git folder (a ZIP download, say) | Clone it with git instead |
+
+The server reads it from git when it starts and re-checks every minute, with no network: `shared/tools/sync.ps1` fetches from GitHub every few minutes, and the label compares with that. The code is in `src/build.ts` and `public/build.js`.
 
 ## Problems
 

@@ -13,7 +13,7 @@ const LEAD = new Set(["found", "skipped"]);
 const REASON_STATUSES = new Set(["skipped", "rejected"]);
 const HAL_TASK = {
   shortlisted: "Hal will get Wren to draft a tailored CV and cover letter.",
-  approved: "Ada will make the PDFs straight away (or Wren drafts first if there are no Word files yet).",
+  approved: "Ada will make the final PDFs straight away (or Wren drafts first if there are no Word files yet).",
   interview: "Hal will get Cole to write your key talking points and prep notes.",
   applied: "Ada will set a follow-up date for a week from today.",
 };

@@ -21,6 +21,8 @@ Everything in this file is true and may be used. Nothing outside it may be added
 
 Epsom, Surrey · 07872 571569 · tim.everard@hotmail.co.uk · linkedin.com/in/tim-everard
 
+*Hotmail is the default email for every CV and letter. Gmail (tim.everard91@gmail.com) was used only for the Chelsea FC application, because of a technical problem.*
+
 ## Profile
 
 Esports and live events operations leader with 15 years' experience, from theatre lighting and TV studio builds to heading Esports Operations at BLAST. Led a six-person department delivering tournament and player operations across every BLAST title, including CS2, Dota 2, Rocket League and Fortnite. Across six years at BLAST that meant 60+ flagship events and 300+ qualifiers in 13 countries, 2,000+ freelancers and €12m+ in budgets. Hands-on across event management, freelancer booking and contracting, budgets and equipment, and built the department's own operations tools. Having worked every side of a live show, on the ground and in the office, I focus on making event day run smoothly for the people on site.
