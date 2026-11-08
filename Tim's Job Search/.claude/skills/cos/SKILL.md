@@ -68,7 +68,7 @@ Finds new roles, then you sort them. Nobody is waiting to answer, so never ask q
    - **Keep the rest as leads:** `tracker.py found take <id> --as lead` (verdict Apply for Strong, Maybe for Possible; add `--verdict` and `--why` if you know better). Ada ranks them.
    - Never shortlist or draft anything: Tim picks.
 6. Write `jobs/today.md`: the date, the new leads best first (one line each: title, company, pay, why), what you dismissed and why, and anything waiting on Tim (`tracker.py list --summary`).
-7. **Back up to `main`:** commit `jobs/` and a dated line in `notes/changes/main.md` ("Job search: daily search, N new leads, M dismissed"), then `git push`. If the push is refused, `git pull` (a merge; never rebase, reset or force) and push again.
+7. **Back up to `main`:** commit `jobs/` and a dated line in `../notes/changes/main.md` (the repo's notes folder, one level above this office) ("Job search: daily search, N new leads, M dismissed"), then `git push`. If the push is refused, `git pull` (a merge; never rebase, reset or force) and push again.
 8. **Token rules:** one Rita brief, no listings for the batch, at most 6 emails read. Leads get a full read later, only when Tim asks ("Ask Hal: worth applying?") or shortlists one.
 
 **Queue format** (one JSON list): `{"title", "company", "location", "pay", "link", "posted", "source", "via", "fit": "strong"|"possible"|"weak", "why", "concern"}`. `why` is one short plain sentence tied to Tim's experience; `concern` is a few words or "".

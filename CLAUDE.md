@@ -1,22 +1,32 @@
 # Agent Office
 
-This repo is Tim's agent office: a home for Claude Code agents, their instructions and shared setup.
+This repo is a home for Claude Code agents, their instructions and shared setup. It holds two job-search offices side by side, one per person: **Tim's Job Search** (Tim, the repo's owner) and **Hal's Job Search** (Tim's friend Hal). Each is a complete, separate copy of the same system, with its own agents, CV, preferences, tracker and settings.
 
 GitHub (github.com/Pha1lbot/agent-office, private) is the master copy and the backup. Work that has not been pushed to GitHub is not backed up.
 
 ## Layout
 
-agents/ holds one folder per agent, each with its own instructions.
+At the top of the repo (shared by both offices):
+- CLAUDE.md (this file), README.md, CHANGELOG.md, .github/ (the pull request template) and notes/ (plans, and one change-notes file per branch).
+- shared/tools/ holds only the Windows scripts that keep a whole copy of the repo up to date (sync.ps1, install-sync.ps1, setup-pc.ps1).
 
-shared/ holds prompts, tools and conventions used by more than one agent.
+Each office folder (`Tim's Job Search/`, `Hal's Job Search/`) has the same layout, and Claude Code is opened inside it:
+- GUIDE.md: the plain-English guide to using the system.
+- agents/ holds one folder per agent, each with its own instructions.
+- shared/ holds prompts, tools and conventions used by more than one agent (job-search/ has the CV, preferences, sources and settings; office-view/ is the Agent Office; tools/ has the scripts).
+- jobs/ holds the job-search team's working data: the role tracker, the daily priority list and one folder per role with its advert summary, CV and cover letter.
+- .claude/ holds what Claude Code loads directly: subagent prompts in .claude/agents/ and skills (such as /cos) in .claude/skills/. Each one is documented by a README in its agents/ folder.
 
-The job-search team is Hal (Chief of Staff), Rita (Lead Recruiter), Wren (Writer), Cole (Interview Coach) and Ada (Admin, automation only). Their plan, including the token-saving rules, is in notes/plans/agent-office-v2.md.
+The job-search team is Hal (Chief of Staff), Rita (Lead Recruiter), Wren (Writer), Cole (Interview Coach) and Ada (Admin, automation only) in Tim's office. In Hal's office the Chief of Staff is called Cass, so there aren't two Hals; the rest are the same. Their plan, including the token-saving rules, is in notes/plans/agent-office-v2.md.
 
-jobs/ holds the job-search team's working data: the role tracker, the daily priority list and one folder per role with its advert summary, CV and cover letter.
+## Two offices, one repo
 
-.github/ holds the pull request template, which every PR description follows.
-
-.claude/ holds what Claude Code loads directly: subagent prompts in .claude/agents/ and skills (such as /cos) in .claude/skills/. Each one is documented by a README in its agents/ folder.
+- **Work only in the office you were opened in.** In `Tim's Job Search/` that is Tim's data, and in `Hal's Job Search/` it is Hal's. Never read, copy from, edit or summarise the other office's folder, and never put one person's CV, preferences or role files in the other's folder.
+- Code and instructions that exist in both offices (the tools, the office view, the agent prompts) are kept as two copies, not shared, so each person can change theirs freely. When a fix is made in one office's code, tell the user it may need making in the other too, and note it in the branch notes. Don't change the other office's copy unless asked.
+- Hal's office is a copy of Tim's with the names changed (Tim to Hal, the Chief of Staff Hal to Cass). Hal's pronouns haven't been given: use "they", or just Hal's name.
+- Where the rules below say "Tim", read "the person whose office you are in" for anything about asking, telling or approving, and keep them to their own office. Changes to the repo-wide files at the top level (this file, README, `.github/`, `shared/tools/*.ps1`) are Tim's call: ask Tim, even in a session from Hal's office.
+- Daily-run lines ("Job search: daily search, N new leads") go in `notes/changes/main.md` for Tim's office and `notes/changes/main-hals-job-search.md` for Hal's, so the two offices' runs never edit the same file. Each office's other notes work as the rules below say.
+- GitHub gives both people access to the whole repo, so each can see the other's files. Don't put anything in the repo you wouldn't want the other to read.
 
 ## Working here
 
@@ -31,7 +41,7 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 ### At the start of every session
 
 1. Run `git status`. If there are uncommitted changes left over from before, tell Tim what they are and ask whether to commit them before doing anything else.
-2. Run `git pull` so you are working on the latest version. A start-up hook in `.claude/settings.json` already tries this; check its result, and if it failed, sort it out (ask Tim if unsure) before doing anything else.
+2. Run `git pull` so you are working on the latest version. A start-up hook in the office's `.claude/settings.json` already tries this; check its result, and if it failed, sort it out (ask Tim if unsure) before doing anything else.
 
 ### While working
 
@@ -53,7 +63,7 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 
 ### Edits made in the office
 
-Tim edits roles in the Agent Office (`shared/office-view`). The office commits and pushes those changes to the `jobs/` folder itself (the tracker, plus files it makes such as PDFs), with messages starting "Office:". These commits don't get a notes entry: the tracker records each change, with its date and who made it, in the role's history. Every other commit still needs its notes entry.
+Each person edits roles in their own Agent Office (`shared/office-view` inside their office folder). The office commits and pushes those changes to that office's `jobs/` folder itself (the tracker, plus files it makes such as PDFs), with messages starting "Office:". These commits don't get a notes entry: the tracker records each change, with its date and who made it, in the role's history. Every other commit still needs its notes entry.
 
 ### Bigger or risky changes
 
@@ -70,7 +80,7 @@ git fetch origin main
 git worktree add ../agent-office-work -b <branch> origin/main
 ```
 
-Open Claude Code in `agent-office-work`, then work, commit and push there (`git push -u origin <branch>`) and open the pull request. The main folder, the office and the automatic pulls carry on as normal. Once the pull request is merged or dropped, and `git status` in the work folder shows nothing to commit, remove it from the main folder with `git worktree remove ../agent-office-work`. Git refuses if anything there is unsaved; never force it. Only one work folder at a time: finish or remove the old one first.
+Open Claude Code in the same office folder inside `agent-office-work` (for example `agent-office-work/Tim's Job Search`), then work, commit and push there (`git push -u origin <branch>`) and open the pull request. The main folder, the office and the automatic pulls carry on as normal. Once the pull request is merged or dropped, and `git status` in the work folder shows nothing to commit, remove it from the main folder with `git worktree remove ../agent-office-work`. Git refuses if anything there is unsaved; never force it. Only one work folder at a time: finish or remove the old one first.
 
 Cloud sessions can work on their own branches directly.
 

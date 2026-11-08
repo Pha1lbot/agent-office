@@ -127,17 +127,28 @@ def to_inbox(data, role, task):
                           "title": f"{role['title']} @ {role['company']}", "at": now_stamp(), "done": False})
 
 
+def pay_bands():
+    """(ideal, minimum) yearly pay from shared/job-search/settings.json, for ranking new roles."""
+    try:
+        settings = json.loads((REPO / "shared" / "job-search" / "settings.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        settings = {}
+    number = lambda v: float(v) if isinstance(v, (int, float)) and not isinstance(v, bool) else None  # noqa: E731
+    return number(settings.get("ideal_pay")), number(settings.get("minimum_pay"))
+
+
 def rank(data):
     """Ada: number every role in To review (found) best first, so the board is in order.
-    Order: Hal's verdict, fit, pay band (£60k+, £50k+, other), closing date, then oldest.
+    Order: Hal's verdict, fit, pay band (ideal pay or more, minimum pay or more, other: see settings.json), closing date, then oldest.
     A priority Tim set himself on a found role is kept; the others are numbered around it."""
     found = [r for r in data["roles"] if r["status"] == "found"]
     pinned = {r["priority"] for r in found if r.get("priority_by_tim") and r.get("priority")}
     order = {"apply": 0, "maybe": 1, None: 2, "skip": 3}
+    ideal, minimum = pay_bands()
 
     def key(r):
         pay = yearly_pay(r.get("pay")) or 0
-        band = 0 if pay >= 60000 else 1 if pay >= 50000 else 2
+        band = 0 if ideal and pay >= ideal else 1 if minimum and pay >= minimum else 2
         return (order.get(r.get("verdict"), 2), -(r.get("fit") or 0), band,
                 r.get("closing_date") or "9999-99-99", r.get("found") or "")
 

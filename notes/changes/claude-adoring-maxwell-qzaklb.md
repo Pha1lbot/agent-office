@@ -1,7 +1,7 @@
 # Branch: claude/adoring-maxwell-qzaklb
 
 **Started:** 2026-11-08
-**Status:** In progress
+**Status:** In progress (not yet a pull request)
 
 ## Purpose
 
@@ -12,6 +12,51 @@ Tim chose (2026-11-08): one repo with two folders (not a separate repo for Hal);
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-08: Hal's Job Search created, and a guide for both offices
+
+**What changed**
+- `Hal's Job Search/` (new, 77 files): a copy of Tim's office with none of Tim's data. Made by copying `Tim's Job Search/`, then:
+  - Names: the owner Tim became Hal; Hal's Chief of Staff agent (the old "Hal") became **Cass**, so there aren't two Hals. The `/hal` skill folder became `.claude/skills/cass/` (`/cass`); `/cos` works in both. Hal's pronouns weren't given, so docs and prompts use "they"/"their" or Hal's name.
+  - Emptied: `jobs/tracker.json` (no roles), `tracker.md`, `today.md`, `preference-reviews.md`, `jobs/roles/` (only `.gitkeep`). Left out: Tim's imports, the CV PDF, `import_dashboard.py` (a one-off for Tim's old dashboard) and the office-view mockup screenshots.
+  - Blank starters for Hal to fill in: `shared/job-search/preferences.md`, `sources.md`, `cv-rules.md` (generic starter rules), `cv/cv-bank.md`, `cv/base-cv.json` (obvious placeholders, a valid two-page CV), `cv/README.md`, and `settings.json` (pay figures switched off).
+  - Cass's skill (`.claude/skills/cos/SKILL.md`) now stops with a clear message while a starter file still says "please fill this in" / "please replace everything", and no longer assumes the 6:31 scheduled search, Hitmarker or Tim's Outlook sites. Daily-run notes go to `notes/changes/main-hals-job-search.md`.
+  - `test_cv_template.py` assertions use the placeholder CV; `contracts.js` and a few UI strings no longer name Tim's pay or esports.
+- `Tim's Job Search/GUIDE.md` and `Hal's Job Search/GUIDE.md` (new): the in-depth guide Tim asked for (what the team does, folder map, first-time setup for Hal, every-day commands, the office, changing the search, the CV, changing templates, changing how the team works, backups and sharing, troubleshooting, a cheat sheet). One template, two outputs (names and the setup section differ).
+- `Tim's Job Search/CLAUDE.md`, `Hal's Job Search/CLAUDE.md` (new): short office-level instructions, including "work only in this folder".
+- `CLAUDE.md` (root): layout rewritten for two offices; new "Two offices, one repo" section (stay in your folder; code is two copies; Hal's pronouns; where daily-run notes go; privacy note); worktree instructions name the office folder.
+- `README.md` (root): layout table for the two offices; setup and daily-use steps say "your office folder".
+- Both offices, so Hal's search settings really are changeable (not just in text):
+  - `shared/job-search/settings.json` (new): `ideal_pay` and `minimum_pay`. `shared/tools/tracker.py` `rank()` used to have £60k and £50k written into the code; it now reads these (`pay_bands()`). Tim's file holds 60000 and 50000, so his ranking is unchanged. `test_tracker.py` has a new `PayBandTests`.
+  - File names: `make_docs.py` and the office (`roles.ts`, `server.ts`) used a fixed `Tim_Everard_` prefix. They now take it from `name` in `cv/base-cv.json` (Tim's is still `Tim_Everard`). `roles.test.ts` sets the prefix explicitly.
+  - `public/index.html`: the page title and sidebar name read "Tim's Job Search" / "Hal's Job Search" (the sidebar used to say "Job Hunt", with Tim's initials).
+
+**Why**
+Tim asked to duplicate everything for a friend, Hal, who is job hunting too: his own office and agents so he can change his search requirements, with Tim's data left out, and an easy-to-read guide covering things like changing search requirements and adjusting templates.
+
+**Decisions**
+- **One repo, two folders** (Tim's choice), not a separate repo. Consequence: GitHub gives Hal read access to Tim's folder and Tim to Hal's. Offered a separate repo for Hal as the private option; Tim chose to keep one repo. The root `CLAUDE.md` and the guide say so plainly.
+- **Two independent copies of the code**, not a shared library, so Hal can change anything in his office without affecting Tim's. The cost is that a fix in one needs repeating in the other; recorded in the root `CLAUDE.md`. Both copies currently differ only in names, pronouns, the data files and Hal's tests.
+- **Clean template** for Hal (Tim's choice), not a copy of Tim's data.
+- **Hal's Chief of Staff renamed Cass** (Tim's friend is Hal). It starts with C like "Chief", following the plan's rule that each name starts with the job's letter (Rita, Wren, Cole, Ada).
+- **Folder names kept exactly as asked**, apostrophes and spaces included. The guide tells people to put them in double quotes.
+- **Repo-level Windows scripts stay in the root `shared/tools/`** (sync, install-sync, setup-pc), so the scheduled task already on Tim's PC keeps finding `sync.ps1`.
+- The internal label `--by tim` in `tracker.py` and the tracker history is left as is in both offices. It means "the owner" and is also in Tim's existing data.
+
+**How to check it**
+- Each office: `cd shared/office-view && npm ci && npm test && npx tsc --noEmit` (37 pass), and `cd shared/tools && python3 -m unittest discover -p "test_*.py"` (27 pass).
+- Start each office (`npm start`) and open http://127.0.0.1:4747: the title is "Tim's Job Search" or "Hal's Job Search"; Tim's shows his 53 roles, Hal's is empty.
+- `python3 shared/tools/cv_template.py shared/job-search/cv/base-cv.json x.pdf` in Hal's folder makes a two-page placeholder CV.
+- Read the two `GUIDE.md` files.
+
+**Open items**
+- **Tim's PC:** open Claude Code and the office from `Tim's Job Search`; re-run `setup-pc.ps1` once; repoint any shortcut. The guide's section 3 says this.
+- **Scheduled task "Rita's daily search"** (currently disabled) still names `.claude/skills/cos/SKILL.md`, `jobs/today.md` and `notes/changes/main.md` at the repo top. Its prompt needs the `Tim's Job Search/` prefix before it is switched on again. Not changed, because it is outside the repo.
+- Hal has none of the above scheduled morning search; the guide says it is optional.
+- Hal still needs to be invited to the repo on GitHub (Settings, Collaborators). Not done from here.
+- The office's build number counts every commit in the repo, so it will also rise when Hal's office commits.
+- Not tested on Windows: `Open Office.cmd` and `setup-pc.ps1` edits (path changes only).
+- The pull request is not opened yet.
 
 ### 2026-11-08: Move Tim's office into its own folder
 

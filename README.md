@@ -1,13 +1,20 @@
 # agent-office
-Tim's agent office: Claude Code agents and their setup
+Claude Code agents and their setup, as two job-search offices side by side.
 
 ## Layout
 
-- `agents/`: one folder per agent, with a README saying what it does.
-- `.claude/`: the agents' prompts, where Claude Code finds them.
-- `shared/`: conventions, tools and job-search settings used by several agents.
-- `jobs/`: the job search's tracker, daily list and documents.
-- `notes/`: plans and per-branch change notes.
+| Folder | Whose | Start here |
+|---|---|---|
+| `Tim's Job Search/` | Tim's office: his team, CV, preferences and roles | `Tim's Job Search/GUIDE.md` |
+| `Hal's Job Search/` | Hal's office: a separate copy of the same system with its own team, CV, preferences and roles | `Hal's Job Search/GUIDE.md` |
+| `shared/tools/` | Windows scripts that keep this whole copy of the repo up to date and set up a new PC | below |
+| `notes/` | Plans and per-branch change notes | |
+
+Each office folder has the same layout: `GUIDE.md` (the plain-English guide), `agents/` (one folder per agent, with a README saying what it does), `.claude/` (the agents' prompts, where Claude Code finds them), `shared/` (conventions, tools, the office view and job-search settings) and `jobs/` (the tracker, daily list and documents). **Open Claude Code and the office from inside your own office folder.** Only the Chief of Staff's name differs: Hal in Tim's office, Cass in Hal's, so there aren't two Hals.
+
+Both people can read the whole repo (GitHub can't restrict a folder), so keep out of each other's folder and put nothing in it you wouldn't want the other to see. The rules for working in a shared repo are in `CLAUDE.md`.
+
+The rest of this page was written for Tim's office. It applies to either office: use your own folder where it says "this folder".
 
 ## The job-search team
 
@@ -32,7 +39,7 @@ The team's plan, including how it keeps token use down, is in `notes/plans/agent
    cd agent-office
    ```
 
-3. Run the setup script. It installs whatever is missing (Node.js, Python, pandoc, LibreOffice), sets your git name and email, installs the office's packages, puts this copy on `main` and turns on the automatic pull. It's safe to run again:
+3. Run the setup script, from the `agent-office` folder. It installs whatever is missing (Node.js, Python, pandoc, LibreOffice), sets your git name and email, installs the packages for every office in this copy, puts it on `main` and turns on the automatic pull. It's safe to run again:
 
    ```
    powershell -ExecutionPolicy Bypass -File shared\tools\setup-pc.ps1
@@ -55,15 +62,15 @@ Your CV, preferences and every role's files are in the repo, so they come across
 - **The office looks old, or the build label isn't green:** in PowerShell, in this PC's `agent-office` folder:
   1. Run `git status -sb`. The first line should be `## main...origin/main`; if it names another branch, run `git checkout main`.
   2. Run `Get-Content $env:LOCALAPPDATA\agent-office-sync.log -Tail 5` to see why the automatic sync stopped, then `git pull`. If it asks you to sign in, do. If it says your changes would be overwritten, stop and ask Claude.
-  3. Close the black "Agent Office" window and open `shared\office-view\Open Office.cmd` from **this** folder. Check your shortcut doesn't point at an old copy, such as an `agent-office-main` folder from a ZIP download.
-- **"Smart App Control blocked" `Open Office.cmd`:** open the office from PowerShell instead. In the `agent-office` folder run `cd shared\office-view`, then `npm install` (first time only), then `npm start`, and open http://127.0.0.1:4747.
+  3. Close the black "Agent Office" window and open `shared\office-view\Open Office.cmd` from **your office folder** (inside `agent-office`). Check your shortcut doesn't point at an old copy, such as an `agent-office-main` folder from a ZIP download.
+- **"Smart App Control blocked" `Open Office.cmd`:** open the office from PowerShell instead. In your office folder run `cd shared\office-view`, then `npm install` (first time only), then `npm start`, and open http://127.0.0.1:4747.
 - **The sync can't get past GitHub (the log at `%LOCALAPPDATA%\agent-office-sync.log` shows FAILED, or nothing new):** Git needs you to sign in once on each PC. In PowerShell, in the `agent-office` folder, run `git fetch` and sign in when asked. The sync never waits for a sign-in; it logs the problem and the office opens anyway.
 
 Keep each PC on `main`. When Claude needs a branch on your PC, it works in a separate `agent-office-work` folder beside this one, so this folder never changes branch and your office edits always go to `main`. Both laptops can run the office: each one's backups are pushed to GitHub and pulled by the other.
 
 ### Each day
 
-Open Claude Code in this folder and type:
+Open Claude Code in your office folder (for example `cd "Tim's Job Search"`, then `claude`; keep the quotes) and type `/cos` (Tim's office also answers to `/hal`; Hal's to `/cass`):
 
 - `/cos start the day`: finds new roles, ranks them and asks which to go for.
 - Reply with the roles you want: CVs and cover letters are drafted as Word files in `jobs/roles/<role>/`.
@@ -76,7 +83,7 @@ When you skip a role, give a few words of reason if you can ("pay too low", "too
 
 ### Watch them in the office
 
-Double-click `shared/office-view/Open Office.cmd`. It starts the office and opens http://127.0.0.1:4747 in your browser. (Or, in that folder, run `npm install` once, then `npm start`.) You'll see the team as coworkers in a 3D open-plan office (working at their desks, fetching coffee, relaxing on the sofas), plus a dashboard in the style of your Job Hunt artifact (Overview, Roles, Leads, Interviews, Next actions, CVs) and a page for each role with its CV, cover letter, attachments and interview talking points. Hal acts on your changes automatically. See `shared/office-view/README.md`.
+In your office folder, double-click `shared/office-view/Open Office.cmd`. It starts the office and opens http://127.0.0.1:4747 in your browser. (Or, in that folder, run `npm install` once, then `npm start`.) You'll see the team as coworkers in a 3D open-plan office (working at their desks, fetching coffee, relaxing on the sofas), plus a dashboard in the style of your Job Hunt artifact (Overview, Roles, Leads, Interviews, Next actions, CVs) and a page for each role with its CV, cover letter, attachments and interview talking points. Hal acts on your changes automatically. See `shared/office-view/README.md`.
 
 Every weekday at 6:31, Rita searches your job sites and Hal reads your job-alert emails, in the cloud, so your PC can be off. Hal sorts the finds into Leads (or Dismissed, with his reason) before you start.
 

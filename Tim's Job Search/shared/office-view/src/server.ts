@@ -12,7 +12,7 @@
 
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { readFile, stat, writeFile } from "node:fs/promises";
-import { existsSync, watchFile } from "node:fs";
+import { existsSync, readFileSync, watchFile } from "node:fs";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { WebSocketServer, WebSocket } from "ws";
@@ -22,13 +22,15 @@ import { Backup } from "./backup.ts";
 import { checkBuild, readBuild, type Build } from "./build.ts";
 import { AutoCos } from "./auto-cos.ts";
 import { addUsage, emptyUsage, startOfUkDay, usageOfSession, type Usage } from "./tokens.ts";
-import { MAX_UPLOAD, ROLE_ID, docsOf, downloadName, fileFor, listFiles, saveAttachment, saveTalkingPoints, saveAdvert, textsOf, type Docs } from "./roles.ts";
+import { MAX_UPLOAD, ROLE_ID, docsOf, downloadName, fileFor, listFiles, saveAttachment, saveTalkingPoints, saveAdvert, setFilePrefix, textsOf, type Docs } from "./roles.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const APP = resolve(HERE, "..");
 const REPO = resolve(APP, "..", "..");
 const TRACKER = process.env.OFFICE_TRACKER ? resolve(process.env.OFFICE_TRACKER) : join(REPO, "jobs", "tracker.json");
 const PUBLIC = join(APP, "public");
+// Files are named after the owner, taken from the name in the default CV (base-cv.json).
+try { setFilePrefix(JSON.parse(readFileSync(join(REPO, "shared", "job-search", "cv", "base-cv.json"), "utf8")).name ?? ""); } catch { /* no CV yet: files start "CV_" */ }
 const THREE = join(APP, "node_modules", "three");
 const VENDOR: Record<string, string> = {
   "/vendor/three.mjs": join(THREE, "build", "three.module.min.js"),
@@ -458,7 +460,7 @@ const server = createServer(async (req, res) => {
     const name = decodeURIComponent(download[2]);
     const file = fileFor(ROLES_ROOT, download[1], name);
     const role = tracker.roles.find((r) => r.id === download[1]);
-    // CVs and letters download as Tim_Everard_<Job_Title>_cv.pdf and so on.
+    // CVs and letters download as <Your_Name>_<Job_Title>_cv.pdf and so on.
     return file ? serveDownload(res, file, (role && downloadName(role.title, name)) || undefined) : void res.writeHead(404).end("Not found");
   }
 

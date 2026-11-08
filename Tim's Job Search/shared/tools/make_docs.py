@@ -13,7 +13,7 @@ shared/job-search/cv/base-cv.json) and cover-letter.md. From those, <role-id> ma
 - Ada's fact check (fact_check.py): anything in the CV or letter that isn't in the
   CV bank is printed and listed in notes.md.
 - cv.docx and cover-letter.docx with pandoc: plain Word copies Tim can edit.
-- Tim_Everard_<Job_Title>_cv.pdf and Tim_Everard_<Job_Title>_cover_letter.pdf in
+- <Your_Name>_<Job_Title>_cv.pdf and <Your_Name>_<Job_Title>_cover_letter.pdf in
   Tim's template (cv_template.py, printed by Chrome or Edge), so Tim reviews the
   real thing. If no browser is found, the Word files are still made.
 
@@ -124,8 +124,17 @@ def file_title(title, limit=60):
     return "_".join(out) or "Role"
 
 
+def file_prefix():
+    """The owner's name for file names, from base-cv.json: "Tim Everard" -> "Tim_Everard"."""
+    try:
+        name = json.loads(cv_template.BASE.read_text(encoding="utf-8")).get("name", "")
+    except (OSError, ValueError):
+        name = ""
+    return "_".join(re.sub(r"[^A-Za-z0-9-]+", " ", unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()).split()) or "CV"
+
+
 def pdf_name(title, doc):
-    return f"Tim_Everard_{file_title(title)}_{PDF_KIND[doc]}.pdf"
+    return f"{file_prefix()}_{file_title(title)}_{PDF_KIND[doc]}.pdf"
 
 
 def fingerprint(path):
@@ -154,7 +163,7 @@ def cv_from_json(folder):
 
 def clear_old_pdfs(folder, doc, keep):
     """Remove PDFs Ada made under an older job title, so only one is left."""
-    for old in folder.glob(f"Tim_Everard_*_{PDF_KIND[doc]}.pdf"):
+    for old in folder.glob(f"{file_prefix()}_*_{PDF_KIND[doc]}.pdf"):
         if old.name != keep:
             old.unlink()
 

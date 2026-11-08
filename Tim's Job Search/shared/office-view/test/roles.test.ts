@@ -3,7 +3,9 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { cleanUploadName, docsOf, downloadName, fileFor, fileTitle, listFiles, saveAdvert, saveAttachment, saveTalkingPoints, textsOf } from "../src/roles.ts";
+import { cleanUploadName, docsOf, downloadName, fileFor, fileTitle, listFiles, saveAdvert, saveAttachment, saveTalkingPoints, setFilePrefix, textsOf } from "../src/roles.ts";
+
+setFilePrefix("Tim Everard");
 
 function sample() {
   const root = mkdtempSync(join(tmpdir(), "roles-"));

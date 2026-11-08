@@ -75,5 +75,35 @@ class TrackerTests(unittest.TestCase):
         self.assertNotEqual(out.returncode, 0)  # can't take twice
 
 
+class PayBandTests(unittest.TestCase):
+    """New roles are ranked by pay using the figures in shared/job-search/settings.json."""
+
+    def rank_with(self, settings):
+        sys.path.insert(0, str(TRACKER.parent))
+        import tracker
+        repo = Path(tempfile.mkdtemp())
+        (repo / "shared" / "job-search").mkdir(parents=True)
+        if settings is not None:
+            (repo / "shared" / "job-search" / "settings.json").write_text(settings, encoding="utf-8")
+        old = tracker.REPO
+        tracker.REPO = repo
+        try:
+            roles = [{"id": name, "status": "found", "fit": 3, "pay": pay, "found": "2026-11-01"}
+                     for name, pay in [("low", "\u00a330k"), ("mid", "\u00a345k"), ("high", "\u00a360k")]]
+            data = {"roles": roles}
+            tracker.rank(data)
+            return [r["id"] for r in sorted(roles, key=lambda r: r["priority"])]
+        finally:
+            tracker.REPO = old
+
+    def test_bands_come_from_settings(self):
+        self.assertEqual(self.rank_with('{"ideal_pay": 55000, "minimum_pay": 40000}'), ["high", "mid", "low"])
+        self.assertEqual(self.rank_with('{"ideal_pay": 40000, "minimum_pay": 25000}'), ["mid", "high", "low"])  # mid and high tie, so list order
+
+    def test_missing_or_blank_settings_just_skip_the_pay_bands(self):
+        for settings in (None, "{not json", '{"ideal_pay": null, "minimum_pay": null}'):
+            self.assertEqual(len(self.rank_with(settings)), 3)
+
+
 if __name__ == "__main__":
     unittest.main()

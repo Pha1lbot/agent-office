@@ -13,7 +13,7 @@ export const ROLE_FILES = [
   "listing.md", "advert.txt", "cv.md", "cover-letter.md", "notes.md", "talking-points.md", "interview-prep.md",
   "cv.docx", "cover-letter.docx", "cv.pdf", "cover-letter.pdf",
 ] as const;
-/** Ada names the PDFs Tim sends Tim_Everard_<Job_Title>_cv.pdf and ..._cover_letter.pdf
+/** Ada names the PDFs you send <Your_Name>_<Job_Title>_cv.pdf and ..._cover_letter.pdf
  * (make_docs.py). The page still asks for "cv.pdf" and "cover-letter.pdf"; these map
  * to the named file, or to an older plain cv.pdf. */
 const PDF_KIND: Record<string, string> = { "cv.pdf": "cv", "cover-letter.pdf": "cover_letter" };
@@ -34,10 +34,18 @@ export function fileTitle(title: string, limit = 60): string {
   return out.join("_") || "Role";
 }
 
-/** The name Tim gets when he downloads a role's CV or letter, e.g. Tim_Everard_Producer_cv.docx. */
+/** The owner's name as used in file names, e.g. "Tim Everard" -> "Tim_Everard". Taken from the
+ * name in base-cv.json when the office starts (the same as file_prefix() in make_docs.py). */
+let prefix = "CV";
+export function filePrefix(name: string): string {
+  return name.normalize("NFKD").replace(/[^\x00-\x7f]/g, "").replace(/[^A-Za-z0-9-]+/g, " ").trim().split(/\s+/).filter(Boolean).join("_") || "CV";
+}
+export function setFilePrefix(name: string) { prefix = filePrefix(name); }
+
+/** The name you get when you download a role's CV or letter, e.g. Tim_Everard_Producer_cv.docx. */
 export function downloadName(title: string, name: string): string | null {
   const kind = DOC_KIND[name];
-  return kind ? `Tim_Everard_${fileTitle(title)}_${kind}${extname(name)}` : null;
+  return kind ? `${prefix}_${fileTitle(title)}_${kind}${extname(name)}` : null;
 }
 
 /** The file on disk behind "cv.pdf" or "cover-letter.pdf": Ada's named PDF (newest), else the old name. */
@@ -46,7 +54,7 @@ function pdfOnDisk(dir: string, name: string): string {
   let best = name, newest = -1;
   try {
     for (const f of readdirSync(dir)) {
-      if (!f.startsWith("Tim_Everard_") || !f.endsWith(`_${kind}.pdf`)) continue;
+      if (!f.startsWith(`${prefix}_`) || !f.endsWith(`_${kind}.pdf`)) continue;
       const t = statSync(join(dir, f)).mtimeMs;
       if (t > newest) { best = f; newest = t; }
     }
