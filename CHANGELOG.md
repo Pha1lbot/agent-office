@@ -2,6 +2,7 @@
 
 One line per piece of work that reached `main`, newest first. Full details are in each branch's notes file under `notes/changes/`.
 
+- 2026-11-08: NetEase and Vitality CVs redone in Tim's CV template; approving an old draft without cv.json now says to ask Wren ([#26](https://github.com/Pha1lbot/agent-office/pull/26)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
 - 2026-11-08: Job Hunt v3, phase 2: every CV and cover letter in Tim's default CV template, named Tim_Everard_<Job_Title>_cv.pdf and _cover_letter.pdf, with Hotmail as the default email; plus a build label at the top left of the office showing whether each PC is up to date ([#23](https://github.com/Pha1lbot/agent-office/pull/23)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
 - 2026-11-08: Job Hunt v3, phase 3: a daily lead search on weekday mornings (Rita on the job sites, Hal on the job-alert emails), with Hal sorting finds into Leads or Dismissed and a New leads dialog in the office ([#22](https://github.com/Pha1lbot/agent-office/pull/22)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
 - 2026-11-07: Job Hunt v3, phase 1: the office dashboard rebuilt in the style of Tim's Job Hunt artifact (Overview, Roles, Leads, Interviews, Next actions, CVs), with Tailor a CV sent to Wren ([#21](https://github.com/Pha1lbot/agent-office/pull/21)). See [branch notes](notes/changes/claude-youthful-hopper-alwu7m.md).
