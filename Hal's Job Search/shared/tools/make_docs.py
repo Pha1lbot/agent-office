@@ -18,7 +18,7 @@ shared/job-search/cv/base-cv.json) and cover-letter.md. From those, <role-id> ma
   real thing. If no browser is found, the Word files are still made.
 
 --pdf rebuilds the PDFs when Hal approves. If Hal has edited a Word file since Ada
-made it, that PDF is made from their Word file with LibreOffice instead, so their edits
+made it, that PDF is made from his Word file with LibreOffice instead, so his edits
 are kept. Roles from before the template (no cv.json) also go through LibreOffice.
 
 Needs pandoc (Word), and Chrome/Edge or LibreOffice (PDF). Set JOBS_DIR to use a

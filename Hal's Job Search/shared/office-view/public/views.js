@@ -87,7 +87,7 @@ function renderTarget() {
   el.innerHTML = `<span class="eyebrow">Target</span><strong>${esc([min && `${min}+`, ideal && `ideal ${ideal}+`].filter(Boolean).join(", ") || "Set in preferences.md")}</strong>` +
     `${style ? `<span class="t2">${esc(style[0].toUpperCase() + style.slice(1))}</span>` : ""}${sectors ? `<span class="t2">${esc(sectors)}</span>` : ""}`;
 }
-$("target").addEventListener("click", () => toast("Your target comes from preferences.md. To change it, ask Cass: /cass review my preferences."));
+$("target").addEventListener("click", () => toast("Your target comes from preferences.md. To change it, ask Tim: /tim review my preferences."));
 const app = $("app");
 function collapse(c) {
   app.classList.toggle("collapsed", c);
@@ -176,8 +176,8 @@ function renderOverview() {
   const fresh = leads.filter((r) => r.verdict === "apply").length;
   const fb = latestFinds();
   const findLine = fb.items.length && fb.day === todayKey()
-    ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong style="color:var(--text)">Rita found ${plural(fb.items.length, "new role")} ${dayWord(fb.day)}</strong>: ${fb.added.length} added to Leads, ${fb.dismissed.length} dismissed by Cass${fb.pending.length ? `, ${fb.pending.length} still to sort` : ""}.</span><button type="button" class="btn sm primary" data-found="open">Review</button></div>` : "";
-  $("ov-callout").innerHTML = findLine || (leads.length ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong style="color:var(--text)">${plural(leads.length, "lead")}</strong> to look at${fresh ? `, ${fresh} that Cass says to apply for` : ""}.</span><a class="btn sm primary" href="#leads">Review</a></div>` : "");
+    ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong style="color:var(--text)">Rita found ${plural(fb.items.length, "new role")} ${dayWord(fb.day)}</strong>: ${fb.added.length} added to Leads, ${fb.dismissed.length} dismissed by Tim${fb.pending.length ? `, ${fb.pending.length} still to sort` : ""}.</span><button type="button" class="btn sm primary" data-found="open">Review</button></div>` : "";
+  $("ov-callout").innerHTML = findLine || (leads.length ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong style="color:var(--text)">${plural(leads.length, "lead")}</strong> to look at${fresh ? `, ${fresh} that Tim says to apply for` : ""}.</span><a class="btn sm primary" href="#leads">Review</a></div>` : "");
   $("ov-kpis").innerHTML = kpis();
   $("ov-pipe").innerHTML = pipelineChart();
   $("ov-week").innerHTML = weeklyChart();
@@ -199,10 +199,10 @@ function leadRows() {
 function renderLeads() {
   const open = roles().filter((r) => r.status === "found"), dismissed = roles().filter((r) => r.status === "skipped");
   const lists = [...new Set(open.map((r) => r.list).filter(Boolean))].sort();
-  const chips = [["all", "All", open.length], ...["apply", "maybe", "skip"].map((v) => [v, `Cass: ${VERDICT_LABEL[v]}`, open.filter((r) => r.verdict === v).length]),
+  const chips = [["all", "All", open.length], ...["apply", "maybe", "skip"].map((v) => [v, `Tim: ${VERDICT_LABEL[v]}`, open.filter((r) => r.verdict === v).length]),
     ["none", "No verdict yet", open.filter((r) => !r.verdict).length], ...lists.map((l) => [`list:${l}`, l, open.filter((r) => r.list === l).length])].filter((c) => c[0] === "all" || c[2]);
   const editing = store.system.editing;
-  const head = `<div class="tbl-head"><div class="row1"><div><h2>${ui.leadShow === "dismissed" ? "Dismissed leads" : "Leads"}</h2><span class="sub">${ui.leadShow === "dismissed" ? "Roles you or Cass ruled out, in case you change your mind" : `${plural(open.length, "role")} to look at, best first. Moving one to the pipeline gets Wren writing.`}</span></div>
+  const head = `<div class="tbl-head"><div class="row1"><div><h2>${ui.leadShow === "dismissed" ? "Dismissed leads" : "Leads"}</h2><span class="sub">${ui.leadShow === "dismissed" ? "Roles you or Tim ruled out, in case you change your mind" : `${plural(open.length, "role")} to look at, best first. Moving one to the pipeline gets Wren writing.`}</span></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">${latestFinds().items.length ? `<button type="button" class="btn sm${latestFinds().day === todayKey() ? " primary" : ""}" data-found="open">New leads<span class="n-badge">${latestFinds().items.length}</span></button>` : ""}${dismissed.length ? `<button type="button" class="btn sm ghost" data-lead="toggle">${ui.leadShow === "dismissed" ? "Back to leads" : `Dismissed (${dismissed.length})`}</button>` : ""}${editing ? `<button type="button" class="btn sm" data-lead="add">${svg(ICON.plus, 14, 2.2)}Add lead</button>` : ""}</div></div>
     ${ui.leadShow === "open" && open.length ? `<div class="chips" role="group" aria-label="Filter leads">${chips.map(([k, l, n]) => `<button type="button" class="chip" data-chip="${esc(k)}" aria-pressed="${ui.leadFilter === k}">${esc(l)}<span class="n">${n}</span></button>`).join("")}</div>` : ""}</div>`;
   const rows = leadRows();
@@ -210,9 +210,9 @@ function renderLeads() {
   if (!rows.length) {
     body = `<div style="padding:0 22px 22px">${ui.leadShow === "dismissed" ? emptyBox("Nothing dismissed", "Leads you rule out land here.") : open.length ? emptyBox("No leads match", ui.q ? "Try a different word, or clear the search." : "Nothing with this filter.") : emptyBox("No leads yet", "Rita adds new roles each morning, and you can add one you've found yourself.")}</div>`;
   } else {
-    body = `<div class="tbl-wrap"><table class="tbl" style="min-width:1000px"><thead><tr><th style="width:30%">Role</th><th>Location</th><th>Pay</th><th style="width:30%">Cass's view</th><th></th></tr></thead><tbody>${rows.map((r) => {
+    body = `<div class="tbl-wrap"><table class="tbl" style="min-width:1000px"><thead><tr><th style="width:30%">Role</th><th>Location</th><th>Pay</th><th style="width:30%">Tim's view</th><th></th></tr></thead><tbody>${rows.map((r) => {
       const url = safeUrl(r.url), c = closing(r.closing_date);
-      const tags = [isNewLead(r) ? `<span class="tg new">New</span>` : "", r.priority && ui.leadShow === "open" ? `<span class="tg star">P${esc(r.priority)}</span>` : "", r.list ? `<span class="tg">${esc(r.list)}</span>` : "", r.source && r.source !== "Job Hunt dashboard" ? `<span class="tg">${esc(r.source)}</span>` : "", c ? `<span class="tg close ${c.level}">${esc(c.text)}</span>` : "", halOn(r) ? `<span class="tg" style="color:var(--accent)">Cass is on it</span>` : ""].join("");
+      const tags = [isNewLead(r) ? `<span class="tg new">New</span>` : "", r.priority && ui.leadShow === "open" ? `<span class="tg star">P${esc(r.priority)}</span>` : "", r.list ? `<span class="tg">${esc(r.list)}</span>` : "", r.source && r.source !== "Job Hunt dashboard" ? `<span class="tg">${esc(r.source)}</span>` : "", c ? `<span class="tg close ${c.level}">${esc(c.text)}</span>` : "", halOn(r) ? `<span class="tg" style="color:var(--accent)">Tim is on it</span>` : ""].join("");
       const why = r.verdict_why || r.notes || "";
       const acts = ui.leadShow === "dismissed"
         ? (editing ? `<button type="button" class="btn sm" data-lead="restore" data-id="${esc(r.id)}">Restore</button>` : "")
@@ -256,7 +256,7 @@ function renderInterviews() {
 // ---------- Next actions ----------
 function renderActions() {
   const items = actionItems(0);
-  $("v-actions").innerHTML = `<section class="card"><div class="card-h"><h2>Next actions</h2><span class="sub">Things for you to do. Cass adds questions here when Cass runs automatically.</span></div>
+  $("v-actions").innerHTML = `<section class="card"><div class="card-h"><h2>Next actions</h2><span class="sub">Things for you to do. Tim adds questions here when Tim runs automatically.</span></div>
     ${items ? `<div class="list">${items}</div>` : `<p class="sub" style="margin:0">Nothing to do right now.</p>`}${addActionForm()}</section>`;
 }
 async function toggleAction(id, done) {
@@ -356,12 +356,12 @@ tForm.addEventListener("submit", async (e) => {
   } catch (ex) { err.textContent = ex.message; }
 });
 
-// ---------- New leads (the review queue Cass triaged) ----------
+// ---------- New leads (the review queue Tim triaged) ----------
 function renderFound() {
   const fb = latestFinds(), run = fb.lastRun;
   const row = (i) => {
     const r = i.triage?.role && roleById(i.triage.role);
-    const decision = !i.triage ? `<span class="sub">Waiting for Cass</span>`
+    const decision = !i.triage ? `<span class="sub">Waiting for Tim</span>`
       : i.triage.action === "added" ? `<span class="tg docs">Added to Leads</span>${r && r.status !== "found" ? ` <span class="sub">(now ${esc(STATUS_LABEL[r.status])})</span>` : ""}`
       : `<span class="tg">Dismissed</span>${i.triage.reason ? ` <span class="sub">${esc(i.triage.reason)}</span>` : ""}`;
     const undo = !store.system.editing || !r ? ""
@@ -373,7 +373,7 @@ function renderFound() {
       <div class="f-acts">${undo}${r ? `<a class="btn sm ghost" href="#role/${esc(r.id)}">Open</a>` : ""}</div></div>`;
   };
   const runLine = run ? `Last run ${esc(longWhen(run.at.length <= 16 ? run.at + ":00" : run.at))} (${run.via === "email" ? "email scan" : "web search"}, ${plural(run.found || 0, "new find")})${run.note ? `: ${esc(run.note)}` : ""}.` : "No search has run yet.";
-  $("found-body").innerHTML = `<p class="sub" style="margin:0 0 12px">${runLine} Rita searches your job sites (and Cass reads your job-alert emails) when you run the daily search; Cass sorts what they find.</p>
+  $("found-body").innerHTML = `<p class="sub" style="margin:0 0 12px">${runLine} Rita searches your job sites (and Tim reads your job-alert emails) when you run the daily search; Tim sorts what they find.</p>
     ${fb.items.length ? `<h3 class="found-h">${dayWord(fb.day) === "this morning" ? "This morning" : `Found ${dayWord(fb.day)}`}: ${fb.added.length} added, ${fb.dismissed.length} dismissed</h3><div class="list">${[...fb.added, ...fb.pending, ...fb.dismissed].map(row).join("")}</div>` : emptyBox("Nothing new yet", "New finds appear here after the morning search.")}`;
 }
 document.addEventListener("click", (e) => {

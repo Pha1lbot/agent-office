@@ -3,7 +3,7 @@
 const AISLE = 8.6; // the walkway across the middle of the floor
 
 const LOOKS = [
-  { id: "cass", name: "Cass", role: "Chief of Staff", body: 0x5b6cff, hair: 0x3b2a1a, skin: 0xf1c7a1 },
+  { id: "cass", name: "Tim", role: "Chief of Staff", body: 0x5b6cff, hair: 0x3b2a1a, skin: 0xf1c7a1 },
   { id: "rita", name: "Rita", role: "Lead Recruiter", body: 0x3fae7a, hair: 0xa0522d, skin: 0xe8b48f },
   { id: "wren", name: "Wren", role: "Writer", body: 0xe08a3c, hair: 0x1c1c1c, skin: 0xc68a63 },
   { id: "cole", name: "Cole", role: "Interview Coach", body: 0xc2453a, hair: 0x6b4a2b, skin: 0xf0c29b },
@@ -13,7 +13,7 @@ const LOOKS = [
 // Areas of floor, drawn under everything.
 const ZONES = [
   { name: "floor", x: 0, z: 0, w: 24, d: 16, colour: 0xc9b79c }, // the whole floor first
-  { name: "office", x: 0, z: 0, w: 6, d: 6.4, colour: 0x8a5a3c }, // Cass's office: dark wood
+  { name: "office", x: 0, z: 0, w: 6, d: 6.4, colour: 0x8a5a3c }, // Tim's office: dark wood
   { name: "open", x: 6, z: 0, w: 18, d: 9.6, colour: 0xc9b79c }, // open plan: light oak
   { name: "kitchen", x: 0, z: 9.6, w: 8, d: 6.4, colour: 0xd9d4cc }, // kitchen: tiles
   { name: "lounge", x: 15, z: 9.6, w: 9, d: 6.4, colour: 0xb7a58c },
@@ -23,7 +23,7 @@ const ZONES = [
 
 // Furniture as boxes: x, z = back-left corner, w = along x, d = along z, h = height, y = lift off floor.
 const BOXES = [
-  // Cass's office
+  // Tim's office
   { kind: "desk", x: 1.4, z: 1.6, w: 2.4, d: 1.1, h: 0.75, colour: 0x6b4426 },
   { kind: "screen", x: 2.2, z: 2.45, w: 0.8, d: 0.08, h: 0.5, y: 0.75, colour: 0x22252f, faces: "back" },
   { kind: "cabinet", x: 0.2, z: 0.2, w: 1.6, d: 0.5, h: 1.2, colour: 0x5a3b22 },
@@ -56,7 +56,7 @@ const BOXES = [
   { kind: "plant", x: 15.4, z: 15.2, w: 0.7, d: 0.7, h: 1.4, colour: 0x3f8f5a },
 ];
 
-// Glass walls of Cass's office (with a door gap) and half-height kitchen screen.
+// Glass walls of Tim's office (with a door gap) and half-height kitchen screen.
 const GLASS = [
   { x: 6, z: 0, w: 0.08, d: 6.4 },
   { x: 0, z: 6.4, w: 3.4, d: 0.08 },

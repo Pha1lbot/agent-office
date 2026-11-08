@@ -2,12 +2,12 @@
 
 Formerly "Senior Admin". Named Wren on 2026-11-06.
 
-**Purpose:** writes a tailored CV and cover letter for each role Hal shortlists, from their CV text bank, in Hal's CV template.
+**Purpose:** writes a tailored CV and cover letter for each role Hal shortlists, from his CV text bank, in Hal's CV template.
 
-**Instructions:** `.claude/agents/writer.md` (a Claude Code subagent, model: Sonnet). Briefed by Cass, once per batch of roles.
+**Instructions:** `.claude/agents/writer.md` (a Claude Code subagent, model: Sonnet). Briefed by Tim, once per batch of roles.
 
 **Inputs**
-- Shortlisted role ids from Cass, or the changes Hal asked for in their own words.
+- Shortlisted role ids from Tim, or the changes Hal asked for in his own words.
 - `shared/job-search/cv/cv-bank.md` (never the PDF) and any `extra-*.md` files.
 - `shared/job-search/cv-rules.md` (Hal's writing rules).
 - `shared/job-search/cv/base-cv.json` (Hal's default CV in the template's format).

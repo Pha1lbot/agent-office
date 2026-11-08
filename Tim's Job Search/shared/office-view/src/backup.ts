@@ -22,8 +22,8 @@ export class Backup {
   /** Set while Chief of Staff is running: it commits its own work, so wait for it. */
   hold = false;
 
-  constructor(private repo: string | null, private files: string[], private onChange: () => void) {
-    if (!repo) this.status = { state: "off", at: 0, message: "Not in a git folder, so edits aren't backed up" };
+  constructor(private repo: string | null, private files: string[], private onChange: () => void, offMessage = "Not in a git folder, so edits aren't backed up") {
+    if (!repo) this.status = { state: "off", at: 0, message: offMessage };
   }
 
   /** Note an edit (e.g. "Hexagon World Series: approved") and save soon. */

@@ -5,7 +5,7 @@
 
 ## Purpose
 
-The change notes for work committed straight to `main` in Hal's Job Search: Cass's daily-run lines and small changes. It is separate from `main.md` (Tim's office) so the two offices never edit the same file. Everything else follows the rules in CLAUDE.md.
+The change notes for work committed straight to `main` in Hal's Job Search: changes Tim Everard makes to it. It is separate from `main.md` (Tim's office) so the two offices never edit the same file. Everything else follows the rules in CLAUDE.md.
 
 ## Change log
 

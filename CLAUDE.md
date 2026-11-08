@@ -17,15 +17,16 @@ Each office folder (`Tim's Job Search/`, `Hal's Job Search/`) has the same layou
 - jobs/ holds the job-search team's working data: the role tracker, the daily priority list and one folder per role with its advert summary, CV and cover letter.
 - .claude/ holds what Claude Code loads directly: subagent prompts in .claude/agents/ and skills (such as /cos) in .claude/skills/. Each one is documented by a README in its agents/ folder.
 
-The job-search team is Hal (Chief of Staff), Rita (Lead Recruiter), Wren (Writer), Cole (Interview Coach) and Ada (Admin, automation only) in Tim's office. In Hal's office the Chief of Staff is called Cass, so there aren't two Hals; the rest are the same. Their plan, including the token-saving rules, is in notes/plans/agent-office-v2.md.
+The job-search team is Hal (Chief of Staff), Rita (Lead Recruiter), Wren (Writer), Cole (Interview Coach) and Ada (Admin, automation only) in Tim's office. In Hal's office the Chief of Staff is called Tim, so there aren't two Hals; the rest are the same. In this file "Tim" always means the repo owner, Tim Everard. Their plan, including the token-saving rules, is in notes/plans/agent-office-v2.md.
 
 ## Two offices, one repo
 
 - **Work only in the office you were opened in.** In `Tim's Job Search/` that is Tim's data, and in `Hal's Job Search/` it is Hal's. Never read, copy from, edit or summarise the other office's folder, and never put one person's CV, preferences or role files in the other's folder.
 - Code and instructions that exist in both offices (the tools, the office view, the agent prompts) are kept as two copies, not shared, so each person can change theirs freely. When a fix is made in one office's code, tell the user it may need making in the other too, and note it in the branch notes. Don't change the other office's copy unless asked.
-- Hal's office is a copy of Tim's with the names changed (Tim to Hal, the Chief of Staff Hal to Cass). Hal's pronouns haven't been given: use "they", or just Hal's name.
-- Where the rules below say "Tim", read "the person whose office you are in" for anything about asking, telling or approving, and keep them to their own office. Changes to the repo-wide files at the top level (this file, README, `.github/`, `shared/tools/*.ps1`) are Tim's call: ask Tim, even in a session from Hal's office.
-- Daily-run lines ("Job search: daily search, N new leads") go in `notes/changes/main.md` for Tim's office and `notes/changes/main-hals-job-search.md` for Hal's, so the two offices' runs never edit the same file. Each office's other notes work as the rules below say.
+- Hal's office is a copy of Tim's with the names changed (the owner Tim becomes Hal, and the Chief of Staff Hal becomes Tim). Hal uses he/him.
+- **Hal's office never changes git.** Hal's PC only pulls, and his GitHub access should be read-only. His office's own saving to GitHub is off (`git_backup: false` in his `shared/job-search/settings.json`), and his Claude sessions may run only `git status` and `git pull`. All commits, pushes, branches and merges for the repo are made by Tim Everard, in sessions in his own office or the repo's top level. Hal's own files (CV, tracker, roles) therefore live only on his PC.
+- Where the rules below say "Tim", read "the person whose office you are in" for anything about asking, telling or approving, and keep them to their own office. The Backup routine, Never and Change notes rules below are for sessions that may use git (everything except Hal's office). Changes to the repo-wide files at the top level (this file, README, `.github/`, `shared/tools/*.ps1`) are Tim's call: ask Tim, even in a session from Hal's office.
+- Daily-run lines ("Job search: daily search, N new leads") go in `notes/changes/main.md` for Tim's office. Hal's office writes none (it doesn't commit); `notes/changes/main-hals-job-search.md` records changes made to Hal's office by Tim Everard.
 - GitHub gives both people access to the whole repo, so each can see the other's files. Don't put anything in the repo you wouldn't want the other to read.
 
 ## Working here

@@ -163,7 +163,7 @@ Open Claude Code in your office folder and say what you want, in your own words:
 
 > Add Reed and Totaljobs to my job sites and take Indeed off.
 
-Claude knows which files to change. Look at the result with `git diff` or just open the file and read it. If you don't like it, say so and it will fix it.
+Claude knows which files to change. Open the file afterwards and read what changed. If you don't like it, say so and Claude will fix it.
 
 ### Or by hand: the files
 
@@ -299,7 +299,7 @@ Put extra detail in `shared/job-search/cv/extra-<anything>.md` (for example `ext
 
 "Templates" here means the things the team produces: the CV design, the cover letter, the way CVs are written, the role summaries, the interview prep and the daily priority list. Each one is controlled by one file.
 
-> **Before you change anything:** make one change at a time, then test it on a single role (Section 8.7). If it goes wrong, you can always undo: `git checkout -- <file>` puts a file back to the last saved version, or ask Claude to "undo my last change to <file>".
+> **Before you change anything:** make one change at a time, then test it on a single role (Section 8.7). If it goes wrong, undo it: `git checkout -- <file>` puts a file back to the last saved version, or ask Claude to "undo my last change to <file>".
 
 | To change… | Edit | How |
 |---|---|---|
@@ -371,7 +371,7 @@ Change those definitions to make Rita stricter or more generous.
 1. In the office, add a real role (or use one you already have), or tell Hal: "Draft a CV and cover letter for <role> as a test."
 2. Open the role's page, and look at the CV, letter and PDF.
 3. Not right? Adjust the file, then click **Ask Wren for changes** or run the draft again.
-4. Happy? Carry on. Not happy? Undo the file change (see the note above).
+4. Happy? Carry on. Not happy? Put the file back (see the note above).
 
 ---
 
@@ -416,7 +416,7 @@ Guidelines:
 |---|---|
 | The office looks old, or the build dot isn't green | In PowerShell in the `agent-office` folder: `git status -sb`. The first line should say `main...origin/main`. If it names another branch, run `git checkout main`. Then `git pull`, close the black office window and open `Open Office.cmd` again from your office folder. |
 | "Smart App Control blocked Open Office.cmd" | Open it from PowerShell instead: `cd "<your office folder>\shared\office-view"`, then `npm install` (first time only), then `npm start`, and browse to http://127.0.0.1:4747. |
-| The automatic update stopped | Read the last lines of the log: `Get-Content $env:LOCALAPPDATA\agent-office-sync.log -Tail 5`. Git needs you to sign in once: in `agent-office`, run `git fetch` and sign in when asked. |
+| The automatic update stopped | Read the last lines of the log: `Get-Content $env:LOCALAPPDATA\agent-office-sync.log -Tail 5`. Git needs you to sign in once: in `agent-office`, run `git fetch` and sign in when asked.  |
 | Hal says a file is still a blank template | Open the file it names and fill it in (section 3 or 7). The line "please fill this in" must be removed. |
 | Wren's CV runs to three pages | Ask Wren for changes: "shorten the profile and the older jobs so it fits two pages". Or shorten `base-cv.json`. |
 | A CV or letter has a fact-check warning | Ada found something that isn't in your CV bank. If it's true, add it to `cv-bank.md` or an `extra-*.md` file and redraft. If it's wrong, ask Wren to remove it. |

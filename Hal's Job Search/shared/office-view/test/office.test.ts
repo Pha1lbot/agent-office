@@ -146,6 +146,6 @@ test("Ada shows as working while a script runs, then idle", () => {
 test("the team has names and job titles", () => {
   const o = new Office(0);
   assert.deepEqual(o.snapshot().map((a) => `${a.name} (${a.role})`), [
-    "Cass (Chief of Staff)", "Rita (Lead Recruiter)", "Wren (Writer)", "Cole (Interview Coach)", "Ada (Admin (automatic))",
+    "Tim (Chief of Staff)", "Rita (Lead Recruiter)", "Wren (Writer)", "Cole (Interview Coach)", "Ada (Admin (automatic))",
   ]);
 });

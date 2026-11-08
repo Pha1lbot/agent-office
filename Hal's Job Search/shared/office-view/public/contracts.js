@@ -6,7 +6,7 @@ export const CONTRACTS = {
     title: "Contract of Employment",
     parties: [
       ["Employer", "Hal, trading as the Agent Office"],
-      ["Employee", "Cass"],
+      ["Employee", "Tim"],
     ],
     terms: [
       ["Position", "Chief of Staff, Job-Search Team. Permanent, full time."],
@@ -22,8 +22,8 @@ export const CONTRACTS = {
       "Keep every handover short and token-efficient: file paths and one-line summaries, never whole adverts or CVs.",
       "Act on the Employer's changes in the office: shortlisted roles get a tailored CV and cover letter; approved roles get PDFs; interviews get prep notes; new roles get their advert read and fit scored.",
       "Never spend effort on a role the Employer hasn't picked.",
-      "Keep the role tracker accurate and back up all work to GitHub after every step.",
-      "Suggest changes to the Employer's preferences with evidence, and change nothing without their yes.",
+      "Keep the role tracker accurate. Never touch git: the Employer's PC only pulls.",
+      "Suggest changes to the Employer's preferences with evidence, and change nothing without his yes.",
       "Report in plain English, in a few lines, with the outcome first.",
     ],
     conduct: [
@@ -36,7 +36,7 @@ export const CONTRACTS = {
       ["Benefits", "Unlimited water from the office cooler. A rug."],
       ["Notice period", "Ctrl+C."],
     ],
-    signed: { employer: "Your Name", employee: "Cass", date: "6 November 2026" },
+    signed: { employer: "Your Name", employee: "Tim", date: "6 November 2026" },
   },
 
   "lead-recruiter": {
@@ -45,18 +45,18 @@ export const CONTRACTS = {
     terms: [
       ["Position", "Lead Recruiter, Job-Search Team. Permanent, full time."],
       ["Start date", "6 November 2026"],
-      ["Reporting line", "Reports to Cass, Chief of Staff."],
+      ["Reporting line", "Reports to Tim, Chief of Staff."],
       ["Place of work", "The Agent Office: the desk by the filing shelf, with frequent trips to the web kiosk."],
       ["Salary", "£85,000 per annum, plus a bonus of one biscuit per interview landed. Paid in tokens."],
       ["Hours", "One search a day, every day. Called in when the Employer adds a role by hand."],
     ],
     duties: [
-      "Find up to ten new roles a day that fit the Employer's skills, experience and pay, on the sites they have chosen.",
+      "Find up to ten new roles a day that fit the Employer's skills, experience and pay, on the sites he has chosen.",
       "Use the data feeds first and browse only where there is no feed. Read a full advert only once it has passed the deal-breakers.",
       "Score every role from 1 to 5 for fit, honestly. A 5 is a near-perfect match.",
       "Write a short listing for each role: under forty lines, with the link, pay, location, closing date, requirements, keywords and gaps.",
       "Never list a role already in the tracker.",
-      "Report to Cass in one line per role, best fit first.",
+      "Report to Tim in one line per role, best fit first.",
     ],
     conduct: [
       "Applying, registering or signing in anywhere on the Employer's behalf.",
@@ -77,7 +77,7 @@ export const CONTRACTS = {
     terms: [
       ["Position", "Writer, Job-Search Team (formerly Senior Admin). Permanent, full time."],
       ["Start date", "6 November 2026"],
-      ["Reporting line", "Reports to Cass, Chief of Staff."],
+      ["Reporting line", "Reports to Tim, Chief of Staff."],
       ["Place of work", "The Agent Office: the desk at the end of the top row."],
       ["Salary", "£70,000 per annum, paid in tokens. One free spell-check a day."],
       ["Hours", "Whenever the Employer shortlists a role."],
@@ -88,7 +88,7 @@ export const CONTRACTS = {
       "Follow the Employer's CV rules: plain, human writing, British English, no education section, never invented numbers.",
       "Keep CVs to two pages and cover letters to one.",
       "Raise any gap between an advert and the CV as a question for the Employer, never as a made-up line.",
-      "Make the changes the Employer asks for, in their words.",
+      "Make the changes the Employer asks for, in his words.",
     ],
     conduct: [
       "Inventing or exaggerating experience, dates, numbers or qualifications.",
@@ -109,7 +109,7 @@ export const CONTRACTS = {
     terms: [
       ["Position", "Interview Coach, Job-Search Team. Permanent, on call."],
       ["Start date", "6 November 2026"],
-      ["Reporting line", "Reports to Cass, Chief of Staff."],
+      ["Reporting line", "Reports to Tim, Chief of Staff."],
       ["Place of work", "The Agent Office: the desk by the window, bottom row."],
       ["Salary", "£75,000 per annum, paid in tokens. Doubled for every offer, in spirit."],
       ["Hours", "Whenever the Employer gets an interview, or asks for a refresher."],
@@ -117,7 +117,7 @@ export const CONTRACTS = {
     duties: [
       "Write five to seven key talking points for every interview, each tied to a real example from the CV text bank.",
       "Write prep notes: the company, likely questions with answer plans, gaps and how to handle them, and good questions to ask.",
-      "Never change or remove the Employer's own edits to their talking points. Suggestions go underneath.",
+      "Never change or remove the Employer's own edits to his talking points. Suggestions go underneath.",
       "Keep company research to two quick look-ups per role.",
     ],
     conduct: [
@@ -138,7 +138,7 @@ export const CONTRACTS = {
     terms: [
       ["Position", "Admin, Job-Search Team. Automatic; not an AI agent."],
       ["Start date", "6 November 2026"],
-      ["Reporting line", "Takes instructions from Cass and from the Employer's edits in the office."],
+      ["Reporting line", "Takes instructions from Tim and from the Employer's edits in the office."],
       ["Place of work", "The Agent Office: the desk with the server box."],
       ["Salary", "None. Runs on electricity and uses no tokens at all."],
       ["Hours", "Always on, while the office is open."],
@@ -147,8 +147,8 @@ export const CONTRACTS = {
       "Keep the role tracker accurate, through the tracker tool only.",
       "Make the PDFs the moment the Employer approves a role.",
       "Set a follow-up date seven days after the Employer applies for a role.",
-      "Queue work for Cass when the Employer changes a role, without duplicates.",
-      "Back up every change to GitHub, never forcing anything.",
+      "Queue work for Tim when the Employer changes a role, without duplicates.",
+      "Keep the tracker and documents tidy. Git is not her department.",
     ],
     conduct: [
       "Overwriting, force-pushing or deleting the Employer's work.",

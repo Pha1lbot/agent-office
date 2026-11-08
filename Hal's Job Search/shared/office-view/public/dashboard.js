@@ -1,5 +1,5 @@
 // Roles view: a board (a column per stage) and a sortable list of every role,
-// with the key details at a glance. Also the strip (Cass, backup, tokens), the
+// with the key details at a glance. Also the strip (Tim, backup, tokens), the
 // "Waiting on you" box, and the edit and add-role dialogs.
 import { store, on, roleById, queuedFor } from "./store.js";
 import {
@@ -12,9 +12,9 @@ const COLUMNS = ["shortlisted", "drafted", "approved", "applied", "interview", "
 const LEAD = new Set(["found", "skipped"]);
 const REASON_STATUSES = new Set(["skipped", "rejected"]);
 const HAL_TASK = {
-  shortlisted: "Cass will get Wren to draft a tailored CV and cover letter.",
+  shortlisted: "Tim will get Wren to draft a tailored CV and cover letter.",
   approved: "Ada will make the final PDFs straight away (or Wren drafts first if there are no Word files yet).",
-  interview: "Cass will get Cole to write your key talking points and prep notes.",
+  interview: "Tim will get Cole to write your key talking points and prep notes.",
   applied: "Ada will set a follow-up date for a week from today.",
 };
 const ui = { view: "board", q: "", list: "", style: "", sort: "priority", dir: 1, closedOpen: false };
@@ -52,7 +52,7 @@ function card(r) {
     ${iv}
     ${["found", "shortlisted"].includes(r.status) ? "" : docTicks(r.id)}
     ${r.next ? `<div class="next ${late ? "late" : ""}" title="${esc(r.next)}">${late ? "⚠ " : ""}${esc(r.next)}</div>` : ""}
-    ${halOn(r) ? `<div class="cass-on">● Cass is on it</div>` : ""}
+    ${halOn(r) ? `<div class="cass-on">● Tim is on it</div>` : ""}
     ${store.system.editing ? `<select class="card-status" data-id="${esc(r.id)}" aria-label="Move ${esc(r.title)}">${STATUS_ORDER.map((st) => `<option value="${st}"${st === r.status ? " selected" : ""}>${STATUS_LABEL[st]}</option>`).join("")}</select>` : ""}
   </article>`;
 }
@@ -105,7 +105,7 @@ function renderList(roles) {
       <td class="docs-cell">${d.cv ? "CV " : ""}${d.letter ? "Letter " : ""}${d.cvPdf ? "PDF " : ""}${d.attachments ? `📎${d.attachments}` : ""}</td>
       <td class="next ${overdue(r.next) ? "late" : ""}" title="${esc(r.next)}">${esc(r.next)}</td>
       <td>${esc(shortDate(r.updated))}${url ? ` <a href="${esc(url)}" target="_blank" rel="noopener" title="Open the advert">↗</a>` : ""}</td></tr>`;
-  }).join("") : `<tr><td colspan="12" class="empty">${(store.tracker.roles || []).length ? "No roles match." : "No roles yet. Run /cass start the day in Claude Code."}</td></tr>`;
+  }).join("") : `<tr><td colspan="12" class="empty">${(store.tracker.roles || []).length ? "No roles match." : "No roles yet. Run /tim start the day in Claude Code."}</td></tr>`;
 }
 
 export function renderPipeline() {
@@ -215,12 +215,12 @@ function renderTodo() {
   const todo = (store.tracker.actions || []).filter((a) => !a.done).length;
   if (todo) items.push(`<a href="#actions">${todo} next action${todo > 1 ? "s" : ""}</a>`);
   const queued = (store.tracker.inbox || []).filter((i) => !i.done).length;
-  if (queued) items.push(`${queued} request${queued > 1 ? "s" : ""} queued for Cass`);
+  if (queued) items.push(`${queued} request${queued > 1 ? "s" : ""} queued for Tim`);
   $("todo").classList.toggle("clear", !items.length);
   $("todo-list").innerHTML = items.length ? items.map((i) => `<li>${i}</li>`).join("") : `<li class="sub">Nothing waiting on you.</li>`;
 }
 
-// ---------- Strip: backup, Cass, tokens ----------
+// ---------- Strip: backup, Tim, tokens ----------
 function renderSystem() {
   const system = store.system;
   const parts = [];
@@ -230,7 +230,7 @@ function renderSystem() {
   }
   const c = system.cos;
   if (!system.editing) parts.push("<span>Viewing only: editing needs Python 3 on this PC.</span>");
-  else if (!c?.available) parts.push("<span><b>Cass</b>: Claude Code isn't installed here, so run /cass yourself.</span>");
+  else if (!c?.available) parts.push("<span><b>Tim</b>: Claude Code isn't installed here, so run /tim yourself.</span>");
   else {
     let state;
     if (c.running) state = `working on ${c.inbox} request${c.inbox === 1 ? "" : "s"}…`;
@@ -238,7 +238,7 @@ function renderSystem() {
     else if (c.inbox) state = `${c.inbox} request${c.inbox === 1 ? "" : "s"} waiting`;
     else state = c.last ? `${esc(c.last.message)} ${clock(c.last.at)}` : "nothing to do";
     const err = c.last && !c.last.ok && !c.running && !c.startsAt;
-    parts.push(`<span class="${err ? "err" : ""}"><b>Cass</b>: ${state}</span>`);
+    parts.push(`<span class="${err ? "err" : ""}"><b>Tim</b>: ${state}</span>`);
     parts.push(`<span>${c.runsToday} of ${c.maxPerDay} automatic runs today</span>`);
     if (c.inbox && !c.running) parts.push(`<button type="button" data-cos="run">Run now</button>`);
     parts.push(`<button type="button" data-cos="auto" aria-pressed="${c.auto}">Auto start: ${c.auto ? "on" : "off"}</button>`);
@@ -282,7 +282,7 @@ function editHints() {
   const cos = store.system.cos;
   const needsHal = ["shortlisted", "interview"].includes(st);
   $("edit-hint").textContent = changed && HAL_TASK[st]
-    ? HAL_TASK[st] + (needsHal ? (cos?.available && cos.auto ? " Cass starts automatically a couple of minutes after your last change." : " Run /cass in Claude Code to start Cass.") : "")
+    ? HAL_TASK[st] + (needsHal ? (cos?.available && cos.auto ? " Tim starts automatically a couple of minutes after your last change." : " Run /tim in Claude Code to start Tim.") : "")
     : "";
 }
 editForm.elements.status.addEventListener("change", editHints);
@@ -299,7 +299,7 @@ editForm.addEventListener("submit", async (e) => {
   try {
     const out = await post(`/api/roles/${editing.id}`, { changes, advert });
     $("edit-dlg").close();
-    if (out.read) alert("Saved. Rita will read the advert and Cass will give a fresh verdict.");
+    if (out.read) alert("Saved. Rita will read the advert and Tim will give a fresh verdict.");
   }
   catch (err) { $("edit-err").textContent = err.message; }
 });

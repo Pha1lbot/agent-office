@@ -67,7 +67,7 @@ async function day() {
     await tool("Write", "jobs/roles/northwind-bi-analyst/listing.md", 2500, r);
   });
 
-  // Cass adds the roles directly; Ada (automation) shows the tracker being updated.
+  // Tim adds the roles directly; Ada (automation) shows the tracker being updated.
   await tool("Bash", "Add 8 new roles to the tracker", 2500);
   await tool("Bash", "Updating the tracker", 1500, "admin");
 

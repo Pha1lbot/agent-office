@@ -7,7 +7,7 @@ import { riskyGit } from "../hooks/guard.mjs";
 
 const GUARD = fileURLToPath(new URL("../hooks/guard.mjs", import.meta.url));
 
-test("lets through the git commands Cass uses every day", () => {
+test("lets through the git commands Tim uses every day", () => {
   for (const cmd of [
     "git status",
     "git pull",
@@ -88,7 +88,7 @@ function runHook(env: Record<string, string>, command: string) {
 test("as a hook: refuses with exit code 2 only in automatic runs", () => {
   const blocked = runHook({ OFFICE_AUTO_RUN: "1" }, "git push --force");
   assert.equal(blocked.status, 2);
-  assert.match(blocked.stderr, /Blocked in Cass's automatic run/);
+  assert.match(blocked.stderr, /Blocked in Tim's automatic run/);
 
   assert.equal(runHook({ OFFICE_AUTO_RUN: "1" }, "git push").status, 0);
   assert.equal(runHook({ OFFICE_AUTO_RUN: "" }, "git push --force").status, 0); // Hal's own sessions

@@ -496,14 +496,18 @@ if (codeRepo) {
 }
 let adaSaving = false;
 // Back up the whole jobs folder: the tracker plus PDFs and other files the office makes.
-backup = new Backup(gitRepo, [dirname(TRACKER), CV_RULES], () => {
+// shared/job-search/settings.json can switch the office's own saving to GitHub off ("git_backup": false),
+// for a PC that only pulls and where someone else looks after the repo.
+let gitBackup = true;
+try { gitBackup = JSON.parse(readFileSync(join(REPO, "shared", "job-search", "settings.json"), "utf8")).git_backup !== false; } catch { /* no settings: back up */ }
+backup = new Backup(gitBackup ? gitRepo : null, [dirname(TRACKER), CV_RULES], () => {
   pushSystem();
   const saving = backup?.status.state === "saving";
   if (saving !== adaSaving) {
     adaSaving = saving;
     pushAgents(office.ada(saving, saving ? "Backing up to GitHub" : backup.status.message));
   }
-});
+}, gitBackup ? undefined : "Saving to GitHub is off in this office; edits stay on this PC");
 const python = await findPython(REPO);
 if (python) tool = new Tracker(python, REPO, TRACKER);
 else console.log("Python 3 not found: the office will show roles but can't edit them. Install Python from python.org.");

@@ -112,7 +112,7 @@ function renderHeaderBits() {
   const el = $("role-cass");
   if (!el || !current?.data) return;
   const q = queuedFor(current.id);
-  el.innerHTML = q.length ? `<span class="cass-on" title="${esc(q.map((i) => i.task).join("; "))}">● Cass is on it${store.system.cos?.running ? " now" : ""}</span>` : "";
+  el.innerHTML = q.length ? `<span class="cass-on" title="${esc(q.map((i) => i.task).join("; "))}">● Tim is on it${store.system.cos?.running ? " now" : ""}</span>` : "";
 }
 function renderNotice() {
   const el = $("role-notice");
@@ -127,10 +127,10 @@ function overview() {
   const asked = queuedFor(role.id).some((i) => /verdict|read the advert/i.test(i.task));
   const verdict = `
     <section class="panel verdict-panel">
-      <h3>Cass's verdict: worth applying?</h3>
+      <h3>Tim's verdict: worth applying?</h3>
       ${role.verdict ? `<p class="verdict-line">${verdictBadge(role, "")} ${esc(role.verdict_why || "")}</p><p class="muted">Rita's reasons for and against are under "The role, from Rita".</p>`
         : `<p class="muted">No verdict yet.</p>`}
-      ${asked ? `<p class="cass-on">● Cass is on it</p>` : editing ? `<button type="button" class="btn${role.verdict ? "" : " primary"}" data-request="verdict">${role.verdict ? "Ask again" : "Ask Cass: worth applying?"}</button>` : ""}
+      ${asked ? `<p class="cass-on">● Tim is on it</p>` : editing ? `<button type="button" class="btn${role.verdict ? "" : " primary"}" data-request="verdict">${role.verdict ? "Ask again" : "Ask Tim: worth applying?"}</button>` : ""}
     </section>`;
   const advert = !texts["listing.md"] && texts["advert.txt"]
     ? `<h4>The advert you pasted</h4><pre class="advert">${esc(texts["advert.txt"])}</pre>` : "";
@@ -172,7 +172,7 @@ function documents() {
   const attachments = files.filter((f) => f.name.startsWith("attachments/"));
   const nothing = !docs.cv && !docs.letter;
   return `
-    ${nothing ? `<div class="panel callout"><p>Nothing drafted yet.</p>${editing && role.status === "found" ? `<button type="button" class="btn primary" data-status="shortlisted">Shortlist this role: Wren drafts a CV and letter</button>` : role.status === "shortlisted" || role.status === "drafted" ? `<p class="muted">Wren drafts a CV and letter when Cass next runs.</p>` : ""}</div>` : ""}
+    ${nothing ? `<div class="panel callout"><p>Nothing drafted yet.</p>${editing && role.status === "found" ? `<button type="button" class="btn primary" data-status="shortlisted">Shortlist this role: Wren drafts a CV and letter</button>` : role.status === "shortlisted" || role.status === "drafted" ? `<p class="muted">Wren drafts a CV and letter when Tim next runs.</p>` : ""}</div>` : ""}
     ${texts["notes.md"] ? `<section class="panel md notes"><h3>Notes: Wren's questions and Ada's fact check</h3>${md(texts["notes.md"])}</section>` : ""}
     <div class="docs-grid">${doc("CV", "cv.md", "cv.docx", "cv.pdf")}${doc("Cover letter", "cover-letter.md", "cover-letter.docx", "cover-letter.pdf")}</div>
     <div class="ov-grid">
@@ -229,8 +229,8 @@ function activity() {
   const events = [
     ...(role.history || []).map((h) => ({ when: h.date, text: `${h.by === "tim" ? "You" : "The team"} moved it to ${STATUS_LABEL[h.status] || h.status}` })),
     ...(store.tracker.inbox || []).filter((i) => i.role === role.id).flatMap((i) => [
-      { when: i.at, text: `Asked Cass: ${i.task}` },
-      ...(i.done && i.handled ? [{ when: i.handled, text: `Cass finished: ${i.task}` }] : []),
+      { when: i.at, text: `Asked Tim: ${i.task}` },
+      ...(i.done && i.handled ? [{ when: i.handled, text: `Tim finished: ${i.task}` }] : []),
     ]),
     ...(current.data.files || []).filter((f) => !f.name.startsWith("listing")).map((f) => ({ when: new Date(f.modified).toISOString(), text: `${f.name.startsWith("attachments/") ? "Attached" : "Saved"} ${f.name.replace("attachments/", "")}` })),
   ].sort((a, b) => String(b.when).localeCompare(String(a.when)));
@@ -262,14 +262,14 @@ page.addEventListener("click", async (e) => {
   if (req) {
     const kind = req.dataset.request;
     if (kind === "verdict") {
-      try { await post(`/api/roles/${current.id}/request`, { kind }); say("Sent: Cass will ask Rita whether it's worth applying for."); }
+      try { await post(`/api/roles/${current.id}/request`, { kind }); say("Sent: Tim will ask Rita whether it's worth applying for."); }
       catch (err) { say(err.message); }
       return;
     }
     const box = kind === "revise" ? $("revise") : $("prep-note");
     const msg = $(kind === "revise" ? "revise-msg" : "prep-msg");
     if (kind === "revise" && !box.value.trim()) { msg.textContent = "Say what you'd like changed first."; return; }
-    try { await post(`/api/roles/${current.id}/request`, { kind, text: box.value.trim() }); box.value = ""; say(kind === "revise" ? "Sent: Cass will brief Wren with your changes." : "Sent: Cass will brief Cole to refresh your prep."); }
+    try { await post(`/api/roles/${current.id}/request`, { kind, text: box.value.trim() }); box.value = ""; say(kind === "revise" ? "Sent: Tim will brief Wren with your changes." : "Sent: Tim will brief Cole to refresh your prep."); }
     catch (err) { msg.textContent = err.message; }
     return;
   }

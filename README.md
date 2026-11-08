@@ -10,7 +10,7 @@ Claude Code agents and their setup, as two job-search offices side by side.
 | `shared/tools/` | Windows scripts that keep this whole copy of the repo up to date and set up a new PC | below |
 | `notes/` | Plans and per-branch change notes | |
 
-Each office folder has the same layout: `GUIDE.md` (the plain-English guide), `agents/` (one folder per agent, with a README saying what it does), `.claude/` (the agents' prompts, where Claude Code finds them), `shared/` (conventions, tools, the office view and job-search settings) and `jobs/` (the tracker, daily list and documents). **Open Claude Code and the office from inside your own office folder.** Only the Chief of Staff's name differs: Hal in Tim's office, Cass in Hal's, so there aren't two Hals.
+Each office folder has the same layout: `GUIDE.md` (the plain-English guide), `agents/` (one folder per agent, with a README saying what it does), `.claude/` (the agents' prompts, where Claude Code finds them), `shared/` (conventions, tools, the office view and job-search settings) and `jobs/` (the tracker, daily list and documents). **Open Claude Code and the office from inside your own office folder.** Only the Chief of Staff's name differs: Hal in Tim's office, Tim in Hal's, so there aren't two Hals.
 
 Both people can read the whole repo (GitHub can't restrict a folder), so keep out of each other's folder and put nothing in it you wouldn't want the other to see. The rules for working in a shared repo are in `CLAUDE.md`.
 
@@ -70,7 +70,7 @@ Keep each PC on `main`. When Claude needs a branch on your PC, it works in a sep
 
 ### Each day
 
-Open Claude Code in your office folder (for example `cd "Tim's Job Search"`, then `claude`; keep the quotes) and type `/cos` (Tim's office also answers to `/hal`; Hal's to `/cass`):
+Open Claude Code in your office folder (for example `cd "Tim's Job Search"`, then `claude`; keep the quotes) and type `/cos` (Tim's office also answers to `/hal`; Hal's to `/tim`):
 
 - `/cos start the day`: finds new roles, ranks them and asks which to go for.
 - Reply with the roles you want: CVs and cover letters are drafted as Word files in `jobs/roles/<role>/`.

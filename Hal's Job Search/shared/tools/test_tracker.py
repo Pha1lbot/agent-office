@@ -63,13 +63,13 @@ class TrackerTests(unittest.TestCase):
         self.finds([{"title": "Head of Events", "company": "Beta", "fit": "strong", "why": "Live events, London"},
                     {"title": "Junior Runner", "company": "Delta", "fit": "weak", "pay": "£24k"}])
         lead = self.run_t("found", "take", "f1", "--as", "lead")
-        gone = self.run_t("found", "take", "f2", "--as", "dismissed", "--reason", "Cass: pay under £50k")
+        gone = self.run_t("found", "take", "f2", "--as", "dismissed", "--reason", "Tim: pay under £50k")
         data = __import__("json").loads((Path(self.dir) / "tracker.json").read_text())
         roles = {r["id"]: r for r in data["roles"]}
         self.assertEqual((roles[lead]["status"], roles[lead]["verdict"], roles[lead]["fit"]), ("found", "apply", 4))
         self.assertEqual(roles[lead]["history"][0]["by"], "cass")
         self.assertTrue(roles[lead]["priority"])  # ranked with the other leads
-        self.assertEqual((roles[gone]["status"], roles[gone]["verdict"], roles[gone]["reason"]), ("skipped", "skip", "Cass: pay under £50k"))
+        self.assertEqual((roles[gone]["status"], roles[gone]["verdict"], roles[gone]["reason"]), ("skipped", "skip", "Tim: pay under £50k"))
         self.assertEqual(self.run_t("found", "list", "--pending"), "")
         out = subprocess.run([sys.executable, str(TRACKER), "found", "take", "f1", "--as", "lead"], env=self.env, capture_output=True, text=True)
         self.assertNotEqual(out.returncode, 0)  # can't take twice

@@ -1,8 +1,8 @@
 # Hal's job preferences
 
-**Hal: please fill this in.** This is the file that tells the team what to look for. Rita (Lead Recruiter) and Cass (Chief of Staff) read it to choose and rank roles. Short bullet points are fine, and you can change it whenever your search changes: see `GUIDE.md` in this folder, "Changing your search".
+**Hal: please fill this in.** This is the file that tells the team what to look for. Rita (Lead Recruiter) and Tim (Chief of Staff) read it to choose and rank roles. Short bullet points are fine, and you can change it whenever your search changes: see `GUIDE.md` in this folder, "Changing your search".
 
-Delete this line and the line above once you have filled it in. Cass checks that you have.
+Delete this line and the line above once you have filled it in. Tim checks that you have.
 
 ## Roles I want
 - Job titles:

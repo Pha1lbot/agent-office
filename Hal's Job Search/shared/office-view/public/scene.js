@@ -221,7 +221,7 @@ function buildRoom() {
   mesh(new THREE.BoxGeometry(1.3, 2.3, 0.05), mat(0x2f3340), 15.8, 1.15, 0.02, wallSets.back);
   for (const dx of [-0.7, 0.7]) mesh(new THREE.BoxGeometry(0.1, 2.4, 0.12), mat(0xc8964f), 15.8 + dx, 1.2, 0.05, wallSets.back);
   mesh(new THREE.BoxGeometry(1.5, 0.1, 0.12), mat(0xc8964f), 15.8, 2.4, 0.05, wallSets.back);
-  // Whiteboard in Cass's office
+  // Whiteboard in Tim's office
   const board = canvasTex(384, 240, (g, w, h) => {
     g.fillStyle = "#f7f7f5"; g.fillRect(0, 0, w, h); g.strokeStyle = "#5b4bff"; g.lineWidth = 4;
     const n = [[70, 70], [150, 120], [70, 170], [230, 70]];
@@ -233,14 +233,14 @@ function buildRoom() {
   mesh(new THREE.BoxGeometry(0.06, 1.2, 1.9), [new THREE.MeshStandardMaterial({ map: board }), grey, grey, grey, grey, grey], 0.05, 1.7, 3.6, wallSets.left); // the board faces into the room (+x)
   walls();
 
-  // ---------- Glass office for Cass ----------
+  // ---------- Glass office for Tim ----------
   const glass = new THREE.MeshPhysicalMaterial({ color: 0xdff0ff, transmission: 0.7, opacity: 0.28, transparent: true, roughness: 0.05 });
   for (const gl of GLASS) {
     const w = Math.max(gl.w, 0.04), d = Math.max(gl.d, 0.04), cx = gl.x + gl.w / 2, cz = gl.z + gl.d / 2;
     mesh(new THREE.BoxGeometry(w, 2.5, d), glass, cx, 1.25, cz).castShadow = false;
     for (const y of [0.04, 2.5]) mesh(new THREE.BoxGeometry(Math.max(w, 0.08), 0.08, Math.max(d, 0.08)), mat(0x2a2e39), cx, y, cz);
   }
-  const plate = canvasTex(320, 64, (g) => { g.fillStyle = "#2a2e39"; g.fillRect(0, 0, 320, 64); g.fillStyle = "#fff"; g.font = "700 30px system-ui"; g.textAlign = "center"; g.fillText("CASS · Chief of Staff", 160, 43); });
+  const plate = canvasTex(320, 64, (g) => { g.fillStyle = "#2a2e39"; g.fillRect(0, 0, 320, 64); g.fillStyle = "#fff"; g.font = "700 30px system-ui"; g.textAlign = "center"; g.fillText("TIM · Chief of Staff", 160, 43); });
   mesh(new THREE.PlaneGeometry(1.9, 0.38), new THREE.MeshBasicMaterial({ map: plate }), 4.2, 2.25, 6.46);
 
   // ---------- Furniture ----------

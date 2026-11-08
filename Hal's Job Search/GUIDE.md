@@ -23,11 +23,11 @@ A plain-English guide to your job-search office. You don't need to be technical.
 
 Hal's Job Search is a small team of AI helpers that do the repetitive parts of looking for a job, so you can spend your time on the parts that need you: choosing roles, checking what is written about you, applying and interviewing.
 
-You talk to one of them, Cass. Cass runs the rest.
+You talk to one of them, Tim. Tim runs the rest. (Your Chief of Staff is called Tim. He is a member of your team, not the Tim Everard who set this office up; in this guide, "Tim Everard" always means the person, and "Tim" the Chief of Staff.)
 
 | Who | Job | What they do for you |
 |---|---|---|
-| **Cass**, Chief of Staff | The one you talk to | Runs the team, decides what to do first each day, keeps the tracker up to date, learns what you like and suggests changes to your preferences. |
+| **Tim**, Chief of Staff | The one you talk to | Runs the team, decides what to do first each day, keeps the tracker up to date, learns what you like and suggests changes to your preferences. |
 | **Rita**, Lead Recruiter | Finds roles | Searches the job sites you list, reads adverts, scores how well each fits you (1 to 5) and says whether it is worth applying for: Apply, Maybe or Skip. |
 | **Wren**, Writer | Writes your applications | Writes a tailored CV and cover letter for each role you shortlist, using only true things from your CV. |
 | **Cole**, Interview Coach | Prepares you | When you get an interview, writes prep notes (likely questions, gaps, questions to ask) and key talking points. |
@@ -51,6 +51,7 @@ Everything is in plain files in this folder. Here is the map, with the files **y
 ```
 Hal's Job Search/
 ├─ GUIDE.md                       ← this guide
+├─ GET-THE-OFFICE.md              ← how to get the office onto a PC
 ├─ CLAUDE.md                      ← short instructions Claude reads when you open this folder
 ├─ shared/
 │  ├─ job-search/                 ← ABOUT YOU: what you want, where to look, your CV
@@ -68,11 +69,11 @@ Hal's Job Search/
 ├─ agents/                        ← a short README for each team member (what they do)
 ├─ .claude/
 │  ├─ agents/                     ✏️ the instructions each member follows: Rita, Wren, Cole
-│  └─ skills/                     ✏️ Cass's instructions (cos/SKILL.md) and the /cass shortcut
+│  └─ skills/                     ✏️ Tim's instructions (cos/SKILL.md) and the /tim shortcut
 └─ jobs/                          ← YOUR WORKING DATA (the team writes here)
    ├─ tracker.json / tracker.md   ← every role and where it stands (don't edit by hand)
-   ├─ today.md                    ← Cass's priorities for the day
-   ├─ preference-reviews.md       ← suggestions Cass has made about your preferences
+   ├─ today.md                    ← Tim's priorities for the day
+   ├─ preference-reviews.md       ← suggestions Tim has made about your preferences
    └─ roles/<role>/               ← one folder per role: listing, CV, cover letter, PDFs, prep
 ```
 
@@ -87,45 +88,13 @@ The folder above this one (the whole `agent-office` repo) also holds another per
 
 Do this once. Allow about 30 minutes, most of it waiting for installs. You need a Windows PC, an internet connection and a Claude account that can use Claude Code.
 
-### Step 1: get access to the repo
+### Step 1: get the office onto your PC
 
-Tim adds you to the private GitHub repo (`github.com/Pha1lbot/agent-office`). Accept the invitation from the email GitHub sends, signed in with your own GitHub account (free to make at github.com).
+Follow **`GET-THE-OFFICE.md`** (it is in this folder, and Tim Everard can send it to you before you have anything installed). It takes you from nothing to a working office: GitHub access, Git, downloading the repo, the setup script and Claude Code. Come back here when the office opens.
 
-### Step 2: install Git and download the repo
+### Step 2: fill in the starter files
 
-Open **PowerShell** (press the Windows key, type `PowerShell`, press Enter) and run these one at a time:
-
-```
-winget install --id Git.Git -e
-```
-
-Close PowerShell and open it again, then:
-
-```
-cd $HOME\Documents
-git clone https://github.com/Pha1lbot/agent-office.git
-cd agent-office
-```
-
-A GitHub sign-in window opens the first time; sign in. You now have a folder `Documents\agent-office`. Your office is the folder inside it called **Hal's Job Search**.
-
-### Step 3: run the setup script
-
-Still in PowerShell, in the `agent-office` folder:
-
-```
-powershell -ExecutionPolicy Bypass -File shared\tools\setup-pc.ps1
-```
-
-It installs what is missing (Node.js, Python, pandoc, LibreOffice), asks for your name and email for GitHub backups, installs the office's packages and switches on an automatic update from GitHub every 5 minutes. It is safe to run again.
-
-### Step 4: install Claude Code
-
-Follow https://code.claude.com/docs/en/setup, then type `claude` once in PowerShell and sign in.
-
-### Step 5: fill in the starter files
-
-Right now your office is a blank template. The team will refuse to start until the first four of these are filled in (Cass checks for the words "please fill this in" or "please replace" at the top of each, so delete that line when you're done):
+Right now your office is a blank template. The team will refuse to start until the first four of these are filled in (Tim checks for the words "please fill this in" or "please replace" at the top of each, so delete that line when you're done):
 
 | Order | File | What goes in it | Section of this guide |
 |---|---|---|---|
@@ -148,15 +117,15 @@ claude
 
 Do the same for sources.md. For the CV, see [section 7](#7-your-cv).
 
-### Step 6: try it
+### Step 3: try it
 
 In Claude Code, in your office folder, type:
 
 ```
-/cass start the day
+/tim start the day
 ```
 
-Cass will check your setup, run a search and write `jobs/today.md`. Then open the office: double-click `shared\office-view\Open Office.cmd`.
+Tim will check your setup, run a search and write `jobs/today.md`. Then open the office: double-click `shared\office-view\Open Office.cmd`.
 
 > **Tip:** type `/model sonnet` at the start of a session. It does the job well at a lower cost than the biggest model.
 
@@ -168,15 +137,15 @@ Open Claude Code in your office folder and type:
 
 | You type | What happens |
 |---|---|
-| `/cass start the day` | Cass handles anything waiting, runs the search if it hasn't run today, and writes `jobs/today.md`: new leads best first, what was dismissed and why, and what is waiting for you. |
-| `/cass daily search` | Only the search: Rita searches your sites and, if your email is connected, reads your job-alert emails; Cass sorts what comes back into **Leads** (worth a look) or **Dismissed** (with a reason). |
-| Pick roles in the office (**To pipeline**) or tell Cass "go for the first two" | Wren writes a tailored CV and cover letter for each, as Word files, and Ada makes PDFs. |
-| `/cass approve <role>` | You're happy with the drafts: Ada makes the final PDFs. Or describe changes ("make the cover letter shorter") and Wren redoes them. |
-| `/cass I applied to <role>` | Recorded. A follow-up date is set a week ahead. Also: "I have an interview at <role> on Tuesday", "rejected by <role>", "offer from <role>". |
-| `/cass how's it going?` | A short summary. |
-| `/cass review my preferences` | Cass looks at which roles you picked and skipped and suggests changes to `preferences.md`. **Nothing changes until you say yes.** It also offers this after about 10 decisions. |
+| `/tim start the day` | Tim handles anything waiting, runs the search if it hasn't run today, and writes `jobs/today.md`: new leads best first, what was dismissed and why, and what is waiting for you. |
+| `/tim daily search` | Only the search: Rita searches your sites and, if your email is connected, reads your job-alert emails; Tim sorts what comes back into **Leads** (worth a look) or **Dismissed** (with a reason). |
+| Pick roles in the office (**To pipeline**) or tell Tim "go for the first two" | Wren writes a tailored CV and cover letter for each, as Word files, and Ada makes PDFs. |
+| `/tim approve <role>` | You're happy with the drafts: Ada makes the final PDFs. Or describe changes ("make the cover letter shorter") and Wren redoes them. |
+| `/tim I applied to <role>` | Recorded. A follow-up date is set a week ahead. Also: "I have an interview at <role> on Tuesday", "rejected by <role>", "offer from <role>". |
+| `/tim how's it going?` | A short summary. |
+| `/tim review my preferences` | Tim looks at which roles you picked and skipped and suggests changes to `preferences.md`. **Nothing changes until you say yes.** It also offers this after about 10 decisions. |
 
-`/cass` and `/cos` do exactly the same thing. You can also just talk normally once Cass is running.
+`/tim` and `/cos` do exactly the same thing. You can also just talk normally once Tim is running.
 
 **When you skip a role, give a few words why** ("pay too low", "too far", "wrong sector"). That is what the preference reviews learn from.
 
@@ -198,7 +167,7 @@ The top left shows your office's name and a **build** label with a dot. Green me
 | **Roles** | Every role you've shortlisted or beyond, as a board (drag a card to the next stage) or a list. |
 | **Leads** | Roles the team found that you haven't picked yet, best first, with a verdict (Apply / Maybe / Skip), a fit score and a reason. **To pipeline** shortlists one. **✕** dismisses it (you can restore it). Every move has an **Undo**. |
 | **Interviews** | Upcoming interviews. Each opens Cole's prep and your talking points. |
-| **Next actions** | A to-do list. Cass adds questions here when they've run on their own. |
+| **Next actions** | A to-do list. Tim adds questions here when they've run on their own. |
 | **CVs** | Your CV bank, your CV writing rules (editable here), every tailored CV and letter with View, PDF and Word buttons, and **Tailor a CV**. |
 | **The office** | A 3D office where you watch the team work (and take coffee breaks). |
 
@@ -208,7 +177,7 @@ The top left shows your office's name and a **build** label with a dot. Green me
 
 **Tailor a CV**: pick a role, paste the job description, say what to bring out ("lead with budget experience"), and Wren writes it.
 
-**Changes you make in the office start the team automatically**, about 2 minutes after your last change (so several changes share one run). Set a role to *shortlisted* and Wren drafts; to *interview* and Cole preps; and so on. Edits are saved to GitHub about 15 seconds after you stop. There is an **Auto start** switch if you'd rather start the team yourself.
+**Changes you make in the office start the team automatically**, about 2 minutes after your last change (so several changes share one run). Set a role to *shortlisted* and Wren drafts; to *interview* and Cole preps; and so on. Edits are saved on your PC straight away. There is an **Auto start** switch if you'd rather start the team yourself.
 
 Full details of the office are in `shared/office-view/README.md`.
 
@@ -228,13 +197,13 @@ Open Claude Code in your office folder and say what you want, in your own words:
 
 > Add Reed and Totaljobs to my job sites and take Indeed off.
 
-Claude knows which files to change. Look at the result with `git diff` or just open the file and read it. If you don't like it, say so and it will fix it.
+Claude knows which files to change. Open the file afterwards and read what changed. If you don't like it, say so and Claude will fix it.
 
 ### Or by hand: the files
 
 #### 6.1 What you want: `shared/job-search/preferences.md`
 
-Rita and Cass read this to choose and rank roles. Short bullets are fine. Each section does something specific:
+Rita and Tim read this to choose and rank roles. Short bullets are fine. Each section does something specific:
 
 | Section | What it controls | Example |
 |---|---|---|
@@ -245,13 +214,13 @@ Rita and Cass read this to choose and rank roles. Short bullets are fine. Each s
 | **Pay** → Minimum / Ideal | Roles clearly below the minimum are dismissed or marked Skip; roles at or above the ideal rank higher | `Minimum £40,000. Ideal £55,000+` (or a day rate) |
 | **Location and hours** | Where, and how: remote / hybrid / office, days in the office, commute, full or part time, contract | `Leeds or remote. 2 days in the office at most. 45 minutes commute at most. Full time, permanent.` |
 | **Deal-breakers** | Automatic Skip. Be specific. | `Fully office-based outside Leeds`; `Zero-hours contracts`; `Pay below £40,000` |
-| **Daily limits** | How many new roles Rita finds per day, and how many Cass suggests shortlisting | `New roles to find per day: 10` |
+| **Daily limits** | How many new roles Rita finds per day, and how many Tim suggests shortlisting | `New roles to find per day: 10` |
 
 Tips for good preferences:
 
 - **Deal-breakers are hard rules; everything else is a preference.** If you put "needs to be remote" under Location, a hybrid role may still be suggested as a Maybe. If you put "fully office-based roles" under Deal-breakers, they'll be skipped.
 - **Be concrete.** "Good salary" can't be acted on. "£45,000 minimum" can.
-- **Mark guesses.** If you aren't sure, add *(assumed)* after it and Cass will check with you in a preference review.
+- **Mark guesses.** If you aren't sure, add *(assumed)* after it and Tim will check with you in a preference review.
 - **Change it whenever your search changes.** A new city, a career switch, a lower pay floor after a few quiet weeks: edit the file and carry on.
 
 #### 6.2 Pay numbers: `shared/job-search/settings.json`
@@ -265,7 +234,7 @@ Pay is written in `preferences.md` in words (so the team understands it) **and**
 }
 ```
 
-Yearly amounts, in pounds, no commas or £ sign. New roles are ranked best first by Cass's verdict, then fit score, then pay: roles at or above `ideal_pay` first, then roles at or above `minimum_pay`, then the rest. Use `null` instead of a number to switch a figure off. Day rates and "competitive" pay are not ranked by pay (they're treated as unknown).
+Yearly amounts, in pounds, no commas or £ sign. New roles are ranked best first by Tim's verdict, then fit score, then pay: roles at or above `ideal_pay` first, then roles at or above `minimum_pay`, then the rest. Use `null` instead of a number to switch a figure off. Day rates and "competitive" pay are not ranked by pay (they're treated as unknown).
 
 #### 6.3 Where to look: `shared/job-search/sources.md`
 
@@ -285,7 +254,7 @@ A table of the sites Rita searches, **in order**. She searches only these.
 
 #### 6.4 Job-alert emails (optional)
 
-If you connect your email to Claude, Cass can also read the job-alert emails that job sites send you (read-only: nothing is sent, deleted or moved) and add those roles as leads. To get more leads this way, set up email alerts on the job sites you use. If your email isn't connected, this step is skipped and the web search still runs. Ask Claude "how do I connect my email for job alerts?" if you want it.
+If you connect your email to Claude, Tim can also read the job-alert emails that job sites send you (read-only: nothing is sent, deleted or moved) and add those roles as leads. To get more leads this way, set up email alerts on the job sites you use. If your email isn't connected, this step is skipped and the web search still runs. Ask Claude "how do I connect my email for job alerts?" if you want it.
 
 #### 6.5 Switching to a different kind of job
 
@@ -297,9 +266,9 @@ For a bigger change (a new field, not just a new city), do these three together:
 
 Roles already in the tracker stay as they are. Dismiss or skip the old ones in the office.
 
-#### 6.6 Let Cass suggest changes
+#### 6.6 Let Tim suggest changes
 
-After you've picked and skipped some roles, type `/cass review my preferences`. Cass looks for patterns ("you skipped 6 of 7 roles below £35k") and proposes up to five changes, each with its evidence. You accept all, some or none. Accepted changes go into `preferences.md` and the review is logged in `jobs/preference-reviews.md`. It works best when you give a few words of reason each time you skip a role.
+After you've picked and skipped some roles, type `/tim review my preferences`. Tim looks for patterns ("you skipped 6 of 7 roles below £35k") and proposes up to five changes, each with its evidence. You accept all, some or none. Accepted changes go into `preferences.md` and the review is logged in `jobs/preference-reviews.md`. It works best when you give a few words of reason each time you skip a role.
 
 #### 6.7 Currency and place
 
@@ -364,7 +333,7 @@ Put extra detail in `shared/job-search/cv/extra-<anything>.md` (for example `ext
 
 "Templates" here means the things the team produces: the CV design, the cover letter, the way CVs are written, the role summaries, the interview prep and the daily priority list. Each one is controlled by one file.
 
-> **Before you change anything:** make one change at a time, then test it on a single role (Section 8.7). If it goes wrong, you can always undo: `git checkout -- <file>` puts a file back to the last saved version, or ask Claude to "undo my last change to <file>".
+> **Before you change anything:** make one change at a time, then test it on a single role (Section 8.7). Copy the file first (for example `cv-rules.md` to `cv-rules-backup.md` in the same folder) so you can put it back if it goes wrong, or ask Claude to "undo my last change to <file>".
 
 | To change… | Edit | How |
 |---|---|---|
@@ -374,7 +343,7 @@ Put extra detail in `shared/job-search/cv/extra-<anything>.md` (for example `ext
 | The fonts and styles of the *Word* copies | `shared/job-search/cv/default-cv.docx` | Section 8.4. |
 | The role summary Rita writes for each advert | `.claude/agents/lead-recruiter.md` | Section 8.5. |
 | The interview prep notes and talking points | `.claude/agents/interview-coach.md` | Section 8.6. |
-| The daily priority list (Cass's `today.md`) | `.claude/skills/cos/SKILL.md` | Section 8.6. |
+| The daily priority list (Tim's `today.md`) | `.claude/skills/cos/SKILL.md` | Section 8.6. |
 
 ### 8.1 Writing rules: `cv-rules.md`
 
@@ -429,14 +398,14 @@ Change those definitions to make Rita stricter or more generous.
 ### 8.6 Interview prep and the daily list
 
 - `.claude/agents/interview-coach.md` describes Cole's two files: key talking points (5 to 7) and prep notes (the company, 8 to 10 likely questions, gaps, 4 or 5 questions to ask, practical details). Change the numbers or headings. Your own edits to the talking points are never overwritten.
-- `.claude/skills/cos/SKILL.md` is Cass's full set of instructions, including what goes in `jobs/today.md`. It is long: change only the part you need, and ask Claude to help find it.
+- `.claude/skills/cos/SKILL.md` is Tim's full set of instructions, including what goes in `jobs/today.md`. It is long: change only the part you need, and ask Claude to help find it.
 
 ### 8.7 Test a change on one role
 
-1. In the office, add a real role (or use one you already have), or tell Cass: "Draft a CV and cover letter for <role> as a test."
+1. In the office, add a real role (or use one you already have), or tell Tim: "Draft a CV and cover letter for <role> as a test."
 2. Open the role's page, and look at the CV, letter and PDF.
 3. Not right? Adjust the file, then click **Ask Wren for changes** or run the draft again.
-4. Happy? Carry on. Not happy? Undo the file change (see the note above).
+4. Happy? Carry on. Not happy? Put the file back (see the note above).
 
 ---
 
@@ -449,29 +418,32 @@ The team members are just instruction files. If you can describe the behaviour y
 | Rita | `.claude/agents/lead-recruiter.md` | What counts as a Strong match; "ignore recruitment agency adverts"; how many adverts she reads in full. |
 | Wren | `.claude/agents/writer.md` | Bullets per job; length of the profile; how she picks keywords; the letter's shape. |
 | Cole | `.claude/agents/interview-coach.md` | Number of questions; whether to include salary-negotiation tips. |
-| Cass | `.claude/skills/cos/SKILL.md` | What goes in the daily list; how many roles to suggest; what to dismiss. |
-| Everyone | `shared/conventions/handoffs.md` | The short format they reply to Cass in. Leave this alone unless you know why. |
+| Tim | `.claude/skills/cos/SKILL.md` | What goes in the daily list; how many roles to suggest; what to dismiss. |
+| Everyone | `shared/conventions/handoffs.md` | The short format they reply to Tim in. Leave this alone unless you know why. |
 
 Guidelines:
 
 - **Write instructions as you would brief a person**: short, specific, one idea per line.
 - **Don't remove the safety rules** (the "Rules" and "Never" sections): they stop the team applying for things, emailing people, inventing facts or rewriting your history.
 - **The names** (Rita, Wren, Cole, Ada) appear in the instructions and the office. To rename one, ask Claude to rename them everywhere in your office, and test it.
-- **Adding a new team member** (say, a Networking Coach) is a bigger job. Ask Claude to set it up, and it will add instructions, a README in `agents/`, and a desk in the office. Because it changes how the shared repo is set up, check with Tim first.
+- **Adding a new team member** (say, a Networking Coach) is a bigger job. Ask Claude to set it up, and it will add instructions, a README in `agents/`, and a desk in the office. Because it changes how the shared repo is set up, ask Tim Everard.
 
 ---
 
-## 10. Backups and sharing the repo
+## 10. Updates and backups
 
-**Your work is saved on GitHub.** The office saves your edits for you (look for "Saved to GitHub" in the strip at the top of the office). Changes the team makes in Claude Code are saved when Cass finishes, or when you ask Claude to "commit and push". Anything not on GitHub is not backed up.
+**Git is Tim Everard's job, not yours.** Your PC only *receives* updates: you never save, commit or push anything to GitHub, and neither does your office or your team. This keeps the shared repo safe and means you can't break it by accident. (Your GitHub access is read-only.)
 
-**Each PC stays up to date automatically.** The setup script adds a background task that pulls from GitHub every 5 minutes, so work done on another PC (or in the cloud) turns up on its own.
+**What you get automatically.** The setup script adds a background task that pulls from GitHub every 5 minutes. When Tim Everard publishes an improvement to the office (a fix, a new feature, a new version of an agent's instructions), it turns up on your PC by itself. `Open Office.cmd` also pulls when it starts.
 
-**Sharing the repo with another person.** The repo holds two separate offices. Each person's CV, preferences and roles live only in their own folder, and the team in one office never reads the other's. But GitHub gives everyone with access the **whole** repo, so you can *technically* read each other's files. Don't put anything in the repo you wouldn't want the other person to read. Never put passwords, API keys or tokens in it, ever.
+**What stays on your PC.** Your own files stay on this PC and are **not** saved to GitHub: your CV, preferences, job sites, the tracker and every role's documents. The office says "Saving to GitHub is off in this office". That has two consequences:
 
-**Staying out of each other's way.** Only change files inside your own office folder. Both offices save to the same GitHub branch (`main`), and because you are in different folders the saves merge cleanly. If the office ever says "GitHub has changes that clash", don't worry: nothing is lost. Open Claude Code in your folder and say "sort out the git clash".
+- **There is no backup of your work.** If your PC breaks, they are gone. Copy your office folder's `jobs` and `shared\job-search` folders to a USB stick or cloud drive now and then (File Explorer: copy and paste).
+- **Updates and your files don't clash.** Tim Everard's updates change the office's code and instructions. Your files are different files, so they are not overwritten. If you have edited an *instruction* file yourself (for example `.claude/agents/writer.md`) and Tim Everard publishes a change to the same file, the pull can stop with a message. Don't try to fix it: send him the message.
 
-**Bigger experiments.** If you want to try something risky (a big rewrite of the instructions, say), ask Claude to do it on a separate branch and open a pull request, so you can look before it goes live.
+**Changing the shared setup.** Anything that changes the repo itself (new features for everyone, new team members, fixes to the scripts) goes through Tim Everard. Tell him what you want, in plain words.
+
+**Privacy.** The repo holds two separate offices, and your office's team never reads the other. But GitHub shows everyone with access the whole repo, so Tim Everard's folder is readable on your PC (and the repo's history may include your starting files). Stay in your own folder, and don't put anything in the repo you wouldn't want him to see. Never put passwords, API keys or tokens in it.
 
 ---
 
@@ -479,24 +451,24 @@ Guidelines:
 
 | Problem | Try this |
 |---|---|
-| The office looks old, or the build dot isn't green | In PowerShell in the `agent-office` folder: `git status -sb`. The first line should say `main...origin/main`. If it names another branch, run `git checkout main`. Then `git pull`, close the black office window and open `Open Office.cmd` again from your office folder. |
+| The office looks old, or the build dot isn't green | In PowerShell in the `agent-office` folder: `git status -sb`. The first line should say `main...origin/main`. If it names another branch, or anything else looks odd, send what it says to Tim Everard. Then `git pull`, close the black office window and open `Open Office.cmd` again from your office folder. |
 | "Smart App Control blocked Open Office.cmd" | Open it from PowerShell instead: `cd "<your office folder>\shared\office-view"`, then `npm install` (first time only), then `npm start`, and browse to http://127.0.0.1:4747. |
-| The automatic update stopped | Read the last lines of the log: `Get-Content $env:LOCALAPPDATA\agent-office-sync.log -Tail 5`. Git needs you to sign in once: in `agent-office`, run `git fetch` and sign in when asked. |
-| Cass says a file is still a blank template | Open the file it names and fill it in (section 3 or 7). The line "please fill this in" must be removed. |
+| The automatic update stopped | Read the last lines of the log: `Get-Content $env:LOCALAPPDATA\agent-office-sync.log -Tail 5`. Git needs you to sign in once: in `agent-office`, run `git fetch` and sign in when asked. Still stuck? Send the log lines to Tim Everard. |
+| Tim says a file is still a blank template | Open the file it names and fill it in (section 3 or 7). The line "please fill this in" must be removed. |
 | Wren's CV runs to three pages | Ask Wren for changes: "shorten the profile and the older jobs so it fits two pages". Or shorten `base-cv.json`. |
 | A CV or letter has a fact-check warning | Ada found something that isn't in your CV bank. If it's true, add it to `cv-bank.md` or an `extra-*.md` file and redraft. If it's wrong, ask Wren to remove it. |
 | "Ada won't overwrite a Word file you edited" | That's protection. Say so when you want the drafts redone ("redo the drafts, ignoring my edits"). |
 | The search returns nothing, or Rita says a site is blocked | Some sites block automated visits. Add other sites in `sources.md`, or paste adverts into the office with **Add role**. |
 | The PDF won't build | PDFs need Chrome, Chromium or Microsoft Edge (Edge is built into Windows). The setup script checks the rest. Run it again: `powershell -ExecutionPolicy Bypass -File shared\tools\setup-pc.ps1`. |
 | The office won't start | Make sure Node.js is installed (`node --version`). Run the setup script again. |
-| You changed something and want it back | `git checkout -- <file>` restores one file to the last saved version. Or ask Claude: "put <file> back how it was". |
+| You changed something and want it back | Use your copy of the file if you made one (section 8). Otherwise ask Claude to put it back how it was; for an instruction file that Tim Everard published, he can send you the original. |
 | Anything else | Open Claude Code in your office folder and describe the problem in your own words. Paste any error message. |
 
 ---
 
 ## 12. Cheat sheet
 
-**Start:** open PowerShell → `cd` to your office folder (in double quotes) → `claude` → `/cass start the day`.
+**Start:** open PowerShell → `cd` to your office folder (in double quotes) → `claude` → `/tim start the day`. New PC? See `GET-THE-OFFICE.md`.
 
 **Which file for which change**
 
@@ -511,9 +483,9 @@ Guidelines:
 | Cover letter shape | `.claude/agents/writer.md` |
 | What Rita's summaries and scoring look like | `.claude/agents/lead-recruiter.md` |
 | Interview prep | `.claude/agents/interview-coach.md` |
-| What Cass does each day | `.claude/skills/cos/SKILL.md` |
+| What Tim does each day | `.claude/skills/cos/SKILL.md` |
 
-**Commands:** `/cass start the day` · `/cass daily search` · `/cass approve <role>` · `/cass I applied to <role>` · `/cass how's it going?` · `/cass review my preferences`
+**Commands:** `/tim start the day` · `/tim daily search` · `/tim approve <role>` · `/tim I applied to <role>` · `/tim how's it going?` · `/tim review my preferences`
 
 **Open the office:** double-click `shared\office-view\Open Office.cmd` → http://127.0.0.1:4747
 

@@ -13,6 +13,37 @@ Tim chose (2026-11-08): one repo with two folders (not a separate repo for Hal);
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-08: Hal's Chief of Staff is Tim, Hal is he/him, Hal's office never changes git, and a PC set-up guide
+
+**What changed**
+- `Hal's Job Search/`: the Chief of Staff is now **Tim** (was Cass): `.claude/skills/tim/` (`/tim`), the agent's name in the skill, READMEs, the office's labels and contracts. Internal ids in the office code (`cass` in `scene.js`, CSS classes, tracker actor labels) were left as they are, as they never show. The owner Hal now has he/him in the agent prompts, READMEs and office text (the earlier "they" wording was reversed).
+- Hal's office is pull-only:
+  - `shared/job-search/settings.json`: new `git_backup` (Hal's `false`, Tim's `true`).
+  - `shared/office-view/src/server.ts` and `backup.ts` (both offices): the office's automatic commit-and-push is skipped when `git_backup` is false, with the message "Saving to GitHub is off in this office; edits stay on this PC".
+  - Hal's `src/auto-cos.ts`: the automatic run may use only `git status`, `pull`, `log`, `diff`.
+  - Hal's `.claude/skills/cos/SKILL.md`: the commit-and-push steps and the Backups section are replaced by a Git section (only `git status` and `git pull`). No notes entries from Hal's office.
+  - Hal's `CLAUDE.md` rewritten: "Two Tims" (the Chief of Staff vs Tim Everard), the git rule, stay in this folder. Contract text, admin and chief-of-staff READMEs and the office README no longer say work is backed up to GitHub.
+- `Hal's Job Search/GET-THE-OFFICE.md` (new): the second guide, for Hal: GitHub invite, Git, clone of `main`, setup script, Claude Code, opening the office and a desktop shortcut, getting updates, rules for his PC, troubleshooting.
+- `Hal's Job Search/GUIDE.md`: regenerated from the shared template: Chief of Staff Tim, set-up section now points to `GET-THE-OFFICE.md`, the backups section is "Updates and backups" for a pull-only PC (copy your own files by hand), git undo tips removed. `Tim's Job Search/GUIDE.md` regenerated too (only small wording changes).
+- Root `CLAUDE.md` and `README.md`: Hal's office uses Tim as Chief of Staff, he/him, never changes git; "Tim" in the root file always means Tim Everard; daily-run notes only for Tim's office.
+
+**Why**
+Tim asked: Hal's Chief of Staff can be called Tim; Hal is he/him; all git changes are made by Tim Everard only; and Hal needs a second guide for getting `main` onto his PC so he can use the office.
+
+**Decisions**
+- **Read-only access is the real guard.** The settings and instructions stop Hal's office committing, but a GitHub *Read* collaborator role is what stops pushes. The guide asks Tim to invite Hal with Read access.
+- **Hal's own data is not on GitHub.** Since Hal doesn't commit, his CV, tracker and roles exist only on his PC. The guide tells him to copy them by hand. If Tim would rather back them up, he can copy them into the repo himself when asked.
+- Kept the `GET-THE-OFFICE.md` guide inside Hal's folder (and not the repo root) so Hal's office keeps all its own files together; Tim can send it to him before he has the repo.
+
+**How to check it**
+- Both offices: `npx tsc --noEmit`, `npm test` (37 pass) and the Python tests (27 pass). Hal's office starts and lists Tim, Rita, Wren, Cole, Ada.
+- Read `Hal's Job Search/GET-THE-OFFICE.md` as a first-time user.
+
+**Open items**
+- Tim must invite Hal on GitHub with **Read** access (Settings, Collaborators).
+- `sync.ps1` merges when a PC is ahead; Hal's PC never is. If Hal edits an instruction file that Tim later changes, his pull can refuse: the guide says to send the message to Tim.
+- The scheduled-task path update and Windows checks from the previous entry are still open.
+
 ### 2026-11-08: Hal's Job Search created, and a guide for both offices
 
 **What changed**

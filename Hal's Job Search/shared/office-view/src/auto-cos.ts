@@ -21,7 +21,7 @@ const MAX_RUN_MS = 20 * 60_000;
 const MAX_PER_DAY = Number(process.env.OFFICE_COS_MAX_PER_DAY || 8);
 const ALLOWED_TOOLS = [
   "Read", "Write", "Edit", "Glob", "Grep", "Task", "Agent", "WebSearch", "WebFetch",
-  "Bash(git:*)", "Bash(python:*)", "Bash(python3:*)", "Bash(py:*)", "Bash(pandoc:*)",
+  "Bash(git status:*)", "Bash(git pull:*)", "Bash(git log:*)", "Bash(git diff:*)", "Bash(python:*)", "Bash(python3:*)", "Bash(py:*)", "Bash(pandoc:*)",
 ];
 
 const ukDay = () => new Date().toLocaleDateString("en-GB", { timeZone: "Europe/London" });
@@ -87,7 +87,7 @@ export class AutoCos {
     }
     const left = this.hooks.budgetLeft();
     if (left !== null && left <= 0) {
-      this.status.last = { at: Date.now(), ok: false, message: "Today's token budget is used up, so Cass won't start automatically until tomorrow. Run /cass yourself if it can't wait." };
+      this.status.last = { at: Date.now(), ok: false, message: "Today's token budget is used up, so Tim won't start automatically until tomorrow. Run /tim yourself if it can't wait." };
       return this.hooks.changed();
     }
     await this.hooks.before();
@@ -104,7 +104,7 @@ export class AutoCos {
       "",
       "You were started automatically by the Agent Office because Hal changed roles there.",
       "Follow the 'Office changes' section of .claude/skills/cos/SKILL.md.",
-      "Hal isn't watching this session, so don't ask them anything: record questions for them with `tracker.py action add`.",
+      "Hal isn't watching this session, so don't ask him anything: record questions for him with `tracker.py action add`.",
       `On this PC, run Python as \`${this.python}\` (for example \`${this.python} shared/tools/tracker.py inbox list\`).`,
     ].join("\n");
     const quote = (a: string) => (process.platform === "win32" ? `"${a}"` : a);

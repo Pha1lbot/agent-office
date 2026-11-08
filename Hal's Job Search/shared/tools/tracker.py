@@ -2,7 +2,7 @@
 """Role tracker for the job-search team.
 
 jobs/tracker.json holds one record per role. jobs/tracker.md is rebuilt from it
-after every change so it can be read on GitHub. Only Cass (and the office, when
+after every change so it can be read on GitHub. Only Tim (and the office, when
 Hal edits roles) should run the commands that change the tracker (add, set).
 Subagents never do.
 
@@ -62,14 +62,14 @@ FIELDS = ["title", "company", "location", "pay", "url", "source", "fit",
           "interview_with",  # who the interview is with
           "list",            # Hal's own grouping, e.g. "Shortlist", "Transition roles"
           "closing_date",    # YYYY-MM-DD, when the advert closes
-          "verdict",         # Cass's view: apply, maybe or skip
+          "verdict",         # Tim's view: apply, maybe or skip
           "verdict_why"]     # one line on why
 VERDICTS = ["apply", "maybe", "skip"]
-# Hal's decisions, used by insights to learn their preferences.
+# Hal's decisions, used by insights to learn his preferences.
 PICKED = {"shortlisted", "drafted", "approved", "applied", "interview", "offer"}
 PASSED = {"skipped"}
-# When Hal moves a role to one of these, Cass has work to do. (Approved roles that
-# already have Word files need no Cass: Ada, the office's automation, makes the PDFs.)
+# When Hal moves a role to one of these, Tim has work to do. (Approved roles that
+# already have Word files need no Tim: Ada, the office's automation, makes the PDFs.)
 INBOX_TASKS = {
     "shortlisted": "Draft a tailored CV and cover letter",
     "drafted": "Draft a tailored CV and cover letter",  # only when there's no CV yet
@@ -139,7 +139,7 @@ def pay_bands():
 
 def rank(data):
     """Ada: number every role in To review (found) best first, so the board is in order.
-    Order: Cass's verdict, fit, pay band (ideal pay or more, minimum pay or more, other: see settings.json), closing date, then oldest.
+    Order: Tim's verdict, fit, pay band (ideal pay or more, minimum pay or more, other: see settings.json), closing date, then oldest.
     A priority Hal set by hand on a found role is kept; the others are numbered around it."""
     found = [r for r in data["roles"] if r["status"] == "found"]
     pinned = {r["priority"] for r in found if r.get("priority_by_tim") and r.get("priority")}
@@ -278,7 +278,7 @@ def cmd_add(args):
 
 
 # ---------- The review queue: jobs/found.json ----------
-# Rita's daily search and the job-alert email scan add finds here; Cass triages each
+# Rita's daily search and the job-alert email scan add finds here; Tim triages each
 # one into Leads (status found) or Dismissed (skipped), with a reason.
 FOUND = JOBS / "found.json"
 FITS = {"strong": 4, "possible": 3, "weak": 2}
@@ -382,7 +382,7 @@ def cmd_found(args):
             role["notes"] = "; ".join(x for x in (role["notes"], f"Posted {item['posted']}") if x)
         if args.take_as == "dismissed":
             role["status"] = "skipped"
-            role["reason"] = clip(args.reason or "Cass: not a fit", 300)
+            role["reason"] = clip(args.reason or "Tim: not a fit", 300)
             role["history"].append({"date": today(), "status": "skipped", "by": "cass"})
         item["triage"] = {"action": "added" if args.take_as == "lead" else "dismissed", "role": role["id"],
                           "reason": role.get("reason", ""), "at": now_stamp()}
@@ -665,7 +665,7 @@ def main():
     inb = sub.add_parser("inbox", help="Hal's office changes waiting for Chief of Staff")
     inb.add_argument("verb", choices=["list", "done", "add"])
     inb.add_argument("--role", help="add: the role the task is about")
-    inb.add_argument("--task", help="add: what Cass should get done")
+    inb.add_argument("--task", help="add: what Tim should get done")
     inb.add_argument("ids", nargs="*")
     inb.add_argument("--all", action="store_true")
     inb.set_defaults(func=cmd_inbox)
@@ -678,7 +678,7 @@ def main():
     fd.add_argument("ids", nargs="*", help="take: the item id")
     fd.add_argument("--file", help="add: a JSON list of finds")
     fd.add_argument("--via", choices=["web", "email"], help="add/run: where the finds came from")
-    fd.add_argument("--pending", action="store_true", help="list: only finds Cass hasn't triaged")
+    fd.add_argument("--pending", action="store_true", help="list: only finds Tim hasn't triaged")
     fd.add_argument("--as", dest="take_as", help="take: lead or dismissed")
     fd.add_argument("--verdict", help="take: apply, maybe or skip (default from fit)")
     fd.add_argument("--why", help="take: one line on why (default: the find's own)")

@@ -14,7 +14,7 @@ export function on(kind, fn) { listeners[kind].push(fn); }
 const emit = (kind, arg) => listeners[kind].forEach((fn) => fn(arg));
 
 export const roleById = (id) => (store.tracker.roles || []).find((r) => r.id === id);
-/** Roles Cass has been asked to work on and hasn't finished. */
+/** Roles Tim has been asked to work on and hasn't finished. */
 export const queuedFor = (id) => (store.tracker.inbox || []).filter((i) => !i.done && i.role === id);
 
 export function connect() {

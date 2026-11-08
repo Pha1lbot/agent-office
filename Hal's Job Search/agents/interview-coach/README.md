@@ -4,10 +4,10 @@ New on 2026-11-06.
 
 **Purpose:** gets Hal ready for interviews: key talking points and prep notes for each role at interview stage.
 
-**Instructions:** `.claude/agents/interview-coach.md` (a Claude Code subagent, model: Sonnet). Briefed by Cass when Hal sets a role to *interview*, or asks to refresh prep.
+**Instructions:** `.claude/agents/interview-coach.md` (a Claude Code subagent, model: Sonnet). Briefed by Tim when Hal sets a role to *interview*, or asks to refresh prep.
 
 **Inputs**
-- Role ids from Cass.
+- Role ids from Tim.
 - `shared/job-search/cv/cv-bank.md` (never the PDF).
 - The role's `listing.md`, and the `cv.md` and `cover-letter.md` Hal sent.
 - The interview time and who it's with (from the tracker).

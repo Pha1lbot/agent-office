@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Claude Code hook (PreToolUse, Bash): a safety guard for Cass's automatic runs.
+// Claude Code hook (PreToolUse, Bash): a safety guard for Tim's automatic runs.
 //
 // CLAUDE.md says never rewrite or throw away git history unless Hal asks. In an
 // automatic run (started by the office, OFFICE_AUTO_RUN=1) Hal isn't there to
@@ -7,7 +7,7 @@
 // and carries on another way.
 //
 // Outside automatic runs it does nothing, so Hal can still ask for these in a
-// session they are watching. It only reads the command text: it stops mistakes,
+// session he is watching. It only reads the command text: it stops mistakes,
 // not someone determined to get round it.
 
 import { pathToFileURL } from "node:url";
@@ -151,7 +151,7 @@ export function riskyGit(command) {
 
 export function message(why) {
   return [
-    `Blocked in Cass's automatic run: ${why}.`,
+    `Blocked in Tim's automatic run: ${why}.`,
     "CLAUDE.md never allows this unless Hal asks, and Hal isn't watching this run.",
     "Don't try another way round. If a push was rejected, run `git pull` and push again;",
     'if that doesn\'t work, leave it and add an action for Hal with `tracker.py action add "..."`.',

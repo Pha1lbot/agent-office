@@ -10,7 +10,7 @@ This repo is private, but the CV is personal data: don't put anything here you w
 
 ## The CV text bank
 
-`cv-bank.md` in this folder is a plain-text copy of the CV that the agents use instead of the PDF. The PDF is read as page images, which costs far more tokens each time. It starts with a short "Summary for matching" that Rita uses to judge fit. **Keep it in step with your CV**: when your CV changes, update `cv-bank.md` too, or ask Cass to.
+`cv-bank.md` in this folder is a plain-text copy of the CV that the agents use instead of the PDF. The PDF is read as page images, which costs far more tokens each time. It starts with a short "Summary for matching" that Rita uses to judge fit. **Keep it in step with your CV**: when your CV changes, update `cv-bank.md` too, or ask Tim to.
 
 ## Your CV template
 
@@ -18,7 +18,7 @@ This repo is private, but the CV is personal data: don't put anything here you w
 
 - For each role, Wren writes a `cv.json` with only what changes (headline, profile, figures, skills, bullets). The rest, and always your name and contact details, comes from `base-cv.json`.
 - Ada makes the PDFs from it: `<Your_Name>_<Job_Title>_cv.pdf` and `<Your_Name>_<Job_Title>_cover_letter.pdf`.
-- **Keep `base-cv.json` in step with `cv-bank.md`**: when your CV changes, update both, or ask Cass to.
+- **Keep `base-cv.json` in step with `cv-bank.md`**: when your CV changes, update both, or ask Tim to.
 - To see your default CV in the template: `python3 shared/tools/cv_template.py shared/job-search/cv/base-cv.json default.pdf`.
 
 **Both files start as placeholders.** Replace them before Wren writes anything: `GUIDE.md` (in the folder above `shared/`) has a step-by-step section, "Setting up your CV".

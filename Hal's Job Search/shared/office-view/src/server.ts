@@ -7,7 +7,7 @@
 //   OFFICE_TRACKER=path/to/tracker.json npm start   to show another tracker (for testing)
 //
 // Hal can also edit roles from the page. Edits go through shared/tools/tracker.py,
-// are backed up to GitHub (backup.ts), and changes that need work start Cass,
+// are backed up to GitHub (backup.ts), and changes that need work start Tim,
 // the Chief of Staff, in the background (auto-cos.ts).
 
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
@@ -85,7 +85,7 @@ async function loadTracker() {
 }
 
 // ---------- Token meter ----------
-// Optional daily budget of fresh tokens; when reached, Cass stops starting automatically.
+// Optional daily budget of fresh tokens; when reached, Tim stops starting automatically.
 const DAILY_BUDGET = Number(process.env.OFFICE_DAILY_TOKEN_BUDGET || 0) || null;
 const meterSessions = new Map<string, { transcript: string; mainId: string }>();
 let tokensToday: Usage = emptyUsage();
@@ -159,7 +159,7 @@ sockets.on("connection", (ws) => {
 });
 const pushSystem = () => broadcast({ type: "system", system: systemStatus() });
 
-/** After a change through the tracker tool: reload, tell the page, back up, maybe wake Cass. */
+/** After a change through the tracker tool: reload, tell the page, back up, maybe wake Tim. */
 /** Ada (Admin) is automation: animate her while a script runs. */
 function ada<T>(text: string, work: () => Promise<T>, done = "Done"): Promise<T> {
   pushAgents(office.ada(true, text));
@@ -174,7 +174,7 @@ async function adaPdfs(role: { id: string; title: string; company: string }) {
       { JOBS_DIR: dirname(TRACKER), PYTHONIOENCODING: "utf-8" }, 180_000), "PDFs done");
   if (!r.ok) {
     const why = r.out.split("\n").filter(Boolean).pop() || "unknown error";
-    await tool.call(["action", "add", `PDFs for ${role.company} (${role.title}) failed: ${why.slice(0, 160)}. Install LibreOffice, or ask Cass.`, "--role", role.id]);
+    await tool.call(["action", "add", `PDFs for ${role.company} (${role.title}) failed: ${why.slice(0, 160)}. Install LibreOffice, or ask Tim.`, "--role", role.id]);
   }
   await afterEdit(r.ok ? `PDFs made for ${role.company}: ${role.title}` : `PDFs failed for ${role.company}`);
 }
@@ -212,7 +212,7 @@ async function rescanDocs() {
   }
 }
 
-/** Queue a request from the role page for Cass (and so Wren or Cole). */
+/** Queue a request from the role page for Tim (and so Wren or Cole). */
 async function requestWork(role: { id: string; title: string; company: string }, task: string) {
   const r = await tool!.call(["inbox", "add", "--role", role.id, "--task", task]);
   if (!r.ok) throw new Error(r.out.split("\n").pop() || "Couldn't queue that");
@@ -379,7 +379,7 @@ const server = createServer(async (req, res) => {
         const status = asked.status;
         await afterEdit(`${role.company}: ${role.title}${status ? ` → ${status}` : " updated"}`);
         if (status === "approved") void adaPdfs(role);
-        // A new link or pasted advert: Rita reads it and Cass gives a fresh verdict.
+        // A new link or pasted advert: Rita reads it and Tim gives a fresh verdict.
         const oldUrl = String(role.url || "");
         const read = !!(advert || (newUrl && newUrl !== oldUrl));
         if (read) await requestWork(role, READ_TASK);
@@ -496,14 +496,18 @@ if (codeRepo) {
 }
 let adaSaving = false;
 // Back up the whole jobs folder: the tracker plus PDFs and other files the office makes.
-backup = new Backup(gitRepo, [dirname(TRACKER), CV_RULES], () => {
+// shared/job-search/settings.json can switch the office's own saving to GitHub off ("git_backup": false),
+// for a PC that only pulls and where someone else looks after the repo.
+let gitBackup = true;
+try { gitBackup = JSON.parse(readFileSync(join(REPO, "shared", "job-search", "settings.json"), "utf8")).git_backup !== false; } catch { /* no settings: back up */ }
+backup = new Backup(gitBackup ? gitRepo : null, [dirname(TRACKER), CV_RULES], () => {
   pushSystem();
   const saving = backup?.status.state === "saving";
   if (saving !== adaSaving) {
     adaSaving = saving;
     pushAgents(office.ada(saving, saving ? "Backing up to GitHub" : backup.status.message));
   }
-});
+}, gitBackup ? undefined : "Saving to GitHub is off in this office; edits stay on this PC");
 const python = await findPython(REPO);
 if (python) tool = new Tracker(python, REPO, TRACKER);
 else console.log("Python 3 not found: the office will show roles but can't edit them. Install Python from python.org.");
@@ -517,7 +521,7 @@ if (python) {
   });
   cos.inboxChanged(initialInbox, false);
 }
-if (!claude) console.log("Claude Code not found: Cass won't start automatically. Run /cos yourself.");
+if (!claude) console.log("Claude Code not found: Tim won't start automatically. Run /cos yourself.");
 // Polling works the same on Windows, macOS and Linux, and survives the file being replaced.
 watchFile(FOUND, { interval: 2000 }, async () => {
   await loadTracker();

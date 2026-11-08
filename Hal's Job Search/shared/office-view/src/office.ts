@@ -41,7 +41,7 @@ export interface Agent {
 }
 
 export const TEAM = [
-  { id: "chief-of-staff", name: "Cass", role: "Chief of Staff", colour: 0x4f6bed },
+  { id: "chief-of-staff", name: "Tim", role: "Chief of Staff", colour: 0x4f6bed },
   { id: "lead-recruiter", name: "Rita", role: "Lead Recruiter", colour: 0x2f9e6e },
   { id: "writer", name: "Wren", role: "Writer", colour: 0xd9822b },
   { id: "interview-coach", name: "Cole", role: "Interview Coach", colour: 0xc0392b },
@@ -49,7 +49,7 @@ export const TEAM = [
 ];
 const VISITOR_COLOURS = [0xc0392b, 0x16a085, 0x7f8c8d, 0xb7950b];
 
-/** Folder name that marks a session as the main agent-office session (Cass, the Chief of Staff). */
+/** Folder name that marks a session as the main agent-office session (Tim, the Chief of Staff). */
 export const REPO_NAME = "agent-office";
 const DELEGATE_TOOLS = new Set(["Task", "Agent"]);
 const SHELF_TOOLS = new Set(["Read", "Grep", "Glob", "LS", "NotebookRead"]);

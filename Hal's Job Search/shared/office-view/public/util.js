@@ -17,8 +17,8 @@ export const CLOSED = new Set(["rejected", "skipped"]);
 
 export const VERDICT_LABEL = { apply: "Apply", maybe: "Maybe", skip: "Skip" };
 export const VERDICT_RANK = { apply: 0, maybe: 1, skip: 3 };
-/** Cass's verdict as a small coloured badge, with the reason on hover. */
-export function verdictBadge(r, prefix = "Cass: ") {
+/** Tim's verdict as a small coloured badge, with the reason on hover. */
+export function verdictBadge(r, prefix = "Tim: ") {
   if (!VERDICT_LABEL[r.verdict]) return "";
   return `<span class="verdict v-${r.verdict}" title="${esc(r.verdict_why || "")}">${prefix}${VERDICT_LABEL[r.verdict]}</span>`;
 }
