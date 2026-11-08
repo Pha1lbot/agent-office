@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 36 · shortlisted: 6 · drafted: 2 · applied: 3 · skipped: 6
+found: 36 · shortlisted: 6 · drafted: 1 · approved: 1 · applied: 3 · skipped: 6
 
 ## Next actions
 
@@ -57,7 +57,7 @@ found: 36 · shortlisted: 6 · drafted: 2 · applied: 3 · skipped: 6
 | shortlisted |  | [AI Enablement Manager](https://ats.rippling.com/livewire/jobs/c5df0138-76a1-4a31-8bed-b4afd7ad0a56) | Livewire (gaming media) | Not shown | Not shown |  |  | 2026-11-05 |
 | shortlisted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London |  |  | 2026-11-05 |
 | drafted | 1 | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-06 |
-| drafted |  | [Esport Specialist](https://www.linkedin.com/jobs/view/4308233024/) | NetEase Games |  | UK remote | 2 |  | 2026-11-06 |
+| approved |  | [Esport Specialist](https://www.linkedin.com/jobs/view/4308233024/) | NetEase Games |  | UK remote | 2 |  | 2026-11-08 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Apply via LinkedIn; ask about UK or remote | 2026-11-05 |
 | applied |  | [Director of Team Operations](https://uk.linkedin.com/jobs/view/director-of-team-operations-at-hexagon-world-series-4476411854) | Hexagon World Series | not stated | London, UK or Madrid, Spain | 3 | Apply today (Easy Apply on LinkedIn) | 2026-11-06 |
 | applied |  | [Senior Manager, Admin & Operations (Football Schools)](https://www.linkedin.com/jobs/view/4475254089/) | Chelsea FC | Not shown | Cobham and Stamford Bridge, on-site |  | Apply today: closes 6 Nov | 2026-11-06 |

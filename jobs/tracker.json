@@ -1488,9 +1488,9 @@
       "notes": "",
       "fit": 2,
       "priority": null,
-      "status": "drafted",
+      "status": "approved",
       "found": "2026-11-05",
-      "updated": "2026-11-06",
+      "updated": "2026-11-08",
       "history": [
         {
           "date": "2026-11-05",
@@ -1519,6 +1519,11 @@
         {
           "date": "2026-11-06",
           "status": "drafted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-08",
+          "status": "approved",
           "by": "tim"
         }
       ],
