@@ -615,7 +615,7 @@
       "notes": "Posted: 29 Oct",
       "fit": 3,
       "priority": 3,
-      "status": "shortlisted",
+      "status": "drafted",
       "found": "2026-11-05",
       "updated": "2026-11-08",
       "history": [
@@ -626,6 +626,11 @@
         {
           "date": "2026-11-08",
           "status": "shortlisted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-08",
+          "status": "drafted",
           "by": "tim"
         }
       ],
