@@ -30,5 +30,5 @@ build/
 *.tmp
 
 # Agent Office local settings and Hal run logs
-shared/office-view/.office-settings.json
-shared/office-view/logs/
+**/shared/office-view/.office-settings.json
+**/shared/office-view/logs/

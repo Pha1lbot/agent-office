@@ -21,7 +21,7 @@ if not errorlevel 1 (
 )
 
 rem Get the latest from GitHub in the background, so the office never waits for it.
-start "" /b powershell -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "%~dp0..\tools\sync.ps1"
+start "" /b powershell -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "%~dp0..\..\..\shared\tools\sync.ps1"
 
 echo Checking everything is installed...
 call npm.cmd install --no-audit --no-fund --loglevel=error
