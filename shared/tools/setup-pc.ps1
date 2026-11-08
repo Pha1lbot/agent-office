@@ -50,9 +50,13 @@ Write-Host "   Latest: $(git log -1 --format='%h %s')"
 
 Write-Host "`n4. Office packages" -ForegroundColor Cyan
 if (Have npm) {
-    Push-Location (Join-Path $repo "shared\office-view")
-    npm.cmd install --no-audit --no-fund --loglevel=error
-    Pop-Location
+    # One office per person; install the packages for each one in this copy.
+    foreach ($office in Get-ChildItem -Directory -Path $repo | Where-Object { Test-Path (Join-Path $_.FullName "shared\office-view\package.json") }) {
+        Write-Host "   $($office.Name)"
+        Push-Location (Join-Path $office.FullName "shared\office-view")
+        npm.cmd install --no-audit --no-fund --loglevel=error
+        Pop-Location
+    }
     Write-Host "   done"
 } else { Write-Host "   npm not found yet. Close this window, open a new one and run this script again." -ForegroundColor Yellow }
 
@@ -63,4 +67,4 @@ Write-Host "`n6. Claude Code" -ForegroundColor Cyan
 if (Have claude) { Write-Host "   already installed" }
 else { Write-Host "   Not found. Hal's automatic runs need it: see https://code.claude.com/docs/en/setup, then run 'claude' once to sign in." -ForegroundColor Yellow }
 
-Write-Host "`nAll set. Double-click shared\office-view\Open Office.cmd to open the office." -ForegroundColor Green
+Write-Host "`nAll set. Open your own office folder (Tim's Job Search or Hal's Job Search), then double-click shared\office-view\Open Office.cmd to open the office." -ForegroundColor Green

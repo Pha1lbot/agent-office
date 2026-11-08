@@ -1,0 +1,25 @@
+{
+  "name": "office-view",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shows Hal's agents as coworkers in a 3D office, plus a dashboard of tracked roles",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/server.ts",
+    "fake": "tsx scripts/fake-agents.ts",
+    "test": "tsx --test test/*.test.ts",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dompurify": "3.4.17",
+    "marked": "15.0.12",
+    "three": "0.170.0",
+    "tsx": "4.23.15",
+    "ws": "8.22.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/ws": "8.18.2",
+    "typescript": "5.9.3"
+  }
+}

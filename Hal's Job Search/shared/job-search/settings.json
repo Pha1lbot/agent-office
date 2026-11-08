@@ -1,0 +1,6 @@
+{
+  "_about": "Numbers the tools use. Pay is a yearly figure in pounds. New roles are ranked best first by Tim's verdict, then fit, then pay: roles at or above ideal_pay come first, then roles at or above minimum_pay, then the rest. Keep these in step with the Pay section of preferences.md. Use null to switch a figure off (it starts switched off). git_backup is false: this PC only pulls from GitHub, and the office and the team never commit or push. Changes to the repo are made by Tim Everard.",
+  "ideal_pay": null,
+  "minimum_pay": null,
+  "git_backup": false
+}

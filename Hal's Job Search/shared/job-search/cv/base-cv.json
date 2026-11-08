@@ -1,0 +1,73 @@
+{
+  "_about": "Your default CV in the template's format (cv_template.py). Replace every placeholder below with your own details. Your name and contact details are always taken from here. A role's cv.json lists only what it changes: usually headline, profile, stats, skills and jobs. See GUIDE.md, 'Setting up your CV'.",
+  "name": "Your Name",
+  "headline": "Your Job Title",
+  "contact": {
+    "location": "Your Town",
+    "phone": "07700 900000",
+    "email": "your.name@example.com",
+    "linkedin": "linkedin.com/in/your-name"
+  },
+  "profile": "PLACEHOLDER: replace this with two to four sentences about who you are professionally: your years of experience, your strongest skills and the kind of role you want next. Plain, human writing, and only things that are true.",
+  "stats": [
+    {
+      "value": "10+",
+      "label": "years' experience"
+    },
+    {
+      "value": "5",
+      "label": "people managed"
+    },
+    {
+      "value": "3",
+      "label": "big projects delivered"
+    }
+  ],
+  "skills": [
+    {
+      "title": "First skill area",
+      "text": "Examples, tools and methods you use in this area"
+    },
+    {
+      "title": "Second skill area",
+      "text": "Examples, tools and methods you use in this area"
+    },
+    {
+      "title": "Third skill area",
+      "text": "Examples, tools and methods you use in this area"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Your first certification",
+      "year": "2024"
+    },
+    {
+      "name": "Your second certification",
+      "year": "2022"
+    }
+  ],
+  "jobs": [
+    {
+      "title": "Your Latest Job Title",
+      "company": "Company Name",
+      "dates": "Jan 2022 – Present",
+      "bullets": [
+        "PLACEHOLDER: what you did here, with a real number or result if you have one",
+        "PLACEHOLDER: another achievement, written plainly",
+        "PLACEHOLDER: a third achievement"
+      ]
+    },
+    {
+      "title": "Your Previous Job Title",
+      "company": "Another Company",
+      "dates": "Jun 2018 – Dec 2021",
+      "bullets": [
+        "PLACEHOLDER: what you did here",
+        "PLACEHOLDER: another achievement"
+      ]
+    }
+  ],
+  "page1_jobs": 1,
+  "references": true
+}
