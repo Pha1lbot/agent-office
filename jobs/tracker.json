@@ -1645,6 +1645,14 @@
       "at": "2026-11-06T23:07",
       "done": true,
       "handled": "2026-11-06T23:09"
+    },
+    {
+      "id": "i8",
+      "role": "2026-11-05-tiktok-tiktok-shop-creator-operations-manager",
+      "task": "Give a verdict: worth applying?",
+      "title": "TikTok Shop Creator Operations Manager @ TikTok",
+      "at": "2026-11-08T14:46",
+      "done": false
     }
   ]
 }
