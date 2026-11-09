@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 21 · shortlisted: 6 · drafted: 3 · applied: 4 · skipped: 19
+found: 21 · shortlisted: 6 · drafted: 4 · applied: 4 · skipped: 18
 
 ## Next actions
 
@@ -43,6 +43,7 @@ found: 21 · shortlisted: 6 · drafted: 3 · applied: 4 · skipped: 19
 | drafted | 1 | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-06 |
 | drafted | 3 | [Director of Soccer Aid (interim)](https://www.linkedin.com/jobs/view/4483454939/) | UNICEF UK | £105k, fixed term | London area | 3 |  | 2026-11-09 |
 | drafted | 3 | [Event Director](https://www.linkedin.com/jobs/view/4484516383/) | Handle Recruitment (client unnamed) | £70k–£90k | London, hybrid | 3 |  | 2026-11-08 |
+| drafted | 22 | [Marketing Senior Specialist, Call of Duty](https://www.linkedin.com/jobs/view/4482564607/) | Activision Blizzard |  | London, England | 2 |  | 2026-11-09 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Apply via LinkedIn; ask about UK or remote | 2026-11-05 |
 | applied |  | [Esport Specialist](https://www.linkedin.com/jobs/view/4308233024/) | NetEase Games |  | UK remote | 2 | Follow up if no reply by 15 Nov | 2026-11-08 |
 | applied |  | [Director of Team Operations](https://uk.linkedin.com/jobs/view/director-of-team-operations-at-hexagon-world-series-4476411854) | Hexagon World Series | not stated | London, UK or Madrid, Spain | 3 | Apply today (Easy Apply on LinkedIn) | 2026-11-06 |
@@ -58,7 +59,6 @@ found: 21 · shortlisted: 6 · drafted: 3 · applied: 4 · skipped: 19
 | skipped | 22 | [TikTok Shop Creator Operations Manager](https://www.linkedin.com/jobs/view/4484128473/) | TikTok | Not listed | London | 1 |  | 2026-11-09 |
 | skipped | 22 | [Senior Premium Experience Manager, fixed term](https://www.linkedin.com/jobs/view/4481587358/) | Formula E | Not listed | London, hybrid | 2 |  | 2026-11-09 |
 | skipped | 23 | [Producer (Games), UK only](https://hitmarker.net/jobs/futurlab-producer-games-uk-only-remote-hybrid-brighton-5408504) | FuturLab | Not listed | Remote UK or hybrid Brighton | 1 |  | 2026-11-09 |
-| skipped | 23 | [Marketing Senior Specialist, Call of Duty](https://www.linkedin.com/jobs/view/4482564607/) | Activision Blizzard |  | London, England | 2 |  | 2026-11-09 |
 | skipped | 24 | [Producer, Star Trek Fleet Command](https://hitmarker.net/jobs/scopely-producer-star-trek-fleet-command-5472927) | Scopely | Not listed | London | 1 |  | 2026-11-09 |
 | skipped | 28 | [Ticketing Manager](https://www.linkedin.com/jobs/view/4481596263/) | Relevent Football Partners | Not listed | London | 1 |  | 2026-11-09 |
 | skipped |  | Global E-Sports & Gaming Strategy Lead | Placements24 · client unnamed | £90k–£130k | Remote or hybrid, London |  | Ask who the employer is; find the original advert | 2026-11-05 |

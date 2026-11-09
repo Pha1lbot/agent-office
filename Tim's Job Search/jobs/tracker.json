@@ -1625,8 +1625,8 @@
       "url": "https://www.linkedin.com/jobs/view/4482564607/",
       "source": "Tim",
       "fit": 2,
-      "priority": 23,
-      "status": "skipped",
+      "priority": 22,
+      "status": "drafted",
       "notes": "",
       "found": "2026-11-08",
       "updated": "2026-11-09",
@@ -1639,6 +1639,21 @@
         {
           "date": "2026-11-09",
           "status": "skipped",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-09",
+          "status": "found",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-09",
+          "status": "shortlisted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-09",
+          "status": "drafted",
           "by": "tim"
         }
       ],
@@ -1813,6 +1828,14 @@
       "task": "Give a verdict: worth applying?",
       "title": "Event Director @ Handle Recruitment (client unnamed)",
       "at": "2026-11-08T20:21",
+      "done": false
+    },
+    {
+      "id": "i13",
+      "role": "2026-11-08-activision-blizzard-marketing-senior-specialist-call-of-duty",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "Marketing Senior Specialist, Call of Duty @ Activision Blizzard",
+      "at": "2026-11-09T11:25",
       "done": false
     }
   ]
