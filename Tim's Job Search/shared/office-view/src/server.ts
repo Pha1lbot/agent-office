@@ -513,7 +513,9 @@ if (python) tool = new Tracker(python, REPO, TRACKER);
 else console.log("Python 3 not found: the office will show roles but can't edit them. Install Python from python.org.");
 const claude = python ? await findClaude(REPO) : null;
 if (python) {
-  cos = new AutoCos(claude, gitRepo || REPO, python, APP, {
+  // Run Claude Code in the office folder, not the git repo's top folder: /cos, the
+  // agents and the guard hook live in this office's .claude/, and tool paths are relative to it.
+  cos = new AutoCos(claude, REPO, python, APP, {
     before: async () => { backup.hold = true; await backup.flush(); },
     after: async () => { backup.hold = false; const n = await loadTracker(); broadcast({ type: "tracker", tracker }); return n; },
     changed: pushSystem,

@@ -11,6 +11,27 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-09: Automatic Hal runs start in the office folder
+
+**What changed**
+- `Tim's Job Search/shared/office-view/src/server.ts`: the automatic Chief of Staff run (`AutoCos`) now starts Claude Code in the office folder (`REPO`) instead of the git repo's top folder (`gitRepo || REPO`), with a comment saying why.
+
+**Why**
+- Tim asked for the fix found in the entry below: every automatic run failed with "Unknown command: /cos", because /cos, the agents and the guard hook live in the office's own `.claude/`, which Claude Code doesn't load from the top folder. The run's tool paths (`shared/tools/tracker.py`) are also relative to the office folder.
+
+**Decisions**
+- Only the run's working folder changed. The office's GitHub backup still uses the git top folder, which is right for git.
+- Hal's office has the same code and likely the same bug; not changed, as the rules say to change the other office's copy only when asked.
+
+**How to check it**
+- `npm run check` and `npm test` in `shared/office-view` pass (37 tests).
+- Restart the office, then press "Run now" with an inbox item waiting: the new `logs/cos-*.log` should show Hal working, not "Unknown command: /cos".
+
+**Open items**
+- The running office must be restarted to pick this up.
+- Same fix probably needed in `Hal's Job Search/shared/office-view/src/server.ts`.
+- With GitHub suspended, runs will hit a failed start-up git pull; whether they carry on depends on the existing rules. Not pushed (GitHub suspended).
+
 ### 2026-11-09: Drafts for UNICEF UK and Handle Recruitment, and why automatic runs fail
 
 **What changed**
