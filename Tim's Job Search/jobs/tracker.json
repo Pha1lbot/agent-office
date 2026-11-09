@@ -578,7 +578,8 @@
       ],
       "imported_from": "dashboard lead",
       "verdict": "maybe",
-      "verdict_why": "Details only: £105k football and TV charity event, but interim fixed term with a fundraising/partnership remit"
+      "verdict_why": "Good pay and hybrid, but fundraising-led and it closed at 8am today",
+      "closing_date": "2026-11-09"
     },
     {
       "id": "2026-11-05-wpp-production-global-hub-operations-director",
@@ -623,11 +624,11 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 29 Oct",
-      "fit": 3,
+      "fit": 2,
       "priority": 3,
       "status": "drafted",
       "found": "2026-11-05",
-      "updated": "2026-11-08",
+      "updated": "2026-11-09",
       "history": [
         {
           "date": "2026-11-05",
@@ -645,8 +646,8 @@
         }
       ],
       "imported_from": "dashboard lead",
-      "verdict": "maybe",
-      "verdict_why": "Details only: Event Director pay and hybrid work suit you, but client and sector are unnamed and may not be esports or live production"
+      "verdict": "skip",
+      "verdict_why": "4 office days a week breaks your 3-day limit, and corporate event-agency experience is essential"
     },
     {
       "id": "2026-11-05-lta-head-of-delivery-central-east",
@@ -1722,6 +1723,13 @@
       "role": "2026-11-05-netease-games-esport-specialist",
       "done": false,
       "created": "2026-11-06"
+    },
+    {
+      "id": "a9",
+      "text": "UNICEF UK Soccer Aid closed 8am 9 Nov and rejects AI-written answers: reword the letter yourself if you still apply",
+      "role": "2026-11-05-unicef-uk-director-of-soccer-aid-interim",
+      "done": false,
+      "created": "2026-11-09"
     }
   ],
   "inbox": [
@@ -1812,7 +1820,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Director of Soccer Aid (interim) @ UNICEF UK",
       "at": "2026-11-08T20:20",
-      "done": false
+      "done": true,
+      "handled": "2026-11-09T11:38"
     },
     {
       "id": "i11",
@@ -1820,7 +1829,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Event Director @ Handle Recruitment (client unnamed)",
       "at": "2026-11-08T20:21",
-      "done": false
+      "done": true,
+      "handled": "2026-11-09T11:38"
     },
     {
       "id": "i12",
@@ -1828,7 +1838,8 @@
       "task": "Give a verdict: worth applying?",
       "title": "Event Director @ Handle Recruitment (client unnamed)",
       "at": "2026-11-08T20:21",
-      "done": false
+      "done": true,
+      "handled": "2026-11-09T11:34"
     },
     {
       "id": "i13",

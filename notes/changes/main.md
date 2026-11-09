@@ -11,6 +11,30 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-09: Drafts for UNICEF UK and Handle Recruitment, and why automatic runs fail
+
+**What changed**
+- `jobs/roles/2026-11-05-unicef-uk-director-of-soccer-aid-interim/`: new. Rita's `listing.md`; Wren's `cv.json`, `cover-letter.md`, `notes.md`; Ada's `cv.md`, Word files and PDFs.
+- `jobs/roles/2026-11-05-handle-recruitment-client-unnamed-event-director/`: new, same set of files.
+- `jobs/tracker.json` / `jobs/tracker.md`: Handle Recruitment set to fit 2, verdict skip; UNICEF UK set to fit 3, verdict maybe, closing date 2026-11-09. Inbox items i10, i11 and i12 done. Action a9 added (UNICEF closed and rejects AI-written answers).
+
+**Why**
+- Tim reported that automatic runs did nothing although the office showed requests waiting, and asked Hal to run the inbox for these two roles by hand, with a verdict for Handle Recruitment.
+- Cause of the failed runs: the logs (`Tim's Job Search/shared/office-view/logs/cos-*.log`) all say only "Unknown command: /cos". `shared/office-view/src/auto-cos.ts` starts Claude Code in the git repo's top folder (`server.ts` passes `gitRepo || REPO`), but since the office moved into `Tim's Job Search/` the /cos skill lives only in that office's `.claude/skills/`, so Claude Code at the top level doesn't know it. The start-up git pull (GitHub is currently suspended) is not what stopped them, so the planned "carry on without GitHub" rule changes were not made.
+
+**Decisions**
+- Rita found UNICEF closed at 8am today and rated Handle a skip (4 office days a week, agency experience essential). Tim was asked and chose to draft both anyway.
+- Committed locally only: Tim's GitHub account is suspended, so push when it's back.
+- Activision Blizzard (i13) left in the inbox: not part of this request.
+
+**How to check it**
+- `python shared/tools/tracker.py inbox list` shows only i13. Both role folders have a CV and cover letter PDF.
+
+**Open items**
+- Fix `server.ts` to start automatic runs in the office folder (`REPO`), not the git top level. Hal's office has the same code and likely the same bug.
+- Push this commit when GitHub access is restored.
+- Wren's UNICEF CV figure "6 / person team led" may read oddly; Tim to check.
+
 ### 2026-11-08: Verdicts for two roles Tim added from the office (TikTok, Activision Blizzard)
 
 **What changed**
