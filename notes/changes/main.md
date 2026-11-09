@@ -11,6 +11,27 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-09: Carry on locally when GitHub can't be reached
+
+**What changed**
+- `CLAUDE.md`: "At the start of every session" step 2 now splits a failed pull in two. If GitHub can't be reached, carry on locally, commit without pushing, tell Tim, and push when it's back (Hal's office just carries on and pulls later). Merge conflicts or local changes in the way still stop work.
+- `Tim's Job Search/.claude/settings.json`: the start-up hook's failure message says the same, instead of "sort out any problem with Tim before starting work".
+- `Tim's Job Search/.claude/skills/cos/SKILL.md`: "Office changes" step 4 says to still do the work and commit without pushing when GitHub can't be reached, and to stop only for conflicts or local changes in the way.
+- Hal's office got the matching hook and skill changes; see `main-hals-job-search.md`.
+
+**Why**
+- Tim's GitHub account is suspended, so every pull and push fails. With the old message, a session (and every automatic run, now that they start in the office folder) would stop before doing any work. Tim asked for work to carry on locally until GitHub is back.
+
+**Decisions**
+- Kept the stop for merge conflicts and local changes in the way: carrying on through those could lose or mix up work.
+- Left "Before finishing" steps 7-8 (nothing left unpushed; never leave a failed push) as they are: step 2 now covers the GitHub-down case, and they still apply once it's back.
+
+**How to check it**
+- Both settings files still parse as JSON. Start a session in the office while GitHub is unreachable: the hook message should say to carry on locally, and /cos office changes should finish and commit without pushing.
+
+**Open items**
+- Not pushed (GitHub suspended). 9 local commits are waiting.
+
 ### 2026-11-09: Automatic Hal runs start in the office folder
 
 **What changed**

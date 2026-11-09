@@ -42,7 +42,9 @@ Tim may work here from his PC, from Claude Code on his PC, and from Claude sessi
 ### At the start of every session
 
 1. Run `git status`. If there are uncommitted changes left over from before, tell Tim what they are and ask whether to commit them before doing anything else.
-2. Run `git pull` so you are working on the latest version. A start-up hook in the office's `.claude/settings.json` already tries this; check its result, and if it failed, sort it out (ask Tim if unsure) before doing anything else.
+2. Run `git pull` so you are working on the latest version. A start-up hook in the office's `.claude/settings.json` already tries this; check its result, and if it failed, find out why:
+   - **GitHub can't be reached** (network down, sign-in refused, account suspended): carry on and work locally. Commit as usual but don't push, and tell Tim the work isn't backed up yet. When GitHub is back, pull and then push everything waiting. In Hal's office, which never commits, just carry on and pull again later.
+   - **Merge conflicts, or local changes in the way of the pull:** stop and sort it out before doing anything else (ask Tim, or Hal in his office, if unsure).
 
 ### While working
 
