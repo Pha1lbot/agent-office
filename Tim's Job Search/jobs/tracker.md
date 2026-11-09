@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 21 · shortlisted: 7 · drafted: 2 · applied: 4 · skipped: 19
+found: 21 · shortlisted: 6 · drafted: 3 · applied: 4 · skipped: 19
 
 ## Next actions
 
@@ -34,7 +34,6 @@ found: 21 · shortlisted: 7 · drafted: 2 · applied: 4 · skipped: 19
 | found | 19 | [Event Manager (Core), fixed term](https://www.linkedin.com/jobs/view/4481451695/) | England & Wales Cricket Board | Not listed | London area | 2 |  | 2026-11-06 |
 | found | 20 | [Senior Core Services Delivery Manager (ExCeL London)](https://www.linkedin.com/jobs/view/4481683436/) | GES UK & Europe | Not listed | London | 2 |  | 2026-11-06 |
 | found | 21 | [Global Brand Experiences Manager, EMEA](https://www.linkedin.com/jobs/view/4479480680/) | Meta | Not listed | London, hybrid | 2 |  | 2026-11-06 |
-| shortlisted | 3 | [Director of Soccer Aid (interim)](https://www.linkedin.com/jobs/view/4483454939/) | UNICEF UK | £105k, fixed term | London area | 3 |  | 2026-11-08 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | shortlisted |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-05 |
 | shortlisted |  | Senior Operations Resource Planning Manager | British Airways | Similar BA planning role listed at £50k–£70k, unconfirmed | Heathrow, on-site |  | Long shot; apply if the pay and location suit | 2026-11-05 |
@@ -42,6 +41,7 @@ found: 21 · shortlisted: 7 · drafted: 2 · applied: 4 · skipped: 19
 | shortlisted |  | [AI Enablement Manager](https://ats.rippling.com/livewire/jobs/c5df0138-76a1-4a31-8bed-b4afd7ad0a56) | Livewire (gaming media) | Not shown | Not shown |  |  | 2026-11-05 |
 | shortlisted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London |  |  | 2026-11-05 |
 | drafted | 1 | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-06 |
+| drafted | 3 | [Director of Soccer Aid (interim)](https://www.linkedin.com/jobs/view/4483454939/) | UNICEF UK | £105k, fixed term | London area | 3 |  | 2026-11-09 |
 | drafted | 3 | [Event Director](https://www.linkedin.com/jobs/view/4484516383/) | Handle Recruitment (client unnamed) | £70k–£90k | London, hybrid | 3 |  | 2026-11-08 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Apply via LinkedIn; ask about UK or remote | 2026-11-05 |
 | applied |  | [Esport Specialist](https://www.linkedin.com/jobs/view/4308233024/) | NetEase Games |  | UK remote | 2 | Follow up if no reply by 15 Nov | 2026-11-08 |
