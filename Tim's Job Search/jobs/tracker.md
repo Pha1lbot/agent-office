@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 28 · shortlisted: 7 · drafted: 2 · applied: 4 · skipped: 12
+found: 21 · shortlisted: 7 · drafted: 2 · applied: 4 · skipped: 19
 
 ## Next actions
 
@@ -34,13 +34,6 @@ found: 28 · shortlisted: 7 · drafted: 2 · applied: 4 · skipped: 12
 | found | 19 | [Event Manager (Core), fixed term](https://www.linkedin.com/jobs/view/4481451695/) | England & Wales Cricket Board | Not listed | London area | 2 |  | 2026-11-06 |
 | found | 20 | [Senior Core Services Delivery Manager (ExCeL London)](https://www.linkedin.com/jobs/view/4481683436/) | GES UK & Europe | Not listed | London | 2 |  | 2026-11-06 |
 | found | 21 | [Global Brand Experiences Manager, EMEA](https://www.linkedin.com/jobs/view/4479480680/) | Meta | Not listed | London, hybrid | 2 |  | 2026-11-06 |
-| found | 22 | [Senior Premium Experience Manager, fixed term](https://www.linkedin.com/jobs/view/4481587358/) | Formula E | Not listed | London, hybrid | 2 |  | 2026-11-06 |
-| found | 23 | [Marketing Senior Specialist, Call of Duty](https://www.linkedin.com/jobs/view/4482564607/) | Activision Blizzard |  | London, England | 2 |  | 2026-11-08 |
-| found | 24 | [Producer, Star Trek Fleet Command](https://hitmarker.net/jobs/scopely-producer-star-trek-fleet-command-5472927) | Scopely | Not listed | London | 1 |  | 2026-11-06 |
-| found | 25 | [Manager, Marketing Operations](https://www.linkedin.com/jobs/view/4485604099/) | Snap Inc. | Not listed | London | 1 |  | 2026-11-06 |
-| found | 26 | [TikTok Shop Creator Operations Manager](https://www.linkedin.com/jobs/view/4484128473/) | TikTok | Not listed | London | 1 |  | 2026-11-08 |
-| found | 27 | [Producer (Games), UK only](https://hitmarker.net/jobs/futurlab-producer-games-uk-only-remote-hybrid-brighton-5408504) | FuturLab | Not listed | Remote UK or hybrid Brighton | 1 |  | 2026-11-06 |
-| found | 28 | [Ticketing Manager](https://www.linkedin.com/jobs/view/4481596263/) | Relevent Football Partners | Not listed | London | 1 |  | 2026-11-06 |
 | shortlisted | 3 | [Director of Soccer Aid (interim)](https://www.linkedin.com/jobs/view/4483454939/) | UNICEF UK | £105k, fixed term | London area | 3 |  | 2026-11-08 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | shortlisted |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-05 |
@@ -61,6 +54,13 @@ found: 28 · shortlisted: 7 · drafted: 2 · applied: 4 · skipped: 12
 | skipped | 3 | [Senior Producer, Events](https://www.linkedin.com/jobs/view/4483027028/) | Premier | £50k–£65k | London area, hybrid | 3 |  | 2026-11-09 |
 | skipped | 5 | [Head of Political Events and Operations](https://www.linkedin.com/jobs/view/4483585204/) | The Conservative Party | Not listed | London area | 3 |  | 2026-11-09 |
 | skipped | 5 | [UK Operations Director](https://www.linkedin.com/jobs/view/4475864821/) | Prose on Pixels | Not listed | London | 3 |  | 2026-11-09 |
+| skipped | 22 | [Manager, Marketing Operations](https://www.linkedin.com/jobs/view/4485604099/) | Snap Inc. | Not listed | London | 1 |  | 2026-11-09 |
+| skipped | 22 | [TikTok Shop Creator Operations Manager](https://www.linkedin.com/jobs/view/4484128473/) | TikTok | Not listed | London | 1 |  | 2026-11-09 |
+| skipped | 22 | [Senior Premium Experience Manager, fixed term](https://www.linkedin.com/jobs/view/4481587358/) | Formula E | Not listed | London, hybrid | 2 |  | 2026-11-09 |
+| skipped | 23 | [Producer (Games), UK only](https://hitmarker.net/jobs/futurlab-producer-games-uk-only-remote-hybrid-brighton-5408504) | FuturLab | Not listed | Remote UK or hybrid Brighton | 1 |  | 2026-11-09 |
+| skipped | 23 | [Marketing Senior Specialist, Call of Duty](https://www.linkedin.com/jobs/view/4482564607/) | Activision Blizzard |  | London, England | 2 |  | 2026-11-09 |
+| skipped | 24 | [Producer, Star Trek Fleet Command](https://hitmarker.net/jobs/scopely-producer-star-trek-fleet-command-5472927) | Scopely | Not listed | London | 1 |  | 2026-11-09 |
+| skipped | 28 | [Ticketing Manager](https://www.linkedin.com/jobs/view/4481596263/) | Relevent Football Partners | Not listed | London | 1 |  | 2026-11-09 |
 | skipped |  | Global E-Sports & Gaming Strategy Lead | Placements24 · client unnamed | £90k–£130k | Remote or hybrid, London |  | Ask who the employer is; find the original advert | 2026-11-05 |
 | skipped |  | Esports Coordinator / Team Manager | Wolves Esports | Unpaid |  |  | Declined: unpaid. Door left open if budget changes | 2026-11-04 |
 | skipped |  | Director of Event Operations | Chess.com |  | Fully remote, US or EU applicants |  |  | 2026-11-06 |
