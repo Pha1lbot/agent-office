@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "GIT_TERMINAL_PROMPT=0 git -C \"$CLAUDE_PROJECT_DIR\" pull --ff-only 2>&1 || echo 'Start-up git pull did not finish. Run git status and check why. If GitHub could not be reached, carry on and work locally with the copy on this PC (this office never commits or pushes), and pull again when GitHub is back. If it stopped on a merge conflict or local changes in the way, sort that out with Hal before starting work.'",
+            "command": "GIT_TERMINAL_PROMPT=0 git -C \"$CLAUDE_PROJECT_DIR\" pull --ff-only 2>&1 || echo 'Start-up git pull did not finish. Run git status and git pull, and sort out any problem with Hal before starting work.'",
             "timeout": 30
           }
         ]

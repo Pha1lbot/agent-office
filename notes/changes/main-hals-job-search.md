@@ -11,6 +11,10 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Back to the normal start-up git rule
+
+- `Hal's Job Search/.claude/settings.json` and `.claude/skills/cos/SKILL.md`: restored to their wording from before the 2026-11-09 "Carry on locally" entry, now that Tim Everard's GitHub account is active again. A failed start-up pull again means stopping and sorting it out with Hal. Details in `main.md`, 2026-11-11.
+
 ### 2026-11-11: Automatic-run fix now in Hal's office (merged from GitHub)
 
 **What changed**

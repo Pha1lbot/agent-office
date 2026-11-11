@@ -40,7 +40,7 @@ Tim changes statuses and adds roles in the office's Roles tab. Changes that need
    - **"Revise documents: <Tim's words>"** (from the role page's "Ask Wren for changes", or "tailor the CV and cover letter again…" from the Tailor dialog when documents already exist): brief **Wren** with the role id and Tim's words exactly. She edits `cv.md` / `cover-letter.md` and rebuilds the Word files. If the role was *approved*, set it back to `drafted` so Tim checks again.
    - **"Refresh interview prep"** (optionally with Tim's focus after a colon): brief **Cole** to refresh `interview-prep.md`. He must keep Tim's talking points as they are and only add suggestions.
 3. Run `tracker.py inbox done <ids>` for what you finished.
-4. Commit and push (see Backups), then reply in a few lines: what was done, which files Tim should look at, and anything left for him. If GitHub can't be reached (the start-up pull or the push fails to connect), still do the work and commit, but don't push: say in your reply that it's waiting to be pushed, and push when GitHub is back. Stop instead only for merge conflicts or local changes in the way of the pull.
+4. Commit and push (see Backups), then reply in a few lines: what was done, which files Tim should look at, and anything left for him.
 
 If you were started automatically, Tim isn't there to answer. Don't ask questions; add them as actions (`tracker.py action add "..." --role <id>`).
 

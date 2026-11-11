@@ -11,6 +11,23 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Back to the normal start-up git rules
+
+**What changed**
+- `CLAUDE.md`, both offices' `.claude/settings.json` and both offices' `.claude/skills/cos/SKILL.md`: restored to their wording from before the 2026-11-09 entry "Carry on locally when GitHub can't be reached". A failed start-up pull again means sorting it out with the person before starting work, and office changes are committed and pushed as before.
+
+**Why**
+- Tim's GitHub account is active again, and he asked to go back to the old system while keeping the other updates (the UNICEF UK and Handle Recruitment drafts, and the automatic-run fix from PR #27).
+
+**Decisions**
+- Restored the five files by hand in a new commit rather than `git revert`, so the 2026-11-09 notes entries stay, as the change-notes rules require.
+
+**How to check it**
+- The hook message in each office's `.claude/settings.json` again ends "sort out any problem with Tim/Hal before starting work". `main` matches GitHub after the push.
+
+**Open items**
+- None. If GitHub goes down again, the 2026-11-09 commit (9243d72) has the "carry on locally" wording to reuse.
+
 ### 2026-11-11: Merge GitHub's main after GitHub came back
 
 **What changed**
