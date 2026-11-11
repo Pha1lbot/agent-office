@@ -8,7 +8,7 @@ Epsom, Surrey · 07872 571569 · tim.everard@hotmail.co.uk · linkedin.com/in/ti
 
 ## Profile
 
-Operations leader with 15 years' experience in resource planning and rostering for live events and broadcast, most recently as Head of Esports Operations at BLAST. Led a six-person department and, across six years, planned, booked, contracted and scheduled 2,000+ freelancers across 60+ flagship events and 300+ qualifiers in 13 countries, working to €12m+ in budgets. Managed freelancers, vendors and suppliers, tracked event budgets and deadlines in planning tools built for the department, met finance fortnightly to align on budgets, and rebuilt how the team works with clear ownership and documentation. Used to stakeholder management with commercial and production teams, and to continuous improvement, turning a plan into a delivered, well-staffed operation.
+Operations leader with 15 years' experience in resource planning and rostering for live events and broadcast, most recently as Head of Esports Operations at BLAST. Led a six-person department and, across six years, planned, booked, contracted and scheduled 2,000+ freelancers across 60+ flagship events and 300+ qualifiers in 13 countries, working to €12m+ in budgets. Managed freelancers, vendors and suppliers, tracked event budgets and deadlines in planning tools built for the department, met finance fortnightly to align on budgets, and rebuilt how the team works with clear ownership and documentation. Experienced in stakeholder management with commercial and production teams and in continuous improvement, turning a plan into a delivered, well-staffed operation.
 
 **In numbers:** 2,000+ freelancers · €12m+ in budgets · 60+ flagship events · 300+ qualifiers · 13 countries
 

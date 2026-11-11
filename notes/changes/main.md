@@ -11,6 +11,11 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Job search: finance meetings confirmed as Head of Esports Operations; BA profile reworded
+
+- Tim confirmed the fortnightly finance budget meetings were in his Head of Esports Operations role at BLAST. `Tim's Job Search/shared/job-search/cv/extra-from-tim.md` now files the fact under that role. This closes the open item in the entry below.
+- BA role `2026-11-05-british-airways-senior-operations-resource-planning-mana`: profile's last sentence reworded ("Used to stakeholder management…" became "Experienced in stakeholder management… and in continuous improvement…"). Rebuilt with `make_docs.py`; fact check passed.
+
 ### 2026-11-11: Job search: finance budget meetings added to CV facts and the British Airways CV
 
 - New `Tim's Job Search/shared/job-search/cv/extra-from-tim.md`: Tim told Hal he held fortnightly meetings with finance at BLAST to align on budgets. Recorded as an extra fact Wren may use; Tim didn't say which BLAST role.
