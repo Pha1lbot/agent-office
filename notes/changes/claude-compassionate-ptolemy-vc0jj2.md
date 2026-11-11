@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #20](https://github.com/Pha1lbot/agent-office/pull/20), CHANGELOG lines only). Earlier work merged 2026-11-07 in [PR #18](https://github.com/Pha1lbot/agent-office/pull/18) and [PR #19](https://github.com/Pha1lbot/agent-office/pull/19).
+**Status:** In progress (review of 2026-11-11: fixes, search, learning loop). Earlier work merged in PRs #18, #19 and #20.
 
 ## Purpose
 
@@ -10,6 +10,28 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-11: Every applied role gets a follow-up date
+
+**What changed**
+- `Tim's Job Search/shared/tools/tracker.py` (`cmd_set`): when a role becomes applied without `next=` in the same call, the next step is always set to "Follow up if no reply by <7 days on>". A next step written before applying (unless it was an "Apply ..." note) is kept in the role's notes as "Before applying: ...".
+- `Tim's Job Search/shared/tools/test_tracker.py`: two new tests for this.
+- `Hal's Job Search/shared/tools/tracker.py` and `test_tracker.py`: the same change (see `main-hals-job-search.md`).
+- `Tim's Job Search/jobs/tracker.json` and `tracker.md`: follow-up dates set on the four applied roles that had none: Razer 12 Nov, Hexagon and Chelsea 13 Nov, British Airways 18 Nov (each applied date plus 7 days). BA's old next step is kept in its notes.
+
+**Why**
+First fix from the review Tim approved on 2026-11-11 (plan: fixes, then search, then the learning loop). 4 of his 5 applied roles had no follow-up date, so the office never showed them as due. The old rule only wrote one when the next step was empty or began with "apply".
+
+**Decisions**
+- Kept the follow-up as the sentence the office already reads (`overdue()` in `public/util.js`), not a new date field: a three-line change with no page changes.
+- The old next step goes to notes, not the bin, in case it still matters.
+
+**How to check it**
+- `python3 shared/tools/test_tracker.py` in each office: 9 tests pass.
+- `python3 shared/tools/tracker.py list --status applied` in Tim's office: all five show "Follow up if no reply by ...".
+
+**Open items**
+The rest of PR 1: missing CHANGELOG lines, the CHANGELOG rule, and plainer staff messages in the office.
 
 ### 2026-11-07: PR #20 for the CHANGELOG lines
 

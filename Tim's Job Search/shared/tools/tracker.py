@@ -419,10 +419,13 @@ def cmd_set(args):
                         i["done"] = True
                         i["cancelled"] = True
             if value == "applied" and not any(p.startswith("next=") for p in args.changes):
-                # Ada: a follow-up date, unless Tim already set a real next step
-                if not role.get("next") or re.match(r"(?i)\s*apply", role["next"]):
-                    when = uk_now() + timedelta(days=FOLLOW_UP_DAYS)
-                    role["next"] = f"Follow up if no reply by {when.day} {when:%b}"
+                # Ada: every applied role gets a follow-up date. A next step written before
+                # applying is done with now, so it is kept in the notes, not left in the way.
+                old = (role.get("next") or "").strip()
+                if old and not re.match(r"(?i)\s*(apply|follow up)", old):
+                    role["notes"] = "; ".join(x for x in (role.get("notes"), f"Before applying: {old}") if x)
+                when = uk_now() + timedelta(days=FOLLOW_UP_DAYS)
+                role["next"] = f"Follow up if no reply by {when.day} {when:%b}"
         if key == "priority":
             # Tim's own priority on a To review role is kept when Ada ranks the rest.
             role["priority_by_tim"] = bool(args.by == "tim" and value)

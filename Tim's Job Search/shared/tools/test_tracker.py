@@ -35,6 +35,25 @@ class TrackerTests(unittest.TestCase):
         self.run_t("set", "acme", "status=found", "--by", "tim")
         self.assertEqual(self.waiting(), [])
 
+    def test_applying_always_sets_a_follow_up_and_keeps_the_old_next_step(self):
+        import json
+        self.run_t("set", "acme", "next=Long shot; apply if the pay suits")
+        self.run_t("set", "acme", "status=applied")
+        role = json.loads(self.run_t("show", "acme"))
+        self.assertTrue(role["next"].startswith("Follow up if no reply by "), role["next"])
+        self.assertIn("Before applying: Long shot; apply if the pay suits", role["notes"])
+
+    def test_applying_drops_an_apply_note_and_respects_a_next_step_given_with_it(self):
+        import json
+        self.run_t("set", "acme", "next=Apply today: closes Friday")
+        self.run_t("set", "acme", "status=applied")
+        role = json.loads(self.run_t("show", "acme"))
+        self.assertTrue(role["next"].startswith("Follow up if no reply by "))
+        self.assertNotIn("Before applying", role.get("notes") or "")
+        self.run_t("add", "--id", "beta", "--title", "Ops Head", "--company", "Beta")
+        self.run_t("set", "beta", "status=applied", "next=Call Sam on Monday")
+        self.assertEqual(json.loads(self.run_t("show", "beta"))["next"], "Call Sam on Monday")
+
     def test_action_done_and_reopen(self):
         aid = self.run_t("action", "add", "Call the recruiter")
         self.run_t("action", "done", aid)

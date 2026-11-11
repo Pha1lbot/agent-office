@@ -11,6 +11,24 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Every applied role gets a follow-up date (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/tracker.py` (`cmd_set`): a role that becomes applied always gets "Follow up if no reply by <7 days on>" as its next step; an earlier next step is kept in the notes as "Before applying: ...".
+- `Hal's Job Search/shared/tools/test_tracker.py`: two new tests.
+
+**Why**
+Tim Everard asked on 2026-11-11 for code fixes to go into both offices. Made on branch `claude/compassionate-ptolemy-vc0jj2`; details in that branch's notes.
+
+**Decisions**
+Code only. Hal's tracker, CV, preferences and roles were not opened or changed, so any role he has already applied to keeps its current next step.
+
+**How to check it**
+`python3 shared/tools/test_tracker.py` in Hal's office: 9 tests pass (they use a temporary jobs folder).
+
+**Open items**
+None.
+
 ### 2026-11-11: Back to the normal start-up git rule
 
 - `Hal's Job Search/.claude/settings.json` and `.claude/skills/cos/SKILL.md`: restored to their wording from before the 2026-11-09 "Carry on locally" entry, now that Tim Everard's GitHub account is active again. A failed start-up pull again means stopping and sorting it out with Hal. Details in `main.md`, 2026-11-11.
