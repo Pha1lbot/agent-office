@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: A blank search definition file (from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/job-search/search.json`: new. The sources list (how each site is read) with no tracks, pay or watch list filled in.
+
+**Why**
+Tim Everard asked for code changes to go into both offices. The search script will read this file; Hal's own definition is his to make with his Chief of Staff. His preferences, CV, tracker and roles were not opened.
+
+**Decisions**
+Sources only, so the script works as soon as Hal adds tracks.
+
+**How to check it**
+The file parses as JSON.
+
+**Open items**
+Hal's definition session, once the "Define my search" page exists.
+
 ### 2026-11-11: The office says what the team is doing in plain English (ported from Tim's office)
 
 **What changed**

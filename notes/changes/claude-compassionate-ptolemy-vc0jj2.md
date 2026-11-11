@@ -11,6 +11,35 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Search definition rebuilt after a question session with Tim (PR 2, part 1)
+
+**What changed**
+- `Tim's Job Search/shared/job-search/search.json`: new. Six tracks in Tim's order (each with titles, keywords, wrong-work words and lowest level), where and pay, avoid lists, the watch list of employers, and 15 sources with how each is read.
+- `preferences.md`: "Roles I want" rewritten as the six tracks in plain English; the three *(assumed)* answers confirmed and marked as settled; BLAST added to the deal-breakers.
+- `sources.md`: rebuilt from the definition: how each source is read and by whom, the watch list, and the exact LinkedIn and Indeed alerts for Tim to set up.
+- `jobs/preference-reviews.md`: the session is logged as the first entry.
+- `Hal's Job Search/shared/job-search/search.json`: the same file with the sources only and nothing else filled in; Hal's definition is his to make.
+
+**Why**
+The search found few roles because the definition had shrunk from the eight tracks on Tim's old dashboard to two, and the search covered four sites. Tim answered the questions on 2026-11-11 and chose:
+- Tracks kept: esports and gaming; live events; sports and venues; Head of Operations at scale-ups; freelancer and workforce; plus AI as a learning or support role (he doesn't code).
+- Dropped: broadcast production and marketing operations.
+- Pay floor £50,000; 3 office days; about 1 hour commute; contract if the day rate is good; a few event trips a year.
+- Level: Senior Manager and above, plus Manager at gaming and esports employers.
+- Watch employers in all four groups offered; avoid BLAST only.
+
+**Decisions**
+- Tracks are ordered so roles in earlier ones rank higher; Scout will tag each find with its track.
+- Wrong-work words came from what Hal has already dismissed (compliance, billing, trading, crypto, dealing) and from the AI track's "no coding" rule.
+- Company hiring-page boards (Greenhouse and the others) start empty: board names must be checked to exist, and this cloud session can't reach those hosts. Scout's `check` command does that once the hosts are allowed.
+
+**How to check it**
+Both `search.json` files parse as JSON; read `preferences.md` and `sources.md` for the plain-English version.
+
+**Open items**
+- Still to build in PR 2: the Scout script, the Sources panel and "Define my search" page, Hal's and Rita's instructions, the cloud environment hosts, and the daily task.
+- Tim: set up the alerts listed in `sources.md`.
+
 ### 2026-11-11: PR #28 opened for the fixes and plain staff messages
 
 **What changed**
