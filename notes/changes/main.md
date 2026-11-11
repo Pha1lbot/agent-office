@@ -11,6 +11,12 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Job search: British Airways Senior Ops Resource Planning Manager drafted
+
+- Rita found the live advert (careers.ba.com, ref 12246, closes 31 Dec 2026) and wrote `listing.md`: fit 2, verdict maybe. Wren drafted the CV and cover letter; Ada built the files. Tracker updated with the link, closing date and verdict; inbox i14 done.
+- This supersedes the entry below: the office's automatic run (11:34, the first since the office-folder fix) flagged the draft as blocked because there was no advert on file. Action a10 marked done.
+- For Tim: the letter says openly there's no aviation or union experience; gaps are listed in the role's `notes.md`.
+
 ### 2026-11-11: Job search: British Airways Senior Ops Resource Planning Manager drafting blocked, no advert on file (action a10)
 
 ### 2026-11-11: Job search: daily search, 7 new leads, 8 dismissed; Activision Blizzard drafted

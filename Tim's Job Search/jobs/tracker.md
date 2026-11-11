@@ -9,7 +9,6 @@ found: 25 · shortlisted: 5 · drafted: 4 · applied: 4 · skipped: 30
 - Make a strategy-led CV
 - NetEase Esport Specialist: Rita's skip verdict stands (entry-level, Chinese required). Drafted CV/cover letter and interview prep anyway since you set the role to drafted three times today. Check files are honest about the seniority/language gaps before deciding to apply.
 - UNICEF UK Soccer Aid closed 8am 9 Nov and rejects AI-written answers: reword the letter yourself if you still apply
-- Can't draft the British Airways Senior Ops Resource Planning CV/cover letter: no job link or advert text on file, and no listing.md. Paste the advert or add the link so Rita can score it and Wren can draft.
 
 ## Roles
 
@@ -48,7 +47,7 @@ found: 25 · shortlisted: 5 · drafted: 4 · applied: 4 · skipped: 30
 | drafted | 1 | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-06 |
 | drafted | 3 | [Event Director](https://www.linkedin.com/jobs/view/4484516383/) | Handle Recruitment (client unnamed) | £70k–£90k | London, hybrid | 2 |  | 2026-11-09 |
 | drafted | 22 | [Marketing Senior Specialist, Call of Duty](https://www.linkedin.com/jobs/view/4482564607/) | Activision Blizzard |  | London, England | 2 |  | 2026-11-11 |
-| drafted |  | Senior Operations Resource Planning Manager | British Airways | Similar BA planning role listed at £50k–£70k, unconfirmed | Heathrow, on-site |  | Long shot; apply if the pay and location suit | 2026-11-11 |
+| drafted |  | [Senior Operations Resource Planning Manager](https://careers.ba.com/job/heathrow/senior-operations-resource-planning-manager/22348/100605084528) | British Airways | Similar BA planning role listed at £50k–£70k, unconfirmed | Waterside (BA Head Office), Heathrow | 2 | Long shot; apply if the pay and location suit | 2026-11-11 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Apply via LinkedIn; ask about UK or remote | 2026-11-05 |
 | applied |  | [Esport Specialist](https://www.linkedin.com/jobs/view/4308233024/) | NetEase Games |  | UK remote | 2 | Follow up if no reply by 15 Nov | 2026-11-08 |
 | applied |  | [Director of Team Operations](https://uk.linkedin.com/jobs/view/director-of-team-operations-at-hexagon-world-series-4476411854) | Hexagon World Series | not stated | London, UK or Madrid, Spain | 3 | Apply today (Easy Apply on LinkedIn) | 2026-11-06 |

@@ -374,9 +374,9 @@
       "id": "2026-11-05-british-airways-senior-operations-resource-planning-mana",
       "title": "Senior Operations Resource Planning Manager",
       "company": "British Airways",
-      "location": "Heathrow, on-site",
+      "location": "Waterside (BA Head Office), Heathrow",
       "pay": "Similar BA planning role listed at £50k–£70k, unconfirmed",
-      "url": "",
+      "url": "https://careers.ba.com/job/heathrow/senior-operations-resource-planning-manager/22348/100605084528",
       "source": "Job Hunt dashboard",
       "next": "Long shot; apply if the pay and location suit",
       "cv": "",
@@ -384,7 +384,7 @@
       "interview_with": "",
       "list": "Shortlist",
       "notes": "Why it fits: Workforce planning and budgets across 2,000+ freelancers Concern: No airline or union experience; heavy Excel; on-site",
-      "fit": null,
+      "fit": 2,
       "priority": null,
       "status": "drafted",
       "found": "2026-11-05",
@@ -400,7 +400,10 @@
           "by": "tim"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "maybe",
+      "closing_date": "2026-12-31",
+      "verdict_why": "Rota, budget and team skills transfer, but it's an airline switch and leans on forecasting and union work"
     },
     {
       "id": "2026-11-05-techuk-ai-programme-manager-12-month-fixed-term",
@@ -2169,8 +2172,9 @@
       "id": "a10",
       "text": "Can't draft the British Airways Senior Ops Resource Planning CV/cover letter: no job link or advert text on file, and no listing.md. Paste the advert or add the link so Rita can score it and Wren can draft.",
       "role": "2026-11-05-british-airways-senior-operations-resource-planning-mana",
-      "done": false,
-      "created": "2026-11-11"
+      "done": true,
+      "created": "2026-11-11",
+      "completed": "2026-11-11"
     }
   ],
   "inbox": [
@@ -2298,7 +2302,7 @@
       "title": "Senior Operations Resource Planning Manager @ British Airways",
       "at": "2026-11-11T11:32",
       "done": true,
-      "handled": "2026-11-11T11:36"
+      "handled": "2026-11-11T11:37"
     }
   ]
 }
