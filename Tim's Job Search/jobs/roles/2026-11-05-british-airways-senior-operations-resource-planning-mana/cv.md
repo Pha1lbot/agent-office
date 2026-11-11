@@ -8,7 +8,7 @@ Epsom, Surrey · 07872 571569 · tim.everard@hotmail.co.uk · linkedin.com/in/ti
 
 ## Profile
 
-Operations leader with 15 years' experience in resource planning and rostering for live events and broadcast, most recently as Head of Esports Operations at BLAST. Led a six-person department and, across six years, planned, booked, contracted and scheduled 2,000+ freelancers across 60+ flagship events and 300+ qualifiers in 13 countries, working to €12m+ in budgets. Managed freelancers, vendors and suppliers, tracked event budgets and deadlines in planning tools built for the department, and rebuilt how the team works with clear ownership and documentation. Used to stakeholder management with finance, commercial and production teams, and to continuous improvement, turning a plan into a delivered, well-staffed operation.
+Operations leader with 15 years' experience in resource planning and rostering for live events and broadcast, most recently as Head of Esports Operations at BLAST. Led a six-person department and, across six years, planned, booked, contracted and scheduled 2,000+ freelancers across 60+ flagship events and 300+ qualifiers in 13 countries, working to €12m+ in budgets. Managed freelancers, vendors and suppliers, tracked event budgets and deadlines in planning tools built for the department, met finance fortnightly to align on budgets, and rebuilt how the team works with clear ownership and documentation. Used to stakeholder management with commercial and production teams, and to continuous improvement, turning a plan into a delivered, well-staffed operation.
 
 **In numbers:** 2,000+ freelancers · €12m+ in budgets · 60+ flagship events · 300+ qualifiers · 13 countries
 
@@ -17,13 +17,13 @@ Operations leader with 15 years' experience in resource planning and rostering f
 ### Head of Esports Operations, BLAST (Jun 2023 – Oct 2026)
 
 - Designed and built the department's own planning tools for event and equipment tracking, freelancer calendars, bookings and contracting, and event budgets and deadlines
+- Met the finance team fortnightly to align on budgets
 - Resourced the department's events through freelancer booking, contracting and scheduling, working with vendors and suppliers
 - Led a six-person department running tournament operations across every BLAST ecosystem, including CS2, Dota 2, Brawl Stars, Fortnite, Rocket League and Rainbow Six
 - Brought Team Operations into the department, so all online and offline player management and support sat with one team
 - Rebuilt how the department works, as continuous improvement, with clearer ownership, accountability and proper documentation
 - Costed and pitched new tournament work with the product and commercial teams, as a stakeholder across the business
 - Wrote the business case for a departmental OPEX budget covering equipment renewal, software and cross-event costs
-- Set technical requirements for commercial partnerships
 
 ### Tournament Operations Manager, BLAST · Contractor to Mar 2021, then permanent (Jan 2020 – Jun 2023)
 
@@ -70,7 +70,7 @@ Operations leader with 15 years' experience in resource planning and rostering f
 
 - **Rosters and resource planning:** Staff rosters, freelancer calendars, holiday cover, emergency call-outs
 - **Resourcing and workforce planning:** Freelancer booking, contracting and payments across the event calendar, hire-or-buy decisions
-- **Budgets and finance:** Tracking budgets, invoice approval, business cases, pitch costings
+- **Budgets and finance:** Tracking budgets, fortnightly budget alignment with finance, invoice approval, business cases, pitch costings
 - **Team leadership:** Team leadership, people management, restructuring, training
 - **Vendors and stakeholders:** Vendor and supplier management, stakeholder management with product, commercial and finance teams
 - **Continuous improvement and planning tools:** Process improvement, planning tools built in Airtable, Google Workspace, Microsoft Office

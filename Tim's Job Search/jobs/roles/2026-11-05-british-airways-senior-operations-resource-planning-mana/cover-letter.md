@@ -4,7 +4,7 @@ I am applying for the Senior Operations Resource Planning Manager role at Britis
 
 At BLAST I led a six-person department and, over six years, planned, booked, contracted and scheduled more than 2,000 freelancers across 60+ flagship events and 300+ qualifiers in 13 countries. I built the department's own planning tools for freelancer calendars, bookings, contracting and event budgets, and I managed vendors and suppliers, approved staffing invoices and decided when to hire, buy or repair. Earlier, at Jam Television, I ran the staff rosters for a 24-hour TV channel, including holiday cover and emergency call-outs.
 
-I have managed budgets of €12m+ and wrote the business case for a departmental budget, tracking spend against budget and working with product, commercial and finance colleagues on stakeholder management. I also rebuilt how my department works, with clearer ownership and proper documentation, which I would bring to continuous improvement of your planning processes and tools.
+I have managed budgets of €12m+ and wrote the business case for a departmental budget, tracking spend against budget. At BLAST I met the finance team fortnightly to align on budgets, and worked with product and commercial colleagues as a stakeholder. I also rebuilt how my department works, with clearer ownership and proper documentation, which I would bring to continuous improvement of your planning processes and tools.
 
 I have not worked with trade unions or collective agreements, and I would expect to learn those quickly. I would welcome the chance to talk about how my background in rostering, resourcing and team leadership could support your Resource Planning and Delivery teams.
 

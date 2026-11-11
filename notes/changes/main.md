@@ -11,6 +11,12 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Job search: finance budget meetings added to CV facts and the British Airways CV
+
+- New `Tim's Job Search/shared/job-search/cv/extra-from-tim.md`: Tim told Hal he held fortnightly meetings with finance at BLAST to align on budgets. Recorded as an extra fact Wren may use; Tim didn't say which BLAST role.
+- BA role `2026-11-05-british-airways-senior-operations-resource-planning-mana`: Wren added it to the CV (bullet under Head of Esports Operations, profile, budgets skill) and the cover letter, answering the advert's "track budgets with Finance". Dropped the "technical requirements for commercial partnerships" bullet to keep two pages. Ada rebuilt the files; fact check passed.
+- Open: confirm with Tim which BLAST role the meetings belong to (placed under Head of Esports Operations for now).
+
 ### 2026-11-11: Job search: British Airways CV and letter tightened to the advert's wording
 
 - Tim asked for the BA documents to match the advert's terms after comparing them with his default CV. Wren revised `cv.json` and `cover-letter.md` for `2026-11-05-british-airways-senior-operations-resource-planning-mana`; Ada rebuilt the Word files and PDFs (fact check passed, fits two pages).
