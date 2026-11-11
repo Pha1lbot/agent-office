@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 21 · shortlisted: 6 · drafted: 3 · applied: 4 · skipped: 19
+found: 18 · shortlisted: 6 · drafted: 3 · applied: 4 · skipped: 22
 
 ## Next actions
 
@@ -31,10 +31,7 @@ found: 21 · shortlisted: 6 · drafted: 3 · applied: 4 · skipped: 19
 | found | 15 | [Event Director, HLTH Europe](https://www.linkedin.com/jobs/view/4479433111/) | Hyve Group | Not listed | London | 2 |  | 2026-11-06 |
 | found | 16 | [Head of Facilities Operations](https://www.linkedin.com/jobs/view/4478693926/) | Surrey County Cricket Club (The Oval) | Not listed | London | 2 |  | 2026-11-06 |
 | found | 17 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
-| found | 18 | [Lead, Global Brand Experience](https://www.linkedin.com/jobs/view/4484062364/) | Snap Inc. | Not listed | London | 2 |  | 2026-11-06 |
-| found | 19 | [Event Manager (Core), fixed term](https://www.linkedin.com/jobs/view/4481451695/) | England & Wales Cricket Board | Not listed | London area | 2 |  | 2026-11-06 |
-| found | 20 | [Senior Core Services Delivery Manager (ExCeL London)](https://www.linkedin.com/jobs/view/4481683436/) | GES UK & Europe | Not listed | London | 2 |  | 2026-11-06 |
-| found | 21 | [Global Brand Experiences Manager, EMEA](https://www.linkedin.com/jobs/view/4479480680/) | Meta | Not listed | London, hybrid | 2 |  | 2026-11-06 |
+| found | 18 | [Senior Core Services Delivery Manager (ExCeL London)](https://www.linkedin.com/jobs/view/4481683436/) | GES UK & Europe | Not listed | London | 2 |  | 2026-11-06 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | shortlisted |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-05 |
 | shortlisted |  | Senior Operations Resource Planning Manager | British Airways | Similar BA planning role listed at £50k–£70k, unconfirmed | Heathrow, on-site |  | Long shot; apply if the pay and location suit | 2026-11-05 |
@@ -56,6 +53,9 @@ found: 21 · shortlisted: 6 · drafted: 3 · applied: 4 · skipped: 19
 | skipped | 3 | [Senior Producer, Events](https://www.linkedin.com/jobs/view/4483027028/) | Premier | £50k–£65k | London area, hybrid | 3 |  | 2026-11-09 |
 | skipped | 5 | [Head of Political Events and Operations](https://www.linkedin.com/jobs/view/4483585204/) | The Conservative Party | Not listed | London area | 3 |  | 2026-11-09 |
 | skipped | 5 | [UK Operations Director](https://www.linkedin.com/jobs/view/4475864821/) | Prose on Pixels | Not listed | London | 3 |  | 2026-11-09 |
+| skipped | 18 | [Lead, Global Brand Experience](https://www.linkedin.com/jobs/view/4484062364/) | Snap Inc. | Not listed | London | 2 |  | 2026-11-11 |
+| skipped | 19 | [Event Manager (Core), fixed term](https://www.linkedin.com/jobs/view/4481451695/) | England & Wales Cricket Board | Not listed | London area | 2 |  | 2026-11-11 |
+| skipped | 21 | [Global Brand Experiences Manager, EMEA](https://www.linkedin.com/jobs/view/4479480680/) | Meta | Not listed | London, hybrid | 2 |  | 2026-11-11 |
 | skipped | 22 | [Manager, Marketing Operations](https://www.linkedin.com/jobs/view/4485604099/) | Snap Inc. | Not listed | London | 1 |  | 2026-11-09 |
 | skipped | 22 | [TikTok Shop Creator Operations Manager](https://www.linkedin.com/jobs/view/4484128473/) | TikTok | Not listed | London | 1 |  | 2026-11-09 |
 | skipped | 22 | [Senior Premium Experience Manager, fixed term](https://www.linkedin.com/jobs/view/4481587358/) | Formula E | Not listed | London, hybrid | 2 |  | 2026-11-09 |

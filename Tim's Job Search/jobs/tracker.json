@@ -1267,13 +1267,18 @@
       "notes": "Posted: 27 Oct",
       "fit": 2,
       "priority": 18,
-      "status": "found",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-06",
+      "updated": "2026-11-11",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-11",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
@@ -1296,13 +1301,18 @@
       "notes": "Posted: 26 Oct",
       "fit": 2,
       "priority": 19,
-      "status": "found",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-06",
+      "updated": "2026-11-11",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-11",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
@@ -1353,7 +1363,7 @@
       "list": "Transition roles",
       "notes": "Posted: 23 Oct",
       "fit": 2,
-      "priority": 20,
+      "priority": 18,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -1383,13 +1393,18 @@
       "notes": "Posted: 22 Oct",
       "fit": 2,
       "priority": 21,
-      "status": "found",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-06",
+      "updated": "2026-11-11",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-11",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
