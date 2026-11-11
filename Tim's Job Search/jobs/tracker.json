@@ -557,9 +557,9 @@
       "notes": "Posted: 30 Oct",
       "fit": 3,
       "priority": 3,
-      "status": "drafted",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-09",
+      "updated": "2026-11-11",
       "history": [
         {
           "date": "2026-11-05",
@@ -574,12 +574,18 @@
           "date": "2026-11-09",
           "status": "drafted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-11",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
       "verdict": "maybe",
       "verdict_why": "Good pay and hybrid, but fundraising-led and it closed at 8am today",
-      "closing_date": "2026-11-09"
+      "closing_date": "2026-11-09",
+      "reason": "Missed deadline"
     },
     {
       "id": "2026-11-05-wpp-production-global-hub-operations-director",
