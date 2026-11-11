@@ -37,7 +37,7 @@ function renderCards() {
     <button class="agent" aria-pressed="${a.id === selected}" data-id="${esc(a.id)}">
       <div class="who"><span class="dot" style="background:${hex(a.colour)}"></span>${CONTRACTS[a.id] ? `<span class="name-link" data-contract="${esc(a.id)}" title="View ${esc(a.name)}'s contract">${esc(a.name)}</span>` : esc(a.name)}${a.role ? `<span class="role">${esc(a.role)}</span>` : ""}</div>
       <span class="state" style="background:${STATE_COLOUR[a.state]}">${STATE_LABEL[a.state]}</span>
-      <div class="detail" title="${esc(a.detail)}">${esc(a.detail)}</div>
+      <div class="detail" title="${esc(a.raw || a.detail)}">${esc(a.detail)}</div>
       <div class="tokens">${a.id === "admin" ? "No tokens (automatic)" : `${short(a.tokens || 0)} tokens today`}</div>
     </button>`).join("");
 }
@@ -76,7 +76,7 @@ function renderLog() {
   $("log-name").textContent = a.name;
   $("log-name").classList.toggle("name-link", !!CONTRACTS[a.id]);
   $("log-name").title = CONTRACTS[a.id] ? `View ${a.name}'s contract` : "";
-  $("log-sub").textContent = `${STATE_LABEL[a.state]} · ${a.detail}`;
+  $("log-sub").textContent = a.detail;
   $("log").innerHTML = a.log.length
     ? a.log.slice().reverse().map((l) => `<li><time>${clock(l.ts)}</time><span>${esc(l.text)}</span></li>`).join("")
     : `<li><time></time><span>Nothing yet today</span></li>`;

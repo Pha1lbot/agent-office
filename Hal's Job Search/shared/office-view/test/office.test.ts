@@ -36,9 +36,10 @@ test("briefing a subagent puts it to work and Chief of Staff waits on it", () =>
   o.handle(brief("lead-recruiter"), 1);
   const rec = o.agents.get("lead-recruiter")!, cos = o.agents.get("chief-of-staff")!;
   assert.equal(rec.state, "typing");
-  assert.equal(rec.detail, "Find 10 roles");
+  assert.equal(rec.detail, "Rita is looking for roles");
+  assert.equal(rec.raw, "Find 10 roles");
   assert.equal(cos.state, "idle");
-  assert.equal(cos.detail, "Waiting on Rita");
+  assert.equal(cos.detail, "Tim is waiting for Rita");
   assert.match(cos.log.at(-1)!.text, /Briefed Rita/);
 });
 
@@ -47,7 +48,8 @@ test("tool calls go to the subagent named in the hook", () => {
   o.handle(r("PreToolUse", { tool_name: "Bash", agent_type: "admin", target: "tracker.py list" }), 1);
   const admin = o.agents.get("admin")!;
   assert.equal(admin.state, "typing");
-  assert.equal(admin.detail, "Bash tracker.py list");
+  assert.equal(admin.detail, "Ada is checking roles");
+  assert.equal(admin.raw, "Bash tracker.py list");
   assert.equal(admin.tools, 1);
   assert.equal(o.agents.get("chief-of-staff")!.tools, 0);
 });
@@ -71,10 +73,11 @@ test("when the subagent reports back it goes idle and Chief of Staff reads the r
   o.handle(brief("writer"), 1);
   o.handle(r("PostToolUse", { tool_name: "Task", subagent_type: "writer" }), 2);
   assert.equal(o.agents.get("writer")!.state, "idle");
-  assert.equal(o.agents.get("chief-of-staff")!.detail, "Reading Wren's report");
+  assert.equal(o.agents.get("chief-of-staff")!.detail, "Tim is reading Wren's report");
   // later tool calls are the main session's again
   o.handle(r("PreToolUse", { tool_name: "Write", target: "jobs/today.md" }), 3);
-  assert.equal(o.agents.get("chief-of-staff")!.detail, "Write jobs/today.md");
+  assert.equal(o.agents.get("chief-of-staff")!.detail, "Tim is writing today's list");
+  assert.equal(o.agents.get("chief-of-staff")!.raw, "Write jobs/today.md");
 });
 
 test("Stop means it is Hal's turn, and running subagents are stood down", () => {
@@ -82,7 +85,8 @@ test("Stop means it is Hal's turn, and running subagents are stood down", () => 
   o.handle(brief("admin"), 1);
   o.handle(r("Stop"), 2);
   assert.equal(o.agents.get("chief-of-staff")!.state, "waiting");
-  assert.equal(o.agents.get("chief-of-staff")!.detail, "Your turn");
+  assert.equal(o.agents.get("chief-of-staff")!.detail, "Tim is waiting for you");
+  assert.equal(o.agents.get("chief-of-staff")!.raw, "Your turn");
   assert.equal(o.agents.get("admin")!.state, "idle");
 });
 
@@ -91,7 +95,8 @@ test("a permission notification makes the running agent wait", () => {
   o.handle(brief("lead-recruiter"), 1);
   o.handle(r("Notification", { message: "Claude needs your permission to use WebFetch" }), 2);
   assert.equal(o.agents.get("lead-recruiter")!.state, "waiting");
-  assert.match(o.agents.get("lead-recruiter")!.detail, /permission/);
+  assert.equal(o.agents.get("lead-recruiter")!.detail, "Rita needs your OK");
+  assert.match(o.agents.get("lead-recruiter")!.raw, /permission/);
 });
 
 test("unknown subagents get a visitor desk with a readable name", () => {
@@ -118,7 +123,7 @@ test("agents doze off, and busy agents that go quiet become idle", () => {
   assert.deepEqual(o.tick(BUSY_TIMEOUT_MS + 1), ["writer"]);
   assert.deepEqual(o.tick(WAITING_TO_ASLEEP_MS + 1), ["chief-of-staff"]);
   assert.deepEqual(o.tick(BUSY_TIMEOUT_MS + IDLE_TO_ASLEEP_MS + 2), ["writer"]);
-  assert.equal(o.agents.get("chief-of-staff")!.detail, "Dozing until Hal's back");
+  assert.equal(o.agents.get("chief-of-staff")!.detail, "Tim is dozing until Hal's back");
 });
 
 test("logs keep the latest 50 lines and long text is shortened", () => {
@@ -126,7 +131,7 @@ test("logs keep the latest 50 lines and long text is shortened", () => {
   for (let i = 0; i < 60; i++) o.handle(r("PreToolUse", { tool_name: "Bash", target: `step ${i} ` + "x".repeat(200) }), i);
   const cos = o.agents.get("chief-of-staff")!;
   assert.equal(cos.log.length, 50);
-  assert.match(cos.log[0].text, /^Bash step 10 /);
+  assert.equal(cos.log[0].text, "Running a task");
   assert.ok(cos.log[0].text.length <= 120);
   assert.ok(cos.detail.length <= 60);
 });

@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: The office says what the team is doing in plain English (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/office-view/`: new `src/plain.ts`; `src/office.ts`, `public/office.js`, `public/dashboard.js`, `public/style.css` and `test/office.test.ts` updated; new `test/plain.test.ts`. Statuses read "Tim is checking roles", "Tim is waiting for you" and so on (the Chief of Staff is Tim in this office).
+
+**Why**
+Tim Everard asked on 2026-11-11 for code changes to go into both offices. Details in `claude-compassionate-ptolemy-vc0jj2.md`.
+
+**Decisions**
+Code only; Hal's CV, preferences, tracker and roles were not opened.
+
+**How to check it**
+`npm test` and `npm run check` in Hal's `shared/office-view`: 40 tests pass. Restart the office to see the new wording.
+
+**Open items**
+None.
+
 ### 2026-11-11: Every applied role gets a follow-up date (ported from Tim's office)
 
 **What changed**

@@ -23,6 +23,8 @@ export interface LogEntry {
   text: string;
 }
 
+import { plainTool, lowerFirst, upperFirst } from "./plain.ts";
+
 export interface Agent {
   id: string;
   name: string;
@@ -31,7 +33,8 @@ export interface Agent {
   team: boolean; // one of Hal's named agents (always has a desk)
   state: State;
   place: Place;
-  detail: string;
+  detail: string; // plain-English status, e.g. "Hal is checking roles"
+  raw: string; // the technical detail behind it, shown on hover
   since: number; // when the state last changed
   lastSeen: number; // last report of any kind (0 = never)
   tools: number; // tool calls today, a rough measure of how busy it has been
@@ -47,6 +50,12 @@ export const TEAM = [
   { id: "interview-coach", name: "Cole", role: "Interview Coach", colour: 0xc0392b },
   { id: "admin", name: "Ada", role: "Admin (automatic)", colour: 0x9b59b6 },
 ];
+// What each team member is doing the moment they are briefed, before their first tool call.
+const BRIEF: Record<string, string> = {
+  "lead-recruiter": "looking for roles",
+  writer: "writing a CV and cover letter",
+  "interview-coach": "preparing interview notes",
+};
 const VISITOR_COLOURS = [0xc0392b, 0x16a085, 0x7f8c8d, 0xb7950b];
 
 /** Folder name that marks a session as the main agent-office session (Tim, the Chief of Staff). */
@@ -94,7 +103,7 @@ export class Office {
 
   private blank(id: string, name: string, colour: number, team: boolean, now: number): Agent {
     return {
-      id, name, role: "", colour, team, state: "asleep", place: "desk", detail: "Not started yet",
+      id, name, role: "", colour, team, state: "asleep", place: "desk", detail: `${name} hasn't started yet`, raw: "Not started yet",
       since: now, lastSeen: 0, tools: 0, tokens: 0, cacheRead: 0, log: [],
     };
   }
@@ -125,11 +134,12 @@ export class Office {
     return session;
   }
 
-  private set(agent: Agent, state: State, detail: string, now: number, place: Place = "desk") {
+  private set(agent: Agent, state: State, detail: string, now: number, place: Place = "desk", raw: string = detail) {
     if (agent.state !== state || agent.place !== place) agent.since = now;
     agent.state = state;
     agent.place = place;
     agent.detail = short(detail);
+    agent.raw = short(raw, 120);
   }
 
   private note(agent: Agent, text: string, now: number) {
@@ -155,13 +165,13 @@ export class Office {
 
     switch (report.hook_event_name) {
       case "SessionStart":
-        if (main.state === "asleep") this.set(main, "idle", "Ready", now);
+        if (main.state === "asleep") this.set(main, "idle", `${main.name} is ready`, now, "desk", "Ready");
         this.note(main, "Session started", now);
         touch(main);
         break;
 
       case "UserPromptSubmit":
-        this.set(main, "typing", "Thinking", now);
+        this.set(main, "typing", `${main.name} is thinking`, now, "desk", "Thinking");
         this.note(main, "Hal sent a message", now);
         touch(main);
         break;
@@ -171,10 +181,10 @@ export class Office {
           const sub = this.subagent(report.subagent_type, now);
           session.active.push(sub.id);
           const task = report.description || "New task";
-          this.set(sub, "typing", task, now);
+          this.set(sub, "typing", `${sub.name} is ${BRIEF[sub.id] || "working on a new task"}`, now, "desk", task);
           this.note(sub, `Briefed by ${main.name}: ${task}`, now);
           sub.tools++;
-          this.set(main, "idle", `Waiting on ${sub.name}`, now);
+          this.set(main, "idle", `${main.name} is waiting for ${sub.name}`, now, "desk", `Waiting on ${sub.name}`);
           this.note(main, `Briefed ${sub.name}: ${task}`, now);
           touch(sub);
           touch(main);
@@ -182,9 +192,9 @@ export class Office {
         }
         const who = actor();
         const place: Place = SHELF_TOOLS.has(tool) ? "shelf" : WEB_TOOLS.has(tool) ? "web" : "desk";
-        this.set(who, place === "desk" ? "typing" : "walking", label, now, place);
+        this.set(who, place === "desk" ? "typing" : "walking", `${who.name} is ${plainTool(tool, report.target)}`, now, place, label);
         who.tools++;
-        this.note(who, label, now);
+        this.note(who, upperFirst(plainTool(tool, report.target)), now);
         touch(who);
         break;
       }
@@ -194,15 +204,15 @@ export class Office {
           const sub = this.subagent(report.subagent_type, now);
           const at = session.active.lastIndexOf(sub.id);
           if (at >= 0) session.active.splice(at, 1);
-          this.set(sub, "idle", "Finished", now);
+          this.set(sub, "idle", `${sub.name} has finished`, now, "desk", "Finished");
           this.note(sub, "Finished and reported back", now);
-          this.set(main, "typing", `Reading ${sub.name}'s report`, now);
+          this.set(main, "typing", `${main.name} is reading ${sub.name}'s report`, now, "desk", `Reading ${sub.name}'s report`);
           touch(sub);
           touch(main);
           break;
         }
         const who = actor();
-        this.set(who, "typing", "Thinking", now);
+        this.set(who, "typing", `${who.name} is thinking`, now, "desk", "Thinking");
         touch(who);
         break;
       }
@@ -210,7 +220,7 @@ export class Office {
       case "Notification": {
         const who = actor();
         const text = report.message || "Needs you";
-        this.set(who, "waiting", text, now);
+        this.set(who, "waiting", /permission|approve/i.test(text) ? `${who.name} needs your OK` : `${who.name} needs your attention`, now, "desk", text);
         this.note(who, text, now);
         touch(who);
         break;
@@ -220,7 +230,7 @@ export class Office {
         if (report.agent_type) {
           const sub = this.subagent(report.agent_type, now);
           if (sub.state !== "idle") {
-            this.set(sub, "idle", "Finished", now);
+            this.set(sub, "idle", `${sub.name} has finished`, now, "desk", "Finished");
             this.note(sub, "Finished", now);
             touch(sub);
           }
@@ -230,10 +240,10 @@ export class Office {
       case "Stop":
         for (const id of session.active.splice(0)) {
           const sub = this.agents.get(id)!;
-          this.set(sub, "idle", "Finished", now);
+          this.set(sub, "idle", `${sub.name} has finished`, now, "desk", "Finished");
           touch(sub);
         }
-        this.set(main, "waiting", "Your turn", now);
+        this.set(main, "waiting", `${main.name} is waiting for you`, now, "desk", "Your turn");
         this.note(main, "Finished, waiting for Hal", now);
         touch(main);
         break;
@@ -241,7 +251,7 @@ export class Office {
       case "SessionEnd":
         for (const id of [session.mainId, ...session.active.splice(0)]) {
           const agent = this.agents.get(id)!;
-          this.set(agent, "asleep", "Session ended", now);
+          this.set(agent, "asleep", `${agent.name} has signed off`, now, "desk", "Session ended");
           touch(agent);
         }
         this.note(main, "Session ended", now);
@@ -257,11 +267,11 @@ export class Office {
     for (const agent of this.agents.values()) {
       const quiet = now - Math.max(agent.since, agent.lastSeen);
       if (agent.state === "idle" && quiet > IDLE_TO_ASLEEP_MS) {
-        this.set(agent, "asleep", "Dozing", now);
+        this.set(agent, "asleep", `${agent.name} is dozing`, now);
       } else if (agent.state === "waiting" && quiet > WAITING_TO_ASLEEP_MS) {
-        this.set(agent, "asleep", agent.detail === "Your turn" ? "Dozing until Hal's back" : "Gave up waiting", now);
+        this.set(agent, "asleep", agent.raw === "Your turn" ? `${agent.name} is dozing until Hal's back` : `${agent.name} gave up waiting`, now);
       } else if ((agent.state === "typing" || agent.state === "walking") && quiet > BUSY_TIMEOUT_MS) {
-        this.set(agent, "idle", "Gone quiet", now);
+        this.set(agent, "idle", `${agent.name} has gone quiet`, now);
       } else {
         continue;
       }
@@ -284,7 +294,7 @@ export class Office {
   ada(working: boolean, text: string, now = Date.now()): string[] {
     const ada = this.agents.get("admin")!;
     if (working) {
-      this.set(ada, "typing", text, now);
+      this.set(ada, "typing", `Ada is ${lowerFirst(text)}`, now, "desk", text);
       ada.tools++;
       this.note(ada, text, now);
     } else {

@@ -11,6 +11,30 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: The office says what the team is doing in plain English
+
+**What changed**
+- `Tim's Job Search/shared/office-view/src/plain.ts`: new. Turns a tool call and its target into a short phrase, such as "checking roles", "updating the role list", "searching job sites", "reading an advert online", "writing a cover letter", "making PDFs", "saving to GitHub", "checking job alert emails". It reads file paths and also the plain-English descriptions Claude gives its commands.
+- `src/office.ts`: every status is now a sentence with the person's name: "Hal is checking roles", "Rita is looking for roles", "Hal is waiting for Rita", "Hal is waiting for you", "Rita needs your OK", "Wren is dozing", "Ada is making PDFs: Chelsea". Each agent keeps the technical text in a new `raw` field. The activity list now shows the same plain phrases.
+- `public/office.js`: the desk card shows the plain sentence and the technical text on hover; the side panel no longer repeats the state. `public/dashboard.js`: the "waiting on you" list uses the new sentences. `public/style.css`: card text wraps to two lines instead of being cut off.
+- `test/office.test.ts` updated; new `test/plain.test.ts` (23 wording cases).
+- The same changes in `Hal's Job Search/` (see `main-hals-job-search.md`).
+
+**Why**
+Tim asked on 2026-11-11 for the office to show what staff are doing more simply, "e.g. Hal is checking roles", instead of commands and file paths.
+
+**Decisions**
+- A separate small file for the wording, so it can be extended and tested without touching the office logic. It is identical in both offices; only the Chief of Staff's name differs, and that comes from the team list.
+- The raw text is kept and shown on hover, so nothing is lost for finding problems.
+- Anything the wording doesn't recognise says "running a task" or "working", never a guess.
+
+**How to check it**
+- `npm test` and `npm run check` in each office's `shared/office-view`: 40 tests pass, no type errors.
+- Ran a copy of the office outside git with the demo agents (`npm run fake`) and took screenshots: desks read "Hal is updating the role list" with "Bash Add 8 new roles to the tracker" on hover.
+
+**Open items**
+- New phrases are added in `plain.ts` as new kinds of work appear. Ada's wording comes from the office's own labels in `server.ts`.
+
 ### 2026-11-11: Missing CHANGELOG lines, and the line now travels with the pull request
 
 **What changed**
