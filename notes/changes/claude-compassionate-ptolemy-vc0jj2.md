@@ -11,6 +11,25 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Missing CHANGELOG lines, and the line now travels with the pull request
+
+**What changed**
+- `CHANGELOG.md`: lines added for #24 (the CHANGELOG line for #23), #25 (the two offices; wording taken from commit 1d38a36, which was stranded on the unmerged branch `claude/adoring-maxwell-qzaklb`) and #27 (automatic runs start in the office folder).
+- `CLAUDE.md`: change-notes step 6 now says to add the CHANGELOG line to the pull request as soon as it has a number. "After a merge" step 3 becomes a check that the line arrived, adding it only if it is missing.
+- `.github/pull_request_template.md`: a new "Before merging" tick box for the CHANGELOG line; the "After merging" box becomes a check.
+
+**Why**
+Part of the fixes Tim approved on 2026-11-11. Lines have now been missed for six pull requests (#15 to #17, #24, #25, #27). The step came after the merge, when the session had often ended or the branch was gone.
+
+**Decisions**
+Moving the step before the merge removes it, where a reminder would only repeat one that already failed. PR #20 showed that a pull request can carry its own line.
+
+**How to check it**
+`CHANGELOG.md` lists #1 to #27 with none missing.
+
+**Open items**
+- Tim: the branch `claude/adoring-maxwell-qzaklb` on GitHub now holds nothing that isn't on `main` or in this branch. It can be deleted once this pull request is merged (cloud sessions can't delete branches).
+
 ### 2026-11-11: Every applied role gets a follow-up date
 
 **What changed**

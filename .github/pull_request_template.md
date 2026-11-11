@@ -30,8 +30,12 @@ What was run or clicked, and what happened. "Tested it" is not enough.
 
 Anything unfinished, known issues, and anything Tim needs to do.
 
+## Before merging
+
+- [ ] The one-line `CHANGELOG.md` entry for this pull request is on this branch (add it once the PR has its number).
+
 ## After merging
 
-- [ ] Add the one-line `CHANGELOG.md` entry (CLAUDE.md, "After a merge").
+- [ ] Check the `CHANGELOG.md` line arrived with the merge.
 - [ ] Delete the branch on GitHub.
 - [ ] On Tim's PC: remove the `agent-office-work` folder if this branch used one.
