@@ -386,7 +386,7 @@
       "notes": "Why it fits: Workforce planning and budgets across 2,000+ freelancers Concern: No airline or union experience; heavy Excel; on-site",
       "fit": 2,
       "priority": null,
-      "status": "drafted",
+      "status": "applied",
       "found": "2026-11-05",
       "updated": "2026-11-11",
       "history": [
@@ -397,6 +397,11 @@
         {
           "date": "2026-11-11",
           "status": "drafted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-11",
+          "status": "applied",
           "by": "tim"
         }
       ],
