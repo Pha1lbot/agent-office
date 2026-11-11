@@ -11,6 +11,12 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Job search: daily search, 7 new leads, 8 dismissed; Activision Blizzard drafted
+
+- Daily search run by hand at Tim's request (it had never run before: no `jobs/found.json`). 3 LinkedIn alert emails gave 14 roles; Rita's web search gave 1 (most results stale or blocked). 7 kept as leads, 8 dismissed; summary in `jobs/today.md`.
+- Inbox i13: Wren drafted the CV and cover letter for `2026-11-08-activision-blizzard-marketing-senior-specialist-call-of-duty`; role set to drafted. Marketing skills the advert asks for are not in the CV bank; listed in the role's `notes.md` for Tim.
+- Open: inbox i14 (British Airways draft) arrived during the run and is not done yet.
+
 ### 2026-11-11: Back to the normal start-up git rules
 
 **What changed**

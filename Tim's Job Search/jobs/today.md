@@ -1,19 +1,31 @@
-# Today: 2026-11-06
+# Today: Wednesday 11 November 2026
 
-Hal gave verdicts on all 37 roles in To review: **1 Apply, 18 Maybe, 18 Skip**. Rita couldn't open LinkedIn from the cloud session, so these are based on the saved details (title, company, location, pay, your notes), except the 4 roles that already had listings. Ask Hal again from your PC for full reads of the top ones.
+## New leads (7), best first
+All are "maybe". None states pay, so check it's £50k+ before shortlisting.
+1. **Chief Operating Officer, Hexagon World Series**: Wimbledon, hybrid. An event series near Epsom, a step up from Head of Esports Operations. You applied for their Director of Team Operations on 6 Nov, so this may be the same hire.
+2. **UK + EUR Event and Operations Manager, Turf Games**: UK remote with event travel. Gaming live events ops. The page returned a 404, so it may have closed.
+3. **Senior Production Manager, Live Wire Productions**: Banbury. Senior live production work, but Banbury is well past an hour from Epsom; only worth it if hybrid.
+4. **Head of Operations, TryHackMe**: London, remote. Head of Ops at a cyber-training company; company ops rather than events.
+5. **Head of Operations, CF**: London, hybrid. Sector not known.
+6. **Company Operations Lead, ElevenLabs**: UK remote. Internal business ops rather than events.
+7. **Strategic Events Specialist, EMEA, Abnormal AI**: UK remote. Corporate events; may be below Head-of level.
 
-## Top picks
-1. **Senior Production Manager, The Crowd** (Apply, fit 4): live production, London hybrid, £60k–£70k.
-2. **Event Production Manager, Formula 1** (Maybe, fit 4): sport and broadcast production; pay unknown, may mean heavy travel.
-3. **Senior Operations & Event Producer, This is Beyond** (Maybe, fit 3): London hybrid, £60k–£65k; agency producer vs Head level unclear.
+## Dismissed (8)
+- Live Wire Productions Project Manager – Formula 1 and Production Manager: Banbury, travel, below your level.
+- Pearson (compliance), Coinbase (market ops), ElevenLabs (billing), Traze (trading): wrong discipline.
+- Betway Marketing Operations Specialist: marketing ops, long commute.
+- Google Program Manager, Arts and Culture: on-site, strategy not live ops.
+Restore any of them from Leads → Dismissed.
 
-## Worth a look
-- Director of Soccer Aid (interim), UNICEF UK: £105k, fixed term, fundraising/partnership remit.
-- Event Director, Handle Recruitment: £70k–£90k, client unnamed.
-- Senior Producer, Big Global Events (£55k–£62k) and Senior Producer, Premier (£50k–£65k): below Head level.
+## How the search went
+- Job-alert emails: 3 alerts read (last 14 days), 14 roles.
+- Web search (Rita): only 1 usable role. Most results were closed, out of date or blocked (Hitmarker 403, LinkedIn and Indeed gave nothing usable). A quick Hitmarker or LinkedIn search with a past-week filter will find more than Rita can.
 
-The other Maybes and the 18 Skips are on the board, best first.
+## Done today
+- Activision Blizzard Marketing Senior Specialist, Call of Duty: CV and cover letter drafted. The marketing skills the advert asks for aren't in your CV bank; Wren listed them in the role's `notes.md`. If any are true, add them and Wren will redraft.
 
 ## Waiting on you
-- NetEase Esport Specialist is in Drafted but has no advert saved, so Wren can't tailor a CV yet. Add its link (Edit details) or paste the advert. Your own notes say it's below your level and probably below your pay floor, so you may prefer to skip it.
-- "Refresh interview prep" for NetEase is queued, but there's no interview yet. Did you mean it?
+- New request: draft the British Airways Senior Operations Resource Planning Manager role (still in the inbox).
+- 4 roles drafted to check: Vitality, Handle Recruitment, Activision Blizzard, British Airways (once drafted).
+- 25 found roles not yet reviewed, 5 shortlisted.
+- Actions: make a strategy-led CV; NetEase (check the drafts are honest about the gaps); UNICEF UK (closed 9 Nov).

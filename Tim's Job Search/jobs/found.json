@@ -1,0 +1,334 @@
+{
+  "items": [
+    {
+      "id": "f1",
+      "title": "UK + EUR Event and Operations Manager",
+      "company": "Turf Games",
+      "location": "UK, remote day-to-day with event travel",
+      "pay": "",
+      "link": "https://turfgames.com/blogs/news/uk-operations-manager-role",
+      "posted": "",
+      "source": "Company careers page (found via web search)",
+      "via": "web",
+      "fit": "possible",
+      "why": "Live event operations role needing 5+ years, which Tim has well beyond, but likely a smaller-company manager post rather than Head of.",
+      "concern": "posting undated, may be closed; pay not stated; event travel",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-11-turf-games-uk-eur-event-and-operations-manager",
+        "reason": "",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f2",
+      "title": "Project Manager – Formula 1",
+      "company": "Live Wire Productions",
+      "location": "Banbury",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4457913738/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Live event production project management, close to your event delivery work.",
+      "concern": "Banbury, far beyond 1h commute; F1 travel",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-11-live-wire-productions-project-manager-formula-1",
+        "reason": "Hal: Banbury, F1 travel and below your level",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f3",
+      "title": "Senior Production Manager",
+      "company": "Live Wire Productions",
+      "location": "Banbury",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4457905834/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Senior live production management matches your studio, broadcast and event builds.",
+      "concern": "Banbury, far beyond 1h commute",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-11-live-wire-productions-senior-production-manager",
+        "reason": "",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f4",
+      "title": "Production Manager",
+      "company": "Live Wire Productions",
+      "location": "Banbury",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4457912733/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Live production management, below your current level.",
+      "concern": "Banbury; more junior",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-11-live-wire-productions-production-manager",
+        "reason": "Hal: Banbury and below your level",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f5",
+      "title": "Specialist, Compliance & Operations",
+      "company": "Pearson",
+      "location": "United Kingdom (Remote)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4467785441/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Remote operations role, but compliance-focused.",
+      "concern": "wrong discipline; specialist level",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-11-pearson-specialist-compliance-operations",
+        "reason": "Hal: compliance, wrong discipline",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f6",
+      "title": "Strategic Events Specialist, EMEA",
+      "company": "Abnormal AI",
+      "location": "United Kingdom (Remote)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4476852245/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Remote events role across EMEA, using your event logistics and vendor experience.",
+      "concern": "corporate events; may be below Head-of level",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-11-abnormal-ai-strategic-events-specialist-emea",
+        "reason": "",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f7",
+      "title": "Specialist, Market Operations",
+      "company": "Coinbase",
+      "location": "United Kingdom (Remote)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4468196615/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Remote operations role in crypto markets.",
+      "concern": "wrong discipline",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-11-coinbase-specialist-market-operations",
+        "reason": "Hal: crypto market ops, wrong discipline",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f8",
+      "title": "Billing Operations Manager",
+      "company": "ElevenLabs",
+      "location": "United Kingdom (Remote)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4488040303/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Remote operations manager role.",
+      "concern": "billing and finance, wrong discipline",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-11-elevenlabs-billing-operations-manager",
+        "reason": "Hal: billing ops, wrong discipline",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f9",
+      "title": "Dealing Operations Specialist",
+      "company": "Traze",
+      "location": "United Kingdom (Remote)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4469848833/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Remote operations role in trading.",
+      "concern": "wrong discipline",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-11-traze-dealing-operations-specialist",
+        "reason": "Hal: trading ops, wrong discipline",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f10",
+      "title": "Head of Operations",
+      "company": "TryHackMe",
+      "location": "London (Remote)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4461930505/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Head of Operations at a gaming-adjacent tech company, matching your ops leadership and restructuring.",
+      "concern": "company ops, not events",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-11-tryhackme-head-of-operations",
+        "reason": "",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f11",
+      "title": "Company Operations Lead",
+      "company": "ElevenLabs",
+      "location": "United Kingdom (Remote)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4479584002/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Remote operations lead role using your systems, process and team-building work.",
+      "concern": "internal business ops, not events",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-11-elevenlabs-company-operations-lead",
+        "reason": "",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f12",
+      "title": "Chief Operating Officer",
+      "company": "Hexagon World Series",
+      "location": "Wimbledon (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4476423376/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Gaming/sport event series near Epsom, a step up from your Head of Esports Operations role.",
+      "concern": "you already applied to Hexagon on 6 Nov; check it isn't this role",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-11-hexagon-world-series-chief-operating-officer",
+        "reason": "",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f13",
+      "title": "Marketing Operations Specialist",
+      "company": "Betway Global",
+      "location": "London Colney (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4468588019/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Hybrid operations role in gaming.",
+      "concern": "marketing ops; specialist; long commute",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-11-betway-global-marketing-operations-specialist",
+        "reason": "Hal: marketing ops specialist, long commute",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f14",
+      "title": "Head of Operations",
+      "company": "CF",
+      "location": "London (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4478797122/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Head of Operations, hybrid in London, matching your ops leadership.",
+      "concern": "sector unknown",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-11-cf-head-of-operations",
+        "reason": "",
+        "at": "2026-11-11T11:33"
+      }
+    },
+    {
+      "id": "f15",
+      "title": "Program Manager, Strategy and Operations, Google Arts and Culture",
+      "company": "Google",
+      "location": "London (On-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4476808972/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Strategy and operations programme role in London.",
+      "concern": "on-site; strategy rather than live ops",
+      "found_at": "2026-11-11T11:33",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-11-google-program-manager-strategy-and-operations",
+        "reason": "Hal: on-site, strategy not live ops",
+        "at": "2026-11-11T11:33"
+      }
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-11T11:33",
+      "via": "web",
+      "found": 1,
+      "note": "Web search mostly stale or blocked; 1 usable find"
+    },
+    {
+      "at": "2026-11-11T11:33",
+      "via": "email",
+      "found": 14,
+      "note": ""
+    }
+  ],
+  "last_email_scan": "2026-11-11T11:40:00Z"
+}
