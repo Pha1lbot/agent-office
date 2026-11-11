@@ -9,6 +9,7 @@ found: 25 · shortlisted: 5 · drafted: 4 · applied: 4 · skipped: 30
 - Make a strategy-led CV
 - NetEase Esport Specialist: Rita's skip verdict stands (entry-level, Chinese required). Drafted CV/cover letter and interview prep anyway since you set the role to drafted three times today. Check files are honest about the seniority/language gaps before deciding to apply.
 - UNICEF UK Soccer Aid closed 8am 9 Nov and rejects AI-written answers: reword the letter yourself if you still apply
+- Can't draft the British Airways Senior Ops Resource Planning CV/cover letter: no job link or advert text on file, and no listing.md. Paste the advert or add the link so Rita can score it and Wren can draft.
 
 ## Roles
 

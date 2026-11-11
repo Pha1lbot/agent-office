@@ -2164,6 +2164,13 @@
       "role": "2026-11-05-unicef-uk-director-of-soccer-aid-interim",
       "done": false,
       "created": "2026-11-09"
+    },
+    {
+      "id": "a10",
+      "text": "Can't draft the British Airways Senior Ops Resource Planning CV/cover letter: no job link or advert text on file, and no listing.md. Paste the advert or add the link so Rita can score it and Wren can draft.",
+      "role": "2026-11-05-british-airways-senior-operations-resource-planning-mana",
+      "done": false,
+      "created": "2026-11-11"
     }
   ],
   "inbox": [
@@ -2290,7 +2297,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Senior Operations Resource Planning Manager @ British Airways",
       "at": "2026-11-11T11:32",
-      "done": false
+      "done": true,
+      "handled": "2026-11-11T11:36"
     }
   ]
 }
