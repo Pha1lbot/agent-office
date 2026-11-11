@@ -386,13 +386,18 @@
       "notes": "Why it fits: Workforce planning and budgets across 2,000+ freelancers Concern: No airline or union experience; heavy Excel; on-site",
       "fit": null,
       "priority": null,
-      "status": "shortlisted",
+      "status": "drafted",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-11",
       "history": [
         {
           "date": "2026-11-05",
           "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-11",
+          "status": "drafted",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead"
@@ -1651,7 +1656,7 @@
       "status": "drafted",
       "notes": "",
       "found": "2026-11-08",
-      "updated": "2026-11-09",
+      "updated": "2026-11-11",
       "history": [
         {
           "date": "2026-11-08",
@@ -1868,6 +1873,15 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Marketing Senior Specialist, Call of Duty @ Activision Blizzard",
       "at": "2026-11-09T11:25",
+      "done": true,
+      "handled": "2026-11-11T11:32"
+    },
+    {
+      "id": "i14",
+      "role": "2026-11-05-british-airways-senior-operations-resource-planning-mana",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "Senior Operations Resource Planning Manager @ British Airways",
+      "at": "2026-11-11T11:32",
       "done": false
     }
   ]
