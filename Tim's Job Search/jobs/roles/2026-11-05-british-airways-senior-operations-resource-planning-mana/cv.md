@@ -2,13 +2,13 @@
 
 # Tim Everard
 
-**Operations Leader, Rotas, Budgets and Freelance Workforce**
+**Operations Leader, Rostering, Resourcing and Budgets**
 
 Epsom, Surrey · 07872 571569 · tim.everard@hotmail.co.uk · linkedin.com/in/tim-everard
 
 ## Profile
 
-Operations leader with 15 years' experience planning and managing people, budgets and schedules for live events and broadcast, most recently as Head of Esports Operations at BLAST. Led a six-person department and, across six years at BLAST, booked, contracted and scheduled 2,000+ freelancers across 60+ flagship events and 300+ qualifiers in 13 countries, working to €12m+ in budgets and tracking costs against deadlines. Built the department's own tools for freelancer calendars, bookings and budgets, rebuilt how the team works with clear ownership and documentation, and wrote the business case for a departmental budget. Used to working with finance, commercial and production teams to turn a plan into a delivered, well-staffed operation.
+Operations leader with 15 years' experience in resource planning and rostering for live events and broadcast, most recently as Head of Esports Operations at BLAST. Led a six-person department and, across six years, planned, booked, contracted and scheduled 2,000+ freelancers across 60+ flagship events and 300+ qualifiers in 13 countries, working to €12m+ in budgets. Managed freelancers, vendors and suppliers, tracked event budgets and deadlines in planning tools built for the department, and rebuilt how the team works with clear ownership and documentation. Used to stakeholder management with finance, commercial and production teams, and to continuous improvement, turning a plan into a delivered, well-staffed operation.
 
 **In numbers:** 2,000+ freelancers · €12m+ in budgets · 60+ flagship events · 300+ qualifiers · 13 countries
 
@@ -16,18 +16,19 @@ Operations leader with 15 years' experience planning and managing people, budget
 
 ### Head of Esports Operations, BLAST (Jun 2023 – Oct 2026)
 
-- Designed and built the department's own tools for event and equipment tracking, freelancer calendars, bookings and contracting, and event budgets and deadlines
+- Designed and built the department's own planning tools for event and equipment tracking, freelancer calendars, bookings and contracting, and event budgets and deadlines
+- Resourced the department's events through freelancer booking, contracting and scheduling, working with vendors and suppliers
 - Led a six-person department running tournament operations across every BLAST ecosystem, including CS2, Dota 2, Brawl Stars, Fortnite, Rocket League and Rainbow Six
 - Brought Team Operations into the department, so all online and offline player management and support sat with one team
-- Rebuilt how the department works, with clearer ownership, accountability and proper documentation
-- Costed and pitched new tournament work with the product and commercial teams
+- Rebuilt how the department works, as continuous improvement, with clearer ownership, accountability and proper documentation
+- Costed and pitched new tournament work with the product and commercial teams, as a stakeholder across the business
 - Wrote the business case for a departmental OPEX budget covering equipment renewal, software and cross-event costs
 - Set technical requirements for commercial partnerships
 
 ### Tournament Operations Manager, BLAST · Contractor to Mar 2021, then permanent (Jan 2020 – Jun 2023)
 
-- Booked and managed tournament operations freelancers for internal, external and online productions
-- Managed tournament equipment and staffing budgets across CS:GO, Dota 2, Apex Legends, FIFA, Fortnite and Rainbow Six
+- Booked, contracted and scheduled tournament operations freelancers for internal, external and online productions
+- Managed tournament equipment and staffing budgets across CS:GO, Dota 2, Apex Legends, FIFA, Fortnite and Rainbow Six, tracking spend as the events ran
 - Approved equipment and staffing invoices, and decided when to hire, buy or repair tournament kit
 - Designated Safeguarding Lead and first aider at live events
 - Arranged venues and equipment for team bootcamps
@@ -41,15 +42,15 @@ Operations leader with 15 years' experience planning and managing people, budget
 
 ### Broadcast and Studio Manager, Jam Television · Birmingham (Mar 2018 – Jan 2019)
 
-- Hired freelancers and ran staff rotas to keep a 24-hour TV channel on air, including holiday cover and emergency call-outs
+- Hired freelancers and ran staff rosters to keep a 24-hour TV channel on air, including holiday cover and emergency call-outs
 - Controlled the studio budget, including equipment purchasing
 - Designed a multi-camera TV studio from scratch, bought the equipment, and managed installation and testing
-- Managed suppliers, invoice approval and day-to-day maintenance, including software and hardware updates
+- Managed suppliers and vendors, invoice approval and day-to-day maintenance, including software and hardware updates
 - Trained staff on studio equipment and workflows
 
 ### Production Manager, ESL UK · Leicester (Jul 2015 – Dec 2017)
 
-- Hired freelance crew, managed rotas and supervised internal and external staff on live shows
+- Hired freelance crew, managed rosters and supervised internal and external staff on live shows
 - Controlled production budgets and purchased studio and event equipment
 - Trained crew on equipment and workflows, and ran equipment hire, installation, testing and maintenance
 - Managed production for both studios and at external events including MCM, EGX and Formula E
@@ -67,12 +68,12 @@ Operations leader with 15 years' experience planning and managing people, budget
 
 ## Key skills
 
-- **Rotas and scheduling:** Staff rotas, freelancer calendars, holiday cover, emergency call-outs
-- **Resourcing:** Freelancer booking, contracting and payments, hire-or-buy decisions
-- **Budgets and finance:** Budgets, invoice approval, business cases, pitch costings
+- **Rosters and resource planning:** Staff rosters, freelancer calendars, holiday cover, emergency call-outs
+- **Resourcing and workforce planning:** Freelancer booking, contracting and payments across the event calendar, hire-or-buy decisions
+- **Budgets and finance:** Tracking budgets, invoice approval, business cases, pitch costings
 - **Team leadership:** Team leadership, people management, restructuring, training
-- **Stakeholders:** Product, commercial and finance teams, partners, vendors and suppliers
-- **Process and tools:** Process improvement, Airtable, Google Workspace, Microsoft Office
+- **Vendors and stakeholders:** Vendor and supplier management, stakeholder management with product, commercial and finance teams
+- **Continuous improvement and planning tools:** Process improvement, planning tools built in Airtable, Google Workspace, Microsoft Office
 - **Safeguarding and safety:** Designated Safeguarding Lead, first aider, fire marshal
 
 ## Certifications

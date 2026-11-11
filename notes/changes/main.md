@@ -11,6 +11,12 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Job search: British Airways CV and letter tightened to the advert's wording
+
+- Tim asked for the BA documents to match the advert's terms after comparing them with his default CV. Wren revised `cv.json` and `cover-letter.md` for `2026-11-05-british-airways-senior-operations-resource-planning-mana`; Ada rebuilt the Word files and PDFs (fact check passed, fits two pages).
+- Wording now mirrors BA's: rosters/rostering (no "rotas" left), resource and workforce planning, planning tools, stakeholder management, continuous improvement; vendor and supplier management brought back (backed by the CV bank). Headline: "Operations Leader, Rostering, Resourcing and Budgets".
+- Not claimed, still listed as gaps in the role's `notes.md`: manpower forecasting, budget variance reporting with Finance, Excel/Power BI, union work, aviation, offshore teams, deputising.
+
 ### 2026-11-11: Job search: British Airways Senior Ops Resource Planning Manager drafted
 
 - Rita found the live advert (careers.ba.com, ref 12246, closes 31 Dec 2026) and wrote `listing.md`: fit 2, verdict maybe. Wren drafted the CV and cover letter; Ada built the files. Tracker updated with the link, closing date and verdict; inbox i14 done.
