@@ -11,6 +11,24 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Scout and the coverage log (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/scout.py`, `test_scout.py`, `shared/job-search/.env.example`: new, as in Tim's office with the Chief of Staff named Tim.
+- `shared/tools/tracker.py` and `test_tracker.py`: feed finds with a track and summary, the coverage log (`found run --source`, `found sources`), and the missing-file fix. 11 tracker tests and 15 Scout tests pass.
+
+**Why**
+Tim Everard asked for code changes to go into both offices. Details in `claude-compassionate-ptolemy-vc0jj2.md`.
+
+**Decisions**
+Code only. Hal's search definition is still blank (`search.json` has the sources and no tracks), so Scout finds nothing for him until he has made one; his CV, preferences, tracker and roles were not opened.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` in Hal's office.
+
+**Open items**
+Hal's definition session.
+
 ### 2026-11-11: A blank search definition file (from Tim's office)
 
 **What changed**

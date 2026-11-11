@@ -54,6 +54,33 @@ class TrackerTests(unittest.TestCase):
         self.run_t("set", "beta", "status=applied", "next=Call Sam on Monday")
         self.assertEqual(json.loads(self.run_t("show", "beta"))["next"], "Call Sam on Monday")
 
+    def test_coverage_log_counts_each_site_and_flags_failures(self):
+        import json
+        self.run_t("found", "run", "--via", "feed", "--found", "3", "--source", "Hitmarker", "--result", "ok")
+        self.run_t("found", "run", "--via", "feed", "--found", "2", "--source", "Hitmarker")
+        self.run_t("found", "run", "--via", "feed", "--found", "0", "--source", "Reed", "--result", "needs-key", "--note", "add REED_API_KEY")
+        self.run_t("found", "run", "--via", "web", "--found", "0", "--source", "Reed", "--result", "needs-key")
+        found = json.loads((Path(self.dir) / "found.json").read_text(encoding="utf-8"))
+        self.assertEqual((found["sources"]["Hitmarker"]["total"], found["sources"]["Hitmarker"]["result"], found["sources"]["Hitmarker"]["failures"]), (5, "ok", 0))
+        self.assertEqual((found["sources"]["Reed"]["result"], found["sources"]["Reed"]["failures"]), ("needs-key", 2))
+        table = self.run_t("found", "sources")
+        self.assertIn("Hitmarker | checked", table)
+        self.assertIn("total 5", table)
+        self.assertIn("needs-key", table)
+
+    def test_feed_finds_keep_their_track_and_summary_and_take_as_leads(self):
+        import json
+        path = Path(self.dir) / "items.json"
+        path.write_text(json.dumps([{"title": "Head of Ops", "company": "Beta", "link": "https://b/1", "fit": "strong", "track": "Esports and gaming operations",
+                                      "summary": "Run tournaments", "via": "feed", "source": "Hitmarker"}]), encoding="utf-8")
+        self.assertIn("added 1", self.run_t("found", "add", "--file", str(path), "--via", "feed"))
+        found = json.loads((Path(self.dir) / "found.json").read_text(encoding="utf-8"))
+        self.assertEqual((found["items"][0]["via"], found["items"][0]["track"], found["items"][0]["summary"]), ("feed", "Esports and gaming operations", "Run tournaments"))
+        role_id = self.run_t("found", "take", found["items"][0]["id"], "--as", "lead")
+        role = json.loads(self.run_t("show", role_id))
+        self.assertEqual(role["source"], "Hitmarker")
+        self.assertIn("Track: Esports and gaming operations", role["notes"])
+
     def test_action_done_and_reopen(self):
         aid = self.run_t("action", "add", "Call the recruiter")
         self.run_t("action", "done", aid)

@@ -11,6 +11,39 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Scout, a free job-search script (PR 2, part 2)
+
+**What changed**
+- `Tim's Job Search/shared/tools/scout.py`: new, standard library only, no tokens. Reads job sources directly, judges each job against `search.json` and queues the fits in the leads queue for Hal. Source types:
+  - `sitemap` (Hitmarker): picks likely jobs from the sitemap's addresses, then reads each job's own structured data
+  - `greenhouse`, `lever`, `ashby`, `smartrecruiters`: a company's public job feed, for each board listed
+  - `reed`, `adzuna`: free APIs, keys from `shared/job-search/.env`, idle until Tim adds them
+  - `rss`
+  - Judging: UK or remote and within reach of Epsom; not an avoided employer or kind of work; posted in the last 14 days; pay not under the minimum (day rates and unstated pay are kept); a track's title, its wrong-work words and its lowest level. Each find is tagged with its track and a short summary. Tracks are tried in Tim's order.
+  - Politeness: one request at a time with a pause, robots.txt respected, a page limit per run (100), and every page read is remembered in `jobs/scout-state.json` for 40 days so nothing is read twice.
+  - Commands: `run [--source X] [--dry-run] [--max-pages N]`, `check` (is each source working, blocked or missing a key), `discover [--save]` (finds which watch-list employers have a public hiring feed and, with `--save`, adds them to `search.json`).
+- `shared/tools/tracker.py`: the leads queue now accepts `via: feed`, keeps each find's `track` and `summary`, and a lead taken from it carries its track in the notes. `found run` takes `--source` and `--result` and keeps a coverage log in `found.json` (per site: last checked, result, finds, failures in a row). New `found sources` prints it. Fixed on the way: a missing `found.json` made the loader skip the new `sources` entry.
+- `shared/job-search/.env.example`: new, shows the key names (the real `.env` is git-ignored).
+- `shared/tools/test_scout.py`: new, 15 tests with canned responses. `test_tracker.py`: 2 more tests (11 in all).
+- The same files in `Hal's Job Search/` (see `main-hals-job-search.md`).
+
+**Why**
+Tim's top priority on 2026-11-11: better coverage, because many of his sites were never searched. The job-site pages Rita reads load their jobs afterwards, and the cloud can't reach most of the others; reading sitemaps and company feeds directly is free and reliable.
+
+**Decisions**
+- Scout writes to the same queue Hal already sorts, through `tracker.py found add`, so duplicates against Tim's roles and earlier finds are skipped by code that already exists.
+- Weak fits are never queued; Hal's dismissals showed they were noise.
+- Hitmarker's own search uses short-lived signed addresses, so it isn't used; the sitemap is stable.
+- Company boards start empty and are found by `discover`, because a wrong board name would quietly return a different company's jobs.
+
+**How to check it**
+- `python3 shared/tools/test_scout.py` and `test_tracker.py` in each office: 15 and 11 tests pass.
+- Live from this session: `scout.py check` reports Hitmarker working (5,000 jobs listed). A dry run read 80 pages (234 looked possible from their titles): 7 were in the UK, and none was a fit, so nothing was queued. The seven were checked by hand: a specialist role, a freelance production manager, a community lead, a benefits lead, a programmer and two others, all correctly left out. Hitmarker is mostly non-UK and non-operations; the company feeds, Reed and Adzuna should add most of the coverage.
+
+**Open items**
+- Cloud sessions can't reach the company-feed hosts, so `discover` and the feeds can't run here until the environment allows them (next step of PR 2).
+- Tim: add the Reed and Adzuna keys to `.env` on his PC.
+
 ### 2026-11-11: Search definition rebuilt after a question session with Tim (PR 2, part 1)
 
 **What changed**
