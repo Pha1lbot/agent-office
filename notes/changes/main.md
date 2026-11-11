@@ -11,6 +11,26 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-11: Merge GitHub's main after GitHub came back
+
+**What changed**
+- Merged `origin/main` (PR #27, `notes/changes/claude-youthful-hopper-alwu7m.md`) into the 9 local commits made while GitHub was suspended.
+- `Tim's Job Search/shared/office-view/src/server.ts`: conflict resolved by taking GitHub's version. It makes the same fix as the local 2026-11-09 commit (automatic runs start in the office folder), and with `auto-cos.ts` also refuses with a clear message if the /cos skill is missing.
+- `notes/changes/main-hals-job-search.md`: conflict resolved by keeping both entries, newest first.
+
+**Why**
+- Tim asked for the automatic-run fix in Hal's office too. PR #27 had already made it in both offices, so merging covered it.
+
+**Decisions**
+- A merge, not a rebase, as CLAUDE.md requires. GitHub's version of the fix kept because it is the same change plus a safety check and tests.
+
+**How to check it**
+- `npm run check` and `npm test` pass in both offices' `shared/office-view` (39 tests each).
+
+**Open items**
+- Closes the 2026-11-09 open items "Same fix probably needed in Hal's office" and "Push this commit when GitHub access is restored", if the push below succeeds.
+- Both offices must be restarted to pick up the fix.
+
 ### 2026-11-09: Carry on locally when GitHub can't be reached
 
 **What changed**

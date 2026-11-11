@@ -513,7 +513,9 @@ if (python) tool = new Tracker(python, REPO, TRACKER);
 else console.log("Python 3 not found: the office will show roles but can't edit them. Install Python from python.org.");
 const claude = python ? await findClaude(REPO) : null;
 if (python) {
-  cos = new AutoCos(claude, gitRepo || REPO, python, APP, {
+  // Start the Chief of Staff in this office's folder, where its skills, settings and tools are
+  // (not the git top folder, which holds both offices).
+  cos = new AutoCos(claude, REPO, python, APP, {
     before: async () => { backup.hold = true; await backup.flush(); },
     after: async () => { backup.hold = false; const n = await loadTracker(); broadcast({ type: "tracker", tracker }); return n; },
     changed: pushSystem,

@@ -2,7 +2,7 @@
 // (the tracker's inbox). One run at a time, a quiet period first so several
 // edits share one run, and a daily cap to protect Tim's usage limits.
 import { spawn, type ChildProcess } from "node:child_process";
-import { createWriteStream, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { createWriteStream, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 export interface CosStatus {
@@ -35,7 +35,7 @@ export class AutoCos {
 
   constructor(
     private claude: string | null,
-    private repo: string,
+    private office: string, // the office folder: holds .claude/skills/cos and shared/tools
     private python: string,
     private appDir: string,
     private hooks: { before: () => Promise<void>; after: () => Promise<number>; changed: () => void; budgetLeft: () => number | null },
@@ -80,6 +80,10 @@ export class AutoCos {
   async start() {
     this.cancel();
     if (this.child || !this.claude || !this.status.inbox) return this.hooks.changed();
+    if (!existsSync(join(this.office, ".claude", "skills", "cos", "SKILL.md"))) {
+      this.status.last = { at: Date.now(), ok: false, message: `Can't start: no .claude/skills/cos/SKILL.md in ${this.office}.` };
+      return this.hooks.changed();
+    }
     if (ukDay() !== this.day) { this.day = ukDay(); this.status.runsToday = 0; }
     if (this.status.runsToday >= MAX_PER_DAY) {
       this.status.last = { at: Date.now(), ok: false, message: `Daily limit of ${MAX_PER_DAY} automatic runs reached. Run /cos yourself, or wait until tomorrow.` };
@@ -112,7 +116,7 @@ export class AutoCos {
     // OFFICE_AUTO_RUN turns on hooks/guard.mjs, which refuses git commands that
     // rewrite or throw away history: Tim isn't there to say yes to them.
     const env = { ...process.env, OFFICE_AUTO_RUN: "1" };
-    const child = spawn(this.claude, args, { cwd: this.repo, env, shell: process.platform === "win32", windowsHide: true });
+    const child = spawn(this.claude, args, { cwd: this.office, env, shell: process.platform === "win32", windowsHide: true });
     this.child = child;
     const kill = setTimeout(() => child.kill(), MAX_RUN_MS);
     child.stdout?.pipe(log);

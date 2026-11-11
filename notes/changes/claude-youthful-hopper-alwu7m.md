@@ -16,6 +16,36 @@ This branch sets up:
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-08: Hal's automatic runs start in the office folder again (both offices)
+
+**What changed**
+- `Tim's Job Search/shared/office-view/src/server.ts` and `Hal's Job Search/shared/office-view/src/server.ts`: the Chief of Staff's automatic runs start in the office folder (`REPO`), not the git top folder (`gitRepo`).
+- `.../src/auto-cos.ts` in both offices:
+  - the folder parameter is renamed `office`
+  - before starting, it checks that `.claude/skills/cos/SKILL.md` is in that folder. If not, it refuses with a clear message in the office and doesn't use one of the day's runs.
+- `.../test/auto-cos.test.ts` (new, in both offices):
+  - the office folder that `server.ts` passes holds the skill and `shared/tools/tracker.py`
+  - a wrong folder is refused without starting Claude
+- `CHANGELOG.md`: the line for #26.
+
+**Why**
+- Tim: "Hal has 3 jobs and isn't doing them". The office showed 3 requests waiting and 1 automatic run used:
+  - draft CVs for UNICEF UK and Handle Recruitment
+  - a verdict for Handle Recruitment
+- Since #25 moved each office into its own folder, `server.ts` started Claude Code in the repo's top folder. There's no `.claude/skills/cos/` there, no `shared/tools/tracker.py` and no office settings, so the run finished without doing anything.
+
+**Decisions**
+- **Hal's office is fixed too:** Tim chose that. It's the same bug in the same code. Only code changed there; none of Hal's data was read or touched.
+- **The backup still uses the git top folder,** which it needs for git.
+
+**How to check it**
+- `npm test` (39 pass) and `npm run check` in both offices' `shared/office-view`.
+- **A test office** run from `Tim's Job Search`, with a stand-in `claude` that records its working folder: pressing Run now started it in `/home/user/agent-office/Tim's Job Search`.
+
+**Open items**
+- **Tim:** once merged, reopen the office (the label shows "restart to update"), then press **Run now**, or run `/hal` in Claude Code opened in `Tim's Job Search`.
+- **CHANGELOG:** has no line for #25 (another session's branch, `claude-adoring-maxwell-qzaklb`).
+
 ### 2026-11-08: NetEase and Vitality redone in Tim's CV template
 
 All paths are inside `Tim's Job Search/`.
