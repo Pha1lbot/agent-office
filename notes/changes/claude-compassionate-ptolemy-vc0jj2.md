@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In progress (review of 2026-11-11: fixes, search, learning loop). Earlier work merged in PRs #18, #19 and #20.
+**Status:** In review ([PR #28](https://github.com/Pha1lbot/agent-office/pull/28): fixes and plain staff messages; PRs 2 to 4 of the 2026-11-11 review to follow). Earlier work merged in PRs #18, #19 and #20.
 
 ## Purpose
 
@@ -10,6 +10,24 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-11: PR #28 opened for the fixes and plain staff messages
+
+**What changed**
+- `CHANGELOG.md`: the line for #28, added before merging as the new rule says.
+- This notes file: status is "In review" with PR #28.
+
+**Why**
+PR 1 of the plan Tim approved on 2026-11-11 is complete.
+
+**Decisions**
+None.
+
+**How to check it**
+Open PR #28; its description follows the template.
+
+**Open items**
+After merging: delete the branch; Tim restarts both offices to see the new wording. Next is PR 2 (search definition and coverage).
 
 ### 2026-11-11: The office says what the team is doing in plain English
 
