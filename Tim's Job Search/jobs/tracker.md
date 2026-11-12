@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 22 · shortlisted: 5 · drafted: 3 · applied: 5 · skipped: 33
+found: 25 · shortlisted: 5 · drafted: 3 · applied: 5 · skipped: 37
 
 ## Next actions
 
@@ -15,28 +15,31 @@ found: 22 · shortlisted: 5 · drafted: 3 · applied: 5 · skipped: 33
 
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
 |---|---|---|---|---|---|---|---|---|
-| found | 1 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 2 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-06 |
-| found | 3 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-06 |
-| found | 4 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-06 |
-| found | 5 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 6 | [Senior Program Activation Manager, Twitch Brand](https://www.linkedin.com/jobs/view/4455794115/) | Amazon | Not listed | London | 3 |  | 2026-11-06 |
-| found | 7 | [Marketing Production Manager, Sports](https://www.linkedin.com/jobs/view/4475056502/) | Prime Video & Amazon MGM Studios | Not listed | London | 3 |  | 2026-11-06 |
-| found | 8 | Director of Live Operations | Bauer Media |  | Remote, UK or Germany | 3 |  | 2026-11-06 |
-| found | 9 | [Chief Operating Officer - Live event production](https://uk.linkedin.com/jobs/view/chief-operating-officer-live-event-production-at-disrupt-search-4480513001) | Disrupt Search (agency client) | not stated | London Area | 3 |  | 2026-11-06 |
-| found | 10 | [Senior Production Manager](https://www.linkedin.com/jobs/view/4457905834/) | Live Wire Productions |  | Banbury | 3 |  | 2026-11-11 |
-| found | 11 | [Strategic Events Specialist, EMEA](https://www.linkedin.com/jobs/view/4476852245/) | Abnormal AI |  | United Kingdom (Remote) | 3 |  | 2026-11-11 |
-| found | 12 | [Head of Operations](https://www.linkedin.com/jobs/view/4461930505/) | TryHackMe |  | London (Remote) | 3 |  | 2026-11-11 |
-| found | 13 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 3 |  | 2026-11-11 |
-| found | 14 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
-| found | 15 | [Head of Operations](https://www.linkedin.com/jobs/view/4478797122/) | CF |  | London (Hybrid) | 3 |  | 2026-11-11 |
-| found | 16 | [Gaming & Streaming Senior Manager](https://www.linkedin.com/jobs/view/4484381283/) | Great Ormond Street Hospital Charity | £49.9k | London, hybrid | 3 |  | 2026-11-06 |
-| found | 17 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-06 |
-| found | 18 | [Head of Video - Events Production](https://uk.linkedin.com/jobs/view/head-of-video-events-production-at-blank-space-recruitment-4484322630) | Blank Space Recruitment (events production agency client) | up to GBP 75,000 DOE | London | 2 |  | 2026-11-06 |
-| found | 19 | [Production Manager - Brand Activations and Live Events](https://uk.linkedin.com/jobs/view/production-manager-live-events-at-blank-space-recruitment-4484319909) | Blank Space Recruitment (events agency client) | from GBP 50,000 plus benefits | London | 2 |  | 2026-11-06 |
-| found | 20 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-06 |
-| found | 21 | [Event Director, HLTH Europe](https://www.linkedin.com/jobs/view/4479433111/) | Hyve Group | Not listed | London | 2 |  | 2026-11-06 |
-| found | 22 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
+| found | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-12 |
+| found | 2 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
+| found | 3 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-06 |
+| found | 4 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-06 |
+| found | 5 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-06 |
+| found | 6 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-06 |
+| found | 7 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-06 |
+| found | 8 | [Senior Program Activation Manager, Twitch Brand](https://www.linkedin.com/jobs/view/4455794115/) | Amazon | Not listed | London | 3 |  | 2026-11-06 |
+| found | 9 | [Marketing Production Manager, Sports](https://www.linkedin.com/jobs/view/4475056502/) | Prime Video & Amazon MGM Studios | Not listed | London | 3 |  | 2026-11-06 |
+| found | 10 | Director of Live Operations | Bauer Media |  | Remote, UK or Germany | 3 |  | 2026-11-06 |
+| found | 11 | [Chief Operating Officer - Live event production](https://uk.linkedin.com/jobs/view/chief-operating-officer-live-event-production-at-disrupt-search-4480513001) | Disrupt Search (agency client) | not stated | London Area | 3 |  | 2026-11-06 |
+| found | 12 | [Senior Production Manager](https://www.linkedin.com/jobs/view/4457905834/) | Live Wire Productions |  | Banbury | 3 |  | 2026-11-11 |
+| found | 13 | [Strategic Events Specialist, EMEA](https://www.linkedin.com/jobs/view/4476852245/) | Abnormal AI |  | United Kingdom (Remote) | 3 |  | 2026-11-11 |
+| found | 14 | [Head of Operations](https://www.linkedin.com/jobs/view/4461930505/) | TryHackMe |  | London (Remote) | 3 |  | 2026-11-11 |
+| found | 15 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 3 |  | 2026-11-11 |
+| found | 16 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
+| found | 17 | [Head of Operations](https://www.linkedin.com/jobs/view/4478797122/) | CF |  | London (Hybrid) | 3 |  | 2026-11-11 |
+| found | 18 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 |  | 2026-11-12 |
+| found | 19 | [Gaming & Streaming Senior Manager](https://www.linkedin.com/jobs/view/4484381283/) | Great Ormond Street Hospital Charity | £49.9k | London, hybrid | 3 |  | 2026-11-06 |
+| found | 20 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-06 |
+| found | 21 | [Head of Video - Events Production](https://uk.linkedin.com/jobs/view/head-of-video-events-production-at-blank-space-recruitment-4484322630) | Blank Space Recruitment (events production agency client) | up to GBP 75,000 DOE | London | 2 |  | 2026-11-06 |
+| found | 22 | [Production Manager - Brand Activations and Live Events](https://uk.linkedin.com/jobs/view/production-manager-live-events-at-blank-space-recruitment-4484319909) | Blank Space Recruitment (events agency client) | from GBP 50,000 plus benefits | London | 2 |  | 2026-11-06 |
+| found | 23 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-06 |
+| found | 24 | [Event Director, HLTH Europe](https://www.linkedin.com/jobs/view/4479433111/) | Hyve Group | Not listed | London | 2 |  | 2026-11-06 |
+| found | 25 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | shortlisted |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-05 |
 | shortlisted |  | [AI Programme Manager (12-month fixed term)](https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v) | techUK | Not shown | London, hybrid |  |  | 2026-11-05 |
@@ -83,3 +86,7 @@ found: 22 · shortlisted: 5 · drafted: 3 · applied: 5 · skipped: 33
 | skipped |  | [Dealing Operations Specialist](https://www.linkedin.com/jobs/view/4469848833/) | Traze |  | United Kingdom (Remote) | 2 |  | 2026-11-11 |
 | skipped |  | [Marketing Operations Specialist](https://www.linkedin.com/jobs/view/4468588019/) | Betway Global |  | London Colney (Hybrid) | 2 |  | 2026-11-11 |
 | skipped |  | [Program Manager, Strategy and Operations, Google Arts and Culture](https://www.linkedin.com/jobs/view/4476808972/) | Google |  | London (On-site) | 2 |  | 2026-11-11 |
+| skipped |  | [Senior Manager, Ad Operations and Paid Media (Lumee)](https://hitmarker.net/jobs/hasbro-senior-manager-ad-operations-and-paid-media-lumee-5354683) | Hasbro |  | London | 3 |  | 2026-11-12 |
+| skipped |  | [Head of Expert Network & Operations](https://www.reed.co.uk/jobs/head-of-expert-network-operations/57528021) | Inventum Group | £70,000 - £85,000 | London | 3 |  | 2026-11-12 |
+| skipped |  | [Technical Operations Director](https://www.reed.co.uk/jobs/technical-operations-director/57545447) | Teemz Ltd | £140,000 - £170,000 | London | 3 |  | 2026-11-12 |
+| skipped |  | [Delivery Manager - SC Sponsorship Available](https://www.reed.co.uk/jobs/delivery-manager-sc-sponsorship-available/57500524) | SR2 | £225 - £250 | London | 4 |  | 2026-11-12 |
