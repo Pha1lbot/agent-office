@@ -250,6 +250,24 @@ class EndToEnd(unittest.TestCase):
         self.assertEqual(len(self.found()["items"]), 2)
         self.assertEqual(self.found()["sources"]["Hitmarker"]["total"], 1)
 
+    def test_company_feed_jobs_get_a_longer_age_limit_and_are_not_queued_twice(self):
+        old = (TODAY - timedelta(days=45)).isoformat()
+        gh = {"jobs": [{"title": "Head of Esports Operations", "location": {"name": "London"}, "absolute_url": "https://gh/old",
+                        "first_published": old, "content": "Esports"}]}
+        http = FakeHttp({"https://boards-api.greenhouse.io/v1/boards/acme/jobs*": json.dumps(gh)})
+        src = {"type": "greenhouse", "boards": [{"board": "acme", "company": "Acme"}]}
+        jobs, _, _ = scout.read_ats(src, http)
+        self.assertEqual(jobs[0]["max_age_days"], 60)
+        item, why = scout.judge(jobs[0], "Test", DEFN, today=TODAY)
+        self.assertEqual(why, "")  # 45 days old, but fine for a company feed
+        self.assertEqual(scout.judge(job(posted=old), "Test", DEFN, today=TODAY)[1], "too old")  # not for a job board
+        defn = {**self.defn, "sources": [{"id": "gh", "name": "GH", "type": "greenhouse", "boards": [{"board": "acme", "company": "Acme"}]}]}
+        http = FakeHttp({"https://boards-api.greenhouse.io/v1/boards/acme/jobs*": json.dumps(gh)})
+        first = scout.run(defn, http, log=lambda *_: None)
+        self.assertEqual(first[0][3], 1)
+        again = scout.run(defn, FakeHttp({"https://boards-api.greenhouse.io/v1/boards/acme/jobs*": json.dumps(gh)}), log=lambda *_: None)
+        self.assertEqual(again[0][2], 0)  # remembered, so not even judged again
+
     def test_dry_run_changes_nothing(self):
         lines = []
         scout.run(self.defn, FakeHttp(self.routes), dry=True, log=lines.append)

@@ -216,7 +216,7 @@ def judge(job, source_name, defn, today=None):
         if has_word(title, word):
             return None, "wrong kind of work"
     posted = parse_date(job.get("posted"))
-    if posted and (today - posted).days > defn.get("max_age_days", 14):
+    if posted and (today - posted).days > (job.get("max_age_days") or defn.get("max_age_days", 14)):
         return None, "too old"
     # Where: the UK, and remote, hybrid or within reach of Epsom.
     loc = norm(job.get("location", ""))
@@ -362,6 +362,8 @@ def read_ats(src, http):
     if not boards:
         return [], "ok", "no company boards set yet (run `scout.py discover`)"
     kind, jobs, worked, notes = src["type"], [], 0, []
+    # A company's own feed lists every open role, however long ago it was first posted: still open means still worth a look.
+    FEED_DAYS = 60
     for b in boards:
         slug, company = b["board"], b.get("company", b["board"])
         try:
@@ -391,6 +393,8 @@ def read_ats(src, http):
             worked += 1
         except (Unreachable, ValueError) as e:
             notes.append(f"{slug}: {e}")
+    for j in jobs:
+        j["max_age_days"] = FEED_DAYS
     if not worked:
         return [], "blocked", "; ".join(notes[:3])
     return jobs, "ok", f"{worked} of {len(boards)} boards read" + (f"; {len(notes)} failed" if notes else "")
@@ -493,7 +497,9 @@ def load_state():
     except (OSError, ValueError):
         state = {}
     cutoff = (date.today() - timedelta(days=40)).isoformat()
+    # seen: job pages already read (sitemaps); queued: jobs already put in the leads queue
     state["seen"] = {u: d for u, d in state.get("seen", {}).items() if d >= cutoff}
+    state["queued"] = {u: d for u, d in state.get("queued", {}).items() if d >= cutoff}
     return state
 
 
@@ -535,9 +541,13 @@ def run(defn, http, only=None, dry=False, max_pages=100, log=print):
         jobs, status, note = got
         items, dropped = [], Counter()
         for job in jobs:
+            if job.get("link") in state["queued"]:
+                continue  # already queued on an earlier run
             item, why = judge(job, src["name"], defn)
             (items.append(item) if item else dropped.update([why]))
         added = 0 if dry or status != "ok" else queue(items)
+        if not dry and status == "ok":
+            state["queued"].update({item["link"]: date.today().isoformat() for item in items})
         result = "empty" if status == "ok" and not jobs else status
         top = ", ".join(f"{n} {why}" for why, n in dropped.most_common(3))
         log(f"{src['name']}: {result} | {len(jobs)} read, {len(items)} fit, {added} new" + (f" | {note}" if note else "") + (f" | left out: {top}" if top else ""))
@@ -609,6 +619,17 @@ def probe(kind, slug, http):
     return data.get("totalFound", len(data.get("content", [])))
 
 
+def board_name(kind, slug, http):
+    """The company name a Greenhouse board gives itself, so a wrong guess (a different company with a
+    similar name) can be spotted. Other feeds don't give one."""
+    if kind != "greenhouse":
+        return ""
+    try:
+        return str(get_json(http, f"https://boards-api.greenhouse.io/v1/boards/{slug}").get("name", ""))
+    except (ValueError, Unreachable):
+        return ""
+
+
 def discover(defn, http, save=False, only=None, log=print):
     found = {}
     for group in defn.get("watch", []):
@@ -619,7 +640,8 @@ def discover(defn, http, save=False, only=None, log=print):
                 for slug in slug_options(employer):
                     n = probe(kind, slug, http)
                     if n:
-                        log(f"{employer}: {kind} board '{slug}' with {n} jobs")
+                        name = board_name(kind, slug, http)
+                        log(f"{employer}: {kind} board '{slug}' with {n} jobs" + (f" (board says: {name})" if name else "") + "  <- check this is the right company")
                         found.setdefault(kind, []).append({"board": slug, "company": employer})
                         break
     if not found:

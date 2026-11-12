@@ -342,7 +342,36 @@
       "id": "greenhouse",
       "name": "Company hiring pages: Greenhouse",
       "type": "greenhouse",
-      "boards": [],
+      "boards": [
+        {
+          "board": "riotgames",
+          "company": "Riot Games"
+        },
+        {
+          "board": "epicgames",
+          "company": "Epic Games"
+        },
+        {
+          "board": "taketwo",
+          "company": "Take-Two"
+        },
+        {
+          "board": "roblox",
+          "company": "Roblox"
+        },
+        {
+          "board": "twitch",
+          "company": "Twitch"
+        },
+        {
+          "board": "discord",
+          "company": "Discord"
+        },
+        {
+          "board": "anthropic",
+          "company": "Anthropic"
+        }
+      ],
       "how": "Scout reads each company's public job feed. Boards are added as they are found and checked.",
       "cloud": false
     },
@@ -358,7 +387,20 @@
       "id": "ashby",
       "name": "Company hiring pages: Ashby",
       "type": "ashby",
-      "boards": [],
+      "boards": [
+        {
+          "board": "fnatic",
+          "company": "Fnatic"
+        },
+        {
+          "board": "supercell",
+          "company": "Supercell"
+        },
+        {
+          "board": "openai",
+          "company": "OpenAI"
+        }
+      ],
       "how": "As Greenhouse.",
       "cloud": false
     },
@@ -446,5 +488,8 @@
       "how": "Rita reads it (not every day).",
       "cloud": false
     }
+  ],
+  "_notes": [
+    "Cloud9 (the esports team) has no public hiring feed that Scout can read. The Greenhouse board called 'cloud9' belongs to a retail company, so it was removed on 2026-11-12. `scout.py discover` can guess wrong: check each board's name before saving."
   ]
 }

@@ -328,7 +328,119 @@
       "via": "email",
       "found": 14,
       "note": ""
+    },
+    {
+      "at": "2026-11-12T09:54",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 228 looked possible from their titles, 60 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-12T09:54",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-12T09:54",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-12T09:54",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-12T09:54",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-12T09:54",
+      "via": "feed",
+      "found": 0,
+      "note": "add REED_API_KEY to shared/job-search/.env",
+      "source": "Reed"
+    },
+    {
+      "at": "2026-11-12T09:54",
+      "via": "feed",
+      "found": 0,
+      "note": "add ADZUNA_APP_ID and ADZUNA_APP_KEY to shared/job-search/.env",
+      "source": "Adzuna"
     }
   ],
-  "last_email_scan": "2026-11-11T11:40:00Z"
+  "last_email_scan": "2026-11-11T11:40:00Z",
+  "sources": {
+    "Hitmarker": {
+      "total": 0,
+      "last_checked": "2026-11-12T09:54",
+      "result": "ok",
+      "found": 0,
+      "note": "5000 jobs listed, 228 looked possible from their titles, 60 read",
+      "last_ok": "2026-11-12T09:54",
+      "failures": 0
+    },
+    "Company hiring pages: Greenhouse": {
+      "total": 0,
+      "last_checked": "2026-11-12T09:54",
+      "result": "ok",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "last_ok": "2026-11-12T09:54",
+      "failures": 0
+    },
+    "Company hiring pages: Lever": {
+      "total": 0,
+      "last_checked": "2026-11-12T09:54",
+      "result": "empty",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "last_ok": "2026-11-12T09:54",
+      "failures": 0
+    },
+    "Company hiring pages: Ashby": {
+      "total": 0,
+      "last_checked": "2026-11-12T09:54",
+      "result": "ok",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "last_ok": "2026-11-12T09:54",
+      "failures": 0
+    },
+    "Company hiring pages: SmartRecruiters": {
+      "total": 0,
+      "last_checked": "2026-11-12T09:54",
+      "result": "empty",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "last_ok": "2026-11-12T09:54",
+      "failures": 0
+    },
+    "Reed": {
+      "total": 0,
+      "last_checked": "2026-11-12T09:54",
+      "result": "needs-key",
+      "found": 0,
+      "note": "add REED_API_KEY to shared/job-search/.env",
+      "failures": 1
+    },
+    "Adzuna": {
+      "total": 0,
+      "last_checked": "2026-11-12T09:54",
+      "result": "needs-key",
+      "found": 0,
+      "note": "add ADZUNA_APP_ID and ADZUNA_APP_KEY to shared/job-search/.env",
+      "failures": 1
+    }
+  }
 }

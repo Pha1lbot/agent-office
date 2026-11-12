@@ -11,6 +11,30 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Cloud access for company feeds, boards found, feed age limit
+
+**What changed**
+- The `agent-office` cloud environment now allows `boards-api.greenhouse.io`, `api.lever.co`, `api.ashbyhq.com` and `api.smartrecruiters.com` (Tim approved the request; it is saved on the environment, not in the repo).
+- `Tim's Job Search/shared/job-search/search.json`: ten company boards found by `scout.py discover --save`: Greenhouse (Riot Games, Epic Games, Take-Two, Roblox, Twitch, Discord, Anthropic) and Ashby (Fnatic, Supercell, OpenAI). A note in the file records why Cloud9 is absent.
+- `shared/tools/scout.py` (both offices): `discover` now prints each Greenhouse board's own company name beside the match; company feeds allow jobs up to 60 days old (the job-board limit stays 14); jobs already put in the queue are remembered in `jobs/scout-state.json` (`queued`, apart from `seen` for pages read) so they aren't judged or queued again.
+- `test_scout.py` (both offices): one more test for the feed age limit and the memory (20 tests in Tim's office, 17 in Hal's).
+- `Tim's Job Search/jobs/found.json` and `scout-state.json`: the first real run's coverage log.
+
+**Why**
+Step 1 of the plan Tim approved: Scout couldn't reach company hiring feeds from the cloud, and the daily search needs them to cover more sites.
+
+**Decisions**
+- `discover` guessed one wrong board: "cloud9" on Greenhouse is a retail and wellness company, not the esports team. It was removed by hand, and `discover` now shows the board's name so a wrong match is visible. A company's feed lists every open role, so a 45-day-old role is still worth a look; hence 60 days for feeds.
+- Boards for Lever and SmartRecruiters stay empty: none of the watch-list employers use them, as far as `discover` can tell. EA, Ubisoft, Activision Blizzard, ESL FACEIT Group, Hexagon, Vitality, Google, Microsoft and others use their own hiring systems, which are read through job-alert emails and Rita.
+
+**How to check it**
+- Tests: `python3 shared/tools/test_scout.py` in each office.
+- Live, from this session: all four feeds answer; `scout.py discover`; a real `scout.py run` read 1,401 Greenhouse jobs and 856 Ashby jobs and queued none. Of the 73 UK roles that reached the track check, the nearest misses were an Epic games production director and an Anthropic events marketing manager, so no fit is the true answer today, not a faulty filter. `tracker.py found sources` shows the coverage table.
+
+**Open items**
+- The office's Sources panel and "Define my search" page, Hal's and Rita's instructions, and the daily task are still to do.
+- Tim: Reed and Adzuna keys.
+
 ### 2026-11-12: Project and programme management added as a track
 
 **What changed**

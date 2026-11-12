@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Scout feed age limit, queued-jobs memory and board names (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/scout.py` and `test_scout.py`: company feeds allow jobs up to 60 days old, queued jobs are remembered so they aren't queued twice, and `discover` prints each board's name. 17 Scout tests pass.
+
+**Why**
+Tim Everard asked for code changes to go into both offices. Details in `claude-compassionate-ptolemy-vc0jj2.md`.
+
+**Decisions**
+Code only; Hal's definition is still blank and his CV, preferences, tracker and roles were not opened. No boards were saved for him.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` in Hal's office.
+
+**Open items**
+None.
+
 ### 2026-11-12: Scout tracks can require their sector words (ported from Tim's office)
 
 **What changed**
