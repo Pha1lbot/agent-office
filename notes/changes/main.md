@@ -11,6 +11,14 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Job search: office change for PGA role, merge conflict resolved
+
+**What changed:** Tim added a role in the office (The PGA: National Tournaments Manager), which landed in the inbox at the same time the daily search's auto-commit went to `origin/main`, so the start-up pull hit a genuine merge conflict in `Tim's Job Search/jobs/tracker.json` and `tracker.md` (both sides appended different roles/priorities at the same point). Resolved by merging the two JSON files programmatically (kept both sides' additions: Tim's PGA role plus the daily search's 7 new leads and its inbox item), then re-ran `tracker.py rank` and `render`. Briefed Rita to read the PGA advert; she scored it fit 2, verdict skip (missing the essential PGA/R&A Rules qualification; golf-specific sector with heavy travel), closing date 24 Nov 2026 noon. Set those fields and marked inbox item i15 done.
+**Why:** Tim's office edit and the scheduled daily search ran close together, so two independent commits diverged from the same base.
+**Decisions:** Resolved the tracker.json conflict by diffing the three git stages (common ancestor/ours/theirs) in Python rather than hand-editing conflict markers, since the file is machine-written list data; this avoided accidentally dropping either side's additions.
+**How to check it:** `git log --oneline -5` shows the merge commit; `jobs/tracker.json` has no conflict markers and includes both the PGA role and the daily search's new roles; `jobs/roles/2026-11-12-the-professional-golfers-association-the-national-tournaments-manager/listing.md` exists.
+**Open items:** `tracker.py rank` has a pre-existing bug — it crashes with `AttributeError: 'Namespace' object has no attribute 'older_than'` after it saves, because its default lambda calls `cmd_list` without that argument. The rank/save step still completes before the crash, so this didn't block the work, but it's worth a small fix (`rk.set_defaults` in `shared/tools/tracker.py`, around the `rank` subcommand).
+
 ### 2026-11-12: Job search: daily search, 3 new leads, 4 dismissed
 
 - Scout reached 5 of 6 sources (Reed needs its key in the cloud). Three Reed leads kept, four dismissed. Outlook returned a Microsoft error, and Event Industry Jobs and Work in Sports can't be reached from the cloud yet. Details in `Tim's Job Search/jobs/today.md`.
