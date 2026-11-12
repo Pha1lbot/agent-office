@@ -44,10 +44,10 @@ Hal changes statuses and adds roles in the office's Roles tab. Changes that need
 
 If you were started automatically, Hal isn't there to answer. Don't ask questions; add them as actions (`tracker.py action add "..." --role <id>`).
 
-## "Daily search" (`/tim daily search`; a scheduled task can run this each weekday morning)
-Finds new roles, then you sort them. Nobody is waiting to answer, so never ask questions: anything for Hal goes in `tracker.py action add "..."`.
-1. Run `git status` and `git pull` (no other git commands; see Git).
-2. **Rita:** one brief: "Daily search: up to <the daily limit in preferences.md> new roles. Write them to /tmp/found-web.json." She returns finds as JSON in the queue's format (below) and writes no listings, to save tokens.
+## "Daily search" (`/tim daily search`; the 6:31 weekday scheduled task runs this)
+Finds new roles, then you sort them. Nobody is waiting to answer, so never ask questions: anything for Hal goes in `tracker.py action add "..."`. What to look for and where is in `shared/job-search/search.json` (tracks, pay, sources); `preferences.md` and `sources.md` say the same in plain English.
+1. Follow the start-of-session steps in CLAUDE.md, on `main`: `git checkout main`, then `git pull`.
+2. **Scout (free, no tokens):** `python3 shared/tools/scout.py run`. It reads the sources it can (Hitmarker's job list, company hiring feeds, Reed and Adzuna if keys are set), keeps only roles that fit a track, and queues them as leads tagged with their track. It logs each site itself. Read its last lines: anything `blocked`, `error` or `needs-key` goes in step 7's coverage line.
 3. **Job-alert emails (you, not Rita: subagents can't use connectors).** With the Microsoft 365 tools:
    - **Search** (most alerts land in the Inbox, not a folder): `outlook_email_search` with `query: "jobs"` and `afterDateTime` = `last_email_scan` from `jobs/found.json` (14 days back if empty), limit 25. Also try `folderName: "Job Alerts"` alone, in case Hal makes one.
    - **Keep only new-job alerts:**
@@ -61,17 +61,21 @@ Finds new roles, then you sort them. Nobody is waiting to answer, so never ask q
      - never invent pay, dates or links
      - skip anything that isn't a job, and unpaid or volunteer roles
    - **Write them** to `/tmp/found-email.json` with `"via": "email"` and `source` set to the board, e.g. "LinkedIn alert".
-   - **If the connector isn't connected or asks for approval,** skip this step and log the run with `--note "Outlook not connected"`.
-4. **Queue them:** `tracker.py found add --file /tmp/found-web.json --via web` and `... found-email.json --via email`. Duplicates of the queue or the tracker are skipped for you. Then log each run: `tracker.py found run --via web --found N`, and `tracker.py found run --via email --found N --email-scan-at <when step 3 started, ISO>` (add `--note "..."` if something went wrong).
-5. **Triage** every item in `tracker.py found list --pending`, using `preferences.md` and the CV summary in `cv-bank.md`:
+   - **If the connector isn't connected or asks for approval,** skip this step and log each email board with `--result blocked --note "Outlook not connected"`.
+4. **Rita, only for the sites with no feed.** `python3 shared/tools/tracker.py found sources` shows when each site was last checked. Pick the **two sites of type "web" in `search.json` that were checked longest ago** (or never), so every site is reached at least weekly without searching them all daily. One brief: "Daily search: sites <A> and <B> only. Write finds to /tmp/found-web.json." She returns finds as JSON in the queue's format (below), writes no listings, and says per site whether it loaded.
+5. **Queue them:** `tracker.py found add --file /tmp/found-web.json --via web` and `... found-email.json --via email`. Duplicates of the queue or the tracker are skipped for you. Then log each source so the office's Sources panel is right:
+   - Rita's sites: `tracker.py found run --via web --found N --source "<site name>" --result ok|empty|blocked` for each of the two (add `--note "..."` if something went wrong)
+   - the alert emails, one line per board that sent alerts: `tracker.py found run --via email --found N --source "LinkedIn Jobs"` (and "Indeed UK" and so on), plus once `--email-scan-at <when step 3 started, ISO>`
+   - a board that sent nothing this run still gets `--found 0 --result empty`, so it is not mistaken for unchecked
+6. **Sort** every item in `tracker.py found list --pending` (Scout's finds arrive with `fit`, a `track` and a one-line `summary`, so you rarely need to open an advert), using `preferences.md` and the CV summary in `cv-bank.md`:
    - **Dismiss** a deal-breaker, stated pay clearly under the minimum, a Weak fit, or the wrong discipline: `tracker.py found take <id> --as dismissed --reason "Tim: <a few words>"`. Hal sees it in Leads → Dismissed and can restore it.
    - **Keep the rest as leads:** `tracker.py found take <id> --as lead` (verdict Apply for Strong, Maybe for Possible; add `--verdict` and `--why` if you know better). Ada ranks them.
    - Never shortlist or draft anything: Hal picks.
-6. Write `jobs/today.md`: the date, the new leads best first (one line each: title, company, pay, why), what you dismissed and why, and anything waiting on Hal (`tracker.py list --summary`).
-7. **No git:** don't commit or push. The files stay in `jobs/` on this PC. (Hal's copy only pulls from GitHub; changes to the repo are made by Tim Everard.)
-8. **Token rules:** one Rita brief, no listings for the batch, at most 6 emails read. Leads get a full read later, only when Hal asks ("Ask Tim: worth applying?") or shortlists one.
+7. Write `jobs/today.md`: the date, the new leads best first (one line each: title, company, pay, track, why), what you dismissed and why, and **one coverage line**: how many sites were reached out of how many, and any that failed (for example "Reached 9 of 11 sites; Reed and Adzuna need keys; Esports Insider blocked"). If a site has failed three runs in a row (`found sources` shows `failures`), add `tracker.py action add "<site> hasn't worked for 3 days: <why>"`. Also anything waiting on Hal (`tracker.py list --summary`).
+8. **Back up to `main`:** commit `jobs/` and a dated line in `../notes/changes/main.md` (the repo's notes folder, one level above this office) ("Job search: daily search, N new leads, M dismissed"), then `git push`. If the push is refused, `git pull` (a merge; never rebase, reset or force) and push again.
+9. **Token rules:** Scout is free; one Rita brief for two sites at most, no listings for the batch, at most 6 emails read. Leads get a full read later, only when Hal asks ("Ask Tim: worth applying?") or shortlists one.
 
-**Queue format** (one JSON list): `{"title", "company", "location", "pay", "link", "posted", "source", "via", "fit": "strong"|"possible"|"weak", "why", "concern"}`. `why` is one short plain sentence tied to Hal's experience; `concern` is a few words or "".
+**Queue format** (one JSON list): `{"title", "company", "location", "pay", "link", "posted", "source", "via", "fit": "strong"|"possible"|"weak", "why", "concern", "track", "summary"}`. `why` is one short plain sentence tied to Hal's experience; `concern` is a few words or ""; `track` is one of the track names in `search.json`.
 
 ## "Start the day"
 1. Run `git status` and `git pull` (no other git commands). If the inbox has items, handle them first (see "Office changes").

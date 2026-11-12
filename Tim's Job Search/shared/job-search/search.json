@@ -1,0 +1,495 @@
+{
+  "_about": "Tim's search definition: the one place scripts and agents read what to look for and where. Edit it in the office ('Define my search') or with Hal. preferences.md and sources.md say the same in plain English. Pay is a yearly figure in pounds.",
+  "updated": "2026-11-12",
+  "where": {
+    "home": "Epsom, Surrey",
+    "country": "UK",
+    "remote": "anywhere in the UK",
+    "hybrid_areas": [
+      "London",
+      "Surrey"
+    ],
+    "office_days_per_week": 3,
+    "max_commute_minutes": 60,
+    "travel": "a few event trips a year, not constant touring"
+  },
+  "pay": {
+    "minimum": 50000,
+    "ideal": 60000,
+    "unstated": "keep the role",
+    "contract": "considered if the day rate is good; marked as contract"
+  },
+  "max_age_days": 14,
+  "avoid_employers": [
+    "BLAST"
+  ],
+  "avoid_work": [
+    "compliance",
+    "billing",
+    "trading",
+    "dealing",
+    "crypto",
+    "payroll",
+    "accounts payable"
+  ],
+  "tracks": [
+    {
+      "id": "esports-gaming",
+      "name": "Esports and gaming operations",
+      "priority": 1,
+      "min_level": "manager",
+      "level_note": "Manager is fine at gaming and esports employers; Senior Manager and above elsewhere.",
+      "titles": [
+        "Head of Esports Operations",
+        "Head of Tournament Operations",
+        "Director of Tournament Operations",
+        "Head of Live Operations",
+        "Head of Event Operations",
+        "Esports Programme Manager",
+        "Esports Operations Manager",
+        "Tournament Operations Lead",
+        "League Operations Manager",
+        "Director of Operations"
+      ],
+      "keywords": [
+        "esports",
+        "gaming",
+        "tournament",
+        "league",
+        "publisher",
+        "games"
+      ],
+      "not": [
+        "software engineer",
+        "developer",
+        "designer",
+        "artist",
+        "qa tester",
+        "community manager",
+        "social media",
+        "streamer",
+        "coach"
+      ]
+    },
+    {
+      "id": "live-events",
+      "name": "Live events and event production",
+      "priority": 2,
+      "min_level": "senior manager",
+      "level_note": "Senior Manager, Head of, Director.",
+      "titles": [
+        "Event Director",
+        "Head of Events",
+        "Head of Live Events",
+        "Head of Event Operations",
+        "Event Operations Director",
+        "Production Manager",
+        "Head of Production",
+        "Senior Event Producer"
+      ],
+      "keywords": [
+        "live events",
+        "event production",
+        "events",
+        "activations",
+        "festival",
+        "conference"
+      ],
+      "not": [
+        "wedding",
+        "event coordinator",
+        "event assistant",
+        "event executive",
+        "intern"
+      ]
+    },
+    {
+      "id": "sport-venues",
+      "name": "Sports and venues operations",
+      "priority": 3,
+      "min_level": "senior manager",
+      "level_note": "Senior Manager, Head of, Director.",
+      "titles": [
+        "Head of Operations",
+        "Director of Operations",
+        "Head of Events",
+        "Senior Operations Manager",
+        "Events and Operations Manager",
+        "Head of Matchday Operations"
+      ],
+      "keywords": [
+        "football",
+        "club",
+        "league",
+        "federation",
+        "stadium",
+        "venue",
+        "formula 1",
+        "premier league",
+        "sport"
+      ],
+      "not": [
+        "coach",
+        "analyst",
+        "physio",
+        "scout",
+        "intern"
+      ]
+    },
+    {
+      "id": "scale-up-ops",
+      "name": "Head of Operations at scale-ups",
+      "priority": 4,
+      "min_level": "senior manager",
+      "level_note": "Senior Manager, Head of, Director, VP.",
+      "titles": [
+        "Head of Operations",
+        "Director of Operations",
+        "VP Operations",
+        "Senior Operations Manager",
+        "Operations Director",
+        "Chief of Staff"
+      ],
+      "keywords": [
+        "scale-up",
+        "startup",
+        "growth",
+        "series a",
+        "series b",
+        "venture"
+      ],
+      "not": [
+        "supply chain",
+        "warehouse",
+        "logistics",
+        "manufacturing",
+        "clinical",
+        "legal operations"
+      ]
+    },
+    {
+      "id": "freelancer-workforce",
+      "name": "Freelancer and workforce operations",
+      "priority": 5,
+      "min_level": "senior manager",
+      "level_note": "Senior Manager, Head of, Director.",
+      "titles": [
+        "Head of Freelancer Operations",
+        "Workforce Operations Manager",
+        "Resource Planning Manager",
+        "Senior Operations Resource Planning Manager",
+        "Contractor Operations Manager",
+        "Crew Manager",
+        "Talent Operations Manager"
+      ],
+      "keywords": [
+        "freelancer",
+        "freelance",
+        "contractor",
+        "workforce",
+        "resource planning",
+        "rotas",
+        "crew"
+      ],
+      "not": [
+        "recruitment consultant",
+        "recruiter",
+        "payroll",
+        "hr business partner"
+      ]
+    },
+    {
+      "id": "ai-learning",
+      "name": "AI operations: learning and support roles",
+      "priority": 6,
+      "min_level": "manager",
+      "level_note": "Programme, enablement, adoption and operations roles. Tim doesn't code, so a learning or support role is right; engineering roles are not.",
+      "titles": [
+        "AI Programme Manager",
+        "AI Enablement Manager",
+        "AI Adoption Manager",
+        "AI Operations Manager",
+        "AI Implementation Manager",
+        "AI Automation Operations Manager",
+        "AI Transformation Manager"
+      ],
+      "keywords": [
+        "ai",
+        "artificial intelligence",
+        "automation",
+        "enablement",
+        "adoption"
+      ],
+      "not": [
+        "engineer",
+        "developer",
+        "scientist",
+        "researcher",
+        "machine learning",
+        "software",
+        "data engineer",
+        "devops"
+      ]
+    },
+    {
+      "id": "project-programme",
+      "name": "Project and programme management",
+      "priority": 7,
+      "min_level": "manager",
+      "level_note": "Only the senior titles listed (Senior Project Manager, Programme Manager, Head of PMO, Delivery Manager...), and only at employers in his sectors: the advert must use one of the keywords. Plain Project Manager and coordinator roles are not in the list.",
+      "titles": [
+        "Senior Project Manager",
+        "Programme Manager",
+        "Senior Programme Manager",
+        "Head of PMO",
+        "Head of Programme Delivery",
+        "Delivery Manager",
+        "Project Director",
+        "Programme Director",
+        "Head of Project Management"
+      ],
+      "keywords": [
+        "esports",
+        "gaming",
+        "games",
+        "live events",
+        "events",
+        "sport",
+        "football",
+        "venue",
+        "festival",
+        "ai",
+        "automation"
+      ],
+      "not": [
+        "construction",
+        "civil",
+        "engineering",
+        "infrastructure",
+        "software",
+        "clinical",
+        "technical programme",
+        "coordinator",
+        "assistant",
+        "junior",
+        "building",
+        "property",
+        "telecoms"
+      ],
+      "require_keyword": true
+    }
+  ],
+  "watch": [
+    {
+      "group": "Esports organisers",
+      "employers": [
+        "ESL FACEIT Group",
+        "Riot Games",
+        "Epic Games",
+        "Hexagon World Series",
+        "Vitality",
+        "Team Liquid",
+        "Fnatic",
+        "Cloud9",
+        "Gen.G"
+      ]
+    },
+    {
+      "group": "Game publishers and platforms",
+      "employers": [
+        "EA",
+        "Ubisoft",
+        "Activision Blizzard",
+        "Take-Two",
+        "Supercell",
+        "Roblox",
+        "Twitch",
+        "Discord"
+      ]
+    },
+    {
+      "group": "Sport and live entertainment",
+      "employers": [
+        "Premier League",
+        "Chelsea FC",
+        "Formula 1",
+        "Live Nation",
+        "AEG",
+        "Wimbledon"
+      ]
+    },
+    {
+      "group": "AI and tech firms (learning and support roles)",
+      "employers": [
+        "Anthropic",
+        "Google",
+        "Microsoft",
+        "OpenAI",
+        "Meta"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "hitmarker",
+      "name": "Hitmarker",
+      "type": "sitemap",
+      "url": "https://hitmarker.net/sitemap-jobs.xml/p1",
+      "how": "Scout reads the job sitemap, then each new job's structured data. Free.",
+      "cloud": true
+    },
+    {
+      "id": "greenhouse",
+      "name": "Company hiring pages: Greenhouse",
+      "type": "greenhouse",
+      "boards": [
+        {
+          "board": "riotgames",
+          "company": "Riot Games"
+        },
+        {
+          "board": "epicgames",
+          "company": "Epic Games"
+        },
+        {
+          "board": "taketwo",
+          "company": "Take-Two"
+        },
+        {
+          "board": "roblox",
+          "company": "Roblox"
+        },
+        {
+          "board": "twitch",
+          "company": "Twitch"
+        },
+        {
+          "board": "discord",
+          "company": "Discord"
+        },
+        {
+          "board": "anthropic",
+          "company": "Anthropic"
+        }
+      ],
+      "how": "Scout reads each company's public job feed. Boards are added as they are found and checked.",
+      "cloud": false
+    },
+    {
+      "id": "lever",
+      "name": "Company hiring pages: Lever",
+      "type": "lever",
+      "boards": [],
+      "how": "As Greenhouse.",
+      "cloud": false
+    },
+    {
+      "id": "ashby",
+      "name": "Company hiring pages: Ashby",
+      "type": "ashby",
+      "boards": [
+        {
+          "board": "fnatic",
+          "company": "Fnatic"
+        },
+        {
+          "board": "supercell",
+          "company": "Supercell"
+        },
+        {
+          "board": "openai",
+          "company": "OpenAI"
+        }
+      ],
+      "how": "As Greenhouse.",
+      "cloud": false
+    },
+    {
+      "id": "smartrecruiters",
+      "name": "Company hiring pages: SmartRecruiters",
+      "type": "smartrecruiters",
+      "boards": [],
+      "how": "As Greenhouse.",
+      "cloud": false
+    },
+    {
+      "id": "reed",
+      "name": "Reed",
+      "type": "reed",
+      "how": "Free API. Needs REED_API_KEY in shared/job-search/.env. Runs on Tim's PC.",
+      "cloud": false
+    },
+    {
+      "id": "adzuna",
+      "name": "Adzuna",
+      "type": "adzuna",
+      "how": "Free API. Needs ADZUNA_APP_ID and ADZUNA_APP_KEY in shared/job-search/.env. Runs on Tim's PC.",
+      "cloud": false
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn Jobs",
+      "type": "email",
+      "how": "Blocks automated reading. Set up job alerts (see sources.md); Hal reads the alert emails.",
+      "cloud": true
+    },
+    {
+      "id": "indeed",
+      "name": "Indeed UK",
+      "type": "email",
+      "how": "Refuses automated reading. Set up job alerts (see sources.md); Hal reads the alert emails.",
+      "cloud": true
+    },
+    {
+      "id": "esportsinsider",
+      "name": "Esports Insider jobs",
+      "type": "web",
+      "url": "https://www.esportsinsider.com/jobs",
+      "how": "Rita reads it (not every day).",
+      "cloud": true
+    },
+    {
+      "id": "eventindustryjobs",
+      "name": "Event Industry Jobs",
+      "type": "web",
+      "url": "https://www.eventindustryjobs.co.uk",
+      "how": "Rita reads it (not every day).",
+      "cloud": false
+    },
+    {
+      "id": "workinsports",
+      "name": "Work in Sports",
+      "type": "web",
+      "url": "https://www.workinsports.com",
+      "how": "Rita reads it (not every day).",
+      "cloud": false
+    },
+    {
+      "id": "guardianjobs",
+      "name": "Guardian Jobs",
+      "type": "web",
+      "url": "https://jobs.theguardian.com",
+      "how": "Rita reads it (not every day).",
+      "cloud": false
+    },
+    {
+      "id": "unitlist",
+      "name": "The Unit List",
+      "type": "web",
+      "url": "https://www.theunitlist.com",
+      "how": "Rita reads it (not every day).",
+      "cloud": false
+    },
+    {
+      "id": "accessjobs",
+      "name": "Access Jobs",
+      "type": "web",
+      "url": "https://www.accessjobs.co.uk",
+      "how": "Rita reads it (not every day).",
+      "cloud": false
+    }
+  ],
+  "_notes": [
+    "Cloud9 (the esports team) has no public hiring feed that Scout can read. The Greenhouse board called 'cloud9' belongs to a retail company, so it was removed on 2026-11-12. `scout.py discover` can guess wrong: check each board's name before saving."
+  ]
+}

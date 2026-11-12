@@ -287,11 +287,12 @@ FOUND_KEEP_DAYS = 45
 
 def load_found():
     if not FOUND.exists():
-        return {"items": [], "runs": [], "last_email_scan": ""}
+        return {"items": [], "runs": [], "last_email_scan": "", "sources": {}}
     found = json.loads(FOUND.read_text(encoding="utf-8"))
     found.setdefault("items", [])
     found.setdefault("runs", [])
     found.setdefault("last_email_scan", "")
+    found.setdefault("sources", {})  # per site: when it was last checked and what it gave
     return found
 
 
@@ -345,8 +346,9 @@ def cmd_found(args):
                 "id": f"f{n}", "title": clip(j["title"], 200), "company": clip(j["company"], 120),
                 "location": clip(j.get("location"), 120), "pay": clip(j.get("pay"), 80), "link": link,
                 "posted": clip(j.get("posted"), 40), "source": clip(j.get("source"), 60),
-                "via": j.get("via") if j.get("via") in ("web", "email") else (args.via or "web"),
+                "via": j.get("via") if j.get("via") in ("web", "email", "feed") else (args.via or "web"),
                 "fit": fit, "why": clip(j.get("why"), 300), "concern": clip(j.get("concern"), 200),
+                "track": clip(j.get("track"), 60), "summary": clip(j.get("summary"), 300),
                 "found_at": now_stamp(),
             })
             added += 1
@@ -369,9 +371,10 @@ def cmd_found(args):
             sys.exit(f"{item['id']} was already {item['triage']['action']} ({item['triage'].get('role', '')})")
         if args.take_as not in ("lead", "dismissed"):
             sys.exit("--as must be lead or dismissed")
-        notes = f"Concern: {item['concern']}" if item.get("concern") else ""
+        notes = "; ".join(x for x in (f"Track: {item['track']}" if item.get("track") else "",
+                                      f"Concern: {item['concern']}" if item.get("concern") else "") if x)
         role = add_role(data, item["title"], item["company"], item["location"], item["pay"], item["link"],
-                        item["source"] or ("Job alert email" if item["via"] == "email" else "Rita's daily search"),
+                        item["source"] or {"email": "Job alert email", "feed": "Job feed"}.get(item["via"], "Rita's daily search"),
                         FITS.get(item["fit"], ""), notes, "cass")
         verdict = parse_value("verdict", args.verdict or ("apply" if item["fit"] == "strong" else "maybe"))
         if args.take_as == "dismissed" and not args.verdict:
@@ -389,8 +392,32 @@ def cmd_found(args):
         save(data)
         save_found(found)
         print(role["id"])
+    elif args.verb == "sources":
+        picked = {}
+        status = {r["id"]: r["status"] for r in data["roles"]}
+        for i in found["items"]:
+            role = (i.get("triage") or {}).get("role")
+            if role and status.get(role) in PICKED:
+                picked[i.get("source", "")] = picked.get(i.get("source", ""), 0) + 1
+        if not found["sources"]:
+            print("No sites logged yet")
+        for name, s in sorted(found["sources"].items()):
+            print(f"{name} | checked {s.get('last_checked', '?')} | {s.get('result', '?')} | last {s.get('found', 0)} | "
+                  f"total {s.get('total', 0)} | picked {picked.get(name, 0)}" + (f" | {s['note']}" if s.get("note") else ""))
     elif args.verb == "run":
-        found["runs"].append({"at": now_stamp(), "via": args.via or "web", "found": args.count or 0, "note": clip(args.note, 300)})
+        found["runs"].append({"at": now_stamp(), "via": args.via or "web", "found": args.count or 0, "note": clip(args.note, 300),
+                              **({"source": clip(args.source, 60)} if args.source else {})})
+        if args.source:
+            # The coverage log: one line per site, so the office can show which sites are being reached.
+            result = args.result or ("ok" if (args.count or 0) > 0 else "empty")
+            site = found["sources"].setdefault(clip(args.source, 60), {"total": 0})
+            site.update({"last_checked": now_stamp(), "result": result, "found": args.count or 0, "note": clip(args.note, 200)})
+            site["total"] = site.get("total", 0) + (args.count or 0)
+            if result in ("ok", "empty"):
+                site["last_ok"] = site["last_checked"]
+                site["failures"] = 0
+            else:
+                site["failures"] = site.get("failures", 0) + 1
         if args.email_scan_at:
             found["last_email_scan"] = args.email_scan_at
         save_found(found)
@@ -419,10 +446,13 @@ def cmd_set(args):
                         i["done"] = True
                         i["cancelled"] = True
             if value == "applied" and not any(p.startswith("next=") for p in args.changes):
-                # Ada: a follow-up date, unless Hal already set a real next step
-                if not role.get("next") or re.match(r"(?i)\s*apply", role["next"]):
-                    when = uk_now() + timedelta(days=FOLLOW_UP_DAYS)
-                    role["next"] = f"Follow up if no reply by {when.day} {when:%b}"
+                # Ada: every applied role gets a follow-up date. A next step written before
+                # applying is done with now, so it is kept in the notes, not left in the way.
+                old = (role.get("next") or "").strip()
+                if old and not re.match(r"(?i)\s*(apply|follow up)", old):
+                    role["notes"] = "; ".join(x for x in (role.get("notes"), f"Before applying: {old}") if x)
+                when = uk_now() + timedelta(days=FOLLOW_UP_DAYS)
+                role["next"] = f"Follow up if no reply by {when.day} {when:%b}"
         if key == "priority":
             # Hal's own priority on a To review role is kept when Ada ranks the rest.
             role["priority_by_tim"] = bool(args.by == "tim" and value)
@@ -674,10 +704,12 @@ def main():
     rk.set_defaults(func=lambda a: (save(load()), cmd_list(argparse.Namespace(status="found", summary=False))))
 
     fd = sub.add_parser("found", help="the review queue of new finds (jobs/found.json)")
-    fd.add_argument("verb", choices=["add", "list", "take", "run"])
+    fd.add_argument("verb", choices=["add", "list", "take", "run", "sources"])
     fd.add_argument("ids", nargs="*", help="take: the item id")
     fd.add_argument("--file", help="add: a JSON list of finds")
-    fd.add_argument("--via", choices=["web", "email"], help="add/run: where the finds came from")
+    fd.add_argument("--via", choices=["web", "email", "feed"], help="add/run: where the finds came from")
+    fd.add_argument("--source", help="run: the site this run checked, e.g. Hitmarker (for the coverage log)")
+    fd.add_argument("--result", choices=["ok", "empty", "blocked", "needs-key", "error"], help="run: how reaching the site went")
     fd.add_argument("--pending", action="store_true", help="list: only finds Tim hasn't triaged")
     fd.add_argument("--as", dest="take_as", help="take: lead or dismissed")
     fd.add_argument("--verdict", help="take: apply, maybe or skip (default from fit)")

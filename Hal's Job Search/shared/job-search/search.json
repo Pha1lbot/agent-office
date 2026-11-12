@@ -1,0 +1,142 @@
+{
+  "_about": "Hal's search definition: the one place scripts and agents read what to look for and where. Fill it in with your Chief of Staff ('Define my search' in the office). Pay is a yearly figure in pounds.",
+  "updated": "",
+  "where": {
+    "home": "",
+    "country": "UK",
+    "remote": "",
+    "hybrid_areas": [],
+    "office_days_per_week": null,
+    "max_commute_minutes": null,
+    "travel": ""
+  },
+  "pay": {
+    "minimum": null,
+    "ideal": null,
+    "unstated": "keep the role",
+    "contract": ""
+  },
+  "max_age_days": 14,
+  "avoid_employers": [],
+  "avoid_work": [],
+  "tracks": [],
+  "watch": [],
+  "sources": [
+    {
+      "id": "hitmarker",
+      "name": "Hitmarker",
+      "type": "sitemap",
+      "url": "https://hitmarker.net/sitemap-jobs.xml/p1",
+      "how": "Scout reads the job sitemap, then each new job's structured data. Free.",
+      "cloud": true
+    },
+    {
+      "id": "greenhouse",
+      "name": "Company hiring pages: Greenhouse",
+      "type": "greenhouse",
+      "boards": [],
+      "how": "Scout reads each company's public job feed. Boards are added as they are found and checked.",
+      "cloud": false
+    },
+    {
+      "id": "lever",
+      "name": "Company hiring pages: Lever",
+      "type": "lever",
+      "boards": [],
+      "how": "As Greenhouse.",
+      "cloud": false
+    },
+    {
+      "id": "ashby",
+      "name": "Company hiring pages: Ashby",
+      "type": "ashby",
+      "boards": [],
+      "how": "As Greenhouse.",
+      "cloud": false
+    },
+    {
+      "id": "smartrecruiters",
+      "name": "Company hiring pages: SmartRecruiters",
+      "type": "smartrecruiters",
+      "boards": [],
+      "how": "As Greenhouse.",
+      "cloud": false
+    },
+    {
+      "id": "reed",
+      "name": "Reed",
+      "type": "reed",
+      "how": "Free API. Needs REED_API_KEY in shared/job-search/.env. Runs on Hal's PC.",
+      "cloud": false
+    },
+    {
+      "id": "adzuna",
+      "name": "Adzuna",
+      "type": "adzuna",
+      "how": "Free API. Needs ADZUNA_APP_ID and ADZUNA_APP_KEY in shared/job-search/.env. Runs on Hal's PC.",
+      "cloud": false
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn Jobs",
+      "type": "email",
+      "how": "Blocks automated reading. Set up job alerts (see sources.md); Hal reads the alert emails.",
+      "cloud": true
+    },
+    {
+      "id": "indeed",
+      "name": "Indeed UK",
+      "type": "email",
+      "how": "Refuses automated reading. Set up job alerts (see sources.md); Hal reads the alert emails.",
+      "cloud": true
+    },
+    {
+      "id": "esportsinsider",
+      "name": "Esports Insider jobs",
+      "type": "web",
+      "url": "https://www.esportsinsider.com/jobs",
+      "how": "Rita reads it (not every day).",
+      "cloud": true
+    },
+    {
+      "id": "eventindustryjobs",
+      "name": "Event Industry Jobs",
+      "type": "web",
+      "url": "https://www.eventindustryjobs.co.uk",
+      "how": "Rita reads it (not every day).",
+      "cloud": false
+    },
+    {
+      "id": "workinsports",
+      "name": "Work in Sports",
+      "type": "web",
+      "url": "https://www.workinsports.com",
+      "how": "Rita reads it (not every day).",
+      "cloud": false
+    },
+    {
+      "id": "guardianjobs",
+      "name": "Guardian Jobs",
+      "type": "web",
+      "url": "https://jobs.theguardian.com",
+      "how": "Rita reads it (not every day).",
+      "cloud": false
+    },
+    {
+      "id": "unitlist",
+      "name": "The Unit List",
+      "type": "web",
+      "url": "https://www.theunitlist.com",
+      "how": "Rita reads it (not every day).",
+      "cloud": false
+    },
+    {
+      "id": "accessjobs",
+      "name": "Access Jobs",
+      "type": "web",
+      "url": "https://www.accessjobs.co.uk",
+      "how": "Rita reads it (not every day).",
+      "cloud": false
+    }
+  ]
+}

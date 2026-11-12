@@ -194,7 +194,7 @@ function renderTodo() {
   const roles = store.tracker.roles || [];
   const items = [];
   for (const a of store.agents.values()) {
-    if (a.state === "waiting") items.push(a.detail === "Your turn" ? `${esc(a.name)} is waiting for your reply` : `${esc(a.name)}: ${esc(a.detail)}`);
+    if (a.state === "waiting") items.push(a.raw === "Your turn" ? `${esc(a.name)} is waiting for your reply` : esc(a.detail));
   }
   const by = (s) => roles.filter((r) => r.status === s);
   const link = (r) => `<a href="#role/${esc(r.id)}">${roleName(r)}</a>`;

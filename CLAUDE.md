@@ -91,7 +91,7 @@ Whenever Claude merges a pull request, or Tim says one has been merged:
 
 1. Run `git status`. If there are uncommitted changes, tell Tim and ask what to do with them before going on.
 2. Run `git checkout main`, then `git pull`, so this copy has the merged work. If the work was done in a separate work folder on Tim's PC, remove it as described in "Tim's PC stays on `main`".
-3. Add the one-line `CHANGELOG.md` entry for the merged branch (see "Change notes" below), then commit and push it.
+3. Check `CHANGELOG.md` has the one-line entry for the merged pull request. It should have arrived with the merge (see "Change notes" step 6). If it is missing, add it now, then commit and push it.
 4. Delete the merged branch on GitHub (the "Delete branch" button on the pull request, or `git push origin --delete <branch>`). Tim agreed on 2026-11-07 that merged branches can go: the branch's notes file and the pull request keep the record. Only delete a branch that is fully merged, with nothing newer on it. Cloud sessions can't delete branches (GitHub refuses them), so there Tim does it with the button, or GitHub's "Automatically delete head branches" setting does it for him.
 5. Check `git status` shows `main` up to date with origin, and tell Tim this copy is now up to date.
 
@@ -109,4 +109,4 @@ Every branch, including `main`, has a detailed notes file at `notes/changes/<bra
    - **Open items:** anything unfinished, known issues, or follow-ups.
 4. Add new entries at the top of the log so the latest is first. Never delete or rewrite old entries; if something was wrong, add a new entry that corrects it.
 5. When a branch is opened as a pull request, put a summary of its notes in the PR description and link to the notes file, using the headings in `.github/pull_request_template.md`. If the PR was opened some other way (for example from the Claude Code app) with a different description, rewrite it to the template.
-6. When a branch is merged into `main`, add a one-line summary to `CHANGELOG.md` at the repo root, linking to the branch's notes file. Keep the branch's notes file; it is the permanent record.
+6. As soon as a pull request is open and has its number, add its one-line summary to `CHANGELOG.md` at the repo root, linking to the pull request and the branch's notes file, and push it to the same branch. The line then reaches `main` with the merge, so there is no step afterwards to forget (lines were missed for #15 to #17, #24, #25 and #27 when this was done after merging). Keep the branch's notes file; it is the permanent record.

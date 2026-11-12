@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #20](https://github.com/Pha1lbot/agent-office/pull/20), CHANGELOG lines only). Earlier work merged 2026-11-07 in [PR #18](https://github.com/Pha1lbot/agent-office/pull/18) and [PR #19](https://github.com/Pha1lbot/agent-office/pull/19).
+**Status:** In review ([PR #28](https://github.com/Pha1lbot/agent-office/pull/28): fixes and plain staff messages; PRs 2 to 4 of the 2026-11-11 review to follow). Earlier work merged in PRs #18, #19 and #20.
 
 ## Purpose
 
@@ -10,6 +10,218 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-12: Hal's and Rita's daily search instructions use Scout and the definition
+
+**What changed**
+- `Tim's Job Search/.claude/skills/cos/SKILL.md` ("Daily search"): Scout runs first (free); the alert-email scan is as before but each board is now logged; Rita is briefed only for the two web-only sites checked longest ago, so every site is reached at least weekly; Hal sorts by track using each find's `track` and `summary`; `today.md` gets one coverage line ("Reached 9 of 11 sites; ..."); a site that fails three runs in a row becomes an action for Tim. The queue format gains `track` and `summary`.
+- `Tim's Job Search/.claude/agents/lead-recruiter.md`: Rita reads `search.json`, takes only the sites Hal names, judges level against each find's own track, and replies per site (loaded, blocked or empty).
+- `agents/lead-recruiter/README.md` and `agents/admin/README.md`: describe the new split and Scout.
+- The same changes in `Hal's Job Search/` with the Chief of Staff called Tim (see `main-hals-job-search.md`).
+
+**Why**
+Steps 3 and 2e of the plan Tim approved. The daily 6:31 task runs these instructions from `main`, so they decide what the search actually does.
+
+**Decisions**
+- Done before the office screens, because the instructions change what the search finds; the screens only show it.
+- The daily task is created only after PR #28 is merged: the task pulls `main`, and `main` still has the old instructions.
+
+**How to check it**
+Read the "Daily search" section; the real test is the first daily run after merging (a `Reached N of M sites` line in `jobs/today.md` and rows in the Sources table).
+
+**Open items**
+- The Sources panel and "Define my search" page in the office; the daily task (after #28 is merged).
+
+### 2026-11-12: Cloud access for company feeds, boards found, feed age limit
+
+**What changed**
+- The `agent-office` cloud environment now allows `boards-api.greenhouse.io`, `api.lever.co`, `api.ashbyhq.com` and `api.smartrecruiters.com` (Tim approved the request; it is saved on the environment, not in the repo).
+- `Tim's Job Search/shared/job-search/search.json`: ten company boards found by `scout.py discover --save`: Greenhouse (Riot Games, Epic Games, Take-Two, Roblox, Twitch, Discord, Anthropic) and Ashby (Fnatic, Supercell, OpenAI). A note in the file records why Cloud9 is absent.
+- `shared/tools/scout.py` (both offices): `discover` now prints each Greenhouse board's own company name beside the match; company feeds allow jobs up to 60 days old (the job-board limit stays 14); jobs already put in the queue are remembered in `jobs/scout-state.json` (`queued`, apart from `seen` for pages read) so they aren't judged or queued again.
+- `test_scout.py` (both offices): one more test for the feed age limit and the memory (20 tests in Tim's office, 17 in Hal's).
+- `Tim's Job Search/jobs/found.json` and `scout-state.json`: the first real run's coverage log.
+
+**Why**
+Step 1 of the plan Tim approved: Scout couldn't reach company hiring feeds from the cloud, and the daily search needs them to cover more sites.
+
+**Decisions**
+- `discover` guessed one wrong board: "cloud9" on Greenhouse is a retail and wellness company, not the esports team. It was removed by hand, and `discover` now shows the board's name so a wrong match is visible. A company's feed lists every open role, so a 45-day-old role is still worth a look; hence 60 days for feeds.
+- Boards for Lever and SmartRecruiters stay empty: none of the watch-list employers use them, as far as `discover` can tell. EA, Ubisoft, Activision Blizzard, ESL FACEIT Group, Hexagon, Vitality, Google, Microsoft and others use their own hiring systems, which are read through job-alert emails and Rita.
+
+**How to check it**
+- Tests: `python3 shared/tools/test_scout.py` in each office.
+- Live, from this session: all four feeds answer; `scout.py discover`; a real `scout.py run` read 1,401 Greenhouse jobs and 856 Ashby jobs and queued none. Of the 73 UK roles that reached the track check, the nearest misses were an Epic games production director and an Anthropic events marketing manager, so no fit is the true answer today, not a faulty filter. `tracker.py found sources` shows the coverage table.
+
+**Open items**
+- The office's Sources panel and "Define my search" page, Hal's and Rita's instructions, and the daily task are still to do.
+- Tim: Reed and Adzuna keys.
+
+### 2026-11-12: Project and programme management added as a track
+
+**What changed**
+- `Tim's Job Search/shared/job-search/search.json`: a 7th track, "Project and programme management" (lowest priority). Titles: Senior Project Manager, Programme Manager, Senior Programme Manager, Head of PMO, Head of Programme Delivery, Delivery Manager, Project Director, Programme Director, Head of Project Management. Sector words: esports, gaming, games, live events, events, sport, football, venue, festival, AI, automation. A new `require_keyword` setting means the advert must use one of them.
+- `preferences.md` (seven kinds of work, item 7), `sources.md` (a LinkedIn and Indeed alert for it) and `jobs/preference-reviews.md` (an "added later" line) say the same in plain English.
+- `shared/tools/scout.py` (both offices): a track can set `require_keyword`, and then a job only matches if its title, company or advert uses one of the track's words.
+- `shared/tools/test_scout.py`: a generic test for `require_keyword` (both offices) and three tests against Tim's real `search.json` (Tim's office only): senior project and programme roles in his sectors are kept; a construction, banking or telecoms one, a plain Project Manager, a coordinator and a junior are left out; an esports programme title still goes to the higher track.
+
+**Why**
+Tim said on 2026-11-12 that he's happy for project management roles too. Asked how wide, he chose senior project or programme roles in his own sectors (esports, gaming, live events, sport, AI), not any level or any industry.
+
+**Decisions**
+- Sector words are required for this track. "Project Manager" is a very common title; without that, every industry's project roles would be queued. Other tracks keep their keywords as a ranking hint only, because their titles are already specific.
+- Plain "Project Manager" is not in the title list, so it never matches; "Programme Manager" and "Delivery Manager" count as senior enough on their own.
+- Priority 7, so the same job under another track is filed there first.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` in each office: 19 tests in Tim's, 16 in Hal's. Writing the tests found two weaknesses (Programme Manager judged too junior; a construction role kept because sector words only ranked), both fixed.
+
+**Open items**
+Hal's definition is blank, so nothing changes for him except the new `require_keyword` option.
+
+### 2026-11-11: Scout, a free job-search script (PR 2, part 2)
+
+**What changed**
+- `Tim's Job Search/shared/tools/scout.py`: new, standard library only, no tokens. Reads job sources directly, judges each job against `search.json` and queues the fits in the leads queue for Hal. Source types:
+  - `sitemap` (Hitmarker): picks likely jobs from the sitemap's addresses, then reads each job's own structured data
+  - `greenhouse`, `lever`, `ashby`, `smartrecruiters`: a company's public job feed, for each board listed
+  - `reed`, `adzuna`: free APIs, keys from `shared/job-search/.env`, idle until Tim adds them
+  - `rss`
+  - Judging: UK or remote and within reach of Epsom; not an avoided employer or kind of work; posted in the last 14 days; pay not under the minimum (day rates and unstated pay are kept); a track's title, its wrong-work words and its lowest level. Each find is tagged with its track and a short summary. Tracks are tried in Tim's order.
+  - Politeness: one request at a time with a pause, robots.txt respected, a page limit per run (100), and every page read is remembered in `jobs/scout-state.json` for 40 days so nothing is read twice.
+  - Commands: `run [--source X] [--dry-run] [--max-pages N]`, `check` (is each source working, blocked or missing a key), `discover [--save]` (finds which watch-list employers have a public hiring feed and, with `--save`, adds them to `search.json`).
+- `shared/tools/tracker.py`: the leads queue now accepts `via: feed`, keeps each find's `track` and `summary`, and a lead taken from it carries its track in the notes. `found run` takes `--source` and `--result` and keeps a coverage log in `found.json` (per site: last checked, result, finds, failures in a row). New `found sources` prints it. Fixed on the way: a missing `found.json` made the loader skip the new `sources` entry.
+- `shared/job-search/.env.example`: new, shows the key names (the real `.env` is git-ignored).
+- `shared/tools/test_scout.py`: new, 15 tests with canned responses. `test_tracker.py`: 2 more tests (11 in all).
+- The same files in `Hal's Job Search/` (see `main-hals-job-search.md`).
+
+**Why**
+Tim's top priority on 2026-11-11: better coverage, because many of his sites were never searched. The job-site pages Rita reads load their jobs afterwards, and the cloud can't reach most of the others; reading sitemaps and company feeds directly is free and reliable.
+
+**Decisions**
+- Scout writes to the same queue Hal already sorts, through `tracker.py found add`, so duplicates against Tim's roles and earlier finds are skipped by code that already exists.
+- Weak fits are never queued; Hal's dismissals showed they were noise.
+- Hitmarker's own search uses short-lived signed addresses, so it isn't used; the sitemap is stable.
+- Company boards start empty and are found by `discover`, because a wrong board name would quietly return a different company's jobs.
+
+**How to check it**
+- `python3 shared/tools/test_scout.py` and `test_tracker.py` in each office: 15 and 11 tests pass.
+- Live from this session: `scout.py check` reports Hitmarker working (5,000 jobs listed). A dry run read 80 pages (234 looked possible from their titles): 7 were in the UK, and none was a fit, so nothing was queued. The seven were checked by hand: a specialist role, a freelance production manager, a community lead, a benefits lead, a programmer and two others, all correctly left out. Hitmarker is mostly non-UK and non-operations; the company feeds, Reed and Adzuna should add most of the coverage.
+
+**Open items**
+- Cloud sessions can't reach the company-feed hosts, so `discover` and the feeds can't run here until the environment allows them (next step of PR 2).
+- Tim: add the Reed and Adzuna keys to `.env` on his PC.
+
+### 2026-11-11: Search definition rebuilt after a question session with Tim (PR 2, part 1)
+
+**What changed**
+- `Tim's Job Search/shared/job-search/search.json`: new. Six tracks in Tim's order (each with titles, keywords, wrong-work words and lowest level), where and pay, avoid lists, the watch list of employers, and 15 sources with how each is read.
+- `preferences.md`: "Roles I want" rewritten as the six tracks in plain English; the three *(assumed)* answers confirmed and marked as settled; BLAST added to the deal-breakers.
+- `sources.md`: rebuilt from the definition: how each source is read and by whom, the watch list, and the exact LinkedIn and Indeed alerts for Tim to set up.
+- `jobs/preference-reviews.md`: the session is logged as the first entry.
+- `Hal's Job Search/shared/job-search/search.json`: the same file with the sources only and nothing else filled in; Hal's definition is his to make.
+
+**Why**
+The search found few roles because the definition had shrunk from the eight tracks on Tim's old dashboard to two, and the search covered four sites. Tim answered the questions on 2026-11-11 and chose:
+- Tracks kept: esports and gaming; live events; sports and venues; Head of Operations at scale-ups; freelancer and workforce; plus AI as a learning or support role (he doesn't code).
+- Dropped: broadcast production and marketing operations.
+- Pay floor £50,000; 3 office days; about 1 hour commute; contract if the day rate is good; a few event trips a year.
+- Level: Senior Manager and above, plus Manager at gaming and esports employers.
+- Watch employers in all four groups offered; avoid BLAST only.
+
+**Decisions**
+- Tracks are ordered so roles in earlier ones rank higher; Scout will tag each find with its track.
+- Wrong-work words came from what Hal has already dismissed (compliance, billing, trading, crypto, dealing) and from the AI track's "no coding" rule.
+- Company hiring-page boards (Greenhouse and the others) start empty: board names must be checked to exist, and this cloud session can't reach those hosts. Scout's `check` command does that once the hosts are allowed.
+
+**How to check it**
+Both `search.json` files parse as JSON; read `preferences.md` and `sources.md` for the plain-English version.
+
+**Open items**
+- Still to build in PR 2: the Scout script, the Sources panel and "Define my search" page, Hal's and Rita's instructions, the cloud environment hosts, and the daily task.
+- Tim: set up the alerts listed in `sources.md`.
+
+### 2026-11-11: PR #28 opened for the fixes and plain staff messages
+
+**What changed**
+- `CHANGELOG.md`: the line for #28, added before merging as the new rule says.
+- This notes file: status is "In review" with PR #28.
+
+**Why**
+PR 1 of the plan Tim approved on 2026-11-11 is complete.
+
+**Decisions**
+None.
+
+**How to check it**
+Open PR #28; its description follows the template.
+
+**Open items**
+After merging: delete the branch; Tim restarts both offices to see the new wording. Next is PR 2 (search definition and coverage).
+
+### 2026-11-11: The office says what the team is doing in plain English
+
+**What changed**
+- `Tim's Job Search/shared/office-view/src/plain.ts`: new. Turns a tool call and its target into a short phrase, such as "checking roles", "updating the role list", "searching job sites", "reading an advert online", "writing a cover letter", "making PDFs", "saving to GitHub", "checking job alert emails". It reads file paths and also the plain-English descriptions Claude gives its commands.
+- `src/office.ts`: every status is now a sentence with the person's name: "Hal is checking roles", "Rita is looking for roles", "Hal is waiting for Rita", "Hal is waiting for you", "Rita needs your OK", "Wren is dozing", "Ada is making PDFs: Chelsea". Each agent keeps the technical text in a new `raw` field. The activity list now shows the same plain phrases.
+- `public/office.js`: the desk card shows the plain sentence and the technical text on hover; the side panel no longer repeats the state. `public/dashboard.js`: the "waiting on you" list uses the new sentences. `public/style.css`: card text wraps to two lines instead of being cut off.
+- `test/office.test.ts` updated; new `test/plain.test.ts` (23 wording cases).
+- The same changes in `Hal's Job Search/` (see `main-hals-job-search.md`).
+
+**Why**
+Tim asked on 2026-11-11 for the office to show what staff are doing more simply, "e.g. Hal is checking roles", instead of commands and file paths.
+
+**Decisions**
+- A separate small file for the wording, so it can be extended and tested without touching the office logic. It is identical in both offices; only the Chief of Staff's name differs, and that comes from the team list.
+- The raw text is kept and shown on hover, so nothing is lost for finding problems.
+- Anything the wording doesn't recognise says "running a task" or "working", never a guess.
+
+**How to check it**
+- `npm test` and `npm run check` in each office's `shared/office-view`: 40 tests pass, no type errors.
+- Ran a copy of the office outside git with the demo agents (`npm run fake`) and took screenshots: desks read "Hal is updating the role list" with "Bash Add 8 new roles to the tracker" on hover.
+
+**Open items**
+- New phrases are added in `plain.ts` as new kinds of work appear. Ada's wording comes from the office's own labels in `server.ts`.
+
+### 2026-11-11: Missing CHANGELOG lines, and the line now travels with the pull request
+
+**What changed**
+- `CHANGELOG.md`: lines added for #24 (the CHANGELOG line for #23), #25 (the two offices; wording taken from commit 1d38a36, which was stranded on the unmerged branch `claude/adoring-maxwell-qzaklb`) and #27 (automatic runs start in the office folder).
+- `CLAUDE.md`: change-notes step 6 now says to add the CHANGELOG line to the pull request as soon as it has a number. "After a merge" step 3 becomes a check that the line arrived, adding it only if it is missing.
+- `.github/pull_request_template.md`: a new "Before merging" tick box for the CHANGELOG line; the "After merging" box becomes a check.
+
+**Why**
+Part of the fixes Tim approved on 2026-11-11. Lines have now been missed for six pull requests (#15 to #17, #24, #25, #27). The step came after the merge, when the session had often ended or the branch was gone.
+
+**Decisions**
+Moving the step before the merge removes it, where a reminder would only repeat one that already failed. PR #20 showed that a pull request can carry its own line.
+
+**How to check it**
+`CHANGELOG.md` lists #1 to #27 with none missing.
+
+**Open items**
+- Tim: the branch `claude/adoring-maxwell-qzaklb` on GitHub now holds nothing that isn't on `main` or in this branch. It can be deleted once this pull request is merged (cloud sessions can't delete branches).
+
+### 2026-11-11: Every applied role gets a follow-up date
+
+**What changed**
+- `Tim's Job Search/shared/tools/tracker.py` (`cmd_set`): when a role becomes applied without `next=` in the same call, the next step is always set to "Follow up if no reply by <7 days on>". A next step written before applying (unless it was an "Apply ..." note) is kept in the role's notes as "Before applying: ...".
+- `Tim's Job Search/shared/tools/test_tracker.py`: two new tests for this.
+- `Hal's Job Search/shared/tools/tracker.py` and `test_tracker.py`: the same change (see `main-hals-job-search.md`).
+- `Tim's Job Search/jobs/tracker.json` and `tracker.md`: follow-up dates set on the four applied roles that had none: Razer 12 Nov, Hexagon and Chelsea 13 Nov, British Airways 18 Nov (each applied date plus 7 days). BA's old next step is kept in its notes.
+
+**Why**
+First fix from the review Tim approved on 2026-11-11 (plan: fixes, then search, then the learning loop). 4 of his 5 applied roles had no follow-up date, so the office never showed them as due. The old rule only wrote one when the next step was empty or began with "apply".
+
+**Decisions**
+- Kept the follow-up as the sentence the office already reads (`overdue()` in `public/util.js`), not a new date field: a three-line change with no page changes.
+- The old next step goes to notes, not the bin, in case it still matters.
+
+**How to check it**
+- `python3 shared/tools/test_tracker.py` in each office: 9 tests pass.
+- `python3 shared/tools/tracker.py list --status applied` in Tim's office: all five show "Follow up if no reply by ...".
+
+**Open items**
+The rest of PR 1: missing CHANGELOG lines, the CHANGELOG rule, and plainer staff messages in the office.
 
 ### 2026-11-07: PR #20 for the CHANGELOG lines
 

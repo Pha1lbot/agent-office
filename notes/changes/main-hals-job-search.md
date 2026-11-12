@@ -11,6 +11,127 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Daily search instructions use Scout and the definition (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/.claude/skills/cos/SKILL.md` ("Daily search") and `.claude/agents/lead-recruiter.md`: the same new flow as in Tim's office, with the Chief of Staff called Tim; `agents/lead-recruiter/README.md` and `agents/admin/README.md` updated.
+
+**Why**
+Tim Everard asked for code and instruction changes to go into both offices.
+
+**Decisions**
+Instructions only. Hal's own `search.json` is blank, so Scout finds nothing for him until he has made a definition; no daily task is created for him. His CV, preferences, tracker and roles were not opened.
+
+**How to check it**
+Read the section; try it after Hal has a definition.
+
+**Open items**
+Hal's definition session.
+
+### 2026-11-12: Scout feed age limit, queued-jobs memory and board names (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/scout.py` and `test_scout.py`: company feeds allow jobs up to 60 days old, queued jobs are remembered so they aren't queued twice, and `discover` prints each board's name. 17 Scout tests pass.
+
+**Why**
+Tim Everard asked for code changes to go into both offices. Details in `claude-compassionate-ptolemy-vc0jj2.md`.
+
+**Decisions**
+Code only; Hal's definition is still blank and his CV, preferences, tracker and roles were not opened. No boards were saved for him.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` in Hal's office.
+
+**Open items**
+None.
+
+### 2026-11-12: Scout tracks can require their sector words (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/scout.py` and `test_scout.py`: a track can set `require_keyword`; one new test (16 tests pass).
+
+**Why**
+Part of adding a project management track to Tim Everard's own search. Code only; Hal's search definition is still blank and his CV, preferences, tracker and roles were not opened.
+
+**Decisions**
+None.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` in Hal's office.
+
+**Open items**
+None.
+
+### 2026-11-11: Scout and the coverage log (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/scout.py`, `test_scout.py`, `shared/job-search/.env.example`: new, as in Tim's office with the Chief of Staff named Tim.
+- `shared/tools/tracker.py` and `test_tracker.py`: feed finds with a track and summary, the coverage log (`found run --source`, `found sources`), and the missing-file fix. 11 tracker tests and 15 Scout tests pass.
+
+**Why**
+Tim Everard asked for code changes to go into both offices. Details in `claude-compassionate-ptolemy-vc0jj2.md`.
+
+**Decisions**
+Code only. Hal's search definition is still blank (`search.json` has the sources and no tracks), so Scout finds nothing for him until he has made one; his CV, preferences, tracker and roles were not opened.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` in Hal's office.
+
+**Open items**
+Hal's definition session.
+
+### 2026-11-11: A blank search definition file (from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/job-search/search.json`: new. The sources list (how each site is read) with no tracks, pay or watch list filled in.
+
+**Why**
+Tim Everard asked for code changes to go into both offices. The search script will read this file; Hal's own definition is his to make with his Chief of Staff. His preferences, CV, tracker and roles were not opened.
+
+**Decisions**
+Sources only, so the script works as soon as Hal adds tracks.
+
+**How to check it**
+The file parses as JSON.
+
+**Open items**
+Hal's definition session, once the "Define my search" page exists.
+
+### 2026-11-11: The office says what the team is doing in plain English (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/office-view/`: new `src/plain.ts`; `src/office.ts`, `public/office.js`, `public/dashboard.js`, `public/style.css` and `test/office.test.ts` updated; new `test/plain.test.ts`. Statuses read "Tim is checking roles", "Tim is waiting for you" and so on (the Chief of Staff is Tim in this office).
+
+**Why**
+Tim Everard asked on 2026-11-11 for code changes to go into both offices. Details in `claude-compassionate-ptolemy-vc0jj2.md`.
+
+**Decisions**
+Code only; Hal's CV, preferences, tracker and roles were not opened.
+
+**How to check it**
+`npm test` and `npm run check` in Hal's `shared/office-view`: 40 tests pass. Restart the office to see the new wording.
+
+**Open items**
+None.
+
+### 2026-11-11: Every applied role gets a follow-up date (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/tracker.py` (`cmd_set`): a role that becomes applied always gets "Follow up if no reply by <7 days on>" as its next step; an earlier next step is kept in the notes as "Before applying: ...".
+- `Hal's Job Search/shared/tools/test_tracker.py`: two new tests.
+
+**Why**
+Tim Everard asked on 2026-11-11 for code fixes to go into both offices. Made on branch `claude/compassionate-ptolemy-vc0jj2`; details in that branch's notes.
+
+**Decisions**
+Code only. Hal's tracker, CV, preferences and roles were not opened or changed, so any role he has already applied to keeps its current next step.
+
+**How to check it**
+`python3 shared/tools/test_tracker.py` in Hal's office: 9 tests pass (they use a temporary jobs folder).
+
+**Open items**
+None.
+
 ### 2026-11-11: Back to the normal start-up git rule
 
 - `Hal's Job Search/.claude/settings.json` and `.claude/skills/cos/SKILL.md`: restored to their wording from before the 2026-11-09 "Carry on locally" entry, now that Tim Everard's GitHub account is active again. A failed start-up pull again means stopping and sorting it out with Hal. Details in `main.md`, 2026-11-11.

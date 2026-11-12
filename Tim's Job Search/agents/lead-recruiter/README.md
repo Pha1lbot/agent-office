@@ -18,3 +18,5 @@ Named Rita on 2026-11-06.
 - **Daily search** (weekday mornings, run by Hal): no listings. Instead, a JSON list of finds (title, company, location, pay, link, fit Strong / Possible / Weak, why, concern) that Hal queues in `jobs/found.json` and sorts. She reads at most 5 full adverts.
 
 **Tools:** web search and page fetching. It cannot sign in to sites or apply.
+
+**Daily search (since 2026-11-12):** Rita no longer searches every site every day. Ada's script Scout reads the feeds for free and Hal reads the job-alert emails. Hal names the one or two web-only sites that were checked longest ago, and Rita reads just those against the tracks in `shared/job-search/search.json`, then says per site whether it loaded.
