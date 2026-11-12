@@ -211,7 +211,8 @@ function whenLabel(stamp) {
 }
 function sourceRows() {
   const f = store.tracker.found || {}, logged = f.sources || {}, listed = f.listed || [];
-  const names = [...listed.map((s) => s.name), ...Object.keys(logged).filter((n) => !listed.some((s) => s.name === n))];
+  // Only the sites in the current search definition: a removed site's old log entries never show.
+  const names = listed.length ? listed.map((s) => s.name) : Object.keys(logged);
   return names.map((name) => {
     const s = logged[name] || null, how = (listed.find((l) => l.name === name) || {}).how || "";
     const d = s ? daysSince(s.last_checked) : null;
@@ -280,13 +281,11 @@ function openKeys() {
   const dlg = document.createElement("dialog");
   dlg.className = "dlg";
   dlg.innerHTML = `<form method="dialog" class="dlg-body" style="display:flex;flex-direction:column;gap:14px;min-width:min(440px,86vw)">
-    <h3 style="margin:0">Job site keys</h3>
-    <p class="sub" style="margin:0">Free keys that let the search read Reed and Adzuna. They are saved on this PC only (in <code>shared/job-search/.env</code>), never sent to GitHub, and never shown again.</p>
+    <h3 style="margin:0">Job site key</h3>
+    <p class="sub" style="margin:0">A free key that lets the search read Reed. They are saved on this PC only (in <code>shared/job-search/.env</code>), never sent to GitHub, and never shown again.</p>
     ${field("REED_API_KEY", "Reed API key", 'Sign up free at <a href="https://www.reed.co.uk/developers/jobseeker" target="_blank" rel="noopener">reed.co.uk/developers/jobseeker</a>')}
-    ${field("ADZUNA_APP_ID", "Adzuna application ID", 'Sign up free at <a href="https://developer.adzuna.com/overview" target="_blank" rel="noopener">developer.adzuna.com</a>')}
-    ${field("ADZUNA_APP_KEY", "Adzuna application key", "From the same Adzuna page")}
     <p class="sub" id="keys-msg" style="margin:0;min-height:1.2em"></p>
-    <div style="display:flex;gap:8px;justify-content:flex-end"><button type="button" class="btn" data-k="cancel">Cancel</button><button type="button" class="btn primary" data-k="save">Save keys</button></div></form>`;
+    <div style="display:flex;gap:8px;justify-content:flex-end"><button type="button" class="btn" data-k="cancel">Cancel</button><button type="button" class="btn primary" data-k="save">Save key</button></div></form>`;
   document.body.appendChild(dlg);
   dlg.addEventListener("close", () => dlg.remove());
   dlg.addEventListener("click", async (e) => {
@@ -297,8 +296,8 @@ function openKeys() {
     for (const input of dlg.querySelectorAll("input")) if (input.value.trim()) values[input.name] = input.value.trim();
     if (!Object.keys(values).length) return dlg.close();
     b.disabled = true; b.textContent = "Saving…";
-    try { const r = await post("/api/keys", values); dlg.close(); toast(r.changed.length ? "Keys saved on this PC" : "Nothing to save"); }
-    catch (err) { dlg.querySelector("#keys-msg").textContent = err.message; b.disabled = false; b.textContent = "Save keys"; }
+    try { const r = await post("/api/keys", values); dlg.close(); toast(r.changed.length ? "Key saved on this PC" : "Nothing to save"); }
+    catch (err) { dlg.querySelector("#keys-msg").textContent = err.message; b.disabled = false; b.textContent = "Save key"; }
   });
   dlg.showModal();
 }

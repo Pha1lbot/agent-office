@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #31](https://github.com/Pha1lbot/agent-office/pull/31): the learning loop). Earlier work merged in PRs #18, #19, #20, #28, #29 and #30.
+**Status:** In progress. Fifth pull request of the 2026-11-12 work (#18, #19, #20, #28, #29, #30 and #31 are merged): Adzuna removed.
 
 ## Purpose
 
@@ -10,6 +10,29 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-12: Adzuna removed completely
+
+**What changed**
+- `shared/tools/scout.py` (both offices): the Adzuna reader, its source type and its line in `scout.py check` are gone; Reed is the only key-based source. `test_scout.py`: the Reed and Adzuna test is now Reed only (29 tests in Tim's office, 24 in Hal's).
+- `shared/job-search/search.json` (both offices): the Adzuna source removed. `.env.example`: the Adzuna keys removed. `Tim's Job Search/shared/job-search/sources.md`: the Reed and Adzuna row is now Reed only.
+- `shared/office-view` (both offices): `src/keys.ts` only knows `REED_API_KEY`; the keys dialog is now "Job site key" with just the Reed field; `src/scout.ts` and `src/server.ts` comments; tests (`keys.test.ts`, `scout.test.ts`). The Job sites panel now lists only the sites in the current search definition, so an old log entry can't bring a removed site back.
+- `.claude/skills/cos/SKILL.md` and `agents/admin/README.md` (both offices): no mention of Adzuna.
+- `Tim's Job Search/jobs/found.json`: Adzuna's coverage entry and its earlier runs removed.
+
+**Why**
+Tim said on 2026-11-12: "Remove Adzuna as a search point completely". (He had already added his Reed key to `.env`.)
+
+**Decisions**
+- Removed rather than switched off, so no dead code, setting, key field or "needs a key" row is left. The older notes and CHANGELOG still say Adzuna was built; they are history.
+- No Adzuna credential was ever saved on the cloud environment, so there is nothing to remove there.
+
+**How to check it**
+- `grep -ri adzuna` outside `notes/` and `CHANGELOG.md` finds nothing.
+- `python3 shared/tools/test_scout.py` and `test_tracker.py`, `npm test` (57) and `npm run check` in each office pass.
+
+**Open items**
+- Tim's PC may still have `ADZUNA_...` lines in `.env` if he added any (he hadn't); harmless, nothing reads them.
 
 ### 2026-11-12: The learning loop: your decisions only, a scorecard, a review prompt and one-tap reasons
 
