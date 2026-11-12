@@ -2250,7 +2250,7 @@
       "source": "Reed",
       "fit": 4,
       "priority": 1,
-      "status": "shortlisted",
+      "status": "drafted",
       "notes": "Track: Live events and event production; Posted 2026-11-03",
       "found": "2026-11-12",
       "updated": "2026-11-12",
@@ -2263,6 +2263,11 @@
         {
           "date": "2026-11-12",
           "status": "shortlisted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-12",
+          "status": "drafted",
           "by": "tim"
         }
       ],
@@ -2279,7 +2284,7 @@
       "source": "Reed",
       "fit": 3,
       "priority": 1,
-      "status": "shortlisted",
+      "status": "drafted",
       "notes": "Track: Head of Operations at scale-ups; Posted 2026-10-28",
       "found": "2026-11-12",
       "updated": "2026-11-12",
@@ -2292,6 +2297,11 @@
         {
           "date": "2026-11-12",
           "status": "shortlisted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-12",
+          "status": "drafted",
           "by": "tim"
         }
       ],
@@ -2308,7 +2318,7 @@
       "source": "Reed",
       "fit": 3,
       "priority": 16,
-      "status": "shortlisted",
+      "status": "drafted",
       "notes": "Track: Head of Operations at scale-ups; Posted 2026-10-26",
       "found": "2026-11-12",
       "updated": "2026-11-12",
@@ -2321,6 +2331,11 @@
         {
           "date": "2026-11-12",
           "status": "shortlisted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-12",
+          "status": "drafted",
           "by": "tim"
         }
       ],
@@ -2337,7 +2352,7 @@
       "source": "Tim",
       "fit": 2,
       "priority": 23,
-      "status": "shortlisted",
+      "status": "drafted",
       "notes": "",
       "found": "2026-11-12",
       "updated": "2026-11-12",
@@ -2350,6 +2365,11 @@
         {
           "date": "2026-11-12",
           "status": "shortlisted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-12",
+          "status": "drafted",
           "by": "tim"
         }
       ],
