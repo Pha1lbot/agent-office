@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In progress, second pull request of the 2026-11-12 work (the first, #28, is merged): daily task, Reed, tighter Scout filter, office Sources panel and keys box to follow.
+**Status:** In review ([PR #29](https://github.com/Pha1lbot/agent-office/pull/29): Scout filter). Earlier work merged in PRs #18, #19, #20 and #28.
 
 ## Purpose
 
