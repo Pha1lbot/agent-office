@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In progress. Third pull request of the 2026-11-12 work (#18, #19, #20, #28 and #29 are merged): one-tap questions, then a Define my search dialog.
+**Status:** In review ([PR #30](https://github.com/Pha1lbot/agent-office/pull/30): one-tap questions and Define my search). Earlier work merged in PRs #18, #19, #20, #28 and #29.
 
 ## Purpose
 
