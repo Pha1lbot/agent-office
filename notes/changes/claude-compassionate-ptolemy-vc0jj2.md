@@ -11,6 +11,27 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Phone dashboard sync (Tim's office only)
+
+**What changed**
+- `shared/tools/sync_artifact.py` (new) with `export` (a snapshot of open roles, questions, new leads, job-site coverage and today.md) and `apply FILE` (applies the phone's answers and done marks through `tracker.py`; safe to repeat). `test_sync_artifact.py`: 3 tests.
+- `.claude/skills/cos/SKILL.md`: new "Sync the phone page" section (`/hal sync`). `shared/job-search/settings.json`: `phone_page` link.
+- The published "Job Hunt" page (version 8): a new first tab, "From the office", reads an `office` document and shows questions with one-tap answers. Answers go to a `phone` document. Nothing else on the page changed; its old `state` document is untouched.
+
+**Why**
+Tim wants the office and his phone dashboard in step so he need not be at his PC. He chose "office to phone, plus answers back" and to update the existing page.
+
+**Decisions**
+The old page keeps its own `state` copy: its roles use older ids and stages, so a two-way merge of roles could overwrite Tim's data. The phone gets a snapshot instead, and only answers and done marks come back. The old page stays in version history.
+
+**How to check it**
+`python3 shared/tools/test_sync_artifact.py`. Open the page: "From the office" shows the snapshot; tap an answer and it shows under "Sent to Hal"; run `/hal sync` and the answer lands in the tracker.
+
+**Open items**
+- The scheduled task for the sync every 2 hours is not created yet.
+- Deciding on leads from the phone is not built.
+- Hal's office has no phone page, so nothing to port.
+
 ### 2026-11-12: Adzuna removed completely
 
 **What changed**
