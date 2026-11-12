@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: One-tap questions (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/tracker.py` and `test_tracker.py`: `action add --options` and `action answer`; `shared/office-view` (`src/server.ts`, `public/views.js`, `public/style.css`): answer buttons in Next actions; `.claude/skills/cos/SKILL.md`: how Tim (the Chief of Staff) asks questions and acts on answers.
+
+**Why**
+Tim Everard asked for code changes to go into both offices.
+
+**Decisions**
+Code and instructions only; Hal's CV, preferences, tracker and roles were not opened.
+
+**How to check it**
+`python3 shared/tools/test_tracker.py` and `npm test` in Hal's office.
+
+**Open items**
+None.
+
 ### 2026-11-12: Job sites panel, "Check sources now" and the job site keys dialog (ported from Tim's office)
 
 **What changed**

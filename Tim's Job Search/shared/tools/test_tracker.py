@@ -81,6 +81,35 @@ class TrackerTests(unittest.TestCase):
         self.assertEqual(role["source"], "Hitmarker")
         self.assertIn("Track: Esports and gaming operations", role["notes"])
 
+    def test_a_question_with_options_is_answered_once_and_goes_to_the_inbox(self):
+        import json
+        aid = self.run_t("action", "add", "Raise the pay floor to", "55k?", "--options", "Accept|Decline")
+        self.assertIn("[options: Accept | Decline]", self.run_t("action", "list"))
+        self.assertIn(aid + ": Accept", self.run_t("action", "answer", aid, "accept"))
+        data = json.loads((Path(self.dir) / "tracker.json").read_text(encoding="utf-8"))
+        action = next(a for a in data["actions"] if a["id"] == aid)
+        self.assertEqual((action["done"], action["answer"]), (True, "Accept"))
+        self.assertEqual(self.waiting()[0].split(" | ")[2], "Answer to a question: Raise the pay floor to 55k? Answer: Accept")
+        out = subprocess.run([sys.executable, str(TRACKER), "action", "answer", aid, "Decline"], env=self.env, capture_output=True, text=True)
+        self.assertNotEqual(out.returncode, 0)
+        self.assertIn("already answered", out.stderr)
+
+    def test_answers_must_be_one_of_the_options(self):
+        aid = self.run_t("action", "add", "Keep BLAST out?", "--options", "Yes|No")
+        out = subprocess.run([sys.executable, str(TRACKER), "action", "answer", aid, "Maybe"], env=self.env, capture_output=True, text=True)
+        self.assertNotEqual(out.returncode, 0)
+        plain = self.run_t("action", "add", "Call the recruiter")
+        out = subprocess.run([sys.executable, str(TRACKER), "action", "answer", plain, "Yes"], env=self.env, capture_output=True, text=True)
+        self.assertIn("not a question", out.stderr)
+        out = subprocess.run([sys.executable, str(TRACKER), "action", "add", "One option only", "--options", "Yes"], env=self.env, capture_output=True, text=True)
+        self.assertIn("2 to 6 choices", out.stderr)
+
+    def test_a_question_about_a_role_sends_its_answer_to_that_role(self):
+        aid = self.run_t("action", "add", "Draft for Acme?", "--role", "acme", "--options", "Yes|No")
+        self.run_t("action", "answer", aid, "Yes")
+        line = self.waiting()[0].split(" | ")
+        self.assertEqual(line[1], "acme")
+
     def test_action_done_and_reopen(self):
         aid = self.run_t("action", "add", "Call the recruiter")
         self.run_t("action", "done", aid)

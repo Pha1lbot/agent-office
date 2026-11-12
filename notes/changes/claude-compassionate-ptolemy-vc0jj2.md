@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #29](https://github.com/Pha1lbot/agent-office/pull/29): Scout filter). Earlier work merged in PRs #18, #19, #20 and #28.
+**Status:** In progress. Third pull request of the 2026-11-12 work (#18, #19, #20, #28 and #29 are merged): one-tap questions, then a Define my search dialog.
 
 ## Purpose
 
@@ -10,6 +10,27 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-12: Hal can ask a question with one-tap answers
+
+**What changed**
+- `shared/tools/tracker.py` (both offices): `action add "..." --options "Accept|Decline"` makes a question (2 to 6 short options); `action answer <id> "<option>"` records the answer once, marks it done and queues it in Hal's inbox ("Answer to a question: <question> Answer: <option>"), against the role if the question was about one; `action list` shows the options and the answer. New tests (14 in each office).
+- `shared/office-view/src/server.ts` and `public/views.js`, `style.css` (both offices): Next actions shows a question's options as buttons; tapping one calls the answer route, shows "You answered: ..." and tells Hal. The answer wakes the automatic run like any other office change.
+- `.claude/skills/cos/SKILL.md` (both offices): when running on his own, Hal asks a clear choice as a question with options instead of a plain action; and what to do with an "Answer to a question" inbox item (for a preference suggestion, Accept means edit `preferences.md` and `search.json` and log it; Decline means log it).
+
+**Why**
+Tim asked on 2026-11-11 for questions to be answerable in the office, so he doesn't have to be at a PC or in a Claude session to steer the search. This is also how preference reviews will ask (Accept or Decline per suggestion).
+
+**Decisions**
+- An answer reuses the inbox, so Hal's existing "act on office changes" flow handles it, and the answer is saved and backed up like any edit.
+- Options are validated (2 to 6, 40 characters) and an answer must match one; a question can only be answered once.
+
+**How to check it**
+- `python3 shared/tools/test_tracker.py` in each office (14 tests); `npm test` and `npm run check` (49).
+- On a copy of Tim's data: a question with Accept and Decline showed as buttons; clicking Accept showed "You answered: Accept" and inbox item i15 appeared.
+
+**Open items**
+- Restart the office to see the buttons. The same buttons will appear in the phone dashboard once it syncs (PR 4).
 
 ### 2026-11-12: The office shows which job sites are reached, and holds the job site keys
 

@@ -14,6 +14,8 @@ Usage:
   python3 shared/tools/tracker.py show <id>
   python3 shared/tools/tracker.py insights [--since YYYY-MM-DD]
   python3 shared/tools/tracker.py action add "Ask the recruiter who the employer is" [--role <id>]
+  python3 shared/tools/tracker.py action add "Raise the pay floor to £55k?" --options "Accept|Decline"   a question with one-tap answers
+  python3 shared/tools/tracker.py action answer <action-id> "Accept"   (the office does this when you tap an answer)
   python3 shared/tools/tracker.py action done <action-id>
   python3 shared/tools/tracker.py action list [--all]
   python3 shared/tools/tracker.py inbox list          Hal's office changes waiting for Chief of Staff
@@ -503,11 +505,35 @@ def cmd_action(args):
             find(data, args.role)
         action = {"id": f"a{len(actions) + 1}", "text": " ".join(args.text), "role": args.role or "",
                   "done": False, "created": today()}
+        if args.options:
+            # A question with one-tap answers, e.g. --options "Accept|Decline"
+            options = [" ".join(o.split())[:40] for o in args.options.split("|") if o.strip()]
+            if not 2 <= len(options) <= 6:
+                sys.exit('--options needs 2 to 6 choices separated by |, e.g. --options "Accept|Decline"')
+            action["options"] = options
         while any(a["id"] == action["id"] for a in actions):
             action["id"] = "a" + str(int(action["id"][1:]) + 1)
         actions.append(action)
         save(data)
         print(action["id"])
+    elif args.verb == "answer":
+        if len(args.text) < 2:
+            sys.exit('Usage: action answer <action-id> "<one of its options>"')
+        action = next((a for a in actions if a["id"] == args.text[0]), None)
+        if not action:
+            sys.exit(f"No action with id {args.text[0]}")
+        choice = " ".join(args.text[1:]).strip().lower()
+        picked = next((o for o in action.get("options", []) if o.lower() == choice), None)
+        if not picked:
+            sys.exit(f"{action['id']} has no option {' '.join(args.text[1:])!r}. Options: {', '.join(action.get('options', [])) or 'none (it is not a question)'}")
+        if action.get("answer"):
+            sys.exit(f"{action['id']} was already answered: {action['answer']}")
+        action.update({"answer": picked, "answered": now_stamp(), "done": True, "completed": today()})
+        # The answer goes to the Chief of Staff like any other change from the office.
+        role = next((r for r in data["roles"] if r["id"] == action.get("role")), None) or {"id": "", "title": "A question", "company": "Next actions"}
+        to_inbox(data, role, f"Answer to a question: {action['text']} Answer: {picked}"[:400])
+        save(data)
+        print(f"{action['id']}: {picked}")
     elif args.verb in ("done", "reopen"):
         if not args.text:
             sys.exit(f"Usage: action {args.verb} <action-id>")
@@ -526,7 +552,9 @@ def cmd_action(args):
         for a in actions:
             if args.all or not a.get("done"):
                 role = f" (role {a['role']})" if a.get("role") else ""
-                print(f"{a['id']} | {'done' if a.get('done') else 'todo'} | {a['text']}{role}")
+                options = f" [options: {' | '.join(a['options'])}]" if a.get("options") and not a.get("answer") else ""
+                answer = f" [answered: {a['answer']}]" if a.get("answer") else ""
+                print(f"{a['id']} | {'done' if a.get('done') else 'todo'} | {a['text']}{role}{options}{answer}")
 
 
 def cmd_inbox(args):
@@ -686,9 +714,10 @@ def main():
     ins.set_defaults(func=cmd_insights)
 
     act = sub.add_parser("action", help="Hal's next actions: add, done, list")
-    act.add_argument("verb", choices=["add", "done", "reopen", "list"])
+    act.add_argument("verb", choices=["add", "done", "reopen", "list", "answer"])
     act.add_argument("text", nargs="*", help="the action's text (add) or id (done)")
     act.add_argument("--role", help="the role this action is about (add)")
+    act.add_argument("--options", help='add: make it a question with one-tap answers, e.g. "Accept|Decline"')
     act.add_argument("--all", action="store_true", help="include done actions (list)")
     act.set_defaults(func=cmd_action)
 

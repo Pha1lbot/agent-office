@@ -425,7 +425,9 @@ const server = createServer(async (req, res) => {
     if (url.pathname === "/api/actions") {
       if (!tool) return json(res, 503, { error: "Editing needs Python 3 on this PC." });
       let r;
-      if (typeof body.id === "string" && /^a\d{1,6}$/.test(body.id)) {
+      if (typeof body.id === "string" && /^a\d{1,6}$/.test(body.id) && typeof body.answer === "string") {
+        r = await ada("Recording an answer", () => tool!.call(["action", "answer", body.id as string, oneLine(body.answer, 40)]));
+      } else if (typeof body.id === "string" && /^a\d{1,6}$/.test(body.id)) {
         r = await ada("Updating the to-do list", () => tool!.call(["action", body.done ? "done" : "reopen", body.id as string]));
       } else {
         const text = oneLine(body.text, 300);
@@ -434,7 +436,7 @@ const server = createServer(async (req, res) => {
         r = await ada("Adding a to-do", () => tool!.call(["action", "add", text, ...role]));
       }
       if (!r.ok) return json(res, 400, { error: r.out.split("\n").pop() || "Couldn't save" });
-      await afterEdit(typeof body.id === "string" ? `action ${body.id} ${body.done ? "done" : "reopened"}` : `new action: ${oneLine(body.text, 60)}`);
+      await afterEdit(typeof body.id === "string" ? (typeof body.answer === "string" ? `answered question ${body.id}` : `action ${body.id} ${body.done ? "done" : "reopened"}`) : `new action: ${oneLine(body.text, 60)}`);
       return json(res, 200, { ok: true });
     }
 

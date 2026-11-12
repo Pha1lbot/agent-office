@@ -38,11 +38,12 @@ Hal changes statuses and adds roles in the office's Roles tab. Changes that need
    - **"Draft first, then PDFs"** (Hal approved a role that has no documents yet; Ada makes PDFs herself when the Word files exist): brief **Wren** to draft, set the role back to `drafted`, and add an action for Hal to check and approve again.
    - **"Write interview prep notes"**: brief **Cole**. He writes `interview-prep.md` and, if it doesn't exist yet, `talking-points.md`.
    - **"Revise documents: <Hal's words>"** (from the role page's "Ask Wren for changes", or "tailor the CV and cover letter again…" from the Tailor dialog when documents already exist): brief **Wren** with the role id and Hal's words exactly. She edits `cv.md` / `cover-letter.md` and rebuilds the Word files. If the role was *approved*, set it back to `drafted` so Hal checks again.
+   - **"Answer to a question: <the question> Answer: <option>"** (Hal tapped an answer to one you asked): act on it, then it is done. For a preference suggestion, "Accept" means make the change in `preferences.md` and `search.json` and log it in `jobs/preference-reviews.md`; "Decline" means log that it was declined. For anything else, do what the answer says. Don't ask the same question again.
    - **"Refresh interview prep"** (optionally with Hal's focus after a colon): brief **Cole** to refresh `interview-prep.md`. He must keep Hal's talking points as they are and only add suggestions.
 3. Run `tracker.py inbox done <ids>` for what you finished.
 4. Reply in a few lines: what was done, which files Hal should look at, and anything left for him. Don't commit or push (see Git).
 
-If you were started automatically, Hal isn't there to answer. Don't ask questions; add them as actions (`tracker.py action add "..." --role <id>`).
+If you were started automatically, Hal isn't there to answer. Don't ask questions; add them as actions (`tracker.py action add "..." --role <id>`). Where there is a clear choice, make it a question with one-tap answers: `tracker.py action add "..." --options "Accept|Decline"` (2 to 6 short options). Hal taps an answer in Next actions, and it comes back to you as an office change.
 
 ## "Daily search" (`/tim daily search`; the 6:31 weekday scheduled task runs this)
 Finds new roles, then you sort them. Nobody is waiting to answer, so never ask questions: anything for Hal goes in `tracker.py action add "..."`. What to look for and where is in `shared/job-search/search.json` (tracks, pay, sources); `preferences.md` and `sources.md` say the same in plain English.

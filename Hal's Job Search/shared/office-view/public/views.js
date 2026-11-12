@@ -165,7 +165,7 @@ function actionItems(limit) {
   return list.map((a) => {
     const role = a.role && roleById(a.role);
     return `<div class="act${a.done ? " done" : ""}"><input type="checkbox" data-action="${esc(a.id)}" ${a.done ? "checked" : ""} ${store.system.editing ? "" : "disabled"} aria-label="Done: ${esc(a.text)}">
-      <div class="a-body"><span class="a-t">${esc(a.text)}</span><span class="a-w">${role ? `<a href="#role/${esc(role.id)}">${esc(role.company)}: ${esc(role.title)}</a> · ` : ""}${a.done && a.completed ? `done ${esc(shortDate(a.completed))}` : `added ${esc(shortDate(a.created))}`}</span></div></div>`;
+      <div class="a-body"><span class="a-t">${esc(a.text)}</span>${a.options && !a.answer ? `<span class="a-q">${a.options.map((o) => `<button type="button" class="btn sm" data-answer="${esc(o)}" data-id="${esc(a.id)}" ${store.system.editing ? "" : "disabled"}>${esc(o)}</button>`).join("")}</span>` : ""}${a.answer ? `<span class="a-w">You answered: ${esc(a.answer)}</span>` : ""}<span class="a-w">${role ? `<a href="#role/${esc(role.id)}">${esc(role.company)}: ${esc(role.title)}</a> · ` : ""}${a.done && a.completed ? `done ${esc(shortDate(a.completed))}` : `added ${esc(shortDate(a.created))}`}</span></div></div>`;
   }).join("");
 }
 function addActionForm() {
@@ -337,6 +337,12 @@ async function toggleAction(id, done) {
 }
 for (const host of ["v-overview", "v-actions"]) {
   $(host).addEventListener("change", (e) => { const c = e.target.closest("[data-action]"); if (c) toggleAction(c.dataset.action, c.checked); });
+  $(host).addEventListener("click", async (e) => {
+    const b = e.target.closest("[data-answer]"); if (!b) return;
+    b.disabled = true;
+    try { await post("/api/actions", { id: b.dataset.id, answer: b.dataset.answer }); toast(`Answered: ${b.dataset.answer}. It goes to your Chief of Staff.`); }
+    catch (err) { toast(err.message); b.disabled = false; }
+  });
   $(host).addEventListener("submit", async (e) => {
     const f = e.target.closest("[data-form=add-action]"); if (!f) return;
     e.preventDefault();
