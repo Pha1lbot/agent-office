@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Scout's stricter filter (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/scout.py`: generic titles need the track's own words, hybrid outside the commute area no longer passes, London and Surrey postcodes count as in reach, recruiters' adverts are never "strong". 17 Scout tests pass.
+
+**Why**
+Tim Everard asked for code changes to go into both offices. Details in `claude-compassionate-ptolemy-vc0jj2.md`.
+
+**Decisions**
+Code only; Hal's definition is still blank, and his CV, preferences, tracker and roles were not opened.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` in Hal's office.
+
+**Open items**
+None.
+
 ### 2026-11-12: Daily search instructions use Scout and the definition (ported from Tim's office)
 
 **What changed**

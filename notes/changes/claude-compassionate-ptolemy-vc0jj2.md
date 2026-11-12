@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #28](https://github.com/Pha1lbot/agent-office/pull/28): fixes and plain staff messages; PRs 2 to 4 of the 2026-11-11 review to follow). Earlier work merged in PRs #18, #19 and #20.
+**Status:** In progress, second pull request of the 2026-11-12 work (the first, #28, is merged): daily task, Reed, tighter Scout filter, office Sources panel and keys box to follow.
 
 ## Purpose
 
@@ -10,6 +10,30 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-12: Tim's first real Reed results were noisy; Scout's filter tightened
+
+**What changed**
+- `shared/tools/scout.py` (both offices):
+  - A generic title ("Head of Operations", "Operations Director", "Production Manager"...) now needs one of the track's own words in the advert to match that track.
+  - Hybrid roles outside London and Surrey are no longer allowed: outside the commute area only fully remote roles pass. London and Surrey postcodes (EC, WC, SW, KT and so on) now count as in reach.
+  - A recruiter's advert (company name like "... Recruitment", "... Search", "Michael Page", "Hays") is kept but never marked strong, with the concern "recruiter's advert (employer may not be named)".
+- `Tim's Job Search/shared/job-search/search.json`: more wrong-work words (sales, marketing, account director and manager, business development, IT operations and service, telecoms, finance, HR, recruitment, legal); more growth words for the scale-up track.
+- `Tim's Job Search/shared/tools/test_scout.py`: two tests, including the ten results below (22 tests; Hal's office has 17).
+
+**Why**
+Tim ran `scout.py run --source Reed --dry-run` on his PC. Reed worked (635 results read, 11 fits), but the ten listed fits were sales and marketing directors, an IT operations head, a telecoms role, a Bolton postcode and several recruitment agencies, not his kind of work. He sent a screenshot; nothing had been queued (dry run).
+
+**Decisions**
+- Stricter, not looser: a missed lead costs a little, a flood of wrong leads makes Hal's sorting expensive and hides the good ones. The coverage log and the Sources panel show what each site gave, so over-strictness would be visible.
+- Hybrid no longer passes outside the commute area, because Tim goes in three days a week; the "Hybrid, London" roles still pass.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` in each office. Tim: run `python ..\tools\scout.py run --source Reed --dry-run` again; the list should be shorter and better.
+
+**Open items**
+- Re-run on Tim's PC to judge the new list.
+- Adzuna's key; Reed also needs activating for the cloud copy (401 there).
 
 ### 2026-11-12: Hal's and Rita's daily search instructions use Scout and the definition
 
