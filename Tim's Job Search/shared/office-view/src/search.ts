@@ -8,6 +8,7 @@ export interface SearchView {
   pay: { minimum: number | null; ideal: number | null };
   office_days_per_week: number | null;
   max_commute_minutes: number | null;
+  max_age_days: number | null;
   avoid_employers: string[];
   tracks: { id: string; name: string; enabled: boolean; priority: number }[];
 }
@@ -16,6 +17,7 @@ type Def = {
   pay?: { minimum?: number | null; ideal?: number | null };
   where?: { office_days_per_week?: number | null; max_commute_minutes?: number | null };
   avoid_employers?: string[];
+  max_age_days?: number | null;
   tracks?: { id: string; name: string; priority?: number; enabled?: boolean }[];
   updated?: string;
   [key: string]: unknown;
@@ -33,6 +35,7 @@ export function viewOf(def: Def): SearchView {
     pay: { minimum: def.pay?.minimum ?? null, ideal: def.pay?.ideal ?? null },
     office_days_per_week: def.where?.office_days_per_week ?? null,
     max_commute_minutes: def.where?.max_commute_minutes ?? null,
+    max_age_days: def.max_age_days ?? null,
     avoid_employers: def.avoid_employers || [],
     tracks: [...(def.tracks || [])].sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99))
       .map((t) => ({ id: t.id, name: t.name, enabled: t.enabled !== false, priority: t.priority ?? 99 })),
@@ -57,6 +60,7 @@ export async function applySearch(file: string, input: Record<string, unknown>, 
   }
   if (input.office_days_per_week !== undefined) next.office_days_per_week = num(input.office_days_per_week, "Office days", 0, 5);
   if (input.max_commute_minutes !== undefined) next.max_commute_minutes = num(input.max_commute_minutes, "The commute", 0, 240);
+  if (input.max_age_days !== undefined) next.max_age_days = num(input.max_age_days, "How old a job may be", 3, 60);
   if (input.avoid_employers !== undefined) {
     if (!Array.isArray(input.avoid_employers)) throw new Error("Employers to avoid should be a list.");
     const names = [...new Set(input.avoid_employers.map((e) => String(e).replace(/\s+/g, " ").trim()).filter(Boolean))];
@@ -80,6 +84,7 @@ export async function applySearch(file: string, input: Record<string, unknown>, 
   if (next.pay.ideal !== before.pay.ideal) said.push(`ideal pay ${k(before.pay.ideal)} to ${k(next.pay.ideal)}`);
   if (next.office_days_per_week !== before.office_days_per_week) said.push(`office days ${before.office_days_per_week ?? "not set"} to ${next.office_days_per_week ?? "not set"}`);
   if (next.max_commute_minutes !== before.max_commute_minutes) said.push(`longest commute ${before.max_commute_minutes ?? "not set"} to ${next.max_commute_minutes ?? "not set"} minutes`);
+  if (next.max_age_days !== before.max_age_days) said.push(`jobs may be up to ${next.max_age_days ?? "not set"} days old (was ${before.max_age_days ?? "not set"})`);
   if (JSON.stringify(next.avoid_employers) !== JSON.stringify(before.avoid_employers)) said.push(`employers to avoid now: ${next.avoid_employers.join(", ") || "none"}`);
   for (const t of next.tracks) {
     const was = before.tracks.find((b) => b.id === t.id)!;
@@ -91,6 +96,7 @@ export async function applySearch(file: string, input: Record<string, unknown>, 
   def.pay = { ...def.pay, minimum: next.pay.minimum, ideal: next.pay.ideal };
   def.where = { ...def.where, office_days_per_week: next.office_days_per_week, max_commute_minutes: next.max_commute_minutes };
   def.avoid_employers = next.avoid_employers;
+  def.max_age_days = next.max_age_days;
   def.tracks = (def.tracks || []).map((t) => { const n = next.tracks.find((x) => x.id === t.id)!; return { ...t, enabled: n.enabled, priority: n.priority }; });
   def.updated = today;
   await writeFile(file, JSON.stringify(def, null, 2) + "\n", "utf8");

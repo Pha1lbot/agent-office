@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { howRead, listSources, scoutDue, scoutSummary } from "../src/scout.ts";
+import { closedSummary, howRead, listSources, scoutDue, scoutSummary } from "../src/scout.ts";
 
 test("each source type says who reads it", () => {
   for (const t of ["sitemap", "greenhouse", "lever", "ashby", "smartrecruiters", "reed", "adzuna", "rss"]) assert.equal(howRead(t), "Scout", t);
@@ -37,4 +37,9 @@ test("picks Scout's own summary line out of its output", () => {
   assert.equal(scoutSummary("Hitmarker: ok | 60 read\nReed: needs-key | 0 read\nScout: 5 of 7 sources reached, 2 new leads queued.\n"), "Scout: 5 of 7 sources reached, 2 new leads queued.");
   assert.equal(scoutSummary("Traceback (most recent call last):\nValueError: boom"), "Traceback (most recent call last):");
   assert.equal(scoutSummary(""), "Scout finished");
+});
+
+test("picks the closed-postings line out of its output", () => {
+  assert.equal(closedSummary("  dismissed (closed): X\nClosed: 12 adverts opened, 2 leads dismissed, 0 roles flagged for you, 20 couldn't be read.\n"), "Closed: 12 adverts opened, 2 leads dismissed, 0 roles flagged for you, 20 couldn't be read.");
+  assert.equal(closedSummary("nothing here"), "");
 });

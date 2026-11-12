@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Closed-postings check, posting age field (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/scout.py`, `tracker.py` and tests; `shared/office-view` (`src/scout.ts`, `src/server.ts`, `src/search.ts`, `public/views.js`, tests); `.claude/skills/cos/SKILL.md`: the same closed-postings check and age field, with the Chief of Staff called Tim.
+
+**Why**
+Tim Everard asked for code changes to go into both offices.
+
+**Decisions**
+Code and instructions only. Hal's `search.json` is blank, so nothing changes for his search except the new commands being available. His tracker, roles and CV were not opened.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` (23) and `npm test` (57) in Hal's office.
+
+**Open items**
+None.
+
 ### 2026-11-12: "Define my search" dialog and track switches (ported from Tim's office)
 
 **What changed**

@@ -15,7 +15,7 @@ import { readFile, stat, writeFile } from "node:fs/promises";
 import { existsSync, readFileSync, watchFile } from "node:fs";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { listSources, scoutDue, scoutSummary } from "./scout.ts";
+import { closedSummary, listSources, scoutDue, scoutSummary } from "./scout.ts";
 import { keyStatus, setKeys } from "./keys.ts";
 import { applySearch, readSearch } from "./search.ts";
 import { WebSocketServer, WebSocket } from "ws";
@@ -184,8 +184,11 @@ async function runScout(): Promise<{ ok: boolean; summary: string }> {
   try {
     const r = await ada("Searching job sites", () =>
       run(tool!.python, [join(REPO, "shared", "tools", "scout.py"), "run"], REPO, { JOBS_DIR: dirname(TRACKER), PYTHONIOENCODING: "utf-8" }, 290_000), "Job search done");
-    const summary = scoutSummary(r.out);
-    await afterEdit(r.ok ? summary.replace(/^Scout: /, "job search: ") : "job search failed");
+    // Then look for adverts that have closed: dismisses closed leads, flags closed shortlisted roles.
+    const c = r.ok ? await ada("Checking for closed postings", () =>
+      run(tool!.python, [join(REPO, "shared", "tools", "scout.py"), "closed"], REPO, { JOBS_DIR: dirname(TRACKER), PYTHONIOENCODING: "utf-8" }, 290_000), "Closed check done") : null;
+    const summary = [scoutSummary(r.out), c ? closedSummary(c.out) : ""].filter(Boolean).join(" ");
+    await afterEdit(r.ok ? scoutSummary(r.out).replace(/^Scout: /, "job search: ") : "job search failed");
     return { ok: r.ok, summary };
   } finally { scouting = false; }
 }

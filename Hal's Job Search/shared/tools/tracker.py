@@ -469,6 +469,9 @@ def cmd_list(args):
     roles = data["roles"]
     if args.status:
         roles = [r for r in roles if r["status"] == args.status]
+    if args.older_than:
+        cutoff = (uk_now() - timedelta(days=args.older_than)).strftime("%Y-%m-%d")
+        roles = [r for r in roles if (r.get("found") or "9999") < cutoff]
     if args.summary:
         counts = {}
         for r in roles:
@@ -698,11 +701,12 @@ def main():
     st = sub.add_parser("set", help="change fields on a role, e.g. status=shortlisted")
     st.add_argument("id")
     st.add_argument("changes", nargs="+")
-    st.add_argument("--by", choices=["tim"], help="Hal made the change by hand (from the office)")
+    st.add_argument("--by", choices=["tim", "ada"], help="Hal made the change by hand (from the office), or Ada did (automation)")
     st.set_defaults(func=cmd_set)
 
     ls = sub.add_parser("list", help="list roles, one line each")
     ls.add_argument("--status", choices=STATUSES)
+    ls.add_argument("--older-than", type=int, metavar="DAYS", help="only roles found more than this many days ago (e.g. leads nobody has decided on)")
     ls.add_argument("--summary", action="store_true", help="totals plus open roles only")
     ls.set_defaults(func=cmd_list)
 

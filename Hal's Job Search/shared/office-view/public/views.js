@@ -246,6 +246,7 @@ function openSearch() {
       <label class="keys-field"><span>Ideal pay (£ a year)</span><input type="number" name="ideal" value="${s.pay.ideal ?? ""}" min="10000" step="1000"></label>
       <label class="keys-field"><span>Office days a week</span><input type="number" name="days" value="${s.office_days_per_week ?? ""}" min="0" max="5"></label>
       <label class="keys-field"><span>Longest commute (minutes)</span><input type="number" name="commute" value="${s.max_commute_minutes ?? ""}" min="0" max="240" step="5"></label>
+      <label class="keys-field"><span>How old a job may be (days)</span><input type="number" name="age" value="${s.max_age_days ?? ""}" min="3" max="60"></label>
     </div>
     <label class="keys-field"><span>Employers to leave out (one per line)</span><textarea name="avoid" rows="3" spellcheck="false">${esc(s.avoid_employers.join("\n"))}</textarea></label>
     <p class="sub" id="search-msg" style="margin:0;min-height:1.2em"></p>
@@ -265,7 +266,7 @@ function openSearch() {
     b.disabled = true; b.textContent = "Saving…";
     try {
       const r = await post("/api/search", {
-        pay: { minimum: f("minimum"), ideal: f("ideal") }, office_days_per_week: f("days"), max_commute_minutes: f("commute"),
+        pay: { minimum: f("minimum"), ideal: f("ideal") }, office_days_per_week: f("days"), max_commute_minutes: f("commute"), max_age_days: f("age"),
         avoid_employers: f("avoid").split("\n"), tracks: s.tracks.map((t) => ({ id: t.id, enabled: t.enabled })),
       });
       dlg.close(); toast(r.changed.length ? "Search updated. Your Chief of Staff will update the written preferences." : "Nothing changed.");

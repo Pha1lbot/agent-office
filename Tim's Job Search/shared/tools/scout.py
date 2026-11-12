@@ -6,6 +6,8 @@ against shared/job-search/search.json, and puts the matches in the leads queue
 Usage:
   python3 shared/tools/scout.py run [--source <id or name>] [--dry-run] [--max-pages N]
   python3 shared/tools/scout.py check                 test every source: working, blocked, needs a key...
+  python3 shared/tools/scout.py closed [--dry-run]    check the adverts behind open leads and roles: dismiss leads whose posting has
+                                                      closed, and flag shortlisted or drafted roles whose posting looks closed
   python3 shared/tools/scout.py discover [--save] [--only "<employer>"]
                                                       find which watch-list employers have a public
                                                       hiring feed (Greenhouse, Lever, Ashby, SmartRecruiters)
@@ -66,12 +68,14 @@ class Http:
         head = {"User-Agent": USER_AGENT, "Accept": "*/*", **(headers or {})}
         if auth:
             head["Authorization"] = "Basic " + base64.b64encode(f"{auth[0]}:{auth[1]}".encode()).decode()
+        self.last_url = url  # replaced by the final address if the site redirects
         wait = self.delay - (time.time() - self._last)
         if wait > 0:
             time.sleep(wait)
         try:
             with request.urlopen(request.Request(url, headers=head), timeout=timeout) as r:
                 status, body = r.status, r.read()
+                self.last_url = r.geturl()
         except error.HTTPError as e:
             status, body = e.code, (e.read() if hasattr(e, "read") else b"")
         except Exception as e:  # DNS, timeout, proxy refusing the tunnel...
@@ -299,6 +303,7 @@ def read_job_posting(page_html, url):
                     "posted": item.get("datePosted"), "remote": item.get("jobLocationType") == "TELECOMMUTE",
                     "pay": pay_text(salary.get("minValue"), salary.get("maxValue"), (item.get("baseSalary") or {}).get("currency")) if isinstance(salary, dict) else "",
                     "contract": any(k in ("CONTRACTOR", "TEMPORARY") for k in kinds), "description": strip_html(item.get("description")),
+                    "valid_through": item.get("validThrough"),
                 }
     return None
 
@@ -628,6 +633,108 @@ def probe(kind, slug, http):
     return data.get("totalFound", len(data.get("content", [])))
 
 
+# ---------- Is a posting still open? ----------
+# Checks the adverts behind leads and roles that aren't applied for yet. A page that is gone, or says
+# the job is closed, or whose closing date has passed, counts as closed. A page that can't be read
+# (a login wall, a block) is "unknown", never guessed. No AI, no tokens.
+CLOSED_PHRASES = [
+    "no longer accepting applications", "no longer accepting", "this job is no longer available", "job is no longer available",
+    "this job has expired", "job has expired", "this vacancy has expired", "this advert has expired", "advert has expired",
+    "position has been filled", "vacancy has been filled", "role has been filled", "this vacancy is closed", "this job is closed",
+    "applications are now closed", "applications have closed", "this role is no longer available", "this position is no longer available",
+    "the job you are looking for is no longer available", "sorry, this job is no longer", "this position is closed", "this role is closed",
+]
+CHECKABLE = ("found", "shortlisted", "drafted", "approved")  # before Tim has applied
+
+
+def page_text(html_text):
+    """The readable words of a page, without scripts and styles."""
+    return strip_html(re.sub(r"(?is)<(script|style)\b.*?</\1>", " ", html_text)).lower()
+
+
+def closed_reason(status, body, final_url, title, today=None):
+    """("closed", why), ("open", "") or ("unknown", why) for one advert page."""
+    today = today or date.today()
+    if status in (404, 410):
+        return "closed", f"the advert page is gone (HTTP {status})"
+    if status != 200:
+        return "unknown", f"couldn't read it (HTTP {status})"
+    if "error=true" in (final_url or ""):
+        return "closed", "the company's job board says the job is gone"
+    raw = body.decode("utf-8", "replace")
+    job = read_job_posting(raw, final_url or "")
+    through = parse_date(job.get("valid_through")) if job else None
+    if through and through < today:
+        return "closed", f"its closing date passed ({through.isoformat()})"
+    text = page_text(raw)
+    for phrase in CLOSED_PHRASES:
+        if phrase in text:
+            return "closed", f"the page says \"{phrase}\""
+    words = [w for w in norm(title).split() if len(w) > 3][:3]
+    if job or (words and all(w in text for w in words)):
+        return "open", ""
+    return "unknown", "the advert didn't show (a login or block page?)"
+
+
+def check_closed(http, tracker_file, state, today=None, max_checks=40, recheck_days=3, log=print, blocked=None):
+    """Check the adverts behind open leads and not-yet-applied roles. Returns (dismissed, flagged, unknown, checked)."""
+    today = today or date.today()
+    roles = json.loads(Path(tracker_file).read_text(encoding="utf-8"))["roles"]
+    state.setdefault("opened", {})
+    state.setdefault("flagged", {})
+    dismissed = flagged = unknown = checked = 0
+    queue = []
+    for r in roles:
+        if r.get("status") not in CHECKABLE or r["id"] in state["flagged"]:
+            continue
+        passed = parse_date(r.get("closing_date"))
+        if passed and passed < today:
+            queue.append((0, r, "closing date", f"its closing date passed ({passed.isoformat()})"))
+        elif re.match(r"https?://", r.get("url") or ""):
+            last = state["opened"].get(r["url"], "0000-00-00")
+            if (today - (parse_date(last) or date(1970, 1, 1))).days >= recheck_days:
+                queue.append((1, r, "page", last))
+    queue.sort(key=lambda q: (q[0], q[3] if q[2] == "page" else ""))
+    for _, r, how, detail in queue:
+        if how == "closing date":
+            verdict, why = "closed", detail
+        else:
+            if checked >= max_checks:
+                break
+            try:
+                if not http.allowed(r["url"]):
+                    unknown += 1  # the site asks automated readers to stay out (LinkedIn does)
+                    if blocked is not None:
+                        host = parse.urlparse(r["url"]).netloc
+                        blocked[host] = blocked.get(host, 0) + 1
+                    continue
+                status, body = http.get(r["url"], timeout=20)
+            except Unreachable:
+                unknown += 1
+                continue
+            checked += 1
+            state["opened"][r["url"]] = today.isoformat()
+            verdict, why = closed_reason(status, body, getattr(http, "last_url", r["url"]), r.get("title", ""), today)
+            if verdict == "unknown":
+                unknown += 1
+                continue
+        if verdict != "closed":
+            continue
+        label = f"{r.get('title', '?')} @ {r.get('company', '?')}"
+        if r["status"] == "found":
+            out = tracker("set", r["id"], "status=skipped", f"reason=Posting closed: {why} (checked {today.isoformat()})", "--by", "ada")
+            if out.returncode == 0:
+                dismissed += 1
+                log(f"  dismissed (closed): {label} | {why}")
+        else:
+            out = tracker("action", "add", f"Posting looks closed: {label}: {why}. Check the advert, and skip the role if it's gone.", "--role", r["id"])
+            if out.returncode == 0:
+                state["flagged"][r["id"]] = today.isoformat()
+                flagged += 1
+                log(f"  flagged for you (closed): {label} | {why}")
+    return dismissed, flagged, unknown, checked
+
+
 def board_name(kind, slug, http):
     """The company name a Greenhouse board gives itself, so a wrong guess (a different company with a
     similar name) can be spotted. Other feeds don't give one."""
@@ -674,6 +781,9 @@ def main(argv=None, http=None):
     r.add_argument("--dry-run", action="store_true", help="show what would be queued, change nothing")
     r.add_argument("--max-pages", type=int, default=100, help="most job pages to read per site (default 100)")
     sub.add_parser("check", help="test every source")
+    c = sub.add_parser("closed", help="find leads and roles whose posting has closed")
+    c.add_argument("--dry-run", action="store_true", help="say what is closed, change nothing")
+    c.add_argument("--max-checks", type=int, default=40, help="most adverts to open (default 40)")
     d = sub.add_parser("discover", help="find the watch-list employers' public hiring feeds")
     d.add_argument("--save", action="store_true", help="add what is found to search.json")
     d.add_argument("--only", help="just this employer")
@@ -684,6 +794,17 @@ def main(argv=None, http=None):
     http = http or Http()
     if args.cmd == "run":
         run(defn, http, only=args.source, dry=args.dry_run, max_pages=args.max_pages)
+    elif args.cmd == "closed":
+        state = load_state()
+        if args.dry_run:
+            global tracker
+            real, tracker = tracker, lambda *a: subprocess.CompletedProcess(a, 0, "", "")  # nothing is changed
+        refused = {}
+        counts = check_closed(http, JOBS / "tracker.json", state, max_checks=args.max_checks, blocked=refused)
+        if not args.dry_run:
+            save_state(state)
+        why = "; ".join(f"{n} on {host} (it doesn't allow automated reading)" for host, n in sorted(refused.items(), key=lambda kv: -kv[1]))
+        print(f"Closed: {counts[3]} adverts opened, {counts[0]} leads dismissed, {counts[1]} roles flagged for you, {counts[2]} couldn't be read" + (f": {why}." if why else "."))
     elif args.cmd == "check":
         check(defn, http)
     else:

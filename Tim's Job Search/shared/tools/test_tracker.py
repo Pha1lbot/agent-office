@@ -115,6 +115,17 @@ class TrackerTests(unittest.TestCase):
         self.assertEqual(self.run_t("inbox", "add", "--task", "Update preferences.md to match search.json"), "Already waiting")
         self.assertEqual(self.waiting()[0].split(" | ")[1], "")
 
+    def test_list_older_than_only_shows_roles_found_that_long_ago(self):
+        import json
+        path = Path(self.dir) / "tracker.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["roles"][0]["found"] = "2026-01-01"
+        path.write_text(json.dumps(data), encoding="utf-8")
+        self.run_t("add", "--id", "fresh", "--title", "New Role", "--company", "Fresh Ltd")
+        out = self.run_t("list", "--older-than", "21")
+        self.assertIn("acme", out)
+        self.assertNotIn("fresh", out)
+
     def test_action_done_and_reopen(self):
         aid = self.run_t("action", "add", "Call the recruiter")
         self.run_t("action", "done", aid)

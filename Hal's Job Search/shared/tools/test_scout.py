@@ -124,6 +124,7 @@ class FakeHttp:
 
     def get(self, url, **kw):
         self.calls.append(url)
+        self.last_url = url
         for prefix, res in self.routes.items():
             if url == prefix or (prefix.endswith("*") and url.startswith(prefix[:-1])):
                 if isinstance(res, Exception):
@@ -306,6 +307,103 @@ class EndToEnd(unittest.TestCase):
         self.assertEqual({k: v[0]["board"] for k, v in found.items()}, {"greenhouse": "acmegames", "lever": "acme-games"})
         saved = json.loads(search.read_text(encoding="utf-8"))
         self.assertEqual(saved["sources"][0]["boards"], [{"board": "acmegames", "company": "Acme Games"}])
+
+
+class ClosedPostings(unittest.TestCase):
+    NOW = TODAY
+
+    def page(self, text="", valid=None, title="Head of Esports Operations"):
+        ld = ""
+        if title:
+            through = f', "validThrough": "{valid}"' if valid else ""
+            ld = ('<script type="application/ld+json">{"@type": "JobPosting", "title": "%s", "datePosted": "%s", "hiringOrganization": {"name": "Acme"}%s}</script>' % (title, RECENT, through))
+        return (200, f"<html><head>{ld}</head><body>{text}</body></html>".encode())
+
+    def verdict(self, status_body, title="Head of Esports Operations", url="https://x/jobs/1"):
+        status, body = status_body
+        return scout.closed_reason(status, body, url, title, today=TODAY)
+
+    def test_a_gone_page_a_closed_notice_and_a_passed_closing_date_are_closed(self):
+        self.assertEqual(self.verdict((404, b""))[0], "closed")
+        self.assertEqual(self.verdict((410, b""))[0], "closed")
+        v, why = self.verdict(self.page("Sorry, this job is no longer available."))
+        self.assertEqual(v, "closed"); self.assertIn("no longer available", why)
+        self.assertEqual(self.verdict(self.page("No longer accepting applications"))[0], "closed")
+        v, why = self.verdict(self.page("Apply now", valid=(TODAY - timedelta(days=3)).isoformat()))
+        self.assertEqual((v, "closing date passed" in why), ("closed", True))
+        self.assertEqual(self.verdict((200, b"<html>Nothing here</html>"), url="https://boards.greenhouse.io/acme?error=true")[0], "closed")
+
+    def test_an_advert_that_is_still_there_is_open_and_scripts_dont_count(self):
+        self.assertEqual(self.verdict(self.page("Apply now. Closing date soon.", valid=(TODAY + timedelta(days=10)).isoformat())), ("open", ""))
+        self.assertEqual(self.verdict(self.page('<script>var msg = "this job has expired";</script>Apply now'))[0], "open")
+        self.assertEqual(self.verdict((200, b"<html><body>Head of Esports Operations at Acme. Apply.</body></html>"), title="Head of Esports Operations")[0], "open")
+
+    def test_a_block_or_a_login_wall_is_unknown_not_guessed(self):
+        for res in [(403, b""), (429, b""), (500, b""), (200, b"<html><body>Sign in to view this job</body></html>")]:
+            self.assertEqual(self.verdict(res)[0], "unknown", res)
+
+    def setUp(self):
+        self.dir = Path(tempfile.mkdtemp())
+        self.old = (scout.JOBS, os.environ.get("JOBS_DIR"))
+        scout.JOBS = self.dir
+        os.environ["JOBS_DIR"] = str(self.dir)
+
+    def tearDown(self):
+        scout.JOBS, jobs_dir = self.old
+        if jobs_dir is None:
+            os.environ.pop("JOBS_DIR", None)
+        else:
+            os.environ["JOBS_DIR"] = jobs_dir
+        shutil.rmtree(self.dir)
+
+    def roles(self, *roles):
+        base = {"company": "Acme", "history": [], "notes": "", "found": "2026-11-01", "updated": "2026-11-01"}
+        data = {"roles": [{**base, "title": "Head of Esports Operations", **r} for r in roles], "actions": [], "inbox": []}
+        (self.dir / "tracker.json").write_text(json.dumps(data), encoding="utf-8")
+
+    def tracker_data(self):
+        return json.loads((self.dir / "tracker.json").read_text(encoding="utf-8"))
+
+    def test_a_closed_lead_is_dismissed_and_a_closed_shortlisted_role_is_flagged_once(self):
+        self.roles({"id": "lead", "status": "found", "url": "https://x/jobs/lead"}, {"id": "short", "status": "shortlisted", "url": "https://x/jobs/short"},
+                   {"id": "open", "status": "found", "url": "https://x/jobs/open"}, {"id": "applied", "status": "applied", "url": "https://x/jobs/applied"},
+                   {"id": "wall", "status": "found", "url": "https://x/jobs/wall"})
+        http = FakeHttp({"https://x/jobs/lead": (404, b""), "https://x/jobs/short": self.page("This job has expired"), "https://x/jobs/open": self.page("Apply"),
+                         "https://x/jobs/applied": (404, b""), "https://x/jobs/wall": (403, b"")})
+        state = {}
+        lines = []
+        counts = scout.check_closed(http, self.dir / "tracker.json", state, today=TODAY, log=lines.append)
+        self.assertEqual(counts, (1, 1, 1, 4))  # dismissed, flagged, unknown, opened (the applied role is never opened)
+        data = self.tracker_data()
+        by_id = {r["id"]: r for r in data["roles"]}
+        self.assertEqual(by_id["lead"]["status"], "skipped")
+        self.assertIn("Posting closed", by_id["lead"]["reason"])
+        self.assertEqual(by_id["lead"]["history"][-1].get("by"), "ada")
+        self.assertEqual((by_id["short"]["status"], by_id["open"]["status"], by_id["applied"]["status"], by_id["wall"]["status"]), ("shortlisted", "found", "applied", "found"))
+        self.assertEqual(len(data["actions"]), 1)
+        self.assertIn("Posting looks closed", data["actions"][0]["text"])
+        self.assertEqual(data["actions"][0]["role"], "short")
+        # a second pass the same day opens nothing and adds nothing
+        again = scout.check_closed(FakeHttp({}), self.dir / "tracker.json", state, today=TODAY, log=lines.append)
+        self.assertEqual(again[3], 0)
+        self.assertEqual(len(self.tracker_data()["actions"]), 1)
+
+    def test_a_site_that_disallows_robots_is_counted_not_opened(self):
+        self.roles({"id": "li", "status": "found", "url": "https://www.linkedin.com/jobs/view/123/"}, {"id": "ok", "status": "found", "url": "https://x/jobs/ok"})
+        http = FakeHttp({"https://x/jobs/*": self.page("Apply")})
+        http.allowed = lambda url: "linkedin" not in url
+        refused = {}
+        counts = scout.check_closed(http, self.dir / "tracker.json", {}, today=TODAY, log=lambda *_: None, blocked=refused)
+        self.assertEqual((counts[2], counts[3], refused), (1, 1, {"www.linkedin.com": 1}))
+        self.assertNotIn("https://www.linkedin.com/jobs/view/123/", http.calls)
+
+    def test_a_passed_closing_date_needs_no_page_and_the_check_is_limited(self):
+        self.roles({"id": "late", "status": "found", "url": "", "closing_date": (TODAY - timedelta(days=2)).isoformat()},
+                   *[{"id": f"r{i}", "status": "found", "url": f"https://x/jobs/{i}"} for i in range(5)])
+        http = FakeHttp({"https://x/jobs/*": self.page("Apply")})
+        counts = scout.check_closed(http, self.dir / "tracker.json", {}, today=TODAY, max_checks=3, log=lambda *_: None)
+        self.assertEqual((counts[0], counts[3]), (1, 3))
+        self.assertEqual({r["id"]: r["status"] for r in self.tracker_data()["roles"]}["late"], "skipped")
 
 
 if __name__ == "__main__":

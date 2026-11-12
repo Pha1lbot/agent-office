@@ -11,6 +11,31 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Closed postings, and a week more on the posting age
+
+**What changed**
+- `shared/tools/scout.py` (both offices): new `scout.py closed [--dry-run] [--max-checks N]`. It opens the adverts behind open leads and shortlisted, drafted or approved roles (never roles already applied for). A page that is gone (404 or 410), a company job board's "job gone" redirect, a closing date that has passed, or wording such as "no longer accepting applications" or "this job has expired" counts as closed; a page that can't be read (a login wall, a block) is "unknown", never guessed. A closed **lead** is dismissed with the reason and the date (`--by ada`, so it can be restored and isn't counted as one of Tim's decisions); a closed **shortlisted or drafted role** is left alone and gets one action saying the posting looks closed. Each advert is rechecked at most every 3 days and at most 40 are opened per run. It respects each site's robots.txt, and says which site refused ("22 on www.linkedin.com (it doesn't allow automated reading)").
+- `shared/tools/tracker.py` (both offices): `set --by ada`; `list --older-than DAYS` (roles found more than that many days ago).
+- `shared/office-view/src/server.ts` and `src/scout.ts` (both offices): "Check sources now" also runs the closed check and reports both results.
+- `.claude/skills/cos/SKILL.md` (both offices), daily search step 6b: Hal runs the closed check; for leads older than three weeks (LinkedIn leads, which can't be checked) he asks Tim one question with one-tap answers ("Dismiss them as probably closed?" Dismiss them / Keep them) and acts on the answer.
+- `Tim's Job Search/shared/job-search/search.json`: `max_age_days` 14 to 21 (a week more of postings; company feeds stay at 60 days). The age limit is also a field in "Define my search" (`src/search.ts`, `public/views.js`, both offices).
+- Tests: `test_scout.py` (28 in Tim's office, 23 in Hal's), `test_tracker.py` (16 each), `npm test` (57).
+
+**Why**
+Tim asked on 2026-11-12 for the postings already on his dashboard to be scanned and, if closed, declined automatically or at least flagged, and for older postings to be searched (he did not want to lose options).
+
+**Decisions**
+- Leads are dismissed automatically because they are undecided and a dismissal can be restored; roles Tim has chosen are not changed, only flagged, so he decides.
+- LinkedIn disallows automated reading, and 26 of Tim's 30 open adverts are on LinkedIn. Scout doesn't get round that. The stale-lead question is the substitute: it costs one tap and nothing is lost, because dismissed leads can be restored.
+- Reed, Adzuna and Hitmarker are filtered by posting date as before, now up to 21 days.
+
+**How to check it**
+- Tests as above. Live, from this cloud session on Tim's real leads (dry run): 30 adverts, 22 on LinkedIn refused, the others unreachable from the cloud (not on its allowed list; they should be reachable from Tim's PC). On real pages: a live Riot job read as open; dead Riot and Hitmarker addresses read as closed.
+
+**Open items**
+- Tim: restart the office, then try "Check sources now". His own PC can read the non-LinkedIn adverts.
+- Tim's PC was still running the old Scout filter when he sent his last Reed run: it needs `git pull` or a restart of the sync (see the summary).
+
 ### 2026-11-12: "Define my search" in the office
 
 **What changed**

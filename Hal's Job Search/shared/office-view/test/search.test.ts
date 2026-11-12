@@ -9,6 +9,7 @@ const DEF = {
   _about: "keep me", updated: "2026-11-11",
   where: { home: "Epsom", office_days_per_week: 3, max_commute_minutes: 60 },
   pay: { minimum: 50000, ideal: 60000, unstated: "keep the role" },
+  max_age_days: 14,
   avoid_employers: ["BLAST"],
   tracks: [
     { id: "esports", name: "Esports", priority: 1, titles: ["Head of Esports"] },
@@ -70,4 +71,12 @@ test("a definition with no tracks yet can still have its pay changed", async () 
   const f = join(mkdtempSync(join(tmpdir(), "search-")), "search.json");
   writeFileSync(f, JSON.stringify({ pay: { minimum: null, ideal: null }, tracks: [] }));
   assert.deepEqual(await applySearch(f, { pay: { minimum: 50000, ideal: 60000 }, tracks: [] }), ["minimum pay not set to £50,000", "ideal pay not set to £60,000"]);
+});
+
+test("how old a job may be can be changed, within limits", async () => {
+  const f = make();
+  assert.deepEqual(await applySearch(f, { max_age_days: 21 }), ["jobs may be up to 21 days old (was 14)"]);
+  assert.equal(read(f).max_age_days, 21);
+  for (const bad of [0, 2, 90, 10.5, "old"]) await assert.rejects(applySearch(f, { max_age_days: bad }), /How old a job may be/, String(bad));
+  assert.equal(read(f).max_age_days, 21);
 });

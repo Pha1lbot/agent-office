@@ -19,7 +19,7 @@
     "unstated": "keep the role",
     "contract": "considered if the day rate is good; marked as contract"
   },
-  "max_age_days": 14,
+  "max_age_days": 21,
   "avoid_employers": [
     "BLAST"
   ],
