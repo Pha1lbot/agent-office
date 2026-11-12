@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 22 · shortlisted: 9 · drafted: 3 · applied: 5 · skipped: 37
+found: 23 · shortlisted: 9 · drafted: 3 · applied: 5 · skipped: 37
 
 ## Next actions
 
@@ -30,13 +30,14 @@ found: 22 · shortlisted: 9 · drafted: 3 · applied: 5 · skipped: 37
 | found | 13 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 3 |  | 2026-11-11 |
 | found | 14 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
 | found | 15 | [Head of Operations](https://www.linkedin.com/jobs/view/4478797122/) | CF |  | London (Hybrid) | 3 |  | 2026-11-11 |
-| found | 16 | [Gaming & Streaming Senior Manager](https://www.linkedin.com/jobs/view/4484381283/) | Great Ormond Street Hospital Charity | £49.9k | London, hybrid | 3 |  | 2026-11-06 |
-| found | 17 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-06 |
-| found | 18 | [Head of Video - Events Production](https://uk.linkedin.com/jobs/view/head-of-video-events-production-at-blank-space-recruitment-4484322630) | Blank Space Recruitment (events production agency client) | up to GBP 75,000 DOE | London | 2 |  | 2026-11-06 |
-| found | 19 | [Production Manager - Brand Activations and Live Events](https://uk.linkedin.com/jobs/view/production-manager-live-events-at-blank-space-recruitment-4484319909) | Blank Space Recruitment (events agency client) | from GBP 50,000 plus benefits | London | 2 |  | 2026-11-06 |
-| found | 20 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-06 |
-| found | 21 | [Event Director, HLTH Europe](https://www.linkedin.com/jobs/view/4479433111/) | Hyve Group | Not listed | London | 2 |  | 2026-11-06 |
-| found | 22 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
+| found | 16 | [Assistant Operations Manager](https://www.reed.co.uk/jobs/assistant-operations-manager/57533847?source=details.similarjobs#skills) | Direct Chauffeur Line Limited |  |  |  |  | 2026-11-12 |
+| found | 17 | [Gaming & Streaming Senior Manager](https://www.linkedin.com/jobs/view/4484381283/) | Great Ormond Street Hospital Charity | £49.9k | London, hybrid | 3 |  | 2026-11-06 |
+| found | 18 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-06 |
+| found | 19 | [Head of Video - Events Production](https://uk.linkedin.com/jobs/view/head-of-video-events-production-at-blank-space-recruitment-4484322630) | Blank Space Recruitment (events production agency client) | up to GBP 75,000 DOE | London | 2 |  | 2026-11-06 |
+| found | 20 | [Production Manager - Brand Activations and Live Events](https://uk.linkedin.com/jobs/view/production-manager-live-events-at-blank-space-recruitment-4484319909) | Blank Space Recruitment (events agency client) | from GBP 50,000 plus benefits | London | 2 |  | 2026-11-06 |
+| found | 21 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-06 |
+| found | 22 | [Event Director, HLTH Europe](https://www.linkedin.com/jobs/view/4479433111/) | Hyve Group | Not listed | London | 2 |  | 2026-11-06 |
+| found | 23 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
 | shortlisted | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-12 |
 | shortlisted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
 | shortlisted | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 |  | 2026-11-12 |

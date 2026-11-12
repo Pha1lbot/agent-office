@@ -101,7 +101,7 @@
       "url": "https://uk.linkedin.com/jobs/view/head-of-video-events-production-at-blank-space-recruitment-4484322630",
       "source": "LinkedIn Jobs",
       "fit": 2,
-      "priority": 18,
+      "priority": 19,
       "status": "found",
       "notes": "Head-level live production but very technical video design; Vectorworks and Barco gaps.",
       "found": "2026-11-06",
@@ -175,7 +175,7 @@
       "url": "https://uk.linkedin.com/jobs/view/production-manager-live-events-at-blank-space-recruitment-4484319909",
       "source": "LinkedIn Jobs",
       "fit": 2,
-      "priority": 19,
+      "priority": 20,
       "status": "found",
       "notes": "Live events production fits but below Head level; scenic build and AutoCAD gaps.",
       "found": "2026-11-06",
@@ -540,7 +540,7 @@
       "list": "New matches",
       "notes": "Posted: 31 Oct",
       "fit": 2,
-      "priority": 20,
+      "priority": 21,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -896,7 +896,7 @@
       "list": "New matches",
       "notes": "Posted: 21 Oct",
       "fit": 2,
-      "priority": 21,
+      "priority": 22,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -994,7 +994,7 @@
       "list": "Transition roles",
       "notes": "Posted: 2 Nov",
       "fit": 3,
-      "priority": 16,
+      "priority": 17,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -1091,7 +1091,7 @@
       "list": "Transition roles",
       "notes": "Posted: 31 Oct",
       "fit": 2,
-      "priority": 22,
+      "priority": 23,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -1154,7 +1154,7 @@
       "list": "Transition roles",
       "notes": "Posted: 30 Oct",
       "fit": 2,
-      "priority": 17,
+      "priority": 18,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -2356,6 +2356,28 @@
       "verdict": "skip",
       "verdict_why": "Missing essential PGA/R&A Rules qualification; golf-specific sector with heavy travel",
       "closing_date": "2026-11-24"
+    },
+    {
+      "id": "2026-11-12-direct-chauffeur-line-limited-assistant-operations-manager",
+      "title": "Assistant Operations Manager",
+      "company": "Direct Chauffeur Line Limited",
+      "location": "",
+      "pay": "",
+      "url": "https://www.reed.co.uk/jobs/assistant-operations-manager/57533847?source=details.similarjobs#skills",
+      "source": "Tim",
+      "fit": null,
+      "priority": 16,
+      "status": "found",
+      "notes": "",
+      "found": "2026-11-12",
+      "updated": "2026-11-12",
+      "history": [
+        {
+          "date": "2026-11-12",
+          "status": "found",
+          "by": "tim"
+        }
+      ]
     }
   ],
   "actions": [
@@ -2608,6 +2630,14 @@
       "role": "2026-11-12-reed-head-of-operations",
       "task": "Draft a tailored CV and cover letter",
       "title": "Head of Operations @ Reed",
+      "at": "2026-11-12T20:14",
+      "done": false
+    },
+    {
+      "id": "i20",
+      "role": "2026-11-12-direct-chauffeur-line-limited-assistant-operations-manager",
+      "task": "Read the advert, write the listing, score the fit and give a verdict",
+      "title": "Assistant Operations Manager @ Direct Chauffeur Line Limited",
       "at": "2026-11-12T20:14",
       "done": false
     }
