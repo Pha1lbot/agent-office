@@ -8,7 +8,7 @@ Rewritten on 2026-11-11. The machine-readable list is `search.json` (the `source
 |---|---|---|
 | Hitmarker | Its job list (sitemap) and each job's own details, filtered free | Ada's script (Scout), no tokens |
 | Company hiring pages (Greenhouse, Lever, Ashby, SmartRecruiters) for the watch list below | Their public job feeds, filtered free | Scout |
-| Reed, Adzuna | Free APIs; need keys in `shared/job-search/.env` on Tim's PC | Scout, on Tim's PC |
+| Reed | A free API; its key is in `shared/job-search/.env` on Tim's PC (add it with the office's "Job site key" button) | Scout, on Tim's PC |
 | LinkedIn Jobs, Indeed UK | They block automated reading, so Tim's own **job-alert emails** are read instead | Hal, each weekday |
 | Esports Insider, Event Industry Jobs, Work in Sports, Guardian Jobs, The Unit List, Access Jobs | Read as web pages, a couple each day in turn | Rita |
 

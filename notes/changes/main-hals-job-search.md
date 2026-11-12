@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Adzuna removed (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/scout.py`, `test_scout.py`, `shared/job-search/search.json` and `.env.example`, `shared/office-view` (`src/keys.ts`, `src/scout.ts`, `src/server.ts`, `public/views.js`, tests), `.claude/skills/cos/SKILL.md` and `agents/admin/README.md`: Adzuna removed, as in Tim's office.
+
+**Why**
+Tim Everard asked for Adzuna to be removed completely.
+
+**Decisions**
+Code and instructions only; Hal's CV, preferences, tracker and roles were not opened.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` (24) and `npm test` (57) in Hal's office.
+
+**Open items**
+None.
+
 ### 2026-11-12: Learning loop: owner-only insights, scorecard, review prompt, skip reasons (ported from Tim's office)
 
 **What changed**

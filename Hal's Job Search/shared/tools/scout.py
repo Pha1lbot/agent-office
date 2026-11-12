@@ -16,7 +16,7 @@ Sources it reads (the "type" of each source in search.json):
   sitemap          a site's job sitemap, then each new job's own structured data (Hitmarker)
   greenhouse, lever, ashby, smartrecruiters
                    a company's public job feed, for each board listed on the source
-  reed, adzuna     free job-search APIs; keys go in shared/job-search/.env (see .env.example)
+  reed             a free job-search API; the key goes in shared/job-search/.env (see .env.example)
   rss              any job feed
 Sources of type "email" and "web" are read by Tim and Rita, not by this script.
 
@@ -441,33 +441,6 @@ def read_reed(src, defn, http):
     return jobs, "ok", f"{len(seen)} results read"
 
 
-def read_adzuna(src, defn, http):
-    app_id, app_key = os.environ.get("ADZUNA_APP_ID"), os.environ.get("ADZUNA_APP_KEY")
-    if not app_id or not app_key:
-        return [], "needs-key", "add ADZUNA_APP_ID and ADZUNA_APP_KEY to shared/job-search/.env"
-    seen, jobs = set(), []
-    try:
-        for track in sorted(defn.get("tracks", []), key=lambda t: t.get("priority", 99)):
-            for phrase in track.get("titles", [])[:2]:
-                for where in ({"where": "London", "distance": 30}, {}):
-                    q = parse.urlencode({"app_id": app_id, "app_key": app_key, "results_per_page": 50, "what_phrase": phrase,
-                                         "salary_min": defn.get("pay", {}).get("minimum") or 0, "max_days_old": defn.get("max_age_days", 14),
-                                         "content-type": "application/json", **where})
-                    for j in get_json(http, f"https://api.adzuna.com/v1/api/jobs/gb/search/1?{q}").get("results", []):
-                        if j.get("id") in seen:
-                            continue
-                        seen.add(j.get("id"))
-                        jobs.append({"title": j.get("title"), "company": (j.get("company") or {}).get("display_name"),
-                                     "location": (j.get("location") or {}).get("display_name", ""), "country": "GB",
-                                     "link": j.get("redirect_url"), "posted": j.get("created"), "contract": j.get("contract_type") == "contract",
-                                     "pay": pay_text(j.get("salary_min"), j.get("salary_max")), "description": strip_html(j.get("description"))})
-    except Unreachable as e:
-        return jobs, "blocked", str(e)
-    except ValueError as e:
-        return jobs, "error", str(e)
-    return jobs, "ok", f"{len(seen)} results read"
-
-
 def read_rss(src, http):
     try:
         status, body = http.get(src["url"])
@@ -496,8 +469,6 @@ def read_source(src, defn, http, state, max_pages):
         return read_ats(src, http)
     if kind == "reed":
         return read_reed(src, defn, http)
-    if kind == "adzuna":
-        return read_adzuna(src, defn, http)
     if kind == "rss":
         return read_rss(src, http)
     return None  # email and web sources belong to Tim and Rita
@@ -599,9 +570,8 @@ def check(defn, http, log=print):
             elif kind in ATS_TYPES:
                 jobs, status, note = read_ats(src, http)
                 log(f"{src['name']} | {'working' if jobs else status} | {len(jobs)} jobs | {note}")
-            elif kind in ("reed", "adzuna"):
-                env = ("REED_API_KEY",) if kind == "reed" else ("ADZUNA_APP_ID", "ADZUNA_APP_KEY")
-                log(f"{src['name']} | " + ("key found" if all(os.environ.get(k) for k in env) else f"needs {' and '.join(env)} in shared/job-search/.env"))
+            elif kind == "reed":
+                log(f"{src['name']} | " + ("key found" if os.environ.get("REED_API_KEY") else "needs REED_API_KEY in shared/job-search/.env"))
             elif kind == "rss":
                 jobs, status, note = read_rss(src, http)
                 log(f"{src['name']} | {'working' if jobs else status} | {note}")

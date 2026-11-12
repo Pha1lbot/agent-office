@@ -441,13 +441,6 @@
       "cloud": false
     },
     {
-      "id": "adzuna",
-      "name": "Adzuna",
-      "type": "adzuna",
-      "how": "Free API. Needs ADZUNA_APP_ID and ADZUNA_APP_KEY in shared/job-search/.env. Runs on Tim's PC.",
-      "cloud": false
-    },
-    {
       "id": "linkedin",
       "name": "LinkedIn Jobs",
       "type": "email",

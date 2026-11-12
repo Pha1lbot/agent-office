@@ -1,8 +1,8 @@
-// Job-site keys (Reed, Adzuna) kept in shared/job-search/.env, which is never saved to GitHub.
+// The job-site key (Reed) kept in shared/job-search/.env, which is never saved to GitHub.
 // The office can add or replace a key but never shows one: the page only learns "set" or "not set".
 import { readFile, writeFile } from "node:fs/promises";
 
-export const KEY_NAMES = ["REED_API_KEY", "ADZUNA_APP_ID", "ADZUNA_APP_KEY"] as const;
+export const KEY_NAMES = ["REED_API_KEY"] as const;
 export type KeyName = (typeof KEY_NAMES)[number];
 
 const valid = (value: string) => /^[A-Za-z0-9_-]{8,128}$/.test(value);

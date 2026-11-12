@@ -11,7 +11,7 @@ export interface SourceInfo {
 export function howRead(type: string): SourceInfo["how"] {
   if (type === "email") return "Alert emails";
   if (type === "web") return "Rita";
-  return "Scout"; // sitemap, greenhouse, lever, ashby, smartrecruiters, reed, adzuna, rss
+  return "Scout"; // sitemap, greenhouse, lever, ashby, smartrecruiters, reed, rss
 }
 
 /** The sources in the search definition, for the Sources panel. Empty if there is no definition. */

@@ -69,7 +69,7 @@ let tracker: { roles: { id: string; title: string; company: string; status?: str
 type Found = { items: { found_at?: string }[]; runs: unknown[]; last_email_scan?: string; sources?: Record<string, { last_checked?: string }>; listed?: { name: string; how: string }[] };
 const SEARCH_FILE = join(dirname(TRACKER), "..", "shared", "job-search", "search.json"); // what to look for, edited in "Define my search"
 const SETTINGS_FILE = join(dirname(TRACKER), "..", "shared", "job-search", "settings.json"); // pay bands the ranking uses
-const ENV_FILE = join(dirname(TRACKER), "..", "shared", "job-search", ".env"); // Reed and Adzuna keys: never saved to GitHub, never sent to the page
+const ENV_FILE = join(dirname(TRACKER), "..", "shared", "job-search", ".env"); // the Reed key: never saved to GitHub, never sent to the page
 const FOUND = join(dirname(TRACKER), "found.json");
 let tool: Tracker | null = null;
 let backup: Backup;

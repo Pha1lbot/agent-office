@@ -188,25 +188,18 @@ class Readers(unittest.TestCase):
         self.assertEqual(scout.read_ats({"type": "greenhouse", "boards": []}, http)[1:], ("ok", "no company boards set yet (run `scout.py discover`)"))
         self.assertEqual(scout.read_ats({"type": "greenhouse", "boards": ["nope"]}, http)[1], "blocked")
 
-    def test_reed_and_adzuna_need_keys_then_read_results(self):
-        for k in ("REED_API_KEY", "ADZUNA_APP_ID", "ADZUNA_APP_KEY"):
-            os.environ.pop(k, None)
+    def test_reed_needs_a_key_then_reads_results(self):
+        os.environ.pop("REED_API_KEY", None)
         self.assertEqual(scout.read_reed({}, DEFN, FakeHttp({}))[1], "needs-key")
-        self.assertEqual(scout.read_adzuna({}, DEFN, FakeHttp({}))[1], "needs-key")
-        os.environ.update({"REED_API_KEY": "k", "ADZUNA_APP_ID": "i", "ADZUNA_APP_KEY": "k"})
+        os.environ["REED_API_KEY"] = "k"
         try:
             reed = {"results": [{"jobId": 1, "jobTitle": "Head of Esports Operations", "employerName": "Acme", "locationName": "London",
                                  "minimumSalary": 70000, "maximumSalary": 80000, "currency": "GBP", "date": "09/11/2026", "jobUrl": "https://reed/1", "jobDescription": "Esports"}]}
             jobs, status, _ = scout.read_reed({}, DEFN, FakeHttp({"https://www.reed.co.uk/api/1.0/search*": json.dumps(reed)}))
             self.assertEqual((status, len(jobs), jobs[0]["pay"], jobs[0]["posted"]), ("ok", 1, "£70,000 - £80,000", "09/11/2026"))
             self.assertEqual(scout.parse_date("09/11/2026"), date(2026, 11, 9))
-            adz = {"results": [{"id": "7", "title": "Head of Esports Operations", "company": {"display_name": "Acme"}, "location": {"display_name": "London"},
-                                "redirect_url": "https://az/7", "created": RECENT + "T08:00:00Z", "salary_min": 65000, "description": "Esports"}]}
-            jobs, status, _ = scout.read_adzuna({}, DEFN, FakeHttp({"https://api.adzuna.com/v1/api/jobs/gb/search/1*": json.dumps(adz)}))
-            self.assertEqual((status, len(jobs), jobs[0]["company"]), ("ok", 1, "Acme"))
         finally:
-            for k in ("REED_API_KEY", "ADZUNA_APP_ID", "ADZUNA_APP_KEY"):
-                os.environ.pop(k, None)
+            os.environ.pop("REED_API_KEY", None)
 
 
 class EndToEnd(unittest.TestCase):

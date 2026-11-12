@@ -491,13 +491,6 @@
       "source": "Reed"
     },
     {
-      "at": "2026-11-12T09:54",
-      "via": "feed",
-      "found": 0,
-      "note": "add ADZUNA_APP_ID and ADZUNA_APP_KEY to shared/job-search/.env",
-      "source": "Adzuna"
-    },
-    {
       "at": "2026-11-12T13:51",
       "via": "feed",
       "found": 1,
@@ -538,13 +531,6 @@
       "found": 6,
       "note": "635 results read",
       "source": "Reed"
-    },
-    {
-      "at": "2026-11-12T13:51",
-      "via": "feed",
-      "found": 0,
-      "note": "add ADZUNA_APP_ID and ADZUNA_APP_KEY to shared/job-search/.env",
-      "source": "Adzuna"
     }
   ],
   "last_email_scan": "2026-11-11T11:40:00Z",
@@ -602,14 +588,6 @@
       "note": "635 results read",
       "failures": 0,
       "last_ok": "2026-11-12T13:51"
-    },
-    "Adzuna": {
-      "total": 0,
-      "last_checked": "2026-11-12T13:51",
-      "result": "needs-key",
-      "found": 0,
-      "note": "add ADZUNA_APP_ID and ADZUNA_APP_KEY to shared/job-search/.env",
-      "failures": 2
     }
   }
 }

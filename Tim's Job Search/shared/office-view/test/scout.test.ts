@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { closedSummary, howRead, listSources, scoutDue, scoutSummary } from "../src/scout.ts";
 
 test("each source type says who reads it", () => {
-  for (const t of ["sitemap", "greenhouse", "lever", "ashby", "smartrecruiters", "reed", "adzuna", "rss"]) assert.equal(howRead(t), "Scout", t);
+  for (const t of ["sitemap", "greenhouse", "lever", "ashby", "smartrecruiters", "reed", "rss"]) assert.equal(howRead(t), "Scout", t);
   assert.equal(howRead("email"), "Alert emails");
   assert.equal(howRead("web"), "Rita");
 });
