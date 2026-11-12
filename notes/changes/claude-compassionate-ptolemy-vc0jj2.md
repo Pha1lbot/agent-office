@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In progress. Fifth pull request of the 2026-11-12 work (#18, #19, #20, #28, #29, #30 and #31 are merged): Adzuna removed.
+**Status:** In review ([PR #32](https://github.com/Pha1lbot/agent-office/pull/32): Adzuna removed). Earlier work merged in PRs #18, #19, #20, #28, #29, #30 and #31.
 
 ## Purpose
 
