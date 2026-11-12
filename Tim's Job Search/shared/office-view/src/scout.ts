@@ -37,3 +37,8 @@ export function scoutSummary(output: string): string {
   const lines = output.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
   return [...lines].reverse().find((l) => l.startsWith("Scout:")) || lines[0] || "Scout finished";
 }
+
+/** The "Closed: ..." line from the closed-postings check, or "". */
+export function closedSummary(output: string): string {
+  return [...output.split(/\r?\n/).map((l) => l.trim())].reverse().find((l) => l.startsWith("Closed:")) || "";
+}

@@ -11,6 +11,57 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Closed-postings check, posting age field (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/scout.py`, `tracker.py` and tests; `shared/office-view` (`src/scout.ts`, `src/server.ts`, `src/search.ts`, `public/views.js`, tests); `.claude/skills/cos/SKILL.md`: the same closed-postings check and age field, with the Chief of Staff called Tim.
+
+**Why**
+Tim Everard asked for code changes to go into both offices.
+
+**Decisions**
+Code and instructions only. Hal's `search.json` is blank, so nothing changes for his search except the new commands being available. His tracker, roles and CV were not opened.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` (23) and `npm test` (57) in Hal's office.
+
+**Open items**
+None.
+
+### 2026-11-12: "Define my search" dialog and track switches (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/office-view/` (`src/search.ts`, `src/server.ts`, `public/views.js`, `public/style.css`, tests), `shared/tools/scout.py`, `tracker.py` and their tests, and `.claude/skills/cos/SKILL.md`: the same dialog and handling, with the Chief of Staff called Tim.
+
+**Why**
+Tim Everard asked for code changes to go into both offices.
+
+**Decisions**
+Code and instructions only. Hal's search definition is still blank, so the dialog starts empty; his files were not opened. His office's GitHub backup is off, so nothing from it is saved to GitHub.
+
+**How to check it**
+`npm test` (55) in Hal's `shared/office-view`.
+
+**Open items**
+Hal's definition session.
+
+### 2026-11-12: One-tap questions (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/tracker.py` and `test_tracker.py`: `action add --options` and `action answer`; `shared/office-view` (`src/server.ts`, `public/views.js`, `public/style.css`): answer buttons in Next actions; `.claude/skills/cos/SKILL.md`: how Tim (the Chief of Staff) asks questions and acts on answers.
+
+**Why**
+Tim Everard asked for code changes to go into both offices.
+
+**Decisions**
+Code and instructions only; Hal's CV, preferences, tracker and roles were not opened.
+
+**How to check it**
+`python3 shared/tools/test_tracker.py` and `npm test` in Hal's office.
+
+**Open items**
+None.
+
 ### 2026-11-12: Job sites panel, "Check sources now" and the job site keys dialog (ported from Tim's office)
 
 **What changed**

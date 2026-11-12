@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #29](https://github.com/Pha1lbot/agent-office/pull/29): Scout filter). Earlier work merged in PRs #18, #19, #20 and #28.
+**Status:** In review ([PR #30](https://github.com/Pha1lbot/agent-office/pull/30): one-tap questions and Define my search). Earlier work merged in PRs #18, #19, #20, #28 and #29.
 
 ## Purpose
 
@@ -10,6 +10,77 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-12: Closed postings, and a week more on the posting age
+
+**What changed**
+- `shared/tools/scout.py` (both offices): new `scout.py closed [--dry-run] [--max-checks N]`. It opens the adverts behind open leads and shortlisted, drafted or approved roles (never roles already applied for). A page that is gone (404 or 410), a company job board's "job gone" redirect, a closing date that has passed, or wording such as "no longer accepting applications" or "this job has expired" counts as closed; a page that can't be read (a login wall, a block) is "unknown", never guessed. A closed **lead** is dismissed with the reason and the date (`--by ada`, so it can be restored and isn't counted as one of Tim's decisions); a closed **shortlisted or drafted role** is left alone and gets one action saying the posting looks closed. Each advert is rechecked at most every 3 days and at most 40 are opened per run. It respects each site's robots.txt, and says which site refused ("22 on www.linkedin.com (it doesn't allow automated reading)").
+- `shared/tools/tracker.py` (both offices): `set --by ada`; `list --older-than DAYS` (roles found more than that many days ago).
+- `shared/office-view/src/server.ts` and `src/scout.ts` (both offices): "Check sources now" also runs the closed check and reports both results.
+- `.claude/skills/cos/SKILL.md` (both offices), daily search step 6b: Hal runs the closed check; for leads older than three weeks (LinkedIn leads, which can't be checked) he asks Tim one question with one-tap answers ("Dismiss them as probably closed?" Dismiss them / Keep them) and acts on the answer.
+- `Tim's Job Search/shared/job-search/search.json`: `max_age_days` 14 to 21 (a week more of postings; company feeds stay at 60 days). The age limit is also a field in "Define my search" (`src/search.ts`, `public/views.js`, both offices).
+- Tests: `test_scout.py` (28 in Tim's office, 23 in Hal's), `test_tracker.py` (16 each), `npm test` (57).
+
+**Why**
+Tim asked on 2026-11-12 for the postings already on his dashboard to be scanned and, if closed, declined automatically or at least flagged, and for older postings to be searched (he did not want to lose options).
+
+**Decisions**
+- Leads are dismissed automatically because they are undecided and a dismissal can be restored; roles Tim has chosen are not changed, only flagged, so he decides.
+- LinkedIn disallows automated reading, and 26 of Tim's 30 open adverts are on LinkedIn. Scout doesn't get round that. The stale-lead question is the substitute: it costs one tap and nothing is lost, because dismissed leads can be restored.
+- Reed, Adzuna and Hitmarker are filtered by posting date as before, now up to 21 days.
+
+**How to check it**
+- Tests as above. Live, from this cloud session on Tim's real leads (dry run): 30 adverts, 22 on LinkedIn refused, the others unreachable from the cloud (not on its allowed list; they should be reachable from Tim's PC). On real pages: a live Riot job read as open; dead Riot and Hitmarker addresses read as closed.
+
+**Open items**
+- Tim: restart the office, then try "Check sources now". His own PC can read the non-LinkedIn adverts.
+- Tim's PC was still running the old Scout filter when he sent his last Reed run: it needs `git pull` or a restart of the sync (see the summary).
+
+### 2026-11-12: "Define my search" in the office
+
+**What changed**
+- `Tim's Job Search/shared/office-view/src/search.ts` (new): reads the editable part of `search.json` and applies edits from the page: minimum and ideal pay, office days (0 to 5), longest commute (0 to 240 minutes), employers to leave out (up to 30), and which kinds of work are on and in what order. Everything is checked first and nothing is written if anything is wrong; only those fields can change, so titles, keywords and sources are untouched. It returns the changes in plain words.
+- `src/server.ts`: `POST /api/search` applies an edit, keeps the pay bands in `settings.json` in step (they drive the ranking), queues one inbox item for Hal ("Search settings changed in the office: ..."), and saves. The office's GitHub backup now also covers `shared/job-search/search.json` and `settings.json` (it only covered `jobs/` and the CV rules, so a change would not have reached GitHub).
+- `public/views.js`, `style.css`: a "Define my search" dialog opened from the Job sites panel: tick kinds of work on or off, move them up or down, pay, office days, commute, employers to leave out.
+- `shared/tools/scout.py`: a track with `enabled: false` is skipped. `shared/tools/tracker.py`: `inbox add` works without a role, for general changes. New tests (`test/search.test.ts` 6, `test_scout.py` 1, `test_tracker.py` 1).
+- `.claude/skills/cos/SKILL.md`: what Hal does with a "Search settings changed" item: make `preferences.md` say the same in plain English and log it; never edit `search.json` himself.
+- The same changes in `Hal's Job Search/`.
+
+**Why**
+Tim asked on 2026-11-11 for the definition questions to be answerable in the office, so he can steer the search without a Claude session or being at one PC. The first definition was made with him in a question session; this lets him adjust it any time.
+
+**Decisions**
+- The structured file changes at once (so the next search uses it), and the written preferences follow through Hal, costing tokens only when something changed. The alternative, generating the prose in code, would give stiff wording and would overwrite Tim's own edits to `preferences.md`.
+- Tracks are switched off with `enabled: false`, not deleted, so nothing is lost.
+- Titles and keywords per track are not editable here yet; they change through Hal.
+
+**How to check it**
+- `npm test` (55) and `npm run check` in each office; `python3 shared/tools/test_scout.py` and `test_tracker.py`.
+- On a copy of Tim's office: opened the dialog, set minimum pay to £55,000, moved a track, switched project management off, added Betway to the avoid list and saved. `search.json`, `settings.json` and the inbox all matched; minimum above ideal was refused with a message.
+
+**Open items**
+- Restart the office to see the dialog. Hal's office: blank definition, so the dialog edits pay, commute and avoid list until he has tracks.
+
+### 2026-11-12: Hal can ask a question with one-tap answers
+
+**What changed**
+- `shared/tools/tracker.py` (both offices): `action add "..." --options "Accept|Decline"` makes a question (2 to 6 short options); `action answer <id> "<option>"` records the answer once, marks it done and queues it in Hal's inbox ("Answer to a question: <question> Answer: <option>"), against the role if the question was about one; `action list` shows the options and the answer. New tests (14 in each office).
+- `shared/office-view/src/server.ts` and `public/views.js`, `style.css` (both offices): Next actions shows a question's options as buttons; tapping one calls the answer route, shows "You answered: ..." and tells Hal. The answer wakes the automatic run like any other office change.
+- `.claude/skills/cos/SKILL.md` (both offices): when running on his own, Hal asks a clear choice as a question with options instead of a plain action; and what to do with an "Answer to a question" inbox item (for a preference suggestion, Accept means edit `preferences.md` and `search.json` and log it; Decline means log it).
+
+**Why**
+Tim asked on 2026-11-11 for questions to be answerable in the office, so he doesn't have to be at a PC or in a Claude session to steer the search. This is also how preference reviews will ask (Accept or Decline per suggestion).
+
+**Decisions**
+- An answer reuses the inbox, so Hal's existing "act on office changes" flow handles it, and the answer is saved and backed up like any edit.
+- Options are validated (2 to 6, 40 characters) and an answer must match one; a question can only be answered once.
+
+**How to check it**
+- `python3 shared/tools/test_tracker.py` in each office (14 tests); `npm test` and `npm run check` (49).
+- On a copy of Tim's data: a question with Accept and Decline showed as buttons; clicking Accept showed "You answered: Accept" and inbox item i15 appeared.
+
+**Open items**
+- Restart the office to see the buttons. The same buttons will appear in the phone dashboard once it syncs (PR 4).
 
 ### 2026-11-12: The office shows which job sites are reached, and holds the job site keys
 

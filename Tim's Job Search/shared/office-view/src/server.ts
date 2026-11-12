@@ -15,8 +15,9 @@ import { readFile, stat, writeFile } from "node:fs/promises";
 import { existsSync, readFileSync, watchFile } from "node:fs";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { listSources, scoutDue, scoutSummary } from "./scout.ts";
+import { closedSummary, listSources, scoutDue, scoutSummary } from "./scout.ts";
 import { keyStatus, setKeys } from "./keys.ts";
+import { applySearch, readSearch } from "./search.ts";
 import { WebSocketServer, WebSocket } from "ws";
 import { Office, type Report } from "./office.ts";
 import { Tracker, findClaude, findPython, repoOf, run } from "./tools.ts";
@@ -66,6 +67,8 @@ const office = new Office();
 let tracker: { roles: { id: string; title: string; company: string; status?: string; url?: string }[]; inbox?: { done: boolean }[]; error?: string; found?: Found } = { roles: [] };
 // The review queue from Rita's daily search and the job-alert email scan (jobs/found.json).
 type Found = { items: { found_at?: string }[]; runs: unknown[]; last_email_scan?: string; sources?: Record<string, { last_checked?: string }>; listed?: { name: string; how: string }[] };
+const SEARCH_FILE = join(dirname(TRACKER), "..", "shared", "job-search", "search.json"); // what to look for, edited in "Define my search"
+const SETTINGS_FILE = join(dirname(TRACKER), "..", "shared", "job-search", "settings.json"); // pay bands the ranking uses
 const ENV_FILE = join(dirname(TRACKER), "..", "shared", "job-search", ".env"); // Reed and Adzuna keys: never saved to GitHub, never sent to the page
 const FOUND = join(dirname(TRACKER), "found.json");
 let tool: Tracker | null = null;
@@ -84,6 +87,7 @@ async function loadTracker() {
     // The page only needs the last week's finds and runs.
     tracker.found = { items: (f.items || []).filter((i) => (i.found_at || "") >= week), runs: (f.runs || []).slice(-10), last_email_scan: f.last_email_scan || "", sources: f.sources || {} };
   } catch { tracker.found = { items: [], runs: [], sources: {} }; }
+  (tracker as { search?: object | null }).search = await readSearch(SEARCH_FILE);
   (tracker as { keys?: object }).keys = await keyStatus(ENV_FILE); // which keys are set, never their values
   tracker.found!.listed = await listSources(join(dirname(TRACKER), "..", "shared", "job-search", "search.json"));
   return (tracker.inbox || []).filter((i) => !i.done).length;
@@ -180,8 +184,11 @@ async function runScout(): Promise<{ ok: boolean; summary: string }> {
   try {
     const r = await ada("Searching job sites", () =>
       run(tool!.python, [join(REPO, "shared", "tools", "scout.py"), "run"], REPO, { JOBS_DIR: dirname(TRACKER), PYTHONIOENCODING: "utf-8" }, 290_000), "Job search done");
-    const summary = scoutSummary(r.out);
-    await afterEdit(r.ok ? summary.replace(/^Scout: /, "job search: ") : "job search failed");
+    // Then look for adverts that have closed: dismisses closed leads, flags closed shortlisted roles.
+    const c = r.ok ? await ada("Checking for closed postings", () =>
+      run(tool!.python, [join(REPO, "shared", "tools", "scout.py"), "closed"], REPO, { JOBS_DIR: dirname(TRACKER), PYTHONIOENCODING: "utf-8" }, 290_000), "Closed check done") : null;
+    const summary = [scoutSummary(r.out), c ? closedSummary(c.out) : ""].filter(Boolean).join(" ");
+    await afterEdit(r.ok ? scoutSummary(r.out).replace(/^Scout: /, "job search: ") : "job search failed");
     return { ok: r.ok, summary };
   } finally { scouting = false; }
 }
@@ -425,7 +432,9 @@ const server = createServer(async (req, res) => {
     if (url.pathname === "/api/actions") {
       if (!tool) return json(res, 503, { error: "Editing needs Python 3 on this PC." });
       let r;
-      if (typeof body.id === "string" && /^a\d{1,6}$/.test(body.id)) {
+      if (typeof body.id === "string" && /^a\d{1,6}$/.test(body.id) && typeof body.answer === "string") {
+        r = await ada("Recording an answer", () => tool!.call(["action", "answer", body.id as string, oneLine(body.answer, 40)]));
+      } else if (typeof body.id === "string" && /^a\d{1,6}$/.test(body.id)) {
         r = await ada("Updating the to-do list", () => tool!.call(["action", body.done ? "done" : "reopen", body.id as string]));
       } else {
         const text = oneLine(body.text, 300);
@@ -434,7 +443,7 @@ const server = createServer(async (req, res) => {
         r = await ada("Adding a to-do", () => tool!.call(["action", "add", text, ...role]));
       }
       if (!r.ok) return json(res, 400, { error: r.out.split("\n").pop() || "Couldn't save" });
-      await afterEdit(typeof body.id === "string" ? `action ${body.id} ${body.done ? "done" : "reopened"}` : `new action: ${oneLine(body.text, 60)}`);
+      await afterEdit(typeof body.id === "string" ? (typeof body.answer === "string" ? `answered question ${body.id}` : `action ${body.id} ${body.done ? "done" : "reopened"}`) : `new action: ${oneLine(body.text, 60)}`);
       return json(res, 200, { ok: true });
     }
 
@@ -444,6 +453,28 @@ const server = createServer(async (req, res) => {
       await writeFile(CV_RULES, text + "\n", "utf8");
       await afterEdit("CV writing rules updated");
       return json(res, 200, { ok: true });
+    }
+
+    if (url.pathname === "/api/search") {
+      if (!tool) return json(res, 503, { error: "Editing needs Python 3 on this PC." });
+      try {
+        const said = await applySearch(SEARCH_FILE, body);
+        if (!said.length) return json(res, 200, { ok: true, changed: [] });
+        // Keep the pay bands the ranking uses in step with the new pay.
+        const view = await readSearch(SEARCH_FILE);
+        try {
+          const settings = JSON.parse(await readFile(SETTINGS_FILE, "utf8"));
+          if (view?.pay.minimum != null) settings.minimum_pay = view.pay.minimum;
+          if (view?.pay.ideal != null) settings.ideal_pay = view.pay.ideal;
+          await writeFile(SETTINGS_FILE, JSON.stringify(settings, null, 2) + "\n", "utf8");
+        } catch { /* no settings file: nothing to keep in step */ }
+        const task = `Search settings changed in the office: ${said.join("; ")}. Update preferences.md and sources.md to match search.json, and log it in jobs/preference-reviews.md.`;
+        await tool.call(["inbox", "add", "--task", task.slice(0, 390)]);
+        await afterEdit("search settings changed");
+        return json(res, 200, { ok: true, changed: said });
+      } catch (error) {
+        return json(res, 400, { error: (error as Error).message });
+      }
     }
 
     if (url.pathname === "/api/keys") {
@@ -536,7 +567,7 @@ let adaSaving = false;
 // for a PC that only pulls and where someone else looks after the repo.
 let gitBackup = true;
 try { gitBackup = JSON.parse(readFileSync(join(REPO, "shared", "job-search", "settings.json"), "utf8")).git_backup !== false; } catch { /* no settings: back up */ }
-backup = new Backup(gitBackup ? gitRepo : null, [dirname(TRACKER), CV_RULES], () => {
+backup = new Backup(gitBackup ? gitRepo : null, [dirname(TRACKER), CV_RULES, SEARCH_FILE, SETTINGS_FILE], () => {
   pushSystem();
   const saving = backup?.status.state === "saving";
   if (saving !== adaSaving) {

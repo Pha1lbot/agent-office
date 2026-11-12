@@ -81,6 +81,51 @@ class TrackerTests(unittest.TestCase):
         self.assertEqual(role["source"], "Hitmarker")
         self.assertIn("Track: Esports and gaming operations", role["notes"])
 
+    def test_a_question_with_options_is_answered_once_and_goes_to_the_inbox(self):
+        import json
+        aid = self.run_t("action", "add", "Raise the pay floor to", "55k?", "--options", "Accept|Decline")
+        self.assertIn("[options: Accept | Decline]", self.run_t("action", "list"))
+        self.assertIn(aid + ": Accept", self.run_t("action", "answer", aid, "accept"))
+        data = json.loads((Path(self.dir) / "tracker.json").read_text(encoding="utf-8"))
+        action = next(a for a in data["actions"] if a["id"] == aid)
+        self.assertEqual((action["done"], action["answer"]), (True, "Accept"))
+        self.assertEqual(self.waiting()[0].split(" | ")[2], "Answer to a question: Raise the pay floor to 55k? Answer: Accept")
+        out = subprocess.run([sys.executable, str(TRACKER), "action", "answer", aid, "Decline"], env=self.env, capture_output=True, text=True)
+        self.assertNotEqual(out.returncode, 0)
+        self.assertIn("already answered", out.stderr)
+
+    def test_answers_must_be_one_of_the_options(self):
+        aid = self.run_t("action", "add", "Keep BLAST out?", "--options", "Yes|No")
+        out = subprocess.run([sys.executable, str(TRACKER), "action", "answer", aid, "Maybe"], env=self.env, capture_output=True, text=True)
+        self.assertNotEqual(out.returncode, 0)
+        plain = self.run_t("action", "add", "Call the recruiter")
+        out = subprocess.run([sys.executable, str(TRACKER), "action", "answer", plain, "Yes"], env=self.env, capture_output=True, text=True)
+        self.assertIn("not a question", out.stderr)
+        out = subprocess.run([sys.executable, str(TRACKER), "action", "add", "One option only", "--options", "Yes"], env=self.env, capture_output=True, text=True)
+        self.assertIn("2 to 6 choices", out.stderr)
+
+    def test_a_question_about_a_role_sends_its_answer_to_that_role(self):
+        aid = self.run_t("action", "add", "Draft for Acme?", "--role", "acme", "--options", "Yes|No")
+        self.run_t("action", "answer", aid, "Yes")
+        line = self.waiting()[0].split(" | ")
+        self.assertEqual(line[1], "acme")
+
+    def test_a_general_change_can_go_to_the_inbox_without_a_role(self):
+        self.assertTrue(self.run_t("inbox", "add", "--task", "Update preferences.md to match search.json").startswith("i"))
+        self.assertEqual(self.run_t("inbox", "add", "--task", "Update preferences.md to match search.json"), "Already waiting")
+        self.assertEqual(self.waiting()[0].split(" | ")[1], "")
+
+    def test_list_older_than_only_shows_roles_found_that_long_ago(self):
+        import json
+        path = Path(self.dir) / "tracker.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["roles"][0]["found"] = "2026-01-01"
+        path.write_text(json.dumps(data), encoding="utf-8")
+        self.run_t("add", "--id", "fresh", "--title", "New Role", "--company", "Fresh Ltd")
+        out = self.run_t("list", "--older-than", "21")
+        self.assertIn("acme", out)
+        self.assertNotIn("fresh", out)
+
     def test_action_done_and_reopen(self):
         aid = self.run_t("action", "add", "Call the recruiter")
         self.run_t("action", "done", aid)
