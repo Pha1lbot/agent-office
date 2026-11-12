@@ -196,6 +196,76 @@ function leadRows() {
     (ui.leadFilter === "all" || (ui.leadFilter === "none" ? !r.verdict : ui.leadFilter.startsWith("list:") ? r.list === ui.leadFilter.slice(5) : r.verdict === ui.leadFilter)))
     .sort((a, b) => (a.priority || 999) - (b.priority || 999) || (b.updated || "").localeCompare(a.updated || ""));
 }
+// ---------- Sources: which job sites are being reached ----------
+const SRC_RESULT = { ok: ["Working", "ok"], empty: ["Reached, nothing new", "ok"], blocked: ["Blocked", "bad"], "needs-key": ["Needs a key", "bad"], error: ["Error", "bad"] };
+const PICKED = ["shortlisted", "drafted", "approved", "applied", "interview", "offer"];
+function daysSince(stamp) {
+  if (!stamp) return null;
+  const then = new Date(`${stamp.slice(0, 10)}T12:00:00`), now = new Date(`${todayKey()}T12:00:00`);
+  return Math.round((now - then) / 864e5);
+}
+function whenLabel(stamp) {
+  const d = daysSince(stamp);
+  if (d === null) return "Never";
+  return d <= 0 ? `Today ${stamp.slice(11, 16)}` : d === 1 ? "Yesterday" : `${d} days ago`;
+}
+function sourceRows() {
+  const f = store.tracker.found || {}, logged = f.sources || {}, listed = f.listed || [];
+  const names = [...listed.map((s) => s.name), ...Object.keys(logged).filter((n) => !listed.some((s) => s.name === n))];
+  return names.map((name) => {
+    const s = logged[name] || null, how = (listed.find((l) => l.name === name) || {}).how || "";
+    const d = s ? daysSince(s.last_checked) : null;
+    const [label, tone0] = s ? (SRC_RESULT[s.result] || [s.result || "?", "bad"]) : ["Not checked yet", "bad"];
+    const stale = d === null || d > 7;
+    const picked = roles().filter((r) => r.source === name && PICKED.some((st) => ever(r, st))).length;
+    return { name, how, s, label, tone: stale && tone0 === "ok" ? "warn" : tone0, when: whenLabel(s && s.last_checked), stale, picked, reached: !!s && !stale && (s.result === "ok" || s.result === "empty") };
+  });
+}
+function renderSources() {
+  const rows = sourceRows();
+  if (!rows.length) return "";
+  const reached = rows.filter((r) => r.reached).length, editing = store.system.editing;
+  const body = ui.srcOpen === false ? "" : `<div class="tbl-wrap"><table class="tbl" style="min-width:720px"><thead><tr><th>Site</th><th>Read by</th><th>Last checked</th><th>Result</th><th>Leads: last / total</th><th>You picked</th></tr></thead><tbody>${rows.map((r) =>
+    `<tr><td><span class="r-title">${esc(r.name)}</span>${r.s && r.s.note ? `<span class="r-co" title="${esc(r.s.note)}">${esc(r.s.note.slice(0, 80))}</span>` : ""}</td><td>${esc(r.how)}</td><td>${esc(r.when)}</td>
+     <td><span class="tg src-${r.tone}">${esc(r.label)}</span></td><td>${r.s ? `${r.s.found || 0} / ${r.s.total || 0}` : "—"}</td><td>${r.picked || "—"}</td></tr>`).join("")}</tbody></table></div>`;
+  return `<section class="card flush sources" aria-label="Job sites"><div class="tbl-head"><div class="row1"><div><h2>Job sites</h2><span class="sub">${reached} of ${rows.length} reached in the last week${reached < rows.length ? ": the others need a look" : ""}</span></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn sm" data-scout="toggle">${ui.srcOpen === false ? "Show" : "Hide"}</button>${editing ? `<button type="button" class="btn sm" data-scout="keys">Job site keys</button><button type="button" class="btn sm primary" data-scout="run" id="scout-run">Check sources now</button>` : ""}</div></div></div>${body}</section>`;
+}
+function openKeys() {
+  const have = store.tracker.keys || {};
+  const field = (id, label, hint) => `<label class="keys-field"><span>${label} <span class="tg ${have[id] ? "src-ok" : "src-bad"}">${have[id] ? "Set" : "Not set"}</span></span><input type="password" name="${id}" autocomplete="off" spellcheck="false" placeholder="${have[id] ? "Leave blank to keep the current one" : "Paste it here"}"><small class="sub">${hint}</small></label>`;
+  const dlg = document.createElement("dialog");
+  dlg.className = "dlg";
+  dlg.innerHTML = `<form method="dialog" class="dlg-body" style="display:flex;flex-direction:column;gap:14px;min-width:min(440px,86vw)">
+    <h3 style="margin:0">Job site keys</h3>
+    <p class="sub" style="margin:0">Free keys that let the search read Reed and Adzuna. They are saved on this PC only (in <code>shared/job-search/.env</code>), never sent to GitHub, and never shown again.</p>
+    ${field("REED_API_KEY", "Reed API key", 'Sign up free at <a href="https://www.reed.co.uk/developers/jobseeker" target="_blank" rel="noopener">reed.co.uk/developers/jobseeker</a>')}
+    ${field("ADZUNA_APP_ID", "Adzuna application ID", 'Sign up free at <a href="https://developer.adzuna.com/overview" target="_blank" rel="noopener">developer.adzuna.com</a>')}
+    ${field("ADZUNA_APP_KEY", "Adzuna application key", "From the same Adzuna page")}
+    <p class="sub" id="keys-msg" style="margin:0;min-height:1.2em"></p>
+    <div style="display:flex;gap:8px;justify-content:flex-end"><button type="button" class="btn" data-k="cancel">Cancel</button><button type="button" class="btn primary" data-k="save">Save keys</button></div></form>`;
+  document.body.appendChild(dlg);
+  dlg.addEventListener("close", () => dlg.remove());
+  dlg.addEventListener("click", async (e) => {
+    const b = e.target.closest("[data-k]");
+    if (!b) return;
+    if (b.dataset.k === "cancel") return dlg.close();
+    const values = {};
+    for (const input of dlg.querySelectorAll("input")) if (input.value.trim()) values[input.name] = input.value.trim();
+    if (!Object.keys(values).length) return dlg.close();
+    b.disabled = true; b.textContent = "Saving…";
+    try { const r = await post("/api/keys", values); dlg.close(); toast(r.changed.length ? "Keys saved on this PC" : "Nothing to save"); }
+    catch (err) { dlg.querySelector("#keys-msg").textContent = err.message; b.disabled = false; b.textContent = "Save keys"; }
+  });
+  dlg.showModal();
+}
+async function runScoutNow(button) {
+  button.disabled = true; button.textContent = "Searching…";
+  try { const r = await post("/api/scout", {}); toast(r.summary || "Job search done"); }
+  catch (err) { toast(err.message); }
+  finally { button.disabled = false; button.textContent = "Check sources now"; }
+}
+
 function renderLeads() {
   const open = roles().filter((r) => r.status === "found"), dismissed = roles().filter((r) => r.status === "skipped");
   const lists = [...new Set(open.map((r) => r.list).filter(Boolean))].sort();
@@ -225,7 +295,7 @@ function renderLeads() {
         <td><div class="acts">${acts}</div></td></tr>`;
     }).join("")}</tbody></table></div>`;
   }
-  $("v-leads").innerHTML = `<section class="card flush" aria-label="Leads">${head}${body}</section>`;
+  $("v-leads").innerHTML = `<section class="card flush" aria-label="Leads">${head}${body}</section>${renderSources()}`;
 }
 async function setStatus(id, status, message, undoTo) {
   try {
@@ -234,6 +304,8 @@ async function setStatus(id, status, message, undoTo) {
   } catch (err) { toast(err.message); }
 }
 $("v-leads").addEventListener("click", (e) => {
+  const sc = e.target.closest("[data-scout]");
+  if (sc) { if (sc.dataset.scout === "run") void runScoutNow(sc); else if (sc.dataset.scout === "keys") openKeys(); else { ui.srcOpen = ui.srcOpen === false; ui.animate = false; renderLeads(); } return; }
   const b = e.target.closest("[data-lead], [data-chip]");
   if (!b) { const row = e.target.closest("tr[data-role]"); if (row && !e.target.closest("a")) location.hash = `#role/${row.dataset.role}`; return; }
   if (b.dataset.chip) { ui.leadFilter = b.dataset.chip; ui.animate = false; renderLeads(); return; }

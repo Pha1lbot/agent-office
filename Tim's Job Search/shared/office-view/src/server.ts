@@ -15,6 +15,8 @@ import { readFile, stat, writeFile } from "node:fs/promises";
 import { existsSync, readFileSync, watchFile } from "node:fs";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { listSources, scoutDue, scoutSummary } from "./scout.ts";
+import { keyStatus, setKeys } from "./keys.ts";
 import { WebSocketServer, WebSocket } from "ws";
 import { Office, type Report } from "./office.ts";
 import { Tracker, findClaude, findPython, repoOf, run } from "./tools.ts";
@@ -63,7 +65,8 @@ const TYPES: Record<string, string> = {
 const office = new Office();
 let tracker: { roles: { id: string; title: string; company: string; status?: string; url?: string }[]; inbox?: { done: boolean }[]; error?: string; found?: Found } = { roles: [] };
 // The review queue from Rita's daily search and the job-alert email scan (jobs/found.json).
-type Found = { items: { found_at?: string }[]; runs: unknown[]; last_email_scan?: string };
+type Found = { items: { found_at?: string }[]; runs: unknown[]; last_email_scan?: string; sources?: Record<string, { last_checked?: string }>; listed?: { name: string; how: string }[] };
+const ENV_FILE = join(dirname(TRACKER), "..", "shared", "job-search", ".env"); // Reed and Adzuna keys: never saved to GitHub, never sent to the page
 const FOUND = join(dirname(TRACKER), "found.json");
 let tool: Tracker | null = null;
 let backup: Backup;
@@ -79,8 +82,10 @@ async function loadTracker() {
     const f = JSON.parse(await readFile(FOUND, "utf8")) as Found;
     const week = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 16);
     // The page only needs the last week's finds and runs.
-    tracker.found = { items: (f.items || []).filter((i) => (i.found_at || "") >= week), runs: (f.runs || []).slice(-10), last_email_scan: f.last_email_scan || "" };
-  } catch { tracker.found = { items: [], runs: [] }; }
+    tracker.found = { items: (f.items || []).filter((i) => (i.found_at || "") >= week), runs: (f.runs || []).slice(-10), last_email_scan: f.last_email_scan || "", sources: f.sources || {} };
+  } catch { tracker.found = { items: [], runs: [], sources: {} }; }
+  (tracker as { keys?: object }).keys = await keyStatus(ENV_FILE); // which keys are set, never their values
+  tracker.found!.listed = await listSources(join(dirname(TRACKER), "..", "shared", "job-search", "search.json"));
   return (tracker.inbox || []).filter((i) => !i.done).length;
 }
 
@@ -164,6 +169,21 @@ const pushSystem = () => broadcast({ type: "system", system: systemStatus() });
 function ada<T>(text: string, work: () => Promise<T>, done = "Done"): Promise<T> {
   pushAgents(office.ada(true, text));
   return work().finally(() => pushAgents(office.ada(false, done)));
+}
+
+let scouting = false;
+/** Scout (Ada's free job search): reads the job sites and queues leads. No tokens. */
+async function runScout(): Promise<{ ok: boolean; summary: string }> {
+  if (!tool) return { ok: false, summary: "Searching needs Python 3 on this PC." };
+  if (scouting) return { ok: false, summary: "Scout is already searching." };
+  scouting = true;
+  try {
+    const r = await ada("Searching job sites", () =>
+      run(tool!.python, [join(REPO, "shared", "tools", "scout.py"), "run"], REPO, { JOBS_DIR: dirname(TRACKER), PYTHONIOENCODING: "utf-8" }, 290_000), "Job search done");
+    const summary = scoutSummary(r.out);
+    await afterEdit(r.ok ? summary.replace(/^Scout: /, "job search: ") : "job search failed");
+    return { ok: r.ok, summary };
+  } finally { scouting = false; }
 }
 
 /** Ada makes the PDFs as soon as Tim approves a role that has Word files. No tokens. */
@@ -426,6 +446,22 @@ const server = createServer(async (req, res) => {
       return json(res, 200, { ok: true });
     }
 
+    if (url.pathname === "/api/keys") {
+      try {
+        const changed = await setKeys(ENV_FILE, body);
+        await loadTracker();
+        broadcast({ type: "tracker", tracker });
+        return json(res, 200, { ok: true, changed });
+      } catch (error) {
+        return json(res, 400, { error: (error as Error).message }); // never includes the value
+      }
+    }
+
+    if (url.pathname === "/api/scout") {
+      const r = await runScout();
+      return json(res, r.ok ? 200 : 409, r.ok ? { ok: true, summary: r.summary } : { error: r.summary });
+    }
+
     if (url.pathname === "/api/cos") {
       if (!cos) return json(res, 503, { error: "Claude Code isn't installed on this PC." });
       if (typeof body.auto === "boolean") cos.setAuto(body.auto);
@@ -524,6 +560,8 @@ if (python) {
   cos.inboxChanged(initialInbox, false);
 }
 if (!claude) console.log("Claude Code not found: Hal won't start automatically. Run /cos yourself.");
+// Scout runs once a day without being asked, a little after the office opens (set OFFICE_SCOUT_AUTO=0 to stop it).
+if (process.env.OFFICE_SCOUT_AUTO !== "0") setTimeout(() => { if (tool && scoutDue(tracker.found?.sources)) void runScout(); }, 90_000);
 // Polling works the same on Windows, macOS and Linux, and survives the file being replaced.
 watchFile(FOUND, { interval: 2000 }, async () => {
   await loadTracker();

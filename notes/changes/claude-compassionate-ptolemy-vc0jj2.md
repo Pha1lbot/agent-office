@@ -11,6 +11,31 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: The office shows which job sites are reached, and holds the job site keys
+
+**What changed**
+- `Tim's Job Search/shared/office-view/src/scout.ts` (new): which sources the search definition lists and who reads each (Scout, alert emails, or Rita); whether Scout has already run on today's UK date; Scout's one-line summary.
+- `src/keys.ts` (new): adds or replaces the Reed and Adzuna keys in `shared/job-search/.env`. Values must be 8 to 128 letters, digits, hyphens or underscores (so one can't carry a new line or another setting); blank values leave a key alone; other lines in the file are kept; the page can only learn "set" or "not set", never a value; an error message never repeats the value.
+- `src/server.ts`: the coverage table and the key status go to the page; `POST /api/scout` ("Check sources now": runs `scout.py run` through Ada, then saves the result like any office edit); `POST /api/keys`; and Scout runs once a day on its own, 90 seconds after the office opens, if nothing was checked today (`OFFICE_SCOUT_AUTO=0` stops it).
+- `public/views.js` and `style.css`: a "Job sites" panel under the leads (every listed site: who reads it, when it was last checked, working / blocked / needs a key / not checked yet, leads last and in total, how many Tim picked; red or amber when a site is failing or hasn't been reached for a week), a "Check sources now" button and a "Job site keys" dialog.
+- `test/scout.test.ts` and `test/keys.test.ts`: 9 new tests (49 in all). The same files in `Hal's Job Search/`.
+
+**Why**
+Tim's complaint was that many sites were never touched, and that finding `.env` on Windows was hard. The panel makes a missed site visible; the dialog replaces the file hunt.
+
+**Decisions**
+- Keys are written to the PC only. The cloud copy of the Reed key was added separately through the secure form, because a cloud session can't see the PC's `.env`.
+- The office's own `backup.ts` only stages `jobs/` and the CV rules, and `.env` is in `.gitignore`, so a key can't reach GitHub by this route.
+- The panel lists sources from `search.json`, so a site that was never checked appears as "Not checked yet", which is exactly the gap Tim described.
+
+**How to check it**
+- `npm test` and `npm run check` in each office's `shared/office-view` (49 tests).
+- On a copy of the office with Tim's real coverage data: the Leads page showed "5 of 15 reached in the last week"; a fake key saved through the dialog was in `.env`, `/api/state` showed `REED_API_KEY: true` and not the value, and a value containing a new line was refused (400) without being repeated.
+
+**Open items**
+- The "Define my search" page and one-tap questions are still to do. The keys dialog opens from the Leads page, not yet from there.
+- Restart the office to see the new panel.
+
 ### 2026-11-12: Tim's first real Reed results were noisy; Scout's filter tightened
 
 **What changed**

@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Job sites panel, "Check sources now" and the job site keys dialog (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/office-view/`: new `src/scout.ts` and `src/keys.ts`; `src/server.ts`, `public/views.js` and `public/style.css` updated; new `test/scout.test.ts` and `test/keys.test.ts` (49 tests pass).
+
+**Why**
+Tim Everard asked for code changes to go into both offices.
+
+**Decisions**
+Code only. Hal's search definition is still blank, so his panel lists the sources with nothing checked yet. His `.env` and other files were not opened.
+
+**How to check it**
+`npm test` in Hal's `shared/office-view`; restart his office to see the panel.
+
+**Open items**
+None.
+
 ### 2026-11-12: Scout's stricter filter (ported from Tim's office)
 
 **What changed**
