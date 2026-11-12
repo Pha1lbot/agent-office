@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In progress. Fourth pull request of the 2026-11-12 work (#18, #19, #20, #28, #29 and #30 are merged): the learning loop.
+**Status:** In review ([PR #31](https://github.com/Pha1lbot/agent-office/pull/31): the learning loop). Earlier work merged in PRs #18, #19, #20, #28, #29 and #30.
 
 ## Purpose
 
