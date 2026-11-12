@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #30](https://github.com/Pha1lbot/agent-office/pull/30): one-tap questions and Define my search). Earlier work merged in PRs #18, #19, #20, #28 and #29.
+**Status:** In progress. Fourth pull request of the 2026-11-12 work (#18, #19, #20, #28, #29 and #30 are merged): the learning loop.
 
 ## Purpose
 
@@ -10,6 +10,34 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-12: The learning loop: your decisions only, a scorecard, a review prompt and one-tap reasons
+
+**What changed**
+- `shared/tools/tracker.py` (both offices):
+  - `insights` now counts only the owner's own decisions (a status change whose "by" isn't `hal` or `ada`). Roles the team dismissed are listed apart ("8 more were dismissed by the team and are not counted"). New sections: the team's verdict against your decisions (Apply, Maybe, Skip, none, by picked and skipped); lead to application by source; found and picked by kind of work (from the track tag in each role's notes); follow-ups due.
+  - `insights --scorecard`: ten lines on whether the team is helping (decisions, how often the team's Apply and Skip verdicts matched, average fit picked and skipped, sources that give most picks, kinds of work, applied/interviews/offers, days from finding to applying, follow-ups due, skips with a reason, dismissed by the team).
+  - `review-due`: after 10 decisions by the owner since the last entry in `jobs/preference-reviews.md`, asks once as a question with one-tap answers ("Yes, review" / "Not yet"); won't ask again while unanswered, or for a week after "Not yet".
+- `.claude/skills/cos/SKILL.md` (both offices): daily search step 6c runs `review-due` and, on Mondays, puts the scorecard at the foot of `today.md`; a "Yes, review" answer runs the preference review and asks each suggestion as its own Accept or Decline question, so no chat is needed.
+- `shared/office-view` (`public/views.js`, `dashboard.js`, `index.html`, both offices): dismissing a lead opens a one-tap "Why not <company>?" (pay too low, too far or too office-based, wrong kind of work, too junior, too senior, not this employer, too much travel, already closed; skipping is fine); the skip and reject form has the same chips beside the reason.
+- `test_tracker.py`: 3 new tests (19 in each office).
+
+**Why**
+Part of the plan Tim approved on 2026-11-11. No preference review had ever run (Hal only offered one in an interactive session), the review would have learnt from Hal's own dismissals as if they were Tim's (8 of 30 skips), only 11 of 30 skips had a reason, and nothing showed whether the team was helping.
+
+**Decisions**
+- "By Tim" means "not by the team" (any `by` other than `hal` or `ada`, including older changes with none recorded), because the import and early office edits did not record who made them.
+- Asking through the one-tap questions means a review costs Tim a few taps rather than a conversation, and it works from the phone once that is synced.
+- The scorecard shows facts (counts and matches), not advice; the reviews are where suggestions come from.
+
+**How to check it**
+- `python3 shared/tools/test_tracker.py` in each office (19 tests); `npm test` and `npm run check` (57).
+- On Tim's real tracker: the scorecard reads 16 picked and 19 skipped by him, 8 dismissed by the team; 0 of 14 LinkedIn alert leads picked against 12 of 42 from the old dashboard; Hal's Skip verdicts matched his skips 9 of 12 times. `review-due` asks (35 decisions since the start, no review yet).
+- In a browser on a copy: dismissing a lead showed the reasons and "Pay too low" was saved on the role.
+
+**Open items**
+- The first daily run after merging will ask the "Preference review due" question, since no review has ever been logged.
+- Only the owner's decisions are scored; the next step, suggestions from the scorecard, is the review itself.
 
 ### 2026-11-12: Closed postings, and a week more on the posting age
 

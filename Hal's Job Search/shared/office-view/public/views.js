@@ -340,13 +340,36 @@ function renderLeads() {
   }
   $("v-leads").innerHTML = `<section class="card flush" aria-label="Leads">${head}${body}</section>${renderSources()}`;
 }
+// ---------- Why? One tap when a lead is dismissed, so the team learns what Tim doesn't want ----------
+const SKIP_REASONS = ["Pay too low", "Too far or too office-based", "Wrong kind of work", "Too junior", "Too senior", "Not this employer", "Too much travel", "Already closed"];
+function askWhy(role) {
+  if (!role) return;
+  const dlg = document.createElement("dialog");
+  dlg.className = "dlg";
+  dlg.innerHTML = `<form method="dialog" class="dlg-body" style="display:flex;flex-direction:column;gap:12px;min-width:min(420px,86vw)">
+    <h3 style="margin:0">Why not ${esc(role.company)}?</h3>
+    <p class="sub" style="margin:0">One tap helps the team learn what you don't want. Optional.</p>
+    <div class="chips" role="group" aria-label="Reason">${SKIP_REASONS.map((r) => `<button type="button" class="chip" data-why="${esc(r)}">${esc(r)}</button>`).join("")}</div>
+    <div style="display:flex;justify-content:flex-end"><button type="button" class="btn" data-why-skip>Skip</button></div></form>`;
+  document.body.appendChild(dlg);
+  dlg.addEventListener("close", () => dlg.remove());
+  dlg.addEventListener("click", async (e) => {
+    if (e.target.closest("[data-why-skip]")) return dlg.close();
+    const chip = e.target.closest("[data-why]");
+    if (!chip) return;
+    try { await post(`/api/roles/${role.id}`, { changes: { reason: chip.dataset.why } }); toast(`Noted: ${chip.dataset.why}`); } catch (err) { toast(err.message); }
+    dlg.close();
+  });
+  dlg.showModal();
+}
 async function setStatus(id, status, message, undoTo) {
   try {
     await post(`/api/roles/${id}`, { changes: { status } });
     toast(message, undoTo ? () => post(`/api/roles/${id}`, { changes: { status: undoTo } }).catch((e) => toast(e.message)) : null);
-  } catch (err) { toast(err.message); }
+    return true;
+  } catch (err) { toast(err.message); return false; }
 }
-$("v-leads").addEventListener("click", (e) => {
+$("v-leads").addEventListener("click", async (e) => {
   const sc = e.target.closest("[data-scout]");
   if (sc) { if (sc.dataset.scout === "run") void runScoutNow(sc); else if (sc.dataset.scout === "keys") openKeys(); else if (sc.dataset.scout === "search") openSearch(); else { ui.srcOpen = ui.srcOpen === false; ui.animate = false; renderLeads(); } return; }
   const b = e.target.closest("[data-lead], [data-chip]");
@@ -356,7 +379,7 @@ $("v-leads").addEventListener("click", (e) => {
   if (act === "toggle") { ui.leadShow = ui.leadShow === "dismissed" ? "open" : "dismissed"; renderLeads(); }
   else if (act === "add") $("add-role").click();
   else if (act === "move" && r) setStatus(id, "shortlisted", `Moved to Roles. Wren will write the CV and cover letter for ${r.company}.`, "found");
-  else if (act === "dismiss" && r) setStatus(id, "skipped", `Dismissed ${r.company}. Add a reason on its page if you like.`, "found");
+  else if (act === "dismiss" && r) { if (await setStatus(id, "skipped", `Dismissed ${r.company}.`, "found")) askWhy(r); }
   else if (act === "restore" && r) setStatus(id, "found", `${r.company} is back in Leads.`, "skipped");
   else if (act === "tailor" && r) openTailor(id);
 });
@@ -497,13 +520,13 @@ function renderFound() {
   $("found-body").innerHTML = `<p class="sub" style="margin:0 0 12px">${runLine} Rita searches your job sites (and Tim reads your job-alert emails) when you run the daily search; Tim sorts what they find.</p>
     ${fb.items.length ? `<h3 class="found-h">${dayWord(fb.day) === "this morning" ? "This morning" : `Found ${dayWord(fb.day)}`}: ${fb.added.length} added, ${fb.dismissed.length} dismissed</h3><div class="list">${[...fb.added, ...fb.pending, ...fb.dismissed].map(row).join("")}</div>` : emptyBox("Nothing new yet", "New finds appear here after the morning search.")}`;
 }
-document.addEventListener("click", (e) => {
+document.addEventListener("click", async (e) => {
   const b = e.target.closest("[data-found]");
   if (!b) { if (e.target === $("found-dlg")) $("found-dlg").close(); return; }
   const act = b.dataset.found, r = b.dataset.id && roleById(b.dataset.id);
   if (act === "open") { renderFound(); $("found-dlg").showModal(); }
   else if (act === "close") $("found-dlg").close();
-  else if (act === "dismiss" && r) setStatus(r.id, "skipped", `Dismissed ${r.company}.`, "found");
+  else if (act === "dismiss" && r) { if (await setStatus(r.id, "skipped", `Dismissed ${r.company}.`, "found")) askWhy(r); }
   else if (act === "restore" && r) setStatus(r.id, "found", `${r.company} added to Leads.`, "skipped");
 });
 on("tracker", () => { if ($("found-dlg").open) renderFound(); });
