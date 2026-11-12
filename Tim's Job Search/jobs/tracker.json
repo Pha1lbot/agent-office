@@ -926,18 +926,24 @@
       "notes": "Posted: 20 Oct",
       "fit": 2,
       "priority": 23,
-      "status": "found",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-06",
+      "updated": "2026-11-12",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-12",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
       "verdict": "skip",
-      "verdict_why": "From saved details: facilities management, not events, tournament or broadcast operations"
+      "verdict_why": "From saved details: facilities management, not events, tournament or broadcast operations",
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-05-big-global-events-senior-producer",
@@ -1085,7 +1091,7 @@
       "list": "Transition roles",
       "notes": "Posted: 31 Oct",
       "fit": 2,
-      "priority": 24,
+      "priority": 23,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",

@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 24 · shortlisted: 5 · drafted: 3 · applied: 5 · skipped: 31
+found: 23 · shortlisted: 5 · drafted: 3 · applied: 5 · skipped: 32
 
 ## Next actions
 
@@ -36,8 +36,7 @@ found: 24 · shortlisted: 5 · drafted: 3 · applied: 5 · skipped: 31
 | found | 20 | [Production Manager - Brand Activations and Live Events](https://uk.linkedin.com/jobs/view/production-manager-live-events-at-blank-space-recruitment-4484319909) | Blank Space Recruitment (events agency client) | from GBP 50,000 plus benefits | London | 2 |  | 2026-11-06 |
 | found | 21 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-06 |
 | found | 22 | [Event Director, HLTH Europe](https://www.linkedin.com/jobs/view/4479433111/) | Hyve Group | Not listed | London | 2 |  | 2026-11-06 |
-| found | 23 | [Head of Facilities Operations](https://www.linkedin.com/jobs/view/4478693926/) | Surrey County Cricket Club (The Oval) | Not listed | London | 2 |  | 2026-11-06 |
-| found | 24 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
+| found | 23 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | shortlisted |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-05 |
 | shortlisted |  | [AI Programme Manager (12-month fixed term)](https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v) | techUK | Not shown | London, hybrid |  |  | 2026-11-05 |
@@ -65,6 +64,7 @@ found: 24 · shortlisted: 5 · drafted: 3 · applied: 5 · skipped: 31
 | skipped | 22 | [Manager, Marketing Operations](https://www.linkedin.com/jobs/view/4485604099/) | Snap Inc. | Not listed | London | 1 |  | 2026-11-09 |
 | skipped | 22 | [TikTok Shop Creator Operations Manager](https://www.linkedin.com/jobs/view/4484128473/) | TikTok | Not listed | London | 1 |  | 2026-11-09 |
 | skipped | 22 | [Senior Premium Experience Manager, fixed term](https://www.linkedin.com/jobs/view/4481587358/) | Formula E | Not listed | London, hybrid | 2 |  | 2026-11-09 |
+| skipped | 23 | [Head of Facilities Operations](https://www.linkedin.com/jobs/view/4478693926/) | Surrey County Cricket Club (The Oval) | Not listed | London | 2 |  | 2026-11-12 |
 | skipped | 23 | [Producer (Games), UK only](https://hitmarker.net/jobs/futurlab-producer-games-uk-only-remote-hybrid-brighton-5408504) | FuturLab | Not listed | Remote UK or hybrid Brighton | 1 |  | 2026-11-09 |
 | skipped | 24 | [Producer, Star Trek Fleet Command](https://hitmarker.net/jobs/scopely-producer-star-trek-fleet-command-5472927) | Scopely | Not listed | London | 1 |  | 2026-11-09 |
 | skipped | 25 | [Senior Core Services Delivery Manager (ExCeL London)](https://www.linkedin.com/jobs/view/4481683436/) | GES UK & Europe | Not listed | London | 2 |  | 2026-11-12 |
