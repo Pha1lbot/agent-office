@@ -513,3 +513,13 @@ details.rules textarea { width: 100%; margin-top: 8px; min-height: 140px; }
 .btn:not(.primary) .n-badge { background: var(--hover); color: var(--text-2); }
 .tg.new { color: #8EC1FF; border-color: #1f3554; background: #14243A; }
 @media (max-width: 760px) { .found { flex-direction: column; } }
+
+/* Job sites panel (Leads) */
+.tg.src-ok { color: #7FE0B4; border-color: #22432f; background: #12241a; }
+.tg.src-warn { color: #F2C46D; border-color: #4A3C1E; background: #241E12; }
+.tg.src-bad { color: #F08A8A; border-color: #4d2323; background: #2a1414; }
+.sources { margin-top: 16px; }
+.keys-field { display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+.keys-field input { background: var(--side); color: var(--text); border: 1px solid var(--line-2); border-radius: var(--r); padding: 9px 12px; font: inherit; }
+.keys-field input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.keys-field small a { color: var(--accent); }

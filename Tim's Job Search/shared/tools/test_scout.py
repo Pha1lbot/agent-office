@@ -337,6 +337,31 @@ class RealDefinition(unittest.TestCase):
         item, _ = self.judge("Esports Programme Manager", "Run our esports league.")
         self.assertEqual(item["track"], "Esports and gaming operations")
 
+    def test_reeds_first_real_results_that_were_noise_are_left_out(self):
+        # Tim's first Reed dry run on 2026-11-12 listed these as fits. None belongs in his leads.
+        noise = [("Account Director - Event Services", "Michael Page Sales", "London"),
+                 ("Event Senior Director of Sales", "Live Recruitment", "EC2M1QS"),
+                 ("Head of Marketing - Events", "Lipton Media", "EC1A1AA"),
+                 ("Head of Operations", "Tiger Recruitment", "W1G0EF"),
+                 ("Head of Service Operations", "SR2", "London"),
+                 ("Head of Operations (Telecommunications)", "Rise Technical Recruitment Limited", "Slough"),
+                 ("Head of Expert Network & Operations", "Inventum Group", "London"),
+                 ("Head of IT Operations", "Red Dot Search UK Limited", "BL11RU"),
+                 ("Technical Operations Director", "Teemz Ltd", "London"),
+                 ("Interim Director of Operations", "TPP Recruitment", "London")]
+        for title, company, loc in noise:
+            item, why = self.judge(title, "A permanent role based in the city. Hybrid working.", company=company, location=loc)
+            self.assertIsNone(item, (title, company))
+
+    def test_london_postcodes_count_as_in_reach_and_recruiters_are_never_strong(self):
+        item, why = self.judge("Head of Esports Operations", "Esports tournaments.", company="Acme Games", location="EC2M1QS")
+        self.assertEqual((item["fit"], item["concern"]), ("strong", ""))
+        item, why = self.judge("Head of Esports Operations", "Esports tournaments.", company="Tiger Recruitment", location="London")
+        self.assertEqual(item["fit"], "possible")
+        self.assertIn("recruiter", item["concern"])
+        _, why = self.judge("Head of Esports Operations", "Esports. Hybrid, two days in the office.", company="Acme Games", location="BL11RU")
+        self.assertEqual(why, "outside commute, not remote")
+
 
 if __name__ == "__main__":
     unittest.main()

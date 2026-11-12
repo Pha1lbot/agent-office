@@ -1,7 +1,7 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #28](https://github.com/Pha1lbot/agent-office/pull/28): fixes and plain staff messages; PRs 2 to 4 of the 2026-11-11 review to follow). Earlier work merged in PRs #18, #19 and #20.
+**Status:** In review ([PR #29](https://github.com/Pha1lbot/agent-office/pull/29): Scout filter). Earlier work merged in PRs #18, #19, #20 and #28.
 
 ## Purpose
 
@@ -10,6 +10,55 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 ## Change log
 
 Newest entries first. Never delete or rewrite old entries.
+
+### 2026-11-12: The office shows which job sites are reached, and holds the job site keys
+
+**What changed**
+- `Tim's Job Search/shared/office-view/src/scout.ts` (new): which sources the search definition lists and who reads each (Scout, alert emails, or Rita); whether Scout has already run on today's UK date; Scout's one-line summary.
+- `src/keys.ts` (new): adds or replaces the Reed and Adzuna keys in `shared/job-search/.env`. Values must be 8 to 128 letters, digits, hyphens or underscores (so one can't carry a new line or another setting); blank values leave a key alone; other lines in the file are kept; the page can only learn "set" or "not set", never a value; an error message never repeats the value.
+- `src/server.ts`: the coverage table and the key status go to the page; `POST /api/scout` ("Check sources now": runs `scout.py run` through Ada, then saves the result like any office edit); `POST /api/keys`; and Scout runs once a day on its own, 90 seconds after the office opens, if nothing was checked today (`OFFICE_SCOUT_AUTO=0` stops it).
+- `public/views.js` and `style.css`: a "Job sites" panel under the leads (every listed site: who reads it, when it was last checked, working / blocked / needs a key / not checked yet, leads last and in total, how many Tim picked; red or amber when a site is failing or hasn't been reached for a week), a "Check sources now" button and a "Job site keys" dialog.
+- `test/scout.test.ts` and `test/keys.test.ts`: 9 new tests (49 in all). The same files in `Hal's Job Search/`.
+
+**Why**
+Tim's complaint was that many sites were never touched, and that finding `.env` on Windows was hard. The panel makes a missed site visible; the dialog replaces the file hunt.
+
+**Decisions**
+- Keys are written to the PC only. The cloud copy of the Reed key was added separately through the secure form, because a cloud session can't see the PC's `.env`.
+- The office's own `backup.ts` only stages `jobs/` and the CV rules, and `.env` is in `.gitignore`, so a key can't reach GitHub by this route.
+- The panel lists sources from `search.json`, so a site that was never checked appears as "Not checked yet", which is exactly the gap Tim described.
+
+**How to check it**
+- `npm test` and `npm run check` in each office's `shared/office-view` (49 tests).
+- On a copy of the office with Tim's real coverage data: the Leads page showed "5 of 15 reached in the last week"; a fake key saved through the dialog was in `.env`, `/api/state` showed `REED_API_KEY: true` and not the value, and a value containing a new line was refused (400) without being repeated.
+
+**Open items**
+- The "Define my search" page and one-tap questions are still to do. The keys dialog opens from the Leads page, not yet from there.
+- Restart the office to see the new panel.
+
+### 2026-11-12: Tim's first real Reed results were noisy; Scout's filter tightened
+
+**What changed**
+- `shared/tools/scout.py` (both offices):
+  - A generic title ("Head of Operations", "Operations Director", "Production Manager"...) now needs one of the track's own words in the advert to match that track.
+  - Hybrid roles outside London and Surrey are no longer allowed: outside the commute area only fully remote roles pass. London and Surrey postcodes (EC, WC, SW, KT and so on) now count as in reach.
+  - A recruiter's advert (company name like "... Recruitment", "... Search", "Michael Page", "Hays") is kept but never marked strong, with the concern "recruiter's advert (employer may not be named)".
+- `Tim's Job Search/shared/job-search/search.json`: more wrong-work words (sales, marketing, account director and manager, business development, IT operations and service, telecoms, finance, HR, recruitment, legal); more growth words for the scale-up track.
+- `Tim's Job Search/shared/tools/test_scout.py`: two tests, including the ten results below (22 tests; Hal's office has 17).
+
+**Why**
+Tim ran `scout.py run --source Reed --dry-run` on his PC. Reed worked (635 results read, 11 fits), but the ten listed fits were sales and marketing directors, an IT operations head, a telecoms role, a Bolton postcode and several recruitment agencies, not his kind of work. He sent a screenshot; nothing had been queued (dry run).
+
+**Decisions**
+- Stricter, not looser: a missed lead costs a little, a flood of wrong leads makes Hal's sorting expensive and hides the good ones. The coverage log and the Sources panel show what each site gave, so over-strictness would be visible.
+- Hybrid no longer passes outside the commute area, because Tim goes in three days a week; the "Hybrid, London" roles still pass.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` in each office. Tim: run `python ..\tools\scout.py run --source Reed --dry-run` again; the list should be shorter and better.
+
+**Open items**
+- Re-run on Tim's PC to judge the new list.
+- Adzuna's key; Reed also needs activating for the cloud copy (401 there).
 
 ### 2026-11-12: Hal's and Rita's daily search instructions use Scout and the definition
 

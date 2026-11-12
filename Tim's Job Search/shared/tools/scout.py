@@ -166,7 +166,10 @@ def pay_text(low, high, currency="GBP"):
 # ---------- Judging a job against the definition ----------
 
 GENERIC_TITLES = {"head of operations", "director of operations", "senior operations manager", "operations director",
-                  "vp operations", "head of events", "chief of staff", "production manager", "head of production"}
+                  "vp operations", "head of events", "chief of staff", "production manager", "head of production",
+                  "head of service operations", "operations manager", "senior operations resource planning manager"}
+# Recruiters' own adverts: often the employer is unnamed, so they are kept but marked and never "strong".
+AGENCY = re.compile(r"\b(recruit\w*|staffing|resourcing|headhunt\w*|talent|search|michael page|page personnel|hays|robert half|adecco|randstad|manpower|harvey nash)\b", re.I)
 HARD_LOW = re.compile(r"\b(intern|internship|junior|graduate|trainee|apprentice|assistant|coordinator)\b")
 SOFT_LOW = re.compile(r"\b(executive|associate|specialist|administrator)\b")
 SENIOR = re.compile(r"\b(head|director|vp|vice president|chief|principal|senior)\b")
@@ -175,7 +178,7 @@ UK_WORDS = re.compile(r"\b(united kingdom|uk|gb|great britain|england|scotland|w
                       r"birmingham|leeds|bristol|brighton|reading|guildford|croydon|epsom|kingston|richmond|slough|oxford|"
                       r"cambridge|southampton|edinburgh|glasgow|cardiff|belfast|leicester|nottingham|sheffield|liverpool|"
                       r"newcastle|woking|sutton|crawley|wimbledon|twickenham|watford)\b")
-COMMUTE_AREA = re.compile(r"\b(london|surrey|epsom|kingston|croydon|sutton|guildford|woking|wimbledon|richmond|twickenham|"
+COMMUTE_AREA = re.compile(r"\b((?:ec|wc|nw|se|sw|kt|sm|cr|rh|gu|tw|ha|ub|sl|br|da|en|ig|rm|wd|e|n|w)\d[a-z\d]*|london|surrey|epsom|kingston|croydon|sutton|guildford|woking|wimbledon|richmond|twickenham|"
                           r"slough|reading|crawley|watford|greater london|south east)\b")
 
 
@@ -227,7 +230,7 @@ def judge(job, source_name, defn, today=None):
     if not in_uk and not (remote and not country and re.search(r"\b(uk|united kingdom)\b", norm(title + " " + desc[:400]))):
         return None, "not in the UK"
     if not remote and not COMMUTE_AREA.search(loc):
-        if loc and not re.fullmatch(r"(united kingdom|uk|gb|england|great britain)", loc) and not re.search(r"\b(remote|hybrid)\b", norm(desc[:1500])):
+        if loc and not re.fullmatch(r"(united kingdom|uk|gb|england|great britain)", loc) and not re.search(r"\b(fully remote|remote first|100 remote|work from anywhere|remote working|home based)\b", norm(desc[:1500])):
             return None, "outside commute, not remote"
     pay = job.get("pay", "")
     low = yearly_pay(pay)
@@ -244,9 +247,13 @@ def judge(job, source_name, defn, today=None):
         keyword = any(has_word(context, k) for k in track.get("keywords", []))
         if track.get("require_keyword") and not keyword:
             continue  # this track is only for the sectors named in its keywords
-        strong = keyword and (phrase.lower() not in GENERIC_TITLES or track.get("priority", 9) <= 3)
+        if phrase.lower() in GENERIC_TITLES and not keyword:
+            continue  # "Head of Operations" says nothing about the sector: it needs the track's own words
+        agency = bool(AGENCY.search(company))
+        strong = keyword and not agency and (phrase.lower() not in GENERIC_TITLES or track.get("priority", 9) <= 3)
         concern = "; ".join(x for x in (
             "contract" if job.get("contract") else "",
+            "recruiter's advert (employer may not be named)" if agency else "",
             "" if in_uk and (remote or COMMUTE_AREA.search(loc)) else "check the location",
         ) if x)
         return {

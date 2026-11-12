@@ -24,13 +24,28 @@
     "BLAST"
   ],
   "avoid_work": [
-    "compliance",
+    "account director",
+    "account manager",
+    "accounts payable",
     "billing",
-    "trading",
-    "dealing",
+    "business development",
+    "compliance",
     "crypto",
+    "dealing",
+    "finance",
+    "financial",
+    "hr",
+    "human resources",
+    "it operations",
+    "it service",
+    "legal",
+    "marketing",
     "payroll",
-    "accounts payable"
+    "recruitment",
+    "sales",
+    "telecommunications",
+    "telecoms",
+    "trading"
   ],
   "tracks": [
     {
@@ -151,11 +166,17 @@
         "Chief of Staff"
       ],
       "keywords": [
-        "scale-up",
-        "startup",
+        "early stage",
+        "fast growing",
         "growth",
+        "high growth",
+        "rapidly growing",
+        "scale up",
+        "scale-up",
+        "scaling",
         "series a",
         "series b",
+        "startup",
         "venture"
       ],
       "not": [
