@@ -242,6 +242,8 @@ def judge(job, source_name, defn, today=None):
         if not level_ok(title, track.get("min_level", "senior manager")):
             continue
         keyword = any(has_word(context, k) for k in track.get("keywords", []))
+        if track.get("require_keyword") and not keyword:
+            continue  # this track is only for the sectors named in its keywords
         strong = keyword and (phrase.lower() not in GENERIC_TITLES or track.get("priority", 9) <= 3)
         concern = "; ".join(x for x in (
             "contract" if job.get("contract") else "",

@@ -92,6 +92,14 @@ class Judge(unittest.TestCase):
         self.assertIsNotNone(self.check(pay="£450 per day")[0])  # a day rate isn't compared with the yearly floor
         self.assertIn("contract", self.check(contract=True)[0]["concern"])
 
+    def test_a_track_can_require_its_sector_words(self):
+        defn = {**DEFN, "tracks": [{"id": "pm", "name": "Project management", "priority": 1, "min_level": "manager", "require_keyword": True,
+                                    "titles": ["Programme Manager"], "keywords": ["esports", "events"], "not": []}]}
+        kept, _ = scout.judge(job(title="Programme Manager", description="A live events programme."), "Test", defn, today=TODAY)
+        self.assertIsNotNone(kept)
+        dropped, why = scout.judge(job(title="Programme Manager", description="Retail banking change."), "Test", defn, today=TODAY)
+        self.assertEqual((dropped, why), (None, "no track matches"))
+
 
 PAGE = """<html><head><script type="application/ld+json">{
  "@type": "JobPosting", "title": "Head of Esports Operations", "datePosted": "%s",
@@ -273,6 +281,43 @@ class EndToEnd(unittest.TestCase):
         self.assertEqual({k: v[0]["board"] for k, v in found.items()}, {"greenhouse": "acmegames", "lever": "acme-games"})
         saved = json.loads(search.read_text(encoding="utf-8"))
         self.assertEqual(saved["sources"][0]["boards"], [{"board": "acmegames", "company": "Acme Games"}])
+
+
+class RealDefinition(unittest.TestCase):
+    """The project management track, judged against Tim's actual search.json."""
+
+    def setUp(self):
+        real = HERE.parent / "job-search" / "search.json"
+        if not real.exists():
+            self.skipTest("no search.json in this office")
+        self.defn = json.loads(real.read_text(encoding="utf-8"))
+        if not any(t["id"] == "project-programme" for t in self.defn.get("tracks", [])):
+            self.skipTest("this office has no project track")
+
+    def judge(self, title, desc, **kw):
+        return scout.judge(job(title=title, description=desc, **kw), "Test", self.defn, today=TODAY)
+
+    def test_senior_project_and_programme_roles_in_his_sectors_are_kept(self):
+        for title, desc in [("Senior Project Manager", "Delivering esports tournaments across Europe."),
+                            ("Programme Manager", "A live events programme for a football club."),
+                            ("Head of PMO", "Gaming studio portfolio office."),
+                            ("Delivery Manager", "AI automation delivery for a media group.")]:
+            item, why = self.judge(title, desc)
+            self.assertIsNotNone(item, (title, why))
+            self.assertEqual(item["track"], "Project and programme management", title)
+
+    def test_the_wrong_kind_or_level_of_project_role_is_left_out(self):
+        for title, desc in [("Senior Project Manager", "Construction of a new office building."),
+                            ("Project Manager", "Esports tournaments."),
+                            ("Project Coordinator", "Events."),
+                            ("Junior Project Manager", "Gaming."),
+                            ("Senior Project Manager", "Retail banking systems change."),
+                            ("Programme Manager", "Network infrastructure rollout for telecoms.")]:
+            self.assertIsNone(self.judge(title, desc, company="Acme Ltd")[0], (title, desc))
+
+    def test_an_esports_operations_title_still_goes_to_the_higher_track(self):
+        item, _ = self.judge("Esports Programme Manager", "Run our esports league.")
+        self.assertEqual(item["track"], "Esports and gaming operations")
 
 
 if __name__ == "__main__":

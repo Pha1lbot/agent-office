@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Scout tracks can require their sector words (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/scout.py` and `test_scout.py`: a track can set `require_keyword`; one new test (16 tests pass).
+
+**Why**
+Part of adding a project management track to Tim Everard's own search. Code only; Hal's search definition is still blank and his CV, preferences, tracker and roles were not opened.
+
+**Decisions**
+None.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` in Hal's office.
+
+**Open items**
+None.
+
 ### 2026-11-11: Scout and the coverage log (ported from Tim's office)
 
 **What changed**

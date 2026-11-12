@@ -7,6 +7,7 @@ Not a review of decisions: Tim answered a set of questions about what he is look
 - Kept: Esports and gaming operations; Live events and event production; Sports and venues operations; Head of Operations at scale-ups; Freelancer and workforce operations
 - Added: AI operations as a learning or support role (Tim doesn't code)
 - Dropped: Broadcast production operations; Marketing operations
+- Added later (2026-11-12): Project and programme management, senior level in his sectors only (esports, gaming, live events, sport, AI)
 - Confirmed (were guesses): minimum pay £50,000; 3 office days; about 1 hour commute from Epsom; contract if the day rate is good; a few event trips a year
 - Level: Senior Manager and above, plus Manager at gaming and esports employers
 - Employers: watch esports organisers, game publishers, sport and live entertainment, AI and tech firms; avoid BLAST only

@@ -11,6 +11,28 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Project and programme management added as a track
+
+**What changed**
+- `Tim's Job Search/shared/job-search/search.json`: a 7th track, "Project and programme management" (lowest priority). Titles: Senior Project Manager, Programme Manager, Senior Programme Manager, Head of PMO, Head of Programme Delivery, Delivery Manager, Project Director, Programme Director, Head of Project Management. Sector words: esports, gaming, games, live events, events, sport, football, venue, festival, AI, automation. A new `require_keyword` setting means the advert must use one of them.
+- `preferences.md` (seven kinds of work, item 7), `sources.md` (a LinkedIn and Indeed alert for it) and `jobs/preference-reviews.md` (an "added later" line) say the same in plain English.
+- `shared/tools/scout.py` (both offices): a track can set `require_keyword`, and then a job only matches if its title, company or advert uses one of the track's words.
+- `shared/tools/test_scout.py`: a generic test for `require_keyword` (both offices) and three tests against Tim's real `search.json` (Tim's office only): senior project and programme roles in his sectors are kept; a construction, banking or telecoms one, a plain Project Manager, a coordinator and a junior are left out; an esports programme title still goes to the higher track.
+
+**Why**
+Tim said on 2026-11-12 that he's happy for project management roles too. Asked how wide, he chose senior project or programme roles in his own sectors (esports, gaming, live events, sport, AI), not any level or any industry.
+
+**Decisions**
+- Sector words are required for this track. "Project Manager" is a very common title; without that, every industry's project roles would be queued. Other tracks keep their keywords as a ranking hint only, because their titles are already specific.
+- Plain "Project Manager" is not in the title list, so it never matches; "Programme Manager" and "Delivery Manager" count as senior enough on their own.
+- Priority 7, so the same job under another track is filed there first.
+
+**How to check it**
+`python3 shared/tools/test_scout.py` in each office: 19 tests in Tim's, 16 in Hal's. Writing the tests found two weaknesses (Programme Manager judged too junior; a construction role kept because sector words only ranked), both fixed.
+
+**Open items**
+Hal's definition is blank, so nothing changes for him except the new `require_keyword` option.
+
 ### 2026-11-11: Scout, a free job-search script (PR 2, part 2)
 
 **What changed**

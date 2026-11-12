@@ -1,6 +1,6 @@
 {
   "_about": "Tim's search definition: the one place scripts and agents read what to look for and where. Edit it in the office ('Define my search') or with Hal. preferences.md and sources.md say the same in plain English. Pay is a yearly figure in pounds.",
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "where": {
     "home": "Epsom, Surrey",
     "country": "UK",
@@ -230,6 +230,53 @@
         "data engineer",
         "devops"
       ]
+    },
+    {
+      "id": "project-programme",
+      "name": "Project and programme management",
+      "priority": 7,
+      "min_level": "manager",
+      "level_note": "Only the senior titles listed (Senior Project Manager, Programme Manager, Head of PMO, Delivery Manager...), and only at employers in his sectors: the advert must use one of the keywords. Plain Project Manager and coordinator roles are not in the list.",
+      "titles": [
+        "Senior Project Manager",
+        "Programme Manager",
+        "Senior Programme Manager",
+        "Head of PMO",
+        "Head of Programme Delivery",
+        "Delivery Manager",
+        "Project Director",
+        "Programme Director",
+        "Head of Project Management"
+      ],
+      "keywords": [
+        "esports",
+        "gaming",
+        "games",
+        "live events",
+        "events",
+        "sport",
+        "football",
+        "venue",
+        "festival",
+        "ai",
+        "automation"
+      ],
+      "not": [
+        "construction",
+        "civil",
+        "engineering",
+        "infrastructure",
+        "software",
+        "clinical",
+        "technical programme",
+        "coordinator",
+        "assistant",
+        "junior",
+        "building",
+        "property",
+        "telecoms"
+      ],
+      "require_keyword": true
     }
   ],
   "watch": [

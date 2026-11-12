@@ -38,5 +38,6 @@ LinkedIn and Indeed block automated reading, so their own alert emails are the w
 | "Head of Operations" OR "Director of Operations" scale-up | Scale-ups |
 | "Freelancer operations" OR "Workforce operations" OR "Resource planning manager" | Freelancer and workforce |
 | "AI programme manager" OR "AI enablement" OR "AI adoption" | AI learning and support |
+| "Senior Project Manager" OR "Programme Manager" OR "Head of PMO" with esports, gaming, events, sport or AI | Project and programme management |
 
 Add the pay filter £50,000+ where the site has one, and "Remote" or "Hybrid" for London and Surrey.

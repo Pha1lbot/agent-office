@@ -6,7 +6,7 @@ Hal will suggest changes based on which roles you pick and skip, and only saves 
 
 ## What I'm looking for
 
-Six kinds of work, in this order. Roles in earlier ones rank higher.
+Seven kinds of work, in this order. Roles in earlier ones rank higher.
 
 1. **Esports and gaming operations.** Head of / Director of operations, tournament, league or live operations, esports programme management, at studios, publishers and tournament organisers. A Manager title is fine here.
 2. **Live events and event production.** Event Director, Head of Events or Live Events, Event Operations Director, Production Manager. Senior Manager and above.
@@ -14,6 +14,7 @@ Six kinds of work, in this order. Roles in earlier ones rank higher.
 4. **Head of Operations at scale-ups.** General operations leadership at growing companies, any sector. Senior Manager and above.
 5. **Freelancer and workforce operations.** Running pools of freelancers or contractors: booking, contracts, payments, rotas, resource planning. Senior Manager and above.
 6. **AI operations: learning and support roles.** AI programme, enablement, adoption or operations manager roles. I don't code, so a role where I learn and support the work is right; engineering, data science and research roles are not.
+7. **Project and programme management.** Senior Project Manager, Programme Manager, Head of PMO, Delivery Manager, in my sectors only: esports, gaming, live events, sport and AI. Senior level and above, so plain Project Manager and coordinator roles are left out. Added 2026-11-12.
 
 Not looking for: broadcast production and marketing operations (dropped 2026-11-11), compliance, billing, trading, crypto or payroll work, and anything at BLAST (my last employer).
 
