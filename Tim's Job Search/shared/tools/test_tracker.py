@@ -126,6 +126,54 @@ class TrackerTests(unittest.TestCase):
         self.assertIn("acme", out)
         self.assertNotIn("fresh", out)
 
+    def history(self, role_id, *entries):
+        import json
+        path = Path(self.dir) / "tracker.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        role = next(r for r in data["roles"] if r["id"] == role_id)
+        role["history"] = [{"date": d, "status": s, **({"by": by} if by else {})} for d, s, by in entries]
+        role["status"] = entries[-1][1]
+        path.write_text(json.dumps(data), encoding="utf-8")
+
+    def many(self, n, status, by, verdict="maybe", prefix="r"):
+        for i in range(n):
+            rid = f"{prefix}-{status}-{by or 'none'}-{i}"
+            self.run_t("add", "--id", rid, "--title", f"Role {rid}", "--company", "Co")
+            self.history(rid, ("2026-11-01", "found", None), ("2026-11-05", status, by))
+            self.run_t("set", rid, f"verdict={verdict}")
+
+    def test_insights_count_only_the_owners_decisions(self):
+        self.many(3, "skipped", "tim")
+        self.many(2, "skipped", "hal")
+        self.many(1, "skipped", "ada")
+        self.many(2, "shortlisted", None)
+        out = self.run_t("insights")
+        self.assertIn("2 picked, 3 skipped by you (3 more were dismissed by the team and are not counted)", out)
+        self.assertIn("Dismissed by the team (not counted as your decisions): 3", self.run_t("insights", "--scorecard"))
+
+    def test_the_scorecard_says_how_often_the_teams_verdict_matched(self):
+        self.many(3, "skipped", "tim", verdict="skip", prefix="s")
+        self.many(1, "shortlisted", "tim", verdict="skip", prefix="p")
+        self.many(2, "shortlisted", "tim", verdict="apply", prefix="a")
+        card = self.run_t("insights", "--scorecard")
+        self.assertIn("said Apply, you picked: 2 of 2", card)
+        self.assertIn("said Skip, you skipped: 3 of 4", card)
+
+    def test_review_due_waits_for_ten_decisions_then_asks_once_and_respects_not_yet(self):
+        import json
+        self.many(9, "skipped", "tim")
+        self.assertIn("No review due: 9 of 10", self.run_t("review-due"))
+        self.many(1, "skipped", "tim", prefix="x")
+        self.assertIn("asked (10 decisions", self.run_t("review-due"))
+        self.assertIn("Already asked", self.run_t("review-due"))
+        aid = next(l.split(" | ")[0] for l in self.run_t("action", "list").splitlines() if "Preference review due" in l)
+        self.assertIn("[options: Yes, review | Not yet]", self.run_t("action", "list"))
+        self.run_t("action", "answer", aid, "Not yet")
+        self.assertIn("not asking again for a week", self.run_t("review-due"))
+        # a review logged today resets the count
+        (Path(self.dir) / "preference-reviews.md").write_text("# Preference reviews\n\n## 2026-11-12\nDecisions reviewed: 10\n", encoding="utf-8")
+        self.assertIn("No review due: 0 of 10", self.run_t("review-due"))
+
     def test_action_done_and_reopen(self):
         aid = self.run_t("action", "add", "Call the recruiter")
         self.run_t("action", "done", aid)

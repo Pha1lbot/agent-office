@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Learning loop: owner-only insights, scorecard, review prompt, skip reasons (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/tools/tracker.py` and `test_tracker.py`; `shared/office-view` (`public/views.js`, `dashboard.js`, `index.html`); `.claude/skills/cos/SKILL.md`: the same changes, with the Chief of Staff called Tim.
+
+**Why**
+Tim Everard asked for code changes to go into both offices.
+
+**Decisions**
+Code and instructions only. Hal's own tracker, roles and preferences were not opened.
+
+**How to check it**
+`python3 shared/tools/test_tracker.py` (19) and `npm test` (57) in Hal's office.
+
+**Open items**
+None.
+
 ### 2026-11-12: Closed-postings check, posting age field (ported from Tim's office)
 
 **What changed**

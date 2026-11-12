@@ -620,9 +620,103 @@ def work_style(location):
     return "office/unstated"
 
 
-def decided_on(role, statuses, since):
-    """True if the role reached one of these statuses on or after since."""
-    return any(h["status"] in statuses and h["date"] >= since for h in role["history"])
+AUTOMATION = {"hal", "ada"}  # the Chief of Staff and the office's automation; any other "by" (or none) is the owner's own decision
+
+
+def by_owner(entry):
+    return entry.get("by") not in AUTOMATION
+
+
+def decided_on(role, statuses, since, owner_only=False):
+    """True if the role reached one of these statuses on or after since (by the owner, if owner_only)."""
+    return any(h["status"] in statuses and h["date"] >= since and (not owner_only or by_owner(h)) for h in role["history"])
+
+
+def ever_reached(role, statuses):
+    return role["status"] in statuses or any(h["status"] in statuses for h in role["history"])
+
+
+def role_track(role):
+    m = re.search(r"Track: ([^;]+)", role.get("notes") or "")
+    return m.group(1).strip() if m else ""
+
+
+def follow_up_due(role, now=None):
+    """The date of a 'Follow up if no reply by D Mon' next step if it has passed, else None."""
+    m = re.search(r"by (\d{1,2}) ([A-Z][a-z]{2})", role.get("next") or "")
+    if not m or role["status"] != "applied":
+        return None
+    now = now or uk_now()
+    try:
+        when = datetime.strptime(f"{m.group(1)} {m.group(2)} {now.year}", "%d %b %Y").replace(tzinfo=now.tzinfo)
+    except ValueError:
+        return None
+    if (when - now).days > 300:
+        when = when.replace(year=now.year - 1)
+    return when.date() if when < now - timedelta(days=1) else None
+
+
+def last_review_date():
+    """The date of the newest entry in jobs/preference-reviews.md, or the start of time."""
+    try:
+        text = (JOBS / "preference-reviews.md").read_text(encoding="utf-8")
+    except OSError:
+        return "0000-00-00"
+    found = re.search(r"^## (\d{4}-\d{2}-\d{2})", text, re.M)
+    return found.group(1) if found else "0000-00-00"
+
+
+def owner_decisions(roles, since):
+    picked = [r for r in roles if decided_on(r, PICKED, since, True)]
+    passed = [r for r in roles if decided_on(r, PASSED, since, True) and r not in picked]
+    return picked, passed
+
+
+def scorecard_lines(roles, picked, passed, since):
+    """Ten lines on whether the team is helping."""
+    lines = []
+    verdicts = Counter()
+    for r in picked:
+        verdicts[(r.get("verdict") or "none", "picked")] += 1
+    for r in passed:
+        verdicts[(r.get("verdict") or "none", "skipped")] += 1
+    apply_n = verdicts[("apply", "picked")] + verdicts[("apply", "skipped")]
+    skip_n = verdicts[("skip", "picked")] + verdicts[("skip", "skipped")]
+    lines.append(f"Decisions you made: {len(picked)} picked, {len(passed)} skipped")
+    lines.append("Hal said Apply, you picked: " + (f"{verdicts[('apply', 'picked')]} of {apply_n}" if apply_n else "no Apply verdicts yet")
+                 + "; said Skip, you skipped: " + (f"{verdicts[('skip', 'skipped')]} of {skip_n}" if skip_n else "no Skip verdicts yet"))
+    scored = {"picked": [r["fit"] for r in picked if r.get("fit")], "skipped": [r["fit"] for r in passed if r.get("fit")]}
+    lines.append("Average fit score: picked " + (f"{statistics.mean(scored['picked']):.1f}" if scored["picked"] else "none")
+                 + ", skipped " + (f"{statistics.mean(scored['skipped']):.1f}" if scored["skipped"] else "none"))
+    recent = [r for r in roles if (r.get("found") or "") >= since]
+    by_source = {}
+    for r in recent:
+        s = by_source.setdefault(r.get("source") or "unknown", [0, 0])
+        s[0] += 1
+        s[1] += ever_reached(r, PICKED)
+    best = sorted(((p / n, n, name) for name, (n, p) in by_source.items() if n >= 3), reverse=True)
+    lines.append("Sources that give you most picks: " + (", ".join(f"{name} ({by_source[name][1]} of {n})" for _, n, name in best[:3]) or "not enough leads yet"))
+    tracks = Counter(role_track(r) for r in recent if role_track(r))
+    picked_tracks = Counter(role_track(r) for r in recent if role_track(r) and ever_reached(r, PICKED))
+    lines.append("Kinds of work found (picked): " + (", ".join(f"{t.split(' ')[0]} {n} ({picked_tracks[t]})" for t, n in tracks.most_common(5)) or "none tagged yet"))
+    applied = [r for r in roles if ever_reached(r, {"applied"})]
+    interviews = [r for r in roles if ever_reached(r, {"interview"})]
+    offers = [r for r in roles if ever_reached(r, {"offer"})]
+    lines.append(f"Applied {len(applied)}, interviews {len(interviews)}, offers {len(offers)}")
+    days = []
+    for r in applied:
+        applied_on = next((h["date"] for h in r["history"] if h["status"] == "applied"), None)
+        if applied_on and r.get("found"):
+            days.append((datetime.strptime(applied_on, "%Y-%m-%d") - datetime.strptime(r["found"], "%Y-%m-%d")).days)
+    lines.append("Days from finding a role to applying (median): " + (f"{statistics.median(days):.0f}" if days else "none yet"))
+    due = [r for r in roles if follow_up_due(r)]
+    lines.append(f"Follow-ups due: {len(due)}" + (" (" + ", ".join(r["company"] for r in due[:4]) + ")" if due else ""))
+    reasoned = sum(1 for r in passed if r.get("reason"))
+    lines.append(f"Skips with a reason: {reasoned} of {len(passed)}" + (" (a reason from you helps the team learn)" if passed and reasoned < len(passed) else ""))
+    team = [r for r in roles if r["status"] == "skipped" and not decided_on(r, PASSED, "0000-00-00", True)]
+    lines.append(f"Dismissed by the team (not counted as your decisions): {len(team)}")
+    return lines
+
 
 
 def money(value):
@@ -632,12 +726,19 @@ def money(value):
 def cmd_insights(args):
     since = args.since or "0000-00-00"
     roles = load()["roles"]
-    picked = [r for r in roles if decided_on(r, PICKED, since)]
-    passed = [r for r in roles if decided_on(r, PASSED, since) and r not in picked]
+    # Only the owner's own decisions count: roles the team dismissed (Chief of Staff or automation) are listed apart.
+    picked, passed = owner_decisions(roles, since)
+    team = [r for r in roles if decided_on(r, PASSED, since) and not decided_on(r, PASSED, since, True) and r not in picked]
     outcomes = Counter(r["status"] for r in roles
                        if r["status"] in {"interview", "offer", "rejected"}
                        and decided_on(r, {r["status"]}, since))
-    print(f"Decisions since {args.since or 'the start'}: {len(picked)} picked, {len(passed)} skipped"
+    if args.scorecard:
+        print("Scorecard" + (f" since {args.since}" if args.since else ""))
+        for line in scorecard_lines(roles, picked, passed, since):
+            print("  " + line)
+        return
+    print(f"Decisions since {args.since or 'the start'}: {len(picked)} picked, {len(passed)} skipped by you"
+          + (f" ({len(team)} more were dismissed by the team and are not counted)" if team else "")
           + (", outcomes: " + ", ".join(f"{n} {s}" for s, n in outcomes.items()) if outcomes else ""))
     if not picked and not passed:
         return
@@ -684,6 +785,67 @@ def cmd_insights(args):
     if not reasons:
         print("  none")
 
+    print("Team's verdict against your decisions:")
+    for v in ("apply", "maybe", "skip", "none"):
+        p_n = sum(1 for r in picked if (r.get("verdict") or "none") == v)
+        s_n = sum(1 for r in passed if (r.get("verdict") or "none") == v)
+        if p_n or s_n:
+            print(f"  {v}: you picked {p_n}, skipped {s_n}")
+    print("From lead to application, by source:")
+    funnel = {}
+    for r in roles:
+        if (r.get("found") or "") < since:
+            continue
+        row = funnel.setdefault(r.get("source") or "unknown", [0, 0, 0])
+        row[0] += 1
+        row[1] += ever_reached(r, PICKED)
+        row[2] += ever_reached(r, {"applied"})
+    for source, (n, p_n, a_n) in sorted(funnel.items(), key=lambda kv: -kv[1][0])[:8]:
+        print(f"  {source}: {n} leads, {p_n} picked, {a_n} applied")
+    kinds = {}
+    for r in roles:
+        kind = role_track(r)
+        if kind and (r.get("found") or "") >= since:
+            row = kinds.setdefault(kind, [0, 0])
+            row[0] += 1
+            row[1] += ever_reached(r, PICKED)
+    if kinds:
+        print("By kind of work (found, picked):")
+        for kind, (n, p_n) in sorted(kinds.items(), key=lambda kv: -kv[1][0]):
+            print(f"  {kind}: {n}, {p_n}")
+    due = [r for r in roles if follow_up_due(r)]
+    if due:
+        print("Follow-ups due: " + ", ".join(f"{r['company']} ({r['next']})" for r in due))
+
+
+REVIEW_AFTER = 10  # decisions since the last review before one is offered
+REVIEW_QUESTION = "Preference review due"
+
+
+def cmd_review_due(args):
+    """Ask, once, whether it is time to review the preferences: 10 or more decisions by the owner since the last review."""
+    data = load()
+    since = last_review_date()
+    picked, passed = owner_decisions(data["roles"], since)
+    n = len(picked) + len(passed)
+    if n < REVIEW_AFTER:
+        return print(f"No review due: {n} of {REVIEW_AFTER} decisions since {since if since != '0000-00-00' else 'the start'}")
+    for a in data["actions"]:
+        if a["text"].startswith(REVIEW_QUESTION):
+            if not a.get("done"):
+                return print("Already asked: waiting for an answer")
+            answered = (a.get("answered") or "")[:10]
+            if a.get("answer") == "Not yet" and answered and (uk_now().date() - datetime.strptime(answered, "%Y-%m-%d").date()).days < 7:
+                return print(f"Asked and answered 'Not yet' on {answered}: not asking again for a week")
+    action = {"id": f"a{len(data['actions']) + 1}",
+              "text": f"{REVIEW_QUESTION}: you have made {n} decisions since {since if since != '0000-00-00' else 'the start'}. Want the team's suggestions for your preferences?",
+              "role": "", "done": False, "created": today(), "options": ["Yes, review", "Not yet"]}
+    while any(a["id"] == action["id"] for a in data["actions"]):
+        action["id"] = "a" + str(int(action["id"][1:]) + 1)
+    data["actions"].append(action)
+    save(data)
+    print(f"{action['id']}: asked ({n} decisions since {since})")
+
 
 def main():
     parser = argparse.ArgumentParser(description="Job-search role tracker")
@@ -716,6 +878,7 @@ def main():
 
     ins = sub.add_parser("insights", help="patterns in Hal's decisions, for preference reviews")
     ins.add_argument("--since", help="only decisions on or after this date (YYYY-MM-DD)")
+    ins.add_argument("--scorecard", action="store_true", help="ten lines on whether the team is helping")
     ins.set_defaults(func=cmd_insights)
 
     act = sub.add_parser("action", help="Hal's next actions: add, done, list")
@@ -733,6 +896,9 @@ def main():
     inb.add_argument("ids", nargs="*")
     inb.add_argument("--all", action="store_true")
     inb.set_defaults(func=cmd_inbox)
+
+    rv = sub.add_parser("review-due", help="ask once if it is time for a preference review (10 or more decisions since the last)")
+    rv.set_defaults(func=cmd_review_due)
 
     rk = sub.add_parser("rank", help="number the To review roles best first (also done on every save)")
     rk.set_defaults(func=lambda a: (save(load()), cmd_list(argparse.Namespace(status="found", summary=False))))

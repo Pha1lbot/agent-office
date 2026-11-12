@@ -278,6 +278,7 @@ export function openEdit(id, status) {
 function editHints() {
   const st = editForm.elements.status.value;
   $("reason-wrap").hidden = !REASON_STATUSES.has(st) && !editing?.reason;
+  $("reason-chips").innerHTML = ["Pay too low", "Too far or too office-based", "Wrong kind of work", "Too junior", "Too senior", "Not this employer", "Too much travel"].map((r) => `<button type="button" class="chip" data-reason="${r}">${r}</button>`).join("");
   const changed = editing && st !== editing.status;
   const cos = store.system.cos;
   const needsHal = ["shortlisted", "interview"].includes(st);
@@ -324,3 +325,4 @@ on("tracker", () => { renderPipeline(); renderTodo(); });
 on("docs", renderPipeline);
 on("agents", renderTodo);
 on("system", () => { renderSystem(); renderPipeline(); });
+$("reason-chips").addEventListener("click", (e) => { const c = e.target.closest("[data-reason]"); if (c) { editForm.elements.reason.value = c.dataset.reason; editForm.elements.reason.focus(); } });
