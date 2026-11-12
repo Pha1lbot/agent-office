@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Daily search instructions use Scout and the definition (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/.claude/skills/cos/SKILL.md` ("Daily search") and `.claude/agents/lead-recruiter.md`: the same new flow as in Tim's office, with the Chief of Staff called Tim; `agents/lead-recruiter/README.md` and `agents/admin/README.md` updated.
+
+**Why**
+Tim Everard asked for code and instruction changes to go into both offices.
+
+**Decisions**
+Instructions only. Hal's own `search.json` is blank, so Scout finds nothing for him until he has made a definition; no daily task is created for him. His CV, preferences, tracker and roles were not opened.
+
+**How to check it**
+Read the section; try it after Hal has a definition.
+
+**Open items**
+Hal's definition session.
+
 ### 2026-11-12: Scout feed age limit, queued-jobs memory and board names (ported from Tim's office)
 
 **What changed**

@@ -11,6 +11,27 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Hal's and Rita's daily search instructions use Scout and the definition
+
+**What changed**
+- `Tim's Job Search/.claude/skills/cos/SKILL.md` ("Daily search"): Scout runs first (free); the alert-email scan is as before but each board is now logged; Rita is briefed only for the two web-only sites checked longest ago, so every site is reached at least weekly; Hal sorts by track using each find's `track` and `summary`; `today.md` gets one coverage line ("Reached 9 of 11 sites; ..."); a site that fails three runs in a row becomes an action for Tim. The queue format gains `track` and `summary`.
+- `Tim's Job Search/.claude/agents/lead-recruiter.md`: Rita reads `search.json`, takes only the sites Hal names, judges level against each find's own track, and replies per site (loaded, blocked or empty).
+- `agents/lead-recruiter/README.md` and `agents/admin/README.md`: describe the new split and Scout.
+- The same changes in `Hal's Job Search/` with the Chief of Staff called Tim (see `main-hals-job-search.md`).
+
+**Why**
+Steps 3 and 2e of the plan Tim approved. The daily 6:31 task runs these instructions from `main`, so they decide what the search actually does.
+
+**Decisions**
+- Done before the office screens, because the instructions change what the search finds; the screens only show it.
+- The daily task is created only after PR #28 is merged: the task pulls `main`, and `main` still has the old instructions.
+
+**How to check it**
+Read the "Daily search" section; the real test is the first daily run after merging (a `Reached N of M sites` line in `jobs/today.md` and rows in the Sources table).
+
+**Open items**
+- The Sources panel and "Define my search" page in the office; the daily task (after #28 is merged).
+
 ### 2026-11-12: Cloud access for company feeds, boards found, feed age limit
 
 **What changed**
