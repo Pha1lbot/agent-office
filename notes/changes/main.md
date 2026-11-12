@@ -11,6 +11,10 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: Job search: daily search, 3 new leads, 4 dismissed
+
+- Scout reached 5 of 6 sources (Reed needs its key in the cloud). Three Reed leads kept, four dismissed. Outlook returned a Microsoft error, and Event Industry Jobs and Work in Sports can't be reached from the cloud yet. Details in `Tim's Job Search/jobs/today.md`.
+
 ### 2026-11-11: Job search: finance meetings confirmed as Head of Esports Operations; BA profile reworded
 
 - Tim confirmed the fortnightly finance budget meetings were in his Head of Esports Operations role at BLAST. `Tim's Job Search/shared/job-search/cv/extra-from-tim.md` now files the fact under that role. This closes the open item in the entry below.

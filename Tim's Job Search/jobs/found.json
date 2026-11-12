@@ -330,7 +330,13 @@
       "concern": "",
       "track": "Head of Operations at scale-ups",
       "summary": "We take play seriously. We’re looking for curious adventurers ready to find their party, fueled by imagination and drive to build what’s never been built before. At Hasbro and Wizards of the Coast, you’ll collaborate with passionate teams to reimagine our iconic brands and create",
-      "found_at": "2026-11-12T13:51"
+      "found_at": "2026-11-12T13:51",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-12-hasbro-senior-manager-ad-operations-and-paid-me",
+        "reason": "Hal: advertising and paid media, wrong discipline",
+        "at": "2026-11-12T20:02"
+      }
     },
     {
       "id": "f17",
@@ -347,7 +353,13 @@
       "concern": "",
       "track": "Live events and event production",
       "summary": "Shape the Future of One of London's Most Iconic Destinations An exciting opportunity has arisen for an experienced events leader to join the Oxford Street Development Corporation (OSDC) as Interim Head of Events & Filming. Oxford Street is entering a transformative period, creati",
-      "found_at": "2026-11-12T13:51"
+      "found_at": "2026-11-12T13:51",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-12-reed-head-of-events",
+        "reason": "",
+        "at": "2026-11-12T20:02"
+      }
     },
     {
       "id": "f18",
@@ -364,7 +376,13 @@
       "concern": "",
       "track": "Head of Operations at scale-ups",
       "summary": "Head of Operations / Operations Manager - this premium consumer goods technology brand has grown to the stage where it is looking to recruit a full time Head of Operations / Operations Manager - a key role in the next stage of its continuing growth. You should be experienced in O",
-      "found_at": "2026-11-12T13:51"
+      "found_at": "2026-11-12T13:51",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-12-arlington-resource-management-head-of-operations",
+        "reason": "",
+        "at": "2026-11-12T20:02"
+      }
     },
     {
       "id": "f19",
@@ -381,7 +399,13 @@
       "concern": "",
       "track": "Head of Operations at scale-ups",
       "summary": "Head of Operations (Interim / Temporary ) Sutton Hybrid Working Available 35.00 - 45.00 per Hour 3-6 Month Temporary Assignment Immediate Start Available Are you a seasoned operational leader who can step into a business, quickly assess challenges, and create real impact from day",
-      "found_at": "2026-11-12T13:51"
+      "found_at": "2026-11-12T13:51",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-12-reed-head-of-operations",
+        "reason": "",
+        "at": "2026-11-12T20:02"
+      }
     },
     {
       "id": "f20",
@@ -398,7 +422,13 @@
       "concern": "",
       "track": "Head of Operations at scale-ups",
       "summary": "Head of Expert Network & Operations AI Startup | Build & Scale | London (5 Days Onsite) 70,000- 85,000 base salary (indicative, dependent on experience) Are you a high-energy operator who loves building things from scratch? Do you thrive in fast-moving environments where you can",
-      "found_at": "2026-11-12T13:51"
+      "found_at": "2026-11-12T13:51",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-12-inventum-group-head-of-expert-network-operations",
+        "reason": "Hal: five days on site in London; you want at most three",
+        "at": "2026-11-12T20:02"
+      }
     },
     {
       "id": "f21",
@@ -415,7 +445,13 @@
       "concern": "",
       "track": "Head of Operations at scale-ups",
       "summary": "Technical Operations Director , up to 170,000 base + Benefits | Fully Remote | Occasional UK & Ireland Travel High-Growth, Ambitious Technology Business Are you a transformational leader who knows how to turn operational complexity into outstanding performance? We are looking for",
-      "found_at": "2026-11-12T13:51"
+      "found_at": "2026-11-12T13:51",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-12-teemz-ltd-technical-operations-director",
+        "reason": "Hal: technical operations (IT), not your kind of operations",
+        "at": "2026-11-12T20:02"
+      }
     },
     {
       "id": "f22",
@@ -432,7 +468,13 @@
       "concern": "",
       "track": "Project and programme management",
       "summary": "Delivery Manager - SC Sponsorship Available SR2 has multiple exciting opportunities for Delivery Managers to join high-profile government digital programmes on a multi-year contract. You do not need to already hold SC Clearance - we can sponsor the clearance process for the right",
-      "found_at": "2026-11-12T13:51"
+      "found_at": "2026-11-12T13:51",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-12-sr2-delivery-manager-sc-sponsorship-availabl",
+        "reason": "Hal: government digital programmes needing clearance, outside your sectors",
+        "at": "2026-11-12T20:02"
+      }
     }
   ],
   "runs": [
@@ -531,63 +573,165 @@
       "found": 6,
       "note": "635 results read",
       "source": "Reed"
+    },
+    {
+      "at": "2026-11-12T20:00",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 54 looked possible from their titles, 54 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-12T20:00",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-12T20:00",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-12T20:00",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-12T20:00",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-12T20:00",
+      "via": "feed",
+      "found": 0,
+      "note": "add REED_API_KEY to shared/job-search/.env",
+      "source": "Reed"
+    },
+    {
+      "at": "2026-11-12T20:02",
+      "via": "web",
+      "found": 0,
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
+      "source": "Event Industry Jobs"
+    },
+    {
+      "at": "2026-11-12T20:02",
+      "via": "web",
+      "found": 0,
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
+      "source": "Work in Sports"
+    },
+    {
+      "at": "2026-11-12T20:02",
+      "via": "email",
+      "found": 0,
+      "note": "Outlook not reachable (502 error from Microsoft)",
+      "source": "LinkedIn Jobs"
+    },
+    {
+      "at": "2026-11-12T20:02",
+      "via": "email",
+      "found": 0,
+      "note": "Outlook not reachable (502 error from Microsoft)",
+      "source": "Indeed UK"
     }
   ],
   "last_email_scan": "2026-11-11T11:40:00Z",
   "sources": {
     "Hitmarker": {
       "total": 1,
-      "last_checked": "2026-11-12T13:51",
+      "last_checked": "2026-11-12T20:00",
       "result": "ok",
-      "found": 1,
-      "note": "5000 jobs listed, 153 looked possible from their titles, 100 read",
-      "last_ok": "2026-11-12T13:51",
+      "found": 0,
+      "note": "5000 jobs listed, 54 looked possible from their titles, 54 read",
+      "last_ok": "2026-11-12T20:00",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-12T13:51",
+      "last_checked": "2026-11-12T20:00",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-12T13:51",
+      "last_ok": "2026-11-12T20:00",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-12T13:51",
+      "last_checked": "2026-11-12T20:00",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-12T13:51",
+      "last_ok": "2026-11-12T20:00",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-12T13:51",
+      "last_checked": "2026-11-12T20:00",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-12T13:51",
+      "last_ok": "2026-11-12T20:00",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-12T13:51",
+      "last_checked": "2026-11-12T20:00",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-12T13:51",
+      "last_ok": "2026-11-12T20:00",
       "failures": 0
     },
     "Reed": {
       "total": 6,
-      "last_checked": "2026-11-12T13:51",
-      "result": "ok",
-      "found": 6,
-      "note": "635 results read",
-      "failures": 0,
+      "last_checked": "2026-11-12T20:00",
+      "result": "needs-key",
+      "found": 0,
+      "note": "add REED_API_KEY to shared/job-search/.env",
+      "failures": 1,
       "last_ok": "2026-11-12T13:51"
+    },
+    "Event Industry Jobs": {
+      "total": 0,
+      "last_checked": "2026-11-12T20:02",
+      "result": "blocked",
+      "found": 0,
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
+      "failures": 1
+    },
+    "Work in Sports": {
+      "total": 0,
+      "last_checked": "2026-11-12T20:02",
+      "result": "blocked",
+      "found": 0,
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
+      "failures": 1
+    },
+    "LinkedIn Jobs": {
+      "total": 0,
+      "last_checked": "2026-11-12T20:02",
+      "result": "blocked",
+      "found": 0,
+      "note": "Outlook not reachable (502 error from Microsoft)",
+      "failures": 1
+    },
+    "Indeed UK": {
+      "total": 0,
+      "last_checked": "2026-11-12T20:02",
+      "result": "blocked",
+      "found": 0,
+      "note": "Outlook not reachable (502 error from Microsoft)",
+      "failures": 1
     }
   }
 }
