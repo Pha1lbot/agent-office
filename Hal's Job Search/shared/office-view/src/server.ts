@@ -17,6 +17,7 @@ import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { listSources, scoutDue, scoutSummary } from "./scout.ts";
 import { keyStatus, setKeys } from "./keys.ts";
+import { applySearch, readSearch } from "./search.ts";
 import { WebSocketServer, WebSocket } from "ws";
 import { Office, type Report } from "./office.ts";
 import { Tracker, findClaude, findPython, repoOf, run } from "./tools.ts";
@@ -66,6 +67,8 @@ const office = new Office();
 let tracker: { roles: { id: string; title: string; company: string; status?: string; url?: string }[]; inbox?: { done: boolean }[]; error?: string; found?: Found } = { roles: [] };
 // The review queue from Rita's daily search and the job-alert email scan (jobs/found.json).
 type Found = { items: { found_at?: string }[]; runs: unknown[]; last_email_scan?: string; sources?: Record<string, { last_checked?: string }>; listed?: { name: string; how: string }[] };
+const SEARCH_FILE = join(dirname(TRACKER), "..", "shared", "job-search", "search.json"); // what to look for, edited in "Define my search"
+const SETTINGS_FILE = join(dirname(TRACKER), "..", "shared", "job-search", "settings.json"); // pay bands the ranking uses
 const ENV_FILE = join(dirname(TRACKER), "..", "shared", "job-search", ".env"); // Reed and Adzuna keys: never saved to GitHub, never sent to the page
 const FOUND = join(dirname(TRACKER), "found.json");
 let tool: Tracker | null = null;
@@ -84,6 +87,7 @@ async function loadTracker() {
     // The page only needs the last week's finds and runs.
     tracker.found = { items: (f.items || []).filter((i) => (i.found_at || "") >= week), runs: (f.runs || []).slice(-10), last_email_scan: f.last_email_scan || "", sources: f.sources || {} };
   } catch { tracker.found = { items: [], runs: [], sources: {} }; }
+  (tracker as { search?: object | null }).search = await readSearch(SEARCH_FILE);
   (tracker as { keys?: object }).keys = await keyStatus(ENV_FILE); // which keys are set, never their values
   tracker.found!.listed = await listSources(join(dirname(TRACKER), "..", "shared", "job-search", "search.json"));
   return (tracker.inbox || []).filter((i) => !i.done).length;
@@ -448,6 +452,28 @@ const server = createServer(async (req, res) => {
       return json(res, 200, { ok: true });
     }
 
+    if (url.pathname === "/api/search") {
+      if (!tool) return json(res, 503, { error: "Editing needs Python 3 on this PC." });
+      try {
+        const said = await applySearch(SEARCH_FILE, body);
+        if (!said.length) return json(res, 200, { ok: true, changed: [] });
+        // Keep the pay bands the ranking uses in step with the new pay.
+        const view = await readSearch(SEARCH_FILE);
+        try {
+          const settings = JSON.parse(await readFile(SETTINGS_FILE, "utf8"));
+          if (view?.pay.minimum != null) settings.minimum_pay = view.pay.minimum;
+          if (view?.pay.ideal != null) settings.ideal_pay = view.pay.ideal;
+          await writeFile(SETTINGS_FILE, JSON.stringify(settings, null, 2) + "\n", "utf8");
+        } catch { /* no settings file: nothing to keep in step */ }
+        const task = `Search settings changed in the office: ${said.join("; ")}. Update preferences.md and sources.md to match search.json, and log it in jobs/preference-reviews.md.`;
+        await tool.call(["inbox", "add", "--task", task.slice(0, 390)]);
+        await afterEdit("search settings changed");
+        return json(res, 200, { ok: true, changed: said });
+      } catch (error) {
+        return json(res, 400, { error: (error as Error).message });
+      }
+    }
+
     if (url.pathname === "/api/keys") {
       try {
         const changed = await setKeys(ENV_FILE, body);
@@ -538,7 +564,7 @@ let adaSaving = false;
 // for a PC that only pulls and where someone else looks after the repo.
 let gitBackup = true;
 try { gitBackup = JSON.parse(readFileSync(join(REPO, "shared", "job-search", "settings.json"), "utf8")).git_backup !== false; } catch { /* no settings: back up */ }
-backup = new Backup(gitBackup ? gitRepo : null, [dirname(TRACKER), CV_RULES], () => {
+backup = new Backup(gitBackup ? gitRepo : null, [dirname(TRACKER), CV_RULES, SEARCH_FILE, SETTINGS_FILE], () => {
   pushSystem();
   const saving = backup?.status.state === "saving";
   if (saving !== adaSaving) {

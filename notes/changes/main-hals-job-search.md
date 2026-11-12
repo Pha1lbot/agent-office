@@ -11,6 +11,23 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: "Define my search" dialog and track switches (ported from Tim's office)
+
+**What changed**
+- `Hal's Job Search/shared/office-view/` (`src/search.ts`, `src/server.ts`, `public/views.js`, `public/style.css`, tests), `shared/tools/scout.py`, `tracker.py` and their tests, and `.claude/skills/cos/SKILL.md`: the same dialog and handling, with the Chief of Staff called Tim.
+
+**Why**
+Tim Everard asked for code changes to go into both offices.
+
+**Decisions**
+Code and instructions only. Hal's search definition is still blank, so the dialog starts empty; his files were not opened. His office's GitHub backup is off, so nothing from it is saved to GitHub.
+
+**How to check it**
+`npm test` (55) in Hal's `shared/office-view`.
+
+**Open items**
+Hal's definition session.
+
 ### 2026-11-12: One-tap questions (ported from Tim's office)
 
 **What changed**

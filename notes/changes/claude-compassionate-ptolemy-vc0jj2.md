@@ -11,6 +11,31 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-12: "Define my search" in the office
+
+**What changed**
+- `Tim's Job Search/shared/office-view/src/search.ts` (new): reads the editable part of `search.json` and applies edits from the page: minimum and ideal pay, office days (0 to 5), longest commute (0 to 240 minutes), employers to leave out (up to 30), and which kinds of work are on and in what order. Everything is checked first and nothing is written if anything is wrong; only those fields can change, so titles, keywords and sources are untouched. It returns the changes in plain words.
+- `src/server.ts`: `POST /api/search` applies an edit, keeps the pay bands in `settings.json` in step (they drive the ranking), queues one inbox item for Hal ("Search settings changed in the office: ..."), and saves. The office's GitHub backup now also covers `shared/job-search/search.json` and `settings.json` (it only covered `jobs/` and the CV rules, so a change would not have reached GitHub).
+- `public/views.js`, `style.css`: a "Define my search" dialog opened from the Job sites panel: tick kinds of work on or off, move them up or down, pay, office days, commute, employers to leave out.
+- `shared/tools/scout.py`: a track with `enabled: false` is skipped. `shared/tools/tracker.py`: `inbox add` works without a role, for general changes. New tests (`test/search.test.ts` 6, `test_scout.py` 1, `test_tracker.py` 1).
+- `.claude/skills/cos/SKILL.md`: what Hal does with a "Search settings changed" item: make `preferences.md` say the same in plain English and log it; never edit `search.json` himself.
+- The same changes in `Hal's Job Search/`.
+
+**Why**
+Tim asked on 2026-11-11 for the definition questions to be answerable in the office, so he can steer the search without a Claude session or being at one PC. The first definition was made with him in a question session; this lets him adjust it any time.
+
+**Decisions**
+- The structured file changes at once (so the next search uses it), and the written preferences follow through Hal, costing tokens only when something changed. The alternative, generating the prose in code, would give stiff wording and would overwrite Tim's own edits to `preferences.md`.
+- Tracks are switched off with `enabled: false`, not deleted, so nothing is lost.
+- Titles and keywords per track are not editable here yet; they change through Hal.
+
+**How to check it**
+- `npm test` (55) and `npm run check` in each office; `python3 shared/tools/test_scout.py` and `test_tracker.py`.
+- On a copy of Tim's office: opened the dialog, set minimum pay to £55,000, moved a track, switched project management off, added Betway to the avoid list and saved. `search.json`, `settings.json` and the inbox all matched; minimum above ideal was refused with a message.
+
+**Open items**
+- Restart the office to see the dialog. Hal's office: blank definition, so the dialog edits pay, commute and avoid list until he has tracks.
+
 ### 2026-11-12: Hal can ask a question with one-tap answers
 
 **What changed**

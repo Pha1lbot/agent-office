@@ -92,6 +92,13 @@ class Judge(unittest.TestCase):
         self.assertIsNotNone(self.check(pay="£450 per day")[0])  # a day rate isn't compared with the yearly floor
         self.assertIn("contract", self.check(contract=True)[0]["concern"])
 
+    def test_a_track_switched_off_is_skipped(self):
+        off = {**DEFN, "tracks": [{**DEFN["tracks"][0], "enabled": False}, DEFN["tracks"][1]]}
+        item, _ = scout.judge(job(title="Head of Esports Operations", description="A growth scale-up in esports."), "Test", off, today=TODAY)
+        self.assertEqual(item["track"], "Head of Operations at scale-ups")
+        both = {**DEFN, "tracks": [{**t, "enabled": False} for t in DEFN["tracks"]]}
+        self.assertEqual(scout.judge(job(), "Test", both, today=TODAY)[1], "no track matches")
+
     def test_a_track_can_require_its_sector_words(self):
         defn = {**DEFN, "tracks": [{"id": "pm", "name": "Project management", "priority": 1, "min_level": "manager", "require_keyword": True,
                                     "titles": ["Programme Manager"], "keywords": ["esports", "events"], "not": []}]}

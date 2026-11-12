@@ -560,9 +560,10 @@ def cmd_action(args):
 def cmd_inbox(args):
     data = load()
     if args.verb == "add":
-        if not args.role or not args.task:
-            sys.exit('Usage: inbox add --role <id> --task "what to do"')
-        role = find(data, args.role)
+        if not args.task:
+            sys.exit('Usage: inbox add [--role <id>] --task "what to do"')
+        # Without a role it is a general change, e.g. the search settings edited in the office
+        role = find(data, args.role) if args.role else {"id": "", "title": "Search settings", "company": "Office"}
         before = len(data["inbox"])
         to_inbox(data, role, args.task.strip()[:400])
         save(data)
@@ -723,7 +724,7 @@ def main():
 
     inb = sub.add_parser("inbox", help="Tim's office changes waiting for Chief of Staff")
     inb.add_argument("verb", choices=["list", "done", "add"])
-    inb.add_argument("--role", help="add: the role the task is about")
+    inb.add_argument("--role", help="add: the role the task is about (leave out for a general change)")
     inb.add_argument("--task", help="add: what Hal should get done")
     inb.add_argument("ids", nargs="*")
     inb.add_argument("--all", action="store_true")

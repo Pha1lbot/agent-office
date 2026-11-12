@@ -110,6 +110,11 @@ class TrackerTests(unittest.TestCase):
         line = self.waiting()[0].split(" | ")
         self.assertEqual(line[1], "acme")
 
+    def test_a_general_change_can_go_to_the_inbox_without_a_role(self):
+        self.assertTrue(self.run_t("inbox", "add", "--task", "Update preferences.md to match search.json").startswith("i"))
+        self.assertEqual(self.run_t("inbox", "add", "--task", "Update preferences.md to match search.json"), "Already waiting")
+        self.assertEqual(self.waiting()[0].split(" | ")[1], "")
+
     def test_action_done_and_reopen(self):
         aid = self.run_t("action", "add", "Call the recruiter")
         self.run_t("action", "done", aid)

@@ -229,7 +229,49 @@ function renderSources() {
     `<tr><td><span class="r-title">${esc(r.name)}</span>${r.s && r.s.note ? `<span class="r-co" title="${esc(r.s.note)}">${esc(r.s.note.slice(0, 80))}</span>` : ""}</td><td>${esc(r.how)}</td><td>${esc(r.when)}</td>
      <td><span class="tg src-${r.tone}">${esc(r.label)}</span></td><td>${r.s ? `${r.s.found || 0} / ${r.s.total || 0}` : "—"}</td><td>${r.picked || "—"}</td></tr>`).join("")}</tbody></table></div>`;
   return `<section class="card flush sources" aria-label="Job sites"><div class="tbl-head"><div class="row1"><div><h2>Job sites</h2><span class="sub">${reached} of ${rows.length} reached in the last week${reached < rows.length ? ": the others need a look" : ""}</span></div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn sm" data-scout="toggle">${ui.srcOpen === false ? "Show" : "Hide"}</button>${editing ? `<button type="button" class="btn sm" data-scout="keys">Job site keys</button><button type="button" class="btn sm primary" data-scout="run" id="scout-run">Check sources now</button>` : ""}</div></div></div>${body}</section>`;
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn sm" data-scout="toggle">${ui.srcOpen === false ? "Show" : "Hide"}</button>${editing ? `<button type="button" class="btn sm" data-scout="search">Define my search</button><button type="button" class="btn sm" data-scout="keys">Job site keys</button><button type="button" class="btn sm primary" data-scout="run" id="scout-run">Check sources now</button>` : ""}</div></div></div>${body}</section>`;
+}
+function openSearch() {
+  const s = store.tracker.search;
+  if (!s) return toast("There is no search definition yet.");
+  const dlg = document.createElement("dialog");
+  dlg.className = "dlg";
+  const trackRows = () => s.tracks.map((t, i) => `<div class="trk" data-i="${i}"><label><input type="checkbox" ${t.enabled ? "checked" : ""} data-on="${i}"> <span>${i + 1}. ${esc(t.name)}</span></label><span class="trk-btns"><button type="button" class="icon-btn" data-up="${i}" ${i === 0 ? "disabled" : ""} aria-label="Move up">↑</button><button type="button" class="icon-btn" data-down="${i}" ${i === s.tracks.length - 1 ? "disabled" : ""} aria-label="Move down">↓</button></span></div>`).join("");
+  dlg.innerHTML = `<form method="dialog" class="dlg-body" style="display:flex;flex-direction:column;gap:14px;min-width:min(520px,88vw)">
+    <h3 style="margin:0">Define my search</h3>
+    <p class="sub" style="margin:0">Changes apply to the next search. Your Chief of Staff then updates the written preferences to match.</p>
+    <div class="keys-field"><span>Kinds of work, best first</span><div id="trk-list">${trackRows()}</div><small class="sub">Tick to switch a kind on or off. Roles that fit more than one go to the first.</small></div>
+    <div class="dlg-grid">
+      <label class="keys-field"><span>Minimum pay (£ a year)</span><input type="number" name="minimum" value="${s.pay.minimum ?? ""}" min="10000" step="1000"></label>
+      <label class="keys-field"><span>Ideal pay (£ a year)</span><input type="number" name="ideal" value="${s.pay.ideal ?? ""}" min="10000" step="1000"></label>
+      <label class="keys-field"><span>Office days a week</span><input type="number" name="days" value="${s.office_days_per_week ?? ""}" min="0" max="5"></label>
+      <label class="keys-field"><span>Longest commute (minutes)</span><input type="number" name="commute" value="${s.max_commute_minutes ?? ""}" min="0" max="240" step="5"></label>
+    </div>
+    <label class="keys-field"><span>Employers to leave out (one per line)</span><textarea name="avoid" rows="3" spellcheck="false">${esc(s.avoid_employers.join("\n"))}</textarea></label>
+    <p class="sub" id="search-msg" style="margin:0;min-height:1.2em"></p>
+    <div style="display:flex;gap:8px;justify-content:flex-end"><button type="button" class="btn" data-s="cancel">Cancel</button><button type="button" class="btn primary" data-s="save">Save</button></div></form>`;
+  document.body.appendChild(dlg);
+  dlg.addEventListener("close", () => dlg.remove());
+  const redraw = () => { dlg.querySelector("#trk-list").innerHTML = trackRows(); };
+  dlg.addEventListener("click", async (e) => {
+    const up = e.target.closest("[data-up]"), down = e.target.closest("[data-down]"), on = e.target.closest("[data-on]"), b = e.target.closest("[data-s]");
+    const move = (i, j) => { [s.tracks[i], s.tracks[j]] = [s.tracks[j], s.tracks[i]]; redraw(); };
+    if (up) return move(+up.dataset.up, +up.dataset.up - 1);
+    if (down) return move(+down.dataset.down, +down.dataset.down + 1);
+    if (on) { s.tracks[+on.dataset.on].enabled = on.checked; return; }
+    if (!b) return;
+    if (b.dataset.s === "cancel") return dlg.close();
+    const f = (n) => dlg.querySelector(`[name="${n}"]`).value.trim();
+    b.disabled = true; b.textContent = "Saving…";
+    try {
+      const r = await post("/api/search", {
+        pay: { minimum: f("minimum"), ideal: f("ideal") }, office_days_per_week: f("days"), max_commute_minutes: f("commute"),
+        avoid_employers: f("avoid").split("\n"), tracks: s.tracks.map((t) => ({ id: t.id, enabled: t.enabled })),
+      });
+      dlg.close(); toast(r.changed.length ? "Search updated. Your Chief of Staff will update the written preferences." : "Nothing changed.");
+    } catch (err) { dlg.querySelector("#search-msg").textContent = err.message; b.disabled = false; b.textContent = "Save"; }
+  });
+  dlg.showModal();
 }
 function openKeys() {
   const have = store.tracker.keys || {};
@@ -305,7 +347,7 @@ async function setStatus(id, status, message, undoTo) {
 }
 $("v-leads").addEventListener("click", (e) => {
   const sc = e.target.closest("[data-scout]");
-  if (sc) { if (sc.dataset.scout === "run") void runScoutNow(sc); else if (sc.dataset.scout === "keys") openKeys(); else { ui.srcOpen = ui.srcOpen === false; ui.animate = false; renderLeads(); } return; }
+  if (sc) { if (sc.dataset.scout === "run") void runScoutNow(sc); else if (sc.dataset.scout === "keys") openKeys(); else if (sc.dataset.scout === "search") openSearch(); else { ui.srcOpen = ui.srcOpen === false; ui.animate = false; renderLeads(); } return; }
   const b = e.target.closest("[data-lead], [data-chip]");
   if (!b) { const row = e.target.closest("tr[data-role]"); if (row && !e.target.closest("a")) location.hash = `#role/${row.dataset.role}`; return; }
   if (b.dataset.chip) { ui.leadFilter = b.dataset.chip; ui.animate = false; renderLeads(); return; }

@@ -524,3 +524,7 @@ details.rules textarea { width: 100%; margin-top: 8px; min-height: 140px; }
 .keys-field input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 .keys-field small a { color: var(--accent); }
 .a-q { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.trk { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line-2); }
+.trk label { display: flex; gap: 8px; align-items: center; }
+.trk-btns { display: flex; gap: 4px; }
+.keys-field textarea { background: var(--side); color: var(--text); border: 1px solid var(--line-2); border-radius: var(--r); padding: 9px 12px; font: inherit; }

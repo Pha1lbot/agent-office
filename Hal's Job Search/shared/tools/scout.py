@@ -239,6 +239,8 @@ def judge(job, source_name, defn, today=None):
     # Which track, in Hal's order.
     context = f"{title} {company} {desc[:1500]}"
     for track in sorted(defn.get("tracks", []), key=lambda t: t.get("priority", 99)):
+        if track.get("enabled") is False:
+            continue  # switched off in the office's Define my search
         phrase = title_match(title, track)
         if not phrase or any(has_word(title, bad) for bad in track.get("not", [])):
             continue
