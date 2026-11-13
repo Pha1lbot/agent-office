@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-13: Job search: LinkedIn alerts read, source panel updated
+
+**What changed:** Tim asked to re-check the sources in the Sources panel. The Microsoft 365 connector was working again, so I read the 3 LinkedIn alert emails (15 roles). 3 kept as leads (Stadium Managers at UK & Ireland 2028 Limited, HotelPlanner Tour Tournament Business Manager at DP World Tour, Regional Manager at Fever), 12 dismissed with reasons (on-site, wrong discipline or sector). `Tim's Job Search/jobs/found.json` and `jobs/tracker.json` updated. Source log: LinkedIn Jobs ok; Indeed UK empty (no Indeed alert emails in 7 days); Esports Insider blocked (the site returns 403 to automated readers); Event Industry Jobs, Work in Sports, Guardian Jobs, The Unit List and Access Jobs blocked (hosts not on the environment's allowed list).
+
+**Why:** Tim asked to check those sources now.
+
+**Decisions:** Judged fit from the alert emails only (title, company, place); pay and duties not read, so all three leads are `maybe`. Left f23 (Pontoon AI adoption, Reed, strong) untriaged: it was already in the queue and is Hal's call at the next daily run.
+
+**How to check it:** `python3 shared/tools/tracker.py found sources`; the office's Sources panel and Leads page.
+
+**Open items:** Tim to allow the five hosts in the environment's network settings, set up the Indeed UK alerts (sources.md), and read Esports Insider by hand.
+
 ### 2026-11-13: Job search: office changes, 4 roles drafted
 
 **What changed:** Worked the tracker inbox (i16–i21) from Tim's office edits. The PGA National Tournaments Manager role (fit 2, verdict skip) had a partial draft left from an earlier session (`cv.json`, `cover-letter.md`, `notes.md` written but never built) — ran `make_docs.py` to finish it; fact check passed clean. Briefed Wren for three fresh drafts: Reed Head of Events (fit 4, apply), Arlington Resource Management Head of Operations (fit 3, maybe), and Reed Head of Operations (fit 3, maybe) — all built cleanly with gaps noted in each role's `notes.md`. Tim then shortlisted Direct Chauffeur Line's Assistant Operations Manager himself despite Rita's fit 1/skip verdict (HR/employee-relations role, no match to Tim's background), so briefed Wren for that too, built from transferable ops/people-management experience only; set it to `drafted`.

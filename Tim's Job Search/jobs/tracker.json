@@ -552,7 +552,7 @@
       "list": "New matches",
       "notes": "Posted: 31 Oct",
       "fit": 2,
-      "priority": 11,
+      "priority": 14,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -1121,7 +1121,7 @@
       "list": "Transition roles",
       "notes": "Posted: 31 Oct",
       "fit": 2,
-      "priority": 12,
+      "priority": 15,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -1184,7 +1184,7 @@
       "list": "Transition roles",
       "notes": "Posted: 30 Oct",
       "fit": 2,
-      "priority": 10,
+      "priority": 13,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -2478,6 +2478,438 @@
       ],
       "verdict": "skip",
       "verdict_why": "HR/employee-relations Assistant Manager role; no match to Tim's operations/events background"
+    },
+    {
+      "id": "2026-11-13-uk-ireland-2028-limited-stadium-managers",
+      "title": "Stadium Managers",
+      "company": "UK & Ireland 2028 Limited",
+      "location": "Wembley (Hybrid)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4490097957/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 10,
+      "status": "found",
+      "notes": "Track: Sports and venues operations; Concern: Seniority and pay not shown in the alert; Posted 2026-11-13",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Sports and venues operations: stadium management for the Euro 2028 organiser, hybrid, London"
+    },
+    {
+      "id": "2026-11-13-dp-world-tour-hotelplanner-tour-tournament-business-ma",
+      "title": "HotelPlanner Tour Tournament Business Manager",
+      "company": "DP World Tour",
+      "location": "Wentworth",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4489085965/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 11,
+      "status": "found",
+      "notes": "Track: Sports and venues operations; Concern: Title is 'Manager'; pay and level not shown; Posted 2026-11-13",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Sports operations: runs a golf tour tournament; Wentworth is close to Epsom"
+    },
+    {
+      "id": "2026-11-13-fever-regional-manager",
+      "title": "Regional Manager",
+      "company": "Fever",
+      "location": "London",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4463091092/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 12,
+      "status": "found",
+      "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Live events: Fever runs live entertainment experiences; may be a city operations lead"
+    },
+    {
+      "id": "2026-11-13-disrupt-talent-senior-operations-manager-b2b-exhibition",
+      "title": "Senior Operations Manager - B2B Exhibitions",
+      "company": "Disrupt Talent",
+      "location": "London (On-site)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4489970073/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Live events and event production; Concern: On-site in London, so over the 3 office days limit if full-time; pay not shown; Posted 2026-11-12",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Live events adjacent: B2B exhibitions operations at senior level",
+      "reason": "Fully on-site in London; a Senior Operations Manager in exhibitions with no pay shown"
+    },
+    {
+      "id": "2026-11-13-engage-event-manager",
+      "title": "Event Manager",
+      "company": "Engage",
+      "location": "London Area (On-site)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4490338810/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Live events and event production; Concern: Below Senior Manager and fully on-site; Posted 2026-11-13",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Events, but Manager level and on-site",
+      "reason": "Event Manager is below Senior Manager and fully on-site"
+    },
+    {
+      "id": "2026-11-13-asos-com-production-operations-manager-12-month-f",
+      "title": "Production Operations Manager (12 month FTC)",
+      "company": "ASOS.com",
+      "location": "London (Hybrid)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4470416179/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Concern: Fashion e-commerce production, not events or esports; Posted 2026-11-12",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Production operations at a fashion retailer; not one of the seven tracks",
+      "reason": "Fashion e-commerce production, not one of the seven tracks"
+    },
+    {
+      "id": "2026-11-13-apple-ww-education-channel-operations-programm",
+      "title": "WW Education Channel Operations - Programme Manager",
+      "company": "Apple",
+      "location": "London",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4489060812/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Concern: Not esports, gaming, live events, sport or AI; Posted 2026-11-12",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Programme management but education channel operations, not one of Tim's sectors",
+      "reason": "Education channel operations, not esports, gaming, live events, sport or AI"
+    },
+    {
+      "id": "2026-11-13-fushi-senior-operations-manager",
+      "title": "Senior Operations Manager",
+      "company": "Fushi",
+      "location": "Greater London (On-site)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4490325351/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Concern: Fully on-site; sector not shown; Posted 2026-11-12",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Senior operations but on-site and sector unclear",
+      "reason": "Fully on-site; sector not shown"
+    },
+    {
+      "id": "2026-11-13-hcl-senior-operations-manager",
+      "title": "Senior Operations Manager",
+      "company": "HCL",
+      "location": "Welwyn Garden City (Hybrid)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4490303686/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Concern: IT services, over an hour from Epsom; Posted 2026-11-12",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Senior operations in IT services; far from Epsom",
+      "reason": "IT services in Welwyn Garden City, over an hour from Epsom"
+    },
+    {
+      "id": "2026-11-13-amazon-speed-programs-manager-ftc-18-months-sr",
+      "title": "Speed Programs Manager - FTC 18 months, Sr Same Day Programs",
+      "company": "Amazon",
+      "location": "London",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4473505480/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Concern: Logistics, not Tim's sectors; Posted 2026-11-12",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Logistics programme",
+      "reason": "Logistics programme, not Tim's sectors"
+    },
+    {
+      "id": "2026-11-13-amazon-supply-chain-manager-s-op-eu-supply-chai",
+      "title": "Supply Chain Manager (S&OP), EU Supply Chain Execution & Planning (Grocery)",
+      "company": "Amazon",
+      "location": "London",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4490398432/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Concern: Supply chain, not Tim's sectors; Posted 2026-11-12",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Supply chain planning",
+      "reason": "Supply chain planning, wrong discipline"
+    },
+    {
+      "id": "2026-11-13-awe-senior-logistics-manager",
+      "title": "Senior Logistics Manager",
+      "company": "AWE",
+      "location": "Reading",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4489986649/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Concern: Defence, logistics, Reading; Posted 2026-11-12",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Logistics at a defence employer",
+      "reason": "Defence logistics in Reading"
+    },
+    {
+      "id": "2026-11-13-burberry-planning-manager-inventory-planning",
+      "title": "Planning Manager - Inventory Planning",
+      "company": "Burberry",
+      "location": "London Area (On-site)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4488236443/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Concern: Retail planning, on-site; Posted 2026-11-12",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Inventory planning",
+      "reason": "Retail inventory planning, on-site"
+    },
+    {
+      "id": "2026-11-13-ineos-s-op-planning-lead",
+      "title": "S&OP Planning Lead",
+      "company": "INEOS",
+      "location": "London Area (On-site)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4490081749/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Concern: Supply chain, on-site; Posted 2026-11-12",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Supply chain planning",
+      "reason": "Supply chain planning, on-site"
+    },
+    {
+      "id": "2026-11-13-dhl-supply-chain-senior-operations-manager",
+      "title": "Senior Operations Manager",
+      "company": "DHL Supply Chain",
+      "location": "Gatwick (On-site)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4488692808/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Concern: Logistics, on-site; Posted 2026-11-12",
+      "found": "2026-11-13",
+      "updated": "2026-11-13",
+      "history": [
+        {
+          "date": "2026-11-13",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Warehouse and supply chain operations",
+      "reason": "Warehouse operations at Gatwick, on-site"
     }
   ],
   "actions": [

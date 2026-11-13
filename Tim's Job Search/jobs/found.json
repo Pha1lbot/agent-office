@@ -492,63 +492,354 @@
       "track": "AI operations: learning and support roles",
       "summary": "Senior Project Manager (AI Adoption) Retail Hybrid in London (3 days per week onsite) 3 months+ 650 - 700 per day In short: We're seeking a strong IT PM with experience of AI adoption to join a large business area in a new, AI rollout. You'll be tracking, reporting, chasing and s",
       "found_at": "2026-11-13T11:33"
+    },
+    {
+      "id": "f24",
+      "title": "Stadium Managers",
+      "company": "UK & Ireland 2028 Limited",
+      "location": "Wembley (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4490097957/",
+      "posted": "2026-11-13",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Sports and venues operations: stadium management for the Euro 2028 organiser, hybrid, London",
+      "concern": "Seniority and pay not shown in the alert",
+      "track": "Sports and venues operations",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-13-uk-ireland-2028-limited-stadium-managers",
+        "reason": "",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f25",
+      "title": "HotelPlanner Tour Tournament Business Manager",
+      "company": "DP World Tour",
+      "location": "Wentworth",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4489085965/",
+      "posted": "2026-11-13",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Sports operations: runs a golf tour tournament; Wentworth is close to Epsom",
+      "concern": "Title is 'Manager'; pay and level not shown",
+      "track": "Sports and venues operations",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-13-dp-world-tour-hotelplanner-tour-tournament-business-ma",
+        "reason": "",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f26",
+      "title": "Regional Manager",
+      "company": "Fever",
+      "location": "London",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4463091092/",
+      "posted": "2026-11-13",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Live events: Fever runs live entertainment experiences; may be a city operations lead",
+      "concern": "Not clear it is senior or an events role; pay not shown",
+      "track": "Live events and event production",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-13-fever-regional-manager",
+        "reason": "",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f27",
+      "title": "Senior Operations Manager - B2B Exhibitions",
+      "company": "Disrupt Talent",
+      "location": "London (On-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4489970073/",
+      "posted": "2026-11-12",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Live events adjacent: B2B exhibitions operations at senior level",
+      "concern": "On-site in London, so over the 3 office days limit if full-time; pay not shown",
+      "track": "Live events and event production",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-disrupt-talent-senior-operations-manager-b2b-exhibition",
+        "reason": "Fully on-site in London; a Senior Operations Manager in exhibitions with no pay shown",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f28",
+      "title": "Event Manager",
+      "company": "Engage",
+      "location": "London Area (On-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4490338810/",
+      "posted": "2026-11-13",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Events, but Manager level and on-site",
+      "concern": "Below Senior Manager and fully on-site",
+      "track": "Live events and event production",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-engage-event-manager",
+        "reason": "Event Manager is below Senior Manager and fully on-site",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f29",
+      "title": "Production Operations Manager (12 month FTC)",
+      "company": "ASOS.com",
+      "location": "London (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4470416179/",
+      "posted": "2026-11-12",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Production operations at a fashion retailer; not one of the seven tracks",
+      "concern": "Fashion e-commerce production, not events or esports",
+      "track": "",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-asos-com-production-operations-manager-12-month-f",
+        "reason": "Fashion e-commerce production, not one of the seven tracks",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f30",
+      "title": "WW Education Channel Operations - Programme Manager",
+      "company": "Apple",
+      "location": "London",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4489060812/",
+      "posted": "2026-11-12",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Programme management but education channel operations, not one of Tim's sectors",
+      "concern": "Not esports, gaming, live events, sport or AI",
+      "track": "",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-apple-ww-education-channel-operations-programm",
+        "reason": "Education channel operations, not esports, gaming, live events, sport or AI",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f31",
+      "title": "Senior Operations Manager",
+      "company": "Fushi",
+      "location": "Greater London (On-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4490325351/",
+      "posted": "2026-11-12",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Senior operations but on-site and sector unclear",
+      "concern": "Fully on-site; sector not shown",
+      "track": "",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-fushi-senior-operations-manager",
+        "reason": "Fully on-site; sector not shown",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f32",
+      "title": "Senior Operations Manager",
+      "company": "HCL",
+      "location": "Welwyn Garden City (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4490303686/",
+      "posted": "2026-11-12",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Senior operations in IT services; far from Epsom",
+      "concern": "IT services, over an hour from Epsom",
+      "track": "",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-hcl-senior-operations-manager",
+        "reason": "IT services in Welwyn Garden City, over an hour from Epsom",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f33",
+      "title": "Speed Programs Manager - FTC 18 months, Sr Same Day Programs",
+      "company": "Amazon",
+      "location": "London",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4473505480/",
+      "posted": "2026-11-12",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Logistics programme",
+      "concern": "Logistics, not Tim's sectors",
+      "track": "",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-amazon-speed-programs-manager-ftc-18-months-sr",
+        "reason": "Logistics programme, not Tim's sectors",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f34",
+      "title": "Supply Chain Manager (S&OP), EU Supply Chain Execution & Planning (Grocery)",
+      "company": "Amazon",
+      "location": "London",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4490398432/",
+      "posted": "2026-11-12",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Supply chain planning",
+      "concern": "Supply chain, not Tim's sectors",
+      "track": "",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-amazon-supply-chain-manager-s-op-eu-supply-chai",
+        "reason": "Supply chain planning, wrong discipline",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f35",
+      "title": "Senior Logistics Manager",
+      "company": "AWE",
+      "location": "Reading",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4489986649/",
+      "posted": "2026-11-12",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Logistics at a defence employer",
+      "concern": "Defence, logistics, Reading",
+      "track": "",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-awe-senior-logistics-manager",
+        "reason": "Defence logistics in Reading",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f36",
+      "title": "Planning Manager - Inventory Planning",
+      "company": "Burberry",
+      "location": "London Area (On-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4488236443/",
+      "posted": "2026-11-12",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Inventory planning",
+      "concern": "Retail planning, on-site",
+      "track": "",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-burberry-planning-manager-inventory-planning",
+        "reason": "Retail inventory planning, on-site",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f37",
+      "title": "S&OP Planning Lead",
+      "company": "INEOS",
+      "location": "London Area (On-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4490081749/",
+      "posted": "2026-11-12",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Supply chain planning",
+      "concern": "Supply chain, on-site",
+      "track": "",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-ineos-s-op-planning-lead",
+        "reason": "Supply chain planning, on-site",
+        "at": "2026-11-13T20:28"
+      }
+    },
+    {
+      "id": "f38",
+      "title": "Senior Operations Manager",
+      "company": "DHL Supply Chain",
+      "location": "Gatwick (On-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4488692808/",
+      "posted": "2026-11-12",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Warehouse and supply chain operations",
+      "concern": "Logistics, on-site",
+      "track": "",
+      "summary": "From a LinkedIn job alert email: title, company and place only; pay and duties not read.",
+      "found_at": "2026-11-13T20:28",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-13-dhl-supply-chain-senior-operations-manager",
+        "reason": "Warehouse operations at Gatwick, on-site",
+        "at": "2026-11-13T20:28"
+      }
     }
   ],
   "runs": [
-    {
-      "at": "2026-11-11T11:33",
-      "via": "web",
-      "found": 1,
-      "note": "Web search mostly stale or blocked; 1 usable find"
-    },
-    {
-      "at": "2026-11-11T11:33",
-      "via": "email",
-      "found": 14,
-      "note": ""
-    },
-    {
-      "at": "2026-11-12T09:54",
-      "via": "feed",
-      "found": 0,
-      "note": "5000 jobs listed, 228 looked possible from their titles, 60 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-12T09:54",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
-    {
-      "at": "2026-11-12T09:54",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
-    {
-      "at": "2026-11-12T09:54",
-      "via": "feed",
-      "found": 0,
-      "note": "3 of 3 boards read",
-      "source": "Company hiring pages: Ashby"
-    },
-    {
-      "at": "2026-11-12T09:54",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: SmartRecruiters"
-    },
-    {
-      "at": "2026-11-12T09:54",
-      "via": "feed",
-      "found": 0,
-      "note": "add REED_API_KEY to shared/job-search/.env",
-      "source": "Reed"
-    },
     {
       "at": "2026-11-12T13:51",
       "via": "feed",
@@ -702,9 +993,65 @@
       "found": 1,
       "note": "628 results read",
       "source": "Reed"
+    },
+    {
+      "at": "2026-11-13T20:28",
+      "via": "email",
+      "found": 3,
+      "note": "3 alert emails read, 15 roles seen, 3 kept as leads",
+      "source": "LinkedIn Jobs"
+    },
+    {
+      "at": "2026-11-13T20:28",
+      "via": "email",
+      "found": 0,
+      "note": "Outlook reached, but no Indeed alert emails in the last 7 days. Set up the Indeed alerts listed in sources.md",
+      "source": "Indeed UK"
+    },
+    {
+      "at": "2026-11-13T20:28",
+      "via": "web",
+      "found": 0,
+      "note": "The site returns 403 to automated readers (cloud session and WebFetch); read it by hand",
+      "source": "Esports Insider jobs"
+    },
+    {
+      "at": "2026-11-13T20:28",
+      "via": "web",
+      "found": 0,
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
+      "source": "Event Industry Jobs"
+    },
+    {
+      "at": "2026-11-13T20:28",
+      "via": "web",
+      "found": 0,
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
+      "source": "Work in Sports"
+    },
+    {
+      "at": "2026-11-13T20:28",
+      "via": "web",
+      "found": 0,
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
+      "source": "Guardian Jobs"
+    },
+    {
+      "at": "2026-11-13T20:28",
+      "via": "web",
+      "found": 0,
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
+      "source": "The Unit List"
+    },
+    {
+      "at": "2026-11-13T20:28",
+      "via": "web",
+      "found": 0,
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
+      "source": "Access Jobs"
     }
   ],
-  "last_email_scan": "2026-11-11T11:40:00Z",
+  "last_email_scan": "2026-11-13T20:28:59Z",
   "sources": {
     "Hitmarker": {
       "total": 1,
@@ -762,34 +1109,68 @@
     },
     "Event Industry Jobs": {
       "total": 0,
-      "last_checked": "2026-11-12T20:02",
+      "last_checked": "2026-11-13T20:28",
       "result": "blocked",
       "found": 0,
       "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "failures": 1
+      "failures": 2
     },
     "Work in Sports": {
       "total": 0,
-      "last_checked": "2026-11-12T20:02",
+      "last_checked": "2026-11-13T20:28",
+      "result": "blocked",
+      "found": 0,
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
+      "failures": 2
+    },
+    "LinkedIn Jobs": {
+      "total": 3,
+      "last_checked": "2026-11-13T20:28",
+      "result": "ok",
+      "found": 3,
+      "note": "3 alert emails read, 15 roles seen, 3 kept as leads",
+      "failures": 0,
+      "last_ok": "2026-11-13T20:28"
+    },
+    "Indeed UK": {
+      "total": 0,
+      "last_checked": "2026-11-13T20:28",
+      "result": "empty",
+      "found": 0,
+      "note": "Outlook reached, but no Indeed alert emails in the last 7 days. Set up the Indeed alerts listed in sources.md",
+      "failures": 0,
+      "last_ok": "2026-11-13T20:28"
+    },
+    "Esports Insider jobs": {
+      "total": 0,
+      "last_checked": "2026-11-13T20:28",
+      "result": "blocked",
+      "found": 0,
+      "note": "The site returns 403 to automated readers (cloud session and WebFetch); read it by hand",
+      "failures": 1
+    },
+    "Guardian Jobs": {
+      "total": 0,
+      "last_checked": "2026-11-13T20:28",
       "result": "blocked",
       "found": 0,
       "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
       "failures": 1
     },
-    "LinkedIn Jobs": {
+    "The Unit List": {
       "total": 0,
-      "last_checked": "2026-11-12T20:02",
+      "last_checked": "2026-11-13T20:28",
       "result": "blocked",
       "found": 0,
-      "note": "Outlook not reachable (502 error from Microsoft)",
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
       "failures": 1
     },
-    "Indeed UK": {
+    "Access Jobs": {
       "total": 0,
-      "last_checked": "2026-11-12T20:02",
+      "last_checked": "2026-11-13T20:28",
       "result": "blocked",
       "found": 0,
-      "note": "Outlook not reachable (502 error from Microsoft)",
+      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
       "failures": 1
     }
   }
