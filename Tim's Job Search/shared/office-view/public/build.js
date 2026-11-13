@@ -4,7 +4,7 @@
 import { store, on } from "./store.js";
 import { $ } from "./util.js";
 
-const COLOURS = { ok: "var(--typing)", warn: "var(--waiting)", bad: "var(--danger)", none: "var(--muted)" };
+const COLOURS = { ok: "var(--accent)", warn: "var(--alert)", bad: "var(--alert)", none: "var(--muted)" };
 
 function status(b) {
   if (b === undefined) return { level: "warn", short: "Restart the office to update", long: "The office server is older than this page: close the office window and open it again." };

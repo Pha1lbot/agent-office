@@ -11,29 +11,31 @@
 <script type="importmap">{ "imports": { "three": "/vendor/three.mjs" } }</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to the page</a>
 <div class="app" id="app">
-  <nav class="side" aria-label="Main">
+  <nav class="side" aria-label="Main" id="side">
     <div class="brand">
-      <div class="brand-l"><div class="avatar" aria-hidden="true">TE</div><div class="brand-text lbl"><span class="brand-name">Tim’s Job Search</span><span class="build" id="build" title="Build: checking">Build …</span></div></div>
+      <div class="brand-l"><div class="avatar" aria-hidden="true">TE</div><div class="brand-text lbl"><span class="brand-name">Tim’s Job Search</span><span class="build" id="build">Build …</span></div></div>
+      <button class="menu-btn" id="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="side"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <button class="collapse-btn" id="collapse" type="button" aria-label="Collapse sidebar" aria-expanded="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span class="bdot" id="build-dot"></span></button>
     </div>
     <a class="nav-item" href="#overview" data-nav="overview" title="Overview"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><span class="lbl">Overview</span><span class="count lbl" data-count="overview"></span></a><a class="nav-item" href="#roles" data-nav="roles" title="Roles"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h18v12H3zM8 8V5h8v3M3 13h18"/></svg><span class="lbl">Roles</span><span class="count lbl" data-count="roles"></span></a><a class="nav-item" href="#leads" data-nav="leads" title="Leads"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13h5l2 3h4l2-3h5M5 5h14l2 8v6H3v-6z"/></svg><span class="lbl">Leads</span><span class="count lbl" data-count="leads"></span></a><a class="nav-item" href="#interviews" data-nav="interviews" title="Interviews"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v14H4zM4 10h16M9 3v4M15 3v4"/></svg><span class="lbl">Interviews</span><span class="count lbl" data-count="interviews"></span></a><a class="nav-item" href="#actions" data-nav="actions" title="Next actions"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8M20 12v7a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1h11"/></svg><span class="lbl">Next actions</span><span class="count lbl" data-count="actions"></span></a><a class="nav-item" href="#cvs" data-nav="cvs" title="CVs"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h6M9 17h6"/></svg><span class="lbl">CVs</span><span class="count lbl" data-count="cvs"></span></a>
     <div class="nav-sep"></div>
     <a class="nav-item" href="#office" data-nav="office" title="The office"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg><span class="lbl">The office</span><span class="count lbl" data-count="office"></span></a>
     <div class="side-spacer"></div>
-    <button class="target" id="target" type="button" title="Your target, from preferences.md"></button>
+    <button class="target" id="target" type="button" aria-label="Your target, from preferences.md"></button>
   </nav>
 
-  <main class="main" id="main">
+  <main class="main" id="main" tabindex="-1">
     <header class="top">
       <div class="hello"><span class="date" id="today"></span><h1 id="greeting">Welcome</h1></div>
       <div class="top-r">
-        <span class="live off" id="live">Connecting…</span>
+        <span class="live off" id="live" role="status">Connecting…</span>
         <label class="search">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
           <span class="sr">Search roles and leads</span>
-          <input id="search" type="search" placeholder="Search roles, companies…" autocomplete="off">
-          <span class="kbd" aria-hidden="true">/</span>
+          <input id="search" type="search" placeholder="Search roles, companies…" autocomplete="off" aria-keyshortcuts="Control+K Meta+K">
+          <span class="kbd" aria-hidden="true">Ctrl K</span>
         </label>
         <button class="btn primary" id="add-role" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add role</button>
       </div>
@@ -63,14 +65,15 @@
         </div>
         <select id="filter-list" aria-label="Filter by list"><option value="">All lists</option></select>
         <select id="filter-style" aria-label="Filter by work style"><option value="">Any work style</option><option value="remote">Remote</option><option value="hybrid">Hybrid</option><option value="office">Office / not stated</option></select>
-        <span class="sub" style="margin-left:auto">Drag a card to change its stage. New leads live under <a href="#leads">Leads</a>.</span>
+        <select id="roles-sort" class="sort-sel" aria-label="Sort roles by"><option value="priority">Sort: priority</option><option value="fit">Sort: fit</option><option value="pay">Sort: pay</option><option value="verdict">Sort: Hal's verdict</option><option value="closing">Sort: closing date</option><option value="updated">Sort: last updated</option></select>
+        <span class="sub hint">Drag a card, or use its Move menu, to change its stage. New leads live under <a href="#leads">Leads</a>.</span>
       </div>
-      <div id="board" class="board" aria-label="Roles board"></div>
+      <div id="board" class="board" role="region" aria-label="Roles board"></div>
       <div id="list" class="card flush" hidden>
-        <div class="tbl-wrap"><table>
+        <div class="tbl-wrap" role="region" aria-label="Roles list" tabindex="0"><table>
           <thead><tr>
-            <th>Status</th><th data-sort="priority" title="Priority">P</th><th>Role</th><th>Company</th><th data-sort="pay">Pay</th><th>Location</th>
-            <th data-sort="fit">Fit</th><th data-sort="verdict" title="Hal's verdict">Hal</th><th data-sort="closing">Closes</th><th>Docs</th><th>Next step</th><th data-sort="updated">Updated</th>
+            <th scope="col">Status</th><th scope="col" data-sort="priority"><button type="button" aria-label="Sort by priority">Priority</button></th><th scope="col">Role</th><th scope="col">Company</th><th scope="col" data-sort="pay"><button type="button" aria-label="Sort by pay">Pay</button></th><th scope="col">Location</th>
+            <th scope="col" data-sort="fit"><button type="button" aria-label="Sort by fit">Fit</button></th><th scope="col" data-sort="verdict"><button type="button" aria-label="Sort by Hal's verdict">Hal</button></th><th scope="col" data-sort="closing"><button type="button" aria-label="Sort by closing date">Closes</button></th><th scope="col">Docs</th><th scope="col">Next step</th><th scope="col" data-sort="updated"><button type="button" aria-label="Sort by last updated">Updated</button></th>
           </tr></thead>
           <tbody id="roles"></tbody>
         </table></div>
@@ -84,13 +87,13 @@
 
     <section id="v-office" class="office" hidden>
       <div class="room">
-        <div id="scene" role="img" aria-label="3D office showing what each member of the team is doing. Drag to move around; click a person to see their activity."></div>
-        <div class="cards" id="cards"></div>
+        <div id="scene" role="group" aria-label="3D office. The staff cards below say what each person is doing; the room is a picture of the same thing."></div>
+        <div class="cards" id="cards" role="group" aria-label="The team"></div>
       </div>
       <aside>
-        <h2 id="log-name"></h2>
+        <h2 id="log-name" tabindex="-1"></h2>
         <div class="sub" id="log-sub"></div>
-        <ul class="log" id="log"></ul>
+        <ul class="log" id="log" tabindex="0" aria-label="Activity log"></ul>
         <div class="stats" id="log-stats"></div>
       </aside>
     </section>
@@ -113,7 +116,7 @@
       <label>Status<select name="status" id="edit-status"></select></label>
       <label>Priority<input name="priority" type="number" min="1" max="99" placeholder="1 = top"></label>
       <label class="full">Next step<input name="next" maxlength="300" placeholder="What needs to happen next?"></label>
-      <label class="full" id="reason-wrap">Reason (optional)<input name="reason" maxlength="300" placeholder="e.g. pay too low, too far, wrong sector"><span class="chips reason-chips" id="reason-chips" style="margin-top:6px"></span></label>
+      <label class="full" id="reason-wrap">Reason (optional)<input name="reason" maxlength="300" placeholder="e.g. pay too low, too far, wrong sector"><span class="chips reason-chips" id="reason-chips"></span></label>
       <label>Closing date<input name="closing_date" type="date"></label>
       <label>Interview date and time<input name="interview_at" type="datetime-local"></label>
       <label>Interview with<input name="interview_with" maxlength="200" placeholder="Names or panel"></label>
@@ -154,16 +157,16 @@
     <div class="dlg-grid">
       <label class="full">Role<select name="role" id="tailor-role" required></select></label>
       <label class="full">Job description<textarea name="advert" rows="8" maxlength="20000" placeholder="Paste the job description, or upload it below. Leave empty to use the advert Rita already read."></textarea></label>
-      <div class="full upload-row"><button type="button" class="btn sm" id="tailor-pick">Upload PDF, Word or text</button><input type="file" id="tailor-file" accept=".pdf,.docx,.txt,.md" class="sr" tabindex="-1"><span class="sub" id="tailor-file-msg"></span></div>
+      <div class="full upload-row"><button type="button" class="btn sm" id="tailor-pick">Upload PDF, Word or text</button><input type="file" id="tailor-file" aria-label="Upload a job description" accept=".pdf,.docx,.txt,.md" class="sr" tabindex="-1"><span class="sub" id="tailor-file-msg"></span></div>
       <label class="full">Anything to bring out (optional)<input name="focus" maxlength="200" placeholder="e.g. budget ownership, team size, esports tournaments"></label>
-      <details class="rules full"><summary>Your CV writing rules (Wren follows these every time)</summary><textarea name="rules" id="tailor-rules" rows="7" maxlength="20000"></textarea></details>
+      <details class="rules full"><summary>Your CV writing rules (Wren follows these every time)</summary><textarea name="rules" id="tailor-rules" aria-label="Your CV writing rules" rows="7" maxlength="20000"></textarea></details>
     </div>
     <p class="dlg-err" id="tailor-err" role="alert"></p>
     <div class="dlg-buttons"><button value="cancel" formnovalidate>Cancel</button><button value="save" class="primary">Send to Wren</button></div>
   </form>
 </dialog>
 <dialog id="cv-dlg" class="wide" aria-labelledby="cv-title">
-  <div style="padding:20px 22px">
+  <div class="dlg-pad">
     <h2 id="cv-title">Your CV</h2>
     <p class="dlg-sub" id="cv-meta"></p>
     <div class="cv-doc md" id="cv-doc"></div>
@@ -171,12 +174,12 @@
   </div>
 </dialog>
 <dialog id="found-dlg" class="wide" aria-labelledby="found-title">
-  <div style="padding:20px 22px">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><h2 id="found-title">New leads</h2><button type="button" class="icon-btn" data-found="close" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="dlg-pad">
+    <div class="u-row u-between"><h2 id="found-title">New leads</h2><button type="button" class="icon-btn" data-found="close" aria-label="Close new leads"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
     <div id="found-body"></div>
   </div>
 </dialog>
-<div class="toast" id="toast" role="status"><span id="toast-msg"></span><button type="button" id="toast-undo" hidden>Undo</button></div>
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toast-msg"></span><button type="button" id="toast-undo" hidden>Undo</button><button type="button" id="toast-x" aria-label="Dismiss message">Dismiss</button></div>
 <script type="module" src="/app.js"></script>
 </body>
 </html>
