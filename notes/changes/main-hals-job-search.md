@@ -11,6 +11,10 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-13: Auto-update wording and label (from the branch above)
+
+Tim Everard removed the 5-minute auto-update timer. In Hal's office: `GUIDE.md`, `GET-THE-OFFICE.md`, `shared/office-view/README.md`, `public/build.js` (message) and a comment in `src/build.ts` now say updates arrive at log-on and when the office opens. Hal's installed task keeps its 5-minute trigger until he re-runs `shared\tools\install-sync.ps1` or removes the task.
+
 ### 2026-11-13: Office redesign ported from Tim's office
 
 - `shared/office-view/public/` (`style.css`, `index.html`, `app.js`, `build.js`, `dashboard.js`, `office.js`, `role.js`, `scene.js`, `util.js`, `views.js`): the same design system, responsive layout and accessibility fixes as Tim's office (see the 2026-11-13 entry in `claude-compassionate-ptolemy-vc0jj2.md`), with the names swapped. Hal's own wording kept: the "H" avatar, the Tim-the-Chief-of-Staff names, the `cass-on` class and the daily-search sentence in the New leads dialog.

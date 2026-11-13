@@ -13,7 +13,7 @@ function status(b) {
   const n = `Build ${b.number}`;
   if (b.branch && b.branch !== "main") return { level: "bad", short: `${n} · not on main (${b.branch})`, long: `This folder is on the branch "${b.branch}", not main, so it won't get merged work. Run "git checkout main" in it.` };
   if (b.restart) return { level: "warn", short: `${n} · restart to update`, long: "A newer build has arrived in this folder: close the office window and open it again." };
-  if (b.behind > 0) return { level: "warn", short: `${n} · ${b.behind} update${b.behind === 1 ? "" : "s"} on GitHub`, long: `GitHub's main has ${b.behind} newer commit${b.behind === 1 ? "" : "s"} that this folder hasn't pulled. The automatic sync may be failing: run "git pull" in the folder.` };
+  if (b.behind > 0) return { level: "warn", short: `${n} · ${b.behind} update${b.behind === 1 ? "" : "s"} on GitHub`, long: `GitHub's main has ${b.behind} newer commit${b.behind === 1 ? "" : "s"} that this folder hasn't pulled. It is pulled when you log on or open the office. Run "git pull" in the folder to get it now.` };
   return { level: "ok", short: `${n} · ${day}`, long: "Up to date with GitHub." };
 }
 

@@ -9,6 +9,26 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 ## Change log
 
+### 2026-11-13: Removed the 5-minute auto-update timer
+
+**What changed**
+- `shared/tools/install-sync.ps1`: the "agent-office git pull" task now has only the log-on trigger; the 5-minute repeat is gone.
+- `shared/tools/sync.ps1`: header comment updated.
+- `README.md`, `Tim's Job Search/GUIDE.md`, `Hal's Job Search/GUIDE.md`, `Hal's Job Search/GET-THE-OFFICE.md`: "every 5 minutes" reworded to log-on, opening the office, or `git pull`.
+- Both offices' `shared/office-view`: `public/build.js` (the "behind GitHub" message no longer says the sync may be failing), `README.md` and a comment in `src/build.ts`.
+
+**Why**
+Tim asked to remove the auto-update script that runs every 5 minutes.
+
+**Decisions**
+Kept the pull at log-on and in `Open Office.cmd` (and the Claude Code start-up hook) rather than deleting the task, so a PC still catches up without a manual step. Tim chose this option.
+
+**How to check it**
+No `RepetitionInterval` left in `install-sync.ps1`; `grep -rn "5 minutes"` finds no stale claim; `npm test` and `npm run check` pass in both offices.
+
+**Open items**
+This does not change PCs that already installed the task. On Tim's PC: pull, then re-run `powershell -ExecutionPolicy Bypass -File shared\tools\install-sync.ps1` (replaces it), or `Unregister-ScheduledTask -TaskName "agent-office git pull" -Confirm:$false` to remove it. Hal's PC keeps the 5-minute task until he does the same. Hal's PC now updates less often.
+
 Newest entries first. Never delete or rewrite old entries.
 
 ### 2026-11-13: Phone page ("Job Hunt") moved onto the same system
