@@ -475,6 +475,23 @@
         "reason": "Hal: government digital programmes needing clearance, outside your sectors",
         "at": "2026-11-12T20:02"
       }
+    },
+    {
+      "id": "f23",
+      "title": "Senior Project Manager (AI Adoption)",
+      "company": "Pontoon",
+      "location": "London",
+      "pay": "£650 - £700",
+      "link": "https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062",
+      "posted": "2026-11-12",
+      "source": "Reed",
+      "via": "feed",
+      "fit": "strong",
+      "why": "AI operations: learning and support roles: the title matches 'AI Adoption Manager' and the advert uses the track's words",
+      "concern": "",
+      "track": "AI operations: learning and support roles",
+      "summary": "Senior Project Manager (AI Adoption) Retail Hybrid in London (3 days per week onsite) 3 months+ 650 - 700 per day In short: We're seeking a strong IT PM with experience of AI adoption to join a large business area in a new, AI rollout. You'll be tracking, reporting, chasing and s",
+      "found_at": "2026-11-13T11:33"
     }
   ],
   "runs": [
@@ -643,63 +660,105 @@
       "found": 0,
       "note": "Outlook not reachable (502 error from Microsoft)",
       "source": "Indeed UK"
+    },
+    {
+      "at": "2026-11-13T11:32",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 26 looked possible from their titles, 26 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-13T11:32",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-13T11:32",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-13T11:32",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-13T11:32",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-13T11:33",
+      "via": "feed",
+      "found": 1,
+      "note": "628 results read",
+      "source": "Reed"
     }
   ],
   "last_email_scan": "2026-11-11T11:40:00Z",
   "sources": {
     "Hitmarker": {
       "total": 1,
-      "last_checked": "2026-11-12T20:00",
+      "last_checked": "2026-11-13T11:32",
       "result": "ok",
       "found": 0,
-      "note": "5000 jobs listed, 54 looked possible from their titles, 54 read",
-      "last_ok": "2026-11-12T20:00",
+      "note": "5000 jobs listed, 26 looked possible from their titles, 26 read",
+      "last_ok": "2026-11-13T11:32",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-12T20:00",
+      "last_checked": "2026-11-13T11:32",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-12T20:00",
+      "last_ok": "2026-11-13T11:32",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-12T20:00",
+      "last_checked": "2026-11-13T11:32",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-12T20:00",
+      "last_ok": "2026-11-13T11:32",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-12T20:00",
+      "last_checked": "2026-11-13T11:32",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-12T20:00",
+      "last_ok": "2026-11-13T11:32",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-12T20:00",
+      "last_checked": "2026-11-13T11:32",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-12T20:00",
+      "last_ok": "2026-11-13T11:32",
       "failures": 0
     },
     "Reed": {
-      "total": 6,
-      "last_checked": "2026-11-12T20:00",
-      "result": "needs-key",
-      "found": 0,
-      "note": "add REED_API_KEY to shared/job-search/.env",
-      "failures": 1,
-      "last_ok": "2026-11-12T13:51"
+      "total": 7,
+      "last_checked": "2026-11-13T11:33",
+      "result": "ok",
+      "found": 1,
+      "note": "628 results read",
+      "failures": 0,
+      "last_ok": "2026-11-13T11:33"
     },
     "Event Industry Jobs": {
       "total": 0,

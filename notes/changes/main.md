@@ -11,6 +11,14 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-13: Job search: office changes, 4 roles drafted
+
+**What changed:** Worked the tracker inbox (i16–i21) from Tim's office edits. The PGA National Tournaments Manager role (fit 2, verdict skip) had a partial draft left from an earlier session (`cv.json`, `cover-letter.md`, `notes.md` written but never built) — ran `make_docs.py` to finish it; fact check passed clean. Briefed Wren for three fresh drafts: Reed Head of Events (fit 4, apply), Arlington Resource Management Head of Operations (fit 3, maybe), and Reed Head of Operations (fit 3, maybe) — all built cleanly with gaps noted in each role's `notes.md`. Tim then shortlisted Direct Chauffeur Line's Assistant Operations Manager himself despite Rita's fit 1/skip verdict (HR/employee-relations role, no match to Tim's background), so briefed Wren for that too, built from transferable ops/people-management experience only; set it to `drafted`.
+**Why:** Tim's office edits queued these as inbox tasks; Direct Chauffeur Line is the same pattern as the earlier NetEase case — Tim wants it drafted even against a skip verdict, so it's drafted rather than argued with.
+**Decisions:** Ran `make_docs.py` directly for the PGA role instead of re-briefing Wren, since her text work (`cv.json`/`cover-letter.md`) was already done and correct — only the build step was missing.
+**How to check it:** `tracker.py list --summary` shows all 5 roles as `drafted`; each role folder has `cv.docx`/`cover-letter.docx` and matching PDFs; `tracker.py inbox list` is empty (i16–i21 all done).
+**Open items:** None. Tim should check the drafts, especially Direct Chauffeur Line's (built against a skip verdict) and Arlington/Reed Head of Operations (sector/D2C gaps noted in their `notes.md`).
+
 ### 2026-11-12: Job search: office change for PGA role, merge conflict resolved
 
 **What changed:** Tim added a role in the office (The PGA: National Tournaments Manager), which landed in the inbox at the same time the daily search's auto-commit went to `origin/main`, so the start-up pull hit a genuine merge conflict in `Tim's Job Search/jobs/tracker.json` and `tracker.md` (both sides appended different roles/priorities at the same point). Resolved by merging the two JSON files programmatically (kept both sides' additions: Tim's PGA role plus the daily search's 7 new leads and its inbox item), then re-ran `tracker.py rank` and `render`. Briefed Rita to read the PGA advert; she scored it fit 2, verdict skip (missing the essential PGA/R&A Rules qualification; golf-specific sector with heavy travel), closing date 24 Nov 2026 noon. Set those fields and marked inbox item i15 done.
