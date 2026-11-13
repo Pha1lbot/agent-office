@@ -2,7 +2,16 @@
 
 A step-by-step guide for Hal. It takes you from a PC with nothing installed to a working job-search office on your desktop. You don't need to know anything about Git or code: copy the commands exactly as written.
 
-Allow about 30 minutes, mostly waiting for installs.
+Allow about 30 minutes for the installs (steps 1 to 6), then about 20 minutes to tell the team what you are looking for and give it your CV (step 7).
+
+**The whole journey in one list**
+
+1. Tim Everard gives you access (the box below).
+2. Install Git, download the office, run the setup script (steps 1 to 4).
+3. Install Claude Code (step 5).
+4. Open the office on your desktop (step 6).
+5. Type **`/office setup`** in Claude Code: it asks what you're looking for and writes your search files and CV (step 7).
+6. Type **`/tim start the day`**: your team runs the first search.
 
 **What "main" means.** The office lives on GitHub in a shared place called a *repository* ("repo"). The repo has one up-to-date, approved version of everything, called **main**. Getting "main" onto your PC means downloading that version once (the *clone*), then letting your PC pick up Tim Everard's updates (a *pull*). Your PC only ever receives. **You never send anything back to GitHub:** Tim Everard looks after all changes to the repo.
 
@@ -101,7 +110,7 @@ and sign in when it asks. Type `/exit` to leave it for now.
 
 The office will be empty at first. That's normal: it fills up once you've set up your search.
 
-## Step 7: start your team
+## Step 7: tell the team what you're looking for (`/office setup`)
 
 In PowerShell:
 
@@ -110,7 +119,33 @@ cd "$HOME\Documents\agent-office\Hal's Job Search"
 claude
 ```
 
-Then follow **`GUIDE.md`** (in your office folder), section 3, "Step 2: fill in the starter files". Your Chief of Staff is called **Tim**; type `/tim start the day` once the starter files are filled in.
+Then, in Claude Code, type:
+
+```
+/office setup
+```
+
+Claude interviews you, one small group of questions at a time, and writes your answers into the files the team reads:
+
+| Part | What it asks | What it writes |
+|---|---|---|
+| **1. The work** | The kinds of job you want, in your own words; the job titles to look for; what you never want to see | `shared/job-search/search.json` (what Scout and Rita search for), `preferences.md` |
+| **2. Pay and where** | Minimum and ideal pay; remote, hybrid or office; days in the office; your town and the longest commute; the nearby towns and postcodes that count | `search.json`, `settings.json`, `preferences.md` |
+| **3. Avoid and watch** | Deal-breakers, employers to avoid, companies you'd love to work for, how old an advert may be | `search.json`, `preferences.md` |
+| **4. Job sites** | Which job sites to use; any others you use | `search.json`, `sources.md` (including the job alerts to create on LinkedIn and Indeed) |
+| **5. Your CV** | Paste your CV (or give a file); you check the result | `shared/job-search/cv/cv-bank.md`, `cv/base-cv.json`, plus a test PDF |
+
+Before it writes anything, it shows you a short summary and asks "Is that right?". **Read what it writes**: nobody else can check your CV is true.
+
+It takes about 20 minutes. You can stop and come back: type `/office` to see what's done and what's left. `/office setup search` redoes only the search; `/office setup cv` only the CV.
+
+When it finishes, type:
+
+```
+/tim start the day
+```
+
+Your Chief of Staff is called **Tim** (a member of your team, not Tim Everard). He runs the first search and writes `jobs/today.md`. Then look at the office: it fills up with leads.
 
 > Tip: type `/model sonnet` at the start of a session. It does the job well at lower cost.
 
@@ -153,4 +188,6 @@ Your own files (CV, preferences, roles, tracker) are not touched by updates. The
 | The office won't open, or looks old | In `agent-office`, run `git status -sb` and `git pull`, then close the black window and open `Open Office.cmd` again. Make sure your shortcut points into `Hal's Job Search`, not an old copy. |
 | `git pull` says your local changes would be overwritten, or anything about conflicts | Stop. Don't try to fix it. Send the message to Tim Everard. |
 | The automatic update seems stuck | Read the log: `Get-Content $env:LOCALAPPDATA\agent-office-sync.log -Tail 5`. If it says it needs you to sign in, run `git fetch` once in `agent-office` and sign in. Otherwise send the lines to Tim Everard. |
+| Tim says a file is "still a blank template", or the search finds nothing | Type `/office` to see what's missing, then `/office setup` (or `/office setup search` / `/office setup cv`). |
+| `/office` isn't recognised | You aren't in your office folder. Close Claude Code, `cd "$HOME\Documents\agent-office\Hal's Job Search"` and run `claude` again; if it still isn't there, run `git pull` and tell Tim Everard. |
 | Anything else | Open Claude Code in your office folder and describe the problem. It can help with the office itself, but it won't change git for you. |

@@ -69,7 +69,7 @@ The dashboard follows Hal's Job Hunt artifact: dark, with a sidebar (collapse it
 
 **New leads.** Each time you run `/tim daily search` (or `/tim start the day`), Rita searches your job sites and Tim reads your job-alert emails if your email is connected. (Tim's office also has a scheduled 6:31 run; yours doesn't unless you set one up: see `GUIDE.md`.) Tim then sorts what they find: good ones go into Leads with a verdict (marked **New**), and clear mismatches go to Leads → Dismissed with a reason. The Overview shows "Rita found N new roles this morning…", and **New leads** on the Leads page lists each find with its Strong / Possible / Weak fit and Tim's decision. You can add a dismissed one to Leads, or dismiss an added one, from there. The finds are kept in `jobs/found.json` for 45 days, so nothing turns up twice.
 
-The **Target** card in the sidebar comes from `shared/job-search/preferences.md` (ask Tim to change it).
+The **Target** card in the sidebar comes from `shared/job-search/preferences.md`. To set it up the first time, type `/office setup` in Claude Code; to change it later, ask Tim, or use **Define my search**.
 
 **Tailor a CV** (CVs page, or the sparkle on a lead or a tailored CV): pick the role, paste the job description or upload it (a .txt or .md is read straight in; a PDF or Word file is attached to the role for Wren to read), and say what to bring out. It goes to **Wren**, who writes the CV and cover letter from the CV bank; Ada fact-checks them. Tailoring a lead shortlists it. If the role already has documents, Wren redoes them. Your CV writing rules can be edited in the same dialog; Wren follows them every time.
 

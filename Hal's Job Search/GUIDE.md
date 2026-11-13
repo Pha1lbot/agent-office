@@ -2,11 +2,13 @@
 
 A plain-English guide to your job-search office. You don't need to be technical. If you can edit a text document and type a short command, you can run and change everything here.
 
+**New here? Three steps.** (1) Get the office onto your PC: `GET-THE-OFFICE.md`. (2) In Claude Code, in your office folder, type **`/office setup`**: it asks what you're looking for and fills everything in. (3) Type **`/tim start the day`**.
+
 **On this page**
 
 1. [What this is](#1-what-this-is)
 2. [Where everything lives](#2-where-everything-lives)
-3. [Setting up (first time only)](#3-setting-up-first-time-only)
+3. [Setting up (first time only)](#3-setting-up-first-time-only): `/office setup`
 4. [Every day](#4-every-day)
 5. [The office (the dashboard)](#5-the-office-the-dashboard)
 6. [Changing your search](#6-changing-your-search) (pay, job titles, location, sites, daily limits)
@@ -55,8 +57,9 @@ Hal's Job Search/
 ├─ CLAUDE.md                      ← short instructions Claude reads when you open this folder
 ├─ shared/
 │  ├─ job-search/                 ← ABOUT YOU: what you want, where to look, your CV
-│  │  ├─ preferences.md           ✏️ roles, skills, pay, location, deal-breakers, daily limits
-│  │  ├─ sources.md               ✏️ the job sites Rita searches
+│  │  ├─ preferences.md           ✏️ roles, skills, pay, location, deal-breakers, daily limits (in words)
+│  │  ├─ search.json              ✏️ the same as a search definition the scripts use: kinds of work, titles, pay, where, sites
+│  │  ├─ sources.md               ✏️ the job sites, and the job alerts to set up
 │  │  ├─ settings.json            ✏️ your ideal and minimum pay as numbers (used to rank roles)
 │  │  ├─ cv-rules.md              ✏️ how Wren writes (tone, spelling, what to leave out)
 │  │  └─ cv/
@@ -69,7 +72,7 @@ Hal's Job Search/
 ├─ agents/                        ← a short README for each team member (what they do)
 ├─ .claude/
 │  ├─ agents/                     ✏️ the instructions each member follows: Rita, Wren, Cole
-│  └─ skills/                     ✏️ Tim's instructions (cos/SKILL.md) and the /tim shortcut
+│  └─ skills/                     ✏️ Tim's instructions (cos/SKILL.md), the /tim shortcut, and /office setup (office/SKILL.md)
 └─ jobs/                          ← YOUR WORKING DATA (the team writes here)
    ├─ tracker.json / tracker.md   ← every role and where it stands (don't edit by hand)
    ├─ today.md                    ← Tim's priorities for the day
@@ -92,30 +95,44 @@ Do this once. Allow about 30 minutes, most of it waiting for installs. You need 
 
 Follow **`GET-THE-OFFICE.md`** (it is in this folder, and Tim Everard can send it to you before you have anything installed). It takes you from nothing to a working office: GitHub access, Git, downloading the repo, the setup script and Claude Code. Come back here when the office opens.
 
-### Step 2: fill in the starter files
+### Step 2: tell the team what you're looking for (`/office setup`)
 
-Right now your office is a blank template. The team will refuse to start until the first four of these are filled in (Tim checks for the words "please fill this in" or "please replace" at the top of each, so delete that line when you're done):
-
-| Order | File | What goes in it | Section of this guide |
-|---|---|---|---|
-| 1 | `shared/job-search/preferences.md` | The roles, pay and place you want | [6](#6-changing-your-search) |
-| 2 | `shared/job-search/sources.md` | The job sites to search | [6](#6-changing-your-search) |
-| 3 | `shared/job-search/cv/cv-bank.md` | Your CV as plain text | [7](#7-your-cv) |
-| 4 | `shared/job-search/cv/base-cv.json` | Your CV in the CV template's format | [7](#7-your-cv) |
-| 5 | `shared/job-search/settings.json` | Your pay numbers (not checked, but needed for ranking by pay) | [6](#6-changing-your-search) |
-
-You can edit them in Notepad, but the easy way is to let Claude do it with you. Open PowerShell, then:
+Right now your office is a blank template, and the team won't start until it knows what you want and has your CV. The quick way is one command. Open PowerShell, then:
 
 ```
 cd "$HOME\Documents\agent-office\Hal's Job Search"
 claude
 ```
 
-(Keep the double quotes: the apostrophe in the folder name needs them.) Then type something like:
+(Keep the double quotes: the apostrophe in the folder name needs them.) Then type:
 
-> Help me fill in preferences.md. Interview me one section at a time, then write my answers into the file.
+```
+/office setup
+```
 
-Do the same for sources.md. For the CV, see [section 7](#7-your-cv).
+Claude interviews you, a few questions at a time, and shows a summary ("Is that right?") before it writes anything:
+
+1. **The work.** The kinds of job you want, in your own words. Claude turns them into up to six "tracks" (a name, the job titles to search for, words that confirm the field, words that rule a job out) in your order of preference, and you correct them. It also asks what you never want to see.
+2. **Pay and contract.** Your minimum and ideal yearly pay, and whether contract or day-rate work is fine.
+3. **Where.** Your town, remote / hybrid / office, days in the office, longest commute, and any travel. Claude lists the nearby towns and postcode areas that count as within reach; check that list, because the search uses it to decide whether a job that isn't remote is close enough.
+4. **Avoid and watch.** Deal-breakers, employers to avoid, how old an advert may be, and companies you'd love to work for.
+5. **Job sites.** Which job sites to use, and any others you use. It also lists the job alerts to create on LinkedIn and Indeed.
+6. **Your CV.** Paste it (or point to a file). Claude writes your CV text bank and CV file and makes a test PDF. **Read both files**: you are the only person who can check they're true.
+
+It takes about 20 minutes and you can stop and come back. Type `/office` any time to see what's done and what's left; `/office setup search` redoes only the search, `/office setup cv` only the CV.
+
+What it writes (you can edit any of it later):
+
+| File | What goes in it | Section of this guide |
+|---|---|---|
+| `shared/job-search/search.json` | The search definition: tracks, titles, pay, where, sites. Scout and Rita search from this. | [6](#6-changing-your-search) |
+| `shared/job-search/preferences.md` | The same, in plain English | [6](#6-changing-your-search) |
+| `shared/job-search/settings.json` | Your pay numbers, for ranking by pay | [6](#6-changing-your-search) |
+| `shared/job-search/sources.md` | The job sites, and the alerts to set up | [6](#6-changing-your-search) |
+| `shared/job-search/cv/cv-bank.md` | Your CV as plain text | [7](#7-your-cv) |
+| `shared/job-search/cv/base-cv.json` | Your CV in the CV template's format | [7](#7-your-cv) |
+
+*Doing it by hand instead:* Tim checks the first four for the words "please fill this in" or "please replace" at the top (delete that line when you're done) and checks that `search.json` has at least one track. You can edit them in Notepad, or ask Claude: "Help me fill in preferences.md. Interview me one section at a time, then write my answers into the file." But `/office setup` also fills in `search.json`, which is fiddly to write by hand.
 
 ### Step 3: try it
 
@@ -125,7 +142,7 @@ In Claude Code, in your office folder, type:
 /tim start the day
 ```
 
-Tim will check your setup, run a search and write `jobs/today.md`. Then open the office: double-click `shared\office-view\Open Office.cmd`.
+Tim will check your setup (if something is missing he says what and points you to `/office setup`), run a search and write `jobs/today.md`. Then open the office: double-click `shared\office-view\Open Office.cmd`.
 
 > **Tip:** type `/model sonnet` at the start of a session. It does the job well at a lower cost than the biggest model.
 
@@ -137,6 +154,7 @@ Open Claude Code in your office folder and type:
 
 | You type | What happens |
 |---|---|
+| `/office` | A checklist: which setup files are done and which are still to do. `/office setup` fills in the rest (section 3). |
 | `/tim start the day` | Tim handles anything waiting, runs the search if it hasn't run today, and writes `jobs/today.md`: new leads best first, what was dismissed and why, and what is waiting for you. |
 | `/tim daily search` | Only the search: Rita searches your sites and, if your email is connected, reads your job-alert emails; Tim sorts what comes back into **Leads** (worth a look) or **Dismissed** (with a reason). |
 | Pick roles in the office (**To pipeline**) or tell Tim "go for the first two" | Wren writes a tailored CV and cover letter for each, as Word files, and Ada makes PDFs. |
@@ -165,7 +183,7 @@ The top left shows your office's name and a **build** label with a dot. Green me
 |---|---|
 | **Overview** | Key numbers, your pipeline, what's **Waiting on you**, upcoming interviews, next actions. |
 | **Roles** | Every role you've shortlisted or beyond, as a board (drag a card to the next stage) or a list. |
-| **Leads** | Roles the team found that you haven't picked yet, best first, with a verdict (Apply / Maybe / Skip), a fit score and a reason. **To pipeline** shortlists one. **✕** dismisses it (you can restore it). Every move has an **Undo**. |
+| **Leads** | Roles the team found that you haven't picked yet, best first, with a verdict (Apply / Maybe / Skip), a fit score and a reason. **To pipeline** shortlists one. **✕** dismisses it (you can restore it). Every move has an **Undo**. Below the leads, the **Job sites** panel shows each site, when it was last read, whether it worked and how many leads it gave. Its buttons: **Check sources now**, **Job site keys** (the free Reed key, if you have one) and **Define my search** (pay, office days, commute, which kinds of work are on, their order, employers to avoid). |
 | **Interviews** | Upcoming interviews. Each opens Cole's prep and your talking points. |
 | **Next actions** | A to-do list. Tim adds questions here when they've run on their own. |
 | **CVs** | Your CV bank, your CV writing rules (editable here), every tailored CV and letter with View, PDF and Word buttons, and **Tailor a CV**. |
@@ -187,9 +205,13 @@ Full details of the office are in `shared/office-view/README.md`.
 
 This is the heart of customising the system. Almost everything is **one plain-text file** you can edit, and the team follows the new version on its next run. No restarting, no code.
 
-### The easy way: ask Claude
+### The easy ways
 
-Open Claude Code in your office folder and say what you want, in your own words:
+**Starting again, or a big change:** type `/office setup search` (or `/office setup` for the CV as well). It asks the questions again and keeps your old files as `preferences.md.old` and so on.
+
+**Pay, office days, commute, which kinds of work are on, their order, employers to avoid:** use **Define my search** in the office (the Leads page). Tim then updates `preferences.md` to say the same.
+
+**Anything else: ask Claude.** Open Claude Code in your office folder and say what you want, in your own words:
 
 > My minimum pay is now £40,000 and my ideal is £55,000. Update everything that needs changing.
 
@@ -200,6 +222,22 @@ Open Claude Code in your office folder and say what you want, in your own words:
 Claude knows which files to change. Open the file afterwards and read what changed. If you don't like it, say so and Claude will fix it.
 
 ### Or by hand: the files
+
+#### The search definition: `shared/job-search/search.json`
+
+This is the file the scripts actually search from. `preferences.md` and `sources.md` say the same things in plain English, for you and for Tim and Rita to read. If they ever disagree, `search.json` is what Scout follows, so keep them in step (or ask Claude to). It holds:
+
+| Part | What it does |
+|---|---|
+| `tracks` | Your kinds of work, in priority order. Each has the `titles` to look for, `keywords` that confirm the field, `not` words that rule a job out, and `min_level` (`manager` or `senior manager`). **With no tracks, the search finds nothing.** |
+| `where` | Your town, remote / hybrid, `office_days_per_week`, `max_commute_minutes`, and `commute_areas`: place names and postcode letters (for example `Leeds`, `Harrogate`, `LS`) that count as within reach for a job that isn't remote. |
+| `pay` | Minimum and ideal yearly pay in pounds, and what to do with jobs that don't say. |
+| `avoid_employers`, `avoid_work` | Employers and kinds of job to leave out. |
+| `max_age_days` | How old an advert may be (14 is a good start). |
+| `watch` | Employers whose own job pages you want checked. |
+| `sources` | The sites. Delete one to stop using it. |
+
+You can edit it in Notepad (keep the quotes and commas exactly), but it's easier to ask Claude: "Add Harrogate to my commute areas", "Add a track for X with these titles".
 
 #### 6.1 What you want: `shared/job-search/preferences.md`
 
@@ -258,11 +296,11 @@ If you connect your email to Claude, Tim can also read the job-alert emails that
 
 #### 6.5 Switching to a different kind of job
 
-For a bigger change (a new field, not just a new city), do these three together:
+For a bigger change (a new field, not just a new city), the quick way is to type `/office setup search`: it asks the questions again and rewrites `search.json`, `preferences.md`, `settings.json` and `sources.md`. Or do these three together by hand:
 
-1. Rewrite **Roles I want**, **Skills to match on** and **Deal-breakers** in `preferences.md`.
+1. Rewrite **Roles I want**, **Skills to match on** and **Deal-breakers** in `preferences.md`, and the `tracks` in `search.json`.
 2. Update the **Summary for matching** at the top of `cv/cv-bank.md`, because that is the only part of your CV Rita reads when scoring fit.
-3. Replace the sites in `sources.md` with ones for the new field.
+3. Replace the sites in `sources.md` (and `search.json`) with ones for the new field.
 
 Roles already in the tracker stay as they are. Dismiss or skip the old ones in the office.
 
@@ -289,7 +327,7 @@ The agents never read a PDF or Word copy of your CV (a PDF is read as page image
 
 ### Setting up your CV
 
-Both files start as placeholders. Replace them with your own details:
+Both files start as placeholders. The quick way is `/office setup cv` (or the CV part of `/office setup`): paste your CV, and it fills both files and makes a test PDF. To do it by hand:
 
 1. Open Claude Code in your office folder.
 2. Paste your current CV text and say:
@@ -454,7 +492,8 @@ Guidelines:
 | The office looks old, or the build dot isn't green | In PowerShell in the `agent-office` folder: `git status -sb`. The first line should say `main...origin/main`. If it names another branch, or anything else looks odd, send what it says to Tim Everard. Then `git pull`, close the black office window and open `Open Office.cmd` again from your office folder. |
 | "Smart App Control blocked Open Office.cmd" | Open it from PowerShell instead: `cd "<your office folder>\shared\office-view"`, then `npm install` (first time only), then `npm start`, and browse to http://127.0.0.1:4747. |
 | The automatic update stopped | Read the last lines of the log: `Get-Content $env:LOCALAPPDATA\agent-office-sync.log -Tail 5`. Git needs you to sign in once: in `agent-office`, run `git fetch` and sign in when asked. Still stuck? Send the log lines to Tim Everard. |
-| Tim says a file is still a blank template | Open the file it names and fill it in (section 3 or 7). The line "please fill this in" must be removed. |
+| Tim says a file is still a blank template, or the search finds nothing | Type `/office` to see what's missing, then `/office setup` (or `/office setup search` / `/office setup cv`). If you edit by hand instead, remove the line "please fill this in", and make sure `search.json` has at least one track. |
+| The search finds jobs but none near you | Check `commute_areas` in `search.json`: it must list the towns and postcode letters you'd travel to. |
 | Wren's CV runs to three pages | Ask Wren for changes: "shorten the profile and the older jobs so it fits two pages". Or shorten `base-cv.json`. |
 | A CV or letter has a fact-check warning | Ada found something that isn't in your CV bank. If it's true, add it to `cv-bank.md` or an `extra-*.md` file and redraft. If it's wrong, ask Wren to remove it. |
 | "Ada won't overwrite a Word file you edited" | That's protection. Say so when you want the drafts redone ("redo the drafts, ignoring my edits"). |
@@ -468,15 +507,15 @@ Guidelines:
 
 ## 12. Cheat sheet
 
-**Start:** open PowerShell → `cd` to your office folder (in double quotes) → `claude` → `/tim start the day`. New PC? See `GET-THE-OFFICE.md`.
+**Start:** open PowerShell → `cd` to your office folder (in double quotes) → `claude` → `/tim start the day`. First time: `/office setup`. New PC? See `GET-THE-OFFICE.md`.
 
 **Which file for which change**
 
 | I want to change… | File |
 |---|---|
-| Job titles, sectors, location, deal-breakers, daily limits | `shared/job-search/preferences.md` |
-| My pay floor and target | `preferences.md` **and** `shared/job-search/settings.json` |
-| Which sites are searched | `shared/job-search/sources.md` |
+| Job titles, sectors, location, deal-breakers, daily limits | `shared/job-search/preferences.md` **and** `shared/job-search/search.json` (or `/office setup search`) |
+| My pay floor and target | `preferences.md`, `settings.json` **and** `search.json` (or **Define my search** in the office) |
+| Which sites are searched | `shared/job-search/sources.md` **and** `search.json` |
 | My CV | `shared/job-search/cv/cv-bank.md` **and** `cv/base-cv.json` |
 | How CVs and letters are written | `shared/job-search/cv-rules.md` |
 | How the CV looks | `shared/tools/cv_template.py` |
@@ -485,7 +524,7 @@ Guidelines:
 | Interview prep | `.claude/agents/interview-coach.md` |
 | What Tim does each day | `.claude/skills/cos/SKILL.md` |
 
-**Commands:** `/tim start the day` · `/tim daily search` · `/tim approve <role>` · `/tim I applied to <role>` · `/tim how's it going?` · `/tim review my preferences`
+**Commands:** `/office` · `/office setup` · `/office setup search` · `/office setup cv` · `/tim start the day` · `/tim daily search` · `/tim approve <role>` · `/tim I applied to <role>` · `/tim how's it going?` · `/tim review my preferences`
 
 **Open the office:** double-click `shared\office-view\Open Office.cmd` → http://127.0.0.1:4747
 
