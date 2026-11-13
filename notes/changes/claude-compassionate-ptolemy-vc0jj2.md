@@ -11,6 +11,18 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-13: Phone page ("Job Hunt") moved onto the same system
+
+**What changed:** the published page (version 10; it is an artifact, not a repo file). Its `:root` now holds the same five colour tokens and four tints, with the old variable names mapped onto them; stage colours became the accent or the alert colour, with the stage names kept; the skeleton gradient is gone; CSS font sizes sit on the 12/14/16/20/24/32 scale; controls and icon buttons are 44px; the roles and leads tables become stacked cards below 1000px (labels on each cell); the phone navigation wraps into a grid instead of scrolling sideways; icon buttons that only showed on hover are always visible; advert links are underlined; skip link; reduced motion stops animation. The `office`, `phone` and `state` data were not touched. Another session had changed the page title to "Job Hunt Sync" in the meantime; that is kept.
+
+**Why:** Tim asked for the phone page to follow the office's new system (plan step 7).
+
+**Decisions:** Spacing on the older rules was not rewritten rule by rule; colour, type, control size, focus, layout and motion follow the system, and spacing follows it where the new rules apply. The previous version stays in the artifact's history.
+
+**How to check it:** Open the page at 390, 768 and 1440 wide. Tested from a local copy seeded with the page's saved data: axe-core (WCAG 2.2 AA) reports no violations on any tab at any width, no sideways scrolling, every button, link and select at least 44px. The "From the office" tab was only checked empty (it needs the live database); the live page itself was not opened from here.
+
+**Open items:** open the live page once on your phone and check "From the office" with real data.
+
 ### 2026-11-13: Office rebuilt on one design system, responsive at 390, 768 and 1440, WCAG 2.2 AA pass
 
 **What changed** (Tim's office, `shared/office-view/public/`; ported to Hal's office in a later entry)
