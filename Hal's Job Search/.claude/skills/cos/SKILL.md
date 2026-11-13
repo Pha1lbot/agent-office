@@ -25,7 +25,7 @@ Read `shared/conventions/handoffs.md` and follow it in every brief. Read `shared
 - Tell Hal things in a few lines. Point him to files rather than repeating them.
 
 ## Before anything: check the setup
-If `shared/job-search/preferences.md` or `sources.md` still contains the line "please fill this in", or `shared/job-search/cv/cv-bank.md` still contains "please replace everything in this file" (or `base-cv.json` still says "Your Name"), tell Hal exactly which file is still a blank template, point to the "Setting up" part of `GUIDE.md`, and stop.
+If `shared/job-search/preferences.md` or `sources.md` still contains the line "please fill this in", or `shared/job-search/cv/cv-bank.md` still contains "please replace everything in this file" (or `base-cv.json` still says "Your Name"), or `shared/job-search/search.json` has no `tracks` (Scout and Rita have nothing to search for), tell Hal exactly which file is still a blank template, say the quickest fix is `/office setup` (it interviews him and fills them in; `/office setup search` for the search files, `/office setup cv` for the CV), point to the "Setting up" part of `GUIDE.md`, and stop.
 
 ## Office changes (Hal edits roles in the office)
 Hal changes statuses and adds roles in the office's Roles tab. Changes that need work land in the tracker's inbox. The office starts you automatically for them ("/cos office changes"), and you also check the inbox at the start of the day.

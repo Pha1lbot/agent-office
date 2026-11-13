@@ -35,6 +35,27 @@ DEFN = {
 }
 
 
+class CommuteAreaTests(unittest.TestCase):
+    """`where.commute_areas` in search.json decides what is within reach (set by /office setup)."""
+
+    def test_uses_the_areas_in_the_definition(self):
+        leeds = {**DEFN, "where": {"commute_areas": ["Leeds", "Harrogate", "LS"]}}
+        near, _ = scout.judge(job(location="Leeds, West Yorkshire", country=""), "Test", leeds, today=TODAY)
+        self.assertIsNotNone(near)
+        far, why = scout.judge(job(location="Epsom, Surrey", country="GB"), "Test", leeds, today=TODAY)
+        self.assertIsNone(far)
+        self.assertEqual(why, "outside commute, not remote")
+
+    def test_remote_is_still_kept_anywhere(self):
+        leeds = {**DEFN, "where": {"commute_areas": ["Leeds"]}}
+        kept, _ = scout.judge(job(location="Remote, UK", country="GB"), "Test", leeds, today=TODAY)
+        self.assertIsNotNone(kept)
+
+    def test_no_areas_keeps_the_built_in_list(self):
+        kept, _ = scout.judge(job(location="Epsom, Surrey", country="GB"), "Test", DEFN, today=TODAY)
+        self.assertIsNotNone(kept)
+
+
 def job(**kw):
     base = {"title": "Head of Esports Operations", "company": "Acme Games", "location": "London, UK", "country": "GB",
             "link": "https://example.com/jobs/1", "posted": RECENT, "pay": "", "description": "Lead our esports tournaments."}
