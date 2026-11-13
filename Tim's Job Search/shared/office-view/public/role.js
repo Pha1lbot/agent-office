@@ -4,7 +4,7 @@
 import { marked } from "/vendor/marked.mjs";
 import DOMPurify from "/vendor/purify.mjs";
 import { store, on, roleById, queuedFor } from "./store.js";
-import { $, esc, post, safeUrl, fitDots, verdictBadge, closing, overdue, shortDate, longWhen, STATUS_ORDER, STATUS_LABEL, STATUS_COLOUR } from "./util.js";
+import { $, esc, post, safeUrl, fitDots, verdictBadge, closing, overdue, shortDate, longWhen, STATUS_ORDER, STATUS_LABEL, stageBadge } from "./util.js";
 import { openEdit } from "./dashboard.js";
 
 const SECTIONS = [["overview", "Overview"], ["documents", "Documents"], ["interview", "Interview"], ["activity", "Activity"]];
@@ -86,7 +86,7 @@ function render() {
   const c = closing(role.closing_date);
   const editing = store.system.editing;
   page.innerHTML = `
-    <nav class="crumbs">${["found", "skipped"].includes(role.status) ? `<a href="#leads">← Leads</a>` : `<a href="#roles">← Roles</a>`}</nav>
+    <nav class="crumbs" aria-label="Breadcrumb">${["found", "skipped"].includes(role.status) ? `<a href="#leads">← Leads</a>` : `<a href="#roles">← Roles</a>`}</nav>
     <div class="role-head">
       <div>
         <h2>${esc(role.title)}</h2>
@@ -94,16 +94,16 @@ function render() {
         <p class="role-meta">${esc(role.pay || "Pay not stated")}${role.location ? ` · ${esc(role.location)}` : ""}${c ? ` · <span class="close ${c.level}">${esc(c.text)}${role.closing_date ? ` (${esc(shortDate(role.closing_date))})` : ""}</span>` : ""} ${fitDots(role.fit)}</p>
       </div>
       <div class="role-actions">
-        ${editing ? `<select id="role-status" class="status-select" aria-label="Status" style="background-color:${STATUS_COLOUR[role.status]}">${STATUS_ORDER.map((s) => `<option value="${s}"${s === role.status ? " selected" : ""}>${STATUS_LABEL[s]}</option>`).join("")}</select>`
-          : `<span class="status" style="background:${STATUS_COLOUR[role.status]}">${esc(STATUS_LABEL[role.status])}</span>`}
-        ${url ? `<a class="btn" href="${esc(url)}" target="_blank" rel="noopener">Open advert ↗</a>` : ""}
+        ${editing ? `<select id="role-status" class="status-select" aria-label="Status">${STATUS_ORDER.map((s) => `<option value="${s}"${s === role.status ? " selected" : ""}>${STATUS_LABEL[s]}</option>`).join("")}</select>`
+          : stageBadge(role.status)}
+        ${url ? `<a class="btn" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Open advert<span class="sr"> (opens in a new tab)</span></a>` : ""}
         ${editing ? `<button type="button" class="btn" id="role-edit">Edit details</button>` : ""}
         <span id="role-hal"></span>
       </div>
     </div>
     <div id="role-notice"></div>
-    <nav class="role-tabs" role="tablist">${SECTIONS.map(([k, label]) => `<button role="tab" data-section="${k}" aria-selected="${k === section}">${label}${k === "documents" && (docs.cv || docs.letter) ? " ✓" : ""}${k === "interview" && (docs.prep || docs.points) ? " ✓" : ""}</button>`).join("")}</nav>
-    <div class="role-body">${({ overview, documents, interview, activity })[section]()}</div>`;
+    <div class="role-tabs" role="tablist" aria-label="${esc(role.title)} sections">${SECTIONS.map(([k, label]) => `<button role="tab" id="tab-${k}" aria-controls="role-panel" tabindex="${k === section ? 0 : -1}" data-section="${k}" aria-selected="${k === section}">${label}${k === "documents" && (docs.cv || docs.letter) ? `<span aria-hidden="true"> ✓</span><span class="sr"> (ready)</span>` : ""}${k === "interview" && (docs.prep || docs.points) ? `<span aria-hidden="true"> ✓</span><span class="sr"> (ready)</span>` : ""}</button>`).join("")}</div>
+    <div class="role-body" id="role-panel" role="tabpanel" aria-labelledby="tab-${section}" tabindex="0">${({ overview, documents, interview, activity })[section]()}</div>`;
   renderHeaderBits();
   renderNotice();
 }
@@ -112,7 +112,7 @@ function renderHeaderBits() {
   const el = $("role-hal");
   if (!el || !current?.data) return;
   const q = queuedFor(current.id);
-  el.innerHTML = q.length ? `<span class="hal-on" title="${esc(q.map((i) => i.task).join("; "))}">● Hal is on it${store.system.cos?.running ? " now" : ""}</span>` : "";
+  el.innerHTML = q.length ? `<span class="hal-on">Hal is on it${store.system.cos?.running ? " now" : ""}: ${esc(q.map((i) => i.task).join("; "))}</span>` : "";
 }
 function renderNotice() {
   const el = $("role-notice");
@@ -130,7 +130,7 @@ function overview() {
       <h3>Hal's verdict: worth applying?</h3>
       ${role.verdict ? `<p class="verdict-line">${verdictBadge(role, "")} ${esc(role.verdict_why || "")}</p><p class="muted">Rita's reasons for and against are under "The role, from Rita".</p>`
         : `<p class="muted">No verdict yet.</p>`}
-      ${asked ? `<p class="hal-on">● Hal is on it</p>` : editing ? `<button type="button" class="btn${role.verdict ? "" : " primary"}" data-request="verdict">${role.verdict ? "Ask again" : "Ask Hal: worth applying?"}</button>` : ""}
+      ${asked ? `<p class="hal-on">Hal is on it</p>` : editing ? `<button type="button" class="btn${role.verdict ? "" : " primary"}" data-request="verdict">${role.verdict ? "Ask again" : "Ask Hal: worth applying?"}</button>` : ""}
     </section>`;
   const advert = !texts["listing.md"] && texts["advert.txt"]
     ? `<h4>The advert you pasted</h4><pre class="advert">${esc(texts["advert.txt"])}</pre>` : "";
@@ -138,10 +138,10 @@ function overview() {
     <div class="ov-grid">
       <section class="panel">
         <h3>Next step</h3>
-        ${editing ? `<div class="inline-edit"><input id="ov-next" value="${esc(role.next)}" maxlength="300" placeholder="What needs to happen next?"><button type="button" data-save="next">Save</button></div>` : `<p>${esc(role.next) || "None set"}</p>`}
+        ${editing ? `<div class="inline-edit"><input id="ov-next" aria-label="Next step" value="${esc(role.next)}" maxlength="300" placeholder="What needs to happen next?"><button type="button" data-save="next">Save</button></div>` : `<p>${esc(role.next) || "None set"}</p>`}
         ${overdue(role.next) ? `<p class="late">This follow-up is due.</p>` : ""}
         <h3>Notes</h3>
-        ${editing ? `<div class="inline-edit col"><textarea id="ov-notes" rows="4" maxlength="2000">${esc(role.notes)}</textarea><button type="button" data-save="notes">Save notes</button></div>` : `<p>${esc(role.notes) || "No notes"}</p>`}
+        ${editing ? `<div class="inline-edit col"><textarea id="ov-notes" aria-label="Notes" rows="4" maxlength="2000">${esc(role.notes)}</textarea><button type="button" data-save="notes">Save notes</button></div>` : `<p>${esc(role.notes) || "No notes"}</p>`}
         <dl class="facts">
           <dt>Priority</dt><dd>${esc(role.priority ?? "–")}</dd>
           <dt>Source</dt><dd>${esc(role.source || "–")}</dd>
@@ -183,7 +183,7 @@ function documents() {
       </section>
       ${editing ? `<section class="panel">
         <h3>Ask Wren for changes</h3>
-        <textarea id="revise" rows="3" maxlength="300" placeholder="e.g. Shorter profile, lead with budgets, mention Airtable"></textarea>
+        <textarea id="revise" aria-label="What should Wren change?" rows="3" maxlength="300" placeholder="e.g. Shorter profile, lead with budgets, mention Airtable"></textarea>
         <button type="button" class="btn" data-request="revise">Send to Wren</button> <span id="revise-msg" class="muted"></span>
       </section>` : ""}
     </div>`;
@@ -196,7 +196,7 @@ function interview() {
   const pts = points.items.length || editing ? `
     <ol class="points" id="points">${points.items.map((p, i) => `<li>
       ${editing ? `<textarea data-point="${i}" rows="2" aria-label="Talking point ${i + 1}">${esc(p)}</textarea>
-      <span class="pt-buttons"><button type="button" data-up="${i}" title="Move up" ${i ? "" : "disabled"}>↑</button><button type="button" data-down="${i}" title="Move down" ${i < points.items.length - 1 ? "" : "disabled"}>↓</button><button type="button" data-del="${i}" title="Delete">✕</button></span>`
+      <span class="pt-buttons"><button type="button" data-up="${i}" aria-label="Move point ${i + 1} up" ${i ? "" : "disabled"}>↑</button><button type="button" data-down="${i}" aria-label="Move point ${i + 1} down" ${i < points.items.length - 1 ? "" : "disabled"}>↓</button><button type="button" data-del="${i}" aria-label="Delete point ${i + 1}">✕</button></span>`
         : esc(p)}</li>`).join("")}</ol>
     ${editing ? `<div class="pt-actions"><button type="button" class="btn" id="pt-add">+ Add a point</button><button type="button" class="btn primary" id="pt-save" ${points.dirty ? "" : "disabled"}>Save talking points</button><span id="pt-msg" class="muted">${points.dirty ? "Unsaved changes" : ""}</span></div>` : ""}` : `<p class="muted">No talking points yet.</p>`;
   return `
@@ -243,6 +243,15 @@ async function saveChanges(changes, msgEl) {
   catch (err) { alert(err.message); }
 }
 
+page.addEventListener("keydown", (e) => { // arrow keys move between the tabs
+  const tab = e.target.closest?.("[role=tab]");
+  if (!tab || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+  const tabs = [...page.querySelectorAll("[role=tab]")], i = tabs.indexOf(tab);
+  const next = e.key === "Home" ? 0 : e.key === "End" ? tabs.length - 1 : (i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+  e.preventDefault();
+  section = tabs[next].dataset.section; render();
+  page.querySelector(`#tab-${section}`).focus();
+});
 page.addEventListener("click", async (e) => {
   if (!current?.data) return;
   const t = e.target;

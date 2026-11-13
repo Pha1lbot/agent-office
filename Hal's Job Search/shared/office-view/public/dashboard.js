@@ -4,7 +4,7 @@
 import { store, on, roleById, queuedFor } from "./store.js";
 import {
   $, esc, clock, short, safeUrl, roleName, post, fitDots, verdictBadge, VERDICT_RANK, closing, overdue, shortDate, longWhen,
-  STATUS_ORDER, STATUS_LABEL, STATUS_COLOUR, OPEN, CLOSED,
+  STATUS_ORDER, STATUS_LABEL, STATUS_SHAPE, stageBadge, OPEN, CLOSED,
 } from "./util.js";
 
 // Leads (found, skipped) have their own view (views.js); the board starts at Shortlisted.
@@ -17,7 +17,7 @@ const HAL_TASK = {
   interview: "Tim will get Cole to write your key talking points and prep notes.",
   applied: "Ada will set a follow-up date for a week from today.",
 };
-const ui = { view: "board", q: "", list: "", style: "", sort: "priority", dir: 1, closedOpen: false };
+const ui = { view: "board", q: "", list: "", style: "", sort: "priority", dir: 1, closedOpen: false, colClosed: {} };
 try { Object.assign(ui, JSON.parse(localStorage.getItem("office.pipeline") || "{}")); } catch { /* use defaults */ }
 const remember = () => { try { localStorage.setItem("office.pipeline", JSON.stringify({ view: ui.view, sort: ui.sort, dir: ui.dir })); } catch { /* fine */ } };
 
@@ -36,24 +36,24 @@ function filtered() {
 // ---------- Board ----------
 function docTicks(id) {
   const d = store.docs[id] || {};
-  const tick = (on, label) => `<span class="tick ${on ? "on" : ""}" title="${label}${on ? "" : " not yet"}">${on ? "✓" : "·"} ${label}</span>`;
-  return `<div class="ticks">${tick(d.cv, "CV")}${tick(d.letter, "Letter")}${tick(d.cvPdf, "PDF")}${d.prep || d.points ? tick(true, "Prep") : ""}${d.attachments ? `<span class="tick on" title="Attachments">📎 ${d.attachments}</span>` : ""}</div>`;
+  const tick = (on, label) => `<span class="tick ${on ? "on" : ""}"><span aria-hidden="true">${on ? "✓" : "·"}</span> ${label}<span class="sr">${on ? "" : " not yet"}</span></span>`;
+  return `<div class="ticks">${tick(d.cv, "CV")}${tick(d.letter, "Letter")}${tick(d.cvPdf, "PDF")}${d.prep || d.points ? tick(true, "Prep") : ""}${d.attachments ? `<span class="tick on">Attachments ${d.attachments}</span>` : ""}</div>`;
 }
 
 function card(r) {
   const c = closing(r.closing_date);
-  const iv = r.interview_at && OPEN.has(r.status) ? `<div class="meta iv">🗓 Interview ${esc(longWhen(r.interview_at))}</div>` : "";
+  const iv = r.interview_at && OPEN.has(r.status) ? `<div class="meta iv">Interview ${esc(longWhen(r.interview_at))}</div>` : "";
   const late = overdue(r.next);
-  return `<article class="pcard" draggable="${store.system.editing}" data-id="${esc(r.id)}" tabindex="0" aria-label="${esc(r.title)} at ${esc(r.company)}">
+  return `<article class="pcard" draggable="${store.system.editing}" data-id="${esc(r.id)}" tabindex="0" role="link" aria-label="${esc(r.title)} at ${esc(r.company)}. Open the role.">
     <div class="pc-top"><span class="pc-title">${esc(r.title)}</span>${r.priority ? `<span class="prio" title="Priority">P${esc(r.priority)}</span>` : ""}</div>
     <div class="pc-co">${esc(r.company)}</div>
     <div class="meta">${esc(r.pay || "Pay not stated")}${r.location ? ` · ${esc(r.location)}` : ""}</div>
     <div class="meta row">${fitDots(r.fit)}${verdictBadge(r)}${c ? `<span class="close ${c.level}">${esc(c.text)}</span>` : ""}</div>
     ${iv}
     ${["found", "shortlisted"].includes(r.status) ? "" : docTicks(r.id)}
-    ${r.next ? `<div class="next ${late ? "late" : ""}" title="${esc(r.next)}">${late ? "⚠ " : ""}${esc(r.next)}</div>` : ""}
-    ${halOn(r) ? `<div class="cass-on">● Tim is on it</div>` : ""}
-    ${store.system.editing ? `<select class="card-status" data-id="${esc(r.id)}" aria-label="Move ${esc(r.title)}">${STATUS_ORDER.map((st) => `<option value="${st}"${st === r.status ? " selected" : ""}>${STATUS_LABEL[st]}</option>`).join("")}</select>` : ""}
+    ${r.next ? `<div class="next ${late ? "late" : ""}" title="${esc(r.next)}">${late ? "Due: " : ""}${esc(r.next)}</div>` : ""}
+    ${halOn(r) ? `<div class="cass-on">Tim is on it</div>` : ""}
+    ${store.system.editing ? `<select class="card-status" data-id="${esc(r.id)}" aria-label="Move ${esc(r.title)} to another stage">${STATUS_ORDER.map((st) => `<option value="${st}"${st === r.status ? " selected" : ""}>${STATUS_LABEL[st]}</option>`).join("")}</select>` : ""}
   </article>`;
 }
 
@@ -61,15 +61,15 @@ function renderBoard(roles) {
   const by = (st) => roles.filter((r) => r.status === st).sort((a, b) => (a.priority || 99) - (b.priority || 99) || (Number(b.fit) || 0) - (Number(a.fit) || 0));
   const col = (st) => {
     const list = by(st);
-    return `<section class="col" data-status="${st}">
-      <h3><span class="dot" style="background:${STATUS_COLOUR[st]}"></span>${STATUS_LABEL[st]}<span class="count">${list.length}</span></h3>
+    return `<details class="col" data-status="${st}" ${ui.colClosed[st] === undefined ? (list.length ? "open" : "") : ui.colClosed[st] ? "" : "open"}>
+      <summary><span aria-hidden="true">${STATUS_SHAPE[st]}</span>${STATUS_LABEL[st]}<span class="count">${list.length}<span class="sr"> roles</span></span></summary>
       <div class="col-body">${list.map(card).join("") || `<p class="col-empty">Nothing here</p>`}</div>
-    </section>`;
+    </details>`;
   };
   const closed = roles.filter((r) => CLOSED.has(r.status));
   $("board").innerHTML = `<div class="cols">${COLUMNS.map(col).join("")}</div>
     <details class="closed col" data-status="rejected" ${ui.closedOpen ? "open" : ""}>
-      <summary><span class="dot" style="background:${STATUS_COLOUR.rejected}"></span>Rejected<span class="count">${closed.length}</span>
+      <summary><span aria-hidden="true">${STATUS_SHAPE.rejected}</span>Rejected<span class="count">${closed.length}<span class="sr"> roles</span></span>
         <span class="hint">Drop a card here to close it. Roles you decide not to go for move to Leads → Dismissed.</span></summary>
       <div class="col-body closed-body">${closed.map(card).join("") || `<p class="col-empty">Nothing closed yet</p>`}</div>
     </details>`;
@@ -92,20 +92,21 @@ function renderList(roles) {
     return (x < y ? -1 : x > y ? 1 : 0) * ui.dir || STATUS_ORDER.indexOf(a.status) - STATUS_ORDER.indexOf(b.status);
   });
   document.querySelectorAll("#list th[data-sort]").forEach((th) => th.setAttribute("aria-sort", th.dataset.sort === ui.sort ? (ui.dir > 0 ? "ascending" : "descending") : "none"));
+  $("roles-sort").value = ui.sort;
   $("roles").innerHTML = rows.length ? rows.map((r) => {
     const url = safeUrl(r.url), c = closing(r.closing_date), d = store.docs[r.id] || {};
     return `<tr class="clickable" data-id="${esc(r.id)}">
-      <td><span class="status" style="background:${STATUS_COLOUR[r.status] || "#9aa0b5"}">${esc(STATUS_LABEL[r.status] || r.status)}</span></td>
-      <td>${esc(r.priority ?? "")}</td>
-      <td>${esc(r.title)}${r.list ? `<div class="list-tag">${esc(r.list)}</div>` : ""}</td>
-      <td title="${esc(r.company)}">${esc(r.company)}</td><td title="${esc(r.pay)}">${esc(r.pay || "Not stated")}</td><td title="${esc(r.location)}">${esc(r.location)}</td>
-      <td>${fitDots(r.fit)}</td>
-      <td>${verdictBadge(r, "")}</td>
-      <td>${c ? `<span class="close ${c.level}">${esc(shortDate(r.closing_date))}</span>` : ""}</td>
-      <td class="docs-cell">${d.cv ? "CV " : ""}${d.letter ? "Letter " : ""}${d.cvPdf ? "PDF " : ""}${d.attachments ? `📎${d.attachments}` : ""}</td>
-      <td class="next ${overdue(r.next) ? "late" : ""}" title="${esc(r.next)}">${esc(r.next)}</td>
-      <td>${esc(shortDate(r.updated))}${url ? ` <a href="${esc(url)}" target="_blank" rel="noopener" title="Open the advert">↗</a>` : ""}</td></tr>`;
-  }).join("") : `<tr><td colspan="12" class="empty">${(store.tracker.roles || []).length ? "No roles match." : "No roles yet. Run /tim start the day in Claude Code."}</td></tr>`;
+      <td data-label="Status">${stageBadge(r.status)}</td>
+      <td data-label="Priority">${esc(r.priority ?? "")}</td>
+      <td data-label="Role"><div><a class="r-title" href="#role/${esc(r.id)}">${esc(r.title)}</a>${r.list ? `<div class="list-tag">${esc(r.list)}</div>` : ""}</div></td>
+      <td data-label="Company">${esc(r.company)}</td><td data-label="Pay">${esc(r.pay || "Not stated")}</td><td data-label="Location">${esc(r.location)}</td>
+      <td data-label="Fit">${fitDots(r.fit)}</td>
+      <td data-label="Tim">${verdictBadge(r, "")}</td>
+      <td data-label="Closes">${c ? `<span class="close ${c.level}">${esc(shortDate(r.closing_date))}${c.level === "past" ? " (closed)" : c.level === "soon" ? " (soon)" : ""}</span>` : ""}</td>
+      <td data-label="Docs" class="docs-cell">${[d.cv && "CV", d.letter && "Letter", d.cvPdf && "PDF", d.attachments && `Attachments ${d.attachments}`].filter(Boolean).join(", ")}</td>
+      <td data-label="Next step" class="next ${overdue(r.next) ? "late" : ""}">${overdue(r.next) ? "Due: " : ""}${esc(r.next)}</td>
+      <td data-label="Updated"><div>${esc(shortDate(r.updated))}${url ? ` <a class="r-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Open advert<span class="sr"> for ${esc(r.title)} (opens in a new tab)</span></a>` : ""}</div></td></tr>`;
+  }).join("") : `<tr><td colspan="12" class="empty" data-label="">${(store.tracker.roles || []).length ? "No roles match." : "No roles yet. Run /tim start the day in Claude Code."}</td></tr>`;
 }
 
 export function renderPipeline() {
@@ -165,9 +166,12 @@ board.addEventListener("click", (e) => {
 });
 board.addEventListener("keydown", (e) => {
   const c = e.target.closest?.(".pcard");
-  if (c && e.key === "Enter" && e.target === c) location.hash = `#role/${c.dataset.id}`;
+  if (c && (e.key === "Enter" || e.key === " ") && e.target === c) { e.preventDefault(); location.hash = `#role/${c.dataset.id}`; }
 });
-board.addEventListener("toggle", (e) => { if (e.target.matches?.("details.closed")) ui.closedOpen = e.target.open; }, true);
+board.addEventListener("toggle", (e) => {
+  if (e.target.matches?.("details.closed")) ui.closedOpen = e.target.open;
+  else if (e.target.matches?.("details.col[data-status]")) ui.colClosed[e.target.dataset.status] = !e.target.open;
+}, true);
 
 $("roles").addEventListener("click", (e) => {
   if (e.target.closest("a")) return;
@@ -176,7 +180,7 @@ $("roles").addEventListener("click", (e) => {
 });
 document.querySelector("#list thead").addEventListener("click", (e) => {
   const th = e.target.closest("th[data-sort]");
-  if (!th) return;
+  if (!th || !e.target.closest("button")) return;
   if (ui.sort === th.dataset.sort) ui.dir = -ui.dir; else { ui.sort = th.dataset.sort; ui.dir = ["fit", "pay", "updated"].includes(ui.sort) ? -1 : 1; }
   remember();
   renderPipeline();
@@ -185,6 +189,7 @@ $("roles-seg").addEventListener("click", (e) => {
   const b = e.target.closest("[data-view]");
   if (b) { ui.view = b.dataset.view; remember(); renderPipeline(); }
 });
+$("roles-sort").addEventListener("change", (e) => { ui.sort = e.target.value; ui.dir = ["fit", "pay", "updated"].includes(ui.sort) ? -1 : 1; remember(); renderPipeline(); });
 $("search").addEventListener("input", (e) => { ui.q = e.target.value; renderPipeline(); });
 $("filter-list").addEventListener("change", (e) => { ui.list = e.target.value; renderPipeline(); });
 $("filter-style").addEventListener("change", (e) => { ui.style = e.target.value; renderPipeline(); });
@@ -240,8 +245,8 @@ function renderSystem() {
     const err = c.last && !c.last.ok && !c.running && !c.startsAt;
     parts.push(`<span class="${err ? "err" : ""}"><b>Tim</b>: ${state}</span>`);
     parts.push(`<span>${c.runsToday} of ${c.maxPerDay} automatic runs today</span>`);
-    if (c.inbox && !c.running) parts.push(`<button type="button" data-cos="run">Run now</button>`);
-    parts.push(`<button type="button" data-cos="auto" aria-pressed="${c.auto}">Auto start: ${c.auto ? "on" : "off"}</button>`);
+    if (c.inbox && !c.running) parts.push(`<button type="button" class="btn sm" data-cos="run">Run now</button>`);
+    parts.push(`<button type="button" class="btn sm" data-cos="auto" aria-pressed="${c.auto}">Auto start: ${c.auto ? "on" : "off"}</button>`);
   }
   const tk = system.tokens;
   if (tk) parts.push(`<span class="${tk.budget && tk.today >= tk.budget ? "err" : ""}">Tokens today: <b>${short(tk.today)}</b>${tk.budget ? ` of ${short(tk.budget)} budget` : ""}</span>`);

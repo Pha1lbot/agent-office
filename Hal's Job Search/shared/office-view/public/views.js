@@ -7,7 +7,7 @@ import DOMPurify from "/vendor/purify.mjs";
 import { store, on, roleById, queuedFor } from "./store.js";
 import {
   $, esc, post, safeUrl, fitDots, verdictBadge, closing, overdue, shortDate, longWhen, toast, svg, ICON, yearlyPay,
-  STATUS_LABEL, STATUS_COLOUR, VERDICT_LABEL,
+  STATUS_LABEL, VERDICT_LABEL, stageBadge,
 } from "./util.js";
 
 const md = (text) => DOMPurify.sanitize(marked.parse(text || "", { gfm: true }));
@@ -121,7 +121,7 @@ function kpis() {
   ];
   return `<section class="grid-kpi" aria-label="Key numbers">${tiles.map((t, i) => {
     const val = t.v === null ? "—" : typeof t.v === "number" ? `<span class="countup" data-to="${t.v}">${t.v}</span>` : `${t.v.cur}<span class="countup" data-to="${Math.round(t.v.n / 1000)}">${Math.round(t.v.n / 1000)}</span>k`;
-    return `<div class="card kpi${ui.animate ? " enter" : ""}" style="animation-delay:${i * 60}ms"><span class="k-l">${t.l}</span><span class="k-v num">${val}</span><span class="k-s" title="${esc(t.s)}">${esc(t.s)}</span></div>`;
+    return `<div class="card kpi${ui.animate ? " enter" : ""}"><span class="k-l">${t.l}</span><span class="k-v num">${val}</span><span class="k-s">${esc(t.s)}</span></div>`;
   }).join("")}</section>`;
 }
 function pipelineChart() {
@@ -130,9 +130,9 @@ function pipelineChart() {
   const max = Math.max(1, ...Object.values(c));
   const cols = `grid-template-columns:repeat(${PIPE.length},minmax(0,1fr))`;
   return `<div class="card-h"><h2>Pipeline</h2><span class="sub">${plural(roles().length, "role")} tracked</span></div>
-    <div class="bars" style="${cols}">${PIPE.map((s, i) => { const n = c[s], h = n ? Math.max(8, Math.round((n / max) * 100)) : 0;
-      return `<div class="bar-col"><span class="bar-val${n ? "" : " zero"} countup" data-to="${n}">${n}</span><div class="bar${ui.animate ? " pre" : ""}" role="img" aria-label="${STATUS_LABEL[s]}: ${n}" style="height:${n ? `max(6px, calc(${h}% - 30px))` : "4px"};background:${n ? STATUS_COLOUR[s] : "var(--line-2)"};transition-delay:${i * 70}ms"></div></div>`; }).join("")}</div>
-    <div class="bar-labels" style="${cols}">${PIPE.map((s) => `<span title="${STATUS_LABEL[s]}">${s === "found" ? "Leads" : STATUS_LABEL[s]}</span>`).join("")}</div>`;
+    <div class="bars" style="${cols}" role="img" aria-label="Pipeline: ${PIPE.map((s) => `${s === "found" ? "Leads" : STATUS_LABEL[s]} ${c[s]}`).join(", ")}">${PIPE.map((s, i) => { const n = c[s], h = n ? Math.max(8, Math.round((n / max) * 100)) : 0;
+      return `<div class="bar-col"><span class="bar-val${n ? "" : " zero"} countup" data-to="${n}">${n}</span><div class="bar${n ? "" : " zero"}${ui.animate ? " pre" : ""}" style="height:${n ? `max(6px, calc(${h}% - 30px))` : "4px"};transition-delay:${i * 70}ms"></div></div>`; }).join("")}</div>
+    <div class="bar-labels" style="${cols}" aria-hidden="true">${PIPE.map((s) => `<span>${s === "found" ? "Leads" : STATUS_LABEL[s]}</span>`).join("")}</div>`;
 }
 function weeklyChart() {
   const start = new Date(); start.setHours(0, 0, 0, 0); start.setDate(start.getDate() - ((start.getDay() + 6) % 7));
@@ -145,17 +145,17 @@ function weeklyChart() {
   const max = Math.max(1, ...weeks.map((w) => w.n)), total = weeks.reduce((a, w) => a + w.n, 0);
   const cols = `grid-template-columns:repeat(${weeks.length},minmax(0,1fr))`;
   return `<div class="card-h"><h2>Applications per week</h2><span class="sub">${plural(total, "application")} in 8 weeks</span></div>
-    <div class="bars week" style="${cols}">${weeks.map((w, i) => `<div class="bar-col"><span class="bar-val${w.n ? "" : " zero"}">${w.n}</span><div class="bar${ui.animate ? " pre" : ""}" style="height:${w.n ? `max(6px, calc(${Math.round((w.n / max) * 100)}% - 30px))` : "4px"};${w.n ? "" : "background:var(--line-2);"}transition-delay:${i * 50}ms"></div></div>`).join("")}</div>
-    <div class="bar-labels" style="${cols}">${weeks.map((w) => `<span>${w.s.getDate()} ${w.s.toLocaleDateString("en-GB", { month: "short" })}</span>`).join("")}</div>`;
+    <div class="bars week" style="${cols}" role="img" aria-label="Applications per week, last eight weeks: ${weeks.map((w) => `${w.s.getDate()} ${w.s.toLocaleDateString("en-GB", { month: "short" })} ${w.n}`).join(", ")}">${weeks.map((w, i) => `<div class="bar-col"><span class="bar-val${w.n ? "" : " zero"}">${w.n}</span><div class="bar${w.n ? "" : " zero"}${ui.animate ? " pre" : ""}" style="height:${w.n ? `max(6px, calc(${Math.round((w.n / max) * 100)}% - 30px))` : "4px"};transition-delay:${i * 50}ms"></div></div>`).join("")}</div>
+    <div class="bar-labels" style="${cols}" aria-hidden="true">${weeks.map((w) => `<span>${w.s.getDate()} ${w.s.toLocaleDateString("en-GB", { month: "short" })}</span>`).join("")}</div>`;
 }
 function interviewItems(limit) {
   const now = Date.now() - 36e5;
   const list = roles().filter((r) => r.interview_at).map((r) => ({ r, t: new Date(r.interview_at) })).filter((x) => !isNaN(x.t))
     .sort((a, b) => ((a.t < now) - (b.t < now)) || (a.t < now ? b.t - a.t : a.t - b.t));
   const rows = (limit ? list.filter((x) => x.t >= now).slice(0, limit) : list);
-  return rows.map(({ r, t }) => `<a class="iv clickable${t < now ? " past" : ""}" href="#role/${esc(r.id)}/interview" style="color:inherit;text-decoration:none">
+  return rows.map(({ r, t }) => `<a class="iv clickable${t < now ? " past" : ""}" href="#role/${esc(r.id)}/interview">
       <div class="iv-date"><b>${t.getDate()}</b><span>${t.toLocaleDateString("en-GB", { month: "short" })}</span></div>
-      <div style="min-width:0"><div class="r-title">${esc(r.title)}</div><div class="r-co">${esc(r.company)} · ${esc(t.toLocaleString("en-GB", { weekday: "short", hour: "2-digit", minute: "2-digit" }))}${r.interview_with ? ` · with ${esc(r.interview_with)}` : ""}</div>
+      <div class="u-flush"><div class="r-title">${esc(r.title)}</div><div class="r-co">${esc(r.company)} · ${esc(t.toLocaleString("en-GB", { weekday: "short", hour: "2-digit", minute: "2-digit" }))}${r.interview_with ? ` · with ${esc(r.interview_with)}` : ""}</div>
       ${(store.docs[r.id] || {}).prep ? `<div class="tags"><span class="tg docs">Cole's prep ready</span></div>` : ""}</div></a>`).join("");
 }
 function actionItems(limit) {
@@ -164,7 +164,7 @@ function actionItems(limit) {
   const list = limit ? open.slice(0, limit) : [...open, ...done.slice(-10).reverse()];
   return list.map((a) => {
     const role = a.role && roleById(a.role);
-    return `<div class="act${a.done ? " done" : ""}"><input type="checkbox" data-action="${esc(a.id)}" ${a.done ? "checked" : ""} ${store.system.editing ? "" : "disabled"} aria-label="Done: ${esc(a.text)}">
+    return `<div class="act${a.done ? " done" : ""}"><label class="tick-box"><input type="checkbox" data-action="${esc(a.id)}" ${a.done ? "checked" : ""} ${store.system.editing ? "" : "disabled"} aria-label="Done: ${esc(a.text)}"></label>
       <div class="a-body"><span class="a-t">${esc(a.text)}</span>${a.options && !a.answer ? `<span class="a-q">${a.options.map((o) => `<button type="button" class="btn sm" data-answer="${esc(o)}" data-id="${esc(a.id)}" ${store.system.editing ? "" : "disabled"}>${esc(o)}</button>`).join("")}</span>` : ""}${a.answer ? `<span class="a-w">You answered: ${esc(a.answer)}</span>` : ""}<span class="a-w">${role ? `<a href="#role/${esc(role.id)}">${esc(role.company)}: ${esc(role.title)}</a> · ` : ""}${a.done && a.completed ? `done ${esc(shortDate(a.completed))}` : `added ${esc(shortDate(a.created))}`}</span></div></div>`;
   }).join("");
 }
@@ -176,8 +176,8 @@ function renderOverview() {
   const fresh = leads.filter((r) => r.verdict === "apply").length;
   const fb = latestFinds();
   const findLine = fb.items.length && fb.day === todayKey()
-    ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong style="color:var(--text)">Rita found ${plural(fb.items.length, "new role")} ${dayWord(fb.day)}</strong>: ${fb.added.length} added to Leads, ${fb.dismissed.length} dismissed by Tim${fb.pending.length ? `, ${fb.pending.length} still to sort` : ""}.</span><button type="button" class="btn sm primary" data-found="open">Review</button></div>` : "";
-  $("ov-callout").innerHTML = findLine || (leads.length ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong style="color:var(--text)">${plural(leads.length, "lead")}</strong> to look at${fresh ? `, ${fresh} that Tim says to apply for` : ""}.</span><a class="btn sm primary" href="#leads">Review</a></div>` : "");
+    ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong>Rita found ${plural(fb.items.length, "new role")} ${dayWord(fb.day)}</strong>: ${fb.added.length} added to Leads, ${fb.dismissed.length} dismissed by Tim${fb.pending.length ? `, ${fb.pending.length} still to sort` : ""}.</span><button type="button" class="btn sm primary" data-found="open">Review</button></div>` : "";
+  $("ov-callout").innerHTML = findLine || (leads.length ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong>${plural(leads.length, "lead")}</strong> to look at${fresh ? `, ${fresh} that Tim says to apply for` : ""}.</span><a class="btn sm primary" href="#leads">Review</a></div>` : "");
   $("ov-kpis").innerHTML = kpis();
   $("ov-pipe").innerHTML = pipelineChart();
   $("ov-week").innerHTML = weeklyChart();
@@ -185,7 +185,7 @@ function renderOverview() {
   $("ov-iv").innerHTML = `<div class="card-h"><h2>Upcoming interviews</h2><a class="sub" href="#interviews">All</a></div>${ivs ? `<div class="list">${ivs}</div>` : emptyBox("None booked yet", "Set a role to Interview and add the date; Cole writes your prep.")}`;
   const acts = actionItems(5);
   const openN = (store.tracker.actions || []).filter((a) => !a.done).length;
-  $("ov-acts").innerHTML = `<div class="card-h"><h2>Next actions</h2><a class="sub" href="#actions">${openN > 5 ? `All ${openN}` : "All"}</a></div>${acts ? `<div class="list">${acts}</div>` : `<p class="sub" style="margin:0">Nothing to do right now.</p>`}${addActionForm()}`;
+  $("ov-acts").innerHTML = `<div class="card-h"><h2>Next actions</h2><a class="sub" href="#actions">${openN > 5 ? `All ${openN}` : "All"}</a></div>${acts ? `<div class="list">${acts}</div>` : `<p class="sub u-flush">Nothing to do right now.</p>`}${addActionForm()}`;
   countUp($("v-overview"));
 }
 
@@ -226,21 +226,21 @@ function renderSources() {
   const rows = sourceRows();
   if (!rows.length) return "";
   const reached = rows.filter((r) => r.reached).length, editing = store.system.editing;
-  const body = ui.srcOpen === false ? "" : `<div class="tbl-wrap"><table class="tbl" style="min-width:720px"><thead><tr><th>Site</th><th>Read by</th><th>Last checked</th><th>Result</th><th>Leads: last / total</th><th>You picked</th></tr></thead><tbody>${rows.map((r) =>
-    `<tr><td><span class="r-title">${esc(r.name)}</span>${r.s && r.s.note ? `<span class="r-co" title="${esc(r.s.note)}">${esc(r.s.note.slice(0, 80))}</span>` : ""}</td><td>${esc(r.how)}</td><td>${esc(r.when)}</td>
-     <td><span class="tg src-${r.tone}">${esc(r.label)}</span></td><td>${r.s ? `${r.s.found || 0} / ${r.s.total || 0}` : "—"}</td><td>${r.picked || "—"}</td></tr>`).join("")}</tbody></table></div>`;
+  const body = ui.srcOpen === false ? "" : `<div class="tbl-wrap"><table><thead><tr><th scope="col">Site</th><th scope="col">Read by</th><th scope="col">Last checked</th><th scope="col">Result</th><th scope="col">Leads: last / total</th><th scope="col">You picked</th></tr></thead><tbody>${rows.map((r) =>
+    `<tr><td data-label="Site"><div><span class="r-title">${esc(r.name)}</span>${r.s && r.s.note ? `<span class="r-co">${esc(r.s.note.slice(0, 120))}</span>` : ""}</div></td><td data-label="Read by">${esc(r.how)}</td><td data-label="Last checked">${esc(r.when)}</td>
+     <td data-label="Result"><span class="tg src-${r.tone}"><span aria-hidden="true">${r.tone === "ok" ? "✓" : r.tone === "warn" ? "?" : "✕"}</span>${esc(r.label)}</span></td><td data-label="Leads">${r.s ? `${r.s.found || 0} / ${r.s.total || 0}` : "—"}</td><td data-label="You picked">${r.picked || "—"}</td></tr>`).join("")}</tbody></table></div>`;
   return `<section class="card flush sources" aria-label="Job sites"><div class="tbl-head"><div class="row1"><div><h2>Job sites</h2><span class="sub">${reached} of ${rows.length} reached in the last week${reached < rows.length ? ": the others need a look" : ""}</span></div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn sm" data-scout="toggle">${ui.srcOpen === false ? "Show" : "Hide"}</button>${editing ? `<button type="button" class="btn sm" data-scout="search">Define my search</button><button type="button" class="btn sm" data-scout="keys">Job site keys</button><button type="button" class="btn sm primary" data-scout="run" id="scout-run">Check sources now</button>` : ""}</div></div></div>${body}</section>`;
+    <div class="u-row"><button type="button" class="btn sm" data-scout="toggle" aria-expanded="${ui.srcOpen !== false}">${ui.srcOpen === false ? "Show" : "Hide"}</button>${editing ? `<button type="button" class="btn sm" data-scout="search">Define my search</button><button type="button" class="btn sm" data-scout="keys">Job site keys</button><button type="button" class="btn sm primary" data-scout="run" id="scout-run">Check sources now</button>` : ""}</div></div></div>${body}</section>`;
 }
 function openSearch() {
   const s = store.tracker.search;
   if (!s) return toast("There is no search definition yet.");
   const dlg = document.createElement("dialog");
   dlg.className = "dlg";
-  const trackRows = () => s.tracks.map((t, i) => `<div class="trk" data-i="${i}"><label><input type="checkbox" ${t.enabled ? "checked" : ""} data-on="${i}"> <span>${i + 1}. ${esc(t.name)}</span></label><span class="trk-btns"><button type="button" class="icon-btn" data-up="${i}" ${i === 0 ? "disabled" : ""} aria-label="Move up">↑</button><button type="button" class="icon-btn" data-down="${i}" ${i === s.tracks.length - 1 ? "disabled" : ""} aria-label="Move down">↓</button></span></div>`).join("");
-  dlg.innerHTML = `<form method="dialog" class="dlg-body" style="display:flex;flex-direction:column;gap:14px;min-width:min(520px,88vw)">
-    <h3 style="margin:0">Define my search</h3>
-    <p class="sub" style="margin:0">Changes apply to the next search. Your Chief of Staff then updates the written preferences to match.</p>
+  const trackRows = () => s.tracks.map((t, i) => `<div class="trk" data-i="${i}"><label><input type="checkbox" ${t.enabled ? "checked" : ""} data-on="${i}" aria-label="Use ${esc(t.name)}"> <span>${i + 1}. ${esc(t.name)}</span></label><span class="trk-btns"><button type="button" class="icon-btn" data-up="${i}" ${i === 0 ? "disabled" : ""} aria-label="Move ${esc(t.name)} up">↑</button><button type="button" class="icon-btn" data-down="${i}" ${i === s.tracks.length - 1 ? "disabled" : ""} aria-label="Move ${esc(t.name)} down">↓</button></span></div>`).join("");
+  dlg.innerHTML = `<form method="dialog" class="dlg-body" aria-labelledby="search-title">
+    <h3 id="search-title">Define my search</h3>
+    <p class="sub u-flush">Changes apply to the next search. Your Chief of Staff then updates the written preferences to match.</p>
     <div class="keys-field"><span>Kinds of work, best first</span><div id="trk-list">${trackRows()}</div><small class="sub">Tick to switch a kind on or off. Roles that fit more than one go to the first.</small></div>
     <div class="dlg-grid">
       <label class="keys-field"><span>Minimum pay (£ a year)</span><input type="number" name="minimum" value="${s.pay.minimum ?? ""}" min="10000" step="1000"></label>
@@ -250,8 +250,8 @@ function openSearch() {
       <label class="keys-field"><span>How old a job may be (days)</span><input type="number" name="age" value="${s.max_age_days ?? ""}" min="3" max="60"></label>
     </div>
     <label class="keys-field"><span>Employers to leave out (one per line)</span><textarea name="avoid" rows="3" spellcheck="false">${esc(s.avoid_employers.join("\n"))}</textarea></label>
-    <p class="sub" id="search-msg" style="margin:0;min-height:1.2em"></p>
-    <div style="display:flex;gap:8px;justify-content:flex-end"><button type="button" class="btn" data-s="cancel">Cancel</button><button type="button" class="btn primary" data-s="save">Save</button></div></form>`;
+    <p class="dlg-err" id="search-msg" role="alert"></p>
+    <div class="u-row u-end"><button type="button" class="btn" data-s="cancel">Cancel</button><button type="button" class="btn primary" data-s="save">Save</button></div></form>`;
   document.body.appendChild(dlg);
   dlg.addEventListener("close", () => dlg.remove());
   const redraw = () => { dlg.querySelector("#trk-list").innerHTML = trackRows(); };
@@ -280,12 +280,12 @@ function openKeys() {
   const field = (id, label, hint) => `<label class="keys-field"><span>${label} <span class="tg ${have[id] ? "src-ok" : "src-bad"}">${have[id] ? "Set" : "Not set"}</span></span><input type="password" name="${id}" autocomplete="off" spellcheck="false" placeholder="${have[id] ? "Leave blank to keep the current one" : "Paste it here"}"><small class="sub">${hint}</small></label>`;
   const dlg = document.createElement("dialog");
   dlg.className = "dlg";
-  dlg.innerHTML = `<form method="dialog" class="dlg-body" style="display:flex;flex-direction:column;gap:14px;min-width:min(440px,86vw)">
-    <h3 style="margin:0">Job site key</h3>
-    <p class="sub" style="margin:0">A free key that lets the search read Reed. They are saved on this PC only (in <code>shared/job-search/.env</code>), never sent to GitHub, and never shown again.</p>
+  dlg.innerHTML = `<form method="dialog" class="dlg-body" aria-labelledby="keys-title">
+    <h3 id="keys-title">Job site key</h3>
+    <p class="sub u-flush">A free key that lets the search read Reed. They are saved on this PC only (in <code>shared/job-search/.env</code>), never sent to GitHub, and never shown again.</p>
     ${field("REED_API_KEY", "Reed API key", 'Sign up free at <a href="https://www.reed.co.uk/developers/jobseeker" target="_blank" rel="noopener">reed.co.uk/developers/jobseeker</a>')}
-    <p class="sub" id="keys-msg" style="margin:0;min-height:1.2em"></p>
-    <div style="display:flex;gap:8px;justify-content:flex-end"><button type="button" class="btn" data-k="cancel">Cancel</button><button type="button" class="btn primary" data-k="save">Save key</button></div></form>`;
+    <p class="dlg-err" id="keys-msg" role="alert"></p>
+    <div class="u-row u-end"><button type="button" class="btn" data-k="cancel">Cancel</button><button type="button" class="btn primary" data-k="save">Save key</button></div></form>`;
   document.body.appendChild(dlg);
   dlg.addEventListener("close", () => dlg.remove());
   dlg.addEventListener("click", async (e) => {
@@ -315,26 +315,26 @@ function renderLeads() {
     ["none", "No verdict yet", open.filter((r) => !r.verdict).length], ...lists.map((l) => [`list:${l}`, l, open.filter((r) => r.list === l).length])].filter((c) => c[0] === "all" || c[2]);
   const editing = store.system.editing;
   const head = `<div class="tbl-head"><div class="row1"><div><h2>${ui.leadShow === "dismissed" ? "Dismissed leads" : "Leads"}</h2><span class="sub">${ui.leadShow === "dismissed" ? "Roles you or Tim ruled out, in case you change your mind" : `${plural(open.length, "role")} to look at, best first. Moving one to the pipeline gets Wren writing.`}</span></div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">${latestFinds().items.length ? `<button type="button" class="btn sm${latestFinds().day === todayKey() ? " primary" : ""}" data-found="open">New leads<span class="n-badge">${latestFinds().items.length}</span></button>` : ""}${dismissed.length ? `<button type="button" class="btn sm ghost" data-lead="toggle">${ui.leadShow === "dismissed" ? "Back to leads" : `Dismissed (${dismissed.length})`}</button>` : ""}${editing ? `<button type="button" class="btn sm" data-lead="add">${svg(ICON.plus, 14, 2.2)}Add lead</button>` : ""}</div></div>
+    <div class="u-row">${latestFinds().items.length ? `<button type="button" class="btn sm${latestFinds().day === todayKey() ? " primary" : ""}" data-found="open">New leads<span class="n-badge">${latestFinds().items.length}<span class="sr"> in the latest batch</span></span></button>` : ""}${dismissed.length ? `<button type="button" class="btn sm ghost" data-lead="toggle">${ui.leadShow === "dismissed" ? "Back to leads" : `Dismissed (${dismissed.length})`}</button>` : ""}${editing ? `<button type="button" class="btn sm" data-lead="add">${svg(ICON.plus, 14, 2.2)}Add lead</button>` : ""}</div></div>
     ${ui.leadShow === "open" && open.length ? `<div class="chips" role="group" aria-label="Filter leads">${chips.map(([k, l, n]) => `<button type="button" class="chip" data-chip="${esc(k)}" aria-pressed="${ui.leadFilter === k}">${esc(l)}<span class="n">${n}</span></button>`).join("")}</div>` : ""}</div>`;
   const rows = leadRows();
   let body;
   if (!rows.length) {
-    body = `<div style="padding:0 22px 22px">${ui.leadShow === "dismissed" ? emptyBox("Nothing dismissed", "Leads you rule out land here.") : open.length ? emptyBox("No leads match", ui.q ? "Try a different word, or clear the search." : "Nothing with this filter.") : emptyBox("No leads yet", "Rita adds new roles each morning, and you can add one you've found yourself.")}</div>`;
+    body = `<div class="cv-pad">${ui.leadShow === "dismissed" ? emptyBox("Nothing dismissed", "Leads you rule out land here.") : open.length ? emptyBox("No leads match", ui.q ? "Try a different word, or clear the search." : "Nothing with this filter.") : emptyBox("No leads yet", "Rita adds new roles each morning, and you can add one you've found yourself.")}</div>`;
   } else {
-    body = `<div class="tbl-wrap"><table class="tbl" style="min-width:1000px"><thead><tr><th style="width:30%">Role</th><th>Location</th><th>Pay</th><th style="width:30%">Tim's view</th><th></th></tr></thead><tbody>${rows.map((r) => {
+    body = `<div class="tbl-wrap"><table><thead><tr><th scope="col">Role</th><th scope="col">Location</th><th scope="col">Pay</th><th scope="col">Tim's view</th><th scope="col"><span class="sr">Actions</span></th></tr></thead><tbody>${rows.map((r) => {
       const url = safeUrl(r.url), c = closing(r.closing_date);
-      const tags = [isNewLead(r) ? `<span class="tg new">New</span>` : "", r.priority && ui.leadShow === "open" ? `<span class="tg star">P${esc(r.priority)}</span>` : "", r.list ? `<span class="tg">${esc(r.list)}</span>` : "", r.source && r.source !== "Job Hunt dashboard" ? `<span class="tg">${esc(r.source)}</span>` : "", c ? `<span class="tg close ${c.level}">${esc(c.text)}</span>` : "", halOn(r) ? `<span class="tg" style="color:var(--accent)">Tim is on it</span>` : ""].join("");
+      const tags = [isNewLead(r) ? `<span class="tg new">New</span>` : "", r.priority && ui.leadShow === "open" ? `<span class="tg star">P${esc(r.priority)}</span>` : "", r.list ? `<span class="tg">${esc(r.list)}</span>` : "", r.source && r.source !== "Job Hunt dashboard" ? `<span class="tg">${esc(r.source)}</span>` : "", c ? `<span class="tg close ${c.level}">${esc(c.text)}</span>` : "", halOn(r) ? `<span class="tg docs">Tim is on it</span>` : ""].join("");
       const why = r.verdict_why || r.notes || "";
       const acts = ui.leadShow === "dismissed"
         ? (editing ? `<button type="button" class="btn sm" data-lead="restore" data-id="${esc(r.id)}">Restore</button>` : "")
-        : (editing ? `<button type="button" class="btn sm" data-lead="move" data-id="${esc(r.id)}" title="Shortlist it: Wren writes the CV and cover letter">${svg(ICON.arrow, 14, 2)}To pipeline</button>
-          <button type="button" class="icon-btn" data-lead="tailor" data-id="${esc(r.id)}" title="Tailor a CV" aria-label="Tailor a CV for ${esc(r.title)}">${svg(ICON.spark, 16)}</button>
-          <button type="button" class="icon-btn" data-lead="dismiss" data-id="${esc(r.id)}" title="Dismiss" aria-label="Dismiss ${esc(r.title)}">${svg(ICON.x, 16)}</button>` : "");
-      return `<tr class="clickable${ui.leadShow === "dismissed" ? " dismissed" : ""}" data-role="${esc(r.id)}"><td><span class="r-title">${esc(r.title)}</span><span class="r-co">${esc(r.company)}</span>${url ? ` · <a class="r-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Advert</a>` : ""}${tags ? `<div class="tags">${tags}</div>` : ""}</td>
-        <td>${esc(r.location || "—")}</td><td>${esc(r.pay || "—")}</td>
-        <td><div style="display:flex;gap:8px;align-items:center;margin-bottom:4px">${verdictBadge(r, "") || `<span class="sub">No verdict yet</span>`}${fitDots(r.fit)}</div>${why ? `<div class="clamp c-fit" title="${esc(why)}">${esc(why)}</div>` : ""}${r.reason && ui.leadShow === "dismissed" ? `<div class="clamp c-con">Reason: ${esc(r.reason)}</div>` : ""}</td>
-        <td><div class="acts">${acts}</div></td></tr>`;
+        : (editing ? `<button type="button" class="btn sm" data-lead="move" data-id="${esc(r.id)}" aria-label="To pipeline: ${esc(r.title)}. Wren writes the CV and cover letter.">${svg(ICON.arrow, 14, 2)}To pipeline</button>
+          <button type="button" class="icon-btn" data-lead="tailor" data-id="${esc(r.id)}" aria-label="Tailor a CV for ${esc(r.title)}">${svg(ICON.spark, 16)}</button>
+          <button type="button" class="icon-btn" data-lead="dismiss" data-id="${esc(r.id)}" aria-label="Dismiss ${esc(r.title)}">${svg(ICON.x, 16)}</button>` : "");
+      return `<tr class="clickable${ui.leadShow === "dismissed" ? " dismissed" : ""}" data-role="${esc(r.id)}"><td data-label="Role"><div><a class="r-title" href="#role/${esc(r.id)}">${esc(r.title)}</a><span class="r-co">${esc(r.company)}</span>${url ? ` · <a class="r-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Advert<span class="sr"> for ${esc(r.title)} (opens in a new tab)</span></a>` : ""}${tags ? `<div class="tags">${tags}</div>` : ""}</div></td>
+        <td data-label="Location">${esc(r.location || "—")}</td><td data-label="Pay">${esc(r.pay || "—")}</td>
+        <td data-label="Tim's view"><div><div class="u-row">${verdictBadge(r, "") || `<span class="sub">No verdict yet</span>`}${fitDots(r.fit)}</div>${why ? `<div class="clamp c-fit">${esc(why)}</div>` : ""}${r.reason && ui.leadShow === "dismissed" ? `<div class="clamp c-con">Reason: ${esc(r.reason)}</div>` : ""}</td>
+        </div></td><td data-label="Actions"><div class="acts">${acts}</div></td></tr>`;
     }).join("")}</tbody></table></div>`;
   }
   $("v-leads").innerHTML = `<section class="card flush" aria-label="Leads">${head}${body}</section>${renderSources()}`;
@@ -345,11 +345,11 @@ function askWhy(role) {
   if (!role) return;
   const dlg = document.createElement("dialog");
   dlg.className = "dlg";
-  dlg.innerHTML = `<form method="dialog" class="dlg-body" style="display:flex;flex-direction:column;gap:12px;min-width:min(420px,86vw)">
-    <h3 style="margin:0">Why not ${esc(role.company)}?</h3>
-    <p class="sub" style="margin:0">One tap helps the team learn what you don't want. Optional.</p>
+  dlg.innerHTML = `<form method="dialog" class="dlg-body" aria-labelledby="why-title">
+    <h3 id="why-title">Why not ${esc(role.company)}?</h3>
+    <p class="sub u-flush">One tap helps the team learn what you don't want. Optional.</p>
     <div class="chips" role="group" aria-label="Reason">${SKIP_REASONS.map((r) => `<button type="button" class="chip" data-why="${esc(r)}">${esc(r)}</button>`).join("")}</div>
-    <div style="display:flex;justify-content:flex-end"><button type="button" class="btn" data-why-skip>Skip</button></div></form>`;
+    <div class="u-row u-end"><button type="button" class="btn" data-why-skip>Skip</button></div></form>`;
   document.body.appendChild(dlg);
   dlg.addEventListener("close", () => dlg.remove());
   dlg.addEventListener("click", async (e) => {
@@ -394,7 +394,7 @@ function renderInterviews() {
 function renderActions() {
   const items = actionItems(0);
   $("v-actions").innerHTML = `<section class="card"><div class="card-h"><h2>Next actions</h2><span class="sub">Things for you to do. Tim adds questions here when Tim runs automatically.</span></div>
-    ${items ? `<div class="list">${items}</div>` : `<p class="sub" style="margin:0">Nothing to do right now.</p>`}${addActionForm()}</section>`;
+    ${items ? `<div class="list">${items}</div>` : `<p class="sub u-flush">Nothing to do right now.</p>`}${addActionForm()}</section>`;
 }
 async function toggleAction(id, done) {
   try { await post("/api/actions", { id, done }); if (done) toast("Done.", () => post("/api/actions", { id, done: false })); }
@@ -420,22 +420,22 @@ for (const host of ["v-overview", "v-actions"]) {
 function renderCVs() {
   const tailored = roles().filter((r) => (store.docs[r.id] || {}).cv).sort((a, b) => (b.updated || "").localeCompare(a.updated || ""));
   const editing = store.system.editing;
-  const base = `<section class="card cv-card"><div style="display:flex;gap:8px;align-items:center"><span class="badge base">Base</span><span class="cv-n">Your CV bank</span></div>
+  const base = `<section class="card cv-card"><div class="u-row"><span class="badge base">Base</span><span class="cv-n">Your CV bank</span></div>
     <span class="cv-sub">Everything Wren is allowed to use, word for word from your CV. Every tailored CV is checked against it.</span>
     <div class="cv-actions"><button type="button" class="btn sm" data-cv="bank">${svg(ICON.doc, 14)}Read it</button>${jobSearch?.hasDefaultCv ? `<a class="btn sm" href="/files/cv/default-cv.pdf" target="_blank" rel="noopener">Original PDF</a>` : ""}${editing ? `<button type="button" class="btn sm primary" data-cv="tailor">${svg(ICON.spark, 14, 2)}Tailor a CV</button>` : ""}</div></section>`;
-  const rules = `<section class="card cv-card"><div style="display:flex;gap:8px;align-items:center"><span class="badge base">Rules</span><span class="cv-n">Your CV writing rules</span></div>
-    <div class="md sub" style="max-height:150px;overflow:auto">${jobSearch ? md(jobSearch.rules.split("\n").filter((l) => /^\s*[-*]\s/.test(l)).join("\n") || jobSearch.rules) : "Loading…"}</div>
+  const rules = `<section class="card cv-card"><div class="u-row"><span class="badge base">Rules</span><span class="cv-n">Your CV writing rules</span></div>
+    <div class="md sub cv-scroll" tabindex="0" role="region" aria-label="Your CV writing rules">${jobSearch ? md(jobSearch.rules.split("\n").filter((l) => /^\s*[-*]\s/.test(l)).join("\n") || jobSearch.rules) : "Loading…"}</div>
     ${editing ? `<div class="cv-actions"><button type="button" class="btn sm" data-cv="rules">${svg(ICON.edit, 14)}Edit rules</button></div>` : ""}</section>`;
   const cards = tailored.map((r) => {
     const d = store.docs[r.id] || {}, f = (n) => `/files/roles/${encodeURIComponent(r.id)}/${n}`;
-    return `<section class="card cv-card"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="badge tailored">Tailored</span><span class="pill" style="background:#1A1F29;color:${STATUS_COLOUR[r.status]}">${STATUS_LABEL[r.status]}</span></div>
+    return `<section class="card cv-card"><div class="u-row"><span class="badge tailored">Tailored</span>${stageBadge(r.status)}</div>
       <div><div class="cv-n">${esc(r.title)}</div><div class="cv-sub">${esc(r.company)}${r.updated ? ` · ${esc(shortDate(r.updated))}` : ""}</div></div>
       <div class="tags">${d.letter ? `<span class="tg docs">Cover letter</span>` : ""}${d.cvPdf ? `<span class="tg docs">PDF</span>` : ""}${d.prep ? `<span class="tg docs">Interview prep</span>` : ""}</div>
-      <div class="cv-actions"><a class="btn sm" href="#role/${esc(r.id)}/documents">View</a>${d.cvPdf ? `<a class="btn sm" href="${f("cv.pdf")}" target="_blank" rel="noopener">PDF</a>` : ""}<a class="btn sm" href="${f("cv.docx")}">Word</a>${editing ? `<button type="button" class="icon-btn" data-cv="tailor" data-id="${esc(r.id)}" title="Tailor again" aria-label="Tailor again for ${esc(r.title)}">${svg(ICON.spark, 16)}</button>` : ""}</div></section>`;
+      <div class="cv-actions"><a class="btn sm" href="#role/${esc(r.id)}/documents">View</a>${d.cvPdf ? `<a class="btn sm" href="${f("cv.pdf")}" target="_blank" rel="noopener">PDF</a>` : ""}<a class="btn sm" href="${f("cv.docx")}">Word</a>${editing ? `<button type="button" class="icon-btn" data-cv="tailor" data-id="${esc(r.id)}" aria-label="Tailor again for ${esc(r.title)}">${svg(ICON.spark, 16)}</button>` : ""}</div></section>`;
   }).join("");
   $("v-cvs").innerHTML = `<div class="cv-grid">${base}${rules}</div>
     <section class="card flush"><div class="tbl-head"><div class="row1"><div><h2>Tailored CVs</h2><span class="sub">${tailored.length ? `${plural(tailored.length, "role")} with a CV from Wren` : "Wren's CVs appear here"}</span></div></div></div>
-    <div style="padding:0 22px 22px">${tailored.length ? `<div class="cv-grid">${cards}</div>` : emptyBox("No tailored CVs yet", "Move a lead to the pipeline, or use Tailor a CV, and Wren writes one with a cover letter.")}</div></section>`;
+    <div class="cv-pad">${tailored.length ? `<div class="cv-grid">${cards}</div>` : emptyBox("No tailored CVs yet", "Move a lead to the pipeline, or use Tailor a CV, and Wren writes one with a cover letter.")}</div></section>`;
 }
 $("v-cvs").addEventListener("click", (e) => {
   const b = e.target.closest("[data-cv]"); if (!b) return;
@@ -510,13 +510,13 @@ function renderFound() {
     const undo = !store.system.editing || !r ? ""
       : r.status === "found" ? `<button type="button" class="btn sm ghost" data-found="dismiss" data-id="${esc(r.id)}">Dismiss</button>`
       : r.status === "skipped" ? `<button type="button" class="btn sm" data-found="restore" data-id="${esc(r.id)}">Add to Leads</button>` : "";
-    return `<div class="found"><div class="f-main"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="fitb ${esc(i.fit)}">${FIT_LABEL[i.fit] || "Possible"}</span><span class="r-title">${esc(i.title)}</span></div>
+    return `<div class="found"><div class="f-main"><div class="u-row"><span class="fitb ${esc(i.fit)}">${FIT_LABEL[i.fit] || "Possible"}</span><span class="r-title">${esc(i.title)}</span></div>
       <span class="r-co">${esc(i.company)}${i.location ? ` · ${esc(i.location)}` : ""}${i.pay ? ` · ${esc(i.pay)}` : ""} · ${esc(i.source || (i.via === "email" ? "Job alert email" : "Web search"))}${safeUrl(i.link) ? ` · <a class="r-link" href="${esc(i.link)}" target="_blank" rel="noopener noreferrer">Advert</a>` : ""}</span>
       ${i.why ? `<span class="clamp c-fit">${esc(i.why)}</span>` : ""}<div>${decision}</div></div>
       <div class="f-acts">${undo}${r ? `<a class="btn sm ghost" href="#role/${esc(r.id)}">Open</a>` : ""}</div></div>`;
   };
   const runLine = run ? `Last run ${esc(longWhen(run.at.length <= 16 ? run.at + ":00" : run.at))} (${run.via === "email" ? "email scan" : "web search"}, ${plural(run.found || 0, "new find")})${run.note ? `: ${esc(run.note)}` : ""}.` : "No search has run yet.";
-  $("found-body").innerHTML = `<p class="sub" style="margin:0 0 12px">${runLine} Rita searches your job sites (and Tim reads your job-alert emails) when you run the daily search; Tim sorts what they find.</p>
+  $("found-body").innerHTML = `<p class="sub">${runLine} Rita searches your job sites (and Tim reads your job-alert emails) when you run the daily search; Tim sorts what they find.</p>
     ${fb.items.length ? `<h3 class="found-h">${dayWord(fb.day) === "this morning" ? "This morning" : `Found ${dayWord(fb.day)}`}: ${fb.added.length} added, ${fb.dismissed.length} dismissed</h3><div class="list">${[...fb.added, ...fb.pending, ...fb.dismissed].map(row).join("")}</div>` : emptyBox("Nothing new yet", "New finds appear here after the morning search.")}`;
 }
 document.addEventListener("click", async (e) => {
@@ -550,7 +550,7 @@ $("search").addEventListener("input", (e) => {
   else if (ui.view === "leads") renderLeads();
 });
 document.addEventListener("keydown", (e) => {
-  if (e.key === "/" && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || "") && !document.querySelector("dialog[open]")) { e.preventDefault(); $("search").focus(); }
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k" && !document.querySelector("dialog[open]")) { e.preventDefault(); $("search").focus(); }
 });
 async function loadJobSearch() {
   try { const res = await fetch("/api/job-search"); if (res.ok) jobSearch = await res.json(); } catch { /* shown as loading */ }
