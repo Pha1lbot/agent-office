@@ -11,6 +11,12 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-13: Office redesign ported from Tim's office
+
+- `shared/office-view/public/` (`style.css`, `index.html`, `app.js`, `build.js`, `dashboard.js`, `office.js`, `role.js`, `scene.js`, `util.js`, `views.js`): the same design system, responsive layout and accessibility fixes as Tim's office (see the 2026-11-13 entry in `claude-compassionate-ptolemy-vc0jj2.md`), with the names swapped. Hal's own wording kept: the "H" avatar, the Tim-the-Chief-of-Staff names, the `cass-on` class and the daily-search sentence in the New leads dialog.
+- Checked: `npm test` (57 pass) and `npm run check` in Hal's office; the office started on an empty scratch tracker (not Hal's data) with no axe-core violations and no sideways scrolling at 390, 768 and 1440. Hal's data was not opened.
+- Hal needs `git pull` and an office restart to see it.
+
 ### 2026-11-12: Adzuna removed (ported from Tim's office)
 
 **What changed**

@@ -5,8 +5,8 @@ import { store, on } from "./store.js";
 import { $, esc, hex, clock, short, PICKED } from "./util.js";
 import { start, follow, setSelected, setBoard } from "./scene.js";
 
-const STATE_COLOUR = { typing: "#4fbf7f", walking: "#3fa7d6", waiting: "#f2b134", idle: "#9aa0b5", asleep: "#6b7090" };
 const STATE_LABEL = { typing: "Working", walking: "Looking things up", waiting: "Waiting for you", idle: "Idle", asleep: "Asleep" };
+const STATE_SHAPE = { typing: "●", walking: "◐", waiting: "!", idle: "○", asleep: "–" };
 
 const agents = store.agents;
 let selected = "chief-of-staff";
@@ -33,20 +33,26 @@ function select(id) {
   renderLog();
 }
 function renderCards() {
+  const had = document.activeElement?.closest?.("#cards") ? document.activeElement.dataset : null; // keep keyboard focus through live updates
   $("cards").innerHTML = [...agents.values()].map((a) => `
-    <button class="agent" aria-pressed="${a.id === selected}" data-id="${esc(a.id)}">
-      <div class="who"><span class="dot" style="background:${hex(a.colour)}"></span>${CONTRACTS[a.id] ? `<span class="name-link" data-contract="${esc(a.id)}" title="View ${esc(a.name)}'s contract">${esc(a.name)}</span>` : esc(a.name)}${a.role ? `<span class="role">${esc(a.role)}</span>` : ""}</div>
-      <span class="state" style="background:${STATE_COLOUR[a.state]}">${STATE_LABEL[a.state]}</span>
-      <div class="detail" title="${esc(a.raw || a.detail)}">${esc(a.detail)}</div>
-      <div class="tokens">${a.id === "admin" ? "No tokens (automatic)" : `${short(a.tokens || 0)} tokens today`}</div>
-    </button>`).join("");
+    <article class="agent" data-selected="${a.id === selected}">
+      <button type="button" class="agent-pick" aria-pressed="${a.id === selected}" data-id="${esc(a.id)}">
+        <span class="who"><span class="dot" style="background:${hex(a.colour)}" aria-hidden="true"></span>${esc(a.name)}</span>
+        ${a.role ? `<span class="role">${esc(a.role)}</span>` : ""}
+        <span class="state s-${esc(a.state)}"><span aria-hidden="true">${STATE_SHAPE[a.state] || "○"}</span>${STATE_LABEL[a.state] || esc(a.state)}</span>
+        <span class="detail">${esc(a.detail)}</span>
+        <span class="tokens">${a.id === "admin" ? "No tokens (automatic)" : `${short(a.tokens || 0)} tokens today`}</span>
+      </button>
+      ${CONTRACTS[a.id] ? `<button type="button" class="name-link" data-contract="${esc(a.id)}" aria-label="Read ${esc(a.name)}'s contract">Contract</button>` : ""}
+    </article>`).join("");
+  if (had) $("cards").querySelector(had.contract ? `[data-contract="${had.contract}"]` : `[data-id="${had.id}"]`)?.focus();
 }
 $("cards").addEventListener("click", (e) => {
   const link = e.target.closest("[data-contract]");
   if (link) return openContract(link.dataset.contract);
-  const c = e.target.closest(".agent"); if (c) select(c.dataset.id);
+  const c = e.target.closest("[data-id]"); if (c) select(c.dataset.id);
 });
-$("log-name").addEventListener("click", () => { if (CONTRACTS[selected]) openContract(selected); });
+
 
 function openContract(id) {
   const c = CONTRACTS[id];
@@ -73,9 +79,7 @@ function openContract(id) {
 function renderLog() {
   const a = agents.get(selected);
   if (!a) return;
-  $("log-name").textContent = a.name;
-  $("log-name").classList.toggle("name-link", !!CONTRACTS[a.id]);
-  $("log-name").title = CONTRACTS[a.id] ? `View ${a.name}'s contract` : "";
+  $("log-name").textContent = `${a.name}'s day`;
   $("log-sub").textContent = a.detail;
   $("log").innerHTML = a.log.length
     ? a.log.slice().reverse().map((l) => `<li><time>${clock(l.ts)}</time><span>${esc(l.text)}</span></li>`).join("")
