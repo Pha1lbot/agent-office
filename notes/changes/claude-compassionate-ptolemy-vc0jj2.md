@@ -11,6 +11,37 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-13: Office rebuilt on one design system, responsive at 390, 768 and 1440, WCAG 2.2 AA pass
+
+**What changed** (Tim's office, `shared/office-view/public/`; ported to Hal's office in a later entry)
+- `style.css` rewritten as one generation of rules on a single system: five colour tokens (`--bg --surface --text --accent --alert`), four fixed tints mixed from them (muted, edge, line, hover), spacing 4/8/12/16/24/32/48, type 12/14/16/20/24/32, one 44px control height, no gradients, no `!important` (except the reduced-motion rule). The old aliases, duplicate rules and 82 colours are gone.
+- `util.js`: `STATUS_COLOUR` removed. New `stageBadge` (a shape plus the stage name) and verdict badges with a shape (✓ ? ✕), so stage and verdict never rely on colour alone. `fitDots` gets a text label.
+- `index.html`: skip link, Menu button for phones, table headers with `scope` and sort buttons, a sort menu for phones, labelled fields, no inline styles.
+- `dashboard.js`: board columns are collapsible sections (empty ones start closed); table cells carry `data-label` so tables become stacked cards; role titles are real links; sort headings are buttons; advert links say they open a new tab.
+- `views.js`: inline styles replaced by classes; chart bars and the pipeline get a text summary; Ctrl K / ⌘K replaces the `/` shortcut; dialogs get titles; icon buttons keep their labels.
+- `role.js`: tabs follow the ARIA tab pattern (arrow keys, panel, labels); notes, next step and revise fields are labelled.
+- `office.js`: staff cards no longer put a button inside a button; Contract is its own button; focus survives live updates; staff state shows a shape and words.
+- `scene.js`: room colours untouched. Name tags now say what each person is doing; with "reduce motion" on, people go straight to their place and nothing sways.
+- `app.js`: page title and focus follow each page change; phone menu toggle (Esc closes it).
+- `build.js`: uses the new tokens.
+
+**Why:** Tim asked for an audit of the dashboard and office space, a rebuild on a consistent spacing, type and colour system (at most five colour tokens, no gradients), responsive behaviour at 390, 768 and 1440 with 44px targets and no sideways scrolling below 768, and a WCAG 2.2 AA check.
+
+**Decisions**
+- Layout: 248px sidebar from 1200px; 72px icon rail from 768 to 1199px; a top bar with a Menu button below 768. Tables become stacked cards below 1000px (the plan said 768; the roles table needs about 890px, so it would have scrolled at 768). The board is a grid of columns that wraps (three across at 1440) instead of seven narrow columns that scrolled sideways.
+- Stage colours were dropped, as Tim chose: stages and verdicts use shapes and words; `--alert` is for late, closed or failing items.
+- The 3D room keeps its own colours (Tim's choice). Staff identity dots in the cards keep each person's room colour (inline `style`), and chart and column sizes are set inline because they come from data.
+- "/" for search became Ctrl K or ⌘K, because a single-key shortcut fails WCAG 2.1.4.
+- Inline links inside lines of text get a larger hit area with padding that does not change the line.
+
+**How to check it:** `npm test` (57 pass) and `npm run check`. Run the office, open each page at 390, 768 and 1440 wide: no sideways scrolling, tables are cards on phones, Tab shows a ring on every control, "reduce motion" stops the room and charts.
+Measured in a scratch copy of the tracker: axe-core with WCAG 2.2 AA tags reports no violations on any page at any of the three widths, nor in the add, tailor, new-leads, search and key dialogs; no page scrolls sideways; every button, link and select is at least 44px (checkboxes are 24px inside 44px labels).
+
+**Open items**
+- Hal's office copy: next entry.
+- The phone page ("Job Hunt" artifact) still has its old look; to be rebuilt on the same tokens after Tim has seen this.
+- Checked with scripts and the accessibility tree, not with a real screen reader. The contract dialog was not scanned (it needs the staff to be present).
+
 ### 2026-11-12: Phone dashboard sync (Tim's office only)
 
 **What changed**

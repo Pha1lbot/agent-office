@@ -10,7 +10,13 @@ export const roleName = (r) => `${esc(r.company)} (${esc(r.title)})`;
 
 export const STATUS_ORDER = ["found", "shortlisted", "drafted", "approved", "applied", "interview", "offer", "rejected", "skipped"];
 export const STATUS_LABEL = { found: "Lead", shortlisted: "Shortlisted", drafted: "Drafted", approved: "Approved", applied: "Applied", interview: "Interview", offer: "Offer", rejected: "Rejected", skipped: "Dismissed" };
-export const STATUS_COLOUR = { found: "#9aa0b5", shortlisted: "#7aa2ff", drafted: "#f2b134", approved: "#4fbf7f", applied: "#3fa7d6", interview: "#c38bff", offer: "#2ee6a6", rejected: "#e06c75", skipped: "#6b7090" };
+/** A shape for each stage, so a stage is never told apart by colour alone. */
+export const STATUS_SHAPE = { found: "○", shortlisted: "◔", drafted: "◑", approved: "◕", applied: "●", interview: "◆", offer: "★", rejected: "✕", skipped: "–" };
+const STATUS_TONE = { approved: "done", applied: "done", interview: "done", offer: "done", rejected: "closed" };
+/** The stage as a labelled badge: shape, name, and a filled or alert style for stages that are finished or closed. */
+export function stageBadge(status) {
+  return `<span class="status ${STATUS_TONE[status] || ""}"><span aria-hidden="true">${STATUS_SHAPE[status] || "○"}</span>${esc(STATUS_LABEL[status] || status)}</span>`;
+}
 export const OPEN = new Set(["found", "shortlisted", "drafted", "approved", "applied", "interview"]);
 export const PICKED = new Set(["shortlisted", "drafted", "approved", "applied", "interview", "offer"]);
 export const CLOSED = new Set(["rejected", "skipped"]);
@@ -20,13 +26,14 @@ export const VERDICT_RANK = { apply: 0, maybe: 1, skip: 3 };
 /** Hal's verdict as a small coloured badge, with the reason on hover. */
 export function verdictBadge(r, prefix = "Hal: ") {
   if (!VERDICT_LABEL[r.verdict]) return "";
-  return `<span class="verdict v-${r.verdict}" title="${esc(r.verdict_why || "")}">${prefix}${VERDICT_LABEL[r.verdict]}</span>`;
+  const shape = { apply: "✓", maybe: "?", skip: "✕" }[r.verdict];
+  return `<span class="verdict v-${r.verdict}"><span aria-hidden="true">${shape}</span>${prefix}${VERDICT_LABEL[r.verdict]}</span>`;
 }
 
 /** Fit as five dots. */
 export function fitDots(fit) {
   const n = Math.max(0, Math.min(5, Number(fit) || 0));
-  return n ? `<span class="fit" aria-label="fit ${n} of 5">${"●".repeat(n)}<i>${"●".repeat(5 - n)}</i></span>` : "";
+  return n ? `<span class="fit" role="img" aria-label="Fit ${n} of 5">${"●".repeat(n)}<i>${"●".repeat(5 - n)}</i></span>` : "";
 }
 
 /** "closes in 3 days" etc., with a level for colour: "", "soon" (7 days or fewer) or "past". */
@@ -70,9 +77,11 @@ export function toast(text, undo) {
   const b = $("toast-undo");
   b.hidden = !undo;
   b.onclick = undo ? () => { el.classList.remove("show"); undo(); } : null;
+  $("toast-x").onclick = () => el.classList.remove("show");
   el.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove("show"), undo ? 7000 : 3500);
+  // A message with Undo stays until it is dismissed; others stay long enough to read.
+  if (!undo) toastTimer = setTimeout(() => el.classList.remove("show"), 8000);
 }
 
 /** A small line icon (paths from the artifact's icon set). */

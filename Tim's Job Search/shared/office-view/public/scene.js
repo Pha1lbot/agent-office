@@ -13,7 +13,9 @@ const LOOK_OF = { "chief-of-staff": "hal", "lead-recruiter": "rita", writer: "wr
 const VISITOR = { body: 0x7b8794, hair: 0x4a3a2a, skin: 0xe9bf98 };
 // The tag's dot: what someone is doing.
 const STATE_DOT = { working: "#4fbf7f", looking: "#3fa7d6", waiting: "#f2b134", coffee: "#c9925a", chilling: "#9aa0b5", asleep: "#6b7090", walking: "#3fa7d6" };
+const STATE_WORD = { working: "working", looking: "looking things up", waiting: "waiting for you", coffee: "coffee break", chilling: "resting", asleep: "asleep", walking: "walking" };
 const SPEED = 1.7; // metres per second
+const reducedMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let host, renderer, labels, scene, camera, controls, sun, turn = 0;
 const centre = new THREE.Vector3(W / 2 - 1, 0.8, D / 2 - 1.2);
@@ -426,7 +428,7 @@ function pose(p, a, t) {
   if (a.state === "asleep") { body.position.y += Math.sin(t * 1.6) * 0.012; head.rotation.x = 0.2; }
   p.el.className = "tag" + (a.state === "waiting" ? " waiting" : "") + (a.selected ? " selected" : "");
   p.el.firstChild.style.background = STATE_DOT[a.state] || "#8b8fa3";
-  p.el.lastChild.textContent = a.state === "waiting" ? `${a.name} !` : a.name;
+  p.el.lastChild.textContent = `${a.name}: ${STATE_WORD[a.state] || a.state}`;
   p.zObj.visible = a.state === "asleep"; // the label renderer shows or hides it
   p.tag.position.set(0, a.pose === "lie" ? 0.9 : a.pose === "sit" ? 1.65 : 1.8, 0);
 }
@@ -489,6 +491,10 @@ function step(agents, dt, now) {
       p.queue = path(p.spot, want.spot); p.spot = want.spot;
     }
     let mood = want.mood;
+    if (reducedMotion() && p.queue.length) { // no walking: go straight to the new spot
+      const end = p.queue[p.queue.length - 1], s = SPOTS[p.spot];
+      p.x = end.x; p.z = end.z; p.queue = []; p.pose = s.pose; p.face = s.face; if (s.coffee) p.cup = true;
+    }
     if (p.queue.length) {
       const q = p.queue[0], dx = q.x - p.x, dz = q.z - p.z, dist = Math.hypot(dx, dz), move = SPEED * dt;
       p.pose = "walk"; p.walkPhase += dt * 9;
@@ -498,7 +504,7 @@ function step(agents, dt, now) {
       if (mood !== "waiting") mood = "walking";
     }
     p.mood = mood;
-    pose(p.parts, { ...p, name: a.name || p.name, state: mood, selected: a.id === selectedId }, now);
+    pose(p.parts, { ...p, name: a.name || p.name, state: mood, selected: a.id === selectedId }, reducedMotion() ? 0 : now);
   }
   for (const s of screens) {
     const busy = s.always || [...people.values()].some((p) => p.mood === "working" && Math.abs(p.x - s.x) < 1.2 && Math.abs(p.z - s.z) < 2);

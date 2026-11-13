@@ -11,6 +11,8 @@ import { showRole, hideRole } from "./role.js";
 
 const VIEWS = ["overview", "roles", "leads", "interviews", "actions", "cvs", "office"];
 
+const TITLES = { overview: "Overview", roles: "Roles", leads: "Leads", interviews: "Interviews", actions: "Next actions", cvs: "CVs", office: "The office" };
+let first = true;
 function route() {
   let hash = location.hash.replace(/^#/, "");
   if (hash === "pipeline") hash = "roles"; // the old Pipeline tab
@@ -21,7 +23,19 @@ function route() {
   if (view) showView(view);
   else document.querySelectorAll("[data-nav]").forEach((a) => a.removeAttribute("aria-current"));
   window.scrollTo(0, 0);
+  document.title = `${role ? "Role" : TITLES[view]} · Tim’s Job Search`;
+  document.getElementById("app").classList.remove("menu-open");
+  document.getElementById("menu-btn").setAttribute("aria-expanded", "false");
+  if (!first) document.getElementById("main").focus({ preventScroll: true }); // tell keyboard and screen-reader users the page changed
+  first = false;
 }
+document.getElementById("menu-btn").addEventListener("click", () => {
+  const open = document.getElementById("app").classList.toggle("menu-open");
+  document.getElementById("menu-btn").setAttribute("aria-expanded", String(open));
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") { document.getElementById("app").classList.remove("menu-open"); document.getElementById("menu-btn").setAttribute("aria-expanded", "false"); }
+});
 window.addEventListener("hashchange", route);
 route();
 connect();
