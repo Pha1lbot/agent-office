@@ -2508,8 +2508,9 @@
       "id": "a4",
       "text": "Make a strategy-led CV",
       "role": "",
-      "done": false,
-      "created": "2026-11-05"
+      "done": true,
+      "created": "2026-11-05",
+      "completed": "2026-11-13"
     },
     {
       "id": "a5",
@@ -2539,15 +2540,17 @@
       "id": "a8",
       "text": "NetEase Esport Specialist: Rita's skip verdict stands (entry-level, Chinese required). Drafted CV/cover letter and interview prep anyway since you set the role to drafted three times today. Check files are honest about the seniority/language gaps before deciding to apply.",
       "role": "2026-11-05-netease-games-esport-specialist",
-      "done": false,
-      "created": "2026-11-06"
+      "done": true,
+      "created": "2026-11-06",
+      "completed": "2026-11-13"
     },
     {
       "id": "a9",
       "text": "UNICEF UK Soccer Aid closed 8am 9 Nov and rejects AI-written answers: reword the letter yourself if you still apply",
       "role": "2026-11-05-unicef-uk-director-of-soccer-aid-interim",
-      "done": false,
-      "created": "2026-11-09"
+      "done": true,
+      "created": "2026-11-09",
+      "completed": "2026-11-13"
     },
     {
       "id": "a10",
@@ -2561,8 +2564,9 @@
       "id": "a11",
       "text": "Posting looks closed: AI Programme Manager (12-month fixed term) @ techUK: the advert page is gone (HTTP 404). Check the advert, and skip the role if it's gone.",
       "role": "2026-11-05-techuk-ai-programme-manager-12-month-fixed-term",
-      "done": false,
-      "created": "2026-11-12"
+      "done": true,
+      "created": "2026-11-12",
+      "completed": "2026-11-13"
     }
   ],
   "inbox": [

@@ -4,13 +4,6 @@ Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
 found: 12 · shortlisted: 5 · drafted: 6 · approved: 1 · applied: 6 · skipped: 47
 
-## Next actions
-
-- Make a strategy-led CV
-- NetEase Esport Specialist: Rita's skip verdict stands (entry-level, Chinese required). Drafted CV/cover letter and interview prep anyway since you set the role to drafted three times today. Check files are honest about the seniority/language gaps before deciding to apply.
-- UNICEF UK Soccer Aid closed 8am 9 Nov and rejects AI-written answers: reword the letter yourself if you still apply
-- Posting looks closed: AI Programme Manager (12-month fixed term) @ techUK: the advert page is gone (HTTP 404). Check the advert, and skip the role if it's gone.
-
 ## Roles
 
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
