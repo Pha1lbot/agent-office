@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 12 · shortlisted: 5 · drafted: 8 · applied: 5 · skipped: 47
+found: 12 · shortlisted: 5 · drafted: 7 · applied: 6 · skipped: 47
 
 ## Next actions
 
@@ -36,10 +36,10 @@ found: 12 · shortlisted: 5 · drafted: 8 · applied: 5 · skipped: 47
 | drafted | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-12 |
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
 | drafted | 3 | [Event Director](https://www.linkedin.com/jobs/view/4484516383/) | Handle Recruitment (client unnamed) | £70k–£90k | London, hybrid | 2 |  | 2026-11-09 |
-| drafted | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 |  | 2026-11-12 |
 | drafted | 22 | [Marketing Senior Specialist, Call of Duty](https://www.linkedin.com/jobs/view/4482564607/) | Activision Blizzard |  | London, England | 2 |  | 2026-11-11 |
 | drafted | 23 | [National Tournaments Manager](https://www.linkedin.com/jobs/view/4488144154/) | The Professional Golfers' Association (The PGA) |  | Hybrid | 2 |  | 2026-11-12 |
 | drafted | 23 | [Assistant Operations Manager](https://www.reed.co.uk/jobs/assistant-operations-manager/57533847?source=details.similarjobs#skills) | Direct Chauffeur Line Limited |  |  | 1 |  | 2026-11-13 |
+| applied | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 | Follow up if no reply by 20 Nov | 2026-11-13 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Follow up if no reply by 12 Nov | 2026-11-11 |
 | applied |  | [Senior Operations Resource Planning Manager](https://careers.ba.com/job/heathrow/senior-operations-resource-planning-manager/22348/100605084528) | British Airways | Similar BA planning role listed at £50k–£70k, unconfirmed | Waterside (BA Head Office), Heathrow | 2 | Follow up if no reply by 18 Nov | 2026-11-11 |
 | applied |  | [Esport Specialist](https://www.linkedin.com/jobs/view/4308233024/) | NetEase Games |  | UK remote | 2 | Follow up if no reply by 15 Nov | 2026-11-08 |

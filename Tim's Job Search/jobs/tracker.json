@@ -2375,10 +2375,10 @@
       "source": "Reed",
       "fit": 3,
       "priority": 16,
-      "status": "drafted",
+      "status": "applied",
       "notes": "Track: Head of Operations at scale-ups; Posted 2026-10-26",
       "found": "2026-11-12",
-      "updated": "2026-11-12",
+      "updated": "2026-11-13",
       "history": [
         {
           "date": "2026-11-12",
@@ -2394,10 +2394,16 @@
           "date": "2026-11-12",
           "status": "drafted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-13",
+          "status": "applied",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
-      "verdict_why": "Head of Operations at scale-ups: the title matches 'Head of Operations' and the advert uses the track's words"
+      "verdict_why": "Head of Operations at scale-ups: the title matches 'Head of Operations' and the advert uses the track's words",
+      "next": "Follow up if no reply by 20 Nov"
     },
     {
       "id": "2026-11-12-the-professional-golfers-association-the-national-tournaments-manager",
