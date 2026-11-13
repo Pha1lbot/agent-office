@@ -158,7 +158,7 @@ The top left, under "Job Hunt", shows the build: `Build 214 · 8 Nov`. The numbe
 | Red, "not on main (branch)" | This folder is on a branch, so it won't get merged work | `git checkout main` |
 | "Build unknown" | Not a git folder (a ZIP download, say) | Clone it with git instead |
 
-The server reads it from git when it starts and re-checks every minute, with no network: `shared/tools/sync.ps1` fetches from GitHub every few minutes, and the label compares with that. The code is in `src/build.ts` and `public/build.js`.
+The server reads it from git when it starts and re-checks every minute, with no network: `shared/tools/sync.ps1` fetches from GitHub (at log-on and when the office opens), and the label compares with that. The code is in `src/build.ts` and `public/build.js`.
 
 ## Problems
 

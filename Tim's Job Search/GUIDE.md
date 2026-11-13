@@ -91,7 +91,7 @@ Your office used to sit at the top of the `agent-office` folder. It now lives in
 2. **Open the office from `Tim's Job Search\shared\office-view\Open Office.cmd`.** If you have a desktop shortcut to the old `agent-office\shared\office-view\Open Office.cmd`, point it at the new one.
 3. **Re-run the setup script once** so the office's packages are installed in the new place: in the `agent-office` folder, `powershell -ExecutionPolicy Bypass -File shared\tools\setup-pc.ps1`.
 
-The automatic update from GitHub (every 5 minutes) and backups carry on as before.
+The automatic update from GitHub (at log-on, and when you open the office) and backups carry on as before.
 
 If you have a scheduled morning search ("Rita's daily search"), its instructions mention files by their old paths. Ask Claude to update them to start with `Tim's Job Search/` before you switch it on again.
 
@@ -400,7 +400,7 @@ Guidelines:
 
 **Your work is saved on GitHub.** The office saves your edits for you (look for "Saved to GitHub" in the strip at the top of the office). Changes the team makes in Claude Code are saved when Hal finishes, or when you ask Claude to "commit and push". Anything not on GitHub is not backed up.
 
-**Each PC stays up to date automatically.** The setup script adds a background task that pulls from GitHub every 5 minutes, so work done on another PC (or in the cloud) turns up on its own.
+**Each PC stays up to date automatically.** The setup script adds a background task that pulls from GitHub when you log on, and `Open Office.cmd` pulls too, so work done on another PC (or in the cloud) turns up then. In between, run `git pull` to get it straight away.
 
 **Sharing the repo with another person.** The repo holds two separate offices. Each person's CV, preferences and roles live only in their own folder, and the team in one office never reads the other's. But GitHub gives everyone with access the **whole** repo, so you can *technically* read each other's files. Don't put anything in the repo you wouldn't want the other person to read. Never put passwords, API keys or tokens in it, ever.
 

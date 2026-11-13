@@ -434,7 +434,7 @@ Guidelines:
 
 **Git is Tim Everard's job, not yours.** Your PC only *receives* updates: you never save, commit or push anything to GitHub, and neither does your office or your team. This keeps the shared repo safe and means you can't break it by accident. (Your GitHub access is read-only.)
 
-**What you get automatically.** The setup script adds a background task that pulls from GitHub every 5 minutes. When Tim Everard publishes an improvement to the office (a fix, a new feature, a new version of an agent's instructions), it turns up on your PC by itself. `Open Office.cmd` also pulls when it starts.
+**What you get automatically.** The setup script adds a background task that pulls from GitHub when you log on. When Tim Everard publishes an improvement to the office (a fix, a new feature, a new version of an agent's instructions), it turns up on your PC by itself, the next time you log on or open the office. `Open Office.cmd` pulls when it starts.
 
 **What stays on your PC.** Your own files stay on this PC and are **not** saved to GitHub: your CV, preferences, job sites, the tracker and every role's documents. The office says "Saving to GitHub is off in this office". That has two consequences:
 

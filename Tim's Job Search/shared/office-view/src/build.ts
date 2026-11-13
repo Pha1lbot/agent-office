@@ -1,7 +1,7 @@
 // Which build of the office is running, and whether it's up to date, for the
 // label at the top left of the page. The build number is the number of commits
 // on the running copy, so it goes up with every merge. No network: sync.ps1
-// fetches from GitHub every few minutes, and this compares with what it fetched.
+// fetches from GitHub (at log-on and when the office opens), and this compares with what it fetched.
 import type { RunResult } from "./tools.ts";
 
 export interface Build {

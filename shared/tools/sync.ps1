@@ -1,5 +1,5 @@
 # Keeps this copy of agent-office up to date with GitHub. Windows Task Scheduler
-# runs it at log-on and every 5 minutes (set up with install-sync.ps1), and
+# runs it at log-on (set up with install-sync.ps1), and
 # "Open Office.cmd" runs it before opening the office.
 #
 # - On main: brings in what was merged, as soon as it's on GitHub.

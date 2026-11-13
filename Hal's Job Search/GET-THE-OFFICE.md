@@ -71,7 +71,7 @@ It does the rest for you:
 - installs what's missing: Node.js, Python, pandoc and LibreOffice (these run the office and make your Word and PDF files)
 - asks for **your name and email** (type them in; they're only used by Git on your PC)
 - installs the office's packages
-- switches on an **automatic update every 5 minutes**, so new versions from Tim Everard arrive on their own
+- switches on an **automatic update when you log on** (and each time you open the office), so new versions from Tim Everard arrive on their own
 
 It's safe to run again if anything fails. If it says something "was not found yet", close PowerShell, open it again, go back to the `agent-office` folder (`cd $HOME\Documents\agent-office`) and run the script again.
 
@@ -120,7 +120,7 @@ Then follow **`GUIDE.md`** (in your office folder), section 3, "Step 2: fill in 
 
 You normally do nothing:
 
-- **Automatically:** every 5 minutes your PC checks GitHub and downloads any new version of main.
+- **Automatically:** when you log on, and each time you open the office, your PC checks GitHub and downloads any new version of main.
 - **When you open the office:** `Open Office.cmd` also checks.
 - **How to tell you're up to date:** the label at the top left of the office ("Build …") has a dot. **Green** means up to date. Amber means an update is waiting on GitHub and hasn't arrived yet.
 
