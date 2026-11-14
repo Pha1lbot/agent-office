@@ -6,15 +6,17 @@ Hal will suggest changes based on which roles you pick and skip, and only saves 
 
 ## What I'm looking for
 
-Seven kinds of work, in this order. Roles in earlier ones rank higher.
+Nine kinds of work, in this order. Roles in earlier ones rank higher.
 
 1. **Esports and gaming operations.** Head of / Director of operations, tournament, league or live operations, esports programme management, at studios, publishers and tournament organisers. A Manager title is fine here.
 2. **Live events and event production.** Event Director, Head of Events or Live Events, Event Operations Director, Production Manager. Senior Manager and above.
 3. **Sports and venues operations.** Head of / Director of operations or events at clubs, leagues, federations and venues. Senior Manager and above.
 4. **Head of Operations at scale-ups.** General operations leadership at growing companies, any sector. Senior Manager and above.
 5. **Freelancer and workforce operations.** Running pools of freelancers or contractors: booking, contracts, payments, rotas, resource planning. Senior Manager and above.
-6. **AI operations: learning and support roles.** AI programme, enablement, adoption or operations manager roles. I don't code, so a role where I learn and support the work is right; engineering, data science and research roles are not.
+6. **AI operations, enablement and transformation.** AI programme, enablement, adoption, operations, transformation and automation roles (Manager, Lead or Head of), including AI transformation in my own sectors, and senior AI consultant roles (contract considered). I don't code, so engineering, data science and research roles are not right. Widened 2026-11-14.
 7. **Project and programme management.** Senior Project Manager, Programme Manager, Head of PMO, Delivery Manager, in my sectors only: esports, gaming, live events, sport and AI. Senior level and above, so plain Project Manager and coordinator roles are left out. Added 2026-11-12.
+8. **Product and implementation in event, sport, gaming and workforce tech.** Product Manager, Product Operations, Implementation Manager and Senior Solutions Consultant roles at software companies that serve my sectors (event tech, ticketing, esports, sport, freelancer and workforce scheduling platforms). The advert must name one of those sectors. Added 2026-11-14.
+9. **Business systems, automation and internal tools.** Owning a company's operations tools: Business Systems, Internal Tools, Automation and Operational Excellence roles built on Airtable, no-code, automation and AI tools. Not ERP, SAP or IT support. Added 2026-11-14.
 
 Not looking for: broadcast production and marketing operations (dropped 2026-11-11), compliance, billing, trading, crypto or payroll work, and anything at BLAST (my last employer).
 
