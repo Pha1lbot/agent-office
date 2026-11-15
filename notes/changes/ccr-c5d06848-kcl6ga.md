@@ -11,6 +11,24 @@ A cloud session in Tim's office about moving towards AI roles. Tim (who calls hi
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-15: Esports Ops Suite covers every ecosystem
+
+**What changed**
+- `Tim's Job Search/shared/job-search/cv/extra-from-tim.md`: the Esports Ops Suite line now says the suite was designed to cover every BLAST ecosystem: finished for CS2, Rocket League and Brawl Stars, with Fortnite, Dota 2 and Rainbow Six in progress from the same templates.
+- Outside the repo: the Esports Ops Suite page (https://claude.ai/artifact/WLzLEg23AVuVtvq7Gvisz4) says the same in its intro, figures, tournament engine card and "Build once, reuse".
+
+**Why**
+Tim asked for the page to show the suite was meant to cover all ecosystems, with three finished and three in progress.
+
+**Decisions**
+Tim's own account of what was finished was used. The old landing page described the Brawl Stars pages as still partly unadapted, but it may have been out of date.
+
+**How to check it**
+Open the page: the figures show "6 game ecosystems: 3 finished, 3 in progress".
+
+**Open items**
+None.
+
 ### 2026-11-15: Add Tim's Claude Code projects to his CV extras; portfolio pages
 
 **What changed**
