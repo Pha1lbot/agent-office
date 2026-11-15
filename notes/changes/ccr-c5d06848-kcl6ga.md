@@ -11,6 +11,28 @@ A cloud session in Tim's office about moving towards AI roles. Tim (who calls hi
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-15: Add Tim's Claude Code projects to his CV extras; portfolio pages
+
+**What changed**
+- `Tim's Job Search/shared/job-search/cv/extra-from-tim.md`: three facts Tim confirmed: the Esports Ops Suite (built with Claude Code at BLAST, tested alongside the Google Sheets with up to 12 freelancers and staff, ready to roll out), the FNCS Seat Tracker plan (planning stage, not used at an event), and the Agent Office job scanner.
+- Outside the repo: three private portfolio pages published as claude.ai artifacts and linked to each other: Agent Office Job Scanner (https://claude.ai/artifact/6ZEsBF2h7dJjaXtuCc35zF), Esports Ops Suite (https://claude.ai/artifact/WLzLEg23AVuVtvq7Gvisz4) and FNCS Seat Tracker (https://claude.ai/artifact/Pa4ye8DBtYBu1vCRyDJBa1).
+
+**Why**
+Tim asked for five showcase project ideas, a one-pager on his agent setup (only the job scanning), and one-pagers on the projects from his old BLAST work repo, which he uploaded to his Google Drive (folder "Repo").
+
+**Decisions**
+- The BLAST files were read from Drive and never copied into this repo, because they are the employer's work and Hal can read everything in this repo. The pages leave out BLAST's data: the real 2027 event calendar in the Mission Control mockup, player photos, Airtable details and travel data.
+- The Esports Ops Suite page says "tested alongside the existing sheets", not "used at a live event", because that is what Tim confirmed.
+- The facts go under the Head of Esports Operations heading so Wren can use them in CVs and letters.
+
+**How to check it**
+Open the three links. Each page's top bar links to the other two. `extra-from-tim.md` has the new lines dated 2026-11-15.
+
+**Open items**
+- Tim's ops-home page links to RLCS Ops, BLAST eOps (freelancer availability) and Global Mobility (travel), whose files weren't in the upload. The suite page describes them from that landing page only.
+- Tim could add how many hours a week the job scanner saves him.
+- `cv-bank.md` and `base-cv.json` aren't updated. These are extras until Tim decides to put them in the CV itself.
+
 ### 2026-11-14: Add new AI role types to Tim's search
 
 **What changed**
