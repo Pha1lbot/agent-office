@@ -492,49 +492,26 @@
       "track": "AI operations: learning and support roles",
       "summary": "Senior Project Manager (AI Adoption) Retail Hybrid in London (3 days per week onsite) 3 months+ 650 - 700 per day In short: We're seeking a strong IT PM with experience of AI adoption to join a large business area in a new, AI rollout. You'll be tracking, reporting, chasing and s",
       "found_at": "2026-11-13T11:33"
+    },
+    {
+      "id": "f24",
+      "title": "Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London",
+      "company": "Carrington Recruitment Solutions Ltd",
+      "location": "WC1V6AZ",
+      "pay": "£70,000 - £75,000",
+      "link": "https://www.reed.co.uk/jobs/digital-enablement-manager-ai-adoption-artificial-intelligence-digital-business-change-london/57568616",
+      "posted": "2026-11-14",
+      "source": "Reed",
+      "via": "feed",
+      "fit": "possible",
+      "why": "AI operations: learning and support roles: the title matches 'AI Enablement Manager' and the advert uses the track's words",
+      "concern": "recruiter's advert (employer may not be named)",
+      "track": "AI operations: learning and support roles",
+      "summary": "Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, User Experience, Microsoft 365, Copilot, Central London, Hybrid Digital Enablement Manager required to work for a large Professional Services business based in Central London. This is a hyb",
+      "found_at": "2026-11-16T10:09"
     }
   ],
   "runs": [
-    {
-      "at": "2026-11-11T11:33",
-      "via": "web",
-      "found": 1,
-      "note": "Web search mostly stale or blocked; 1 usable find"
-    },
-    {
-      "at": "2026-11-11T11:33",
-      "via": "email",
-      "found": 14,
-      "note": ""
-    },
-    {
-      "at": "2026-11-12T09:54",
-      "via": "feed",
-      "found": 0,
-      "note": "5000 jobs listed, 228 looked possible from their titles, 60 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-12T09:54",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
-    {
-      "at": "2026-11-12T09:54",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
-    {
-      "at": "2026-11-12T09:54",
-      "via": "feed",
-      "found": 0,
-      "note": "3 of 3 boards read",
-      "source": "Company hiring pages: Ashby"
-    },
     {
       "at": "2026-11-12T09:54",
       "via": "feed",
@@ -702,63 +679,105 @@
       "found": 1,
       "note": "628 results read",
       "source": "Reed"
+    },
+    {
+      "at": "2026-11-16T10:08",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 9 looked possible from their titles, 9 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-16T10:08",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-16T10:08",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-16T10:08",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-16T10:08",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-16T10:09",
+      "via": "feed",
+      "found": 1,
+      "note": "628 results read",
+      "source": "Reed"
     }
   ],
   "last_email_scan": "2026-11-11T11:40:00Z",
   "sources": {
     "Hitmarker": {
       "total": 1,
-      "last_checked": "2026-11-13T11:32",
+      "last_checked": "2026-11-16T10:08",
       "result": "ok",
       "found": 0,
-      "note": "5000 jobs listed, 26 looked possible from their titles, 26 read",
-      "last_ok": "2026-11-13T11:32",
+      "note": "5000 jobs listed, 9 looked possible from their titles, 9 read",
+      "last_ok": "2026-11-16T10:08",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-13T11:32",
+      "last_checked": "2026-11-16T10:08",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-13T11:32",
+      "last_ok": "2026-11-16T10:08",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-13T11:32",
+      "last_checked": "2026-11-16T10:08",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-13T11:32",
+      "last_ok": "2026-11-16T10:08",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-13T11:32",
+      "last_checked": "2026-11-16T10:08",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-13T11:32",
+      "last_ok": "2026-11-16T10:08",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-13T11:32",
+      "last_checked": "2026-11-16T10:08",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-13T11:32",
+      "last_ok": "2026-11-16T10:08",
       "failures": 0
     },
     "Reed": {
-      "total": 7,
-      "last_checked": "2026-11-13T11:33",
+      "total": 8,
+      "last_checked": "2026-11-16T10:09",
       "result": "ok",
       "found": 1,
       "note": "628 results read",
       "failures": 0,
-      "last_ok": "2026-11-13T11:33"
+      "last_ok": "2026-11-16T10:09"
     },
     "Event Industry Jobs": {
       "total": 0,
