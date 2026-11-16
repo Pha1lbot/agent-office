@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 17 · shortlisted: 8 · drafted: 6 · approved: 1 · applied: 6 · skipped: 60
+found: 16 · shortlisted: 8 · drafted: 6 · approved: 1 · applied: 6 · skipped: 61
 
 ## Roles
 
@@ -13,18 +13,17 @@ found: 17 · shortlisted: 8 · drafted: 6 · approved: 1 · applied: 6 · skippe
 | found | 3 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-06 |
 | found | 4 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-06 |
 | found | 5 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 6 | [Chief Operating Officer - Live event production](https://uk.linkedin.com/jobs/view/chief-operating-officer-live-event-production-at-disrupt-search-4480513001) | Disrupt Search (agency client) | not stated | London Area | 3 |  | 2026-11-06 |
-| found | 7 | [Head of Operations](https://www.linkedin.com/jobs/view/4461930505/) | TryHackMe |  | London (Remote) | 3 |  | 2026-11-11 |
-| found | 8 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 3 |  | 2026-11-11 |
-| found | 9 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
-| found | 10 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
-| found | 11 | [HotelPlanner Tour Tournament Business Manager](https://www.linkedin.com/jobs/view/4489085965/) | DP World Tour |  | Wentworth | 3 |  | 2026-11-13 |
-| found | 12 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
-| found | 13 | [Head of Operations & Events (Paid Role)](https://www.linkedin.com/jobs/view/4463974063/) | Pride in London |  | London (Hybrid) | 3 |  | 2026-11-16 |
-| found | 14 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
-| found | 15 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-06 |
-| found | 16 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-06 |
-| found | 17 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
+| found | 6 | [Head of Operations](https://www.linkedin.com/jobs/view/4461930505/) | TryHackMe |  | London (Remote) | 3 |  | 2026-11-11 |
+| found | 7 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 3 |  | 2026-11-11 |
+| found | 8 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
+| found | 9 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
+| found | 10 | [HotelPlanner Tour Tournament Business Manager](https://www.linkedin.com/jobs/view/4489085965/) | DP World Tour |  | Wentworth | 3 |  | 2026-11-13 |
+| found | 11 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
+| found | 12 | [Head of Operations & Events (Paid Role)](https://www.linkedin.com/jobs/view/4463974063/) | Pride in London |  | London (Hybrid) | 3 |  | 2026-11-16 |
+| found | 13 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
+| found | 14 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-06 |
+| found | 15 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-06 |
+| found | 16 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
 | shortlisted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 4 |  | 2026-11-16 |
 | shortlisted | 2 | [Senior Product Manager](https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045) | Product Madness |  | London | 4 |  | 2026-11-16 |
 | shortlisted | 3 | [Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London](https://www.reed.co.uk/jobs/digital-enablement-manager-ai-adoption-artificial-intelligence-digital-business-change-london/57568616) | Carrington Recruitment Solutions Ltd | ┬ú70,000 - ┬ú75,000 | WC1V6AZ | 3 |  | 2026-11-16 |
@@ -55,6 +54,7 @@ found: 17 · shortlisted: 8 · drafted: 6 · approved: 1 · applied: 6 · skippe
 | skipped | 5 | [Head of Political Events and Operations](https://www.linkedin.com/jobs/view/4483585204/) | The Conservative Party | Not listed | London area | 3 |  | 2026-11-09 |
 | skipped | 5 | [UK Operations Director](https://www.linkedin.com/jobs/view/4475864821/) | Prose on Pixels | Not listed | London | 3 |  | 2026-11-09 |
 | skipped | 6 | [Senior Program Activation Manager, Twitch Brand](https://www.linkedin.com/jobs/view/4455794115/) | Amazon | Not listed | London | 3 |  | 2026-11-13 |
+| skipped | 6 | [Chief Operating Officer - Live event production](https://uk.linkedin.com/jobs/view/chief-operating-officer-live-event-production-at-disrupt-search-4480513001) | Disrupt Search (agency client) | not stated | London Area | 3 |  | 2026-11-16 |
 | skipped | 7 | [Marketing Production Manager, Sports](https://www.linkedin.com/jobs/view/4475056502/) | Prime Video & Amazon MGM Studios | Not listed | London | 3 |  | 2026-11-13 |
 | skipped | 8 | Director of Live Operations | Bauer Media |  | Remote, UK or Germany | 3 |  | 2026-11-13 |
 | skipped | 10 | [UK + EUR Event and Operations Manager](https://turfgames.com/blogs/news/uk-operations-manager-role) | Turf Games |  | UK, remote day-to-day with event travel | 3 |  | 2026-11-12 |
