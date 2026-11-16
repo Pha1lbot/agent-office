@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-16: Job search: 6 roles drafted from the office inbox
+
+**What changed:** Tim shortlisted and drafted 6 roles in the office (Pontoon Senior Project Manager AI Adoption, Carrington Digital Enablement Manager AI Adoption, DP World Tour HotelPlanner Tour Tournament Business Manager, Product Madness Senior Product Manager, TryHackMe Head of Operations, ElevenLabs Company Operations Lead), none of which had a listing.md yet. Rita read each advert from its URL and wrote `jobs/roles/<id>/listing.md` with a fit score and verdict for each. Wren then drafted CV and cover letter for all 6 from the CV bank, and Ada built the Word/PDF files. Tracker fit/verdict fields updated to match Rita's real reads (replacing the daily-search triage placeholders); TryHackMe's status moved to `drafted` to match the others.
+
+**Why:** Tim moved these 6 roles to drafted in the Agent Office; the office queued "Draft a tailored CV and cover letter" for each in the tracker inbox (i22-i27).
+
+**Decisions:** Rita's real read scored 4 of the 6 as weak fits (DP World Tour, Product Madness, TryHackMe, ElevenLabs — fit 2, verdict skip) and 2 as maybe (Pontoon, Carrington — fit 3, good pay/track fit but each wants specific experience not well evidenced in the CV bank). Drafted all 6 anyway since Tim had already asked for them in the office; added action a12 flagging the weak-fit verdicts for him to review before spending more time on them. Wren drafted honestly within the CV bank and flagged gaps in each role's notes.md rather than inventing experience.
+
+**How to check it:** `python shared/tools/tracker.py inbox list` (empty), `tracker.py list --summary` shows all 6 as `drafted`, `tracker.py action list` shows a12. Each role's `notes.md` lists its CV gaps.
+
+**Open items:** Tim to review the weak-fit verdicts (action a12) and the Word/PDF drafts for all 6 roles before approving any.
+
 ### 2026-11-16: Job search: daily search, 5 new leads, 1 dismissed
 
 **What changed:** `Tim's Job Search/jobs/` (found.json, tracker.json, today.md) from a manual daily search: Scout, LinkedIn and Reed alert emails read, sources logged.

@@ -1850,9 +1850,9 @@
       "pay": "",
       "url": "https://www.linkedin.com/jobs/view/4461930505/",
       "source": "LinkedIn alert",
-      "fit": 3,
+      "fit": 2,
       "priority": 6,
-      "status": "shortlisted",
+      "status": "drafted",
       "notes": "Concern: company ops, not events",
       "found": "2026-11-11",
       "updated": "2026-11-16",
@@ -1866,10 +1866,14 @@
           "date": "2026-11-16",
           "status": "shortlisted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-16",
+          "status": "drafted"
         }
       ],
-      "verdict": "maybe",
-      "verdict_why": "Head of Operations, remote, at a cyber-training company; company ops rather than events"
+      "verdict": "skip",
+      "verdict_why": "Title matches but the role is really HR/finance/IT-ops/compliance, which is on the avoid list"
     },
     {
       "id": "2026-11-11-elevenlabs-company-operations-lead",
@@ -1879,7 +1883,7 @@
       "pay": "",
       "url": "https://www.linkedin.com/jobs/view/4479584002/",
       "source": "LinkedIn alert",
-      "fit": 3,
+      "fit": 2,
       "priority": 6,
       "status": "drafted",
       "notes": "Concern: internal business ops, not events",
@@ -1902,8 +1906,8 @@
           "by": "tim"
         }
       ],
-      "verdict": "maybe",
-      "verdict_why": "Remote operations lead; internal business ops rather than events"
+      "verdict": "skip",
+      "verdict_why": "Wants a BizOps/strategy-consulting background the CV does not show; tech sector is not the usual track"
     },
     {
       "id": "2026-11-11-hexagon-world-series-chief-operating-officer",
@@ -2532,7 +2536,7 @@
       "pay": "",
       "url": "https://www.linkedin.com/jobs/view/4489085965/",
       "source": "LinkedIn alert",
-      "fit": 3,
+      "fit": 2,
       "priority": 8,
       "status": "drafted",
       "notes": "Track: Sports and venues operations; Concern: Title is 'Manager'; pay and level not shown; Posted 2026-11-13",
@@ -2555,8 +2559,8 @@
           "by": "tim"
         }
       ],
-      "verdict": "maybe",
-      "verdict_why": "Sports operations: runs a golf tour tournament; Wentworth is close to Epsom"
+      "verdict": "skip",
+      "verdict_why": "Short commute but commercial/promoter-relationship role with extensive travel, below the tracks seniority bar"
     },
     {
       "id": "2026-11-13-fever-regional-manager",
@@ -2950,7 +2954,7 @@
       "pay": "£650 - £700",
       "url": "https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062",
       "source": "Reed",
-      "fit": 4,
+      "fit": 3,
       "priority": 1,
       "status": "drafted",
       "notes": "Track: AI operations: learning and support roles; Posted 2026-11-12",
@@ -2973,8 +2977,8 @@
           "by": "tim"
         }
       ],
-      "verdict": "apply",
-      "verdict_why": "AI operations: learning and support roles: the title matches 'AI Adoption Manager' and the advert uses the track's words"
+      "verdict": "maybe",
+      "verdict_why": "Great pay and fits the AI-adoption track, but wants enterprise PMO/governance experience not shown in the CV"
     },
     {
       "id": "2026-11-16-carrington-recruitment-solutions-ltd-digital-enablement-manager-ai-adoption-a",
@@ -3008,7 +3012,7 @@
         }
       ],
       "verdict": "maybe",
-      "verdict_why": "AI operations: learning and support roles: the title matches 'AI Enablement Manager' and the advert uses the track's words"
+      "verdict_why": "Good pay and AI-enablement track fit, but core ask is M365/Copilot change work not shown in the CV"
     },
     {
       "id": "2026-11-16-product-madness-senior-product-manager",
@@ -3018,7 +3022,7 @@
       "pay": "",
       "url": "https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045",
       "source": "Hitmarker",
-      "fit": 4,
+      "fit": 2,
       "priority": 2,
       "status": "drafted",
       "notes": "Track: Product and implementation in event, sport, gaming and workf; Posted 2026-11-06",
@@ -3041,8 +3045,8 @@
           "by": "tim"
         }
       ],
-      "verdict": "apply",
-      "verdict_why": "Product and implementation in event, sport, gaming and workforce tech: the title matches 'Senior Product Manager' and the advert uses the track's words"
+      "verdict": "skip",
+      "verdict_why": "Gaming sector fits but it is hands-on PM work (SQL, A/B testing, roadmaps) not shown in the CV"
     },
     {
       "id": "2026-11-16-pride-in-london-head-of-operations-events-paid-role",
@@ -3210,6 +3214,13 @@
       "done": true,
       "created": "2026-11-12",
       "completed": "2026-11-13"
+    },
+    {
+      "id": "a12",
+      "text": "Rita rates 4 of your 6 new drafts as weak fits (DP World Tour, Product Madness, TryHackMe, ElevenLabs) and 2 as maybe (Pontoon, Carrington) - see each role's verdict_why. Drafting them anyway per your office request, but worth a look before you spend more time on them.",
+      "role": "",
+      "done": false,
+      "created": "2026-11-16"
     }
   ],
   "inbox": [
@@ -3408,7 +3419,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London @ Carrington Recruitment Solutions Ltd",
       "at": "2026-11-16T14:07",
-      "done": false
+      "done": true,
+      "handled": "2026-11-16T14:24"
     },
     {
       "id": "i23",
@@ -3416,7 +3428,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Senior Product Manager @ Product Madness",
       "at": "2026-11-16T14:07",
-      "done": false
+      "done": true,
+      "handled": "2026-11-16T14:24"
     },
     {
       "id": "i24",
@@ -3424,7 +3437,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Senior Project Manager (AI Adoption) @ Pontoon",
       "at": "2026-11-16T14:07",
-      "done": false
+      "done": true,
+      "handled": "2026-11-16T14:24"
     },
     {
       "id": "i25",
@@ -3432,7 +3446,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Head of Operations @ TryHackMe",
       "at": "2026-11-16T14:08",
-      "done": false
+      "done": true,
+      "handled": "2026-11-16T14:24"
     },
     {
       "id": "i26",
@@ -3440,7 +3455,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Company Operations Lead @ ElevenLabs",
       "at": "2026-11-16T14:08",
-      "done": false
+      "done": true,
+      "handled": "2026-11-16T14:24"
     },
     {
       "id": "i27",
@@ -3448,7 +3464,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "HotelPlanner Tour Tournament Business Manager @ DP World Tour",
       "at": "2026-11-16T14:09",
-      "done": false
+      "done": true,
+      "handled": "2026-11-16T14:24"
     }
   ]
 }
