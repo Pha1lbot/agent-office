@@ -558,7 +558,7 @@
       "list": "New matches",
       "notes": "Posted: 31 Oct",
       "fit": 2,
-      "priority": 15,
+      "priority": 13,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -1127,7 +1127,7 @@
       "list": "Transition roles",
       "notes": "Posted: 31 Oct",
       "fit": 2,
-      "priority": 16,
+      "priority": 14,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -1190,7 +1190,7 @@
       "list": "Transition roles",
       "notes": "Posted: 30 Oct",
       "fit": 2,
-      "priority": 14,
+      "priority": 12,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -1852,15 +1852,20 @@
       "source": "LinkedIn alert",
       "fit": 3,
       "priority": 6,
-      "status": "found",
+      "status": "shortlisted",
       "notes": "Concern: company ops, not events",
       "found": "2026-11-11",
-      "updated": "2026-11-11",
+      "updated": "2026-11-16",
       "history": [
         {
           "date": "2026-11-11",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-16",
+          "status": "shortlisted",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
@@ -1875,16 +1880,21 @@
       "url": "https://www.linkedin.com/jobs/view/4479584002/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 7,
-      "status": "found",
+      "priority": 6,
+      "status": "shortlisted",
       "notes": "Concern: internal business ops, not events",
       "found": "2026-11-11",
-      "updated": "2026-11-11",
+      "updated": "2026-11-16",
       "history": [
         {
           "date": "2026-11-11",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-16",
+          "status": "shortlisted",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
@@ -1899,7 +1909,7 @@
       "url": "https://www.linkedin.com/jobs/view/4476423376/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 8,
+      "priority": 6,
       "status": "found",
       "notes": "Concern: you already applied to Hexagon on 6 Nov; check it isn't this role",
       "found": "2026-11-11",
@@ -2494,7 +2504,7 @@
       "url": "https://www.linkedin.com/jobs/view/4490097957/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 9,
+      "priority": 7,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Seniority and pay not shown in the alert; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -2518,7 +2528,7 @@
       "url": "https://www.linkedin.com/jobs/view/4489085965/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 10,
+      "priority": 8,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Title is 'Manager'; pay and level not shown; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -2542,7 +2552,7 @@
       "url": "https://www.linkedin.com/jobs/view/4463091092/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 11,
+      "priority": 9,
       "status": "found",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -3013,7 +3023,7 @@
       "url": "https://www.linkedin.com/jobs/view/4463974063/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 12,
+      "priority": 10,
       "status": "found",
       "notes": "Track: Live events and event production; Concern: Pay not shown; may be a small team",
       "found": "2026-11-16",
@@ -3037,7 +3047,7 @@
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 13,
+      "priority": 11,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",
@@ -3384,6 +3394,22 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Senior Project Manager (AI Adoption) @ Pontoon",
       "at": "2026-11-16T14:07",
+      "done": false
+    },
+    {
+      "id": "i25",
+      "role": "2026-11-11-tryhackme-head-of-operations",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "Head of Operations @ TryHackMe",
+      "at": "2026-11-16T14:08",
+      "done": false
+    },
+    {
+      "id": "i26",
+      "role": "2026-11-11-elevenlabs-company-operations-lead",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "Company Operations Lead @ ElevenLabs",
+      "at": "2026-11-16T14:08",
       "done": false
     }
   ]
