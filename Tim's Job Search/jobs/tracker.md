@@ -2,30 +2,30 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 18 · shortlisted: 7 · drafted: 6 · approved: 1 · applied: 6 · skipped: 60
+found: 17 · shortlisted: 8 · drafted: 6 · approved: 1 · applied: 6 · skipped: 60
 
 ## Roles
 
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
 |---|---|---|---|---|---|---|---|---|
-| found | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 4 |  | 2026-11-16 |
-| found | 2 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 3 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-06 |
-| found | 4 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-06 |
-| found | 5 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-06 |
-| found | 6 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 7 | [Chief Operating Officer - Live event production](https://uk.linkedin.com/jobs/view/chief-operating-officer-live-event-production-at-disrupt-search-4480513001) | Disrupt Search (agency client) | not stated | London Area | 3 |  | 2026-11-06 |
-| found | 8 | [Head of Operations](https://www.linkedin.com/jobs/view/4461930505/) | TryHackMe |  | London (Remote) | 3 |  | 2026-11-11 |
-| found | 9 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 3 |  | 2026-11-11 |
-| found | 10 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
-| found | 11 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
-| found | 12 | [HotelPlanner Tour Tournament Business Manager](https://www.linkedin.com/jobs/view/4489085965/) | DP World Tour |  | Wentworth | 3 |  | 2026-11-13 |
-| found | 13 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
-| found | 14 | [Head of Operations & Events (Paid Role)](https://www.linkedin.com/jobs/view/4463974063/) | Pride in London |  | London (Hybrid) | 3 |  | 2026-11-16 |
-| found | 15 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
-| found | 16 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-06 |
-| found | 17 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-06 |
-| found | 18 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
+| found | 1 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-06 |
+| found | 2 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-06 |
+| found | 3 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-06 |
+| found | 4 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-06 |
+| found | 5 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-06 |
+| found | 6 | [Chief Operating Officer - Live event production](https://uk.linkedin.com/jobs/view/chief-operating-officer-live-event-production-at-disrupt-search-4480513001) | Disrupt Search (agency client) | not stated | London Area | 3 |  | 2026-11-06 |
+| found | 7 | [Head of Operations](https://www.linkedin.com/jobs/view/4461930505/) | TryHackMe |  | London (Remote) | 3 |  | 2026-11-11 |
+| found | 8 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 3 |  | 2026-11-11 |
+| found | 9 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
+| found | 10 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
+| found | 11 | [HotelPlanner Tour Tournament Business Manager](https://www.linkedin.com/jobs/view/4489085965/) | DP World Tour |  | Wentworth | 3 |  | 2026-11-13 |
+| found | 12 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
+| found | 13 | [Head of Operations & Events (Paid Role)](https://www.linkedin.com/jobs/view/4463974063/) | Pride in London |  | London (Hybrid) | 3 |  | 2026-11-16 |
+| found | 14 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
+| found | 15 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-06 |
+| found | 16 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-06 |
+| found | 17 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
+| shortlisted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 4 |  | 2026-11-16 |
 | shortlisted | 2 | [Senior Product Manager](https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045) | Product Madness |  | London | 4 |  | 2026-11-16 |
 | shortlisted | 3 | [Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London](https://www.reed.co.uk/jobs/digital-enablement-manager-ai-adoption-artificial-intelligence-digital-business-change-london/57568616) | Carrington Recruitment Solutions Ltd | ┬ú70,000 - ┬ú75,000 | WC1V6AZ | 3 |  | 2026-11-16 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
