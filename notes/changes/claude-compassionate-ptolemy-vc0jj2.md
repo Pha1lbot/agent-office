@@ -9,6 +9,36 @@ Tim shared a picture of a popular "build your first AI team" one-shot prompt and
 
 ## Change log
 
+### 2026-11-13: `/office setup` for Hal, and Hal's set-up documents rewritten
+
+**What changed** (all in `Hal's Job Search/`)
+- `.claude/skills/office/SKILL.md` (new): the `/office` command. `/office` and `/office status` give a checklist of what is set up; `/office setup` interviews Hal (the work he wants, pay and contract, where and commute, deal-breakers and employers to avoid or watch, job sites, daily limits), shows a summary, then writes `shared/job-search/search.json`, `settings.json`, `preferences.md` and `sources.md` (with the LinkedIn and Indeed alerts to create); then takes his CV and writes `cv/cv-bank.md` and `cv/base-cv.json` and a test PDF. `/office setup search` and `/office setup cv` run one part. Never touches git or notes; keeps `.old` copies before replacing a filled-in file.
+- `.claude/skills/cos/SKILL.md`: Tim's start-up check now also stops when `search.json` has no `tracks`, and points to `/office setup`.
+- `shared/tools/scout.py` and `test_scout.py`: new `commute_area(defn)`. A job that isn't remote is "within reach" if its location matches `where.commute_areas` in `search.json`; with none set, the old built-in London and Surrey list is used, so nothing changes for a file without it. Three new tests (27 in the file now pass).
+- `GET-THE-OFFICE.md`: a "whole journey" list, step 7 rewritten around `/office setup` (what it asks and writes), two new rows in the problems table.
+- `GUIDE.md`: "New here? Three steps" box; file map now lists `search.json` and the office skill; section 3 step 2 rewritten (`/office setup`, with the by-hand route kept); new "search definition" explanation before 6.1; Job sites panel and Define my search described in section 5; 6.5, section 7, 11 and 12 updated.
+- `CLAUDE.md`, `agents/chief-of-staff/README.md`, `shared/office-view/README.md`: point to `/office setup`; the README no longer says the GUIDE explains a scheduled task (it doesn't).
+
+**Why**
+Tim Everard asked for all of Hal's documentation to be updated so Hal understands how to set up, and for a command (`/office setup`) that asks what he is looking for and sets everything up.
+
+**Decisions**
+- The old set-up route was "fill in four files by hand", but Hal's `search.json` ships with `tracks: []`, so Scout found nothing even when the files were filled in; the command writes `search.json` too, and Tim now stops if it is empty.
+- Scout's "within reach" list was fixed to London and Surrey (Tim Everard's area), which would drop every non-remote job for a Hal anywhere else. Made it data-driven (`where.commute_areas`) rather than asking Hal to edit code. **Tim's office has the same fixed list; I have not changed it** (his area is right for him).
+- Did not edit Hal's template data files (`preferences.md`, `sources.md`, `search.json`, the CV files): Hal will fill them in on his PC, and a later `git pull` would stop on a clash. Only instructions and documents changed.
+- One command with parts (`setup`, `setup search`, `setup cv`) rather than three, so it matches the name Tim Everard asked for.
+- Not added to Tim's office (not asked for).
+
+**How to check it**
+- `python3 -m unittest test_scout test_tracker` in `Hal's Job Search/shared/tools` (46 pass); `npm test` (57 pass) in `shared/office-view`.
+- In Hal's office folder, `/office` shows the checklist; `/office setup` runs the interview. The interview itself has not been run end to end (it needs Hal's answers).
+- Read `GET-THE-OFFICE.md` step 7 and `GUIDE.md` section 3 as a new user would.
+
+**Open items**
+- Hal needs `git pull` and to restart Claude Code to get `/office`.
+- Worth Tim Everard running `/office setup` once in a scratch copy of Hal's office to see the questions land well.
+- Tim's office's Scout has the same fixed commute list; say if you want it made data-driven there too, and whether Tim's office should get `/office` as well.
+
 ### 2026-11-13: Removed the 5-minute auto-update timer
 
 **What changed**

@@ -9,6 +9,10 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 ## Change log
 
+### 2026-11-13: `/office setup`, set-up documents and a commute-area fix (from the branch above)
+
+Tim Everard added the `/office` command (`.claude/skills/office/SKILL.md`), rewrote `GET-THE-OFFICE.md` step 7 and `GUIDE.md` sections 2, 3, 5, 6, 7, 11 and 12 around it, updated `CLAUDE.md`, the Chief of Staff README and `shared/office-view/README.md`, made Tim's start-up check require `tracks` in `search.json`, and changed `shared/tools/scout.py` (with tests) so the within-reach list comes from `where.commute_areas`. Hal needs `git pull` and a Claude Code restart. This is Hal's office only: Tim's office has not been changed.
+
 Newest entries first. Never delete or rewrite old entries.
 
 ### 2026-11-13: Auto-update wording and label (from the branch above)

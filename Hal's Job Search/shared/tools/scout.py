@@ -186,6 +186,13 @@ COMMUTE_AREA = re.compile(r"\b((?:ec|wc|nw|se|sw|kt|sm|cr|rh|gu|tw|ha|ub|sl|br|d
                           r"slough|reading|crawley|watford|greater london|south east)\b")
 
 
+def commute_area(defn):
+    """The places that count as within reach: `where.commute_areas` in search.json (place names and postcode
+    prefixes, set by `/office setup`), or the built-in London and Surrey list if none are given."""
+    areas = [norm(a) for a in (defn.get("where", {}).get("commute_areas") or []) if norm(a)]
+    return re.compile(r"\b(" + "|".join(re.escape(a) for a in areas) + r")\b") if areas else COMMUTE_AREA
+
+
 def level_ok(title, min_level):
     t = norm(title)
     if HARD_LOW.search(t):
@@ -229,11 +236,12 @@ def judge(job, source_name, defn, today=None):
     loc = norm(job.get("location", ""))
     desc = job.get("description", "")
     country = str(job.get("country", "")).strip().upper()
-    in_uk = country in ("GB", "UK", "UNITED KINGDOM") or bool(UK_WORDS.search(loc))
+    near = commute_area(defn)
+    in_uk = country in ("GB", "UK", "UNITED KINGDOM") or bool(UK_WORDS.search(loc)) or bool(near.search(loc))
     remote = bool(job.get("remote")) or "remote" in loc or "hybrid" in loc
     if not in_uk and not (remote and not country and re.search(r"\b(uk|united kingdom)\b", norm(title + " " + desc[:400]))):
         return None, "not in the UK"
-    if not remote and not COMMUTE_AREA.search(loc):
+    if not remote and not near.search(loc):
         if loc and not re.fullmatch(r"(united kingdom|uk|gb|england|great britain)", loc) and not re.search(r"\b(fully remote|remote first|100 remote|work from anywhere|remote working|home based)\b", norm(desc[:1500])):
             return None, "outside commute, not remote"
     pay = job.get("pay", "")
@@ -260,7 +268,7 @@ def judge(job, source_name, defn, today=None):
         concern = "; ".join(x for x in (
             "contract" if job.get("contract") else "",
             "recruiter's advert (employer may not be named)" if agency else "",
-            "" if in_uk and (remote or COMMUTE_AREA.search(loc)) else "check the location",
+            "" if in_uk and (remote or near.search(loc)) else "check the location",
         ) if x)
         return {
             "title": title.strip(), "company": company.strip(), "location": (job.get("location") or "").strip(), "pay": pay,

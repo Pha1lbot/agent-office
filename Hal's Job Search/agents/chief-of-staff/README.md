@@ -10,9 +10,10 @@ Tim is the Chief of Staff: the one you talk to. (In Tim's Job Search the same ro
 
 **Inputs**
 - Hal's requests ("start the day", "approve <role>", "I applied to <role>").
-- An optional scheduled task that runs `/tim daily search` in the cloud each weekday morning. Hal's office doesn't have one yet: `GUIDE.md` explains how to set one up.
+- An optional scheduled task that runs `/tim daily search` in the cloud each weekday morning. Hal's office doesn't have one; ask Tim Everard if you want one.
 - Hal's job-alert emails in Outlook, through the Microsoft 365 connector (daily search only).
 - `shared/job-search/preferences.md` (daily limits and what Hal wants).
+- `shared/job-search/search.json` (the search definition: kinds of work, pay, where, sites). Hal fills it in the first time with `/office setup` (`.claude/skills/office/SKILL.md`); Tim stops and points him there if it is still empty.
 - `python3 shared/tools/tracker.py list --summary`.
 - Short replies from Rita, Wren and Cole.
 

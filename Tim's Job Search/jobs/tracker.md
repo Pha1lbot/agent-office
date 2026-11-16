@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 12 · shortlisted: 5 · drafted: 6 · approved: 1 · applied: 6 · skipped: 47
+found: 15 · shortlisted: 5 · drafted: 6 · approved: 1 · applied: 6 · skipped: 59
 
 ## Roles
 
@@ -17,9 +17,12 @@ found: 12 · shortlisted: 5 · drafted: 6 · approved: 1 · applied: 6 · skippe
 | found | 7 | [Head of Operations](https://www.linkedin.com/jobs/view/4461930505/) | TryHackMe |  | London (Remote) | 3 |  | 2026-11-11 |
 | found | 8 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 3 |  | 2026-11-11 |
 | found | 9 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
-| found | 10 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-06 |
-| found | 11 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-06 |
-| found | 12 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
+| found | 10 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
+| found | 11 | [HotelPlanner Tour Tournament Business Manager](https://www.linkedin.com/jobs/view/4489085965/) | DP World Tour |  | Wentworth | 3 |  | 2026-11-13 |
+| found | 12 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
+| found | 13 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-06 |
+| found | 14 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-06 |
+| found | 15 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-06 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | shortlisted |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-05 |
 | shortlisted |  | [AI Programme Manager (12-month fixed term)](https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v) | techUK | Not shown | London, hybrid |  |  | 2026-11-05 |
@@ -85,3 +88,15 @@ found: 12 · shortlisted: 5 · drafted: 6 · approved: 1 · applied: 6 · skippe
 | skipped |  | [Head of Expert Network & Operations](https://www.reed.co.uk/jobs/head-of-expert-network-operations/57528021) | Inventum Group | £70,000 - £85,000 | London | 3 |  | 2026-11-12 |
 | skipped |  | [Technical Operations Director](https://www.reed.co.uk/jobs/technical-operations-director/57545447) | Teemz Ltd | £140,000 - £170,000 | London | 3 |  | 2026-11-12 |
 | skipped |  | [Delivery Manager - SC Sponsorship Available](https://www.reed.co.uk/jobs/delivery-manager-sc-sponsorship-available/57500524) | SR2 | £225 - £250 | London | 4 |  | 2026-11-12 |
+| skipped |  | [Senior Operations Manager - B2B Exhibitions](https://www.linkedin.com/jobs/view/4489970073/) | Disrupt Talent |  | London (On-site) | 2 |  | 2026-11-13 |
+| skipped |  | [Event Manager](https://www.linkedin.com/jobs/view/4490338810/) | Engage |  | London Area (On-site) | 2 |  | 2026-11-13 |
+| skipped |  | [Production Operations Manager (12 month FTC)](https://www.linkedin.com/jobs/view/4470416179/) | ASOS.com |  | London (Hybrid) | 2 |  | 2026-11-13 |
+| skipped |  | [WW Education Channel Operations - Programme Manager](https://www.linkedin.com/jobs/view/4489060812/) | Apple |  | London | 2 |  | 2026-11-13 |
+| skipped |  | [Senior Operations Manager](https://www.linkedin.com/jobs/view/4490325351/) | Fushi |  | Greater London (On-site) | 2 |  | 2026-11-13 |
+| skipped |  | [Senior Operations Manager](https://www.linkedin.com/jobs/view/4490303686/) | HCL |  | Welwyn Garden City (Hybrid) | 2 |  | 2026-11-13 |
+| skipped |  | [Speed Programs Manager - FTC 18 months, Sr Same Day Programs](https://www.linkedin.com/jobs/view/4473505480/) | Amazon |  | London | 2 |  | 2026-11-13 |
+| skipped |  | [Supply Chain Manager (S&OP), EU Supply Chain Execution & Planning (Grocery)](https://www.linkedin.com/jobs/view/4490398432/) | Amazon |  | London | 2 |  | 2026-11-13 |
+| skipped |  | [Senior Logistics Manager](https://www.linkedin.com/jobs/view/4489986649/) | AWE |  | Reading | 2 |  | 2026-11-13 |
+| skipped |  | [Planning Manager - Inventory Planning](https://www.linkedin.com/jobs/view/4488236443/) | Burberry |  | London Area (On-site) | 2 |  | 2026-11-13 |
+| skipped |  | [S&OP Planning Lead](https://www.linkedin.com/jobs/view/4490081749/) | INEOS |  | London Area (On-site) | 2 |  | 2026-11-13 |
+| skipped |  | [Senior Operations Manager](https://www.linkedin.com/jobs/view/4488692808/) | DHL Supply Chain |  | Gatwick (On-site) | 2 |  | 2026-11-13 |

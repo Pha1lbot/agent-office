@@ -13,7 +13,7 @@ This is Hal's office: Hal's job-search team (Tim the Chief of Staff, Rita, Wren,
 ## Working here
 
 - Work only inside this folder. Never read or change `../Tim's Job Search/`: it is another person's private job search.
-- Open Claude Code in this folder and type `/tim` (or `/cos`) to start.
+- Open Claude Code in this folder. **First time: type `/office setup`**: it interviews Hal about what he is looking for and fills in his search files and CV (`.claude/skills/office/SKILL.md`). After that, type `/tim` (or `/cos`) to start the day.
 - `GUIDE.md` explains how to use and change everything here; `GET-THE-OFFICE.md` explains how to get it onto a PC. If Hal is new, point him to those.
 - Hal may change anything in this folder: his preferences, job sites, CV, the agents' instructions, templates. Do it when he asks. Files at the top of the repo (the CLAUDE.md above this folder, README, `.github/`, `shared/tools/*.ps1`) and `notes/` are Tim Everard's: don't edit them from here.
 - Don't write change notes in `notes/`: they are part of the repo. Keep a record in the chat instead.
