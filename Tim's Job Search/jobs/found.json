@@ -491,7 +491,13 @@
       "concern": "",
       "track": "AI operations: learning and support roles",
       "summary": "Senior Project Manager (AI Adoption) Retail Hybrid in London (3 days per week onsite) 3 months+ 650 - 700 per day In short: We're seeking a strong IT PM with experience of AI adoption to join a large business area in a new, AI rollout. You'll be tracking, reporting, chasing and s",
-      "found_at": "2026-11-13T11:33"
+      "found_at": "2026-11-13T11:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-16-pontoon-senior-project-manager-ai-adoption",
+        "reason": "",
+        "at": "2026-11-16T12:44"
+      }
     },
     {
       "id": "f24",
@@ -853,66 +859,108 @@
       "concern": "recruiter's advert (employer may not be named)",
       "track": "AI operations: learning and support roles",
       "summary": "Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, User Experience, Microsoft 365, Copilot, Central London, Hybrid Digital Enablement Manager required to work for a large Professional Services business based in Central London. This is a hyb",
-      "found_at": "2026-11-16T12:37"
+      "found_at": "2026-11-16T12:37",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-16-carrington-recruitment-solutions-ltd-digital-enablement-manager-ai-adoption-a",
+        "reason": "",
+        "at": "2026-11-16T12:44"
+      }
+    },
+    {
+      "id": "f40",
+      "title": "Senior Product Manager",
+      "company": "Product Madness",
+      "location": "London",
+      "pay": "",
+      "link": "https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045",
+      "posted": "2026-11-06",
+      "source": "Hitmarker",
+      "via": "feed",
+      "fit": "strong",
+      "why": "Product and implementation in event, sport, gaming and workforce tech: the title matches 'Senior Product Manager' and the advert uses the track's words",
+      "concern": "",
+      "track": "Product and implementation in event, sport, gaming and workf",
+      "summary": "Senior Product Manager Location – London, United Kingdom (Hybrid) The Role As a Senior Product Manager at Product Madness, you will bring a passion for gaming and a data-driven approach to creating compelling player experiences and delivering measurable business results. You will",
+      "found_at": "2026-11-16T12:43",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-16-product-madness-senior-product-manager",
+        "reason": "",
+        "at": "2026-11-16T12:44"
+      }
+    },
+    {
+      "id": "f41",
+      "title": "Head of Operations & Events (Paid Role)",
+      "company": "Pride in London",
+      "location": "London (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4463974063/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Plans and delivers a large live event end to end, as you did at BLAST and for esports events.",
+      "concern": "Pay not shown; may be a small team",
+      "track": "Live events and event production",
+      "summary": "Operational planning and safe delivery of Pride in London.",
+      "found_at": "2026-11-16T12:44",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-16-pride-in-london-head-of-operations-events-paid-role",
+        "reason": "",
+        "at": "2026-11-16T12:44"
+      }
+    },
+    {
+      "id": "f42",
+      "title": "Senior Paddock and Logistics Manager",
+      "company": "Formula E",
+      "location": "London",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4491094037/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Race-weekend logistics and operations for a global motorsport series, close to your live-events background.",
+      "concern": "Likely heavy travel; pay not shown",
+      "track": "Sports and venues operations",
+      "summary": "Operational extension of the Paddock team for Formula E events.",
+      "found_at": "2026-11-16T12:44",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-16-formula-e-senior-paddock-and-logistics-manager",
+        "reason": "",
+        "at": "2026-11-16T12:44"
+      }
+    },
+    {
+      "id": "f43",
+      "title": "Regional Operations Manager (EMEA)",
+      "company": "Sumsub",
+      "location": "London (Remote)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4483629309/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Operations role, but in identity-verification tech rather than events or esports.",
+      "concern": "Wrong sector",
+      "track": "Head of Operations at scale-ups",
+      "summary": "Regional operations management for Sumsub across EMEA.",
+      "found_at": "2026-11-16T12:44",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-16-sumsub-regional-operations-manager-emea",
+        "reason": "Hal: wrong sector (identity-verification tech)",
+        "at": "2026-11-16T12:44"
+      }
     }
   ],
   "runs": [
-    {
-      "at": "2026-11-12T13:51",
-      "via": "feed",
-      "found": 1,
-      "note": "5000 jobs listed, 153 looked possible from their titles, 100 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-12T13:51",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
-    {
-      "at": "2026-11-12T13:51",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
-    {
-      "at": "2026-11-12T13:51",
-      "via": "feed",
-      "found": 0,
-      "note": "3 of 3 boards read",
-      "source": "Company hiring pages: Ashby"
-    },
-    {
-      "at": "2026-11-12T13:51",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: SmartRecruiters"
-    },
-    {
-      "at": "2026-11-12T13:51",
-      "via": "feed",
-      "found": 6,
-      "note": "635 results read",
-      "source": "Reed"
-    },
-    {
-      "at": "2026-11-12T20:00",
-      "via": "feed",
-      "found": 0,
-      "note": "5000 jobs listed, 54 looked possible from their titles, 54 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-12T20:00",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
     {
       "at": "2026-11-12T20:00",
       "via": "feed",
@@ -1066,62 +1114,118 @@
       "found": 0,
       "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
       "source": "Access Jobs"
+    },
+    {
+      "at": "2026-11-16T12:43",
+      "via": "feed",
+      "found": 1,
+      "note": "5000 jobs listed, 144 looked possible from their titles, 100 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-16T12:43",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-16T12:43",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-16T12:44",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-16T12:44",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-16T12:44",
+      "via": "feed",
+      "found": 0,
+      "note": "add REED_API_KEY to shared/job-search/.env",
+      "source": "Reed"
+    },
+    {
+      "at": "2026-11-16T12:44",
+      "via": "email",
+      "found": 3,
+      "note": "3 alert emails read, 17 roles seen, 3 queued",
+      "source": "LinkedIn Jobs"
+    },
+    {
+      "at": "2026-11-16T12:44",
+      "via": "email",
+      "found": 0,
+      "note": "No Indeed alert emails since 13 Nov. Set up the Indeed alerts listed in sources.md",
+      "source": "Indeed UK"
     }
   ],
-  "last_email_scan": "2026-11-13T20:28:59Z",
+  "last_email_scan": "2026-11-16T12:50:00Z",
   "sources": {
     "Hitmarker": {
-      "total": 1,
-      "last_checked": "2026-11-13T11:32",
+      "total": 2,
+      "last_checked": "2026-11-16T12:43",
       "result": "ok",
-      "found": 0,
-      "note": "5000 jobs listed, 26 looked possible from their titles, 26 read",
-      "last_ok": "2026-11-13T11:32",
+      "found": 1,
+      "note": "5000 jobs listed, 144 looked possible from their titles, 100 read",
+      "last_ok": "2026-11-16T12:43",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-13T11:32",
+      "last_checked": "2026-11-16T12:43",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-13T11:32",
+      "last_ok": "2026-11-16T12:43",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-13T11:32",
+      "last_checked": "2026-11-16T12:43",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-13T11:32",
+      "last_ok": "2026-11-16T12:43",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-13T11:32",
+      "last_checked": "2026-11-16T12:44",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-13T11:32",
+      "last_ok": "2026-11-16T12:44",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-13T11:32",
+      "last_checked": "2026-11-16T12:44",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-13T11:32",
+      "last_ok": "2026-11-16T12:44",
       "failures": 0
     },
     "Reed": {
       "total": 7,
-      "last_checked": "2026-11-13T11:33",
-      "result": "ok",
-      "found": 1,
-      "note": "628 results read",
-      "failures": 0,
+      "last_checked": "2026-11-16T12:44",
+      "result": "needs-key",
+      "found": 0,
+      "note": "add REED_API_KEY to shared/job-search/.env",
+      "failures": 1,
       "last_ok": "2026-11-13T11:33"
     },
     "Event Industry Jobs": {
@@ -1141,22 +1245,22 @@
       "failures": 2
     },
     "LinkedIn Jobs": {
-      "total": 3,
-      "last_checked": "2026-11-13T20:28",
+      "total": 6,
+      "last_checked": "2026-11-16T12:44",
       "result": "ok",
       "found": 3,
-      "note": "3 alert emails read, 15 roles seen, 3 kept as leads",
+      "note": "3 alert emails read, 17 roles seen, 3 queued",
       "failures": 0,
-      "last_ok": "2026-11-13T20:28"
+      "last_ok": "2026-11-16T12:44"
     },
     "Indeed UK": {
       "total": 0,
-      "last_checked": "2026-11-13T20:28",
+      "last_checked": "2026-11-16T12:44",
       "result": "empty",
       "found": 0,
-      "note": "Outlook reached, but no Indeed alert emails in the last 7 days. Set up the Indeed alerts listed in sources.md",
+      "note": "No Indeed alert emails since 13 Nov. Set up the Indeed alerts listed in sources.md",
       "failures": 0,
-      "last_ok": "2026-11-13T20:28"
+      "last_ok": "2026-11-16T12:44"
     },
     "Esports Insider jobs": {
       "total": 0,

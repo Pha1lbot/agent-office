@@ -11,6 +11,12 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-16: Job search: daily search, 5 new leads, 1 dismissed
+
+**What changed:** `Tim's Job Search/jobs/` (found.json, tracker.json, today.md) from a manual daily search: Scout, LinkedIn and Reed alert emails read, sources logged.
+**Why:** Tim asked to search now; the panel showed nothing checked for 3 days.
+**Open items:** five job sites still blocked by the cloud allowlist; Reed key not available in the cloud; Indeed alerts not set up.
+
 ### 2026-11-13: Job search: LinkedIn alerts read, source panel updated
 
 **What changed:** Tim asked to re-check the sources in the Sources panel. The Microsoft 365 connector was working again, so I read the 3 LinkedIn alert emails (15 roles). 3 kept as leads (Stadium Managers at UK & Ireland 2028 Limited, HotelPlanner Tour Tournament Business Manager at DP World Tour, Regional Manager at Fever), 12 dismissed with reasons (on-site, wrong discipline or sector). `Tim's Job Search/jobs/found.json` and `jobs/tracker.json` updated. Source log: LinkedIn Jobs ok; Indeed UK empty (no Indeed alert emails in 7 days); Esports Insider blocked (the site returns 403 to automated readers); Event Industry Jobs, Work in Sports, Guardian Jobs, The Unit List and Access Jobs blocked (hosts not on the environment's allowed list).
