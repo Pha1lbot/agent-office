@@ -990,6 +990,20 @@
       "source": "Reed"
     },
     {
+      "at": "2026-11-12T20:00",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 54 looked possible from their titles, 54 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-12T20:00",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
       "at": "2026-11-12T20:02",
       "via": "web",
       "found": 0,
@@ -1116,6 +1130,41 @@
       "source": "Access Jobs"
     },
     {
+      "at": "2026-11-16T12:42",
+      "via": "feed",
+      "found": 1,
+      "note": "5000 jobs listed, 142 looked possible from their titles, 100 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-16T12:42",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-16T12:42",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-16T12:42",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-16T12:42",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
       "at": "2026-11-16T12:43",
       "via": "feed",
       "found": 1,
@@ -1135,6 +1184,13 @@
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
       "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-16T12:43",
+      "via": "feed",
+      "found": 0,
+      "note": "823 results read",
+      "source": "Reed"
     },
     {
       "at": "2026-11-16T12:44",
@@ -1221,12 +1277,12 @@
     },
     "Reed": {
       "total": 7,
-      "last_checked": "2026-11-16T12:44",
-      "result": "needs-key",
+      "last_checked": "2026-11-16T12:43",
+      "result": "ok",
       "found": 0,
-      "note": "add REED_API_KEY to shared/job-search/.env",
-      "failures": 1,
-      "last_ok": "2026-11-13T11:33"
+      "note": "823 results read",
+      "failures": 0,
+      "last_ok": "2026-11-16T12:43"
     },
     "Event Industry Jobs": {
       "total": 0,
