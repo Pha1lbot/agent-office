@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 10 · shortlisted: 5 · drafted: 8 · approved: 1 · applied: 6 · skipped: 68
+found: 10 · shortlisted: 5 · drafted: 8 · approved: 1 · applied: 5 · rejected: 1 · skipped: 68
 
 ## Next actions
 
@@ -41,7 +41,7 @@ found: 10 · shortlisted: 5 · drafted: 8 · approved: 1 · applied: 6 · skippe
 | applied |  | [Senior Operations Resource Planning Manager](https://careers.ba.com/job/heathrow/senior-operations-resource-planning-manager/22348/100605084528) | British Airways | Similar BA planning role listed at £50k–£70k, unconfirmed | Waterside (BA Head Office), Heathrow | 2 | Follow up if no reply by 18 Nov | 2026-11-11 |
 | applied |  | [Esport Specialist](https://www.linkedin.com/jobs/view/4308233024/) | NetEase Games |  | UK remote | 2 | Follow up if no reply by 15 Nov | 2026-11-08 |
 | applied |  | [Director of Team Operations](https://uk.linkedin.com/jobs/view/director-of-team-operations-at-hexagon-world-series-4476411854) | Hexagon World Series | not stated | London, UK or Madrid, Spain | 3 | Follow up if no reply by 13 Nov | 2026-11-11 |
-| applied |  | [Senior Manager, Admin & Operations (Football Schools)](https://www.linkedin.com/jobs/view/4475254089/) | Chelsea FC | Not shown | Cobham and Stamford Bridge, on-site |  | Follow up if no reply by 13 Nov | 2026-11-11 |
+| rejected |  | [Senior Manager, Admin & Operations (Football Schools)](https://www.linkedin.com/jobs/view/4475254089/) | Chelsea FC | Not shown | Cobham and Stamford Bridge, on-site |  | Follow up if no reply by 13 Nov | 2026-11-17 |
 | skipped | 1 | [Event Production Manager](https://www.linkedin.com/jobs/view/4485388728/) | Formula 1 | Not listed | London | 4 |  | 2026-11-09 |
 | skipped | 1 | [Senior Production Manager](https://www.linkedin.com/jobs/view/4482124492/) | The Crowd | £60k–£70k | London area, hybrid | 4 |  | 2026-11-08 |
 | skipped | 1 | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-17 |

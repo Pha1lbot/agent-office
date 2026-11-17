@@ -352,9 +352,9 @@
       "notes": "Notes: Gaps to cover in the application: monthly MI and P&L reporting, billing and collections at volume, UK GDPR and consent, CRM/ERP platform selection, Power BI.",
       "fit": null,
       "priority": null,
-      "status": "applied",
+      "status": "rejected",
       "found": "2026-11-06",
-      "updated": "2026-11-11",
+      "updated": "2026-11-17",
       "history": [
         {
           "date": "2026-11-06",
@@ -363,9 +363,15 @@
         {
           "date": "2026-11-06",
           "status": "applied"
+        },
+        {
+          "date": "2026-11-17",
+          "status": "rejected",
+          "by": "tim"
         }
       ],
-      "imported_from": "dashboard role"
+      "imported_from": "dashboard role",
+      "reason": "Didn't get an interview"
     },
     {
       "id": "2026-11-05-invisible-blue-ltd-event-production-head-of-operations",
