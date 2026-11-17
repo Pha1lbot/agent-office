@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 10 · shortlisted: 5 · drafted: 9 · approved: 1 · applied: 6 · skipped: 67
+found: 10 · shortlisted: 5 · drafted: 8 · approved: 1 · applied: 6 · skipped: 68
 
 ## Next actions
 
@@ -33,7 +33,6 @@ found: 10 · shortlisted: 5 · drafted: 9 · approved: 1 · applied: 6 · skippe
 | drafted | 3 | [Event Director](https://www.linkedin.com/jobs/view/4484516383/) | Handle Recruitment (client unnamed) | £70k–£90k | London, hybrid | 2 |  | 2026-11-09 |
 | drafted | 3 | [Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London](https://www.reed.co.uk/jobs/digital-enablement-manager-ai-adoption-artificial-intelligence-digital-business-change-london/57568616) | Carrington Recruitment Solutions Ltd | ┬ú70,000 - ┬ú75,000 | WC1V6AZ | 3 |  | 2026-11-16 |
 | drafted | 6 | [Head of Operations](https://www.linkedin.com/jobs/view/4461930505/) | TryHackMe |  | London (Remote) | 2 |  | 2026-11-16 |
-| drafted | 6 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 2 |  | 2026-11-16 |
 | drafted | 8 | [HotelPlanner Tour Tournament Business Manager](https://www.linkedin.com/jobs/view/4489085965/) | DP World Tour |  | Wentworth | 2 |  | 2026-11-16 |
 | drafted | 23 | [National Tournaments Manager](https://www.linkedin.com/jobs/view/4488144154/) | The Professional Golfers' Association (The PGA) |  | Hybrid | 2 |  | 2026-11-12 |
 | approved | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-13 |
@@ -54,6 +53,7 @@ found: 10 · shortlisted: 5 · drafted: 9 · approved: 1 · applied: 6 · skippe
 | skipped | 5 | [UK Operations Director](https://www.linkedin.com/jobs/view/4475864821/) | Prose on Pixels | Not listed | London | 3 |  | 2026-11-09 |
 | skipped | 6 | [Senior Program Activation Manager, Twitch Brand](https://www.linkedin.com/jobs/view/4455794115/) | Amazon | Not listed | London | 3 |  | 2026-11-13 |
 | skipped | 6 | [Chief Operating Officer - Live event production](https://uk.linkedin.com/jobs/view/chief-operating-officer-live-event-production-at-disrupt-search-4480513001) | Disrupt Search (agency client) | not stated | London Area | 3 |  | 2026-11-16 |
+| skipped | 6 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 2 |  | 2026-11-17 |
 | skipped | 7 | [Marketing Production Manager, Sports](https://www.linkedin.com/jobs/view/4475056502/) | Prime Video & Amazon MGM Studios | Not listed | London | 3 |  | 2026-11-13 |
 | skipped | 8 | Director of Live Operations | Bauer Media |  | Remote, UK or Germany | 3 |  | 2026-11-13 |
 | skipped | 10 | [UK + EUR Event and Operations Manager](https://turfgames.com/blogs/news/uk-operations-manager-role) | Turf Games |  | UK, remote day-to-day with event travel | 3 |  | 2026-11-12 |

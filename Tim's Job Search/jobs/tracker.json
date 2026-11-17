@@ -1915,10 +1915,10 @@
       "source": "LinkedIn alert",
       "fit": 2,
       "priority": 6,
-      "status": "drafted",
+      "status": "skipped",
       "notes": "Concern: internal business ops, not events",
       "found": "2026-11-11",
-      "updated": "2026-11-16",
+      "updated": "2026-11-17",
       "history": [
         {
           "date": "2026-11-11",
@@ -1934,10 +1934,16 @@
           "date": "2026-11-16",
           "status": "drafted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-17",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "skip",
-      "verdict_why": "Wants a BizOps/strategy-consulting background the CV does not show; tech sector is not the usual track"
+      "verdict_why": "Wants a BizOps/strategy-consulting background the CV does not show; tech sector is not the usual track",
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-11-hexagon-world-series-chief-operating-officer",
