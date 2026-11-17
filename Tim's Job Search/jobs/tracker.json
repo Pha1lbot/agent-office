@@ -565,18 +565,24 @@
       "notes": "Posted: 31 Oct",
       "fit": 2,
       "priority": 12,
-      "status": "found",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-06",
+      "updated": "2026-11-17",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-17",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
       "verdict": "skip",
-      "verdict_why": "From saved details: corporate conference venue events manager; below Head level and not esports or broadcast"
+      "verdict_why": "From saved details: corporate conference venue events manager; below Head level and not esports or broadcast",
+      "reason": "Too junior"
     },
     {
       "id": "2026-11-05-unicef-uk-director-of-soccer-aid-interim",
@@ -1133,19 +1139,25 @@
       "list": "Transition roles",
       "notes": "Posted: 31 Oct",
       "fit": 2,
-      "priority": 13,
-      "status": "found",
+      "priority": 12,
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-06",
+      "updated": "2026-11-17",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-17",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
       "verdict": "skip",
-      "verdict_why": "From saved details: conference venue management; wrong discipline and below your level"
+      "verdict_why": "From saved details: conference venue management; wrong discipline and below your level",
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-05-formula-1-event-production-manager",
@@ -1197,18 +1209,24 @@
       "notes": "Posted: 30 Oct",
       "fit": 2,
       "priority": 11,
-      "status": "found",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-06",
+      "updated": "2026-11-17",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-17",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
       "verdict": "skip",
-      "verdict_why": "From saved details: great pay, but marketing operations for events, not production or tournament ops"
+      "verdict_why": "From saved details: great pay, but marketing operations for events, not production or tournament ops",
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-05-premier-senior-producer-events",
