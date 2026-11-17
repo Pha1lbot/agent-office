@@ -962,104 +962,6 @@
   ],
   "runs": [
     {
-      "at": "2026-11-12T20:00",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
-    {
-      "at": "2026-11-12T20:00",
-      "via": "feed",
-      "found": 0,
-      "note": "3 of 3 boards read",
-      "source": "Company hiring pages: Ashby"
-    },
-    {
-      "at": "2026-11-12T20:00",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: SmartRecruiters"
-    },
-    {
-      "at": "2026-11-12T20:00",
-      "via": "feed",
-      "found": 0,
-      "note": "add REED_API_KEY to shared/job-search/.env",
-      "source": "Reed"
-    },
-    {
-      "at": "2026-11-12T20:00",
-      "via": "feed",
-      "found": 0,
-      "note": "5000 jobs listed, 54 looked possible from their titles, 54 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-12T20:00",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
-    {
-      "at": "2026-11-12T20:02",
-      "via": "web",
-      "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "source": "Event Industry Jobs"
-    },
-    {
-      "at": "2026-11-12T20:02",
-      "via": "web",
-      "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "source": "Work in Sports"
-    },
-    {
-      "at": "2026-11-12T20:02",
-      "via": "email",
-      "found": 0,
-      "note": "Outlook not reachable (502 error from Microsoft)",
-      "source": "LinkedIn Jobs"
-    },
-    {
-      "at": "2026-11-12T20:02",
-      "via": "email",
-      "found": 0,
-      "note": "Outlook not reachable (502 error from Microsoft)",
-      "source": "Indeed UK"
-    },
-    {
-      "at": "2026-11-13T11:32",
-      "via": "feed",
-      "found": 0,
-      "note": "5000 jobs listed, 26 looked possible from their titles, 26 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-13T11:32",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
-    {
-      "at": "2026-11-13T11:32",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
-    {
-      "at": "2026-11-13T11:32",
-      "via": "feed",
-      "found": 0,
-      "note": "3 of 3 boards read",
-      "source": "Company hiring pages: Ashby"
-    },
-    {
       "at": "2026-11-13T11:32",
       "via": "feed",
       "found": 0,
@@ -1226,63 +1128,105 @@
       "found": 0,
       "note": "No Indeed alert emails since 13 Nov. Set up the Indeed alerts listed in sources.md",
       "source": "Indeed UK"
+    },
+    {
+      "at": "2026-11-17T07:52",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 53 looked possible from their titles, 53 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-17T07:52",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-17T07:52",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-17T07:52",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-17T07:52",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-17T07:52",
+      "via": "feed",
+      "found": 0,
+      "note": "823 results read",
+      "source": "Reed"
     }
   ],
   "last_email_scan": "2026-11-16T12:50:00Z",
   "sources": {
     "Hitmarker": {
       "total": 2,
-      "last_checked": "2026-11-16T12:43",
+      "last_checked": "2026-11-17T07:52",
       "result": "ok",
-      "found": 1,
-      "note": "5000 jobs listed, 144 looked possible from their titles, 100 read",
-      "last_ok": "2026-11-16T12:43",
+      "found": 0,
+      "note": "5000 jobs listed, 53 looked possible from their titles, 53 read",
+      "last_ok": "2026-11-17T07:52",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-16T12:43",
+      "last_checked": "2026-11-17T07:52",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-16T12:43",
+      "last_ok": "2026-11-17T07:52",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-16T12:43",
+      "last_checked": "2026-11-17T07:52",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-16T12:43",
+      "last_ok": "2026-11-17T07:52",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-16T12:44",
+      "last_checked": "2026-11-17T07:52",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-16T12:44",
+      "last_ok": "2026-11-17T07:52",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-16T12:44",
+      "last_checked": "2026-11-17T07:52",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-16T12:44",
+      "last_ok": "2026-11-17T07:52",
       "failures": 0
     },
     "Reed": {
       "total": 7,
-      "last_checked": "2026-11-16T12:43",
+      "last_checked": "2026-11-17T07:52",
       "result": "ok",
       "found": 0,
       "note": "823 results read",
       "failures": 0,
-      "last_ok": "2026-11-16T12:43"
+      "last_ok": "2026-11-17T07:52"
     },
     "Event Industry Jobs": {
       "total": 0,
