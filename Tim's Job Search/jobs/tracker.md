@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 10 · shortlisted: 5 · drafted: 11 · approved: 1 · applied: 6 · skipped: 65
+found: 10 · shortlisted: 5 · drafted: 10 · approved: 1 · applied: 6 · skipped: 66
 
 ## Next actions
 
@@ -37,7 +37,6 @@ found: 10 · shortlisted: 5 · drafted: 11 · approved: 1 · applied: 6 · skipp
 | drafted | 8 | [HotelPlanner Tour Tournament Business Manager](https://www.linkedin.com/jobs/view/4489085965/) | DP World Tour |  | Wentworth | 2 |  | 2026-11-16 |
 | drafted | 22 | [Marketing Senior Specialist, Call of Duty](https://www.linkedin.com/jobs/view/4482564607/) | Activision Blizzard |  | London, England | 2 |  | 2026-11-11 |
 | drafted | 23 | [National Tournaments Manager](https://www.linkedin.com/jobs/view/4488144154/) | The Professional Golfers' Association (The PGA) |  | Hybrid | 2 |  | 2026-11-12 |
-| drafted | 23 | [Assistant Operations Manager](https://www.reed.co.uk/jobs/assistant-operations-manager/57533847?source=details.similarjobs#skills) | Direct Chauffeur Line Limited |  |  | 1 |  | 2026-11-13 |
 | approved | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-13 |
 | applied | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 | Follow up if no reply by 20 Nov | 2026-11-13 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Follow up if no reply by 12 Nov | 2026-11-11 |
@@ -77,6 +76,7 @@ found: 10 · shortlisted: 5 · drafted: 11 · approved: 1 · applied: 6 · skipp
 | skipped | 22 | [Senior Premium Experience Manager, fixed term](https://www.linkedin.com/jobs/view/4481587358/) | Formula E | Not listed | London, hybrid | 2 |  | 2026-11-09 |
 | skipped | 23 | [Head of Facilities Operations](https://www.linkedin.com/jobs/view/4478693926/) | Surrey County Cricket Club (The Oval) | Not listed | London | 2 |  | 2026-11-12 |
 | skipped | 23 | [Producer (Games), UK only](https://hitmarker.net/jobs/futurlab-producer-games-uk-only-remote-hybrid-brighton-5408504) | FuturLab | Not listed | Remote UK or hybrid Brighton | 1 |  | 2026-11-09 |
+| skipped | 23 | [Assistant Operations Manager](https://www.reed.co.uk/jobs/assistant-operations-manager/57533847?source=details.similarjobs#skills) | Direct Chauffeur Line Limited |  |  | 1 |  | 2026-11-17 |
 | skipped | 24 | [Producer, Star Trek Fleet Command](https://hitmarker.net/jobs/scopely-producer-star-trek-fleet-command-5472927) | Scopely | Not listed | London | 1 |  | 2026-11-09 |
 | skipped | 25 | [Senior Core Services Delivery Manager (ExCeL London)](https://www.linkedin.com/jobs/view/4481683436/) | GES UK & Europe | Not listed | London | 2 |  | 2026-11-12 |
 | skipped | 28 | [Ticketing Manager](https://www.linkedin.com/jobs/view/4481596263/) | Relevent Football Partners | Not listed | London | 1 |  | 2026-11-09 |
