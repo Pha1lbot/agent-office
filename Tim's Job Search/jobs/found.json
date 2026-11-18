@@ -958,51 +958,94 @@
         "reason": "Hal: wrong sector (identity-verification tech)",
         "at": "2026-11-16T12:44"
       }
+    },
+    {
+      "id": "f44",
+      "title": "Product Operations Manager - 12 month contract",
+      "company": "Electronic Arts",
+      "location": "London",
+      "pay": "",
+      "link": "https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960",
+      "posted": "2026-11-18",
+      "source": "Hitmarker",
+      "via": "feed",
+      "fit": "strong",
+      "why": "Product and implementation in event, sport, gaming and workforce tech: the title matches 'Product Manager' and the advert uses the track's words",
+      "concern": "",
+      "track": "Product and implementation in event, sport, gaming and workf",
+      "summary": "Electronic Arts creates next-level entertainment experiences that inspire players and fans around the world. Here, everyone is part of the story. Part of a community that connects across the globe. A place where creativity thrives, new perspectives are invited, and ideas matter.",
+      "found_at": "2026-11-18T14:08"
+    },
+    {
+      "id": "f45",
+      "title": "Event Project Director",
+      "company": "Live Recruitment",
+      "location": "GU227LA",
+      "pay": "£55,000 - £60,000",
+      "link": "https://www.reed.co.uk/jobs/event-project-director/57586682",
+      "posted": "2026-11-18",
+      "source": "Reed",
+      "via": "feed",
+      "fit": "possible",
+      "why": "Live events and event production: the title matches 'Event Director' and the advert uses the track's words",
+      "concern": "recruiter's advert (employer may not be named)",
+      "track": "Live events and event production",
+      "summary": "Hybrid working: 2 days in office International hospitality suites, city-centre street circuit activations, large-scale experiential builds at the most-watched sporting events on the calendar, and a five-year contracted global account at the centre of it all. The Event Project Dir",
+      "found_at": "2026-11-18T14:09"
+    },
+    {
+      "id": "f46",
+      "title": "Operations Director",
+      "company": "Insight Select Ltd",
+      "location": "BR60SX",
+      "pay": "£80,000 - £120,000",
+      "link": "https://www.reed.co.uk/jobs/operations-director/57584295",
+      "posted": "2026-11-17",
+      "source": "Reed",
+      "via": "feed",
+      "fit": "possible",
+      "why": "Head of Operations at scale-ups: the title matches 'Operations Director' and the advert uses the track's words",
+      "concern": "",
+      "track": "Head of Operations at scale-ups",
+      "summary": "Operations Director North Kent | 80,000 – 120,000 | Permanent We are seeking an experienced Operations Director to join an established and successful organisation that has made significant investment to support its next phase of growth. With ambitious plans for the future, the bu",
+      "found_at": "2026-11-18T14:09"
+    },
+    {
+      "id": "f47",
+      "title": "Change & Adoption Manager - AI",
+      "company": "British Heart Foundation",
+      "location": "London",
+      "pay": "£54,000 - £58,000",
+      "link": "https://www.reed.co.uk/jobs/change-adoption-manager-ai/57583404",
+      "posted": "2026-11-17",
+      "source": "Reed",
+      "via": "feed",
+      "fit": "strong",
+      "why": "AI operations, enablement and transformation: the title matches 'AI Adoption Manager' and the advert uses the track's words",
+      "concern": "",
+      "track": "AI operations, enablement and transformation",
+      "summary": "Are you passionate about helping people embrace change and get real value from new technology? This is an exciting opportunity to play a key role in how British Heart Foundation (BHF) adopts AI, helping our colleagues build the confidence, skills and understanding they need to ma",
+      "found_at": "2026-11-18T14:09"
+    },
+    {
+      "id": "f48",
+      "title": "Senior Technical Project Manager",
+      "company": "Live Recruitment",
+      "location": "SG80SS",
+      "pay": "£55,000 - £60,000",
+      "link": "https://www.reed.co.uk/jobs/senior-technical-project-manager/57585240",
+      "posted": "2026-11-18",
+      "source": "Reed",
+      "via": "feed",
+      "fit": "possible",
+      "why": "Project and programme management: the title matches 'Senior Project Manager' and the advert uses the track's words",
+      "concern": "recruiter's advert (employer may not be named); check the location",
+      "track": "Project and programme management",
+      "summary": "Flexible Working: up to 2 days per week from home Corporate events and large-scale and international, a 20 year AV hire business still expanding, technical ownership from site survey to final de-rig. The full project lifecycle, real client relationships, the kind of portfolio a S",
+      "found_at": "2026-11-18T14:09"
     }
   ],
   "runs": [
-    {
-      "at": "2026-11-13T11:32",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: SmartRecruiters"
-    },
-    {
-      "at": "2026-11-13T11:33",
-      "via": "feed",
-      "found": 1,
-      "note": "628 results read",
-      "source": "Reed"
-    },
-    {
-      "at": "2026-11-13T20:28",
-      "via": "email",
-      "found": 3,
-      "note": "3 alert emails read, 15 roles seen, 3 kept as leads",
-      "source": "LinkedIn Jobs"
-    },
-    {
-      "at": "2026-11-13T20:28",
-      "via": "email",
-      "found": 0,
-      "note": "Outlook reached, but no Indeed alert emails in the last 7 days. Set up the Indeed alerts listed in sources.md",
-      "source": "Indeed UK"
-    },
-    {
-      "at": "2026-11-13T20:28",
-      "via": "web",
-      "found": 0,
-      "note": "The site returns 403 to automated readers (cloud session and WebFetch); read it by hand",
-      "source": "Esports Insider jobs"
-    },
-    {
-      "at": "2026-11-13T20:28",
-      "via": "web",
-      "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "source": "Event Industry Jobs"
-    },
     {
       "at": "2026-11-13T20:28",
       "via": "web",
@@ -1170,63 +1213,105 @@
       "found": 0,
       "note": "823 results read",
       "source": "Reed"
+    },
+    {
+      "at": "2026-11-18T14:08",
+      "via": "feed",
+      "found": 1,
+      "note": "5000 jobs listed, 40 looked possible from their titles, 40 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-18T14:08",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-18T14:08",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-18T14:08",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-18T14:08",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-18T14:09",
+      "via": "feed",
+      "found": 4,
+      "note": "820 results read",
+      "source": "Reed"
     }
   ],
   "last_email_scan": "2026-11-16T12:50:00Z",
   "sources": {
     "Hitmarker": {
-      "total": 2,
-      "last_checked": "2026-11-17T07:52",
+      "total": 3,
+      "last_checked": "2026-11-18T14:08",
       "result": "ok",
-      "found": 0,
-      "note": "5000 jobs listed, 53 looked possible from their titles, 53 read",
-      "last_ok": "2026-11-17T07:52",
+      "found": 1,
+      "note": "5000 jobs listed, 40 looked possible from their titles, 40 read",
+      "last_ok": "2026-11-18T14:08",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-17T07:52",
+      "last_checked": "2026-11-18T14:08",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-17T07:52",
+      "last_ok": "2026-11-18T14:08",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-17T07:52",
+      "last_checked": "2026-11-18T14:08",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-17T07:52",
+      "last_ok": "2026-11-18T14:08",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-17T07:52",
+      "last_checked": "2026-11-18T14:08",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-17T07:52",
+      "last_ok": "2026-11-18T14:08",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-17T07:52",
+      "last_checked": "2026-11-18T14:08",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-17T07:52",
+      "last_ok": "2026-11-18T14:08",
       "failures": 0
     },
     "Reed": {
-      "total": 7,
-      "last_checked": "2026-11-17T07:52",
+      "total": 11,
+      "last_checked": "2026-11-18T14:09",
       "result": "ok",
-      "found": 0,
-      "note": "823 results read",
+      "found": 4,
+      "note": "820 results read",
       "failures": 0,
-      "last_ok": "2026-11-17T07:52"
+      "last_ok": "2026-11-18T14:09"
     },
     "Event Industry Jobs": {
       "total": 0,
