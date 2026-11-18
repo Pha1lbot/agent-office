@@ -11,6 +11,24 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-18: Start Hal after the office's own Scout run so new finds get sorted
+
+**What changed (Tim's office only):**
+- `shared/office-view/src/auto-cos.ts`: the status now counts `finds` (Scout's finds not yet sorted), and there is a new `findsChanged(count, fromScout)`. Hal is scheduled (same 2-minute wait, daily cap and token budget) when the office's Scout run leaves finds. The run's prompt is built by a new `cosPrompt()`, which covers office changes, finds, or both. The `after` hook now returns `{ inbox, finds }`.
+- `shared/office-view/src/server.ts`: counts unsorted finds and calls `findsChanged` after `runScout` (which starts Hal), and when the office opens or `found.json` changes (which only updates the count).
+- `shared/office-view/public/dashboard.js`: the strip says "N new finds to sort", and Run now appears for finds as well.
+- `.claude/skills/cos/SKILL.md`: a new "Scout's finds" section. Hal sorts the pending finds (daily search step 6), updates `today.md` and backs up. There is no Scout run, email scan or Rita brief.
+- `shared/office-view/test/auto-cos.test.ts`: 3 new tests, and the existing test was updated for the new hook.
+- `shared/office-view/README.md`: one sentence on the new start-up.
+
+**Why:** Tim saw "Waiting for Hal" in the office. When the 6:31 daily search doesn't run, the office runs Scout itself, but nothing then started Hal, so the finds sat unsorted until the next morning. Tim asked for it to be fixed.
+
+**Decisions:** Only the office's own Scout run starts Hal. Finds seen when the office opens or when `found.json` changes just update the count, because the scheduled daily search sorts its own finds and should not cause a second run. Sorting is a separate skill section, so Hal doesn't repeat the full daily search (tokens).
+
+**How to check it:** `npm test` in `shared/office-view` (60 pass) and `npm run check` (clean). In the office, after a Scout run that queues leads, the strip shows "Hal: starts in 2:00 (N new finds to sort)".
+
+**Open items:** Hal's office has the same gap in its own copy of `auto-cos.ts`, `server.ts`, `dashboard.js` and the cos skill. It has not been changed, pending Tim's go-ahead. The running office needs restarting to pick this up.
+
 ### 2026-11-18: Job search: sorted Scout's afternoon finds, 4 new leads, 1 dismissed
 
 **What changed:** `jobs/found.json`, `jobs/tracker.json` and `jobs/tracker.md`: Scout's 5 finds from the office's 14:08 run were sorted. Kept as leads: BHF Change & Adoption Manager (AI), Live Recruitment Event Project Director and EA Product Operations Manager (all Apply), plus Insight Select Operations Director (Maybe). Dismissed: Live Recruitment Senior Technical Project Manager, which is based in Royston and too far from Epsom. `jobs/today.md` was rewritten for today.

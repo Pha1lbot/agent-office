@@ -124,7 +124,7 @@ Your edits are **backed up to GitHub automatically**, about 15 seconds after you
 | **Refresh prep** on a role page | Hal gets **Cole** to refresh the prep notes (your talking points are kept) | yes |
 | attach a file, or edit talking points or notes | saved and backed up | none |
 
-Hal starts **2 minutes after your last change**, so several changes share one run. He runs on Sonnet to save tokens, and at most **8 times a day**. Other changes (notes, next steps, applied, skipped) don't start him. The strip shows when he'll start, with **Run now** and an **Auto start** on/off switch. Anything he needs to ask you appears under "Waiting on you". Each run's log is saved in `logs/`.
+Hal starts **2 minutes after your last change**, so several changes share one run. He runs on Sonnet to save tokens, and at most **8 times a day**. Other changes (notes, next steps, applied, skipped) don't start him. He also starts after the **office's own job search** (Scout, which runs when the office opens if the morning daily search hasn't) if it found anything, to keep or dismiss the new finds. The strip shows when he'll start, with **Run now** and an **Auto start** on/off switch. Anything he needs to ask you appears under "Waiting on you". Each run's log is saved in `logs/`.
 
 Needs, on this PC:
 - **Python 3**, for editing.

@@ -46,6 +46,12 @@ Tim changes statuses and adds roles in the office's Roles tab. Changes that need
 
 If you were started automatically, Tim isn't there to answer. Don't ask questions; add them as actions (`tracker.py action add "..." --role <id>`). Where there is a clear choice, make it a question with one-tap answers: `tracker.py action add "..." --options "Accept|Decline"` (2 to 6 short options). Tim taps an answer in Next actions, and it comes back to you as an office change.
 
+## "Scout's finds" (`/cos sort Scout's finds`; the office starts this)
+If the morning daily search didn't run, the office runs Scout itself and then starts you to sort what it found. Don't run Scout, the email scan or Rita.
+1. Do step 6 (**Sort**) of "Daily search" below for every item in `tracker.py found list --pending`.
+2. Update `jobs/today.md` (step 7). If it is already today's, add the new leads and dismissals to it. Otherwise write it fresh, with a coverage line from `tracker.py found sources` that says the email scan and Rita's sites weren't checked.
+3. Back up as in step 8, with the notes line "Job search: sorted Scout's finds, N new leads, M dismissed".
+
 ## "Daily search" (`/hal daily search`; the 6:31 weekday scheduled task runs this)
 Finds new roles, then you sort them. Nobody is waiting to answer, so never ask questions: anything for Tim goes in `tracker.py action add "..."`. What to look for and where is in `shared/job-search/search.json` (tracks, pay, sources); `preferences.md` and `sources.md` say the same in plain English.
 1. Follow the start-of-session steps in CLAUDE.md, on `main`: `git checkout main`, then `git pull`.
