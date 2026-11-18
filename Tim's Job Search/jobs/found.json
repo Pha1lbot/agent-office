@@ -974,7 +974,13 @@
       "concern": "",
       "track": "Product and implementation in event, sport, gaming and workf",
       "summary": "Electronic Arts creates next-level entertainment experiences that inspire players and fans around the world. Here, everyone is part of the story. Part of a community that connects across the globe. A place where creativity thrives, new perspectives are invited, and ideas matter.",
-      "found_at": "2026-11-18T14:08"
+      "found_at": "2026-11-18T14:08",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-18-electronic-arts-product-operations-manager-12-month-cont",
+        "reason": "",
+        "at": "2026-11-18T22:23"
+      }
     },
     {
       "id": "f45",
@@ -991,7 +997,13 @@
       "concern": "recruiter's advert (employer may not be named)",
       "track": "Live events and event production",
       "summary": "Hybrid working: 2 days in office International hospitality suites, city-centre street circuit activations, large-scale experiential builds at the most-watched sporting events on the calendar, and a five-year contracted global account at the centre of it all. The Event Project Dir",
-      "found_at": "2026-11-18T14:09"
+      "found_at": "2026-11-18T14:09",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-18-live-recruitment-event-project-director",
+        "reason": "",
+        "at": "2026-11-18T22:23"
+      }
     },
     {
       "id": "f46",
@@ -1008,7 +1020,13 @@
       "concern": "",
       "track": "Head of Operations at scale-ups",
       "summary": "Operations Director North Kent | 80,000 – 120,000 | Permanent We are seeking an experienced Operations Director to join an established and successful organisation that has made significant investment to support its next phase of growth. With ambitious plans for the future, the bu",
-      "found_at": "2026-11-18T14:09"
+      "found_at": "2026-11-18T14:09",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-18-insight-select-ltd-operations-director",
+        "reason": "",
+        "at": "2026-11-18T22:23"
+      }
     },
     {
       "id": "f47",
@@ -1025,7 +1043,13 @@
       "concern": "",
       "track": "AI operations, enablement and transformation",
       "summary": "Are you passionate about helping people embrace change and get real value from new technology? This is an exciting opportunity to play a key role in how British Heart Foundation (BHF) adopts AI, helping our colleagues build the confidence, skills and understanding they need to ma",
-      "found_at": "2026-11-18T14:09"
+      "found_at": "2026-11-18T14:09",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-18-british-heart-foundation-change-adoption-manager-ai",
+        "reason": "",
+        "at": "2026-11-18T22:23"
+      }
     },
     {
       "id": "f48",
@@ -1042,7 +1066,13 @@
       "concern": "recruiter's advert (employer may not be named); check the location",
       "track": "Project and programme management",
       "summary": "Flexible Working: up to 2 days per week from home Corporate events and large-scale and international, a 20 year AV hire business still expanding, technical ownership from site survey to final de-rig. The full project lifecycle, real client relationships, the kind of portfolio a S",
-      "found_at": "2026-11-18T14:09"
+      "found_at": "2026-11-18T14:09",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-18-live-recruitment-senior-technical-project-manager",
+        "reason": "Hal: based in Royston, Herts, well over an hour from Epsom with 3 office days",
+        "at": "2026-11-18T22:23"
+      }
     }
   ],
   "runs": [

@@ -1,17 +1,13 @@
-# Today: Monday 16 November 2026
+# Today: Wednesday 18 November 2026
 
-## New leads (6 in the queue, 5 kept), best first
-1. **Senior Project Manager (AI Adoption), Pontoon** (Reed): London, £650–700 a day. Strong fit; a contract.
-2. **Senior Product Manager, Product Madness** (Hitmarker): London. Strong fit from the title; pay not shown.
-3. **Digital Enablement Manager, AI Adoption, Carrington Recruitment** (Reed): London WC1, £70–75k. Matches your AI enablement track.
-4. **Head of Operations & Events (Paid Role), Pride in London** (LinkedIn): London, hybrid. Live events; pay not shown.
-5. **Senior Paddock and Logistics Manager, Formula E** (LinkedIn): London. Motorsport events; likely heavy travel.
+## New leads (5 in the queue, 4 kept), best first
+1. **Change & Adoption Manager (AI), British Heart Foundation** (Reed): London, £54–58k. Strong fit with your AI enablement track, and no coding needed.
+2. **Event Project Director, Live Recruitment** (Reed): Woking area, hybrid with 2 office days, £55–60k. Hospitality and experiential builds at major sporting events. It's a recruiter's advert, so check how much travel it involves.
+3. **Product Operations Manager (12-month contract), Electronic Arts** (Hitmarker): London. A gaming employer, so Manager level is fine. Pay isn't shown.
+4. **Operations Director, Insight Select** (Reed): Orpington, £80–120k. A Maybe: the sector isn't named, it's an established firm rather than a scale-up, and the commute is near your 1-hour limit.
 
 ## Dismissed (1)
-- Sumsub Regional Operations Manager (EMEA): identity-verification tech, wrong sector. Restore it from Leads → Dismissed if you disagree.
+- Live Recruitment, Senior Technical Project Manager (AV hire): based in Royston, Herts, well over an hour from Epsom, with 3 office days a week. You can restore it from Leads → Dismissed if you disagree.
 
 ## How the search went
-Reached 7 of 13 sites. Scout read Hitmarker, the Greenhouse and Ashby boards (Lever and SmartRecruiters have no boards set). LinkedIn alert emails read (3 emails, 17 roles seen, 3 queued). Reed's API still needs its key in this cloud session; I also read two Reed alert emails, which held only temporary, non-fitting roles. Indeed UK sent no alert emails. Not reached: Event Industry Jobs, Work in Sports, Guardian Jobs, The Unit List and Access Jobs (this cloud session can't reach those hosts yet), and Esports Insider (blocks automated readers).
-
-## Waiting on you
-- Allow the five blocked hosts in the cloud environment settings, and set up Indeed UK alerts.
+The office ran Scout at 14:08 because the 6:31 daily search didn't run this morning. It reached 6 of 6 feed sources (Reed read 820 results). SmartRecruiters has no company boards set yet. Rita's sites and the job-alert emails weren't checked today; tomorrow's daily search covers them.

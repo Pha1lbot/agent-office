@@ -651,7 +651,7 @@
       "list": "New matches",
       "notes": "Posted: 30 Oct",
       "fit": 3,
-      "priority": 1,
+      "priority": 5,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -719,7 +719,7 @@
       "list": "New matches",
       "notes": "Posted: 29 Oct",
       "fit": 3,
-      "priority": 2,
+      "priority": 6,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -748,7 +748,7 @@
       "list": "New matches",
       "notes": "Posted: 28 Oct",
       "fit": 3,
-      "priority": 3,
+      "priority": 7,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -777,7 +777,7 @@
       "list": "New matches",
       "notes": "Posted: 28 Oct",
       "fit": 3,
-      "priority": 4,
+      "priority": 8,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -874,7 +874,7 @@
       "list": "New matches",
       "notes": "Posted: 23 Oct",
       "fit": 3,
-      "priority": 5,
+      "priority": 9,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -1960,7 +1960,7 @@
       "url": "https://www.linkedin.com/jobs/view/4476423376/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 6,
+      "priority": 10,
       "status": "found",
       "notes": "Concern: you already applied to Hexagon on 6 Nov; check it isn't this role",
       "found": "2026-11-11",
@@ -2561,7 +2561,7 @@
       "url": "https://www.linkedin.com/jobs/view/4490097957/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 7,
+      "priority": 11,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Seniority and pay not shown in the alert; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -2619,7 +2619,7 @@
       "url": "https://www.linkedin.com/jobs/view/4463091092/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 8,
+      "priority": 12,
       "status": "found",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -3134,7 +3134,7 @@
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 9,
+      "priority": 13,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",
@@ -3178,6 +3178,132 @@
       "verdict": "skip",
       "verdict_why": "Operations role, but in identity-verification tech rather than events or esports.",
       "reason": "Hal: wrong sector (identity-verification tech)"
+    },
+    {
+      "id": "2026-11-18-electronic-arts-product-operations-manager-12-month-cont",
+      "title": "Product Operations Manager - 12 month contract",
+      "company": "Electronic Arts",
+      "location": "London",
+      "pay": "",
+      "url": "https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960",
+      "source": "Hitmarker",
+      "fit": 4,
+      "priority": 2,
+      "status": "found",
+      "notes": "Track: Product and implementation in event, sport, gaming and workf; Posted 2026-11-18",
+      "found": "2026-11-18",
+      "updated": "2026-11-18",
+      "history": [
+        {
+          "date": "2026-11-18",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "apply",
+      "verdict_why": "EA is a gaming employer, so Manager level is fine; product operations fits the gaming and product tracks. 12-month contract, pay not stated."
+    },
+    {
+      "id": "2026-11-18-live-recruitment-event-project-director",
+      "title": "Event Project Director",
+      "company": "Live Recruitment",
+      "location": "GU227LA",
+      "pay": "£55,000 - £60,000",
+      "url": "https://www.reed.co.uk/jobs/event-project-director/57586682",
+      "source": "Reed",
+      "fit": 3,
+      "priority": 3,
+      "status": "found",
+      "notes": "Track: Live events and event production; Concern: recruiter's advert (employer may not be named); Posted 2026-11-18",
+      "found": "2026-11-18",
+      "updated": "2026-11-18",
+      "history": [
+        {
+          "date": "2026-11-18",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "apply",
+      "verdict_why": "Event Director-level role on sporting-event hospitality and experiential builds, Woking (about 30 min), hybrid 2 days, 55-60k. Recruiter advert: check travel."
+    },
+    {
+      "id": "2026-11-18-insight-select-ltd-operations-director",
+      "title": "Operations Director",
+      "company": "Insight Select Ltd",
+      "location": "BR60SX",
+      "pay": "£80,000 - £120,000",
+      "url": "https://www.reed.co.uk/jobs/operations-director/57584295",
+      "source": "Reed",
+      "fit": 3,
+      "priority": 4,
+      "status": "found",
+      "notes": "Track: Head of Operations at scale-ups; Posted 2026-11-17",
+      "found": "2026-11-18",
+      "updated": "2026-11-18",
+      "history": [
+        {
+          "date": "2026-11-18",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Operations Director at 80-120k, but the sector isn't named and it's an established firm, not clearly a scale-up. Orpington is near the 1-hour commute limit."
+    },
+    {
+      "id": "2026-11-18-british-heart-foundation-change-adoption-manager-ai",
+      "title": "Change & Adoption Manager - AI",
+      "company": "British Heart Foundation",
+      "location": "London",
+      "pay": "£54,000 - £58,000",
+      "url": "https://www.reed.co.uk/jobs/change-adoption-manager-ai/57583404",
+      "source": "Reed",
+      "fit": 4,
+      "priority": 1,
+      "status": "found",
+      "notes": "Track: AI operations, enablement and transformation; Posted 2026-11-17",
+      "found": "2026-11-18",
+      "updated": "2026-11-18",
+      "history": [
+        {
+          "date": "2026-11-18",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "apply",
+      "verdict_why": "AI change and adoption at BHF, London, 54-58k: a direct match for the AI enablement track, with no coding needed."
+    },
+    {
+      "id": "2026-11-18-live-recruitment-senior-technical-project-manager",
+      "title": "Senior Technical Project Manager",
+      "company": "Live Recruitment",
+      "location": "SG80SS",
+      "pay": "£55,000 - £60,000",
+      "url": "https://www.reed.co.uk/jobs/senior-technical-project-manager/57585240",
+      "source": "Reed",
+      "fit": 3,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Project and programme management; Concern: recruiter's advert (employer may not be named); check the location; Posted 2026-11-18",
+      "found": "2026-11-18",
+      "updated": "2026-11-18",
+      "history": [
+        {
+          "date": "2026-11-18",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-18",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Project and programme management: the title matches 'Senior Project Manager' and the advert uses the track's words",
+      "reason": "Hal: based in Royston, Herts, well over an hour from Epsom with 3 office days"
     }
   ],
   "actions": [

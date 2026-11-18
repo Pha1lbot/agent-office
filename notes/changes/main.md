@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-18: Job search: sorted Scout's afternoon finds, 4 new leads, 1 dismissed
+
+**What changed:** `jobs/found.json`, `jobs/tracker.json` and `jobs/tracker.md`: Scout's 5 finds from the office's 14:08 run were sorted. Kept as leads: BHF Change & Adoption Manager (AI), Live Recruitment Event Project Director and EA Product Operations Manager (all Apply), plus Insight Select Operations Director (Maybe). Dismissed: Live Recruitment Senior Technical Project Manager, which is based in Royston and too far from Epsom. `jobs/today.md` was rewritten for today.
+
+**Why:** Tim saw the office showing these finds as "Waiting for Hal". The office runs Scout on its own when the morning daily search hasn't run, but nothing starts Hal afterwards to sort the finds. Tim asked for them to be sorted now.
+
+**Decisions:** Each lead was judged against preferences.md. Insight Select is a Maybe because the advert names no sector and the commute is borderline. Only the sorting step was run: there was no email scan and no Rita brief.
+
+**How to check it:** `python shared/tools/tracker.py found list --pending` shows nothing. The four leads appear in the office under Leads, and the dismissed role under Leads → Dismissed.
+
+**Open items:** Gap in `shared/office-view/src/server.ts`: after the office's own Scout run, nothing starts Hal to sort the finds, so they wait until the next daily search. Hal's office has the same code.
+
 ### 2026-11-16: Job search: 6 roles drafted from the office inbox
 
 **What changed:** Tim shortlisted and drafted 6 roles in the office (Pontoon Senior Project Manager AI Adoption, Carrington Digital Enablement Manager AI Adoption, DP World Tour HotelPlanner Tour Tournament Business Manager, Product Madness Senior Product Manager, TryHackMe Head of Operations, ElevenLabs Company Operations Lead), none of which had a listing.md yet. Rita read each advert from its URL and wrote `jobs/roles/<id>/listing.md` with a fit score and verdict for each. Wren then drafted CV and cover letter for all 6 from the CV bank, and Ada built the Word/PDF files. Tracker fit/verdict fields updated to match Rita's real reads (replacing the daily-search triage placeholders); TryHackMe's status moved to `drafted` to match the others.
