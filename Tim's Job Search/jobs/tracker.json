@@ -3189,7 +3189,7 @@
       "source": "Hitmarker",
       "fit": 4,
       "priority": 2,
-      "status": "shortlisted",
+      "status": "drafted",
       "notes": "Track: Product and implementation in event, sport, gaming and workf; Posted 2026-11-18",
       "found": "2026-11-18",
       "updated": "2026-11-18",
@@ -3202,6 +3202,11 @@
         {
           "date": "2026-11-18",
           "status": "shortlisted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-18",
+          "status": "drafted",
           "by": "tim"
         }
       ],
@@ -3218,7 +3223,7 @@
       "source": "Reed",
       "fit": 3,
       "priority": 2,
-      "status": "shortlisted",
+      "status": "drafted",
       "notes": "Track: Live events and event production; Concern: recruiter's advert (employer may not be named); Posted 2026-11-18",
       "found": "2026-11-18",
       "updated": "2026-11-18",
@@ -3231,6 +3236,11 @@
         {
           "date": "2026-11-18",
           "status": "shortlisted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-18",
+          "status": "drafted",
           "by": "tim"
         }
       ],

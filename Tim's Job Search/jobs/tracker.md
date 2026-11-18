@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 11 · shortlisted: 7 · drafted: 8 · approved: 1 · applied: 5 · rejected: 1 · skipped: 70
+found: 11 · shortlisted: 5 · drafted: 10 · approved: 1 · applied: 5 · rejected: 1 · skipped: 70
 
 ## Next actions
 
@@ -23,8 +23,6 @@ found: 11 · shortlisted: 7 · drafted: 8 · approved: 1 · applied: 5 · reject
 | found | 9 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
 | found | 10 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
 | found | 11 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
-| shortlisted | 2 | [Product Operations Manager - 12 month contract](https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960) | Electronic Arts |  | London | 4 |  | 2026-11-18 |
-| shortlisted | 2 | [Event Project Director](https://www.reed.co.uk/jobs/event-project-director/57586682) | Live Recruitment | £55,000 - £60,000 | GU227LA | 3 |  | 2026-11-18 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | shortlisted |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-05 |
 | shortlisted |  | [AI Programme Manager (12-month fixed term)](https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v) | techUK | Not shown | London, hybrid |  |  | 2026-11-05 |
@@ -33,6 +31,8 @@ found: 11 · shortlisted: 7 · drafted: 8 · approved: 1 · applied: 5 · reject
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
 | drafted | 2 | [Senior Product Manager](https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045) | Product Madness |  | London | 2 |  | 2026-11-16 |
+| drafted | 2 | [Product Operations Manager - 12 month contract](https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960) | Electronic Arts |  | London | 4 |  | 2026-11-18 |
+| drafted | 2 | [Event Project Director](https://www.reed.co.uk/jobs/event-project-director/57586682) | Live Recruitment | £55,000 - £60,000 | GU227LA | 3 |  | 2026-11-18 |
 | drafted | 3 | [Event Director](https://www.linkedin.com/jobs/view/4484516383/) | Handle Recruitment (client unnamed) | £70k–£90k | London, hybrid | 2 |  | 2026-11-09 |
 | drafted | 3 | [Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London](https://www.reed.co.uk/jobs/digital-enablement-manager-ai-adoption-artificial-intelligence-digital-business-change-london/57568616) | Carrington Recruitment Solutions Ltd | ┬ú70,000 - ┬ú75,000 | WC1V6AZ | 3 |  | 2026-11-16 |
 | drafted | 6 | [Head of Operations](https://www.linkedin.com/jobs/view/4461930505/) | TryHackMe |  | London (Remote) | 2 |  | 2026-11-16 |
