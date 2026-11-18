@@ -3106,15 +3106,20 @@
       "source": "LinkedIn alert",
       "fit": 3,
       "priority": 9,
-      "status": "found",
+      "status": "skipped",
       "notes": "Track: Live events and event production; Concern: Pay not shown; may be a small team",
       "found": "2026-11-16",
-      "updated": "2026-11-16",
+      "updated": "2026-11-18",
       "history": [
         {
           "date": "2026-11-16",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-18",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
@@ -3129,7 +3134,7 @@
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 10,
+      "priority": 9,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",

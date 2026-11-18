@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 10 · shortlisted: 5 · drafted: 8 · approved: 1 · applied: 5 · rejected: 1 · skipped: 68
+found: 9 · shortlisted: 5 · drafted: 8 · approved: 1 · applied: 5 · rejected: 1 · skipped: 69
 
 ## Next actions
 
@@ -20,8 +20,7 @@ found: 10 · shortlisted: 5 · drafted: 8 · approved: 1 · applied: 5 · reject
 | found | 6 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
 | found | 7 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
 | found | 8 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
-| found | 9 | [Head of Operations & Events (Paid Role)](https://www.linkedin.com/jobs/view/4463974063/) | Pride in London |  | London (Hybrid) | 3 |  | 2026-11-16 |
-| found | 10 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
+| found | 9 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | shortlisted |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-05 |
 | shortlisted |  | [AI Programme Manager (12-month fixed term)](https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v) | techUK | Not shown | London, hybrid |  |  | 2026-11-05 |
@@ -56,6 +55,7 @@ found: 10 · shortlisted: 5 · drafted: 8 · approved: 1 · applied: 5 · reject
 | skipped | 6 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 2 |  | 2026-11-17 |
 | skipped | 7 | [Marketing Production Manager, Sports](https://www.linkedin.com/jobs/view/4475056502/) | Prime Video & Amazon MGM Studios | Not listed | London | 3 |  | 2026-11-13 |
 | skipped | 8 | Director of Live Operations | Bauer Media |  | Remote, UK or Germany | 3 |  | 2026-11-13 |
+| skipped | 9 | [Head of Operations & Events (Paid Role)](https://www.linkedin.com/jobs/view/4463974063/) | Pride in London |  | London (Hybrid) | 3 |  | 2026-11-18 |
 | skipped | 10 | [UK + EUR Event and Operations Manager](https://turfgames.com/blogs/news/uk-operations-manager-role) | Turf Games |  | UK, remote day-to-day with event travel | 3 |  | 2026-11-12 |
 | skipped | 10 | [Senior Production Manager](https://www.linkedin.com/jobs/view/4457905834/) | Live Wire Productions |  | Banbury | 3 |  | 2026-11-13 |
 | skipped | 11 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-17 |
