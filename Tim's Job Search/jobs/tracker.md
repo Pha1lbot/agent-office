@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 11 · shortlisted: 5 · drafted: 10 · approved: 1 · applied: 5 · rejected: 1 · skipped: 70
+found: 11 · shortlisted: 4 · drafted: 10 · approved: 1 · applied: 5 · rejected: 1 · skipped: 71
 
 ## Next actions
 
@@ -25,7 +25,6 @@ found: 11 · shortlisted: 5 · drafted: 10 · approved: 1 · applied: 5 · rejec
 | found | 11 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | shortlisted |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-05 |
-| shortlisted |  | [AI Programme Manager (12-month fixed term)](https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v) | techUK | Not shown | London, hybrid |  |  | 2026-11-05 |
 | shortlisted |  | [AI Enablement Manager](https://ats.rippling.com/livewire/jobs/c5df0138-76a1-4a31-8bed-b4afd7ad0a56) | Livewire (gaming media) | Not shown | Not shown |  |  | 2026-11-05 |
 | shortlisted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London |  |  | 2026-11-05 |
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
@@ -86,6 +85,7 @@ found: 11 · shortlisted: 5 · drafted: 10 · approved: 1 · applied: 5 · rejec
 | skipped | 28 | [Ticketing Manager](https://www.linkedin.com/jobs/view/4481596263/) | Relevent Football Partners | Not listed | London | 1 |  | 2026-11-09 |
 | skipped |  | Global E-Sports & Gaming Strategy Lead | Placements24 · client unnamed | £90k–£130k | Remote or hybrid, London |  | Ask who the employer is; find the original advert | 2026-11-05 |
 | skipped |  | Esports Coordinator / Team Manager | Wolves Esports | Unpaid |  |  | Declined: unpaid. Door left open if budget changes | 2026-11-04 |
+| skipped |  | [AI Programme Manager (12-month fixed term)](https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v) | techUK | Not shown | London, hybrid |  |  | 2026-11-18 |
 | skipped |  | Director of Event Operations | Chess.com |  | Fully remote, US or EU applicants |  |  | 2026-11-06 |
 | skipped |  | [Live Broadcast Producer (Contractor Role)](https://hitmarker.net/jobs/esl-live-broadcast-producer-contractor-role-5058011) | ESL FACEIT Group | not stated | UK-based, London listed | 2 |  | 2026-11-06 |
 | skipped |  | [Director, Production (Licensed IP and Partner Titles - Fortnite Ecosystem)](https://uk.linkedin.com/jobs/view/director-production-licensed-ip-and-partner-titles-fortnite-ecosystem-at-epic-games-4484131731) | Epic Games | not stated | Greater London | 3 |  | 2026-11-06 |

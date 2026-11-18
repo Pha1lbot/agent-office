@@ -456,16 +456,22 @@
       "notes": "Why it fits: Delivers events, roundtables and member activity that speed up AI adoption; close to your event and programme delivery Concern: Fixed term; pay to check",
       "fit": null,
       "priority": null,
-      "status": "shortlisted",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-18",
       "history": [
         {
           "date": "2026-11-05",
           "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-18",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "reason": "Pay too low"
     },
     {
       "id": "2026-11-05-livewire-gaming-media-ai-enablement-manager",
