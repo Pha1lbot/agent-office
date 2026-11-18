@@ -66,7 +66,7 @@ const TYPES: Record<string, string> = {
 const office = new Office();
 let tracker: { roles: { id: string; title: string; company: string; status?: string; url?: string }[]; inbox?: { done: boolean }[]; error?: string; found?: Found } = { roles: [] };
 // The review queue from Rita's daily search and the job-alert email scan (jobs/found.json).
-type Found = { items: { found_at?: string }[]; runs: unknown[]; last_email_scan?: string; sources?: Record<string, { last_checked?: string }>; listed?: { name: string; how: string }[] };
+type Found = { items: { found_at?: string; triage?: unknown }[]; runs: unknown[]; last_email_scan?: string; sources?: Record<string, { last_checked?: string }>; listed?: { name: string; how: string }[] };
 const SEARCH_FILE = join(dirname(TRACKER), "..", "shared", "job-search", "search.json"); // what to look for, edited in "Define my search"
 const SETTINGS_FILE = join(dirname(TRACKER), "..", "shared", "job-search", "settings.json"); // pay bands the ranking uses
 const ENV_FILE = join(dirname(TRACKER), "..", "shared", "job-search", ".env"); // the Reed key: never saved to GitHub, never sent to the page
@@ -92,6 +92,8 @@ async function loadTracker() {
   tracker.found!.listed = await listSources(join(dirname(TRACKER), "..", "shared", "job-search", "search.json"));
   return (tracker.inbox || []).filter((i) => !i.done).length;
 }
+/** Finds from the last week that Tim hasn't kept or dismissed yet. */
+const unsortedFinds = () => (tracker.found?.items || []).filter((i) => !i.triage).length;
 
 // ---------- Token meter ----------
 // Optional daily budget of fresh tokens; when reached, Tim stops starting automatically.
@@ -189,6 +191,8 @@ async function runScout(): Promise<{ ok: boolean; summary: string }> {
       run(tool!.python, [join(REPO, "shared", "tools", "scout.py"), "closed"], REPO, { JOBS_DIR: dirname(TRACKER), PYTHONIOENCODING: "utf-8" }, 290_000), "Closed check done") : null;
     const summary = [scoutSummary(r.out), c ? closedSummary(c.out) : ""].filter(Boolean).join(" ");
     await afterEdit(r.ok ? scoutSummary(r.out).replace(/^Scout: /, "job search: ") : "job search failed");
+    // Nobody else will sort what this run found (the morning daily search sorts its own), so start Tim.
+    cos?.findsChanged(unsortedFinds(), r.ok);
     return { ok: r.ok, summary };
   } finally { scouting = false; }
 }
@@ -584,11 +588,12 @@ if (python) {
   // (not the git top folder, which holds both offices).
   cos = new AutoCos(claude, REPO, python, APP, {
     before: async () => { backup.hold = true; await backup.flush(); },
-    after: async () => { backup.hold = false; const n = await loadTracker(); broadcast({ type: "tracker", tracker }); return n; },
+    after: async () => { backup.hold = false; const inbox = await loadTracker(); broadcast({ type: "tracker", tracker }); return { inbox, finds: unsortedFinds() }; },
     changed: pushSystem,
     budgetLeft: () => (DAILY_BUDGET ? DAILY_BUDGET - tokensToday.fresh : null),
   });
   cos.inboxChanged(initialInbox, false);
+  cos.findsChanged(unsortedFinds(), false);
 }
 if (!claude) console.log("Claude Code not found: Tim won't start automatically. Run /cos yourself.");
 // Scout runs once a day without being asked, a little after the office opens (set OFFICE_SCOUT_AUTO=0 to stop it).
@@ -597,6 +602,7 @@ if (process.env.OFFICE_SCOUT_AUTO !== "0") setTimeout(() => { if (tool && scoutD
 watchFile(FOUND, { interval: 2000 }, async () => {
   await loadTracker();
   broadcast({ type: "tracker", tracker });
+  cos?.findsChanged(unsortedFinds(), false);
 });
 watchFile(TRACKER, { interval: 2000 }, async () => {
   const waiting = await loadTracker();

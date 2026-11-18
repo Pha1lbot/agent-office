@@ -123,7 +123,7 @@ This office **does not save to GitHub** (`git_backup` is `false` in `shared/job-
 | **Refresh prep** on a role page | Tim gets **Cole** to refresh the prep notes (your talking points are kept) | yes |
 | attach a file, or edit talking points or notes | saved on this PC | none |
 
-Tim starts **2 minutes after your last change**, so several changes share one run. Tim runs on Sonnet to save tokens, and at most **8 times a day**. Other changes (notes, next steps, applied, skipped) don't start Tim. The strip shows when Tim will start, with **Run now** and an **Auto start** on/off switch. Anything Tim needs to ask you appears under "Waiting on you". Each run's log is saved in `logs/`.
+Tim starts **2 minutes after your last change**, so several changes share one run. Tim runs on Sonnet to save tokens, and at most **8 times a day**. Other changes (notes, next steps, applied, skipped) don't start Tim. Tim also starts after the **office's own job search** (Scout, which runs when the office opens if the morning daily search hasn't) if it found anything, to keep or dismiss the new finds. The strip shows when Tim will start, with **Run now** and an **Auto start** on/off switch. Anything Tim needs to ask you appears under "Waiting on you". Each run's log is saved in `logs/`.
 
 Needs, on this PC:
 - **Python 3**, for editing.

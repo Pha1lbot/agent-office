@@ -9,6 +9,18 @@ The change notes for work committed straight to `main` in Hal's Job Search: chan
 
 ## Change log
 
+### 2026-11-18: Start Tim (Chief of Staff) after the office's own Scout run so new finds get sorted
+
+**What changed:** This is the same fix as Tim's office (see `main.md`, 2026-11-18), copied over with the names swapped. `shared/office-view/src/auto-cos.ts` gets the finds count, `findsChanged()` and `cosPrompt()`. `src/server.ts` counts unsorted finds and starts Tim after the office's own Scout run. `public/dashboard.js` shows "N new finds to sort" in the strip. `.claude/skills/cos/SKILL.md` gets a new "Scout's finds" section. The tests in `test/auto-cos.test.ts` were updated, and `shared/office-view/README.md` gets one sentence.
+
+**Why:** Tim Everard asked for the fix to be made in both offices. Without it, finds from the office's own Scout run wait unsorted until the next daily search.
+
+**Decisions:** Hal's office doesn't commit, so the new skill section and the run's prompt both say not to commit or push. In Tim's office, the prompt says to commit once at the end instead.
+
+**How to check it:** `npm test` (60 pass) and `npm run check` (clean) in `Hal's Job Search/shared/office-view`. Hal needs `git pull` and then to reopen the office.
+
+**Open items:** The existing "Daily search" step 8 in Hal's skill still says to commit and push, which goes against its own Git section. That was there before this change and hasn't been touched.
+
 ### 2026-11-13: `/office setup`, set-up documents and a commute-area fix (from the branch above)
 
 Tim Everard added the `/office` command (`.claude/skills/office/SKILL.md`), rewrote `GET-THE-OFFICE.md` step 7 and `GUIDE.md` sections 2, 3, 5, 6, 7, 11 and 12 around it, updated `CLAUDE.md`, the Chief of Staff README and `shared/office-view/README.md`, made Tim's start-up check require `tracks` in `search.json`, and changed `shared/tools/scout.py` (with tests) so the within-reach list comes from `where.commute_areas`. Hal needs `git pull` and a Claude Code restart. This is Hal's office only: Tim's office has not been changed.

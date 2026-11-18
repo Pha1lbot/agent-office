@@ -237,15 +237,18 @@ function renderSystem() {
   if (!system.editing) parts.push("<span>Viewing only: editing needs Python 3 on this PC.</span>");
   else if (!c?.available) parts.push("<span><b>Tim</b>: Claude Code isn't installed here, so run /tim yourself.</span>");
   else {
+    // What's waiting for him: office requests, new finds to sort, or both.
+    const finds = c.finds || 0;
+    const work = [c.inbox ? `${c.inbox} request${c.inbox === 1 ? "" : "s"}` : "", finds ? `${finds} new find${finds === 1 ? "" : "s"} to sort` : ""].filter(Boolean).join(", ");
     let state;
-    if (c.running) state = `working on ${c.inbox} request${c.inbox === 1 ? "" : "s"}…`;
-    else if (c.startsAt) { const s = Math.max(0, Math.round((c.startsAt - Date.now()) / 1000)); state = `starts in ${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")} (${c.inbox} request${c.inbox === 1 ? "" : "s"})`; }
-    else if (c.inbox) state = `${c.inbox} request${c.inbox === 1 ? "" : "s"} waiting`;
+    if (c.running) state = `working on ${work || "the office's requests"}…`;
+    else if (c.startsAt) { const s = Math.max(0, Math.round((c.startsAt - Date.now()) / 1000)); state = `starts in ${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")} (${work})`; }
+    else if (work) state = `${work} waiting`;
     else state = c.last ? `${esc(c.last.message)} ${clock(c.last.at)}` : "nothing to do";
     const err = c.last && !c.last.ok && !c.running && !c.startsAt;
     parts.push(`<span class="${err ? "err" : ""}"><b>Tim</b>: ${state}</span>`);
     parts.push(`<span>${c.runsToday} of ${c.maxPerDay} automatic runs today</span>`);
-    if (c.inbox && !c.running) parts.push(`<button type="button" class="btn sm" data-cos="run">Run now</button>`);
+    if (work && !c.running) parts.push(`<button type="button" class="btn sm" data-cos="run">Run now</button>`);
     parts.push(`<button type="button" class="btn sm" data-cos="auto" aria-pressed="${c.auto}">Auto start: ${c.auto ? "on" : "off"}</button>`);
   }
   const tk = system.tokens;
