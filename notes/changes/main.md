@@ -11,6 +11,22 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-18: Office changes — drafted CVs/cover letters for 2 roles Tim added and drafted himself
+
+**What changed (Tim's office only):**
+- Two inbox items (i28, i29) from Tim shortlisting and drafting two roles himself in the office, with no listing.md yet: `2026-11-18-electronic-arts-product-operations-manager-12-month-cont` (Product Operations Manager, 12-month contract, Electronic Arts) and `2026-11-18-live-recruitment-event-project-director` (Event Project Director, Live Recruitment).
+- Rita read both full adverts (no advert.txt/attachment existed) and wrote `listing.md` for each, updating fit/verdict from Scout's provisional queue scores: EA to fit 5/apply, Live Recruitment to fit 3/maybe (flagging no agency-side hospitality/experiential background and ~5-6 weeks/year travel above Tim's usual preference).
+- Wren drafted CV, cover letter, `notes.md` and built the Word/PDF files for both roles. Fact checks passed clean on both; `notes.md` on each records genuine gaps for Tim to weigh (EA: no "product operations" title/direct partner-account-management history; Live Recruitment: no agency-side hospitality/experiential background, travel above preference).
+- `jobs/tracker.json` / `jobs/tracker.md`: fit and verdict updated for both roles (status stays `drafted`, as Tim set it).
+
+**Why:** Tim shortlisted and drafted both roles directly in the office (ahead of the normal Hal shortlist step), landing "Draft a tailored CV and cover letter" inbox items with no listing written yet.
+
+**Decisions:** Had Rita write the listing first (reading the advert from the role's URL, since there was no pasted advert text or attachment) before briefing Wren, per the office-changes rule for drafting without an existing listing.
+
+**How to check it:** Open each role's PDFs under `jobs/roles/<id>/`; read `notes.md` for the fact-check and gap notes, especially the Live Recruitment travel/agency-experience flag.
+
+**Open items:** None — this was an automated run with Tim not present; no questions were raised.
+
 ### 2026-11-18: Start Hal after the office's own Scout run so new finds get sorted
 
 **What changed (Tim's office only):**

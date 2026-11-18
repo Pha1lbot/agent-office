@@ -389,16 +389,22 @@
       "notes": "Why it fits: Right seniority for event operations Concern: Couldn't find the advert; agency or in-house unknown",
       "fit": null,
       "priority": null,
-      "status": "shortlisted",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-18",
       "history": [
         {
           "date": "2026-11-05",
           "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-18",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "reason": "Too much travel"
     },
     {
       "id": "2026-11-05-british-airways-senior-operations-resource-planning-mana",
@@ -489,16 +495,22 @@
       "notes": "Why it fits: Gaming sector; hands-on role embedding AI into everyday operations Concern: Asks for proven experience leading AI adoption, so a stretch",
       "fit": null,
       "priority": null,
-      "status": "shortlisted",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-18",
       "history": [
         {
           "date": "2026-11-05",
           "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-18",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "reason": "Too much travel"
     },
     {
       "id": "2026-11-05-capital-com-senior-operations-manager-ai-automation",
@@ -516,13 +528,18 @@
       "notes": "Why it fits: Owns the automation roadmap across Operations and leads a team of one or two Concern: Wants hands-on experience building automation in live operations",
       "fit": null,
       "priority": null,
-      "status": "shortlisted",
+      "status": "drafted",
       "found": "2026-11-05",
-      "updated": "2026-11-05",
+      "updated": "2026-11-18",
       "history": [
         {
           "date": "2026-11-05",
           "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-18",
+          "status": "drafted",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead"
@@ -1894,10 +1911,10 @@
       "source": "LinkedIn alert",
       "fit": 2,
       "priority": 6,
-      "status": "drafted",
+      "status": "skipped",
       "notes": "Concern: company ops, not events",
       "found": "2026-11-11",
-      "updated": "2026-11-16",
+      "updated": "2026-11-18",
       "history": [
         {
           "date": "2026-11-11",
@@ -1912,6 +1929,11 @@
         {
           "date": "2026-11-16",
           "status": "drafted"
+        },
+        {
+          "date": "2026-11-18",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "skip",
@@ -3193,7 +3215,7 @@
       "pay": "",
       "url": "https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960",
       "source": "Hitmarker",
-      "fit": 4,
+      "fit": 5,
       "priority": 2,
       "status": "drafted",
       "notes": "Track: Product and implementation in event, sport, gaming and workf; Posted 2026-11-18",
@@ -3217,7 +3239,7 @@
         }
       ],
       "verdict": "apply",
-      "verdict_why": "EA is a gaming employer, so Manager level is fine; product operations fits the gaming and product tracks. 12-month contract, pay not stated."
+      "verdict_why": "6+yrs esports, £12m+ budgets, exact tool match (Airtable/GSuite/MS Office), vendor/freelancer management line up closely"
     },
     {
       "id": "2026-11-18-live-recruitment-event-project-director",
@@ -3250,8 +3272,8 @@
           "by": "tim"
         }
       ],
-      "verdict": "apply",
-      "verdict_why": "Event Director-level role on sporting-event hospitality and experiential builds, Woking (about 30 min), hybrid 2 days, 55-60k. Recruiter advert: check travel."
+      "verdict": "maybe",
+      "verdict_why": "Pay/seniority/commute fit but no agency-side hospitality/experiential track record and ~5-6 weeks/year travel exceeds Tim's preference"
     },
     {
       "id": "2026-11-18-insight-select-ltd-operations-director",
@@ -3678,7 +3700,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Product Operations Manager - 12 month contract @ Electronic Arts",
       "at": "2026-11-18T22:24",
-      "done": false
+      "done": true,
+      "handled": "2026-11-18T22:32"
     },
     {
       "id": "i29",
@@ -3686,6 +3709,15 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Event Project Director @ Live Recruitment",
       "at": "2026-11-18T22:24",
+      "done": true,
+      "handled": "2026-11-18T22:32"
+    },
+    {
+      "id": "i30",
+      "role": "2026-11-05-capital-com-senior-operations-manager-ai-automation",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "Senior Operations Manager: AI Automation @ Capital.com",
+      "at": "2026-11-18T22:28",
       "done": false
     }
   ]
