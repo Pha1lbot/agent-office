@@ -3976,6 +3976,14 @@
       "at": "2026-11-19T17:44",
       "done": true,
       "handled": "2026-11-19T17:54"
+    },
+    {
+      "id": "i33",
+      "role": "2026-11-18-electronic-arts-product-operations-manager-12-month-cont",
+      "task": "Revise documents: Update cover letter to remove - 12 month contract",
+      "title": "Product Operations Manager - 12 month contract @ Electronic Arts",
+      "at": "2026-11-19T19:37",
+      "done": false
     }
   ]
 }
