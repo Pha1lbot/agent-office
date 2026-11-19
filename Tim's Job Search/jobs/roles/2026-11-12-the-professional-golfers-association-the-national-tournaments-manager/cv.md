@@ -8,7 +8,7 @@ Epsom, Surrey · 07872 571569 · tim.everard@hotmail.co.uk · linkedin.com/in/ti
 
 ## Profile
 
-Tournament operations leader with 15 years' experience running live tournaments, events and the field-based teams behind them. At BLAST, led a six-person department and line-managed tournament staff delivering 60+ flagship events and 300+ qualifiers in 13 countries, with €12m+ in budgets and 2,000+ freelancers booked, contracted and scheduled across each event. Hands-on with venue arrangements and equipment, staffing rotas and scheduling, event budgets, and the health and safety and safeguarding side of live events as a Designated Safeguarding Lead and first aider. Rebuilt department processes and documentation for clearer ownership and accountability. Comfortable managing field-based teams and travelling to deliver events on-site, with a full driving licence.
+Tournament operations leader with 15 years' experience running live tournaments, events and the field-based teams behind them. At BLAST, led a six-person department and line-managed tournament staff delivering 60+ flagship events and 300+ qualifiers in 13 countries, with €12m+ in budgets, 2,000+ freelancers booked, contracted and scheduled across each event, and third-party organisers managed to deliver the qualifiers. Wrote and enforced the tournament rulebooks that governed competitive integrity, and was responsible for tournament prize money. Hands-on with venue arrangements and equipment, staffing rotas and scheduling, event budgets, and the health and safety and safeguarding side of live events as a Designated Safeguarding Lead and first aider. Comfortable managing field-based teams and travelling to deliver events on-site, with a full driving licence.
 
 **In numbers:** 60+ flagship esports events · 300+ qualifiers · 2,000+ freelancers · €12m+ in budgets · 13 countries
 
@@ -17,12 +17,12 @@ Tournament operations leader with 15 years' experience running live tournaments,
 ### Head of Esports Operations, BLAST (Jun 2023 – Oct 2026)
 
 - Led a six-person department running tournament operations across every BLAST ecosystem, including CS2, Dota 2, Brawl Stars, Fortnite, Rocket League and Rainbow Six
+- Managed third-party organisers delivering BLAST's qualifying tournaments
+- Wrote and enforced tournament rulebooks to uphold competitive integrity
+- Responsible for tournament prize money
 - Rebuilt how the department works, with clearer ownership, accountability and proper documentation
 - Designed and built the department's own tools for tournament operations, event and equipment tracking, freelancer calendars, bookings and contracting, and event budgets and deadlines
-- Brought Team Operations into the department, so all online and offline player management and support sat with one team
 - Wrote the business case for a departmental OPEX budget covering equipment renewal, software and cross-event costs
-- Costed and pitched new tournament work with the product and commercial teams
-- Set technical requirements for commercial partnerships
 
 ### Tournament Operations Manager, BLAST · Contractor to Mar 2021, then permanent (Jan 2020 – Jun 2023)
 
@@ -67,10 +67,10 @@ Tournament operations leader with 15 years' experience running live tournaments,
 
 ## Key skills
 
-- **Tournament operations:** Tournament and player operations, event logistics, site visits, bootcamps
+- **Tournament operations:** Tournament and player operations, third-party tournament management (qualifiers), rulebook creation and enforcement, event logistics, bootcamps
 - **Team leadership:** Line management of field-based teams, people management, process and SOP documentation
 - **Staffing and scheduling:** Freelancer booking, contracting and payments, rotas, staffing schedules
-- **Budgets and admin:** Budgets, invoices, business cases, event administration
+- **Budgets and admin:** Budgets, prize money, invoices, business cases, event administration
 - **Venues and vendors:** Venue arrangements, equipment procurement, vendor management
 - **Safety and compliance:** Designated Safeguarding Lead, first aider, fire marshal, health and safety
 - **Systems and tooling:** Airtable, Google Workspace, Microsoft Office
@@ -79,13 +79,9 @@ Tournament operations leader with 15 years' experience running live tournaments,
 
 | Certification | Year |
 |---|---|
+| The R&A Online Certificate (Level 1) | 2026 |
 | First Aid at Work | 2022 |
 | Safeguarding Lead (DSL) | 2021 |
-| Working at Heights | 2018 |
-| Moving Head Maintenance | 2018 |
-| Manual Handling | 2018 |
 | Fire Marshal | 2018 |
-| PAT Testing | 2016 |
-| IPAF | 2012 |
 
 References available on request.

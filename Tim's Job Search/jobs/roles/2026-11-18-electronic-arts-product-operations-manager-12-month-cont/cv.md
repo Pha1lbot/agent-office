@@ -8,7 +8,7 @@ Epsom, Surrey · 07872 571569 · tim.everard@hotmail.co.uk · linkedin.com/in/ti
 
 ## Profile
 
-Esports operations leader with 15 years' experience managing tournament delivery, vendor relationships and multi-million-euro budgets, most recently as Head of Esports Operations at BLAST. Led a six-person department running tournament and player operations across every BLAST title, delivering 60+ flagship events and 300+ qualifiers in 13 countries. Hands-on with vendor and freelancer contracting, equipment and staffing budgets, invoice approval and risk mitigation on live event days, plus building the department's own Airtable tools for tracking bookings, budgets and deadlines. Used to being the main operational point of contact for external partners and governing bodies, and to pitching tournament plans and budgets to product and commercial teams. Comfortable running launch-critical live events where readiness and risk management matter.
+Esports operations leader with 15 years' experience managing tournament delivery, vendor relationships and multi-million-euro budgets, most recently as Head of Esports Operations at BLAST. Led a six-person department running tournament and player operations across every BLAST title, delivering 60+ flagship events and 300+ qualifiers in 13 countries, including managing the third-party organisers who deliver BLAST's qualifiers. Hands-on with vendor account management (including the tournament platform Challengermode), freelancer contracting, equipment and staffing budgets, invoice approval and risk mitigation on live event days, plus building the department's own Airtable tools for tracking bookings, budgets and deadlines. Used to being the main operational point of contact for external partners and governing bodies, and to pitching tournament plans and budgets to product and commercial teams.
 
 **In numbers:** €12m+ in budgets · 2,000+ freelancers · 60+ flagship esports events · 300+ qualifiers · 13 countries
 
@@ -17,12 +17,12 @@ Esports operations leader with 15 years' experience managing tournament delivery
 ### Head of Esports Operations, BLAST (Jun 2023 – Oct 2026)
 
 - Led a six-person department running tournament operations across every BLAST ecosystem, including CS2, Dota 2, Brawl Stars, Fortnite, Rocket League and Rainbow Six
+- Managed third-party organisers delivering BLAST qualifiers, and was account manager for vendors including Challengermode
 - Costed and pitched new tournament work with the product and commercial teams
+- Responsible for tournament prize money
 - Designed and built the department's own tools for tournament operations, event and equipment tracking, freelancer calendars, bookings and contracting, and event budgets and deadlines
 - Set technical requirements for commercial partnerships
 - Wrote the business case for a departmental OPEX budget covering equipment renewal, software and cross-event costs
-- Brought Team Operations into the department, so all online and offline player management and support sat with one team
-- Rebuilt how the department works, with clearer ownership, accountability and proper documentation
 
 ### Tournament Operations Manager, BLAST · Contractor to Mar 2021, then permanent (Jan 2020 – Jun 2023)
 
@@ -67,8 +67,8 @@ Esports operations leader with 15 years' experience managing tournament delivery
 
 ## Key skills
 
-- **Vendor and partner management:** Vendor selection, contract evaluation, booking and payments, main point of contact for partners and governing bodies
-- **Commercial and finance:** Multi-million-euro budgets, invoice approval, pitch costings, business cases, stakeholder management
+- **Vendor and partner management:** Vendor selection, contract evaluation, vendor account management, booking and payments, main point of contact for partners and governing bodies
+- **Commercial and finance:** Multi-million-euro budgets, prize money, invoice approval, pitch costings, business cases, stakeholder management
 - **Live event operations:** Tournament and player operations, launch readiness, risk mitigation, event logistics, site visits
 - **Operations leadership:** Team leadership, people management, restructuring, process improvement
 - **Systems and tooling:** Airtable, Google Workspace, Microsoft Office, built in-house tracking and reporting tools

@@ -8,6 +8,7 @@ found: 12 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 5 · rejec
 
 - Rita rates 4 of your 6 new drafts as weak fits (DP World Tour, Product Madness, TryHackMe, ElevenLabs) and 2 as maybe (Pontoon, Carrington) - see each role's verdict_why. Drafting them anyway per your office request, but worth a look before you spend more time on them.
 - Preference review due: you have made 41 decisions since 2026-11-11. Want the team's suggestions for your preferences?
+- Capital.com (Senior Operations Manager: AI Automation) scores weak fit (2/5, skip): wants hands-on AI/LLM tooling and regulated fintech experience not on your CV, and it's a trading platform - a sector your preferences flag as not wanted. Drafting it anyway since you moved it to drafted, but worth a look before applying.
 
 ## Roles
 
@@ -38,7 +39,7 @@ found: 12 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 5 · rejec
 | drafted | 3 | [Operations Director](https://www.reed.co.uk/jobs/operations-director/57584295) | Insight Select Ltd | £80,000 - £120,000 | BR60SX | 1 |  | 2026-11-19 |
 | drafted | 8 | [HotelPlanner Tour Tournament Business Manager](https://www.linkedin.com/jobs/view/4489085965/) | DP World Tour |  | Wentworth | 2 |  | 2026-11-16 |
 | drafted | 23 | [National Tournaments Manager](https://www.linkedin.com/jobs/view/4488144154/) | The Professional Golfers' Association (The PGA) |  | Hybrid | 2 |  | 2026-11-12 |
-| drafted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London |  |  | 2026-11-18 |
+| drafted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London | 2 |  | 2026-11-19 |
 | approved | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-13 |
 | applied | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 | Follow up if no reply by 20 Nov | 2026-11-13 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Follow up if no reply by 12 Nov | 2026-11-11 |

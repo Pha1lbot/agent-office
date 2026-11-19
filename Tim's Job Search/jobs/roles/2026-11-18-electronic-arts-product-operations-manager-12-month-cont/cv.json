@@ -1,6 +1,6 @@
 {
   "headline": "Esports Tournament Operations Manager",
-  "profile": "Esports operations leader with 15 years' experience managing tournament delivery, vendor relationships and multi-million-euro budgets, most recently as Head of Esports Operations at BLAST. Led a six-person department running tournament and player operations across every BLAST title, delivering 60+ flagship events and 300+ qualifiers in 13 countries. Hands-on with vendor and freelancer contracting, equipment and staffing budgets, invoice approval and risk mitigation on live event days, plus building the department's own Airtable tools for tracking bookings, budgets and deadlines. Used to being the main operational point of contact for external partners and governing bodies, and to pitching tournament plans and budgets to product and commercial teams. Comfortable running launch-critical live events where readiness and risk management matter.",
+  "profile": "Esports operations leader with 15 years' experience managing tournament delivery, vendor relationships and multi-million-euro budgets, most recently as Head of Esports Operations at BLAST. Led a six-person department running tournament and player operations across every BLAST title, delivering 60+ flagship events and 300+ qualifiers in 13 countries, including managing the third-party organisers who deliver BLAST's qualifiers. Hands-on with vendor account management (including the tournament platform Challengermode), freelancer contracting, equipment and staffing budgets, invoice approval and risk mitigation on live event days, plus building the department's own Airtable tools for tracking bookings, budgets and deadlines. Used to being the main operational point of contact for external partners and governing bodies, and to pitching tournament plans and budgets to product and commercial teams.",
   "stats": [
     {
       "value": "€12m+",
@@ -26,11 +26,11 @@
   "skills": [
     {
       "title": "Vendor and partner management",
-      "text": "Vendor selection, contract evaluation, booking and payments, main point of contact for partners and governing bodies"
+      "text": "Vendor selection, contract evaluation, vendor account management, booking and payments, main point of contact for partners and governing bodies"
     },
     {
       "title": "Commercial and finance",
-      "text": "Multi-million-euro budgets, invoice approval, pitch costings, business cases, stakeholder management"
+      "text": "Multi-million-euro budgets, prize money, invoice approval, pitch costings, business cases, stakeholder management"
     },
     {
       "title": "Live event operations",
@@ -52,12 +52,12 @@
       "dates": "Jun 2023 – Oct 2026",
       "bullets": [
         "Led a six-person department running tournament operations across every BLAST ecosystem, including CS2, Dota 2, Brawl Stars, Fortnite, Rocket League and Rainbow Six",
+        "Managed third-party organisers delivering BLAST qualifiers, and was account manager for vendors including Challengermode",
         "Costed and pitched new tournament work with the product and commercial teams",
+        "Responsible for tournament prize money",
         "Designed and built the department's own tools for tournament operations, event and equipment tracking, freelancer calendars, bookings and contracting, and event budgets and deadlines",
         "Set technical requirements for commercial partnerships",
-        "Wrote the business case for a departmental OPEX budget covering equipment renewal, software and cross-event costs",
-        "Brought Team Operations into the department, so all online and offline player management and support sat with one team",
-        "Rebuilt how the department works, with clearer ownership, accountability and proper documentation"
+        "Wrote the business case for a departmental OPEX budget covering equipment renewal, software and cross-event costs"
       ]
     },
     {

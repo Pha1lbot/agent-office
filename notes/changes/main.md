@@ -11,6 +11,23 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-19: Office changes: Capital.com drafted, EA and PGA revised against updated CV bank
+
+**What changed:**
+- `jobs/roles/2026-11-05-capital-com-senior-operations-manager-ai-automation/`: new role folder. Rita wrote `listing.md` from the advert URL (no advert.txt existed; Tim moved this role straight to `drafted` himself from the office). Scored fit 2/5, verdict skip: wants hands-on AI/LLM automation tooling (n8n, Python, SQL) and regulated fintech experience not on Tim's CV, and Capital.com is a trading platform, a sector his preferences flag as not wanted. Wren drafted `cv.md`/`cv.json` and `cover-letter.md` anyway (plus Word and PDF files), using the closest genuine matches (process rebuild, tooling, vendor/account management, rulebook enforcement) and stating the AI/fintech gap directly in the cover letter rather than papering over it.
+- `jobs/roles/2026-11-18-electronic-arts-product-operations-manager-12-month-cont/`: `cv.json`/`cv.md`, `cover-letter.md` and rebuilt Word/PDF files updated against new facts in `cv-bank.md` (vendor/third-party qualifier management, prize money). Two lower-relevance bullets dropped to keep the first job within its bullet budget; rulebook/competitive-integrity content left out as less relevant to this advert's focus (flagged in `notes.md`).
+- `jobs/roles/2026-11-12-the-professional-golfers-association-the-national-tournaments-manager/`: `cv.json`/`cv.md` updated with the same new cv-bank facts plus rulebook creation/enforcement. Cover letter now states Tim holds the R&A Level 1 Online Certificate and is booked for R&A Level 2 Rules of Golf in January. Certifications sidebar trimmed to the four most relevant to this role after the new text pushed it over the page.
+- `shared/job-search/cv/extra-from-tim.md`: added the R&A Level 2 booking fact (wasn't yet in the CV bank) so it's on record for future roles and the fact-check stayed clean.
+- `jobs/tracker.json`: Capital.com role set `fit=2 verdict=skip` with reasoning; inbox items i30, i31, i32 marked done.
+
+**Why:** Tim made three office changes: added the Capital.com role and moved it straight to drafted; pasted new CV bank details and asked for the EA draft to be rechecked; pasted new CV bank details for the PGA role and asked for the R&A Level 2 booking to be added to its cover letter.
+
+**Decisions:** Capital.com was drafted despite the weak fit because Tim set it to drafted himself from the office — an action logged for him to review before applying, rather than silently skipping it. EA kept its page-1 fit by dropping two bullets instead of shrinking text; PGA kept its fit by trimming the certifications list rather than the new skill content.
+
+**How to check it:** Read the three roles' `notes.md` for flags, and `tracker.py list --status drafted` to see all three sitting at `drafted` for Tim to check.
+
+**Open items:** None.
+
 ### 2026-11-19: The CV template now warns when text doesn't fit; five drafts trimmed
 
 **What changed:**

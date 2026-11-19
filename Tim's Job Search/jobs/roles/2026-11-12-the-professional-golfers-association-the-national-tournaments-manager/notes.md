@@ -1,4 +1,10 @@
 # Questions for Tim
 
 - The advert needs passed PGA and R&A Rules of Golf exams, and significant golf tournament experience. Neither is in the CV bank, so the CV and cover letter are honest that his tournament background is in esports, not golf. If he has sat these exams or has golf tournament experience, add it to an `extra-*.md` file in `shared/job-search/cv/` and this can be redrafted.
-- The advert also asks about prize fund administration and entries/qualifying numbers specific to golf tournaments; nothing in the CV bank covers this, so it has been left out.
+- The advert also asks about prize fund administration and entries/qualifying numbers specific to golf tournaments; the CV bank doesn't cover golf-specific prize funds or qualifying numbers, so that part has been left out, though his BLAST prize money and qualifier-management experience is now in the CV and cover letter (see below).
+
+## 2026-11-19 update
+- Re-checked the CV against the updated CV bank (third-party qualifier management, vendor account management/Challengermode, prize money, rulebook creation and enforcement) and added what's genuinely relevant: third-party tournament/qualifier management, rulebook creation and enforcement (a strong parallel to the advert's PGA Rules Panel/education materials work), and prize money, in the profile, the Head of Esports Operations bullets and the Key skills sidebar. Left out the Challengermode vendor detail here, since it's esports-specific and less relevant than for the EA role.
+- Added the cover letter line Tim asked for: he holds the R&A Level 1 Online Certificate and is booked to complete the R&A Level 2 Rules of Golf course in January, placed in the paragraph that's already upfront about not having sat the PGA/R&A Rules exams.
+- Certifications on the CV are now trimmed to the four most relevant (R&A Online Certificate, First Aid at Work, Safeguarding Lead, Fire Marshal) rather than the full base list, to fit page 1 after the sidebar grew with the new skills text. The dropped certs (Working at Heights, Moving Head Maintenance, Manual Handling, PAT Testing, IPAF) are broadcast/theatre-specific and not relevant to a golf tournaments role; say if you'd rather see the full list regardless.
+- Rebuilt cv.docx/cv.md and cover-letter.docx via `make_docs.py`; fact check passed and no page-fit warnings.

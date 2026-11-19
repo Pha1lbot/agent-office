@@ -1,6 +1,6 @@
 {
   "headline": "Tournament Operations Manager",
-  "profile": "Tournament operations leader with 15 years' experience running live tournaments, events and the field-based teams behind them. At BLAST, led a six-person department and line-managed tournament staff delivering 60+ flagship events and 300+ qualifiers in 13 countries, with €12m+ in budgets and 2,000+ freelancers booked, contracted and scheduled across each event. Hands-on with venue arrangements and equipment, staffing rotas and scheduling, event budgets, and the health and safety and safeguarding side of live events as a Designated Safeguarding Lead and first aider. Rebuilt department processes and documentation for clearer ownership and accountability. Comfortable managing field-based teams and travelling to deliver events on-site, with a full driving licence.",
+  "profile": "Tournament operations leader with 15 years' experience running live tournaments, events and the field-based teams behind them. At BLAST, led a six-person department and line-managed tournament staff delivering 60+ flagship events and 300+ qualifiers in 13 countries, with €12m+ in budgets, 2,000+ freelancers booked, contracted and scheduled across each event, and third-party organisers managed to deliver the qualifiers. Wrote and enforced the tournament rulebooks that governed competitive integrity, and was responsible for tournament prize money. Hands-on with venue arrangements and equipment, staffing rotas and scheduling, event budgets, and the health and safety and safeguarding side of live events as a Designated Safeguarding Lead and first aider. Comfortable managing field-based teams and travelling to deliver events on-site, with a full driving licence.",
   "stats": [
     {
       "value": "60+",
@@ -26,7 +26,7 @@
   "skills": [
     {
       "title": "Tournament operations",
-      "text": "Tournament and player operations, event logistics, site visits, bootcamps"
+      "text": "Tournament and player operations, third-party tournament management (qualifiers), rulebook creation and enforcement, event logistics, bootcamps"
     },
     {
       "title": "Team leadership",
@@ -38,7 +38,7 @@
     },
     {
       "title": "Budgets and admin",
-      "text": "Budgets, invoices, business cases, event administration"
+      "text": "Budgets, prize money, invoices, business cases, event administration"
     },
     {
       "title": "Venues and vendors",
@@ -53,6 +53,24 @@
       "text": "Airtable, Google Workspace, Microsoft Office"
     }
   ],
+  "certifications": [
+    {
+      "name": "The R&A Online Certificate (Level 1)",
+      "year": "2026"
+    },
+    {
+      "name": "First Aid at Work",
+      "year": "2022"
+    },
+    {
+      "name": "Safeguarding Lead (DSL)",
+      "year": "2021"
+    },
+    {
+      "name": "Fire Marshal",
+      "year": "2018"
+    }
+  ],
   "jobs": [
     {
       "title": "Head of Esports Operations",
@@ -60,12 +78,12 @@
       "dates": "Jun 2023 – Oct 2026",
       "bullets": [
         "Led a six-person department running tournament operations across every BLAST ecosystem, including CS2, Dota 2, Brawl Stars, Fortnite, Rocket League and Rainbow Six",
+        "Managed third-party organisers delivering BLAST's qualifying tournaments",
+        "Wrote and enforced tournament rulebooks to uphold competitive integrity",
+        "Responsible for tournament prize money",
         "Rebuilt how the department works, with clearer ownership, accountability and proper documentation",
         "Designed and built the department's own tools for tournament operations, event and equipment tracking, freelancer calendars, bookings and contracting, and event budgets and deadlines",
-        "Brought Team Operations into the department, so all online and offline player management and support sat with one team",
-        "Wrote the business case for a departmental OPEX budget covering equipment renewal, software and cross-event costs",
-        "Costed and pitched new tournament work with the product and commercial teams",
-        "Set technical requirements for commercial partnerships"
+        "Wrote the business case for a departmental OPEX budget covering equipment renewal, software and cross-event costs"
       ]
     },
     {

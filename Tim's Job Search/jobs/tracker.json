@@ -526,11 +526,11 @@
       "interview_with": "",
       "list": "AI operations",
       "notes": "Why it fits: Owns the automation roadmap across Operations and leads a team of one or two Concern: Wants hands-on experience building automation in live operations",
-      "fit": null,
+      "fit": 2,
       "priority": null,
       "status": "drafted",
       "found": "2026-11-05",
-      "updated": "2026-11-18",
+      "updated": "2026-11-19",
       "history": [
         {
           "date": "2026-11-05",
@@ -542,7 +542,9 @@
           "by": "tim"
         }
       ],
-      "imported_from": "dashboard lead"
+      "imported_from": "dashboard lead",
+      "verdict": "skip",
+      "verdict_why": "Core ask is hands-on AI/LLM automation tooling (n8n, Python, SQL) and regulated fintech experience not in Tim's CV; Capital.com is a trading platform, a sector his preferences flag as not looking for"
     },
     {
       "id": "2026-11-05-this-is-beyond-senior-operations-event-producer",
@@ -3672,6 +3674,13 @@
         "Yes, review",
         "Not yet"
       ]
+    },
+    {
+      "id": "a14",
+      "text": "Capital.com (Senior Operations Manager: AI Automation) scores weak fit (2/5, skip): wants hands-on AI/LLM tooling and regulated fintech experience not on your CV, and it's a trading platform - a sector your preferences flag as not wanted. Drafting it anyway since you moved it to drafted, but worth a look before applying.",
+      "role": "2026-11-05-capital-com-senior-operations-manager-ai-automation",
+      "done": false,
+      "created": "2026-11-19"
     }
   ],
   "inbox": [
@@ -3942,7 +3951,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Senior Operations Manager: AI Automation @ Capital.com",
       "at": "2026-11-18T22:28",
-      "done": false
+      "done": true,
+      "handled": "2026-11-19T17:54"
     },
     {
       "id": "i31",
@@ -3950,7 +3960,8 @@
       "task": "Revise documents: I've provided a new updated cv bank Update based off these details",
       "title": "Product Operations Manager - 12 month contract @ Electronic Arts",
       "at": "2026-11-19T17:43",
-      "done": false
+      "done": true,
+      "handled": "2026-11-19T17:54"
     },
     {
       "id": "i32",
@@ -3958,7 +3969,8 @@
       "task": "Revise documents: Added new details to cv bank Re-check the details for cv. Also include in the cover letter than i'm booked to do my R&A Level 2 Rules of Golf in January",
       "title": "National Tournaments Manager @ The Professional Golfers' Association (The PGA)",
       "at": "2026-11-19T17:44",
-      "done": false
+      "done": true,
+      "handled": "2026-11-19T17:54"
     }
   ]
 }
