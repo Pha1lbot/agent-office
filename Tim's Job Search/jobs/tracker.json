@@ -3219,7 +3219,7 @@
       "source": "Hitmarker",
       "fit": 5,
       "priority": 2,
-      "status": "drafted",
+      "status": "applied",
       "notes": "Track: Product and implementation in event, sport, gaming and workf; Posted 2026-11-18",
       "found": "2026-11-18",
       "updated": "2026-11-19",
@@ -3247,10 +3247,16 @@
         {
           "date": "2026-11-19",
           "status": "drafted"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "applied",
+          "by": "tim"
         }
       ],
       "verdict": "apply",
-      "verdict_why": "6+yrs esports, £12m+ budgets, exact tool match (Airtable/GSuite/MS Office), vendor/freelancer management line up closely"
+      "verdict_why": "6+yrs esports, £12m+ budgets, exact tool match (Airtable/GSuite/MS Office), vendor/freelancer management line up closely",
+      "next": "Follow up if no reply by 26 Nov"
     },
     {
       "id": "2026-11-18-live-recruitment-event-project-director",
