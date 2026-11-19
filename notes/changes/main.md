@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-19: CV bank: rulebook creation and enforcement; default CV fitted to page 1
+
+**What changed:** `cv-bank.md` gets the bullet "Wrote and enforced tournament rulebooks to uphold competitive integrity" under Head of Esports Operations, BLAST, plus matching words in Event management and Rita's summary. The vendor bullet was shortened to "Account manager for tournament vendors, including Challengermode". In `base-cv.json`, the same rulebook bullet; the two vendor/qualifier bullets merged into one; and the Event management and Freelancers and vendors sidebar text shortened.
+
+**Why:** Tim asked to include rulebook creation and enforcement to uphold integrity. Measuring the page layout in headless Chrome showed that page 1 of the default CV was being clipped. The template's pages have a fixed height with `overflow: hidden`, so extra text is cut off without a warning, and the page count stays 2. The R&A certificate filled most of the sidebar's spare room, the longer skill text then went 14px past the end, and the new bullets put the main column over too.
+
+**Decisions:** The default CV's wording is shorter, while the CV bank keeps the full wording for Wren. Page 1 now has 38px spare in the main column and 5px in the sidebar. The preview Tim was sent earlier today was slightly clipped; the new one fits.
+
+**How to check it:** Render `cv_template.cv_html()` for `base-cv.json` in Chrome and compare each column's bottom to the page's content area.
+
+**Open items:** The same measurement shows that some role drafts overflow the page-1 sidebar with the current base certifications (BA, EA, ElevenLabs, Arlington, Reed Head of Events, Reed Head of Operations, Pontoon, Live Recruitment). EA's and BA's built PDFs were already clipped before today. `cv_template.py` should warn on overflow, not just on page count. The same applies to Hal's office copy.
+
 ### 2026-11-19: CV bank: prize money as a responsibility
 
 **What changed:** `cv-bank.md` and `base-cv.json`: the bullet "Responsible for tournament prize money" was added under Head of Esports Operations, BLAST, and "prize money" was added to the Commercial and finance skill and to Rita's summary line.
