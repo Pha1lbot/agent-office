@@ -3211,7 +3211,7 @@
     },
     {
       "id": "2026-11-18-electronic-arts-product-operations-manager-12-month-cont",
-      "title": "Product Operations Manager - 12 month contract",
+      "title": "Product Operations Manager",
       "company": "Electronic Arts",
       "location": "London",
       "pay": "",
@@ -3219,7 +3219,7 @@
       "source": "Hitmarker",
       "fit": 5,
       "priority": 2,
-      "status": "approved",
+      "status": "drafted",
       "notes": "Track: Product and implementation in event, sport, gaming and workf; Posted 2026-11-18",
       "found": "2026-11-18",
       "updated": "2026-11-19",
@@ -3243,6 +3243,10 @@
           "date": "2026-11-19",
           "status": "approved",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "drafted"
         }
       ],
       "verdict": "apply",
@@ -3983,7 +3987,8 @@
       "task": "Revise documents: Update cover letter to remove - 12 month contract",
       "title": "Product Operations Manager - 12 month contract @ Electronic Arts",
       "at": "2026-11-19T19:37",
-      "done": false
+      "done": true,
+      "handled": "2026-11-19T19:40"
     }
   ]
 }
