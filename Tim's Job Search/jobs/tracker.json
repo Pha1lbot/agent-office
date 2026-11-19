@@ -674,7 +674,7 @@
       "list": "New matches",
       "notes": "Posted: 30 Oct",
       "fit": 3,
-      "priority": 5,
+      "priority": 2,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -742,7 +742,7 @@
       "list": "New matches",
       "notes": "Posted: 29 Oct",
       "fit": 3,
-      "priority": 6,
+      "priority": 3,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -771,7 +771,7 @@
       "list": "New matches",
       "notes": "Posted: 28 Oct",
       "fit": 3,
-      "priority": 7,
+      "priority": 4,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -800,7 +800,7 @@
       "list": "New matches",
       "notes": "Posted: 28 Oct",
       "fit": 3,
-      "priority": 8,
+      "priority": 5,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -897,7 +897,7 @@
       "list": "New matches",
       "notes": "Posted: 23 Oct",
       "fit": 3,
-      "priority": 9,
+      "priority": 6,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -1988,7 +1988,7 @@
       "url": "https://www.linkedin.com/jobs/view/4476423376/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 10,
+      "priority": 7,
       "status": "found",
       "notes": "Concern: you already applied to Hexagon on 6 Nov; check it isn't this role",
       "found": "2026-11-11",
@@ -2589,7 +2589,7 @@
       "url": "https://www.linkedin.com/jobs/view/4490097957/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 11,
+      "priority": 8,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Seniority and pay not shown in the alert; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -2647,7 +2647,7 @@
       "url": "https://www.linkedin.com/jobs/view/4463091092/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 12,
+      "priority": 9,
       "status": "found",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -3162,7 +3162,7 @@
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 13,
+      "priority": 10,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",
@@ -3283,21 +3283,30 @@
       "pay": "£80,000 - £120,000",
       "url": "https://www.reed.co.uk/jobs/operations-director/57584295",
       "source": "Reed",
-      "fit": 3,
+      "fit": 1,
       "priority": 3,
-      "status": "found",
+      "status": "drafted",
       "notes": "Track: Head of Operations at scale-ups; Posted 2026-11-17",
       "found": "2026-11-18",
-      "updated": "2026-11-18",
+      "updated": "2026-11-19",
       "history": [
         {
           "date": "2026-11-18",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "drafted"
         }
       ],
-      "verdict": "maybe",
-      "verdict_why": "Operations Director at 80-120k, but the sector isn't named and it's an established firm, not clearly a scale-up. Orpington is near the 1-hour commute limit."
+      "verdict": "skip",
+      "verdict_why": "80-120k, but it's logistics, warehouse and fulfilment in Orpington, with no sector match and no hybrid stated.",
+      "priority_by_tim": false
     },
     {
       "id": "2026-11-18-british-heart-foundation-change-adoption-manager-ai",
@@ -3307,21 +3316,30 @@
       "pay": "£54,000 - £58,000",
       "url": "https://www.reed.co.uk/jobs/change-adoption-manager-ai/57583404",
       "source": "Reed",
-      "fit": 4,
+      "fit": 3,
       "priority": 1,
-      "status": "found",
+      "status": "drafted",
       "notes": "Track: AI operations, enablement and transformation; Posted 2026-11-17",
       "found": "2026-11-18",
-      "updated": "2026-11-18",
+      "updated": "2026-11-19",
       "history": [
         {
           "date": "2026-11-18",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "drafted"
         }
       ],
-      "verdict": "apply",
-      "verdict_why": "AI change and adoption at BHF, London, 54-58k: a direct match for the AI enablement track, with no coding needed."
+      "verdict": "maybe",
+      "verdict_why": "AI adoption track and 54-58k hybrid London, but it wants a change-management qualification and adoption track record, and it's a 12-month fixed term. Interviews w/c 30 Nov.",
+      "priority_by_tim": false
     },
     {
       "id": "2026-11-18-live-recruitment-senior-technical-project-manager",
@@ -3361,9 +3379,9 @@
       "pay": "",
       "url": "https://www.linkedin.com/jobs/view/4487337038/",
       "source": "LinkedIn alert",
-      "fit": 4,
+      "fit": 3,
       "priority": 2,
-      "status": "found",
+      "status": "drafted",
       "notes": "Track: Live events and event production; Concern: seniority not shown",
       "found": "2026-11-19",
       "updated": "2026-11-19",
@@ -3372,10 +3390,19 @@
           "date": "2026-11-19",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "shortlisted"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "drafted"
         }
       ],
-      "verdict": "apply",
-      "verdict_why": "Event operations lead at McLaren in Woking, about 30 min from Epsom: a direct match for live events."
+      "verdict": "maybe",
+      "verdict_why": "Strong events ops match and Woking is commutable, but pay isn't stated, it reports to an Events Manager and it has regular international travel. 200+ applicants.",
+      "priority_by_tim": false
     },
     {
       "id": "2026-11-19-royal-albert-hall-production-operations-manager",
@@ -3386,7 +3413,7 @@
       "url": "https://www.linkedin.com/jobs/view/4486847589/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 14,
+      "priority": 11,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: on-site; Manager level",
       "found": "2026-11-19",
@@ -3410,7 +3437,7 @@
       "url": "https://www.linkedin.com/jobs/view/4489140070/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 15,
+      "priority": 12,
       "status": "found",
       "notes": "Track: Head of Operations at scale-ups; Concern: health-tech; mixed PM and ops title",
       "found": "2026-11-19",
@@ -3434,7 +3461,7 @@
       "url": "https://www.linkedin.com/jobs/view/4490662182/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 4,
+      "priority": 1,
       "status": "found",
       "notes": "Track: Head of Operations at scale-ups; Concern: sector not shown; likely a recruiter advert",
       "found": "2026-11-19",

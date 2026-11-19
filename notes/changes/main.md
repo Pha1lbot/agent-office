@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-19: Job search: 3 roles shortlisted and drafted (BHF, McLaren, Insight Select)
+
+**What changed:** Tim picked the day's top three. They were shortlisted at priorities 1 to 3 and are now drafted. Rita wrote `listing.md` for each and scored them: BHF Change & Adoption Manager (AI) fit 3, maybe; McLaren Events Operations Lead fit 3, maybe; Insight Select Operations Director fit 1, skip (logistics and warehouse). Wren wrote the CV and cover letter for each, plus `notes.md` with the gaps, and built the Word files and PDFs. Fact check passed.
+
+**Why:** Tim said "All three top picks".
+
+**Decisions:** Insight Select was drafted even though Rita says skip, because Tim chose it before her read. The mismatch is flagged to Tim. Rita and Wren ran as general subagents briefed from their instructions files, because this session started at the repo's top level.
+
+**How to check it:** `tracker.py list --summary` shows the three as drafted. Each `jobs/roles/<id>/` folder has `cv.docx`, `cover-letter.docx`, the PDFs and `notes.md`.
+
+**Open items:** Tim to check the drafts. Wren asks whether Tim measured how much his tools were used or ran training (for BHF). i30 (Capital.com) is still waiting on Tim.
+
 ### 2026-11-19: Job search: daily search, 4 new leads, 3 dismissed
 
 **What changed:** `jobs/found.json`, `jobs/tracker.json`, `jobs/tracker.md` and `jobs/today.md`. Tim asked for the day's work to be started from a Claude session, because the 6:31 run hadn't happened. Scout found 0 new roles. 4 of the 10 LinkedIn alert emails since 16 Nov were read, giving 7 finds. 4 were kept (McLaren Events Operations Lead, Royal Albert Hall Production Operations Manager, GutSee Health Head of Operations, Reed Senior Operations Manager) and 3 dismissed (dmg events, Deel, Corinthian Sports). Rita checked Event Industry Jobs (empty) and Work in Sports (blocked). The closed-postings check dismissed nothing. `review-due` added question a13.
