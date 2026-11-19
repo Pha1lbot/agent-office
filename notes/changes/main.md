@@ -11,6 +11,22 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-19: The CV template now warns when text doesn't fit; five drafts trimmed
+
+**What changed:**
+- `shared/tools/cv_template.py`: a new `run_browser()` is shared by `print_pdf()` and a new `overflow()`. `overflow()` opens the page in the same headless browser, measures every part of each page (header, main column, sidebar, each job) against the bottom margin, and returns how far each runs over and whether it is past the page edge (cut off) or only in the margin. `overflow_warnings()` turns that into plain warnings, which `build_cv()` and `build_letter()` print next to the page-count warning.
+- `shared/tools/test_cv_template.py`: 4 new tests. The default CV fits; an over-long sidebar is caught and named; a much longer one is reported as cut off; an over-long main column is caught.
+- `.claude/agents/writer.md`: Wren is told the sidebar fits about 6 skill rows, that pages don't grow, and to rerun Ada until there are no warnings.
+- `jobs/roles/*/cv.json` and the rebuilt Word files and PDFs for 5 drafts. EA dropped the Safeguarding and safety, and Broadcast and technical, skill rows. Arlington and Reed Head of Events dropped Systems and tooling. Pontoon dropped Event management. Live Recruitment dropped Safeguarding and safety. Reed Head of Events (approved) also had its final PDFs rebuilt.
+
+**Why:** Tim asked for the template to warn on cut-off text and for the affected drafts to be fixed. Each `.page` is a fixed A4 box with `overflow: hidden`, so text that didn't fit was hidden without any warning.
+
+**Decisions:** The check is a second headless-browser run (`--dump-dom`) with a measuring script, after `document.fonts.ready`. It takes about a second and uses no new dependencies. The fix was to drop each draft's least relevant sidebar row rather than cut certifications. The first-aid, DSL and fire marshal certificates still show in the certifications list. Roles already applied for or skipped (British Airways, Reed Head of Operations, ElevenLabs) were left alone. Correction to the earlier entry: the six drafts listed there overflowed into the bottom margin; only EA and BA were actually cut off.
+
+**How to check it:** `python shared/tools/test_cv_template.py` (15 tests pass). Building any role prints no warnings for the five fixed drafts.
+
+**Open items:** Hal's office has the same template and needs this fix in its own copy. Two existing test failures are unrelated to this: `test_tracker` garbles "£" when passing it to a subprocess on Windows, and `test_scout` expects Reed's key to be missing, but this PC has it set.
+
 ### 2026-11-19: CV bank: rulebook creation and enforcement; default CV fitted to page 1
 
 **What changed:** `cv-bank.md` gets the bullet "Wrote and enforced tournament rulebooks to uphold competitive integrity" under Head of Esports Operations, BLAST, plus matching words in Event management and Rita's summary. The vendor bullet was shortened to "Account manager for tournament vendors, including Challengermode". In `base-cv.json`, the same rulebook bullet; the two vendor/qualifier bullets merged into one; and the Event management and Freelancers and vendors sidebar text shortened.

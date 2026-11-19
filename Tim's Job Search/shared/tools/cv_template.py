@@ -314,33 +314,85 @@ def page_count(pdf):
     return len(re.findall(rb"/Type\s*/Page(?![s\w])", Path(pdf).read_bytes()))
 
 
-def print_pdf(page, out):
-    """Print an HTML page to a PDF with headless Chrome or Edge. Returns the page count."""
+def run_browser(page, tmp, *args):
+    """Open an HTML page in headless Chrome or Edge with the given switches. Returns the finished process."""
     browser = find_browser()
     if not browser:
         sys.exit("No Chrome, Chromium or Edge found to make the PDF. Install Google Chrome, "
                  "or set CV_BROWSER to the browser.")
+    source = Path(tmp) / "page.html"
+    source.write_text(page, encoding="utf-8")
+    command = [browser, "--headless=new", "--disable-gpu", "--no-first-run", "--no-default-browser-check",
+               "--disable-extensions", "--disable-background-networking", "--disable-component-update",
+               "--disable-sync", f"--user-data-dir={Path(tmp) / 'profile'}", *args, source.as_uri()]
+    if os.name == "posix" and hasattr(os, "geteuid") and os.geteuid() == 0:
+        command.insert(1, "--no-sandbox")  # Chrome refuses to run as root otherwise
+    try:
+        return subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace",
+                              timeout=120)
+    except subprocess.TimeoutExpired:
+        sys.exit(f"{Path(browser).name} took over two minutes and was stopped. Set CV_BROWSER to another "
+                 "Chrome or Edge, or close the browser and try again.")
+
+
+def print_pdf(page, out):
+    """Print an HTML page to a PDF with headless Chrome or Edge. Returns the page count."""
     out = Path(out).resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
-        source = Path(tmp) / "page.html"
-        source.write_text(page, encoding="utf-8")
         target = Path(tmp) / "out.pdf"
-        command = [browser, "--headless=new", "--disable-gpu", "--no-first-run", "--no-default-browser-check",
-                   "--disable-extensions", "--disable-background-networking", "--disable-component-update",
-                   "--disable-sync", f"--user-data-dir={Path(tmp) / 'profile'}", "--no-pdf-header-footer",
-                   "--print-to-pdf-no-header", f"--print-to-pdf={target}", source.as_uri()]
-        if os.name == "posix" and hasattr(os, "geteuid") and os.geteuid() == 0:
-            command.insert(1, "--no-sandbox")  # Chrome refuses to run as root otherwise
-        try:
-            result = subprocess.run(command, capture_output=True, text=True, timeout=120)
-        except subprocess.TimeoutExpired:
-            sys.exit(f"{Path(browser).name} took over two minutes and was stopped. Set CV_BROWSER to another "
-                     "Chrome or Edge, or close the browser and try again.")
+        result = run_browser(page, tmp, "--no-pdf-header-footer", "--print-to-pdf-no-header",
+                             f"--print-to-pdf={target}")
         if not target.exists() or target.stat().st_size == 0:
             sys.exit(f"The browser didn't make a PDF: {(result.stderr or result.stdout).strip()[-300:]}")
         shutil.move(str(target), out)
     return page_count(out)
+
+
+# Each page has a fixed A4 height with overflow hidden, so text that doesn't fit is not pushed to a new
+# page: it runs into the bottom margin and then is cut off. The page count can't show this, so the
+# browser measures each part of each page (the header, the main column, the sidebar, each job).
+MEASURE = """<script>document.fonts.ready.then(() => {
+  const out = [];
+  document.querySelectorAll('.page').forEach((p, i) => {
+    const box = p.getBoundingClientRect(), pad = parseFloat(getComputedStyle(p).paddingBottom);
+    const parts = [...p.children].flatMap(k => k.classList.contains('cols') ? [...k.children] : [k]);
+    parts.forEach(k => {
+      const last = [k, ...k.querySelectorAll('*')].reduce((m, e) => Math.max(m, e.getBoundingClientRect().bottom), 0);
+      const over = last - (box.bottom - pad);
+      if (over > 0.5) out.push({page: i + 1, part: k.tagName.toLowerCase(), over: over * 0.75, cut: over > pad});
+    });
+  });
+  const d = document.createElement('pre'); d.id = 'OVERFLOW'; d.textContent = JSON.stringify(out);
+  document.body.appendChild(d);
+});</script>"""
+PART_NAMES = {"main": "main column", "aside": "Key skills and Certifications sidebar", "header": "header",
+              "section": "job", "div": "letter"}
+
+
+def overflow(page):
+    """Where the page's text runs past its margins: a list of {page, part, over (pt), cut (bool)}.
+
+    `cut` means the text goes past the edge of the page and can't be seen at all; otherwise it
+    sits in the bottom margin. Returns None if the browser couldn't measure it."""
+    with tempfile.TemporaryDirectory() as tmp:
+        result = run_browser(page.replace("</body>", MEASURE + "</body>"), tmp,
+                             "--virtual-time-budget=10000", "--dump-dom")
+    found = re.search(r"<pre id=\"OVERFLOW\">(.*?)</pre>", result.stdout or "", re.S)
+    if not found:
+        return None
+    return json.loads(html.unescape(found.group(1)))
+
+
+def overflow_warnings(page, name):
+    """Plain-English warnings for any text that doesn't fit, ready to print."""
+    found = overflow(page)
+    if found is None:
+        return [f"Warning: couldn't check whether all of {name} fits its pages. Look at the PDF before sending it."]
+    return [f"Warning: {name} page {o['page']}: the {PART_NAMES.get(o['part'], o['part'])} is about "
+            f"{round(o['over'])}pt too long, so "
+            + ("its last lines are cut off the page." if o["cut"] else "it runs into the bottom margin.")
+            + " Shorten it to fit." for o in found]
 
 
 def build_cv(content, out, as_html=False):
@@ -352,6 +404,8 @@ def build_cv(content, out, as_html=False):
     pages = print_pdf(page, out)
     if pages > 2:
         print(f"Warning: {Path(out).name} runs to {pages} pages. Shorten the profile or bullets to fit two.")
+    for warning in overflow_warnings(page, Path(out).name):
+        print(warning)
     return pages
 
 
@@ -364,6 +418,8 @@ def build_letter(letter, out, subject="", as_html=False, content=None):
     pages = print_pdf(page, out)
     if pages > 1:
         print(f"Warning: {Path(out).name} runs to {pages} pages. A cover letter should fit on one.")
+    for warning in overflow_warnings(page, Path(out).name):
+        print(warning)
     return pages
 
 

@@ -75,6 +75,37 @@ class ContentTests(unittest.TestCase):
         self.assertIn("Yours sincerely,<br>Tim Everard", body)
 
 
+@unittest.skipUnless(HAS_BROWSER, "needs Chrome/Edge")
+class OverflowTests(unittest.TestCase):
+    """Pages have a fixed height, so text that doesn't fit is hidden, not moved: the check must find it."""
+
+    def page(self, **change):
+        path = Path(tempfile.mkdtemp()) / "cv.json"
+        path.write_text(json.dumps(change), encoding="utf-8")
+        return cv_template.cv_html(cv_template.load_content(path))
+
+    def test_the_default_cv_fits(self):
+        self.assertEqual(cv_template.overflow(self.page()), [])
+
+    def test_a_long_sidebar_is_caught_and_named(self):
+        certs = BASE["certifications"] + [{"name": f"Extra certificate {n}", "year": "2026"} for n in range(3)]
+        found = cv_template.overflow(self.page(certifications=certs))
+        self.assertEqual([(o["page"], o["part"]) for o in found], [(1, "aside")])
+        warning = cv_template.overflow_warnings(self.page(certifications=certs), "cv.pdf")[0]
+        self.assertIn("cv.pdf page 1: the Key skills and Certifications sidebar", warning)
+
+    def test_text_past_the_margin_is_reported_as_cut_off(self):
+        certs = BASE["certifications"] + [{"name": f"Extra certificate {n}", "year": "2026"} for n in range(12)]
+        found = cv_template.overflow(self.page(certifications=certs))
+        self.assertTrue(found and found[0]["cut"])
+        self.assertIn("cut off the page", cv_template.overflow_warnings(self.page(certifications=certs), "cv.pdf")[0])
+
+    def test_a_long_main_column_is_caught(self):
+        job = dict(BASE["jobs"][0], bullets=BASE["jobs"][0]["bullets"] * 2)
+        found = cv_template.overflow(self.page(jobs=[job] + BASE["jobs"][1:]))
+        self.assertIn((1, "main"), [(o["page"], o["part"]) for o in found])
+
+
 class NameTests(unittest.TestCase):
     def test_file_names(self):
         self.assertEqual(make_docs.pdf_name("Senior Manager, Admin & Operations – Football Schools", "cv"),

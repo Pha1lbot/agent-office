@@ -73,12 +73,12 @@ Live events operations leader with 15 years' experience running delivery teams a
 - **Freelancers and vendors:** Freelancer and supplier booking, contracting and payments, rotas, vendor management
 - **Systems and tooling:** Airtable, Google Workspace, Microsoft Office, built in-house project tracking tools
 - **Broadcast and technical:** Studio builds, Blackmagic, vMix, Ross Video, lighting, audio
-- **Safeguarding and safety:** Designated Safeguarding Lead, first aider, fire marshal
 
 ## Certifications
 
 | Certification | Year |
 |---|---|
+| The R&A Online Certificate (Level 1) | 2026 |
 | First Aid at Work | 2022 |
 | Safeguarding Lead (DSL) | 2021 |
 | Working at Heights | 2018 |

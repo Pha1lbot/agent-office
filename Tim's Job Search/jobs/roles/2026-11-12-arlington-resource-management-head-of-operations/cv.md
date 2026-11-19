@@ -72,13 +72,13 @@ Operations leader with 15 years' experience running teams, budgets and logistics
 - **Vendor and supplier management:** Vendor management, procurement, contracting and payments, equipment hire
 - **Process and documentation:** Operational procedures, SOP documentation, ownership and accountability
 - **Stakeholder management:** Cross-team coordination, commercial partnerships, external stakeholders
-- **Systems and tooling:** Airtable, Google Workspace, Microsoft Office
 - **Safety and compliance:** Designated Safeguarding Lead, first aider, fire marshal, health and safety
 
 ## Certifications
 
 | Certification | Year |
 |---|---|
+| The R&A Online Certificate (Level 1) | 2026 |
 | First Aid at Work | 2022 |
 | Safeguarding Lead (DSL) | 2021 |
 | Working at Heights | 2018 |

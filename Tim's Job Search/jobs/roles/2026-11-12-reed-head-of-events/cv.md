@@ -73,12 +73,12 @@ Live events and operations leader with 15 years' experience delivering world-cla
 - **Budget monitoring:** Budgets, invoices, business cases, pitch costings, risk management
 - **Stakeholder management:** Partner and regulator liaison, cross-team coordination, commercial partnerships
 - **Operations leadership:** Team leadership, people management, restructuring, process improvement
-- **Systems and tooling:** Airtable, Google Workspace, Microsoft Office
 
 ## Certifications
 
 | Certification | Year |
 |---|---|
+| The R&A Online Certificate (Level 1) | 2026 |
 | First Aid at Work | 2022 |
 | Safeguarding Lead (DSL) | 2021 |
 | Working at Heights | 2018 |

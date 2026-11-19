@@ -72,13 +72,12 @@ Esports operations leader with 15 years' experience managing tournament delivery
 - **Live event operations:** Tournament and player operations, launch readiness, risk mitigation, event logistics, site visits
 - **Operations leadership:** Team leadership, people management, restructuring, process improvement
 - **Systems and tooling:** Airtable, Google Workspace, Microsoft Office, built in-house tracking and reporting tools
-- **Broadcast and technical:** Studio builds, Blackmagic, vMix, Ross Video, lighting, audio
-- **Safeguarding and safety:** Designated Safeguarding Lead, first aider, fire marshal
 
 ## Certifications
 
 | Certification | Year |
 |---|---|
+| The R&A Online Certificate (Level 1) | 2026 |
 | First Aid at Work | 2022 |
 | Safeguarding Lead (DSL) | 2021 |
 | Working at Heights | 2018 |

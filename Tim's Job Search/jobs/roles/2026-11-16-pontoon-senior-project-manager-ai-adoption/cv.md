@@ -72,13 +72,13 @@ Operations leader with 15 years in live events and esports, now focused on AI-dr
 - **Budgets and business cases:** Business cases, OPEX budgeting, invoice approval, cost control
 - **Operations leadership:** Team leadership, people management, restructuring, process improvement
 - **Freelancers and vendors:** Freelancer booking, contracting and payments, rotas, vendor management
-- **Event management:** Tournament and player operations, event logistics, site visits, bootcamps
 - **Systems and tooling:** Airtable, Google Workspace, Microsoft Office
 
 ## Certifications
 
 | Certification | Year |
 |---|---|
+| The R&A Online Certificate (Level 1) | 2026 |
 | First Aid at Work | 2022 |
 | Safeguarding Lead (DSL) | 2021 |
 | Working at Heights | 2018 |

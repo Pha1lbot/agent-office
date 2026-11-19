@@ -2,11 +2,26 @@
   "headline": "Operations Leader, AI Adoption & Process Transformation",
   "profile": "Operations leader with 15 years in live events and esports, now focused on AI-driven process transformation. At BLAST, led a six-person department and used AI tools built with Claude Code to rebuild core workflows: a tournament operations suite, freelancer and travel systems, and an early AI vision prototype for event-day tracking, replacing manual spreadsheets. Wrote and pitched the business case behind a departmental OPEX budget, aligned budgets with finance on a fortnightly cycle, and costed new work with product and commercial stakeholders. Six years managing €12m+ in budgets, 2,000+ freelancers and vendors across 13 countries, with a track record of turning adoption goals into working tools and measurable change for the teams using them.",
   "stats": [
-    { "value": "60+", "label": "flagship esports events" },
-    { "value": "300+", "label": "qualifiers" },
-    { "value": "13", "label": "countries" },
-    { "value": "2,000+", "label": "freelancers" },
-    { "value": "€12m+", "label": "in budgets" }
+    {
+      "value": "60+",
+      "label": "flagship esports events"
+    },
+    {
+      "value": "300+",
+      "label": "qualifiers"
+    },
+    {
+      "value": "13",
+      "label": "countries"
+    },
+    {
+      "value": "2,000+",
+      "label": "freelancers"
+    },
+    {
+      "value": "€12m+",
+      "label": "in budgets"
+    }
   ],
   "skills": [
     {
@@ -28,10 +43,6 @@
     {
       "title": "Freelancers and vendors",
       "text": "Freelancer booking, contracting and payments, rotas, vendor management"
-    },
-    {
-      "title": "Event management",
-      "text": "Tournament and player operations, event logistics, site visits, bootcamps"
     },
     {
       "title": "Systems and tooling",
