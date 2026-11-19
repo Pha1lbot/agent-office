@@ -3995,6 +3995,14 @@
       "at": "2026-11-19T19:37",
       "done": true,
       "handled": "2026-11-19T19:40"
+    },
+    {
+      "id": "i34",
+      "role": "2026-11-12-the-professional-golfers-association-the-national-tournaments-manager",
+      "task": "Revise documents: Update cover letter to include something like :  i am a very keen golfer, being able to combine passion and work would be a dream come true. Unfortunately, work and family haven't allowed as much time on the course as one would like",
+      "title": "National Tournaments Manager @ The Professional Golfers' Association (The PGA)",
+      "at": "2026-11-19T19:45",
+      "done": false
     }
   ]
 }
