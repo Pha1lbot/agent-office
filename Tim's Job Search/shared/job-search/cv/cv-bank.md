@@ -10,7 +10,7 @@ Everything in this file is true and may be used. Nothing outside it may be added
 - **Scale:** led a six-person department; 60+ flagship esports events and 300+ qualifiers in 13 countries; 2,000+ freelancers; €12m+ in budgets.
 - **Strengths:** operations leadership and restructuring, tournament and player operations, event logistics, freelancer and vendor management (booking, contracting, payments, rotas), budgets and business cases, stakeholder management, studio and broadcast builds, building operations tools.
 - **Tools:** Airtable, Google Workspace, Microsoft Office; broadcast kit (Blackmagic, vMix, Ross Video), lighting and audio.
-- **Certifications:** First Aid at Work, Designated Safeguarding Lead, Fire Marshal, PAT testing, IPAF, Working at Heights.
+- **Certifications:** The R&A Online Certificate (Level 1, 2026), First Aid at Work, Designated Safeguarding Lead, Fire Marshal, PAT testing, IPAF, Working at Heights.
 - **Titles:** CS2/CS:GO, Dota 2, Rocket League, Fortnite, Rainbow Six, Brawl Stars, Apex Legends, FIFA.
 
 ---
@@ -100,6 +100,7 @@ Esports and live events operations leader with 15 years' experience, from theatr
 
 | Certification | Year |
 |---|---|
+| The R&A Online Certificate (Level 1) | 2026 |
 | First Aid at Work | 2022 |
 | Safeguarding Lead (DSL) | 2021 |
 | Working at Heights | 2018 |

@@ -69,6 +69,7 @@ Operations leader with 15 years' experience, most recently Head of Esports Opera
 
 | Certification | Year |
 |---|---|
+| The R&A Online Certificate (Level 1) | 2026 |
 | First Aid at Work | 2022 |
 | Safeguarding Lead (DSL) | 2021 |
 | Working at Heights | 2018 |

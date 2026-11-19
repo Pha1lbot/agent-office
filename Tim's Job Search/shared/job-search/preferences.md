@@ -25,7 +25,7 @@ Not looking for: broadcast production and marketing operations (dropped 2026-11-
 ## Skills to match on
 - Main skills: operations leadership and restructuring, team and people management, tournament and player operations, event logistics, freelancer booking and contracting, vendor management, budgets (€12m+), pitch costings and business cases, stakeholder management, studio and broadcast builds
 - Tools and software: Airtable, Google Workspace, Microsoft Office, vMix, Blackmagic, Ross Video, lighting and audio desks
-- Qualifications: Designated Safeguarding Lead, First Aid at Work, Fire Marshal, PAT testing, IPAF, Working at Heights
+- Qualifications: The R&A Online Certificate (Level 1, 2026), Designated Safeguarding Lead, First Aid at Work, Fire Marshal, PAT testing, IPAF, Working at Heights
 
 ## Pay
 - Minimum salary (or day rate): £50,000

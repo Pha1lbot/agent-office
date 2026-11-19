@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-19: Add The R&A Online Certificate (Level 1, 2026) to Tim's CV
+
+**What changed:** The certificate was added at the top (newest) of the certifications in `shared/job-search/cv/base-cv.json` and in the `cv-bank.md` table and summary line, and to the qualifications line in `preferences.md`. Today's three drafts (BHF, McLaren, Insight Select) were rebuilt with `make_docs.py`, so their CVs show it.
+
+**Why:** Tim asked for it to be listed as a qualification he holds, completed in 2026.
+
+**Decisions:** No role's `cv.json` overrides the certifications, so every CV built from now on picks it up from `base-cv.json`. Older drafts get it when they are rebuilt or approved. Tim's own `default-cv.pdf` is his file and wasn't changed.
+
+**How to check it:** `jobs/roles/2026-11-19-mclaren-automotive-ltd-events-operations-lead/cv.md` lists it under Certifications.
+
+**Open items:** Tim's own default CV (`default-cv.pdf`) doesn't have it yet.
+
 ### 2026-11-19: Job search: 3 roles shortlisted and drafted (BHF, McLaren, Insight Select)
 
 **What changed:** Tim picked the day's top three. They were shortlisted at priorities 1 to 3 and are now drafted. Rita wrote `listing.md` for each and scored them: BHF Change & Adoption Manager (AI) fit 3, maybe; McLaren Events Operations Lead fit 3, maybe; Insight Select Operations Director fit 1, skip (logistics and warehouse). Wren wrote the CV and cover letter for each, plus `notes.md` with the gaps, and built the Word files and PDFs. Fact check passed.
