@@ -8,7 +8,7 @@ Everything in this file is true and may be used. Nothing outside it may be added
 
 - **Current/most recent title:** Head of Esports Operations, BLAST (Jun 2023 – Oct 2026). 15 years in esports, live events, broadcast and theatre.
 - **Scale:** led a six-person department; 60+ flagship esports events and 300+ qualifiers in 13 countries; 2,000+ freelancers; €12m+ in budgets.
-- **Strengths:** operations leadership and restructuring, tournament and player operations, third-party tournament management (qualifiers), event logistics, freelancer and vendor management (booking, contracting, payments, rotas, vendor account management, including Challengermode), budgets and business cases, stakeholder management, studio and broadcast builds, building operations tools.
+- **Strengths:** operations leadership and restructuring, tournament and player operations, third-party tournament management (qualifiers), event logistics, freelancer and vendor management (booking, contracting, payments, rotas, vendor account management, including Challengermode), budgets, prize money and business cases, stakeholder management, studio and broadcast builds, building operations tools.
 - **Tools:** Airtable, Google Workspace, Microsoft Office; broadcast kit (Blackmagic, vMix, Ross Video), lighting and audio.
 - **Certifications:** The R&A Online Certificate (Level 1, 2026), First Aid at Work, Designated Safeguarding Lead, Fire Marshal, PAT testing, IPAF, Working at Heights.
 - **Titles:** CS2/CS:GO, Dota 2, Rocket League, Fortnite, Rainbow Six, Brawl Stars, Apex Legends, FIFA.
@@ -39,6 +39,7 @@ Esports and live events operations leader with 15 years' experience, from theatr
 - Designed and built the department's own tools for tournament operations, event and equipment tracking, freelancer calendars, bookings and contracting, and event budgets and deadlines
 - Managed third-party tournament organisers delivering BLAST qualifiers
 - Account manager for tournament vendors, including the tournament platform Challengermode
+- Responsible for tournament prize money
 - Costed and pitched new tournament work with the product and commercial teams
 - Wrote the business case for a departmental OPEX budget covering equipment renewal, software and cross-event costs
 - Set technical requirements for commercial partnerships
@@ -93,7 +94,7 @@ Esports and live events operations leader with 15 years' experience, from theatr
 - **Operations leadership:** team leadership, people management, restructuring, process improvement
 - **Event management:** tournament and player operations, third-party tournament management (qualifiers), event logistics, site visits, bootcamps
 - **Freelancers and vendors:** freelancer booking, contracting and payments, rotas, vendor management and account management (including Challengermode)
-- **Commercial and finance:** budgets, pitch costings, invoices, business cases, stakeholder management
+- **Commercial and finance:** budgets, prize money, pitch costings, invoices, business cases, stakeholder management
 - **Systems and tooling:** Airtable, Google Workspace, Microsoft Office
 - **Broadcast and technical:** studio builds, Blackmagic, vMix, Ross Video, lighting, audio, PAT testing
 - **Safeguarding and safety:** Designated Safeguarding Lead, first aider, fire marshal

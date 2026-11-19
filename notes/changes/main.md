@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-19: CV bank: prize money as a responsibility
+
+**What changed:** `cv-bank.md` and `base-cv.json`: the bullet "Responsible for tournament prize money" was added under Head of Esports Operations, BLAST, and "prize money" was added to the Commercial and finance skill and to Rita's summary line.
+
+**Why:** Tim asked to include prize money as a responsibility. He also confirmed that the earlier three additions belong under Head of Esports Operations.
+
+**Decisions:** The wording is kept to what Tim said. Amounts, or how payouts were handled, can be added if he gives them. The default CV still builds to 2 pages.
+
+**How to check it:** The bullet appears in both files. `cv_template.py` builds 2 pages.
+
+**Open items:** None.
+
 ### 2026-11-19: CV bank: third-party qualifiers, vendor account management, Challengermode
 
 **What changed:** In `shared/job-search/cv/cv-bank.md`, two bullets were added under Head of Esports Operations, BLAST: "Managed third-party tournament organisers delivering BLAST qualifiers" and "Account manager for tournament vendors, including the tournament platform Challengermode". The Key skills (Event management; Freelancers and vendors) and Rita's summary line were extended to match. `base-cv.json` gets the same two bullets and shorter skill wording, so the sidebar still fits.
