@@ -8,3 +8,7 @@
 - Added the cover letter line Tim asked for: he holds the R&A Level 1 Online Certificate and is booked to complete the R&A Level 2 Rules of Golf course in January, placed in the paragraph that's already upfront about not having sat the PGA/R&A Rules exams.
 - Certifications on the CV are now trimmed to the four most relevant (R&A Online Certificate, First Aid at Work, Safeguarding Lead, Fire Marshal) rather than the full base list, to fit page 1 after the sidebar grew with the new skills text. The dropped certs (Working at Heights, Moving Head Maintenance, Manual Handling, PAT Testing, IPAF) are broadcast/theatre-specific and not relevant to a golf tournaments role; say if you'd rather see the full list regardless.
 - Rebuilt cv.docx/cv.md and cover-letter.docx via `make_docs.py`; fact check passed and no page-fit warnings.
+
+## 2026-11-19 update 2
+- Added the line Tim asked for to the cover letter: he's a keen golfer himself, and work and family have left less time on the course than he'd like, so bringing that personal passion together with his tournament background would be a genuine dream, placed just before the R&A exams/certificate sentence.
+- Rebuilt cv.docx/cover-letter.docx and the PDFs via `make_docs.py`; fact check passed.
