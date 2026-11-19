@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 11 · shortlisted: 2 · drafted: 12 · approved: 1 · applied: 6 · rejected: 1 · skipped: 77
+found: 11 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 6 · rejected: 1 · skipped: 77
 
 ## Next actions
 
@@ -25,11 +25,11 @@ found: 11 · shortlisted: 2 · drafted: 12 · approved: 1 · applied: 6 · rejec
 | found | 9 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
 | found | 10 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
 | found | 11 | [Project Manager / Head of Operations](https://www.linkedin.com/jobs/view/4489140070/) | GutSee Health |  | London (hybrid) | 3 |  | 2026-11-19 |
-| shortlisted | 1 | [Senior Operations Manager](https://www.linkedin.com/jobs/view/4490662182/) | Reed | £50K-£60K | London (hybrid) | 4 |  | 2026-11-19 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
 | drafted | 1 | [Change & Adoption Manager - AI](https://www.reed.co.uk/jobs/change-adoption-manager-ai/57583404) | British Heart Foundation | £54,000 - £58,000 | London | 3 |  | 2026-11-19 |
+| drafted | 1 | [Senior Operations Manager](https://www.linkedin.com/jobs/view/4490662182/) | Reed | £50K-£60K | London (hybrid) | 4 |  | 2026-11-19 |
 | drafted | 2 | [Senior Product Manager](https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045) | Product Madness |  | London | 2 |  | 2026-11-16 |
 | drafted | 2 | [Event Project Director](https://www.reed.co.uk/jobs/event-project-director/57586682) | Live Recruitment | £55,000 - £60,000 | GU227LA | 3 |  | 2026-11-18 |
 | drafted | 2 | [Events Operations Lead](https://www.linkedin.com/jobs/view/4487337038/) | McLaren Automotive Ltd |  | Woking | 3 |  | 2026-11-19 |

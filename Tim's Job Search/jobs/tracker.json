@@ -3479,7 +3479,7 @@
       "source": "LinkedIn alert",
       "fit": 4,
       "priority": 1,
-      "status": "shortlisted",
+      "status": "drafted",
       "notes": "Track: Head of Operations at scale-ups; Concern: sector not shown; likely a recruiter advert",
       "found": "2026-11-19",
       "updated": "2026-11-19",
@@ -3493,6 +3493,10 @@
           "date": "2026-11-19",
           "status": "shortlisted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "drafted"
         }
       ],
       "verdict": "apply",
@@ -4016,7 +4020,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Senior Operations Manager @ Reed",
       "at": "2026-11-19T19:47",
-      "done": false
+      "done": true,
+      "handled": "2026-11-19T22:30"
     }
   ]
 }
