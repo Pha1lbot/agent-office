@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-19: CV bank: third-party qualifiers, vendor account management, Challengermode
+
+**What changed:** In `shared/job-search/cv/cv-bank.md`, two bullets were added under Head of Esports Operations, BLAST: "Managed third-party tournament organisers delivering BLAST qualifiers" and "Account manager for tournament vendors, including the tournament platform Challengermode". The Key skills (Event management; Freelancers and vendors) and Rita's summary line were extended to match. `base-cv.json` gets the same two bullets and shorter skill wording, so the sidebar still fits.
+
+**Why:** Tim asked to add third-party tournament management (qualifiers), account management for vendors, and ChallengerMode as a vendor.
+
+**Decisions:** These went under Head of Esports Operations (Jun 2023 – Oct 2026), because Tim didn't say which BLAST role. The vendor is spelled "Challengermode", as the company writes it. The default CV still builds to 2 pages.
+
+**How to check it:** `python shared/tools/cv_template.py shared/job-search/cv/base-cv.json out.pdf` gives 2 pages with the new bullets.
+
+**Open items:** If this work was in the Tournament Operations Manager role instead, move the bullets. Existing drafts use their own job bullets, so they don't pick this up unless redrafted.
+
 ### 2026-11-19: Add The R&A Online Certificate (Level 1, 2026) to Tim's CV
 
 **What changed:** The certificate was added at the top (newest) of the certifications in `shared/job-search/cv/base-cv.json` and in the `cv-bank.md` table and summary line, and to the qualifications line in `preferences.md`. Today's three drafts (BHF, McLaren, Insight Select) were rebuilt with `make_docs.py`, so their CVs show it.
