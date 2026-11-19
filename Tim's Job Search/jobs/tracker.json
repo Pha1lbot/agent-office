@@ -3219,10 +3219,10 @@
       "source": "Hitmarker",
       "fit": 5,
       "priority": 2,
-      "status": "drafted",
+      "status": "approved",
       "notes": "Track: Product and implementation in event, sport, gaming and workf; Posted 2026-11-18",
       "found": "2026-11-18",
-      "updated": "2026-11-18",
+      "updated": "2026-11-19",
       "history": [
         {
           "date": "2026-11-18",
@@ -3237,6 +3237,11 @@
         {
           "date": "2026-11-18",
           "status": "drafted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "approved",
           "by": "tim"
         }
       ],
