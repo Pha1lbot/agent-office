@@ -3477,7 +3477,7 @@
       "pay": "£50K-£60K",
       "url": "https://www.linkedin.com/jobs/view/4490662182/",
       "source": "LinkedIn alert",
-      "fit": 3,
+      "fit": 4,
       "priority": 1,
       "status": "shortlisted",
       "notes": "Track: Head of Operations at scale-ups; Concern: sector not shown; likely a recruiter advert",
@@ -3495,8 +3495,8 @@
           "by": "tim"
         }
       ],
-      "verdict": "maybe",
-      "verdict_why": "Senior Operations Manager in London at £50-60k. The sector isn't shown, so check what the business is."
+      "verdict": "apply",
+      "verdict_why": "Strong live-events operations match at Senior Manager+ level, pay fits Tim's range, scale transfers well; only minor gaps (driving licence unconfirmed, crowd/traffic management is new domain)."
     },
     {
       "id": "2026-11-19-dmg-events-operations-manager-energy-portfolio",
