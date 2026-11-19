@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-19: Job search: daily search, 4 new leads, 3 dismissed
+
+**What changed:** `jobs/found.json`, `jobs/tracker.json`, `jobs/tracker.md` and `jobs/today.md`. Tim asked for the day's work to be started from a Claude session, because the 6:31 run hadn't happened. Scout found 0 new roles. 4 of the 10 LinkedIn alert emails since 16 Nov were read, giving 7 finds. 4 were kept (McLaren Events Operations Lead, Royal Albert Hall Production Operations Manager, GutSee Health Head of Operations, Reed Senior Operations Manager) and 3 dismissed (dmg events, Deel, Corinthian Sports). Rita checked Event Industry Jobs (empty) and Work in Sports (blocked). The closed-postings check dismissed nothing. `review-due` added question a13.
+
+**Why:** The daily search, run by hand.
+
+**Decisions:** Inbox item i30 (draft for Capital.com) was left open. Capital.com is a trading platform, which preferences.md rules out, so Tim is asked first rather than spending Rita's and Wren's tokens. Rita ran as a general subagent briefed from her instructions file, because this session was opened at the repo's top level, where the office's agents aren't loaded.
+
+**How to check it:** `tracker.py found list --pending` is empty. `jobs/today.md` lists the picks.
+
+**Open items:** search.json still has Event Industry Jobs' old URL, which now redirects to eventjobsite.com. i30 is waiting on Tim's answer.
+
 ### 2026-11-18: Office changes — drafted CVs/cover letters for 2 roles Tim added and drafted himself
 
 **What changed (Tim's office only):**

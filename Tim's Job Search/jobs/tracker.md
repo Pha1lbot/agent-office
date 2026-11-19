@@ -2,27 +2,32 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 11 · shortlisted: 1 · drafted: 10 · approved: 1 · applied: 5 · rejected: 1 · skipped: 74
+found: 15 · shortlisted: 1 · drafted: 10 · approved: 1 · applied: 5 · rejected: 1 · skipped: 77
 
 ## Next actions
 
 - Rita rates 4 of your 6 new drafts as weak fits (DP World Tour, Product Madness, TryHackMe, ElevenLabs) and 2 as maybe (Pontoon, Carrington) - see each role's verdict_why. Drafting them anyway per your office request, but worth a look before you spend more time on them.
+- Preference review due: you have made 41 decisions since 2026-11-11. Want the team's suggestions for your preferences?
 
 ## Roles
 
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
 |---|---|---|---|---|---|---|---|---|
 | found | 1 | [Change & Adoption Manager - AI](https://www.reed.co.uk/jobs/change-adoption-manager-ai/57583404) | British Heart Foundation | £54,000 - £58,000 | London | 4 |  | 2026-11-18 |
-| found | 2 | [Operations Director](https://www.reed.co.uk/jobs/operations-director/57584295) | Insight Select Ltd | £80,000 - £120,000 | BR60SX | 3 |  | 2026-11-18 |
-| found | 3 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 4 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-06 |
-| found | 5 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-06 |
-| found | 6 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-06 |
-| found | 7 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 8 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
-| found | 9 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
-| found | 10 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
-| found | 11 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
+| found | 2 | [Events Operations Lead](https://www.linkedin.com/jobs/view/4487337038/) | McLaren Automotive Ltd |  | Woking | 4 |  | 2026-11-19 |
+| found | 3 | [Operations Director](https://www.reed.co.uk/jobs/operations-director/57584295) | Insight Select Ltd | £80,000 - £120,000 | BR60SX | 3 |  | 2026-11-18 |
+| found | 4 | [Senior Operations Manager](https://www.linkedin.com/jobs/view/4490662182/) | Reed | £50K-£60K | London (hybrid) | 3 |  | 2026-11-19 |
+| found | 5 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-06 |
+| found | 6 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-06 |
+| found | 7 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-06 |
+| found | 8 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-06 |
+| found | 9 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-06 |
+| found | 10 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
+| found | 11 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
+| found | 12 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
+| found | 13 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
+| found | 14 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
+| found | 15 | [Project Manager / Head of Operations](https://www.linkedin.com/jobs/view/4489140070/) | GutSee Health |  | London (hybrid) | 3 |  | 2026-11-19 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
@@ -115,3 +120,6 @@ found: 11 · shortlisted: 1 · drafted: 10 · approved: 1 · applied: 5 · rejec
 | skipped |  | [Senior Operations Manager](https://www.linkedin.com/jobs/view/4488692808/) | DHL Supply Chain |  | Gatwick (On-site) | 2 |  | 2026-11-13 |
 | skipped |  | [Regional Operations Manager (EMEA)](https://www.linkedin.com/jobs/view/4483629309/) | Sumsub |  | London (Remote) | 2 |  | 2026-11-16 |
 | skipped |  | [Senior Technical Project Manager](https://www.reed.co.uk/jobs/senior-technical-project-manager/57585240) | Live Recruitment | £55,000 - £60,000 | SG80SS | 3 |  | 2026-11-18 |
+| skipped |  | [Operations Manager (Energy Portfolio)](https://www.linkedin.com/jobs/view/4481595579/) | dmg events |  | Kensington, London | 3 |  | 2026-11-19 |
+| skipped |  | [Operations Manager / Senior Operations Manager, EMEA](https://www.linkedin.com/jobs/view/4481826359/) | Deel | $80K-$127K | United Kingdom (remote) | 3 |  | 2026-11-19 |
+| skipped |  | [Operations and Customer Experience Manager](https://www.linkedin.com/jobs/view/4490679322/) | Corinthian Sports |  | London (on-site) | 2 |  | 2026-11-19 |

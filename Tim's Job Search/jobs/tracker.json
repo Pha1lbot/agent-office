@@ -674,7 +674,7 @@
       "list": "New matches",
       "notes": "Posted: 30 Oct",
       "fit": 3,
-      "priority": 3,
+      "priority": 5,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -742,7 +742,7 @@
       "list": "New matches",
       "notes": "Posted: 29 Oct",
       "fit": 3,
-      "priority": 4,
+      "priority": 6,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -771,7 +771,7 @@
       "list": "New matches",
       "notes": "Posted: 28 Oct",
       "fit": 3,
-      "priority": 5,
+      "priority": 7,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -800,7 +800,7 @@
       "list": "New matches",
       "notes": "Posted: 28 Oct",
       "fit": 3,
-      "priority": 6,
+      "priority": 8,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -897,7 +897,7 @@
       "list": "New matches",
       "notes": "Posted: 23 Oct",
       "fit": 3,
-      "priority": 7,
+      "priority": 9,
       "status": "found",
       "found": "2026-11-05",
       "updated": "2026-11-06",
@@ -1988,7 +1988,7 @@
       "url": "https://www.linkedin.com/jobs/view/4476423376/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 8,
+      "priority": 10,
       "status": "found",
       "notes": "Concern: you already applied to Hexagon on 6 Nov; check it isn't this role",
       "found": "2026-11-11",
@@ -2589,7 +2589,7 @@
       "url": "https://www.linkedin.com/jobs/view/4490097957/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 9,
+      "priority": 11,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Seniority and pay not shown in the alert; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -2647,7 +2647,7 @@
       "url": "https://www.linkedin.com/jobs/view/4463091092/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 10,
+      "priority": 12,
       "status": "found",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -3162,7 +3162,7 @@
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 11,
+      "priority": 13,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",
@@ -3284,7 +3284,7 @@
       "url": "https://www.reed.co.uk/jobs/operations-director/57584295",
       "source": "Reed",
       "fit": 3,
-      "priority": 2,
+      "priority": 3,
       "status": "found",
       "notes": "Track: Head of Operations at scale-ups; Posted 2026-11-17",
       "found": "2026-11-18",
@@ -3352,6 +3352,192 @@
       "verdict": "skip",
       "verdict_why": "Project and programme management: the title matches 'Senior Project Manager' and the advert uses the track's words",
       "reason": "Hal: based in Royston, Herts, well over an hour from Epsom with 3 office days"
+    },
+    {
+      "id": "2026-11-19-mclaren-automotive-ltd-events-operations-lead",
+      "title": "Events Operations Lead",
+      "company": "McLaren Automotive Ltd",
+      "location": "Woking",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4487337038/",
+      "source": "LinkedIn alert",
+      "fit": 4,
+      "priority": 2,
+      "status": "found",
+      "notes": "Track: Live events and event production; Concern: seniority not shown",
+      "found": "2026-11-19",
+      "updated": "2026-11-19",
+      "history": [
+        {
+          "date": "2026-11-19",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "apply",
+      "verdict_why": "Event operations lead at McLaren in Woking, about 30 min from Epsom: a direct match for live events."
+    },
+    {
+      "id": "2026-11-19-royal-albert-hall-production-operations-manager",
+      "title": "Production Operations Manager",
+      "company": "Royal Albert Hall",
+      "location": "London (on-site)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4486847589/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 14,
+      "status": "found",
+      "notes": "Track: Sports and venues operations; Concern: on-site; Manager level",
+      "found": "2026-11-19",
+      "updated": "2026-11-19",
+      "history": [
+        {
+          "date": "2026-11-19",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Production operations at the Royal Albert Hall fits his production and crew experience. It's on-site and Manager level."
+    },
+    {
+      "id": "2026-11-19-gutsee-health-project-manager-head-of-operations",
+      "title": "Project Manager / Head of Operations",
+      "company": "GutSee Health",
+      "location": "London (hybrid)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4489140070/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 15,
+      "status": "found",
+      "notes": "Track: Head of Operations at scale-ups; Concern: health-tech; mixed PM and ops title",
+      "found": "2026-11-19",
+      "updated": "2026-11-19",
+      "history": [
+        {
+          "date": "2026-11-19",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Head of Operations at a small, growing company, hybrid in London. It mixes PM and ops, in health tech."
+    },
+    {
+      "id": "2026-11-19-reed-senior-operations-manager",
+      "title": "Senior Operations Manager",
+      "company": "Reed",
+      "location": "London (hybrid)",
+      "pay": "£50K-£60K",
+      "url": "https://www.linkedin.com/jobs/view/4490662182/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 4,
+      "status": "found",
+      "notes": "Track: Head of Operations at scale-ups; Concern: sector not shown; likely a recruiter advert",
+      "found": "2026-11-19",
+      "updated": "2026-11-19",
+      "history": [
+        {
+          "date": "2026-11-19",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Senior Operations Manager in London at £50-60k. The sector isn't shown, so check what the business is."
+    },
+    {
+      "id": "2026-11-19-dmg-events-operations-manager-energy-portfolio",
+      "title": "Operations Manager (Energy Portfolio)",
+      "company": "dmg events",
+      "location": "Kensington, London",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4481595579/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Live events and event production; Concern: Manager level; likely event travel",
+      "found": "2026-11-19",
+      "updated": "2026-11-19",
+      "history": [
+        {
+          "date": "2026-11-19",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Event operations at a major exhibitions organiser draws on Tim's event logistics and supplier management.",
+      "reason": "Hal: Manager level at an events organiser, below the seniority you want outside gaming"
+    },
+    {
+      "id": "2026-11-19-deel-operations-manager-senior-operations-man",
+      "title": "Operations Manager / Senior Operations Manager, EMEA",
+      "company": "Deel",
+      "location": "United Kingdom (remote)",
+      "pay": "$80K-$127K",
+      "url": "https://www.linkedin.com/jobs/view/4481826359/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Head of Operations at scale-ups; Concern: may lean to payroll/compliance work",
+      "found": "2026-11-19",
+      "updated": "2026-11-19",
+      "history": [
+        {
+          "date": "2026-11-19",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Operations leadership at a fast-growing workforce and contractor platform, which fits his freelancer and workforce operations background.",
+      "reason": "Hal: Deel is payroll and employer-of-record work, which you've ruled out"
+    },
+    {
+      "id": "2026-11-19-corinthian-sports-operations-and-customer-experience-manag",
+      "title": "Operations and Customer Experience Manager",
+      "company": "Corinthian Sports",
+      "location": "London (on-site)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4490679322/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Sports and venues operations; Concern: on-site; Manager level outside gaming",
+      "found": "2026-11-19",
+      "updated": "2026-11-19",
+      "history": [
+        {
+          "date": "2026-11-19",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Sports hospitality operations, but it's a Manager role and includes customer experience.",
+      "reason": "Hal: Weak fit, Manager-level customer experience role, on-site"
     }
   ],
   "actions": [
@@ -3448,6 +3634,17 @@
       "role": "",
       "done": false,
       "created": "2026-11-16"
+    },
+    {
+      "id": "a13",
+      "text": "Preference review due: you have made 41 decisions since 2026-11-11. Want the team's suggestions for your preferences?",
+      "role": "",
+      "done": false,
+      "created": "2026-11-19",
+      "options": [
+        "Yes, review",
+        "Not yet"
+      ]
     }
   ],
   "inbox": [

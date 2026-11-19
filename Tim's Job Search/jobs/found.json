@@ -1073,86 +1073,170 @@
         "reason": "Hal: based in Royston, Herts, well over an hour from Epsom with 3 office days",
         "at": "2026-11-18T22:23"
       }
+    },
+    {
+      "id": "f49",
+      "title": "Events Operations Lead",
+      "company": "McLaren Automotive Ltd",
+      "location": "Woking",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4487337038/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "strong",
+      "why": "Running event operations for a premium brand fits Tim's live events and production experience, about 30 minutes from Epsom.",
+      "concern": "seniority not shown",
+      "track": "Live events and event production",
+      "summary": "Events Operations Lead at McLaren Automotive, Woking.",
+      "found_at": "2026-11-19T07:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-19-mclaren-automotive-ltd-events-operations-lead",
+        "reason": "",
+        "at": "2026-11-19T07:33"
+      }
+    },
+    {
+      "id": "f50",
+      "title": "Production Operations Manager",
+      "company": "Royal Albert Hall",
+      "location": "London (on-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4486847589/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Venue production operations matches Tim's event production, crews and technical builds.",
+      "concern": "on-site; Manager level",
+      "track": "Sports and venues operations",
+      "summary": "Production Operations Manager at the Royal Albert Hall, London.",
+      "found_at": "2026-11-19T07:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-19-royal-albert-hall-production-operations-manager",
+        "reason": "",
+        "at": "2026-11-19T07:33"
+      }
+    },
+    {
+      "id": "f51",
+      "title": "Operations Manager (Energy Portfolio)",
+      "company": "dmg events",
+      "location": "Kensington, London",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4481595579/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Event operations at a major exhibitions organiser draws on Tim's event logistics and supplier management.",
+      "concern": "Manager level; likely event travel",
+      "track": "Live events and event production",
+      "summary": "Operations Manager for dmg events' energy events portfolio.",
+      "found_at": "2026-11-19T07:33",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-19-dmg-events-operations-manager-energy-portfolio",
+        "reason": "Hal: Manager level at an events organiser, below the seniority you want outside gaming",
+        "at": "2026-11-19T07:33"
+      }
+    },
+    {
+      "id": "f52",
+      "title": "Operations Manager / Senior Operations Manager, EMEA",
+      "company": "Deel",
+      "location": "United Kingdom (remote)",
+      "pay": "$80K-$127K",
+      "link": "https://www.linkedin.com/jobs/view/4481826359/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Operations leadership at a fast-growing workforce and contractor platform, which fits his freelancer and workforce operations background.",
+      "concern": "may lean to payroll/compliance work",
+      "track": "Head of Operations at scale-ups",
+      "summary": "Operations Manager / Senior Operations Manager EMEA at Deel, remote UK.",
+      "found_at": "2026-11-19T07:33",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-19-deel-operations-manager-senior-operations-man",
+        "reason": "Hal: Deel is payroll and employer-of-record work, which you've ruled out",
+        "at": "2026-11-19T07:33"
+      }
+    },
+    {
+      "id": "f53",
+      "title": "Project Manager / Head of Operations",
+      "company": "GutSee Health",
+      "location": "London (hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4489140070/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "A Head of Operations role at a small growing company, hybrid in London.",
+      "concern": "health-tech; mixed PM and ops title",
+      "track": "Head of Operations at scale-ups",
+      "summary": "Project Manager / Head of Operations at GutSee Health, London hybrid.",
+      "found_at": "2026-11-19T07:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-19-gutsee-health-project-manager-head-of-operations",
+        "reason": "",
+        "at": "2026-11-19T07:33"
+      }
+    },
+    {
+      "id": "f54",
+      "title": "Senior Operations Manager",
+      "company": "Reed",
+      "location": "London (hybrid)",
+      "pay": "£50K-£60K",
+      "link": "https://www.linkedin.com/jobs/view/4490662182/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Senior operations role in London at the pay floor or above.",
+      "concern": "sector not shown; likely a recruiter advert",
+      "track": "Head of Operations at scale-ups",
+      "summary": "Senior Operations Manager, London hybrid, £50-60k.",
+      "found_at": "2026-11-19T07:33",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-19-reed-senior-operations-manager",
+        "reason": "",
+        "at": "2026-11-19T07:33"
+      }
+    },
+    {
+      "id": "f55",
+      "title": "Operations and Customer Experience Manager",
+      "company": "Corinthian Sports",
+      "location": "London (on-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4490679322/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Sports hospitality operations, but it's a Manager role and includes customer experience.",
+      "concern": "on-site; Manager level outside gaming",
+      "track": "Sports and venues operations",
+      "summary": "Operations and Customer Experience Manager at Corinthian Sports, London.",
+      "found_at": "2026-11-19T07:33",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-19-corinthian-sports-operations-and-customer-experience-manag",
+        "reason": "Hal: Weak fit, Manager-level customer experience role, on-site",
+        "at": "2026-11-19T07:33"
+      }
     }
   ],
   "runs": [
-    {
-      "at": "2026-11-13T20:28",
-      "via": "web",
-      "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "source": "Work in Sports"
-    },
-    {
-      "at": "2026-11-13T20:28",
-      "via": "web",
-      "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "source": "Guardian Jobs"
-    },
-    {
-      "at": "2026-11-13T20:28",
-      "via": "web",
-      "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "source": "The Unit List"
-    },
-    {
-      "at": "2026-11-13T20:28",
-      "via": "web",
-      "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "source": "Access Jobs"
-    },
-    {
-      "at": "2026-11-16T12:42",
-      "via": "feed",
-      "found": 1,
-      "note": "5000 jobs listed, 142 looked possible from their titles, 100 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-16T12:42",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
-    {
-      "at": "2026-11-16T12:42",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
-    {
-      "at": "2026-11-16T12:42",
-      "via": "feed",
-      "found": 0,
-      "note": "3 of 3 boards read",
-      "source": "Company hiring pages: Ashby"
-    },
-    {
-      "at": "2026-11-16T12:42",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: SmartRecruiters"
-    },
-    {
-      "at": "2026-11-16T12:43",
-      "via": "feed",
-      "found": 1,
-      "note": "5000 jobs listed, 144 looked possible from their titles, 100 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-16T12:43",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
     {
       "at": "2026-11-16T12:43",
       "via": "feed",
@@ -1285,97 +1369,175 @@
       "found": 4,
       "note": "820 results read",
       "source": "Reed"
+    },
+    {
+      "at": "2026-11-19T07:32",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 18 looked possible from their titles, 18 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-19T07:32",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-19T07:32",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-19T07:32",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-19T07:32",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-19T07:33",
+      "via": "feed",
+      "found": 0,
+      "note": "823 results read",
+      "source": "Reed"
+    },
+    {
+      "at": "2026-11-19T07:33",
+      "via": "email",
+      "found": 7,
+      "note": "4 alert emails read, 14 roles seen, 7 queued",
+      "source": "LinkedIn Jobs"
+    },
+    {
+      "at": "2026-11-19T07:33",
+      "via": "email",
+      "found": 0,
+      "note": "Only temporary-job and recommendation emails; not read",
+      "source": "Reed alerts"
+    },
+    {
+      "at": "2026-11-19T07:33",
+      "via": "email",
+      "found": 0,
+      "note": "No Indeed alert emails",
+      "source": "Indeed UK"
+    },
+    {
+      "at": "2026-11-19T07:34",
+      "via": "web",
+      "found": 0,
+      "note": "Old URL now redirects to eventjobsite.com; only catering/box-office roles near Newcastle shown",
+      "source": "Event Industry Jobs"
+    },
+    {
+      "at": "2026-11-19T07:34",
+      "via": "web",
+      "found": 0,
+      "note": "403 to automated readers on this PC too",
+      "source": "Work in Sports"
     }
   ],
-  "last_email_scan": "2026-11-16T12:50:00Z",
+  "last_email_scan": "2026-11-19T07:33:00Z",
   "sources": {
     "Hitmarker": {
       "total": 3,
-      "last_checked": "2026-11-18T14:08",
+      "last_checked": "2026-11-19T07:32",
       "result": "ok",
-      "found": 1,
-      "note": "5000 jobs listed, 40 looked possible from their titles, 40 read",
-      "last_ok": "2026-11-18T14:08",
+      "found": 0,
+      "note": "5000 jobs listed, 18 looked possible from their titles, 18 read",
+      "last_ok": "2026-11-19T07:32",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-18T14:08",
+      "last_checked": "2026-11-19T07:32",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-18T14:08",
+      "last_ok": "2026-11-19T07:32",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-18T14:08",
+      "last_checked": "2026-11-19T07:32",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-18T14:08",
+      "last_ok": "2026-11-19T07:32",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-18T14:08",
+      "last_checked": "2026-11-19T07:32",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-18T14:08",
+      "last_ok": "2026-11-19T07:32",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-18T14:08",
+      "last_checked": "2026-11-19T07:32",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-18T14:08",
+      "last_ok": "2026-11-19T07:32",
       "failures": 0
     },
     "Reed": {
       "total": 11,
-      "last_checked": "2026-11-18T14:09",
+      "last_checked": "2026-11-19T07:33",
       "result": "ok",
-      "found": 4,
-      "note": "820 results read",
+      "found": 0,
+      "note": "823 results read",
       "failures": 0,
-      "last_ok": "2026-11-18T14:09"
+      "last_ok": "2026-11-19T07:33"
     },
     "Event Industry Jobs": {
       "total": 0,
-      "last_checked": "2026-11-13T20:28",
-      "result": "blocked",
+      "last_checked": "2026-11-19T07:34",
+      "result": "empty",
       "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "failures": 2
+      "note": "Old URL now redirects to eventjobsite.com; only catering/box-office roles near Newcastle shown",
+      "failures": 0,
+      "last_ok": "2026-11-19T07:34"
     },
     "Work in Sports": {
       "total": 0,
-      "last_checked": "2026-11-13T20:28",
+      "last_checked": "2026-11-19T07:34",
       "result": "blocked",
       "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "failures": 2
+      "note": "403 to automated readers on this PC too",
+      "failures": 3
     },
     "LinkedIn Jobs": {
-      "total": 6,
-      "last_checked": "2026-11-16T12:44",
+      "total": 13,
+      "last_checked": "2026-11-19T07:33",
       "result": "ok",
-      "found": 3,
-      "note": "3 alert emails read, 17 roles seen, 3 queued",
+      "found": 7,
+      "note": "4 alert emails read, 14 roles seen, 7 queued",
       "failures": 0,
-      "last_ok": "2026-11-16T12:44"
+      "last_ok": "2026-11-19T07:33"
     },
     "Indeed UK": {
       "total": 0,
-      "last_checked": "2026-11-16T12:44",
+      "last_checked": "2026-11-19T07:33",
       "result": "empty",
       "found": 0,
-      "note": "No Indeed alert emails since 13 Nov. Set up the Indeed alerts listed in sources.md",
+      "note": "No Indeed alert emails",
       "failures": 0,
-      "last_ok": "2026-11-16T12:44"
+      "last_ok": "2026-11-19T07:33"
     },
     "Esports Insider jobs": {
       "total": 0,
@@ -1408,6 +1570,15 @@
       "found": 0,
       "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
       "failures": 1
+    },
+    "Reed alerts": {
+      "total": 0,
+      "last_checked": "2026-11-19T07:33",
+      "result": "empty",
+      "found": 0,
+      "note": "Only temporary-job and recommendation emails; not read",
+      "last_ok": "2026-11-19T07:33",
+      "failures": 0
     }
   }
 }
