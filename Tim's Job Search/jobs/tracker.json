@@ -2517,10 +2517,10 @@
       "source": "Tim",
       "fit": 2,
       "priority": 23,
-      "status": "drafted",
+      "status": "applied",
       "notes": "",
       "found": "2026-11-12",
-      "updated": "2026-11-12",
+      "updated": "2026-11-19",
       "history": [
         {
           "date": "2026-11-12",
@@ -2536,11 +2536,17 @@
           "date": "2026-11-12",
           "status": "drafted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-19",
+          "status": "applied",
+          "by": "tim"
         }
       ],
       "verdict": "skip",
       "verdict_why": "Missing essential PGA/R&A Rules qualification; golf-specific sector with heavy travel",
-      "closing_date": "2026-11-24"
+      "closing_date": "2026-11-24",
+      "next": "Follow up if no reply by 26 Nov"
     },
     {
       "id": "2026-11-12-direct-chauffeur-line-limited-assistant-operations-manager",

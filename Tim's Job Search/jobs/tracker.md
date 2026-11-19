@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 11 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 6 · rejected: 1 · skipped: 77
+found: 11 · shortlisted: 1 · drafted: 12 · approved: 1 · applied: 7 · rejected: 1 · skipped: 77
 
 ## Next actions
 
@@ -37,11 +37,11 @@ found: 11 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 6 · rejec
 | drafted | 3 | [Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London](https://www.reed.co.uk/jobs/digital-enablement-manager-ai-adoption-artificial-intelligence-digital-business-change-london/57568616) | Carrington Recruitment Solutions Ltd | ┬ú70,000 - ┬ú75,000 | WC1V6AZ | 3 |  | 2026-11-16 |
 | drafted | 3 | [Operations Director](https://www.reed.co.uk/jobs/operations-director/57584295) | Insight Select Ltd | £80,000 - £120,000 | BR60SX | 1 |  | 2026-11-19 |
 | drafted | 8 | [HotelPlanner Tour Tournament Business Manager](https://www.linkedin.com/jobs/view/4489085965/) | DP World Tour |  | Wentworth | 2 |  | 2026-11-16 |
-| drafted | 23 | [National Tournaments Manager](https://www.linkedin.com/jobs/view/4488144154/) | The Professional Golfers' Association (The PGA) |  | Hybrid | 2 |  | 2026-11-12 |
 | drafted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London | 2 |  | 2026-11-19 |
 | approved | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-13 |
 | applied | 2 | [Product Operations Manager](https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960) | Electronic Arts |  | London | 5 | Follow up if no reply by 26 Nov | 2026-11-19 |
 | applied | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 | Follow up if no reply by 20 Nov | 2026-11-13 |
+| applied | 23 | [National Tournaments Manager](https://www.linkedin.com/jobs/view/4488144154/) | The Professional Golfers' Association (The PGA) |  | Hybrid | 2 | Follow up if no reply by 26 Nov | 2026-11-19 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Follow up if no reply by 12 Nov | 2026-11-11 |
 | applied |  | [Senior Operations Resource Planning Manager](https://careers.ba.com/job/heathrow/senior-operations-resource-planning-manager/22348/100605084528) | British Airways | Similar BA planning role listed at £50k–£70k, unconfirmed | Waterside (BA Head Office), Heathrow | 2 | Follow up if no reply by 18 Nov | 2026-11-11 |
 | applied |  | [Esport Specialist](https://www.linkedin.com/jobs/view/4308233024/) | NetEase Games |  | UK remote | 2 | Follow up if no reply by 15 Nov | 2026-11-08 |
