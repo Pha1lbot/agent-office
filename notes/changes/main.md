@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-20: Job search: Movember Program Manager, Men's Health Community Fund scored (skip, fit 2)
+
+**What changed:** Rita read the advert and wrote `jobs/roles/2026-11-20-movember-program-manager-men-s-health-community-f/listing.md`. Tracker set to fit=2, verdict=skip, closing_date=2026-11-20.
+
+**Why:** Tim added the role in the office; it landed in the inbox for Rita to read, write up and score.
+
+**Decisions:** None needed — clear skip (pay and location fine, but it's community health/grant programme management, outside all of Tim's tracks, no matching CV background).
+
+**How to check it:** `python shared/tools/tracker.py list --status found` shows the role with fit 2; `listing.md` has Rita's write-up.
+
+**Open items:** None. Closing date is today (20 Nov), so this will likely drop out of consideration on its own.
+
 ### 2026-11-20: Job search: Formula 1 Event Production Manager drafted
 
 **What changed:** `jobs/roles/2026-11-05-formula-1-event-production-manager/` (new): Rita's `listing.md`, Wren's `cv.json`, `cv.md`, `cover-letter.md` and `notes.md`, and the Word files and PDFs. The tracker role (imported earlier from the phone dashboard as a lead, with no listing yet) had its fit and verdict updated from the saved-details placeholder to Rita's full read: fit 3, verdict maybe.

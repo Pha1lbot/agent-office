@@ -3810,7 +3810,7 @@
       "pay": "",
       "url": "https://www.linkedin.com/jobs/view/4488837847/",
       "source": "Tim",
-      "fit": null,
+      "fit": 2,
       "priority": 4,
       "status": "found",
       "notes": "",
@@ -3822,7 +3822,10 @@
           "status": "found",
           "by": "tim"
         }
-      ]
+      ],
+      "verdict": "skip",
+      "verdict_why": "Pay and London hybrid work, but it's community health/grant programme management, outside all nine of your tracks, with no men's health, mental health or grant-management background on your CV",
+      "closing_date": "2026-11-20"
     }
   ],
   "actions": [
@@ -4302,7 +4305,8 @@
       "task": "Read the advert, write the listing, score the fit and give a verdict",
       "title": "Program Manager, Men's Health Community Fund | 12 Month Contract + 12 Month Extension @ Movember",
       "at": "2026-11-20T17:16",
-      "done": false
+      "done": true,
+      "handled": "2026-11-20T17:19"
     }
   ]
 }
