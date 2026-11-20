@@ -745,13 +745,18 @@
       "notes": "Posted: 29 Oct",
       "fit": 3,
       "priority": 2,
-      "status": "found",
+      "status": "shortlisted",
       "found": "2026-11-05",
-      "updated": "2026-11-06",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "shortlisted",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
@@ -807,14 +812,19 @@
       "list": "New matches",
       "notes": "Posted: 28 Oct",
       "fit": 3,
-      "priority": 3,
-      "status": "found",
+      "priority": 2,
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-06",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
@@ -2676,7 +2686,7 @@
       "url": "https://www.linkedin.com/jobs/view/4463091092/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 4,
+      "priority": 2,
       "status": "found",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -3191,7 +3201,7 @@
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 5,
+      "priority": 3,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",
@@ -3457,7 +3467,7 @@
       "url": "https://www.linkedin.com/jobs/view/4486847589/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 6,
+      "priority": 4,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: on-site; Manager level",
       "found": "2026-11-19",
@@ -4165,6 +4175,14 @@
       "at": "2026-11-19T19:47",
       "done": true,
       "handled": "2026-11-19T22:30"
+    },
+    {
+      "id": "i36",
+      "role": "2026-11-05-lta-head-of-delivery-central-east",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "Head of Delivery, Central & East @ LTA",
+      "at": "2026-11-20T14:27",
+      "done": false
     }
   ]
 }

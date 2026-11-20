@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 6 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · rejected: 1 · skipped: 84
+found: 4 · shortlisted: 2 · drafted: 13 · approved: 1 · applied: 7 · rejected: 1 · skipped: 85
 
 ## Next actions
 
@@ -16,11 +16,10 @@ found: 6 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · reject
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
 |---|---|---|---|---|---|---|---|---|
 | found | 1 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 2 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-06 |
-| found | 3 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-06 |
-| found | 4 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
-| found | 5 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
-| found | 6 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
+| found | 2 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
+| found | 3 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
+| found | 4 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
+| shortlisted | 2 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-20 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
@@ -48,6 +47,7 @@ found: 6 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · reject
 | skipped | 1 | [Senior Production Manager](https://www.linkedin.com/jobs/view/4482124492/) | The Crowd | £60k–£70k | London area, hybrid | 4 |  | 2026-11-08 |
 | skipped | 1 | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-17 |
 | skipped | 2 | [Senior Operations & Event Producer](https://www.linkedin.com/jobs/view/4473635792/) | This is Beyond | £60k–£65k | London area, hybrid | 3 |  | 2026-11-09 |
+| skipped | 2 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-20 |
 | skipped | 3 | [Director of Soccer Aid (interim)](https://www.linkedin.com/jobs/view/4483454939/) | UNICEF UK | £105k, fixed term | London area | 3 |  | 2026-11-11 |
 | skipped | 3 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-20 |
 | skipped | 3 | [Senior Producer](https://www.linkedin.com/jobs/view/4486100319/) | Big Global Events | £55k–£62k | London, hybrid | 3 |  | 2026-11-09 |
