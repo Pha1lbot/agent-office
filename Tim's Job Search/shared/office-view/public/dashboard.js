@@ -47,7 +47,7 @@ function card(r) {
   return `<article class="pcard" draggable="${store.system.editing}" data-id="${esc(r.id)}" tabindex="0" role="link" aria-label="${esc(r.title)} at ${esc(r.company)}. Open the role.">
     <div class="pc-top"><span class="pc-title">${esc(r.title)}</span>${r.priority ? `<span class="prio" title="Priority">P${esc(r.priority)}</span>` : ""}</div>
     <div class="pc-co">${esc(r.company)}</div>
-    <div class="meta">${esc(r.pay || "Pay not stated")}${r.location ? ` · ${esc(r.location)}` : ""}</div>
+    <div class="meta meta-row"><span>${esc(r.pay || "Pay not stated")}</span>${r.location ? `<span>${esc(r.location)}</span>` : ""}</div>
     <div class="meta row">${fitDots(r.fit)}${verdictBadge(r)}${c ? `<span class="close ${c.level}">${esc(c.text)}</span>` : ""}</div>
     ${iv}
     ${["found", "shortlisted"].includes(r.status) ? "" : docTicks(r.id)}
@@ -228,32 +228,32 @@ function renderTodo() {
 // ---------- Strip: backup, Hal, tokens ----------
 function renderSystem() {
   const system = store.system;
-  const parts = [];
+  const parts = [], alerts = [];
   const b = system.backup;
-  if (b && b.state !== "idle") {
-    parts.push(b.state === "error" ? `<span class="err">Backup: ${esc(b.message)}</span>` : `<span>Backup: ${esc(b.message)}${b.state === "saved" && b.at ? ` ${clock(b.at)}` : ""}</span>`);
-  }
+  if (b && b.state === "error") alerts.push(`Backup problem: ${esc(b.message)}`);
+  else if (b && b.state !== "idle") parts.push(`<span>${esc(b.message)}${b.state === "saved" && b.at ? ` ${clock(b.at)}` : ""}</span>`);
   const c = system.cos;
-  if (!system.editing) parts.push("<span>Viewing only: editing needs Python 3 on this PC.</span>");
-  else if (!c?.available) parts.push("<span><b>Hal</b>: Claude Code isn't installed here, so run /hal yourself.</span>");
+  if (!system.editing) alerts.push("Viewing only: editing needs Python 3 on this PC.");
+  else if (!c?.available) parts.push("<span>Claude Code isn't installed here, so run /hal yourself.</span>");
   else {
     // What's waiting for him: office requests, new finds to sort, or both.
     const finds = c.finds || 0;
-    const work = [c.inbox ? `${c.inbox} request${c.inbox === 1 ? "" : "s"}` : "", finds ? `${finds} new find${finds === 1 ? "" : "s"} to sort` : ""].filter(Boolean).join(", ");
+    const work = [c.inbox ? `${c.inbox} request${c.inbox === 1 ? "" : "s"}` : "", finds ? `${finds} new find${finds === 1 ? "" : "s"}` : ""].filter(Boolean).join(" and ");
     let state;
-    if (c.running) state = `working on ${work || "the office's requests"}…`;
-    else if (c.startsAt) { const s = Math.max(0, Math.round((c.startsAt - Date.now()) / 1000)); state = `starts in ${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")} (${work})`; }
-    else if (work) state = `${work} waiting`;
-    else state = c.last ? `${esc(c.last.message)} ${clock(c.last.at)}` : "nothing to do";
-    const err = c.last && !c.last.ok && !c.running && !c.startsAt;
-    parts.push(`<span class="${err ? "err" : ""}"><b>Hal</b>: ${state}</span>`);
+    if (c.running) state = `Hal is working on ${work || "the office's requests"}…`;
+    else if (c.startsAt) { const s = Math.max(0, Math.round((c.startsAt - Date.now()) / 1000)); state = `Hal will sort ${work} in ${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; }
+    else if (work) state = `${work[0].toUpperCase()}${work.slice(1)} waiting for Hal`;
+    else state = c.last ? `Hal: ${esc(c.last.message)} ${clock(c.last.at)}` : "Hal has nothing to do";
+    if (c.last && !c.last.ok && !c.running && !c.startsAt) alerts.push(`Hal's last run went wrong: ${esc(c.last.message)}`);
+    else parts.push(`<span>${state}</span>`);
     parts.push(`<span>${c.runsToday} of ${c.maxPerDay} automatic runs today</span>`);
-    if (work && !c.running) parts.push(`<button type="button" class="btn sm" data-cos="run">Run now</button>`);
-    parts.push(`<button type="button" class="btn sm" data-cos="auto" aria-pressed="${c.auto}">Auto start: ${c.auto ? "on" : "off"}</button>`);
+    if (work && !c.running) parts.push(`<button type="button" class="btn sm" data-cos="run">Start Hal now</button>`);
+    parts.push(`<button type="button" class="btn sm ghost" data-cos="auto" aria-pressed="${c.auto}">Hal starts on his own: ${c.auto ? "on" : "off"}</button>`);
   }
   const tk = system.tokens;
-  if (tk) parts.push(`<span class="${tk.budget && tk.today >= tk.budget ? "err" : ""}">Tokens today: <b>${short(tk.today)}</b>${tk.budget ? ` of ${short(tk.budget)} budget` : ""}</span>`);
+  if (tk && tk.budget && tk.today >= tk.budget) alerts.push(`Today's token budget is used up (${short(tk.today)} of ${short(tk.budget)}).`);
   $("sysbar").innerHTML = parts.join("");
+  $("ov-alert").innerHTML = alerts.length ? `<div class="notice" role="alert">${alerts.join("<br>")}</div>` : "";
   clearTimeout(renderSystem.t);
   if (c?.startsAt) renderSystem.t = setTimeout(renderSystem, 1000);
 }

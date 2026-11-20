@@ -91,7 +91,7 @@ function render() {
       <div>
         <h2>${esc(role.title)}</h2>
         <p class="role-co">${esc(role.company)}</p>
-        <p class="role-meta">${esc(role.pay || "Pay not stated")}${role.location ? ` · ${esc(role.location)}` : ""}${c ? ` · <span class="close ${c.level}">${esc(c.text)}${role.closing_date ? ` (${esc(shortDate(role.closing_date))})` : ""}</span>` : ""} ${fitDots(role.fit)}</p>
+        <p class="role-meta meta-row"><span>${esc(role.pay || "Pay not stated")}</span>${role.location ? `<span>${esc(role.location)}</span>` : ""}${c ? `<span class="close ${c.level}">${esc(c.text)}${role.closing_date ? ` (${esc(shortDate(role.closing_date))})` : ""}</span>` : ""} ${fitDots(role.fit)}</p>
       </div>
       <div class="role-actions">
         ${editing ? `<select id="role-status" class="status-select" aria-label="Status">${STATUS_ORDER.map((s) => `<option value="${s}"${s === role.status ? " selected" : ""}>${STATUS_LABEL[s]}</option>`).join("")}</select>`
