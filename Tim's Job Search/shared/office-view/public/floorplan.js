@@ -4,7 +4,8 @@
 const AISLE = 8.6; // the walkway across the middle of the floor
 
 const LOOKS = [
-  { id: "hal", name: "Hal", role: "Chief of Staff", body: 0x5b6cff, hair: 0x3b2a1a, skin: 0xf1c7a1 },
+  // Hal: small, long black hair, black band tee with a white triangle (an Enter Shikari fan), dark jeans.
+  { id: "hal", name: "Hal", role: "Chief of Staff", body: 0x1d1f26, hair: 0x0f1012, skin: 0xe6b98c, size: 0.9, longHair: true, tee: true, print: 0xf4f4f0 },
   { id: "rita", name: "Rita", role: "Lead Recruiter", body: 0x3fae7a, hair: 0xa0522d, skin: 0xe8b48f },
   { id: "wren", name: "Wren", role: "Writer", body: 0xe08a3c, hair: 0x1c1c1c, skin: 0xc68a63 },
   { id: "cole", name: "Cole", role: "Interview Coach", body: 0xc2453a, hair: 0x6b4a2b, skin: 0xf0c29b },

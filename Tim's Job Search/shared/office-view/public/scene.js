@@ -361,14 +361,18 @@ function buildRoom() {
 
 }
 
-const TROUSERS = { hal: 0x2a2e3a, rita: 0x3b4a6b, wren: 0x4a3f36, cole: 0x2f3446, ada: 0x5b4a6e };
+const TROUSERS = { hal: 0x26324a, rita: 0x3b4a6b, wren: 0x4a3f36, cole: 0x2f3446, ada: 0x5b4a6e };
 const BIG = 1.25; // people a little larger than life, so they read well from above
 function makePerson(t) {
-  const g = new THREE.Group(); g.scale.setScalar(BIG); scene.add(g);
+  const g = new THREE.Group(); g.scale.setScalar(BIG * (t.size || 1)); scene.add(g);
   const body = new THREE.Group(); g.add(body);
   const top = mat(t.body, { roughness: 0.65 }), skin = mat(t.skin, { roughness: 0.55 }), hair = mat(t.hair, { roughness: 0.8 });
   const legsM = mat(TROUSERS[t.id] || 0x2f3446, { roughness: 0.8 });
   mesh(new THREE.CapsuleGeometry(0.21, 0.36, 6, 16), top, 0, 0.98, 0, body).scale.set(1, 1, 0.78); // torso
+  if (t.print) { // a white outline triangle printed on the chest of the tee
+    const tri = mesh(new THREE.RingGeometry(0.055, 0.08, 3), mat(t.print, { roughness: 0.9 }), 0, 1.04, 0.168, body);
+    tri.rotation.z = Math.PI / 2;
+  }
   mesh(cyl(0.07, 0.08, 0.1, 12), skin, 0, 1.33, 0, body); // neck
   const head = new THREE.Group(); head.position.y = 1.52; body.add(head);
   mesh(new THREE.SphereGeometry(0.19, 24, 18), skin, 0, 0, 0, head).scale.set(0.95, 1.05, 0.98);
@@ -376,6 +380,11 @@ function makePerson(t) {
   mesh(new THREE.SphereGeometry(0.2, 24, 14, 0, Math.PI * 2, 0, Math.PI * 0.5), hair, 0, 0.03, -0.01, head).scale.set(1, 1.05, 1.03);
   mesh(new THREE.SphereGeometry(0.2, 20, 12, Math.PI * 0.75, Math.PI * 1.5, Math.PI * 0.35, Math.PI * 0.45), hair, 0, 0, -0.01, head);
   if (t.id === "rita" || t.id === "ada") mesh(rbox(0.36, 0.34, 0.12, 0.06), hair, 0, -0.16, -0.12, head);
+  if (t.longHair) {
+    // Long, straight hair: a sheet down the back past the shoulders, and a strand either side of the face.
+    mesh(rbox(0.38, 0.62, 0.1, 0.05), hair, 0, -0.26, -0.13, head);
+    for (const s of [-1, 1]) mesh(rbox(0.06, 0.44, 0.1, 0.03), hair, s * 0.195, -0.2, -0.01, head);
+  }
   for (const s of [-1, 1]) {
     mesh(new THREE.SphereGeometry(0.022, 10, 8), 0x1d1f2b, s * 0.065, 0.01, 0.175, head);
     mesh(new THREE.SphereGeometry(0.035, 10, 8), skin, s * 0.185, -0.01, 0, head); // ears
@@ -388,7 +397,10 @@ function makePerson(t) {
     mesh(rbox(0.13, 0.08, 0.26, 0.04), 0x1b1d26, 0, -0.63, 0.05, hip);
     legs.push(hip);
     const sh = new THREE.Group(); sh.position.set(s * 0.26, 1.2, 0); body.add(sh);
-    mesh(new THREE.CapsuleGeometry(0.065, 0.36, 4, 10), top, 0, -0.22, 0, sh);
+    if (t.tee) { // short sleeve, then bare arm
+      mesh(new THREE.CapsuleGeometry(0.07, 0.1, 4, 10), top, 0, -0.1, 0, sh);
+      mesh(new THREE.CapsuleGeometry(0.058, 0.26, 4, 10), skin, 0, -0.3, 0, sh);
+    } else mesh(new THREE.CapsuleGeometry(0.065, 0.36, 4, 10), top, 0, -0.22, 0, sh);
     mesh(new THREE.SphereGeometry(0.06, 12, 10), skin, 0, -0.46, 0, sh);
     arms.push(sh);
   }

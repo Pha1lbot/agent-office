@@ -11,6 +11,29 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-20: Hal gets a new look in the 3D office
+
+**What changed:** In `Tim's Job Search/shared/office-view/public/`:
+- `floorplan.js`: Hal's look is now a small East Asian man with long black hair, in a black band tee with a white triangle print (Tim's description: an Enter Shikari fan). It adds `size`, `longHair`, `tee` and `print` to his entry.
+- `scene.js`: `makePerson()` uses those fields. They give Hal 90% scale, a sheet of hair down his back with a strand either side of his face, short sleeves with bare forearms, and a white outline triangle on his chest. His trousers are now dark denim.
+- The other four staff are unchanged.
+
+**Why:**
+- Tim asked to improve the office space with Meshy, and wanted Hal first: "a small Asian male with long black hair. Into Enter Shikari".
+- Meshy refused to make the model because Tim's account is on the free plan. It said task creation through the API needs a paid plan, and no credits were spent.
+- Tim chose to restyle Hal in the office's own 3D code instead.
+
+**Decisions:**
+- Built Hal from the same primitive shapes as the rest of the room, so he matches its style.
+- Used a generic triangle print rather than the band's real logo.
+- The Meshy hosts (api.meshy.ai, www.meshy.ai, assets.meshy.ai) were added to the cloud environment's allowed list with Tim's approval, and the Meshy sign-in on this cloud session is kept, in case he upgrades.
+
+**How to check it:** `git pull`, open the office and go to The office. Hal is the smaller figure with long black hair and a black tee.
+
+**Open items:**
+- Rita, Wren, Cole and Ada could get the same treatment.
+- Hal's office (the other person's copy) is unchanged.
+
 ### 2026-11-20: Take the serif font off the office's Overview
 
 **What changed:** `Tim's Job Search/shared/office-view/public/style.css` drops the `--serif` token, and the greeting and the "Today from Hal" heading go back to Geist (semibold). `index.html` stops loading Newsreader from Google Fonts. The staff contracts keep their own paper serif.
