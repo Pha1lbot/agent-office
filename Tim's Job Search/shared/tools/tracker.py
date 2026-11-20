@@ -259,7 +259,7 @@ def add_role(data, title, company, location="", pay="", url="", source="", fit="
             role_id, n = f"{base}-{n}", n + 1
     role = {
         "id": role_id, "title": title, "company": company,
-        "location": location, "pay": pay, "url": url,
+        "location": fix_text(location), "pay": fix_text(pay), "url": url,
         "source": source, "fit": parse_value("fit", str(fit or "")),
         "priority": None, "status": "found", "notes": notes,
         "found": today(), "updated": today(),
@@ -314,8 +314,20 @@ def find_key(company, title):
     return f"{norm(company)}|{norm(title)}"
 
 
+# A pound sign or dash that went through the wrong Windows code page (for example a PowerShell
+# "Out-File" of git output) comes back as these; turn them back into the real characters.
+MOJIBAKE = {"┬ú": "£", "Â£": "£", "â€“": "–", "â€”": "—", "â€™": "’"}
+
+
+def fix_text(value):
+    value = str(value or "")
+    for bad, good in MOJIBAKE.items():
+        value = value.replace(bad, good)
+    return value
+
+
 def clip(value, n):
-    return " ".join(str(value or "").split())[:n]
+    return " ".join(fix_text(value).split())[:n]
 
 
 def cmd_found(args):

@@ -214,6 +214,17 @@ class TrackerTests(unittest.TestCase):
         self.assertNotEqual(out.returncode, 0)  # can't take twice
 
 
+class MojibakeTests(unittest.TestCase):
+    """A pound sign mangled by a Windows code page is put right when a role or find is added."""
+
+    def test_fix_text(self):
+        sys.path.insert(0, str(TRACKER.parent))
+        import tracker
+        self.assertEqual(tracker.fix_text("\u252c\u00fa70,000 - \u00c2\u00a375,000"), "\u00a370,000 - \u00a375,000")
+        self.assertEqual(tracker.clip("  \u252c\u00fa50k  ", 20), "\u00a350k")
+        self.assertEqual(tracker.fix_text("\u00a355k"), "\u00a355k")
+
+
 class PayBandTests(unittest.TestCase):
     """New roles are ranked by pay using the figures in shared/job-search/settings.json."""
 

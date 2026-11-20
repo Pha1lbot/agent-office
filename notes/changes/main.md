@@ -11,6 +11,14 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-20: Fix a broken pound sign and stop it happening again
+
+**What changed:** `Tim's Job Search/shared/tools/tracker.py` gains `fix_text()`, used by `clip()` (every `found add` field) and by `add_role()` for pay and location: it turns `┬ú` and `Â£` back into `£` (and the same for mangled dashes and apostrophes). `test_tracker.py` gains `MojibakeTests`. Carrington's pay in `jobs/found.json`, `jobs/tracker.json` and `jobs/tracker.md` is put right (£70,000 - £75,000).
+**Why:** the pay showed as `┬ú70,000` in the office. It came from the PowerShell `git show | Out-File` step Claude gave Tim while fixing the found.json merge on 16 Nov, which read git's output in the wrong code page.
+**Decisions:** fix it on the way in rather than in the office's display, so the tracker, the phone page and CVs all get the right text.
+**How to check it:** `python3 shared/tools/test_tracker.py`; the Carrington role shows £70,000 - £75,000.
+**Open items:** Hal's office has its own `tracker.py` without this fix; port it if wanted.
+
 ### 2026-11-20: Job search: Movember Program Manager, Men's Health Community Fund scored (skip, fit 2)
 
 **What changed:** Rita read the advert and wrote `jobs/roles/2026-11-20-movember-program-manager-men-s-health-community-f/listing.md`. Tracker set to fit=2, verdict=skip, closing_date=2026-11-20.
