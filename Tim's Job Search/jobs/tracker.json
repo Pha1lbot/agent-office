@@ -761,7 +761,7 @@
       "notes": "Posted: 29 Oct",
       "fit": 2,
       "priority": 2,
-      "status": "drafted",
+      "status": "skipped",
       "found": "2026-11-05",
       "updated": "2026-11-20",
       "history": [
@@ -777,12 +777,18 @@
         {
           "date": "2026-11-20",
           "status": "drafted"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
       "verdict": "skip",
       "verdict_why": "Deadline passed (19 Nov) and it's grassroots participation delivery, not event/tournament ops",
-      "closing_date": "2026-11-19"
+      "closing_date": "2026-11-19",
+      "reason": "Closed"
     },
     {
       "id": "2026-11-05-soho-house-co-event-director-uk-eu-asia-12-month-mater",
