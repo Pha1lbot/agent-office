@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-20: Job search: Formula 1 Event Production Manager drafted
+
+**What changed:** `jobs/roles/2026-11-05-formula-1-event-production-manager/` (new): Rita's `listing.md`, Wren's `cv.json`, `cv.md`, `cover-letter.md` and `notes.md`, and the Word files and PDFs. The tracker role (imported earlier from the phone dashboard as a lead, with no listing yet) had its fit and verdict updated from the saved-details placeholder to Rita's full read: fit 3, verdict maybe.
+
+**Why:** Tim set the role to drafted in the office before any documents existed (inbox item i38: "Draft a tailored CV and cover letter").
+
+**Decisions:** The role had no `listing.md`, so Rita wrote one first. LinkedIn blocked her direct read (429), so she pieced the advert together from search-engine results quoting the listing. The role is event site-build and rigging, not tournament operations, and likely involves heavy Grand Prix travel that may breach Tim's touring deal-breaker, so Rita scored it fit 3, verdict maybe (down from the dashboard import's placeholder fit 4). Drafted anyway because Tim had already set the role to drafted. Pay (£54k-£61k) is an unconfirmed third-party estimate, not from the advert itself.
+
+**How to check it:** `python shared/tools/tracker.py show 2026-11-05-formula-1-event-production-manager`; review `jobs/roles/2026-11-05-formula-1-event-production-manager/listing.md` and the built PDFs.
+
+**Open items:** Tim to weigh the travel concern and unconfirmed pay before applying; closing date could not be confirmed from the primary source.
+
 ### 2026-11-20: Job search: LTA Head of Delivery drafted
 
 **What changed:** `jobs/roles/2026-11-05-lta-head-of-delivery-central-east/` (new): Rita's `listing.md`, Wren's `cv.json`, `cv.md`, `cover-letter.md` and `notes.md`, and the Word files and PDFs. The tracker role (imported earlier from the phone dashboard as a lead, with no listing yet) is now drafted, fit 2, verdict skip, closing_date 2026-11-19; action a16 flags the concern.

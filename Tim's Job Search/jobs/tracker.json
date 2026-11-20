@@ -1239,7 +1239,7 @@
       "interview_with": "",
       "list": "Transition roles",
       "notes": "Posted: 30 Oct",
-      "fit": 4,
+      "fit": 3,
       "priority": 1,
       "status": "drafted",
       "found": "2026-11-05",
@@ -1262,7 +1262,7 @@
       ],
       "imported_from": "dashboard lead",
       "verdict": "maybe",
-      "verdict_why": "From saved details: live event production in sport and broadcast suits you; pay unknown and F1 may mean heavy travel"
+      "verdict_why": "Strong event-logistics overlap but role is site-build/rigging, not tournament ops; travel may breach touring deal-breaker"
     },
     {
       "id": "2026-11-05-stripe-marketing-operations-manager-emea-events",
@@ -4271,7 +4271,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Event Production Manager @ Formula 1",
       "at": "2026-11-20T14:58",
-      "done": false
+      "done": true,
+      "handled": "2026-11-20T15:04"
     }
   ]
 }
