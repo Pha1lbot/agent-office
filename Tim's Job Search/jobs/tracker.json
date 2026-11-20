@@ -3781,7 +3781,7 @@
       "pay": "£22 - £30 per hour",
       "url": "https://www.reed.co.uk/jobs/operations-manager/57595613?source=details.similarjobs",
       "source": "Tim",
-      "fit": null,
+      "fit": 2,
       "priority": 4,
       "status": "found",
       "notes": "",
@@ -3793,7 +3793,9 @@
           "status": "found",
           "by": "tim"
         }
-      ]
+      ],
+      "verdict": "skip",
+      "verdict_why": "Generic temp Ops Manager role (3-month contract), no sector match, pay borderline vs £50k min"
     }
   ],
   "actions": [
@@ -4255,7 +4257,8 @@
       "task": "Read the advert, write the listing, score the fit and give a verdict",
       "title": "Operations Manager @ Reed",
       "at": "2026-11-20T14:33",
-      "done": false
+      "done": true,
+      "handled": "2026-11-20T14:37"
     }
   ]
 }
