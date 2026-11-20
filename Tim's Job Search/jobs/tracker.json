@@ -3413,10 +3413,10 @@
       "source": "Reed",
       "fit": 3,
       "priority": 1,
-      "status": "drafted",
+      "status": "skipped",
       "notes": "Track: AI operations, enablement and transformation; Posted 2026-11-17",
       "found": "2026-11-18",
-      "updated": "2026-11-19",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-18",
@@ -3430,11 +3430,17 @@
         {
           "date": "2026-11-19",
           "status": "drafted"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
       "verdict_why": "AI adoption track and 54-58k hybrid London, but it wants a change-management qualification and adoption track record, and it's a 12-month fixed term. Interviews w/c 30 Nov.",
-      "priority_by_tim": false
+      "priority_by_tim": false,
+      "reason": "Wants qualification"
     },
     {
       "id": "2026-11-18-live-recruitment-senior-technical-project-manager",
