@@ -1,13 +1,18 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** Dashboard review in progress (restarted from `main` on 2026-11-20). Earlier work merged in PRs #18, #19, #20, #28 to #32, #34 and #35.
+**Status:** In review ([PR #37](https://github.com/Pha1lbot/agent-office/pull/37): Overview as Hal's briefing; restarted from `main` on 2026-11-20). Earlier work merged in PRs #18, #19, #20, #28 to #32, #34 and #35.
 
 ## Purpose
 
 Tim shared a picture of a popular "build your first AI team" one-shot prompt and asked what the agent office can learn from it and what to improve. This branch holds that review. It changes no agent, prompt or convention until Tim picks which improvements to make.
 
 ## Change log
+
+### 2026-11-20: PR #37 opened, CHANGELOG line added
+
+**What changed:** `CHANGELOG.md` gains the line for #37; this file's status points to it.
+**Why:** the CHANGELOG line travels with the pull request (CLAUDE.md, Change notes step 6).
 
 ### 2026-11-20: Overview becomes Hal's morning briefing; template habits removed
 
