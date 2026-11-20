@@ -50,6 +50,7 @@ function countUp(root) {
   requestAnimationFrame(() => root.querySelectorAll(".bar.pre").forEach((b) => b.classList.remove("pre")));
 }
 
+const CLOSED_CV = new Set(["skipped", "rejected"]);
 // ---------- Greeting, sidebar ----------
 function greet() {
   const now = new Date(), h = now.getHours();
@@ -63,7 +64,7 @@ function counts() {
     leads: rs.filter((r) => r.status === "found").length,
     interviews: rs.filter((r) => r.interview_at && new Date(r.interview_at) >= Date.now() - 36e5).length,
     actions: (store.tracker.actions || []).filter((a) => !a.done).length,
-    cvs: rs.filter((r) => (store.docs[r.id] || {}).cv).length + 1,
+    cvs: rs.filter((r) => (store.docs[r.id] || {}).cv && !CLOSED_CV.has(r.status)).length + 1,
     office: [...store.agents.values()].filter((a) => a.state === "typing" || a.state === "walking").length || "",
   };
   document.querySelectorAll("[data-count]").forEach((el) => { el.textContent = n[el.dataset.count] || ""; });
@@ -387,7 +388,9 @@ for (const host of ["v-overview", "v-actions"]) {
 
 // ---------- CVs ----------
 function renderCVs() {
-  const tailored = roles().filter((r) => (store.docs[r.id] || {}).cv).sort((a, b) => (b.updated || "").localeCompare(a.updated || ""));
+  const withCv = roles().filter((r) => (store.docs[r.id] || {}).cv).sort((a, b) => (b.updated || "").localeCompare(a.updated || ""));
+  // CVs for roles Tim has dismissed or been rejected from go in their own folded-away section.
+  const tailored = withCv.filter((r) => !CLOSED_CV.has(r.status)), closedCvs = withCv.filter((r) => CLOSED_CV.has(r.status));
   const editing = store.system.editing;
   const base = `<section class="card cv-card"><div class="u-row"><span class="badge base">Base</span><span class="cv-n">Your CV bank</span></div>
     <span class="cv-sub">Everything Wren is allowed to use, word for word from your CV. Every tailored CV is checked against it.</span>
@@ -395,16 +398,19 @@ function renderCVs() {
   const rules = `<section class="card cv-card"><div class="u-row"><span class="badge base">Rules</span><span class="cv-n">Your CV writing rules</span></div>
     <div class="md sub cv-scroll" tabindex="0" role="region" aria-label="Your CV writing rules">${jobSearch ? md(jobSearch.rules.split("\n").filter((l) => /^\s*[-*]\s/.test(l)).join("\n") || jobSearch.rules) : "Loading…"}</div>
     ${editing ? `<div class="cv-actions"><button type="button" class="btn sm" data-cv="rules">${svg(ICON.edit, 14)}Edit rules</button></div>` : ""}</section>`;
-  const cards = tailored.map((r) => {
+  const card = (r, live) => {
     const d = store.docs[r.id] || {}, f = (n) => `/files/roles/${encodeURIComponent(r.id)}/${n}`;
     return `<section class="card cv-card"><div class="u-row"><span class="badge tailored">Tailored</span>${stageBadge(r.status)}</div>
       <div><div class="cv-n">${esc(r.title)}</div><div class="cv-sub">${esc(r.company)}${r.updated ? `, updated ${esc(shortDate(r.updated))}` : ""}</div></div>
       <div class="tags">${d.letter ? `<span class="tg docs">Cover letter</span>` : ""}${d.cvPdf ? `<span class="tg docs">PDF</span>` : ""}${d.prep ? `<span class="tg docs">Interview prep</span>` : ""}</div>
-      <div class="cv-actions"><a class="btn sm" href="#role/${esc(r.id)}/documents">View</a>${d.cvPdf ? `<a class="btn sm" href="${f("cv.pdf")}" target="_blank" rel="noopener">PDF</a>` : ""}<a class="btn sm" href="${f("cv.docx")}">Word</a>${editing ? `<button type="button" class="icon-btn" data-cv="tailor" data-id="${esc(r.id)}" aria-label="Tailor again for ${esc(r.title)}">${svg(ICON.spark, 16)}</button>` : ""}</div></section>`;
-  }).join("");
+      <div class="cv-actions"><a class="btn sm" href="#role/${esc(r.id)}/documents">View</a>${d.cvPdf ? `<a class="btn sm" href="${f("cv.pdf")}" target="_blank" rel="noopener">PDF</a>` : ""}<a class="btn sm" href="${f("cv.docx")}">Word</a>${editing && live ? `<button type="button" class="icon-btn" data-cv="tailor" data-id="${esc(r.id)}" aria-label="Tailor again for ${esc(r.title)}">${svg(ICON.spark, 16)}</button>` : ""}</div></section>`;
+  };
+  const cards = tailored.map((r) => card(r, true)).join("");
+  const closedSection = closedCvs.length ? `<details class="closed card flush cv-closed"><summary>Dismissed and rejected roles<span class="count">${closedCvs.length}</span><span class="hint">CVs for roles you're no longer going for. Restore a role and its CV moves back up.</span></summary>
+    <div class="cv-pad"><div class="cv-grid">${closedCvs.map((r) => card(r, false)).join("")}</div></div></details>` : "";
   $("v-cvs").innerHTML = `<div class="cv-grid">${base}${rules}</div>
     <section class="card flush"><div class="tbl-head"><div class="row1"><div><h2>Tailored CVs</h2><span class="sub">${tailored.length ? `${plural(tailored.length, "role")} with a CV from Wren` : "Wren's CVs appear here"}</span></div></div></div>
-    <div class="cv-pad">${tailored.length ? `<div class="cv-grid">${cards}</div>` : emptyBox("No tailored CVs yet", "Move a lead to the pipeline, or use Tailor a CV, and Wren writes one with a cover letter.")}</div></section>`;
+    <div class="cv-pad">${tailored.length ? `<div class="cv-grid">${cards}</div>` : emptyBox("No tailored CVs yet", "Move a lead to the pipeline, or use Tailor a CV, and Wren writes one with a cover letter.")}</div></section>${closedSection}`;
 }
 $("v-cvs").addEventListener("click", (e) => {
   const b = e.target.closest("[data-cv]"); if (!b) return;

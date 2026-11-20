@@ -234,6 +234,9 @@ td.next.late { color: var(--alert); font-weight: 600; }
 .cv-actions { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: auto; }
 .cv-scroll { max-height: 10rem; overflow: auto; }
 .cv-pad { padding: 0 var(--s5) var(--s5); }
+.cv-closed { margin-top: 0; }
+.cv-closed[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: var(--s4); }
+.cv-closed > summary .count { margin-left: var(--s2); color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 400; }
 .badge { border-radius: var(--s2); }
 .cv-doc, .paper { background: var(--text); color: var(--bg); border-radius: var(--r-lg); padding: var(--s5) var(--s6); max-height: 60vh; overflow: auto; line-height: 1.5; }
 .paper { border-radius: var(--r); padding: var(--s5); max-height: 70vh; }

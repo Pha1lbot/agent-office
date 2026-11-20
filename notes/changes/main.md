@@ -11,6 +11,28 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-20: CVs for dismissed and rejected roles get their own folded-away section
+
+**What changed:**
+- `Tim's Job Search/shared/office-view/public/views.js`:
+  - `renderCVs()` splits the tailored CVs by the role's status. "Tailored CVs" shows only roles still in play.
+  - CVs for Dismissed (`skipped`) and Rejected roles move to a new collapsed section, "Dismissed and rejected roles", below it. It shows a count and keeps View, PDF and Word, but not Tailor again.
+  - The sidebar's CVs count counts only the live ones (new `CLOSED_CV` set).
+- `style.css`: three small `.cv-closed` rules. The section reuses the board's `.closed` summary style.
+
+**Why:** Tim asked for CVs for jobs that have been dismissed to move to a different section.
+
+**Decisions:**
+- Rejected roles go in the same section, since they are also no longer being pursued.
+- The split is by status, so restoring a role moves its CV straight back up.
+- Nothing is deleted.
+
+**How to check it:**
+- `git pull`, open the office and go to CVs. Checked on a copy of Tim's office: 12 live CVs at the top, 17 in the folded section, and the sidebar count went from 30 to 13.
+- `npm test` (60 pass).
+
+**Open items:** Hal's office has its own copy, which is unchanged.
+
 ### 2026-11-20: The 3D office picks up details from Tim's Meshy picture
 
 **What changed:** `Tim's Job Search/shared/office-view/public/scene.js`:
