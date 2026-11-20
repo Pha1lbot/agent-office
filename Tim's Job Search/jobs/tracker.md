@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 12 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · rejected: 1 · skipped: 78
+found: 8 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · rejected: 1 · skipped: 82
 
 ## Next actions
 
@@ -20,13 +20,9 @@ found: 12 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · rejec
 | found | 3 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-06 |
 | found | 4 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-06 |
 | found | 5 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 6 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
-| found | 7 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
-| found | 8 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
-| found | 9 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
-| found | 10 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
-| found | 11 | [Project Manager / Head of Operations](https://www.linkedin.com/jobs/view/4489140070/) | GutSee Health |  | London (hybrid) | 3 |  | 2026-11-19 |
-| found | 12 | [Senior Conference Operations Manager](https://www.linkedin.com/jobs/view/4492480284/) | Argus Media |  | London (hybrid) | 3 |  | 2026-11-20 |
+| found | 6 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
+| found | 7 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
+| found | 8 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
@@ -63,16 +59,20 @@ found: 12 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · rejec
 | skipped | 6 | [Chief Operating Officer - Live event production](https://uk.linkedin.com/jobs/view/chief-operating-officer-live-event-production-at-disrupt-search-4480513001) | Disrupt Search (agency client) | not stated | London Area | 3 |  | 2026-11-16 |
 | skipped | 6 | [Head of Operations](https://www.linkedin.com/jobs/view/4461930505/) | TryHackMe |  | London (Remote) | 2 |  | 2026-11-18 |
 | skipped | 6 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 2 |  | 2026-11-17 |
+| skipped | 6 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-20 |
 | skipped | 7 | [Marketing Production Manager, Sports](https://www.linkedin.com/jobs/view/4475056502/) | Prime Video & Amazon MGM Studios | Not listed | London | 3 |  | 2026-11-13 |
+| skipped | 7 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-20 |
 | skipped | 8 | Director of Live Operations | Bauer Media |  | Remote, UK or Germany | 3 |  | 2026-11-13 |
 | skipped | 9 | [Head of Operations & Events (Paid Role)](https://www.linkedin.com/jobs/view/4463974063/) | Pride in London |  | London (Hybrid) | 3 |  | 2026-11-18 |
 | skipped | 10 | [UK + EUR Event and Operations Manager](https://turfgames.com/blogs/news/uk-operations-manager-role) | Turf Games |  | UK, remote day-to-day with event travel | 3 |  | 2026-11-12 |
 | skipped | 10 | [Senior Production Manager](https://www.linkedin.com/jobs/view/4457905834/) | Live Wire Productions |  | Banbury | 3 |  | 2026-11-13 |
 | skipped | 11 | [Marketing Operations Manager, EMEA Events](https://www.linkedin.com/jobs/view/4477803685/) | Stripe | £81.4k–£122k | London | 2 |  | 2026-11-17 |
 | skipped | 11 | [Strategic Events Specialist, EMEA](https://www.linkedin.com/jobs/view/4476852245/) | Abnormal AI |  | United Kingdom (Remote) | 3 |  | 2026-11-13 |
+| skipped | 11 | [Project Manager / Head of Operations](https://www.linkedin.com/jobs/view/4489140070/) | GutSee Health |  | London (hybrid) | 3 |  | 2026-11-20 |
 | skipped | 12 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-17 |
 | skipped | 12 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-17 |
-| skipped | 13 | [Retail & Experiential Senior Manager](https://www.linkedin.com/jobs/view/4492469201/) | Relevent |  | London (on-site) | 3 |  | 2026-11-20 |
+| skipped | 12 | [Senior Conference Operations Manager](https://www.linkedin.com/jobs/view/4492480284/) | Argus Media |  | London (hybrid) | 3 |  | 2026-11-20 |
+| skipped | 12 | [Retail & Experiential Senior Manager](https://www.linkedin.com/jobs/view/4492469201/) | Relevent |  | London (on-site) | 3 |  | 2026-11-20 |
 | skipped | 15 | [Head of Operations](https://www.linkedin.com/jobs/view/4478797122/) | CF |  | London (Hybrid) | 3 |  | 2026-11-13 |
 | skipped | 16 | [Gaming & Streaming Senior Manager](https://www.linkedin.com/jobs/view/4484381283/) | Great Ormond Street Hospital Charity | £49.9k | London, hybrid | 3 |  | 2026-11-13 |
 | skipped | 18 | [Lead, Global Brand Experience](https://www.linkedin.com/jobs/view/4484062364/) | Snap Inc. | Not listed | London | 2 |  | 2026-11-11 |

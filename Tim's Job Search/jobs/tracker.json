@@ -1991,19 +1991,25 @@
       "source": "LinkedIn alert",
       "fit": 3,
       "priority": 6,
-      "status": "found",
+      "status": "skipped",
       "notes": "Concern: you already applied to Hexagon on 6 Nov; check it isn't this role",
       "found": "2026-11-11",
-      "updated": "2026-11-11",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-11",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
-      "verdict_why": "COO at an event series near Epsom; you applied to Hexagon on 6 Nov, so check it's a different role"
+      "verdict_why": "COO at an event series near Epsom; you applied to Hexagon on 6 Nov, so check it's a different role",
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-11-cf-head-of-operations",
@@ -2598,15 +2604,20 @@
       "source": "LinkedIn alert",
       "fit": 3,
       "priority": 7,
-      "status": "found",
+      "status": "skipped",
       "notes": "Track: Sports and venues operations; Concern: Seniority and pay not shown in the alert; Posted 2026-11-13",
       "found": "2026-11-13",
-      "updated": "2026-11-13",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-13",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
@@ -2655,7 +2666,7 @@
       "url": "https://www.linkedin.com/jobs/view/4463091092/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 8,
+      "priority": 6,
       "status": "found",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -3170,7 +3181,7 @@
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 9,
+      "priority": 7,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",
@@ -3436,7 +3447,7 @@
       "url": "https://www.linkedin.com/jobs/view/4486847589/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 10,
+      "priority": 8,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: on-site; Manager level",
       "found": "2026-11-19",
@@ -3461,19 +3472,25 @@
       "source": "LinkedIn alert",
       "fit": 3,
       "priority": 11,
-      "status": "found",
+      "status": "skipped",
       "notes": "Track: Head of Operations at scale-ups; Concern: health-tech; mixed PM and ops title",
       "found": "2026-11-19",
-      "updated": "2026-11-19",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-19",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
-      "verdict_why": "Head of Operations at a small, growing company, hybrid in London. It mixes PM and ops, in health tech."
+      "verdict_why": "Head of Operations at a small, growing company, hybrid in London. It mixes PM and ops, in health tech.",
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-19-reed-senior-operations-manager",
@@ -3608,7 +3625,7 @@
       "source": "LinkedIn alert",
       "fit": 3,
       "priority": 12,
-      "status": "found",
+      "status": "skipped",
       "notes": "Track: Live events and event production; Concern: pay not shown; business-information sector",
       "found": "2026-11-20",
       "updated": "2026-11-20",
@@ -3617,10 +3634,16 @@
           "date": "2026-11-20",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
-      "verdict_why": "Senior-level conference and event operations in London (hybrid), which fits his live events logistics. Pay isn't shown."
+      "verdict_why": "Senior-level conference and event operations in London (hybrid), which fits his live events logistics. Pay isn't shown.",
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-20-relevent-retail-experiential-senior-manager",
@@ -3631,7 +3654,7 @@
       "url": "https://www.linkedin.com/jobs/view/4492469201/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 13,
+      "priority": 12,
       "status": "skipped",
       "notes": "Track: Sports and venues operations; Concern: retail focus; on-site; pay not shown",
       "found": "2026-11-20",
@@ -3641,6 +3664,16 @@
           "date": "2026-11-20",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "found",
+          "by": "tim"
         },
         {
           "date": "2026-11-20",
