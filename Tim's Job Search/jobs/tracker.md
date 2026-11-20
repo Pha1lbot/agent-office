@@ -2,37 +2,38 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 14 · shortlisted: 1 · drafted: 12 · approved: 1 · applied: 7 · rejected: 1 · skipped: 77
+found: 13 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · rejected: 1 · skipped: 77
 
 ## Next actions
 
 - Rita rates 4 of your 6 new drafts as weak fits (DP World Tour, Product Madness, TryHackMe, ElevenLabs) and 2 as maybe (Pontoon, Carrington) - see each role's verdict_why. Drafting them anyway per your office request, but worth a look before you spend more time on them.
 - Preference review due: you have made 41 decisions since 2026-11-11. Want the team's suggestions for your preferences?
 - Capital.com (Senior Operations Manager: AI Automation) scores weak fit (2/5, skip): wants hands-on AI/LLM tooling and regulated fintech experience not on your CV, and it's a trading platform - a sector your preferences flag as not wanted. Drafting it anyway since you moved it to drafted, but worth a look before applying.
+- Sarafin Partners (Director of Operations) scores a weak fit (2/5, skip): it's a small independent financial planning firm, not one of your sectors, and wants financial planning experience you don't have. Drafting it anyway because you asked, but worth a look before applying.
 
 ## Roles
 
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
 |---|---|---|---|---|---|---|---|---|
-| found | 1 | [Director of Operations](https://www.linkedin.com/jobs/view/4492211056/) | Sarafin Partners | £65K-£90K | Sutton (on-site) | 3 |  | 2026-11-20 |
-| found | 2 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 3 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-06 |
-| found | 4 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-06 |
-| found | 5 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-06 |
-| found | 6 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 7 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
-| found | 8 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
-| found | 9 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
-| found | 10 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
-| found | 11 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
-| found | 12 | [Project Manager / Head of Operations](https://www.linkedin.com/jobs/view/4489140070/) | GutSee Health |  | London (hybrid) | 3 |  | 2026-11-19 |
-| found | 13 | [Senior Conference Operations Manager](https://www.linkedin.com/jobs/view/4492480284/) | Argus Media |  | London (hybrid) | 3 |  | 2026-11-20 |
-| found | 14 | [Retail & Experiential Senior Manager](https://www.linkedin.com/jobs/view/4492469201/) | Relevent |  | London (on-site) | 3 |  | 2026-11-20 |
+| found | 1 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-06 |
+| found | 2 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-06 |
+| found | 3 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-06 |
+| found | 4 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-06 |
+| found | 5 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-06 |
+| found | 6 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-11 |
+| found | 7 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-13 |
+| found | 8 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
+| found | 9 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
+| found | 10 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
+| found | 11 | [Project Manager / Head of Operations](https://www.linkedin.com/jobs/view/4489140070/) | GutSee Health |  | London (hybrid) | 3 |  | 2026-11-19 |
+| found | 12 | [Senior Conference Operations Manager](https://www.linkedin.com/jobs/view/4492480284/) | Argus Media |  | London (hybrid) | 3 |  | 2026-11-20 |
+| found | 13 | [Retail & Experiential Senior Manager](https://www.linkedin.com/jobs/view/4492469201/) | Relevent |  | London (on-site) | 3 |  | 2026-11-20 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
 | drafted | 1 | [Change & Adoption Manager - AI](https://www.reed.co.uk/jobs/change-adoption-manager-ai/57583404) | British Heart Foundation | £54,000 - £58,000 | London | 3 |  | 2026-11-19 |
 | drafted | 1 | [Senior Operations Manager](https://www.linkedin.com/jobs/view/4490662182/) | Reed | £50K-£60K | London (hybrid) | 4 |  | 2026-11-19 |
+| drafted | 1 | [Director of Operations](https://www.linkedin.com/jobs/view/4492211056/) | Sarafin Partners | £65K-£90K | Sutton (on-site) | 2 |  | 2026-11-20 |
 | drafted | 2 | [Senior Product Manager](https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045) | Product Madness |  | London | 2 |  | 2026-11-16 |
 | drafted | 2 | [Event Project Director](https://www.reed.co.uk/jobs/event-project-director/57586682) | Live Recruitment | £55,000 - £60,000 | GU227LA | 3 |  | 2026-11-18 |
 | drafted | 2 | [Events Operations Lead](https://www.linkedin.com/jobs/view/4487337038/) | McLaren Automotive Ltd |  | Woking | 3 |  | 2026-11-19 |

@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-20: Job search: Sarafin Partners shortlisted and drafted
+
+**What changed:** `jobs/roles/2026-11-20-sarafin-partners-director-of-operations/` (new): Rita's `listing.md`, Wren's `cv.json`, `cv.md`, `cover-letter.md` and `notes.md`, and the Word files and PDFs. The tracker has the role as drafted, fit 2, verdict skip, and action a15 flags the weak fit.
+
+**Why:** Tim chose "Draft Sarafin only" from today's three new leads.
+
+**Decisions:** Rita's read showed the employer is a small independent financial planning firm, not an operations business, and it wants financial planning experience Tim lacks, so she rated it skip (fit 2). The draft went ahead because Tim had asked for it, as with Insight Select and Capital.com. The cover letter says plainly that Tim comes from esports and live events. The CV fits its pages with no warnings.
+
+**How to check it:** `tracker.py list --summary` shows it as drafted. `notes.md` lists the gaps (no financial planning or FCA experience, no Practice Manager title, no named management-information reporting).
+
+**Open items:** Tim to decide whether to apply at all (a15). Argus Media and Relevent are still leads with no draft.
+
 ### 2026-11-20: Job search: daily search, 3 new leads
 
 **What changed:** `jobs/found.json`, `jobs/scout-state.json`, `jobs/tracker.json`, `jobs/tracker.md` and `jobs/today.md`. Tim asked for a new job search today. Scout reached 6 of 6 feed sources and found 0 new roles. 4 LinkedIn alert emails were read (24 roles seen) and 3 were queued and kept as Maybe leads: Argus Media Senior Conference Operations Manager, Relevent Retail & Experiential Senior Manager and Sarafin Partners Director of Operations (Sutton, £65-90k). Esports Insider and Guardian Jobs were tried by Rita and both block automated readers. The closed-postings check dismissed nothing (it can't read LinkedIn). Question a13 (preference review) was already open, so nothing new was asked.
