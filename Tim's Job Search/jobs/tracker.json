@@ -3632,7 +3632,7 @@
       "source": "LinkedIn alert",
       "fit": 3,
       "priority": 13,
-      "status": "found",
+      "status": "skipped",
       "notes": "Track: Sports and venues operations; Concern: retail focus; on-site; pay not shown",
       "found": "2026-11-20",
       "updated": "2026-11-20",
@@ -3641,10 +3641,16 @@
           "date": "2026-11-20",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
-      "verdict_why": "Experiential work for a football partnerships business fits his sports and live events background, but the role has a retail focus and is on-site."
+      "verdict_why": "Experiential work for a football partnerships business fits his sports and live events background, but the role has a retail focus and is on-site.",
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-20-sarafin-partners-director-of-operations",

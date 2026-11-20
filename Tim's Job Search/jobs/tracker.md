@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 13 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · rejected: 1 · skipped: 77
+found: 12 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · rejected: 1 · skipped: 78
 
 ## Next actions
 
@@ -27,7 +27,6 @@ found: 13 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · rejec
 | found | 10 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
 | found | 11 | [Project Manager / Head of Operations](https://www.linkedin.com/jobs/view/4489140070/) | GutSee Health |  | London (hybrid) | 3 |  | 2026-11-19 |
 | found | 12 | [Senior Conference Operations Manager](https://www.linkedin.com/jobs/view/4492480284/) | Argus Media |  | London (hybrid) | 3 |  | 2026-11-20 |
-| found | 13 | [Retail & Experiential Senior Manager](https://www.linkedin.com/jobs/view/4492469201/) | Relevent |  | London (on-site) | 3 |  | 2026-11-20 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
@@ -73,6 +72,7 @@ found: 13 · shortlisted: 1 · drafted: 13 · approved: 1 · applied: 7 · rejec
 | skipped | 11 | [Strategic Events Specialist, EMEA](https://www.linkedin.com/jobs/view/4476852245/) | Abnormal AI |  | United Kingdom (Remote) | 3 |  | 2026-11-13 |
 | skipped | 12 | [Senior Conference & Events Manager, Live Events](https://www.linkedin.com/jobs/view/4466280604/) | Convene | Not listed | London | 2 |  | 2026-11-17 |
 | skipped | 12 | [Venue Manager, Live Events (new opening)](https://www.linkedin.com/jobs/view/4466283486/) | Convene | Not listed | London, hybrid | 2 |  | 2026-11-17 |
+| skipped | 13 | [Retail & Experiential Senior Manager](https://www.linkedin.com/jobs/view/4492469201/) | Relevent |  | London (on-site) | 3 |  | 2026-11-20 |
 | skipped | 15 | [Head of Operations](https://www.linkedin.com/jobs/view/4478797122/) | CF |  | London (Hybrid) | 3 |  | 2026-11-13 |
 | skipped | 16 | [Gaming & Streaming Senior Manager](https://www.linkedin.com/jobs/view/4484381283/) | Great Ormond Street Hospital Charity | £49.9k | London, hybrid | 3 |  | 2026-11-13 |
 | skipped | 18 | [Lead, Global Brand Experience](https://www.linkedin.com/jobs/view/4484062364/) | Snap Inc. | Not listed | London | 2 |  | 2026-11-11 |
