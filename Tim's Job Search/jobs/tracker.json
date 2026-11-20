@@ -528,9 +528,9 @@
       "notes": "Why it fits: Owns the automation roadmap across Operations and leads a team of one or two Concern: Wants hands-on experience building automation in live operations",
       "fit": 2,
       "priority": null,
-      "status": "drafted",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-19",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-05",
@@ -540,11 +540,17 @@
           "date": "2026-11-18",
           "status": "drafted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
       "verdict": "skip",
-      "verdict_why": "Core ask is hands-on AI/LLM automation tooling (n8n, Python, SQL) and regulated fintech experience not in Tim's CV; Capital.com is a trading platform, a sector his preferences flag as not looking for"
+      "verdict_why": "Core ask is hands-on AI/LLM automation tooling (n8n, Python, SQL) and regulated fintech experience not in Tim's CV; Capital.com is a trading platform, a sector his preferences flag as not looking for",
+      "reason": "Wants coding"
     },
     {
       "id": "2026-11-05-this-is-beyond-senior-operations-event-producer",

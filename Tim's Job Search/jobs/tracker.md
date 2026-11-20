@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 5 · shortlisted: 1 · drafted: 8 · approved: 1 · applied: 7 · rejected: 1 · skipped: 92
+found: 5 · shortlisted: 1 · drafted: 7 · approved: 1 · applied: 7 · rejected: 1 · skipped: 93
 
 ## Next actions
 
@@ -29,7 +29,6 @@ found: 5 · shortlisted: 1 · drafted: 8 · approved: 1 · applied: 7 · rejecte
 | drafted | 2 | [Senior Product Manager](https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045) | Product Madness |  | London | 2 |  | 2026-11-16 |
 | drafted | 2 | [Event Project Director](https://www.reed.co.uk/jobs/event-project-director/57586682) | Live Recruitment | £55,000 - £60,000 | GU227LA | 3 |  | 2026-11-18 |
 | drafted | 2 | [Events Operations Lead](https://www.linkedin.com/jobs/view/4487337038/) | McLaren Automotive Ltd |  | Woking | 3 |  | 2026-11-19 |
-| drafted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London | 2 |  | 2026-11-19 |
 | approved | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-13 |
 | applied | 2 | [Product Operations Manager](https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960) | Electronic Arts |  | London | 5 | Follow up if no reply by 26 Nov | 2026-11-19 |
 | applied | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 | Follow up if no reply by 20 Nov | 2026-11-13 |
@@ -99,6 +98,7 @@ found: 5 · shortlisted: 1 · drafted: 8 · approved: 1 · applied: 7 · rejecte
 | skipped |  | Event Production Head of Operations | Invisible Blue Ltd | Not known | Not known |  | Read the advert; check pay | 2026-11-18 |
 | skipped |  | [AI Programme Manager (12-month fixed term)](https://www.itjobswatch.co.uk/jv/TechUK/Programme-Manager-Artificial-Intelligence-12-month-FTC-Job-London-South-East-England-UK-51h18v) | techUK | Not shown | London, hybrid |  |  | 2026-11-18 |
 | skipped |  | [AI Enablement Manager](https://ats.rippling.com/livewire/jobs/c5df0138-76a1-4a31-8bed-b4afd7ad0a56) | Livewire (gaming media) | Not shown | Not shown |  |  | 2026-11-18 |
+| skipped |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London | 2 |  | 2026-11-20 |
 | skipped |  | Director of Event Operations | Chess.com |  | Fully remote, US or EU applicants |  |  | 2026-11-06 |
 | skipped |  | [Live Broadcast Producer (Contractor Role)](https://hitmarker.net/jobs/esl-live-broadcast-producer-contractor-role-5058011) | ESL FACEIT Group | not stated | UK-based, London listed | 2 |  | 2026-11-06 |
 | skipped |  | [Director, Production (Licensed IP and Partner Titles - Fortnite Ecosystem)](https://uk.linkedin.com/jobs/view/director-production-licensed-ip-and-partner-titles-fortnite-ecosystem-at-epic-games-4484131731) | Epic Games | not stated | Greater London | 3 |  | 2026-11-06 |
