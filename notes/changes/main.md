@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-20: Job search: daily search, 3 new leads
+
+**What changed:** `jobs/found.json`, `jobs/scout-state.json`, `jobs/tracker.json`, `jobs/tracker.md` and `jobs/today.md`. Tim asked for a new job search today. Scout reached 6 of 6 feed sources and found 0 new roles. 4 LinkedIn alert emails were read (24 roles seen) and 3 were queued and kept as Maybe leads: Argus Media Senior Conference Operations Manager, Relevent Retail & Experiential Senior Manager and Sarafin Partners Director of Operations (Sutton, £65-90k). Esports Insider and Guardian Jobs were tried by Rita and both block automated readers. The closed-postings check dismissed nothing (it can't read LinkedIn). Question a13 (preference review) was already open, so nothing new was asked.
+
+**Why:** The daily search, run by hand.
+
+**Decisions:** Alerts for the wrong discipline (robotics workshops, lottery games, retail logistics), Manager-level roles outside gaming and roles far from Epsom were left out. The Sarafin role was kept although its sector is unknown, because pay isn't a reason to dismiss. The "application sent to Sporting Jobs" email was not logged in the tracker, because it doesn't say which role. Tim is asked in today.md.
+
+**How to check it:** `tracker.py found list --pending` is empty. `jobs/today.md` lists the leads.
+
+**Open items:** Esports Insider and Guardian Jobs need reading by hand. `tracker.py list` and `found list` crash on this PC with a cp1252 error unless `PYTHONIOENCODING=utf-8` is set. Event Industry Jobs' address in `search.json` is still the old one.
+
 ### 2026-11-19: Office changes: Capital.com drafted, EA and PGA revised against updated CV bank
 
 **What changed:**

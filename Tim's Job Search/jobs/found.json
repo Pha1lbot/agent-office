@@ -1234,86 +1234,78 @@
         "reason": "Hal: Weak fit, Manager-level customer experience role, on-site",
         "at": "2026-11-19T07:33"
       }
+    },
+    {
+      "id": "f56",
+      "title": "Senior Conference Operations Manager",
+      "company": "Argus Media",
+      "location": "London (hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4492480284/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Running conference and event operations at Senior Manager level draws on Tim's live events logistics, suppliers and budgets.",
+      "concern": "pay not shown; business-information sector",
+      "track": "Live events and event production",
+      "summary": "Senior Conference Operations Manager at Argus Media, London hybrid.",
+      "found_at": "2026-11-20T10:52",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-20-argus-media-senior-conference-operations-manager",
+        "reason": "",
+        "at": "2026-11-20T10:52"
+      }
+    },
+    {
+      "id": "f57",
+      "title": "Retail & Experiential Senior Manager",
+      "company": "Relevent",
+      "location": "London (on-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4492469201/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Football partnerships business; the experiential side fits Tim's live event and sports operations background.",
+      "concern": "retail focus; on-site; pay not shown",
+      "track": "Sports and venues operations",
+      "summary": "Retail & Experiential Senior Manager at Relevent Football Partners, London.",
+      "found_at": "2026-11-20T10:52",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-20-relevent-retail-experiential-senior-manager",
+        "reason": "",
+        "at": "2026-11-20T10:52"
+      }
+    },
+    {
+      "id": "f58",
+      "title": "Director of Operations",
+      "company": "Sarafin Partners",
+      "location": "Sutton (on-site)",
+      "pay": "£65K-£90K",
+      "link": "https://www.linkedin.com/jobs/view/4492211056/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Director-level operations role at £65-90k, a short commute from Epsom.",
+      "concern": "sector not shown; on-site; may be a recruiter advert",
+      "track": "Head of Operations at scale-ups",
+      "summary": "Director of Operations via Sarafin Partners, Sutton, £65-90k.",
+      "found_at": "2026-11-20T10:52",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-20-sarafin-partners-director-of-operations",
+        "reason": "",
+        "at": "2026-11-20T10:52"
+      }
     }
   ],
   "runs": [
-    {
-      "at": "2026-11-16T12:43",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
-    {
-      "at": "2026-11-16T12:43",
-      "via": "feed",
-      "found": 0,
-      "note": "823 results read",
-      "source": "Reed"
-    },
-    {
-      "at": "2026-11-16T12:44",
-      "via": "feed",
-      "found": 0,
-      "note": "3 of 3 boards read",
-      "source": "Company hiring pages: Ashby"
-    },
-    {
-      "at": "2026-11-16T12:44",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: SmartRecruiters"
-    },
-    {
-      "at": "2026-11-16T12:44",
-      "via": "feed",
-      "found": 0,
-      "note": "add REED_API_KEY to shared/job-search/.env",
-      "source": "Reed"
-    },
-    {
-      "at": "2026-11-16T12:44",
-      "via": "email",
-      "found": 3,
-      "note": "3 alert emails read, 17 roles seen, 3 queued",
-      "source": "LinkedIn Jobs"
-    },
-    {
-      "at": "2026-11-16T12:44",
-      "via": "email",
-      "found": 0,
-      "note": "No Indeed alert emails since 13 Nov. Set up the Indeed alerts listed in sources.md",
-      "source": "Indeed UK"
-    },
-    {
-      "at": "2026-11-17T07:52",
-      "via": "feed",
-      "found": 0,
-      "note": "5000 jobs listed, 53 looked possible from their titles, 53 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-17T07:52",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
-    {
-      "at": "2026-11-17T07:52",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
-    {
-      "at": "2026-11-17T07:52",
-      "via": "feed",
-      "found": 0,
-      "note": "3 of 3 boards read",
-      "source": "Company hiring pages: Ashby"
-    },
     {
       "at": "2026-11-17T07:52",
       "via": "feed",
@@ -1446,63 +1438,140 @@
       "found": 0,
       "note": "403 to automated readers on this PC too",
       "source": "Work in Sports"
+    },
+    {
+      "at": "2026-11-20T10:51",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 32 looked possible from their titles, 32 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-20T10:51",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-20T10:51",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-20T10:51",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-20T10:51",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-20T10:51",
+      "via": "feed",
+      "found": 0,
+      "note": "827 results read",
+      "source": "Reed"
+    },
+    {
+      "at": "2026-11-20T10:52",
+      "via": "email",
+      "found": 3,
+      "note": "4 alert emails read, 24 roles seen, 3 queued",
+      "source": "LinkedIn Jobs"
+    },
+    {
+      "at": "2026-11-20T10:52",
+      "via": "email",
+      "found": 0,
+      "note": "Only a temporary-jobs digest and a survey; not read",
+      "source": "Reed alerts"
+    },
+    {
+      "at": "2026-11-20T10:52",
+      "via": "email",
+      "found": 0,
+      "note": "No Indeed alert emails",
+      "source": "Indeed UK"
+    },
+    {
+      "at": "2026-11-20T10:53",
+      "via": "web",
+      "found": 0,
+      "note": "403 to automated readers, from this PC too; read it by hand",
+      "source": "Esports Insider jobs"
+    },
+    {
+      "at": "2026-11-20T10:53",
+      "via": "web",
+      "found": 0,
+      "note": "Fetch tool refuses the domain; read it by hand",
+      "source": "Guardian Jobs"
     }
   ],
-  "last_email_scan": "2026-11-19T07:33:00Z",
+  "last_email_scan": "2026-11-20T10:30:00Z",
   "sources": {
     "Hitmarker": {
       "total": 3,
-      "last_checked": "2026-11-19T07:32",
+      "last_checked": "2026-11-20T10:51",
       "result": "ok",
       "found": 0,
-      "note": "5000 jobs listed, 18 looked possible from their titles, 18 read",
-      "last_ok": "2026-11-19T07:32",
+      "note": "5000 jobs listed, 32 looked possible from their titles, 32 read",
+      "last_ok": "2026-11-20T10:51",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-19T07:32",
+      "last_checked": "2026-11-20T10:51",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-19T07:32",
+      "last_ok": "2026-11-20T10:51",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-19T07:32",
+      "last_checked": "2026-11-20T10:51",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-19T07:32",
+      "last_ok": "2026-11-20T10:51",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-19T07:32",
+      "last_checked": "2026-11-20T10:51",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-19T07:32",
+      "last_ok": "2026-11-20T10:51",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-19T07:32",
+      "last_checked": "2026-11-20T10:51",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-19T07:32",
+      "last_ok": "2026-11-20T10:51",
       "failures": 0
     },
     "Reed": {
       "total": 11,
-      "last_checked": "2026-11-19T07:33",
+      "last_checked": "2026-11-20T10:51",
       "result": "ok",
       "found": 0,
-      "note": "823 results read",
+      "note": "827 results read",
       "failures": 0,
-      "last_ok": "2026-11-19T07:33"
+      "last_ok": "2026-11-20T10:51"
     },
     "Event Industry Jobs": {
       "total": 0,
@@ -1522,38 +1591,38 @@
       "failures": 3
     },
     "LinkedIn Jobs": {
-      "total": 13,
-      "last_checked": "2026-11-19T07:33",
+      "total": 16,
+      "last_checked": "2026-11-20T10:52",
       "result": "ok",
-      "found": 7,
-      "note": "4 alert emails read, 14 roles seen, 7 queued",
+      "found": 3,
+      "note": "4 alert emails read, 24 roles seen, 3 queued",
       "failures": 0,
-      "last_ok": "2026-11-19T07:33"
+      "last_ok": "2026-11-20T10:52"
     },
     "Indeed UK": {
       "total": 0,
-      "last_checked": "2026-11-19T07:33",
+      "last_checked": "2026-11-20T10:52",
       "result": "empty",
       "found": 0,
       "note": "No Indeed alert emails",
       "failures": 0,
-      "last_ok": "2026-11-19T07:33"
+      "last_ok": "2026-11-20T10:52"
     },
     "Esports Insider jobs": {
       "total": 0,
-      "last_checked": "2026-11-13T20:28",
+      "last_checked": "2026-11-20T10:53",
       "result": "blocked",
       "found": 0,
-      "note": "The site returns 403 to automated readers (cloud session and WebFetch); read it by hand",
-      "failures": 1
+      "note": "403 to automated readers, from this PC too; read it by hand",
+      "failures": 2
     },
     "Guardian Jobs": {
       "total": 0,
-      "last_checked": "2026-11-13T20:28",
+      "last_checked": "2026-11-20T10:53",
       "result": "blocked",
       "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "failures": 1
+      "note": "Fetch tool refuses the domain; read it by hand",
+      "failures": 2
     },
     "The Unit List": {
       "total": 0,
@@ -1573,11 +1642,11 @@
     },
     "Reed alerts": {
       "total": 0,
-      "last_checked": "2026-11-19T07:33",
+      "last_checked": "2026-11-20T10:52",
       "result": "empty",
       "found": 0,
-      "note": "Only temporary-job and recommendation emails; not read",
-      "last_ok": "2026-11-19T07:33",
+      "note": "Only a temporary-jobs digest and a survey; not read",
+      "last_ok": "2026-11-20T10:52",
       "failures": 0
     }
   }
