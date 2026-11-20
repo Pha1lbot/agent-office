@@ -186,6 +186,9 @@ function buildRoom() {
     g.strokeStyle = "#8d785c"; g.lineWidth = 10; g.strokeRect(10, 10, 236, 236);
   });
   mesh(new THREE.BoxGeometry(W, 0.3, D), new THREE.MeshStandardMaterial({ map: planks, roughness: 0.8 }), W / 2, -0.15, D / 2);
+  // The room sits on a thick dark plinth, like a model on a stand (as in Tim's Meshy picture of the office).
+  mesh(rbox(W + 0.7, 0.9, D + 0.7, 0.06), mat(0x555b70, { roughness: 0.85 }), W / 2, -0.6, D / 2);
+  mesh(new THREE.BoxGeometry(W + 0.06, 0.08, D + 0.06), mat(0xc8935a, { roughness: 0.7 }), W / 2, -0.07, D / 2); // wooden edge of the floor
   for (const z of ZONES) {
     if (z.name === "kitchen") mesh(new THREE.BoxGeometry(z.w, 0.02, z.d), new THREE.MeshStandardMaterial({ map: tiles, roughness: 0.5 }), z.x + z.w / 2, 0.01, z.z + z.d / 2);
     if (z.name === "rug") mesh(rbox(z.w, 0.03, z.d, 0.01), new THREE.MeshStandardMaterial({ map: rugTex, roughness: 1 }), z.x + z.w / 2, 0.015, z.z + z.d / 2);
@@ -351,7 +354,8 @@ function buildRoom() {
   }
   for (const x of [17.4, 18.9, 20.4]) mesh(rbox(1.25, 0.16, 0.78, 0.08), 0x5a6070, x, 0.52, 15.25);
   for (const z of [11.6, 13.6]) mesh(rbox(0.78, 0.16, 1.7, 0.08), 0x5a6070, 22.85, 0.52, z);
-  mesh(rbox(0.5, 0.45, 0.16, 0.08), 0x9aa88a, 16.95, 0.78, 15.55).rotation.z = 0.2; // a green cushion
+  mesh(rbox(0.5, 0.45, 0.16, 0.08), 0xe0823a, 16.95, 0.78, 15.55).rotation.z = 0.2; // an orange cushion
+  mesh(rbox(0.5, 0.45, 0.16, 0.08), 0x3f7fd0, 20.9, 0.78, 15.55).rotation.z = -0.2; // and a blue one
   mesh(rbox(0.25, 0.65, 0.95, 0.08), 0x3f4452, 16.45, 0.33, 15.35); // sofa arm
   // Floor lamp by the sofa
   mesh(cyl(0.18, 0.2, 0.04), METAL, 15.9, 0.02, 14.7); mesh(cyl(0.02, 0.02, 1.7), METAL, 15.9, 0.87, 14.7);

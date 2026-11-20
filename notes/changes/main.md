@@ -11,6 +11,24 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-20: The 3D office picks up details from Tim's Meshy picture
+
+**What changed:** `Tim's Job Search/shared/office-view/public/scene.js`:
+- The room now sits on a thick slate-grey plinth, with a wooden edge round the floor.
+- The sofa's green cushion is replaced by an orange one and a blue one.
+- Nothing else changes: the layout, the staff and where they walk are all the same.
+
+**Why:** Tim had Meshy make a picture of the office, but couldn't download it as a 3D model because of Meshy's paywall. He asked Claude to copy it. A picture can't be loaded as a 3D model. Meshy's picture is the same layout as the existing room, so the clear differences were copied into the room the office already draws.
+
+**Decisions:**
+- Kept the dark page background rather than Meshy's cream one, to match the rest of the office.
+- Made the plinth lighter than the walls so it stands out against that background.
+
+**How to check it:** `git pull`, open the office and go to The office. The room stands on a grey base, and the sofa has orange and blue cushions.
+
+**Open items:**
+- If Tim later gets the real GLB file from Meshy, it can replace the drawn room. The staff's walking spots in `floorplan.js` would then need lining up with it.
+
 ### 2026-11-20: Hal gets a new look in the 3D office
 
 **What changed:** In `Tim's Job Search/shared/office-view/public/`:
