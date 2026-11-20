@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 3 · shortlisted: 2 · drafted: 12 · approved: 1 · applied: 7 · rejected: 1 · skipped: 87
+found: 3 · shortlisted: 2 · drafted: 11 · approved: 1 · applied: 7 · rejected: 1 · skipped: 88
 
 ## Next actions
 
@@ -30,7 +30,6 @@ found: 3 · shortlisted: 2 · drafted: 12 · approved: 1 · applied: 7 · reject
 | drafted | 2 | [Events Operations Lead](https://www.linkedin.com/jobs/view/4487337038/) | McLaren Automotive Ltd |  | Woking | 3 |  | 2026-11-19 |
 | drafted | 3 | [Event Director](https://www.linkedin.com/jobs/view/4484516383/) | Handle Recruitment (client unnamed) | £70k–£90k | London, hybrid | 2 |  | 2026-11-09 |
 | drafted | 3 | [Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London](https://www.reed.co.uk/jobs/digital-enablement-manager-ai-adoption-artificial-intelligence-digital-business-change-london/57568616) | Carrington Recruitment Solutions Ltd | ┬ú70,000 - ┬ú75,000 | WC1V6AZ | 3 |  | 2026-11-16 |
-| drafted | 3 | [Operations Director](https://www.reed.co.uk/jobs/operations-director/57584295) | Insight Select Ltd | £80,000 - £120,000 | BR60SX | 1 |  | 2026-11-19 |
 | drafted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London | 2 |  | 2026-11-19 |
 | approved | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-13 |
 | applied | 2 | [Product Operations Manager](https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960) | Electronic Arts |  | London | 5 | Follow up if no reply by 26 Nov | 2026-11-19 |
@@ -51,6 +50,7 @@ found: 3 · shortlisted: 2 · drafted: 12 · approved: 1 · applied: 7 · reject
 | skipped | 3 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-20 |
 | skipped | 3 | [Senior Producer](https://www.linkedin.com/jobs/view/4486100319/) | Big Global Events | £55k–£62k | London, hybrid | 3 |  | 2026-11-09 |
 | skipped | 3 | [Senior Producer, Events](https://www.linkedin.com/jobs/view/4483027028/) | Premier | £50k–£65k | London area, hybrid | 3 |  | 2026-11-09 |
+| skipped | 3 | [Operations Director](https://www.reed.co.uk/jobs/operations-director/57584295) | Insight Select Ltd | £80,000 - £120,000 | BR60SX | 1 |  | 2026-11-20 |
 | skipped | 5 | [Head of Political Events and Operations](https://www.linkedin.com/jobs/view/4483585204/) | The Conservative Party | Not listed | London area | 3 |  | 2026-11-09 |
 | skipped | 5 | [UK Operations Director](https://www.linkedin.com/jobs/view/4475864821/) | Prose on Pixels | Not listed | London | 3 |  | 2026-11-09 |
 | skipped | 5 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-20 |

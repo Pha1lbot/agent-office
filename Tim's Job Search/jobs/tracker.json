@@ -3349,10 +3349,10 @@
       "source": "Reed",
       "fit": 1,
       "priority": 3,
-      "status": "drafted",
+      "status": "skipped",
       "notes": "Track: Head of Operations at scale-ups; Posted 2026-11-17",
       "found": "2026-11-18",
-      "updated": "2026-11-19",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-18",
@@ -3366,6 +3366,11 @@
         {
           "date": "2026-11-19",
           "status": "drafted"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "skip",
