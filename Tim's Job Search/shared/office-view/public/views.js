@@ -47,11 +47,6 @@ function emptyBox(title, body, button, href) {
 }
 function countUp(root) {
   if (!ui.animate || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  root.querySelectorAll(".countup").forEach((el) => {
-    const to = Number(el.dataset.to) || 0, start = performance.now();
-    const tick = (t) => { const k = Math.min(1, (t - start) / 700); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
-    requestAnimationFrame(tick);
-  });
   requestAnimationFrame(() => root.querySelectorAll(".bar.pre").forEach((b) => b.classList.remove("pre")));
 }
 
@@ -99,40 +94,15 @@ $("collapse").addEventListener("click", () => collapse(!app.classList.contains("
 try { collapse(localStorage.getItem("office.sidebar") === "1"); } catch { /* fine */ }
 
 // ---------- Overview ----------
-function kpis() {
-  const rs = roles();
-  const active = rs.filter((r) => ACTIVE.has(r.status)).length;
-  const closed = rs.filter((r) => r.status === "rejected").length;
-  const sent = rs.filter((r) => ever(r, "applied")).length;
-  const ready = rs.filter((r) => r.status === "approved").length;
-  const ivs = rs.filter((r) => ever(r, "interview")).length;
-  const next = rs.filter((r) => r.interview_at && new Date(r.interview_at) >= Date.now()).sort((a, b) => a.interview_at.localeCompare(b.interview_at))[0];
-  let top = null;
-  for (const r of rs) {
-    if (!ACTIVE.has(r.status) && r.status !== "offer") continue;
-    const p = yearlyPay(r.pay), cur = /€/.test(r.pay || "") ? "€" : /\$/.test(r.pay || "") ? "$" : "£";
-    if (p && (!top || p > top.n)) top = { n: p, co: r.company, cur };
-  }
-  const tiles = [
-    { l: "Active roles", v: active, s: closed ? plural(closed, "rejected", "rejected") : "None rejected yet" },
-    { l: "Applications sent", v: sent, s: ready ? `${plural(ready, "role")} ready to send` : "Nothing waiting to send" },
-    { l: "Interviews", v: ivs, s: next ? `Next: ${new Date(next.interview_at).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" })}` : "None booked yet" },
-    { l: "Top of pay range", v: top, s: top ? top.co : "Add pay to a role to see it here" },
-  ];
-  return `<section class="grid-kpi" aria-label="Key numbers">${tiles.map((t, i) => {
-    const val = t.v === null ? "—" : typeof t.v === "number" ? `<span class="countup" data-to="${t.v}">${t.v}</span>` : `${t.v.cur}<span class="countup" data-to="${Math.round(t.v.n / 1000)}">${Math.round(t.v.n / 1000)}</span>k`;
-    return `<div class="card kpi${ui.animate ? " enter" : ""}"><span class="k-l">${t.l}</span><span class="k-v num">${val}</span><span class="k-s">${esc(t.s)}</span></div>`;
-  }).join("")}</section>`;
-}
-function pipelineChart() {
+/** The stages a role moves through, in order, each with its count and a link to where it lives. */
+function stageStrip() {
   const c = {}; for (const s of PIPE) c[s] = 0;
   for (const r of roles()) if (r.status in c) c[r.status]++;
-  const max = Math.max(1, ...Object.values(c));
-  const cols = `grid-template-columns:repeat(${PIPE.length},minmax(0,1fr))`;
-  return `<div class="card-h"><h2>Pipeline</h2><span class="sub">${plural(roles().length, "role")} tracked</span></div>
-    <div class="bars" style="${cols}" role="img" aria-label="Pipeline: ${PIPE.map((s) => `${s === "found" ? "Leads" : STATUS_LABEL[s]} ${c[s]}`).join(", ")}">${PIPE.map((s, i) => { const n = c[s], h = n ? Math.max(8, Math.round((n / max) * 100)) : 0;
-      return `<div class="bar-col"><span class="bar-val${n ? "" : " zero"} countup" data-to="${n}">${n}</span><div class="bar${n ? "" : " zero"}${ui.animate ? " pre" : ""}" style="height:${n ? `max(6px, calc(${h}% - 30px))` : "4px"};transition-delay:${i * 70}ms"></div></div>`; }).join("")}</div>
-    <div class="bar-labels" style="${cols}" aria-hidden="true">${PIPE.map((s) => `<span>${s === "found" ? "Leads" : STATUS_LABEL[s]}</span>`).join("")}</div>`;
+  const steps = PIPE.filter((s) => s !== "rejected");
+  const name = (s) => (s === "found" ? "Leads" : STATUS_LABEL[s]);
+  const item = (s) => `<li><a class="stage${c[s] ? "" : " none"}" href="${s === "found" ? "#leads" : "#roles"}"><span class="st-n num">${c[s]}</span><span class="st-l">${esc(name(s))}</span></a></li>`;
+  return `<ol class="stage-list">${steps.map(item).join("")}</ol>
+    <p class="sub u-flush">${plural(roles().length, "role")} tracked${c.rejected ? `, ${c.rejected} rejected` : ""}.</p>`;
 }
 function weeklyChart() {
   const start = new Date(); start.setHours(0, 0, 0, 0); start.setDate(start.getDate() - ((start.getDay() + 6) % 7));
@@ -155,7 +125,7 @@ function interviewItems(limit) {
   const rows = (limit ? list.filter((x) => x.t >= now).slice(0, limit) : list);
   return rows.map(({ r, t }) => `<a class="iv clickable${t < now ? " past" : ""}" href="#role/${esc(r.id)}/interview">
       <div class="iv-date"><b>${t.getDate()}</b><span>${t.toLocaleDateString("en-GB", { month: "short" })}</span></div>
-      <div class="u-flush"><div class="r-title">${esc(r.title)}</div><div class="r-co">${esc(r.company)} · ${esc(t.toLocaleString("en-GB", { weekday: "short", hour: "2-digit", minute: "2-digit" }))}${r.interview_with ? ` · with ${esc(r.interview_with)}` : ""}</div>
+      <div class="u-flush"><div class="r-title">${esc(r.title)}</div><div class="r-co meta-row"><span>${esc(r.company)}</span><span>${esc(t.toLocaleString("en-GB", { weekday: "short", hour: "2-digit", minute: "2-digit" }))}</span>${r.interview_with ? `<span>with ${esc(r.interview_with)}</span>` : ""}</div>
       ${(store.docs[r.id] || {}).prep ? `<div class="tags"><span class="tg docs">Cole's prep ready</span></div>` : ""}</div></a>`).join("");
 }
 function actionItems(limit) {
@@ -165,7 +135,7 @@ function actionItems(limit) {
   return list.map((a) => {
     const role = a.role && roleById(a.role);
     return `<div class="act${a.done ? " done" : ""}"><label class="tick-box"><input type="checkbox" data-action="${esc(a.id)}" ${a.done ? "checked" : ""} ${store.system.editing ? "" : "disabled"} aria-label="Done: ${esc(a.text)}"></label>
-      <div class="a-body"><span class="a-t">${esc(a.text)}</span>${a.options && !a.answer ? `<span class="a-q">${a.options.map((o) => `<button type="button" class="btn sm" data-answer="${esc(o)}" data-id="${esc(a.id)}" ${store.system.editing ? "" : "disabled"}>${esc(o)}</button>`).join("")}</span>` : ""}${a.answer ? `<span class="a-w">You answered: ${esc(a.answer)}</span>` : ""}<span class="a-w">${role ? `<a href="#role/${esc(role.id)}">${esc(role.company)}: ${esc(role.title)}</a> · ` : ""}${a.done && a.completed ? `done ${esc(shortDate(a.completed))}` : `added ${esc(shortDate(a.created))}`}</span></div></div>`;
+      <div class="a-body"><span class="a-t">${esc(a.text)}</span>${a.options && !a.answer ? `<span class="a-q">${a.options.map((o) => `<button type="button" class="btn sm" data-answer="${esc(o)}" data-id="${esc(a.id)}" ${store.system.editing ? "" : "disabled"}>${esc(o)}</button>`).join("")}</span>` : ""}${a.answer ? `<span class="a-w">You answered: ${esc(a.answer)}</span>` : ""}<span class="a-w meta-row">${role ? `<a href="#role/${esc(role.id)}">${esc(role.company)}: ${esc(role.title)}</a>` : ""}<span>${a.done && a.completed ? `Done ${esc(shortDate(a.completed))}` : `Added ${esc(shortDate(a.created))}`}</span></span></div></div>`;
   }).join("");
 }
 function addActionForm() {
@@ -176,13 +146,12 @@ function renderOverview() {
   const fresh = leads.filter((r) => r.verdict === "apply").length;
   const fb = latestFinds();
   const findLine = fb.items.length && fb.day === todayKey()
-    ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong>Rita found ${plural(fb.items.length, "new role")} ${dayWord(fb.day)}</strong>: ${fb.added.length} added to Leads, ${fb.dismissed.length} dismissed by Hal${fb.pending.length ? `, ${fb.pending.length} still to sort` : ""}.</span><button type="button" class="btn sm primary" data-found="open">Review</button></div>` : "";
-  $("ov-callout").innerHTML = findLine || (leads.length ? `<div class="callout${ui.animate ? " enter" : ""}"><span><strong>${plural(leads.length, "lead")}</strong> to look at${fresh ? `, ${fresh} that Hal says to apply for` : ""}.</span><a class="btn sm primary" href="#leads">Review</a></div>` : "");
-  $("ov-kpis").innerHTML = kpis();
-  $("ov-pipe").innerHTML = pipelineChart();
+    ? `<div class="callout"><span><strong>Rita found ${plural(fb.items.length, "new role")} ${dayWord(fb.day)}.</strong> Hal added ${fb.added.length} to Leads and dismissed ${fb.dismissed.length}${fb.pending.length ? `; ${fb.pending.length} still to sort` : ""}.</span><button type="button" class="btn sm primary" data-found="open">Review the new roles</button></div>` : "";
+  $("ov-callout").innerHTML = findLine || (leads.length ? `<div class="callout"><span><strong>${plural(leads.length, "lead")} to look at</strong>${fresh ? `, and Hal says to apply for ${fresh}` : ""}.</span><a class="btn sm primary" href="#leads">Review leads</a></div>` : "");
+  $("ov-stages").innerHTML = stageStrip();
   $("ov-week").innerHTML = weeklyChart();
   const ivs = interviewItems(4);
-  $("ov-iv").innerHTML = `<div class="card-h"><h2>Upcoming interviews</h2><a class="sub" href="#interviews">All</a></div>${ivs ? `<div class="list">${ivs}</div>` : emptyBox("None booked yet", "Set a role to Interview and add the date; Cole writes your prep.")}`;
+  $("ov-iv").innerHTML = `<div class="card-h"><h2>Upcoming interviews</h2><a class="sub" href="#interviews">All</a></div>${ivs ? `<div class="list">${ivs}</div>` : `<p class="sub u-flush">None booked yet. Set a role to Interview and add the date; Cole writes your prep.</p>`}`;
   const acts = actionItems(5);
   const openN = (store.tracker.actions || []).filter((a) => !a.done).length;
   $("ov-acts").innerHTML = `<div class="card-h"><h2>Next actions</h2><a class="sub" href="#actions">${openN > 5 ? `All ${openN}` : "All"}</a></div>${acts ? `<div class="list">${acts}</div>` : `<p class="sub u-flush">Nothing to do right now.</p>`}${addActionForm()}`;
@@ -331,7 +300,7 @@ function renderLeads() {
         : (editing ? `<button type="button" class="btn sm" data-lead="move" data-id="${esc(r.id)}" aria-label="To pipeline: ${esc(r.title)}. Wren writes the CV and cover letter.">${svg(ICON.arrow, 14, 2)}To pipeline</button>
           <button type="button" class="icon-btn" data-lead="tailor" data-id="${esc(r.id)}" aria-label="Tailor a CV for ${esc(r.title)}">${svg(ICON.spark, 16)}</button>
           <button type="button" class="icon-btn" data-lead="dismiss" data-id="${esc(r.id)}" aria-label="Dismiss ${esc(r.title)}">${svg(ICON.x, 16)}</button>` : "");
-      return `<tr class="clickable${ui.leadShow === "dismissed" ? " dismissed" : ""}" data-role="${esc(r.id)}"><td data-label="Role"><div><a class="r-title" href="#role/${esc(r.id)}">${esc(r.title)}</a><span class="r-co">${esc(r.company)}</span>${url ? ` · <a class="r-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Advert<span class="sr"> for ${esc(r.title)} (opens in a new tab)</span></a>` : ""}${tags ? `<div class="tags">${tags}</div>` : ""}</div></td>
+      return `<tr class="clickable${ui.leadShow === "dismissed" ? " dismissed" : ""}" data-role="${esc(r.id)}"><td data-label="Role"><div><a class="r-title" href="#role/${esc(r.id)}">${esc(r.title)}</a><span class="r-co">${esc(r.company)}</span>${url ? ` <a class="r-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Read the advert<span class="sr"> for ${esc(r.title)} (opens in a new tab)</span></a>` : ""}${tags ? `<div class="tags">${tags}</div>` : ""}</div></td>
         <td data-label="Location">${esc(r.location || "—")}</td><td data-label="Pay">${esc(r.pay || "—")}</td>
         <td data-label="Hal's view"><div><div class="u-row">${verdictBadge(r, "") || `<span class="sub">No verdict yet</span>`}${fitDots(r.fit)}</div>${why ? `<div class="clamp c-fit">${esc(why)}</div>` : ""}${r.reason && ui.leadShow === "dismissed" ? `<div class="clamp c-con">Reason: ${esc(r.reason)}</div>` : ""}</td>
         </div></td><td data-label="Actions"><div class="acts">${acts}</div></td></tr>`;
@@ -429,7 +398,7 @@ function renderCVs() {
   const cards = tailored.map((r) => {
     const d = store.docs[r.id] || {}, f = (n) => `/files/roles/${encodeURIComponent(r.id)}/${n}`;
     return `<section class="card cv-card"><div class="u-row"><span class="badge tailored">Tailored</span>${stageBadge(r.status)}</div>
-      <div><div class="cv-n">${esc(r.title)}</div><div class="cv-sub">${esc(r.company)}${r.updated ? ` · ${esc(shortDate(r.updated))}` : ""}</div></div>
+      <div><div class="cv-n">${esc(r.title)}</div><div class="cv-sub">${esc(r.company)}${r.updated ? `, updated ${esc(shortDate(r.updated))}` : ""}</div></div>
       <div class="tags">${d.letter ? `<span class="tg docs">Cover letter</span>` : ""}${d.cvPdf ? `<span class="tg docs">PDF</span>` : ""}${d.prep ? `<span class="tg docs">Interview prep</span>` : ""}</div>
       <div class="cv-actions"><a class="btn sm" href="#role/${esc(r.id)}/documents">View</a>${d.cvPdf ? `<a class="btn sm" href="${f("cv.pdf")}" target="_blank" rel="noopener">PDF</a>` : ""}<a class="btn sm" href="${f("cv.docx")}">Word</a>${editing ? `<button type="button" class="icon-btn" data-cv="tailor" data-id="${esc(r.id)}" aria-label="Tailor again for ${esc(r.title)}">${svg(ICON.spark, 16)}</button>` : ""}</div></section>`;
   }).join("");
@@ -458,8 +427,8 @@ function openTailor(id, rulesOnly = false) {
   const pick = roles().filter((r) => r.status === "found" || ACTIVE.has(r.status))
     .sort((a, b) => (LEAD.has(a.status) - LEAD.has(b.status)) || a.company.localeCompare(b.company));
   $("tailor-role").innerHTML = `<option value="">Pick a role…</option>` +
-    `<optgroup label="Roles">${pick.filter((r) => !LEAD.has(r.status)).map((r) => `<option value="${esc(r.id)}">${esc(r.title)} · ${esc(r.company)}</option>`).join("")}</optgroup>` +
-    `<optgroup label="Leads (this shortlists it)">${pick.filter((r) => LEAD.has(r.status)).map((r) => `<option value="${esc(r.id)}">${esc(r.title)} · ${esc(r.company)}</option>`).join("")}</optgroup>`;
+    `<optgroup label="Roles">${pick.filter((r) => !LEAD.has(r.status)).map((r) => `<option value="${esc(r.id)}">${esc(r.title)}, ${esc(r.company)}</option>`).join("")}</optgroup>` +
+    `<optgroup label="Leads (this shortlists it)">${pick.filter((r) => LEAD.has(r.status)).map((r) => `<option value="${esc(r.id)}">${esc(r.title)}, ${esc(r.company)}</option>`).join("")}</optgroup>`;
   tForm.reset(); tailorFile = null;
   $("tailor-file-msg").textContent = "";
   $("tailor-err").textContent = "";
@@ -511,13 +480,15 @@ function renderFound() {
       : r.status === "found" ? `<button type="button" class="btn sm ghost" data-found="dismiss" data-id="${esc(r.id)}">Dismiss</button>`
       : r.status === "skipped" ? `<button type="button" class="btn sm" data-found="restore" data-id="${esc(r.id)}">Add to Leads</button>` : "";
     return `<div class="found"><div class="f-main"><div class="u-row"><span class="fitb ${esc(i.fit)}">${FIT_LABEL[i.fit] || "Possible"}</span><span class="r-title">${esc(i.title)}</span></div>
-      <span class="r-co">${esc(i.company)}${i.location ? ` · ${esc(i.location)}` : ""}${i.pay ? ` · ${esc(i.pay)}` : ""} · ${esc(i.source || (i.via === "email" ? "Job alert email" : "Web search"))}${safeUrl(i.link) ? ` · <a class="r-link" href="${esc(i.link)}" target="_blank" rel="noopener noreferrer">Advert</a>` : ""}</span>
+      <span class="r-co">${esc(i.company)}</span>
+      <span class="meta-row sub">${i.pay ? `<span>${esc(i.pay)}</span>` : ""}${i.location ? `<span>${esc(i.location)}</span>` : ""}<span>From ${esc(i.source || (i.via === "email" ? "a job alert email" : "the web search"))}</span>${safeUrl(i.link) ? `<a class="r-link" href="${esc(i.link)}" target="_blank" rel="noopener noreferrer">Read the advert</a>` : ""}</span>
       ${i.why ? `<span class="clamp c-fit">${esc(i.why)}</span>` : ""}<div>${decision}</div></div>
       <div class="f-acts">${undo}${r ? `<a class="btn sm ghost" href="#role/${esc(r.id)}">Open</a>` : ""}</div></div>`;
   };
-  const runLine = run ? `Last run ${esc(longWhen(run.at.length <= 16 ? run.at + ":00" : run.at))} (${run.via === "email" ? "email scan" : "web search"}, ${plural(run.found || 0, "new find")})${run.note ? `: ${esc(run.note)}` : ""}.` : "No search has run yet.";
+  const runWhen = run && esc(longWhen(run.at.length <= 16 ? run.at + ":00" : run.at));
+  const runLine = run ? `Last search ${runWhen}: ${esc(run.source || "the job sites")} found ${run.found ? plural(run.found, "new role") : "nothing new"}${run.note ? ` (${esc(run.note)})` : ""}.` : "No search has run yet.";
   $("found-body").innerHTML = `<p class="sub">${runLine} Rita searches your job sites and job-alert emails at 6:31 on weekdays; Hal sorts what she finds.</p>
-    ${fb.items.length ? `<h3 class="found-h">${dayWord(fb.day) === "this morning" ? "This morning" : `Found ${dayWord(fb.day)}`}: ${fb.added.length} added, ${fb.dismissed.length} dismissed</h3><div class="list">${[...fb.added, ...fb.pending, ...fb.dismissed].map(row).join("")}</div>` : emptyBox("Nothing new yet", "New finds appear here after the morning search.")}`;
+    ${fb.items.length ? `<h3 class="found-h">${dayWord(fb.day) === "this morning" ? "Found this morning" : `Found ${dayWord(fb.day)}`}: Hal added ${fb.added.length} and dismissed ${fb.dismissed.length}</h3><div class="list">${[...fb.added, ...fb.pending, ...fb.dismissed].map(row).join("")}</div>` : emptyBox("Nothing new yet", "New finds appear here after the morning search.")}`;
 }
 document.addEventListener("click", async (e) => {
   const b = e.target.closest("[data-found]");

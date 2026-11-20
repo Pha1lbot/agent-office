@@ -1,13 +1,56 @@
 # Branch: claude/compassionate-ptolemy-vc0jj2
 
 **Started:** 2026-11-07
-**Status:** In review ([PR #32](https://github.com/Pha1lbot/agent-office/pull/32): Adzuna removed). Earlier work merged in PRs #18, #19, #20, #28, #29, #30 and #31.
+**Status:** Dashboard review in progress (restarted from `main` on 2026-11-20). Earlier work merged in PRs #18, #19, #20, #28 to #32, #34 and #35.
 
 ## Purpose
 
 Tim shared a picture of a popular "build your first AI team" one-shot prompt and asked what the agent office can learn from it and what to improve. This branch holds that review. It changes no agent, prompt or convention until Tim picks which improvements to make.
 
 ## Change log
+
+### 2026-11-20: Overview becomes Hal's morning briefing; template habits removed
+
+**What changed** (all in `Tim's Job Search/shared/office-view/public/`)
+- `index.html`: the Overview is reordered. First comes "Today from Hal": the new-finds line and the "waiting on you" list, full width. Then a stage strip, then Next actions beside Upcoming interviews and Applications per week. The office status (backup, Hal, automatic runs, auto start) moves to a quiet line at the foot. Newsreader (a serif) is added to the Google Fonts link.
+- `views.js`:
+  - The four KPI tiles (`kpis()`) and the pipeline bar chart (`pipelineChart()`) are replaced by `stageStrip()`: Leads, Shortlisted, Drafted, Approved, Applied, Interview and Offer in order, each a link with its count, plus "N roles tracked, N rejected".
+  - The count-up animation and the `.enter` rise on cards are gone.
+  - Middle-dot meta strings ("Company · Location · Pay · Source · Advert") become separate spans or plain sentences, in interviews, CVs, actions, the leads table and the new-leads dialog. "Advert" becomes "Read the advert".
+  - The new-leads dialog's run line now names the site ("Last search Fri 20 Nov, 10:53: Reed found nothing new (823 results read)") instead of calling every run a "web search".
+- `dashboard.js`:
+  - `renderSystem()` writes problems to a new `#ov-alert` box at the top: a backup problem, Hal's last run failing, viewing-only, or a token budget used up. Everything else goes to the foot line.
+  - Copy now reads "Hal will sort 2 requests in 8:02", "Start Hal now" and "Hal starts on his own: on".
+  - The token count shows only when a budget is used up.
+  - Board cards' pay and location use spans, not a middle dot.
+- `role.js`, `office.js`: the same middle-dot fixes.
+- `style.css`:
+  - New `--serif` token (Newsreader, then Georgia) used only for the greeting and the briefing heading.
+  - New styles: `.brief`, `.stage-list` and `.stage` (4 columns on phones, with no connectors), `.officebar`, `.meta-row` and `.narrow-col`.
+  - The applications chart is shorter.
+  - All-caps labels are now sentence case: the Target eyebrow, table headings, phone table labels, interview month and CV section headings. The staff contracts keep theirs.
+  - Monospace is used only for keyboard keys. Counts use Geist with tabular figures.
+  - The KPI and rise-animation rules are removed.
+
+**Why:** Tim asked whether anything should change on the dashboard now that the frontend-design skill is available. The review found three problems:
+- The Overview opened with system plumbing and four generic KPI tiles, and kept "waiting on you" (its main job) in a side card.
+- The pipeline chart was dominated by one bar.
+- Several habits the skill calls templated: all-caps labels, middle-dot meta lines, monospace numbers and entrance animations on every card.
+
+**Decisions:**
+- Kept the token system, colours, Geist, the dark theme, the board, the Leads table, the 3D office and the paper contracts. They were rebuilt on 13 Nov and work.
+- Spent the one bold choice on Hal's voice: a serif greeting and briefing heading, tied to the office's existing paper contracts.
+- Problems still surface at the top. Routine status is quiet at the foot.
+
+**How to check it:**
+- Open the office and look at the Overview at desktop and phone width: the briefing first, the stage strip, and the status line at the foot.
+- Click a stage to reach Leads or Roles.
+- Open New leads from Leads and check the run line names the site.
+- `npm test` in `shared/office-view` (60 pass). Screenshots were taken at 1440 and 390 wide on a copy of the office.
+
+**Open items:**
+- Hal's office has its own copy of the office view and doesn't have these changes. Port them if Tim wants.
+- `mockup/` screenshots are now out of date.
 
 ### 2026-11-13: `/office setup` for Hal, and Hal's set-up documents rewritten
 

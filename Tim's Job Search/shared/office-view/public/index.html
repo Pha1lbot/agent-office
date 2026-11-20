@@ -6,7 +6,7 @@
 <title>Tim’s Job Search</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script type="importmap">{ "imports": { "three": "/vendor/three.mjs" } }</script>
 </head>
@@ -42,18 +42,21 @@
     </header>
 
     <section id="v-overview" class="view" hidden>
-      <div class="sysbar" id="sysbar"></div>
-      <div id="ov-callout"></div>
-      <div id="ov-kpis"></div>
+      <div id="ov-alert"></div>
+      <section class="brief" aria-labelledby="brief-h">
+        <h2 id="brief-h">Today from Hal</h2>
+        <div id="ov-callout"></div>
+        <div id="todo"><ul class="wait" id="todo-list"></ul></div>
+      </section>
+      <nav class="stages" id="ov-stages" aria-label="Where your roles are"></nav>
       <div class="row">
-        <section class="card wide" id="ov-pipe"></section>
-        <section class="card narrow"><div class="card-h"><h2>Waiting on you</h2></div><div id="todo"><ul class="wait" id="todo-list"></ul></div></section>
+        <section class="card wide" id="ov-acts"></section>
+        <div class="u-col narrow-col">
+          <section class="card" id="ov-iv"></section>
+          <section class="card" id="ov-week"></section>
+        </div>
       </div>
-      <div class="row">
-        <section class="card wide" id="ov-week"></section>
-        <section class="card narrow" id="ov-iv"></section>
-      </div>
-      <section class="card narrow" id="ov-acts"></section>
+      <footer class="officebar" id="sysbar" aria-label="Office status"></footer>
       <p class="build-foot" id="build-foot"></p>
     </section>
 

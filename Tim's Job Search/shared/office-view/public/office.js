@@ -94,7 +94,7 @@ function renderBoard() {
   const counts = {};
   for (const r of roles) counts[r.status] = (counts[r.status] || 0) + 1;
   const picked = roles.filter((r) => PICKED.has(r.status)).length;
-  boardLine = roles.length ? `${counts.found || 0} found · ${picked} picked · ${counts.drafted || 0} drafted` : "No roles yet";
+  boardLine = roles.length ? `${counts.found || 0} found, ${picked} picked, ${counts.drafted || 0} drafted` : "No roles yet";
   setBoard(boardLine, tokensLine);
 }
 let boardLine = "", tokensLine = "";
