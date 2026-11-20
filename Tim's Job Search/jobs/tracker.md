@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 5 · shortlisted: 1 · drafted: 6 · approved: 1 · applied: 7 · rejected: 1 · skipped: 94
+found: 5 · shortlisted: 1 · drafted: 5 · approved: 1 · applied: 7 · rejected: 1 · skipped: 95
 
 ## Next actions
 
@@ -25,7 +25,6 @@ found: 5 · shortlisted: 1 · drafted: 6 · approved: 1 · applied: 7 · rejecte
 | drafted | 1 | [Event Production Manager](https://www.linkedin.com/jobs/view/4485388728/) | Formula 1 | Not listed | London | 3 |  | 2026-11-20 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
 | drafted | 1 | [Director of Operations](https://www.linkedin.com/jobs/view/4492211056/) | Sarafin Partners | £65K-£90K | Sutton (on-site) | 2 |  | 2026-11-20 |
-| drafted | 2 | [Senior Product Manager](https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045) | Product Madness |  | London | 2 |  | 2026-11-16 |
 | drafted | 2 | [Event Project Director](https://www.reed.co.uk/jobs/event-project-director/57586682) | Live Recruitment | £55,000 - £60,000 | GU227LA | 3 |  | 2026-11-18 |
 | drafted | 2 | [Events Operations Lead](https://www.linkedin.com/jobs/view/4487337038/) | McLaren Automotive Ltd |  | Woking | 3 |  | 2026-11-19 |
 | approved | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-13 |
@@ -46,6 +45,7 @@ found: 5 · shortlisted: 1 · drafted: 6 · approved: 1 · applied: 7 · rejecte
 | skipped | 2 | [Senior Operations & Event Producer](https://www.linkedin.com/jobs/view/4473635792/) | This is Beyond | £60k–£65k | London area, hybrid | 3 |  | 2026-11-09 |
 | skipped | 2 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 2 |  | 2026-11-20 |
 | skipped | 2 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-20 |
+| skipped | 2 | [Senior Product Manager](https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045) | Product Madness |  | London | 2 |  | 2026-11-20 |
 | skipped | 3 | [Director of Soccer Aid (interim)](https://www.linkedin.com/jobs/view/4483454939/) | UNICEF UK | £105k, fixed term | London area | 3 |  | 2026-11-11 |
 | skipped | 3 | [Event Director](https://www.linkedin.com/jobs/view/4484516383/) | Handle Recruitment (client unnamed) | £70k–£90k | London, hybrid | 2 |  | 2026-11-20 |
 | skipped | 3 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-20 |

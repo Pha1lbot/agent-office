@@ -3187,10 +3187,10 @@
       "source": "Hitmarker",
       "fit": 2,
       "priority": 2,
-      "status": "drafted",
+      "status": "skipped",
       "notes": "Track: Product and implementation in event, sport, gaming and workf; Posted 2026-11-06",
       "found": "2026-11-16",
-      "updated": "2026-11-16",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-16",
@@ -3206,10 +3206,16 @@
           "date": "2026-11-16",
           "status": "drafted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "skip",
-      "verdict_why": "Gaming sector fits but it is hands-on PM work (SQL, A/B testing, roadmaps) not shown in the CV"
+      "verdict_why": "Gaming sector fits but it is hands-on PM work (SQL, A/B testing, roadmaps) not shown in the CV",
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-16-pride-in-london-head-of-operations-events-paid-role",
