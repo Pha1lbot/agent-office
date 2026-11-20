@@ -2489,10 +2489,10 @@
       "source": "Reed",
       "fit": 3,
       "priority": 1,
-      "status": "drafted",
+      "status": "skipped",
       "notes": "Track: Head of Operations at scale-ups; Posted 2026-10-28",
       "found": "2026-11-12",
-      "updated": "2026-11-12",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-12",
@@ -2508,10 +2508,16 @@
           "date": "2026-11-12",
           "status": "drafted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
-      "verdict_why": "Head of Operations at scale-ups: the title matches 'Head of Operations' and the advert uses the track's words"
+      "verdict_why": "Head of Operations at scale-ups: the title matches 'Head of Operations' and the advert uses the track's words",
+      "reason": "D2C"
     },
     {
       "id": "2026-11-12-reed-head-of-operations",
