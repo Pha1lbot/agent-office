@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 3 · shortlisted: 2 · drafted: 11 · approved: 1 · applied: 7 · rejected: 1 · skipped: 88
+found: 3 · shortlisted: 2 · drafted: 10 · approved: 1 · applied: 7 · rejected: 1 · skipped: 89
 
 ## Next actions
 
@@ -23,7 +23,6 @@ found: 3 · shortlisted: 2 · drafted: 11 · approved: 1 · applied: 7 · reject
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
 | drafted | 1 | [Change & Adoption Manager - AI](https://www.reed.co.uk/jobs/change-adoption-manager-ai/57583404) | British Heart Foundation | £54,000 - £58,000 | London | 3 |  | 2026-11-19 |
-| drafted | 1 | [Senior Operations Manager](https://www.linkedin.com/jobs/view/4490662182/) | Reed | £50K-£60K | London (hybrid) | 4 |  | 2026-11-19 |
 | drafted | 1 | [Director of Operations](https://www.linkedin.com/jobs/view/4492211056/) | Sarafin Partners | £65K-£90K | Sutton (on-site) | 2 |  | 2026-11-20 |
 | drafted | 2 | [Senior Product Manager](https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045) | Product Madness |  | London | 2 |  | 2026-11-16 |
 | drafted | 2 | [Event Project Director](https://www.reed.co.uk/jobs/event-project-director/57586682) | Live Recruitment | £55,000 - £60,000 | GU227LA | 3 |  | 2026-11-18 |
@@ -44,6 +43,7 @@ found: 3 · shortlisted: 2 · drafted: 11 · approved: 1 · applied: 7 · reject
 | skipped | 1 | [Event Production Manager](https://www.linkedin.com/jobs/view/4485388728/) | Formula 1 | Not listed | London | 4 |  | 2026-11-09 |
 | skipped | 1 | [Senior Production Manager](https://www.linkedin.com/jobs/view/4482124492/) | The Crowd | £60k–£70k | London area, hybrid | 4 |  | 2026-11-08 |
 | skipped | 1 | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-17 |
+| skipped | 1 | [Senior Operations Manager](https://www.linkedin.com/jobs/view/4490662182/) | Reed | £50K-£60K | London (hybrid) | 4 |  | 2026-11-20 |
 | skipped | 2 | [Senior Operations & Event Producer](https://www.linkedin.com/jobs/view/4473635792/) | This is Beyond | £60k–£65k | London area, hybrid | 3 |  | 2026-11-09 |
 | skipped | 2 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-20 |
 | skipped | 3 | [Director of Soccer Aid (interim)](https://www.linkedin.com/jobs/view/4483454939/) | UNICEF UK | £105k, fixed term | London area | 3 |  | 2026-11-11 |
