@@ -1241,9 +1241,9 @@
       "notes": "Posted: 30 Oct",
       "fit": 4,
       "priority": 1,
-      "status": "skipped",
+      "status": "drafted",
       "found": "2026-11-05",
-      "updated": "2026-11-09",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-05",
@@ -1252,6 +1252,11 @@
         {
           "date": "2026-11-09",
           "status": "skipped",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "drafted",
           "by": "tim"
         }
       ],
@@ -4259,6 +4264,14 @@
       "at": "2026-11-20T14:33",
       "done": true,
       "handled": "2026-11-20T14:37"
+    },
+    {
+      "id": "i38",
+      "role": "2026-11-05-formula-1-event-production-manager",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "Event Production Manager @ Formula 1",
+      "at": "2026-11-20T14:58",
+      "done": false
     }
   ]
 }
