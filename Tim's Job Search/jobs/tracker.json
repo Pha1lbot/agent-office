@@ -3787,7 +3787,7 @@
       "url": "https://www.reed.co.uk/jobs/operations-manager/57595613?source=details.similarjobs",
       "source": "Tim",
       "fit": 2,
-      "priority": 4,
+      "priority": 5,
       "status": "found",
       "notes": "",
       "found": "2026-11-20",
@@ -3801,6 +3801,28 @@
       ],
       "verdict": "skip",
       "verdict_why": "Generic temp Ops Manager role (3-month contract), no sector match, pay borderline vs £50k min"
+    },
+    {
+      "id": "2026-11-20-movember-program-manager-men-s-health-community-f",
+      "title": "Program Manager, Men's Health Community Fund | 12 Month Contract + 12 Month Extension",
+      "company": "Movember",
+      "location": "hybrid",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4488837847/",
+      "source": "Tim",
+      "fit": null,
+      "priority": 4,
+      "status": "found",
+      "notes": "",
+      "found": "2026-11-20",
+      "updated": "2026-11-20",
+      "history": [
+        {
+          "date": "2026-11-20",
+          "status": "found",
+          "by": "tim"
+        }
+      ]
     }
   ],
   "actions": [
@@ -4273,6 +4295,14 @@
       "at": "2026-11-20T14:58",
       "done": true,
       "handled": "2026-11-20T15:04"
+    },
+    {
+      "id": "i39",
+      "role": "2026-11-20-movember-program-manager-men-s-health-community-f",
+      "task": "Read the advert, write the listing, score the fit and give a verdict",
+      "title": "Program Manager, Men's Health Community Fund | 12 Month Contract + 12 Month Extension @ Movember",
+      "at": "2026-11-20T17:16",
+      "done": false
     }
   ]
 }

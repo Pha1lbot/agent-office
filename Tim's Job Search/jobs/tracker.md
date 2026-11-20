@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 4 · shortlisted: 1 · drafted: 10 · approved: 1 · applied: 7 · rejected: 1 · skipped: 90
+found: 5 · shortlisted: 1 · drafted: 10 · approved: 1 · applied: 7 · rejected: 1 · skipped: 90
 
 ## Next actions
 
@@ -19,7 +19,8 @@ found: 4 · shortlisted: 1 · drafted: 10 · approved: 1 · applied: 7 · reject
 | found | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
 | found | 2 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
 | found | 3 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
-| found | 4 | [Operations Manager](https://www.reed.co.uk/jobs/operations-manager/57595613?source=details.similarjobs) | Reed | £22 - £30 per hour | Chessington | 2 |  | 2026-11-20 |
+| found | 4 | [Program Manager, Men's Health Community Fund / 12 Month Contract + 12 Month Extension](https://www.linkedin.com/jobs/view/4488837847/) | Movember |  | hybrid |  |  | 2026-11-20 |
+| found | 5 | [Operations Manager](https://www.reed.co.uk/jobs/operations-manager/57595613?source=details.similarjobs) | Reed | £22 - £30 per hour | Chessington | 2 |  | 2026-11-20 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Event Production Manager](https://www.linkedin.com/jobs/view/4485388728/) | Formula 1 | Not listed | London | 3 |  | 2026-11-20 |
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
