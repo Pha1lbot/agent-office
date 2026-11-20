@@ -677,13 +677,18 @@
       "notes": "Posted: 30 Oct",
       "fit": 3,
       "priority": 1,
-      "status": "found",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-06",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-05",
           "status": "found"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "imported_from": "dashboard lead",
@@ -2653,10 +2658,10 @@
       "source": "LinkedIn alert",
       "fit": 2,
       "priority": 8,
-      "status": "drafted",
+      "status": "skipped",
       "notes": "Track: Sports and venues operations; Concern: Title is 'Manager'; pay and level not shown; Posted 2026-11-13",
       "found": "2026-11-13",
-      "updated": "2026-11-16",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-13",
@@ -2672,6 +2677,11 @@
           "date": "2026-11-16",
           "status": "drafted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "skip",
@@ -2686,7 +2696,7 @@
       "url": "https://www.linkedin.com/jobs/view/4463091092/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 2,
+      "priority": 1,
       "status": "found",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -3201,7 +3211,7 @@
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 3,
+      "priority": 2,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",
@@ -3467,7 +3477,7 @@
       "url": "https://www.linkedin.com/jobs/view/4486847589/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 4,
+      "priority": 3,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: on-site; Manager level",
       "found": "2026-11-19",

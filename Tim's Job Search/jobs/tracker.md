@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 4 · shortlisted: 2 · drafted: 13 · approved: 1 · applied: 7 · rejected: 1 · skipped: 85
+found: 3 · shortlisted: 2 · drafted: 12 · approved: 1 · applied: 7 · rejected: 1 · skipped: 87
 
 ## Next actions
 
@@ -15,10 +15,9 @@ found: 4 · shortlisted: 2 · drafted: 13 · approved: 1 · applied: 7 · reject
 
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
 |---|---|---|---|---|---|---|---|---|
-| found | 1 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-06 |
-| found | 2 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
-| found | 3 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
-| found | 4 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
+| found | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
+| found | 2 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
+| found | 3 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
 | shortlisted | 2 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-20 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
@@ -32,7 +31,6 @@ found: 4 · shortlisted: 2 · drafted: 13 · approved: 1 · applied: 7 · reject
 | drafted | 3 | [Event Director](https://www.linkedin.com/jobs/view/4484516383/) | Handle Recruitment (client unnamed) | £70k–£90k | London, hybrid | 2 |  | 2026-11-09 |
 | drafted | 3 | [Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London](https://www.reed.co.uk/jobs/digital-enablement-manager-ai-adoption-artificial-intelligence-digital-business-change-london/57568616) | Carrington Recruitment Solutions Ltd | ┬ú70,000 - ┬ú75,000 | WC1V6AZ | 3 |  | 2026-11-16 |
 | drafted | 3 | [Operations Director](https://www.reed.co.uk/jobs/operations-director/57584295) | Insight Select Ltd | £80,000 - £120,000 | BR60SX | 1 |  | 2026-11-19 |
-| drafted | 8 | [HotelPlanner Tour Tournament Business Manager](https://www.linkedin.com/jobs/view/4489085965/) | DP World Tour |  | Wentworth | 2 |  | 2026-11-16 |
 | drafted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London | 2 |  | 2026-11-19 |
 | approved | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-13 |
 | applied | 2 | [Product Operations Manager](https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960) | Electronic Arts |  | London | 5 | Follow up if no reply by 26 Nov | 2026-11-19 |
@@ -43,6 +41,7 @@ found: 4 · shortlisted: 2 · drafted: 13 · approved: 1 · applied: 7 · reject
 | applied |  | [Esport Specialist](https://www.linkedin.com/jobs/view/4308233024/) | NetEase Games |  | UK remote | 2 | Follow up if no reply by 15 Nov | 2026-11-08 |
 | applied |  | [Director of Team Operations](https://uk.linkedin.com/jobs/view/director-of-team-operations-at-hexagon-world-series-4476411854) | Hexagon World Series | not stated | London, UK or Madrid, Spain | 3 | Follow up if no reply by 13 Nov | 2026-11-11 |
 | rejected |  | [Senior Manager, Admin & Operations (Football Schools)](https://www.linkedin.com/jobs/view/4475254089/) | Chelsea FC | Not shown | Cobham and Stamford Bridge, on-site |  | Follow up if no reply by 13 Nov | 2026-11-17 |
+| skipped | 1 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-20 |
 | skipped | 1 | [Event Production Manager](https://www.linkedin.com/jobs/view/4485388728/) | Formula 1 | Not listed | London | 4 |  | 2026-11-09 |
 | skipped | 1 | [Senior Production Manager](https://www.linkedin.com/jobs/view/4482124492/) | The Crowd | £60k–£70k | London area, hybrid | 4 |  | 2026-11-08 |
 | skipped | 1 | [Head of Events and Experiences](https://uk.linkedin.com/jobs/view/head-of-events-and-experiences-at-vitality-4486057821) | Vitality | not stated | London, hybrid (2 days per week in office) | 3 |  | 2026-11-17 |
@@ -63,6 +62,7 @@ found: 4 · shortlisted: 2 · drafted: 13 · approved: 1 · applied: 7 · reject
 | skipped | 7 | [Marketing Production Manager, Sports](https://www.linkedin.com/jobs/view/4475056502/) | Prime Video & Amazon MGM Studios | Not listed | London | 3 |  | 2026-11-13 |
 | skipped | 7 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-20 |
 | skipped | 8 | Director of Live Operations | Bauer Media |  | Remote, UK or Germany | 3 |  | 2026-11-13 |
+| skipped | 8 | [HotelPlanner Tour Tournament Business Manager](https://www.linkedin.com/jobs/view/4489085965/) | DP World Tour |  | Wentworth | 2 |  | 2026-11-20 |
 | skipped | 9 | [Head of Operations & Events (Paid Role)](https://www.linkedin.com/jobs/view/4463974063/) | Pride in London |  | London (Hybrid) | 3 |  | 2026-11-18 |
 | skipped | 10 | [UK + EUR Event and Operations Manager](https://turfgames.com/blogs/news/uk-operations-manager-role) | Turf Games |  | UK, remote day-to-day with event travel | 3 |  | 2026-11-12 |
 | skipped | 10 | [Senior Production Manager](https://www.linkedin.com/jobs/view/4457905834/) | Live Wire Productions |  | Banbury | 3 |  | 2026-11-13 |
