@@ -20,7 +20,6 @@
   --t1: 0.75rem; --t2: 0.875rem; --t3: 1rem; --t4: 1.25rem; --t5: 1.5rem; --t6: 2rem;
   --font: Geist, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace; /* keyboard keys only */
-  --serif: Newsreader, Georgia, "Times New Roman", serif;               /* Hal's voice: the greeting and his briefing */
   /* Shape and size */
   --r: 8px; --r-lg: 12px; --pill: 999px;
   --control: 44px;
@@ -95,7 +94,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
 .top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s4); }
 .hello { display: flex; flex-direction: column; gap: var(--s1); }
 .hello .date { font-size: var(--t2); color: var(--muted); }
-.hello h1 { font-family: var(--serif); font-size: var(--t6); font-weight: 500; letter-spacing: -.01em; }
+.hello h1 { font-size: var(--t6); font-weight: 600; letter-spacing: -.01em; }
 .top-r { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3); }
 .live { font-size: var(--t1); color: var(--muted); display: flex; align-items: center; gap: var(--s2); }
 .live::before { content: "✓"; color: var(--accent); font-weight: 600; }
@@ -505,9 +504,9 @@ dialog.contract-dlg { width: min(45rem, calc(100vw - var(--s5))); background: va
 }
 
 /* ---------- Overview: Hal's briefing, the stage strip, the office status line ---------- */
-/* The briefing is the one loud thing on the page: Hal's voice in the serif, no box around it. */
+/* The briefing is the one loud thing on the page: large type, no box around it. */
 .brief { display: flex; flex-direction: column; gap: var(--s4); padding: var(--s2) 0 var(--s5); border-bottom: 1px solid var(--line); max-width: 52rem; }
-.brief h2 { font-family: var(--serif); font-size: var(--t5); font-weight: 500; }
+.brief h2 { font-size: var(--t5); font-weight: 600; }
 .brief .wait { padding: 0; list-style: none; font-size: var(--t3); color: var(--text); line-height: 1.5; }
 .brief .wait li { margin: 0; padding: var(--s2) 0 var(--s2) var(--s4); border-left: 2px solid var(--line); }
 .brief .wait li + li { margin-top: var(--s2); }

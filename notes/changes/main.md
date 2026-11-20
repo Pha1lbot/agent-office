@@ -11,6 +11,14 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-20: Take the serif font off the office's Overview
+
+**What changed:** `Tim's Job Search/shared/office-view/public/style.css` drops the `--serif` token, and the greeting and the "Today from Hal" heading go back to Geist (semibold). `index.html` stops loading Newsreader from Google Fonts. The staff contracts keep their own paper serif.
+**Why:** Tim said he really dislikes the font that PR #37 added.
+**Decisions:** keep the larger heading sizes from #37, so the briefing still stands out, in the office's own font.
+**How to check it:** `git pull`, reopen the office: the greeting and "Today from Hal" are in the same font as the rest of the page.
+**Open items:** none.
+
 ### 2026-11-20: Fix a broken pound sign and stop it happening again
 
 **What changed:** `Tim's Job Search/shared/tools/tracker.py` gains `fix_text()`, used by `clip()` (every `found add` field) and by `add_role()` for pay and location: it turns `┬ú` and `Â£` back into `£` (and the same for mangled dashes and apostrophes). `test_tracker.py` gains `MojibakeTests`. Carrington's pay in `jobs/found.json`, `jobs/tracker.json` and `jobs/tracker.md` is put right (£70,000 - £75,000).
