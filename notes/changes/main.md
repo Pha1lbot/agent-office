@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-20: Job search: LTA Head of Delivery drafted
+
+**What changed:** `jobs/roles/2026-11-05-lta-head-of-delivery-central-east/` (new): Rita's `listing.md`, Wren's `cv.json`, `cv.md`, `cover-letter.md` and `notes.md`, and the Word files and PDFs. The tracker role (imported earlier from the phone dashboard as a lead, with no listing yet) is now drafted, fit 2, verdict skip, closing_date 2026-11-19; action a16 flags the concern.
+
+**Why:** Tim shortlisted the role in the office and asked for a tailored CV and cover letter (inbox item i36).
+
+**Decisions:** The role had no `listing.md`, so Rita wrote one first. LinkedIn blocked her direct read (301 then 429), so she pieced the advert together from web search and the LTA's own careers site; the vacancy is no longer listed there and its closing date (19 Nov) has passed, so it looks closed. The role is also a grassroots tennis-participation delivery post, not Tim's tournament/event-ops background, so she scored it fit 2, verdict skip. Drafted anyway because Tim explicitly asked, matching the pattern used for Capital.com and Sarafin Partners; action a16 tells Tim to check whether it's worth applying before he spends more time on it.
+
+**How to check it:** `python shared/tools/tracker.py show 2026-11-05-lta-head-of-delivery-central-east`; review `jobs/roles/2026-11-05-lta-head-of-delivery-central-east/listing.md` and the built PDFs.
+
+**Open items:** Action a16 is open for Tim: confirm whether the posting is still live before applying.
+
 ### 2026-11-20: Job search: Sarafin Partners shortlisted and drafted
 
 **What changed:** `jobs/roles/2026-11-20-sarafin-partners-director-of-operations/` (new): Rita's `listing.md`, Wren's `cv.json`, `cv.md`, `cover-letter.md` and `notes.md`, and the Word files and PDFs. The tracker has the role as drafted, fit 2, verdict skip, and action a15 flags the weak fit.

@@ -711,9 +711,9 @@
       "notes": "Posted: 29 Oct",
       "fit": 2,
       "priority": 3,
-      "status": "drafted",
+      "status": "skipped",
       "found": "2026-11-05",
-      "updated": "2026-11-09",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-05",
@@ -727,6 +727,11 @@
         {
           "date": "2026-11-08",
           "status": "drafted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
           "by": "tim"
         }
       ],
@@ -748,9 +753,9 @@
       "interview_with": "",
       "list": "New matches",
       "notes": "Posted: 29 Oct",
-      "fit": 3,
+      "fit": 2,
       "priority": 2,
-      "status": "shortlisted",
+      "status": "drafted",
       "found": "2026-11-05",
       "updated": "2026-11-20",
       "history": [
@@ -762,11 +767,16 @@
           "date": "2026-11-20",
           "status": "shortlisted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "drafted"
         }
       ],
       "imported_from": "dashboard lead",
-      "verdict": "maybe",
-      "verdict_why": "Details only: Head-level sport delivery, but a tennis participation remit; pay and work style unknown"
+      "verdict": "skip",
+      "verdict_why": "Deadline passed (19 Nov) and it's grassroots participation delivery, not event/tournament ops",
+      "closing_date": "2026-11-19"
     },
     {
       "id": "2026-11-05-soho-house-co-event-director-uk-eu-asia-12-month-mater",
@@ -3115,10 +3125,10 @@
       "source": "Reed",
       "fit": 3,
       "priority": 3,
-      "status": "drafted",
+      "status": "skipped",
       "notes": "Track: AI operations: learning and support roles; Concern: recruiter's advert (employer may not be named); Posted 2026-11-14",
       "found": "2026-11-16",
-      "updated": "2026-11-16",
+      "updated": "2026-11-20",
       "history": [
         {
           "date": "2026-11-16",
@@ -3133,6 +3143,11 @@
         {
           "date": "2026-11-16",
           "status": "drafted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-20",
+          "status": "skipped",
           "by": "tim"
         }
       ],
@@ -3878,6 +3893,13 @@
       "role": "2026-11-20-sarafin-partners-director-of-operations",
       "done": false,
       "created": "2026-11-20"
+    },
+    {
+      "id": "a16",
+      "text": "LTA Head of Delivery drafted, but its closing date (19 Nov) looks to have passed and the posting is no longer live - fit is weak (2/5, grassroots participation not tournament ops). Worth checking it's still open before applying.",
+      "role": "2026-11-05-lta-head-of-delivery-central-east",
+      "done": false,
+      "created": "2026-11-20"
     }
   ],
   "inbox": [
@@ -4202,7 +4224,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Head of Delivery, Central & East @ LTA",
       "at": "2026-11-20T14:27",
-      "done": false
+      "done": true,
+      "handled": "2026-11-20T14:33"
     }
   ]
 }

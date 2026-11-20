@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 3 · shortlisted: 2 · drafted: 10 · approved: 1 · applied: 7 · rejected: 1 · skipped: 89
+found: 3 · shortlisted: 1 · drafted: 9 · approved: 1 · applied: 7 · rejected: 1 · skipped: 91
 
 ## Next actions
 
@@ -10,6 +10,7 @@ found: 3 · shortlisted: 2 · drafted: 10 · approved: 1 · applied: 7 · reject
 - Preference review due: you have made 41 decisions since 2026-11-11. Want the team's suggestions for your preferences?
 - Capital.com (Senior Operations Manager: AI Automation) scores weak fit (2/5, skip): wants hands-on AI/LLM tooling and regulated fintech experience not on your CV, and it's a trading platform - a sector your preferences flag as not wanted. Drafting it anyway since you moved it to drafted, but worth a look before applying.
 - Sarafin Partners (Director of Operations) scores a weak fit (2/5, skip): it's a small independent financial planning firm, not one of your sectors, and wants financial planning experience you don't have. Drafting it anyway because you asked, but worth a look before applying.
+- LTA Head of Delivery drafted, but its closing date (19 Nov) looks to have passed and the posting is no longer live - fit is weak (2/5, grassroots participation not tournament ops). Worth checking it's still open before applying.
 
 ## Roles
 
@@ -18,17 +19,15 @@ found: 3 · shortlisted: 2 · drafted: 10 · approved: 1 · applied: 7 · reject
 | found | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
 | found | 2 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
 | found | 3 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
-| shortlisted | 2 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 3 |  | 2026-11-20 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57500678) | Arlington Resource Management | £50,000 - £60,000 | London | 3 |  | 2026-11-12 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
 | drafted | 1 | [Change & Adoption Manager - AI](https://www.reed.co.uk/jobs/change-adoption-manager-ai/57583404) | British Heart Foundation | £54,000 - £58,000 | London | 3 |  | 2026-11-19 |
 | drafted | 1 | [Director of Operations](https://www.linkedin.com/jobs/view/4492211056/) | Sarafin Partners | £65K-£90K | Sutton (on-site) | 2 |  | 2026-11-20 |
+| drafted | 2 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 2 |  | 2026-11-20 |
 | drafted | 2 | [Senior Product Manager](https://hitmarker.net/jobs/product-madness-senior-product-manager-5515045) | Product Madness |  | London | 2 |  | 2026-11-16 |
 | drafted | 2 | [Event Project Director](https://www.reed.co.uk/jobs/event-project-director/57586682) | Live Recruitment | £55,000 - £60,000 | GU227LA | 3 |  | 2026-11-18 |
 | drafted | 2 | [Events Operations Lead](https://www.linkedin.com/jobs/view/4487337038/) | McLaren Automotive Ltd |  | Woking | 3 |  | 2026-11-19 |
-| drafted | 3 | [Event Director](https://www.linkedin.com/jobs/view/4484516383/) | Handle Recruitment (client unnamed) | £70k–£90k | London, hybrid | 2 |  | 2026-11-09 |
-| drafted | 3 | [Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London](https://www.reed.co.uk/jobs/digital-enablement-manager-ai-adoption-artificial-intelligence-digital-business-change-london/57568616) | Carrington Recruitment Solutions Ltd | ┬ú70,000 - ┬ú75,000 | WC1V6AZ | 3 |  | 2026-11-16 |
 | drafted |  | [Senior Operations Manager: AI Automation](https://builtinlondon.uk/job/senior-operations-manager-ai-automation/11748053) | Capital.com | Not shown | Remote or hybrid, London | 2 |  | 2026-11-19 |
 | approved | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-13 |
 | applied | 2 | [Product Operations Manager](https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960) | Electronic Arts |  | London | 5 | Follow up if no reply by 26 Nov | 2026-11-19 |
@@ -47,9 +46,11 @@ found: 3 · shortlisted: 2 · drafted: 10 · approved: 1 · applied: 7 · reject
 | skipped | 2 | [Senior Operations & Event Producer](https://www.linkedin.com/jobs/view/4473635792/) | This is Beyond | £60k–£65k | London area, hybrid | 3 |  | 2026-11-09 |
 | skipped | 2 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-20 |
 | skipped | 3 | [Director of Soccer Aid (interim)](https://www.linkedin.com/jobs/view/4483454939/) | UNICEF UK | £105k, fixed term | London area | 3 |  | 2026-11-11 |
+| skipped | 3 | [Event Director](https://www.linkedin.com/jobs/view/4484516383/) | Handle Recruitment (client unnamed) | £70k–£90k | London, hybrid | 2 |  | 2026-11-20 |
 | skipped | 3 | [Event Director UK, EU + Asia (12-month maternity cover)](https://www.linkedin.com/jobs/view/4467403208/) | Soho House & Co | Not listed | London area | 3 |  | 2026-11-20 |
 | skipped | 3 | [Senior Producer](https://www.linkedin.com/jobs/view/4486100319/) | Big Global Events | £55k–£62k | London, hybrid | 3 |  | 2026-11-09 |
 | skipped | 3 | [Senior Producer, Events](https://www.linkedin.com/jobs/view/4483027028/) | Premier | £50k–£65k | London area, hybrid | 3 |  | 2026-11-09 |
+| skipped | 3 | [Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London](https://www.reed.co.uk/jobs/digital-enablement-manager-ai-adoption-artificial-intelligence-digital-business-change-london/57568616) | Carrington Recruitment Solutions Ltd | ┬ú70,000 - ┬ú75,000 | WC1V6AZ | 3 |  | 2026-11-20 |
 | skipped | 3 | [Operations Director](https://www.reed.co.uk/jobs/operations-director/57584295) | Insight Select Ltd | £80,000 - £120,000 | BR60SX | 1 |  | 2026-11-20 |
 | skipped | 5 | [Head of Political Events and Operations](https://www.linkedin.com/jobs/view/4483585204/) | The Conservative Party | Not listed | London area | 3 |  | 2026-11-09 |
 | skipped | 5 | [UK Operations Director](https://www.linkedin.com/jobs/view/4475864821/) | Prose on Pixels | Not listed | London | 3 |  | 2026-11-09 |

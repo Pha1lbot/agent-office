@@ -1,0 +1,4 @@
+# Notes for Tim
+
+- The listing's own assessment flags this as fit 2 and "Skip": the role is grassroots/community tennis and padel participation delivery, not Tim's event/tournament operations specialism, and the closing date (19 Nov) appears to have passed, with the posting no longer live on LTA's own careers page. Worth confirming with Hal whether to still go ahead before applying.
+- The CV bank has nothing on sport-for-participation strategy, managing a regional team of Delivery Managers, or mobilising a network of clubs/venues/coaches, so the CV and letter lean on transferable operations leadership, third-party/vendor management, and stakeholder management instead. If any of this community/participation-sport experience is genuinely true, add it to an `extra-*.md` file in `shared/job-search/cv/` and it can be worked in.
