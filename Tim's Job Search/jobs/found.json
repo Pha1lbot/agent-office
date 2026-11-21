@@ -1303,86 +1303,216 @@
         "reason": "",
         "at": "2026-11-20T10:52"
       }
+    },
+    {
+      "id": "f59",
+      "title": "AI & Digital Adoption Manager - London",
+      "company": "Circle Recruitment",
+      "location": "London",
+      "pay": "£65,000 - £74,500",
+      "link": "https://www.reed.co.uk/jobs/ai-digital-adoption-manager-london/57597347",
+      "posted": "2026-11-20",
+      "source": "Reed",
+      "via": "feed",
+      "fit": "possible",
+      "why": "AI operations, enablement and transformation: the title matches 'AI Adoption Manager' and the advert uses the track's words",
+      "concern": "recruiter's advert (employer may not be named)",
+      "track": "AI operations, enablement and transformation",
+      "summary": "AI & Digital Adoption Manager - London AI & Digital Adoption Manager with strong training and Microsoft Copilot experience is required by a leading professional services firm based in London. This is a key, hands-on role driving the adoption of AI, Copilot and Microsoft 365 acros",
+      "found_at": "2026-11-21T14:37",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-21-circle-recruitment-ai-digital-adoption-manager-london",
+        "reason": "",
+        "at": "2026-11-21T14:39"
+      }
+    },
+    {
+      "id": "f60",
+      "title": "10079148: VP DX & AI Transformation Manager",
+      "company": "Robert Walters",
+      "location": "London",
+      "pay": "",
+      "link": "https://www.reed.co.uk/jobs/10079148-vp-dx-ai-transformation-manager/57596847",
+      "posted": "2026-11-20",
+      "source": "Reed",
+      "via": "feed",
+      "fit": "strong",
+      "why": "AI operations, enablement and transformation: the title matches 'AI Transformation Manager' and the advert uses the track's words",
+      "concern": "",
+      "track": "AI operations, enablement and transformation",
+      "summary": "Lead a newly formed AI Transformation Office within a globally respected financial institution's operations function. The team's remit is to improve productivity, efficiency, safety and soundness using automation, intelligent automation and AI, and it's moving from an RPA-only fo",
+      "found_at": "2026-11-21T14:37",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-21-robert-walters-10079148-vp-dx-ai-transformation-manager",
+        "reason": "",
+        "at": "2026-11-21T14:39"
+      }
+    },
+    {
+      "id": "f61",
+      "title": "AI & Digital Adoption Manager, AI Trainer, Digital Change, M365, Copilot, Claude, Hybrid",
+      "company": "Carrington Recruitment Solutions Ltd",
+      "location": "W1A1AB",
+      "pay": "£70,000 - £74,000",
+      "link": "https://www.reed.co.uk/jobs/ai-digital-adoption-manager-ai-trainer-digital-change-m365-copilot-claude-hybrid/57598953",
+      "posted": "2026-11-21",
+      "source": "Reed",
+      "via": "feed",
+      "fit": "possible",
+      "why": "AI operations, enablement and transformation: the title matches 'AI Adoption Manager' and the advert uses the track's words",
+      "concern": "recruiter's advert (employer may not be named)",
+      "track": "AI operations, enablement and transformation",
+      "summary": "AI & Digital Adoption Manager, Microsoft 365, Copilot, Copilot Studio, Claude, OpenAI, Artificial Intelligence, Technology Adoption, Digital Change, Stakeholder Management, Central London, Hybrid AI & Digital Adoption Manager required to work for a large Professional Services bus",
+      "found_at": "2026-11-21T14:37",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-21-carrington-recruitment-solutions-ltd-ai-digital-adoption-manager-ai-trainer-d",
+        "reason": "Hal: looks like a repost of the Carrington AI adoption role already drafted",
+        "at": "2026-11-21T14:39"
+      }
+    },
+    {
+      "id": "f62",
+      "title": "Resource & Adminstration",
+      "company": "Pentland Brands",
+      "location": "London Area (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4492583992/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "An admin and resourcing role at a sports fashion brand, below Tim's level.",
+      "concern": "admin, junior",
+      "track": "Freelancer and workforce operations",
+      "summary": "Resource and administration role at Pentland Brands.",
+      "found_at": "2026-11-21T14:38",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-21-pentland-brands-resource-adminstration",
+        "reason": "Hal: admin role, below level",
+        "at": "2026-11-21T14:39"
+      }
+    },
+    {
+      "id": "f63",
+      "title": "Senior Production and Operations Manager",
+      "company": "NBCUniversal",
+      "location": "London (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4492977110/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Senior production operations at a broadcaster; Tim's studio builds fit, but he has dropped broadcast production.",
+      "concern": "broadcast production",
+      "track": "Live events and event production",
+      "summary": "Production and operations management at NBCUniversal.",
+      "found_at": "2026-11-21T14:38",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-21-nbcuniversal-senior-production-and-operations-manager",
+        "reason": "Hal: broadcast production, dropped from search",
+        "at": "2026-11-21T14:39"
+      }
+    },
+    {
+      "id": "f64",
+      "title": "Senior Strategy & Operations Manager, Navan Signature - 12 Month FTC",
+      "company": "Reed & Mackay",
+      "location": "London (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4485310401/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Senior strategy and operations role at a business-travel firm; uses Tim's operations leadership and supplier management.",
+      "concern": "12-month contract, travel sector",
+      "track": "Head of Operations at scale-ups",
+      "summary": "Senior strategy and operations manager on a 12-month fixed-term contract.",
+      "found_at": "2026-11-21T14:38",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-21-reed-mackay-senior-strategy-operations-manager-navan",
+        "reason": "",
+        "at": "2026-11-21T14:39"
+      }
+    },
+    {
+      "id": "f65",
+      "title": "Senior Core Services Delivery Manager",
+      "company": "GES - Global Experience Specialists",
+      "location": "London Area (On-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4484510791/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Senior delivery role at a major exhibitions and events contractor; fits Tim's event logistics, suppliers and crews.",
+      "concern": "on-site",
+      "track": "Live events and event production",
+      "summary": "Senior delivery manager for core event services at GES.",
+      "found_at": "2026-11-21T14:38",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-21-ges-global-experience-specialists-senior-core-services-delivery-manager",
+        "reason": "",
+        "at": "2026-11-21T14:39"
+      }
+    },
+    {
+      "id": "f66",
+      "title": "Events Operations Manager",
+      "company": "The Royal College of Radiologists",
+      "location": "London Area (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4491922534/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Manager-level events role at a medical college, below the level Tim wants outside gaming.",
+      "concern": "Manager level, likely under £50k",
+      "track": "Live events and event production",
+      "summary": "Events operations manager for a medical royal college.",
+      "found_at": "2026-11-21T14:38",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-21-the-royal-college-of-radiologists-events-operations-manager",
+        "reason": "Hal: Manager-level events role outside gaming",
+        "at": "2026-11-21T14:39"
+      }
+    },
+    {
+      "id": "f67",
+      "title": "Product Operations Manager",
+      "company": "Sibylline",
+      "location": "London (Hybrid)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4492814467/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Product operations at a geopolitical risk firm, not one of Tim's sectors.",
+      "concern": "wrong sector",
+      "track": "Product and implementation in event, sport, gaming and workf",
+      "summary": "Product operations manager at a risk intelligence company.",
+      "found_at": "2026-11-21T14:38",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-21-sibylline-product-operations-manager",
+        "reason": "Hal: product ops at a risk firm, wrong sector",
+        "at": "2026-11-21T14:39"
+      }
     }
   ],
   "runs": [
-    {
-      "at": "2026-11-17T07:52",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: SmartRecruiters"
-    },
-    {
-      "at": "2026-11-17T07:52",
-      "via": "feed",
-      "found": 0,
-      "note": "823 results read",
-      "source": "Reed"
-    },
-    {
-      "at": "2026-11-18T14:08",
-      "via": "feed",
-      "found": 1,
-      "note": "5000 jobs listed, 40 looked possible from their titles, 40 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-18T14:08",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
-    {
-      "at": "2026-11-18T14:08",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
-    {
-      "at": "2026-11-18T14:08",
-      "via": "feed",
-      "found": 0,
-      "note": "3 of 3 boards read",
-      "source": "Company hiring pages: Ashby"
-    },
-    {
-      "at": "2026-11-18T14:08",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: SmartRecruiters"
-    },
-    {
-      "at": "2026-11-18T14:09",
-      "via": "feed",
-      "found": 4,
-      "note": "820 results read",
-      "source": "Reed"
-    },
-    {
-      "at": "2026-11-19T07:32",
-      "via": "feed",
-      "found": 0,
-      "note": "5000 jobs listed, 18 looked possible from their titles, 18 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-19T07:32",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
-    {
-      "at": "2026-11-19T07:32",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
     {
       "at": "2026-11-19T07:32",
       "via": "feed",
@@ -1515,63 +1645,140 @@
       "found": 0,
       "note": "Fetch tool refuses the domain; read it by hand",
       "source": "Guardian Jobs"
+    },
+    {
+      "at": "2026-11-21T14:37",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 16 looked possible from their titles, 16 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-21T14:37",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-21T14:37",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-21T14:37",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-21T14:37",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-21T14:37",
+      "via": "feed",
+      "found": 3,
+      "note": "812 results read",
+      "source": "Reed"
+    },
+    {
+      "at": "2026-11-21T14:38",
+      "via": "email",
+      "found": 6,
+      "note": "",
+      "source": "LinkedIn Jobs"
+    },
+    {
+      "at": "2026-11-21T14:38",
+      "via": "email",
+      "found": 0,
+      "note": "No Indeed alert emails",
+      "source": "Indeed UK"
+    },
+    {
+      "at": "2026-11-21T14:38",
+      "via": "email",
+      "found": 0,
+      "note": "Only the temporary-jobs digest; not read",
+      "source": "Reed alerts"
+    },
+    {
+      "at": "2026-11-21T14:39",
+      "via": "web",
+      "found": 0,
+      "note": "Domain now a GoDaddy for-sale page; board gone",
+      "source": "Access Jobs"
+    },
+    {
+      "at": "2026-11-21T14:39",
+      "via": "web",
+      "found": 0,
+      "note": "Site now a Padlet of TV/film freelancer resources, no job adverts",
+      "source": "The Unit List"
     }
   ],
-  "last_email_scan": "2026-11-20T10:30:00Z",
+  "last_email_scan": "2026-11-21T13:05:00Z",
   "sources": {
     "Hitmarker": {
       "total": 3,
-      "last_checked": "2026-11-20T10:51",
+      "last_checked": "2026-11-21T14:37",
       "result": "ok",
       "found": 0,
-      "note": "5000 jobs listed, 32 looked possible from their titles, 32 read",
-      "last_ok": "2026-11-20T10:51",
+      "note": "5000 jobs listed, 16 looked possible from their titles, 16 read",
+      "last_ok": "2026-11-21T14:37",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-20T10:51",
+      "last_checked": "2026-11-21T14:37",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-20T10:51",
+      "last_ok": "2026-11-21T14:37",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-20T10:51",
+      "last_checked": "2026-11-21T14:37",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-20T10:51",
+      "last_ok": "2026-11-21T14:37",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-20T10:51",
+      "last_checked": "2026-11-21T14:37",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-20T10:51",
+      "last_ok": "2026-11-21T14:37",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-20T10:51",
+      "last_checked": "2026-11-21T14:37",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-20T10:51",
+      "last_ok": "2026-11-21T14:37",
       "failures": 0
     },
     "Reed": {
-      "total": 11,
-      "last_checked": "2026-11-20T10:51",
+      "total": 14,
+      "last_checked": "2026-11-21T14:37",
       "result": "ok",
-      "found": 0,
-      "note": "827 results read",
+      "found": 3,
+      "note": "812 results read",
       "failures": 0,
-      "last_ok": "2026-11-20T10:51"
+      "last_ok": "2026-11-21T14:37"
     },
     "Event Industry Jobs": {
       "total": 0,
@@ -1591,22 +1798,22 @@
       "failures": 3
     },
     "LinkedIn Jobs": {
-      "total": 16,
-      "last_checked": "2026-11-20T10:52",
+      "total": 22,
+      "last_checked": "2026-11-21T14:38",
       "result": "ok",
-      "found": 3,
-      "note": "4 alert emails read, 24 roles seen, 3 queued",
+      "found": 6,
+      "note": "",
       "failures": 0,
-      "last_ok": "2026-11-20T10:52"
+      "last_ok": "2026-11-21T14:38"
     },
     "Indeed UK": {
       "total": 0,
-      "last_checked": "2026-11-20T10:52",
+      "last_checked": "2026-11-21T14:38",
       "result": "empty",
       "found": 0,
       "note": "No Indeed alert emails",
       "failures": 0,
-      "last_ok": "2026-11-20T10:52"
+      "last_ok": "2026-11-21T14:38"
     },
     "Esports Insider jobs": {
       "total": 0,
@@ -1626,27 +1833,27 @@
     },
     "The Unit List": {
       "total": 0,
-      "last_checked": "2026-11-13T20:28",
+      "last_checked": "2026-11-21T14:39",
       "result": "blocked",
       "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "failures": 1
+      "note": "Site now a Padlet of TV/film freelancer resources, no job adverts",
+      "failures": 2
     },
     "Access Jobs": {
       "total": 0,
-      "last_checked": "2026-11-13T20:28",
+      "last_checked": "2026-11-21T14:39",
       "result": "blocked",
       "found": 0,
-      "note": "Cloud session can't reach this host yet (not on the environment's allowed list)",
-      "failures": 1
+      "note": "Domain now a GoDaddy for-sale page; board gone",
+      "failures": 2
     },
     "Reed alerts": {
       "total": 0,
-      "last_checked": "2026-11-20T10:52",
+      "last_checked": "2026-11-21T14:38",
       "result": "empty",
       "found": 0,
-      "note": "Only a temporary-jobs digest and a survey; not read",
-      "last_ok": "2026-11-20T10:52",
+      "note": "Only the temporary-jobs digest; not read",
+      "last_ok": "2026-11-21T14:38",
       "failures": 0
     }
   }

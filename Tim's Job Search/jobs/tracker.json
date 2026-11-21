@@ -2729,7 +2729,7 @@
       "url": "https://www.linkedin.com/jobs/view/4463091092/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 1,
+      "priority": 3,
       "status": "found",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -3255,7 +3255,7 @@
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 2,
+      "priority": 4,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",
@@ -3532,7 +3532,7 @@
       "url": "https://www.linkedin.com/jobs/view/4486847589/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 3,
+      "priority": 5,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: on-site; Manager level",
       "found": "2026-11-19",
@@ -3817,7 +3817,7 @@
       "url": "https://www.reed.co.uk/jobs/operations-manager/57595613?source=details.similarjobs",
       "source": "Tim",
       "fit": 2,
-      "priority": 5,
+      "priority": 8,
       "status": "found",
       "notes": "",
       "found": "2026-11-20",
@@ -3841,21 +3841,273 @@
       "url": "https://www.linkedin.com/jobs/view/4488837847/",
       "source": "Tim",
       "fit": 2,
-      "priority": 4,
-      "status": "found",
+      "priority": 8,
+      "status": "skipped",
       "notes": "",
       "found": "2026-11-20",
-      "updated": "2026-11-20",
+      "updated": "2026-11-21",
       "history": [
         {
           "date": "2026-11-20",
           "status": "found",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-21",
+          "status": "skipped",
+          "by": "ada"
         }
       ],
       "verdict": "skip",
       "verdict_why": "Pay and London hybrid work, but it's community health/grant programme management, outside all nine of your tracks, with no men's health, mental health or grant-management background on your CV",
-      "closing_date": "2026-11-20"
+      "closing_date": "2026-11-20",
+      "reason": "Posting closed: its closing date passed (2026-11-20) (checked 2026-11-21)"
+    },
+    {
+      "id": "2026-11-21-robert-walters-10079148-vp-dx-ai-transformation-manager",
+      "title": "10079148: VP DX & AI Transformation Manager",
+      "company": "Robert Walters",
+      "location": "London",
+      "pay": "",
+      "url": "https://www.reed.co.uk/jobs/10079148-vp-dx-ai-transformation-manager/57596847",
+      "source": "Reed",
+      "fit": 4,
+      "priority": 1,
+      "status": "found",
+      "notes": "Track: AI operations, enablement and transformation; Posted 2026-11-20",
+      "found": "2026-11-21",
+      "updated": "2026-11-21",
+      "history": [
+        {
+          "date": "2026-11-21",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "apply",
+      "verdict_why": "Senior AI transformation role in London; matches Tim's AI enablement track."
+    },
+    {
+      "id": "2026-11-21-circle-recruitment-ai-digital-adoption-manager-london",
+      "title": "AI & Digital Adoption Manager - London",
+      "company": "Circle Recruitment",
+      "location": "London",
+      "pay": "£65,000 - £74,500",
+      "url": "https://www.reed.co.uk/jobs/ai-digital-adoption-manager-london/57597347",
+      "source": "Reed",
+      "fit": 3,
+      "priority": 2,
+      "status": "found",
+      "notes": "Track: AI operations, enablement and transformation; Concern: recruiter's advert (employer may not be named); Posted 2026-11-20",
+      "found": "2026-11-21",
+      "updated": "2026-11-21",
+      "history": [
+        {
+          "date": "2026-11-21",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "AI and digital adoption manager at £65-74.5k; good pay, but a recruiter advert with no sector named."
+    },
+    {
+      "id": "2026-11-21-reed-mackay-senior-strategy-operations-manager-navan",
+      "title": "Senior Strategy & Operations Manager, Navan Signature - 12 Month FTC",
+      "company": "Reed & Mackay",
+      "location": "London (Hybrid)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4485310401/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 6,
+      "status": "found",
+      "notes": "Track: Head of Operations at scale-ups; Concern: 12-month contract, travel sector",
+      "found": "2026-11-21",
+      "updated": "2026-11-21",
+      "history": [
+        {
+          "date": "2026-11-21",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Senior strategy and operations role; a 12-month contract in business travel, not Tim's usual sectors."
+    },
+    {
+      "id": "2026-11-21-ges-global-experience-specialists-senior-core-services-delivery-manager",
+      "title": "Senior Core Services Delivery Manager",
+      "company": "GES - Global Experience Specialists",
+      "location": "London Area (On-site)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4484510791/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 7,
+      "status": "found",
+      "notes": "Track: Live events and event production; Concern: on-site",
+      "found": "2026-11-21",
+      "updated": "2026-11-21",
+      "history": [
+        {
+          "date": "2026-11-21",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Senior delivery role at a big events contractor; fits Tim's logistics and crews, but it's on-site."
+    },
+    {
+      "id": "2026-11-21-carrington-recruitment-solutions-ltd-ai-digital-adoption-manager-ai-trainer-d",
+      "title": "AI & Digital Adoption Manager, AI Trainer, Digital Change, M365, Copilot, Claude, Hybrid",
+      "company": "Carrington Recruitment Solutions Ltd",
+      "location": "W1A1AB",
+      "pay": "£70,000 - £74,000",
+      "url": "https://www.reed.co.uk/jobs/ai-digital-adoption-manager-ai-trainer-digital-change-m365-copilot-claude-hybrid/57598953",
+      "source": "Reed",
+      "fit": 3,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: AI operations, enablement and transformation; Concern: recruiter's advert (employer may not be named); Posted 2026-11-21",
+      "found": "2026-11-21",
+      "updated": "2026-11-21",
+      "history": [
+        {
+          "date": "2026-11-21",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-21",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "AI operations, enablement and transformation: the title matches 'AI Adoption Manager' and the advert uses the track's words",
+      "reason": "Hal: looks like a repost of the Carrington AI adoption role already drafted"
+    },
+    {
+      "id": "2026-11-21-pentland-brands-resource-adminstration",
+      "title": "Resource & Adminstration",
+      "company": "Pentland Brands",
+      "location": "London Area (Hybrid)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4492583992/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Freelancer and workforce operations; Concern: admin, junior",
+      "found": "2026-11-21",
+      "updated": "2026-11-21",
+      "history": [
+        {
+          "date": "2026-11-21",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-21",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "An admin and resourcing role at a sports fashion brand, below Tim's level.",
+      "reason": "Hal: admin role, below level"
+    },
+    {
+      "id": "2026-11-21-nbcuniversal-senior-production-and-operations-manager",
+      "title": "Senior Production and Operations Manager",
+      "company": "NBCUniversal",
+      "location": "London (Hybrid)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4492977110/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Live events and event production; Concern: broadcast production",
+      "found": "2026-11-21",
+      "updated": "2026-11-21",
+      "history": [
+        {
+          "date": "2026-11-21",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-21",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Senior production operations at a broadcaster; Tim's studio builds fit, but he has dropped broadcast production.",
+      "reason": "Hal: broadcast production, dropped from search"
+    },
+    {
+      "id": "2026-11-21-the-royal-college-of-radiologists-events-operations-manager",
+      "title": "Events Operations Manager",
+      "company": "The Royal College of Radiologists",
+      "location": "London Area (Hybrid)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4491922534/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Live events and event production; Concern: Manager level, likely under £50k",
+      "found": "2026-11-21",
+      "updated": "2026-11-21",
+      "history": [
+        {
+          "date": "2026-11-21",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-21",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Manager-level events role at a medical college, below the level Tim wants outside gaming.",
+      "reason": "Hal: Manager-level events role outside gaming"
+    },
+    {
+      "id": "2026-11-21-sibylline-product-operations-manager",
+      "title": "Product Operations Manager",
+      "company": "Sibylline",
+      "location": "London (Hybrid)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4492814467/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Product and implementation in event, sport, gaming and workf; Concern: wrong sector",
+      "found": "2026-11-21",
+      "updated": "2026-11-21",
+      "history": [
+        {
+          "date": "2026-11-21",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-21",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Product operations at a geopolitical risk firm, not one of Tim's sectors.",
+      "reason": "Hal: product ops at a risk firm, wrong sector"
     }
   ],
   "actions": [
@@ -3984,6 +4236,17 @@
       "role": "2026-11-05-lta-head-of-delivery-central-east",
       "done": false,
       "created": "2026-11-20"
+    },
+    {
+      "id": "a17",
+      "text": "Access Jobs and The Unit List have gone (one is a domain for sale, the other has no job adverts any more). Take them out of the search?",
+      "role": "",
+      "done": false,
+      "created": "2026-11-21",
+      "options": [
+        "Remove them",
+        "Keep them"
+      ]
     }
   ],
   "inbox": [

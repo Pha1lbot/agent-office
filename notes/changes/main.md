@@ -11,6 +11,18 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-21: Job search: daily search, 4 new leads, 6 dismissed
+
+**What changed:** `jobs/found.json`, `jobs/scout-state.json`, `jobs/tracker.json`, `jobs/tracker.md` and `jobs/today.md` (in Tim's office). Tim asked to start today's search. Scout reached 6 of 6 feed sources and queued 3 Reed roles. One new LinkedIn alert email listed 6 roles, and all were queued. Kept as leads: Robert Walters VP DX & AI Transformation Manager (Apply), Circle Recruitment AI & Digital Adoption Manager (£65-74.5k), Reed & Mackay Senior Strategy & Operations Manager (12-month contract) and GES Senior Core Services Delivery Manager (on-site); the last three are Maybes. Dismissed: a Carrington repost, Pentland Brands (admin), NBCUniversal (broadcast production), Royal College of Radiologists (Manager level) and Sibylline (wrong sector). The closed-postings check dismissed Movember (closing date passed). Rita checked Access Jobs and The Unit List and found both are gone. They were logged as blocked, and an action asks Tim whether to remove them from `search.json`.
+
+**Why:** The daily search, run by hand on a Saturday.
+
+**Decisions:** The Carrington "AI & Digital Adoption Manager" was dismissed as a likely repost of the Carrington role already drafted (same recruiter, same pay band), and Tim can restore it. `search.json` was not changed: removing sources is Tim's call. Rita's subagent wasn't registered because the session was opened at the repo top level, so a general agent followed her instructions file instead.
+
+**How to check it:** `tracker.py found list --pending` is empty, and `jobs/today.md` lists the leads.
+
+**Open items:** Tim to answer the dead-sites question and the preference review (both are in Next actions).
+
 ### 2026-11-20: CVs for dismissed and rejected roles get their own folded-away section
 
 **What changed:**
