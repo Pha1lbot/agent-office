@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 8 · shortlisted: 1 · drafted: 5 · approved: 1 · applied: 7 · rejected: 1 · skipped: 101
+found: 6 · shortlisted: 3 · drafted: 5 · applied: 8 · rejected: 1 · skipped: 101
 
 ## Next actions
 
@@ -17,21 +17,21 @@ found: 8 · shortlisted: 1 · drafted: 5 · approved: 1 · applied: 7 · rejecte
 
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
 |---|---|---|---|---|---|---|---|---|
-| found | 1 | [10079148: VP DX & AI Transformation Manager](https://www.reed.co.uk/jobs/10079148-vp-dx-ai-transformation-manager/57596847) | Robert Walters |  | London | 4 |  | 2026-11-21 |
-| found | 2 | [AI & Digital Adoption Manager - London](https://www.reed.co.uk/jobs/ai-digital-adoption-manager-london/57597347) | Circle Recruitment | £65,000 - £74,500 | London | 3 |  | 2026-11-21 |
-| found | 3 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
-| found | 4 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
-| found | 5 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
-| found | 6 | [Senior Strategy & Operations Manager, Navan Signature - 12 Month FTC](https://www.linkedin.com/jobs/view/4485310401/) | Reed & Mackay |  | London (Hybrid) | 3 |  | 2026-11-21 |
-| found | 7 | [Senior Core Services Delivery Manager](https://www.linkedin.com/jobs/view/4484510791/) | GES - Global Experience Specialists |  | London Area (On-site) | 3 |  | 2026-11-21 |
-| found | 8 | [Operations Manager](https://www.reed.co.uk/jobs/operations-manager/57595613?source=details.similarjobs) | Reed | £22 - £30 per hour | Chessington | 2 |  | 2026-11-20 |
+| found | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
+| found | 2 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
+| found | 3 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
+| found | 4 | [Senior Strategy & Operations Manager, Navan Signature - 12 Month FTC](https://www.linkedin.com/jobs/view/4485310401/) | Reed & Mackay |  | London (Hybrid) | 3 |  | 2026-11-21 |
+| found | 5 | [Senior Core Services Delivery Manager](https://www.linkedin.com/jobs/view/4484510791/) | GES - Global Experience Specialists |  | London Area (On-site) | 3 |  | 2026-11-21 |
+| found | 6 | [Operations Manager](https://www.reed.co.uk/jobs/operations-manager/57595613?source=details.similarjobs) | Reed | £22 - £30 per hour | Chessington | 2 |  | 2026-11-20 |
+| shortlisted | 1 | [10079148: VP DX & AI Transformation Manager](https://www.reed.co.uk/jobs/10079148-vp-dx-ai-transformation-manager/57596847) | Robert Walters |  | London | 4 |  | 2026-11-21 |
+| shortlisted | 2 | [AI & Digital Adoption Manager - London](https://www.reed.co.uk/jobs/ai-digital-adoption-manager-london/57597347) | Circle Recruitment | £65,000 - £74,500 | London | 3 |  | 2026-11-21 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Event Production Manager](https://www.linkedin.com/jobs/view/4485388728/) | Formula 1 | Not listed | London | 3 |  | 2026-11-20 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
 | drafted | 1 | [Director of Operations](https://www.linkedin.com/jobs/view/4492211056/) | Sarafin Partners | £65K-£90K | Sutton (on-site) | 2 |  | 2026-11-20 |
 | drafted | 2 | [Event Project Director](https://www.reed.co.uk/jobs/event-project-director/57586682) | Live Recruitment | £55,000 - £60,000 | GU227LA | 3 |  | 2026-11-18 |
 | drafted | 2 | [Events Operations Lead](https://www.linkedin.com/jobs/view/4487337038/) | McLaren Automotive Ltd |  | Woking | 3 |  | 2026-11-19 |
-| approved | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 |  | 2026-11-13 |
+| applied | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 | Follow up if no reply by 28 Nov | 2026-11-21 |
 | applied | 2 | [Product Operations Manager](https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960) | Electronic Arts |  | London | 5 | Follow up if no reply by 26 Nov | 2026-11-19 |
 | applied | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 | Follow up if no reply by 20 Nov | 2026-11-13 |
 | applied | 23 | [National Tournaments Manager](https://www.linkedin.com/jobs/view/4488144154/) | The Professional Golfers' Association (The PGA) |  | Hybrid | 2 | Follow up if no reply by 26 Nov | 2026-11-19 |

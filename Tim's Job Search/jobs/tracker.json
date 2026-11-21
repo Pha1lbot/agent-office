@@ -2462,10 +2462,10 @@
       "source": "Reed",
       "fit": 4,
       "priority": 1,
-      "status": "approved",
+      "status": "applied",
       "notes": "Track: Live events and event production; Posted 2026-11-03",
       "found": "2026-11-12",
-      "updated": "2026-11-13",
+      "updated": "2026-11-21",
       "history": [
         {
           "date": "2026-11-12",
@@ -2486,10 +2486,16 @@
           "date": "2026-11-13",
           "status": "approved",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-21",
+          "status": "applied",
+          "by": "tim"
         }
       ],
       "verdict": "apply",
-      "verdict_why": "Live events and event production: the title matches 'Head of Events' and the advert uses the track's words"
+      "verdict_why": "Live events and event production: the title matches 'Head of Events' and the advert uses the track's words",
+      "next": "Follow up if no reply by 28 Nov"
     },
     {
       "id": "2026-11-12-arlington-resource-management-head-of-operations",
@@ -2729,7 +2735,7 @@
       "url": "https://www.linkedin.com/jobs/view/4463091092/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 3,
+      "priority": 1,
       "status": "found",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
       "found": "2026-11-13",
@@ -3255,7 +3261,7 @@
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 4,
+      "priority": 2,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",
@@ -3532,7 +3538,7 @@
       "url": "https://www.linkedin.com/jobs/view/4486847589/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 5,
+      "priority": 3,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: on-site; Manager level",
       "found": "2026-11-19",
@@ -3817,7 +3823,7 @@
       "url": "https://www.reed.co.uk/jobs/operations-manager/57595613?source=details.similarjobs",
       "source": "Tim",
       "fit": 2,
-      "priority": 8,
+      "priority": 6,
       "status": "found",
       "notes": "",
       "found": "2026-11-20",
@@ -3873,7 +3879,7 @@
       "source": "Reed",
       "fit": 4,
       "priority": 1,
-      "status": "found",
+      "status": "shortlisted",
       "notes": "Track: AI operations, enablement and transformation; Posted 2026-11-20",
       "found": "2026-11-21",
       "updated": "2026-11-21",
@@ -3882,10 +3888,16 @@
           "date": "2026-11-21",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-21",
+          "status": "shortlisted",
+          "by": "tim"
         }
       ],
       "verdict": "apply",
-      "verdict_why": "Senior AI transformation role in London; matches Tim's AI enablement track."
+      "verdict_why": "Senior AI transformation role in London; matches Tim's AI enablement track.",
+      "priority_by_tim": true
     },
     {
       "id": "2026-11-21-circle-recruitment-ai-digital-adoption-manager-london",
@@ -3897,7 +3909,7 @@
       "source": "Reed",
       "fit": 3,
       "priority": 2,
-      "status": "found",
+      "status": "shortlisted",
       "notes": "Track: AI operations, enablement and transformation; Concern: recruiter's advert (employer may not be named); Posted 2026-11-20",
       "found": "2026-11-21",
       "updated": "2026-11-21",
@@ -3906,10 +3918,16 @@
           "date": "2026-11-21",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-21",
+          "status": "shortlisted",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
-      "verdict_why": "AI and digital adoption manager at £65-74.5k; good pay, but a recruiter advert with no sector named."
+      "verdict_why": "AI and digital adoption manager at £65-74.5k; good pay, but a recruiter advert with no sector named.",
+      "priority_by_tim": true
     },
     {
       "id": "2026-11-21-reed-mackay-senior-strategy-operations-manager-navan",
@@ -3920,7 +3938,7 @@
       "url": "https://www.linkedin.com/jobs/view/4485310401/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 6,
+      "priority": 4,
       "status": "found",
       "notes": "Track: Head of Operations at scale-ups; Concern: 12-month contract, travel sector",
       "found": "2026-11-21",
@@ -3944,7 +3962,7 @@
       "url": "https://www.linkedin.com/jobs/view/4484510791/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 7,
+      "priority": 5,
       "status": "found",
       "notes": "Track: Live events and event production; Concern: on-site",
       "found": "2026-11-21",
@@ -4600,6 +4618,22 @@
       "at": "2026-11-20T17:16",
       "done": true,
       "handled": "2026-11-20T17:19"
+    },
+    {
+      "id": "i40",
+      "role": "2026-11-21-robert-walters-10079148-vp-dx-ai-transformation-manager",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "10079148: VP DX & AI Transformation Manager @ Robert Walters",
+      "at": "2026-11-21T15:28",
+      "done": false
+    },
+    {
+      "id": "i41",
+      "role": "2026-11-21-circle-recruitment-ai-digital-adoption-manager-london",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "AI & Digital Adoption Manager - London @ Circle Recruitment",
+      "at": "2026-11-21T15:28",
+      "done": false
     }
   ]
 }
