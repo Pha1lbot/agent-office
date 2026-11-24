@@ -2736,7 +2736,7 @@
       "source": "LinkedIn alert",
       "fit": 2,
       "priority": 1,
-      "status": "shortlisted",
+      "status": "drafted",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
       "found": "2026-11-13",
       "updated": "2026-11-24",
@@ -2750,6 +2750,11 @@
           "date": "2026-11-24",
           "status": "shortlisted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "drafted",
+          "by": "ada"
         }
       ],
       "verdict": "skip",
@@ -3265,21 +3270,31 @@
       "pay": "",
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
-      "fit": 3,
+      "fit": 2,
       "priority": 1,
-      "status": "found",
+      "status": "drafted",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",
-      "updated": "2026-11-16",
+      "updated": "2026-11-24",
       "history": [
         {
           "date": "2026-11-16",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "shortlisted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "drafted",
+          "by": "ada"
         }
       ],
-      "verdict": "maybe",
-      "verdict_why": "Race-weekend logistics and operations for a global motorsport series, close to your live-events background."
+      "verdict": "skip",
+      "verdict_why": "Needs sustained international touring (your deal-breaker) and specialist freight/customs skills not on your CV; posting's closing date has passed"
     },
     {
       "id": "2026-11-16-sumsub-regional-operations-manager-emea",
@@ -3549,7 +3564,7 @@
       "url": "https://www.linkedin.com/jobs/view/4486847589/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 2,
+      "priority": 1,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: on-site; Manager level",
       "found": "2026-11-19",
@@ -4171,9 +4186,9 @@
       "pay": "",
       "url": "https://www.linkedin.com/jobs/view/4493689363/?trackingId=wM2e5w0QQc%2Bad7fCW5wU6A%3D%3D",
       "source": "Tim",
-      "fit": null,
+      "fit": 1,
       "priority": 3,
-      "status": "found",
+      "status": "drafted",
       "notes": "",
       "found": "2026-11-24",
       "updated": "2026-11-24",
@@ -4182,8 +4197,20 @@
           "date": "2026-11-24",
           "status": "found",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "shortlisted",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "drafted",
+          "by": "ada"
         }
-      ]
+      ],
+      "verdict": "skip",
+      "verdict_why": "Entry-level admin role, far below Tim's 15-year Head of Operations seniority"
     }
   ],
   "actions": [
@@ -4334,6 +4361,13 @@
         "Still draft it",
         "Drop it"
       ]
+    },
+    {
+      "id": "a19",
+      "text": "Formula E Senior Paddock and Logistics Manager: closing date (13 Nov) has passed and it needs sustained international touring, a deal-breaker on your preferences. Drafting anyway per your request, but worth checking before you spend more time on it.",
+      "role": "2026-11-16-formula-e-senior-paddock-and-logistics-manager",
+      "done": false,
+      "created": "2026-11-24"
     }
   ],
   "inbox": [
@@ -4712,7 +4746,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "Regional Manager @ Fever",
       "at": "2026-11-24T19:32",
-      "done": false
+      "done": true,
+      "handled": "2026-11-24T19:58"
     },
     {
       "id": "i43",
@@ -4729,7 +4764,35 @@
       "task": "Read the advert, write the listing, score the fit and give a verdict",
       "title": "Event Operations Administrator @ Formula 1",
       "at": "2026-11-24T19:53",
-      "done": false
+      "done": true,
+      "handled": "2026-11-24T19:57"
+    },
+    {
+      "id": "i45",
+      "role": "2026-11-24-formula-1-event-operations-administrator",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "Event Operations Administrator @ Formula 1",
+      "at": "2026-11-24T19:58",
+      "done": true,
+      "handled": "2026-11-24T20:04"
+    },
+    {
+      "id": "i46",
+      "role": "2026-11-16-formula-e-senior-paddock-and-logistics-manager",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "Senior Paddock and Logistics Manager @ Formula E",
+      "at": "2026-11-24T19:58",
+      "done": true,
+      "handled": "2026-11-24T20:04"
+    },
+    {
+      "id": "i47",
+      "role": "2026-11-16-formula-e-senior-paddock-and-logistics-manager",
+      "task": "Give a verdict: worth applying?",
+      "title": "Senior Paddock and Logistics Manager @ Formula E",
+      "at": "2026-11-24T19:58",
+      "done": true,
+      "handled": "2026-11-24T20:00"
     }
   ]
 }

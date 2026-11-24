@@ -11,6 +11,10 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-24: Job search: office changes, 3 drafted, 2 verdicts given
+
+Tim's office inbox had 5 items from edits in the Roles tab (started automatically, so no questions were asked; one action was logged for Tim instead). Rita read the Formula 1 Event Operations Administrator advert (no listing.md existed yet) and gave it fit 1 / verdict skip (entry-level admin role, far below Tim's Head of Operations seniority). Rita also did a full read of the Formula E Senior Paddock and Logistics Manager role (previously only an email-alert summary) and gave it fit 2 / verdict skip: it needs sustained international touring (one of Tim's deal-breakers) and specialist freight/customs skills not on his CV, and its closing date (13 Nov) has already passed — an action (a19) flags this to Tim before he spends more time on it. Despite both skip verdicts, and despite Fever Regional Manager's earlier skip verdict, Tim had shortlisted all three in the office and asked for documents, so Wren drafted CV, cover letter and Word/PDF files for all three roles (now all `drafted`), with the gaps and concerns noted plainly in each role's notes.md and reflected in the cover letters themselves.
+
 ### 2026-11-24: Job search: office changes, 2 drafted, 1 verdict given
 
 Tim's office inbox had 4 items from his edits in the Roles tab. Rita read the Fever Regional Manager advert (no listing.md existed yet) and gave it fit 2 / verdict skip, which conflicts with Tim having already shortlisted it — raised as an action for Tim rather than drafting against a skip verdict. Wren drafted CV and cover letter (plus Word/PDF files) for the Robert Walters VP DX & AI Transformation Manager and Circle Recruitment AI & Digital Adoption Manager roles, both now `drafted`.

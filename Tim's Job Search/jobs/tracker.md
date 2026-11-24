@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 3 · shortlisted: 2 · drafted: 6 · applied: 9 · rejected: 1 · skipped: 104
+found: 1 · shortlisted: 1 · drafted: 9 · applied: 9 · rejected: 1 · skipped: 104
 
 ## Next actions
 
@@ -13,22 +13,23 @@ found: 3 · shortlisted: 2 · drafted: 6 · applied: 9 · rejected: 1 · skipped
 - LTA Head of Delivery drafted, but its closing date (19 Nov) looks to have passed and the posting is no longer live - fit is weak (2/5, grassroots participation not tournament ops). Worth checking it's still open before applying.
 - Access Jobs and The Unit List have gone (one is a domain for sale, the other has no job adverts any more). Take them out of the search?
 - Rita scored Fever Regional Manager fit 2, verdict skip (advert wants MBA/consulting/P&L experience, excludes event-production backgrounds) - but you'd already shortlisted it. Still draft a CV, or drop it?
+- Formula E Senior Paddock and Logistics Manager: closing date (13 Nov) has passed and it needs sustained international touring, a deal-breaker on your preferences. Drafting anyway per your request, but worth checking before you spend more time on it.
 
 ## Roles
 
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
 |---|---|---|---|---|---|---|---|---|
-| found | 1 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
-| found | 2 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
-| found | 3 | [Event Operations Administrator](https://www.linkedin.com/jobs/view/4493689363/?trackingId=wM2e5w0QQc%2Bad7fCW5wU6A%3D%3D) | Formula 1 |  |  |  |  | 2026-11-24 |
-| shortlisted | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 2 |  | 2026-11-24 |
+| found | 1 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Event Production Manager](https://www.linkedin.com/jobs/view/4485388728/) | Formula 1 | Not listed | London | 3 |  | 2026-11-20 |
+| drafted | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 2 |  | 2026-11-24 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
+| drafted | 1 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 2 |  | 2026-11-24 |
 | drafted | 1 | [Director of Operations](https://www.linkedin.com/jobs/view/4492211056/) | Sarafin Partners | £65K-£90K | Sutton (on-site) | 2 |  | 2026-11-20 |
 | drafted | 1 | [10079148: VP DX & AI Transformation Manager](https://www.reed.co.uk/jobs/10079148-vp-dx-ai-transformation-manager/57596847) | Robert Walters |  | London | 4 |  | 2026-11-24 |
 | drafted | 2 | [Events Operations Lead](https://www.linkedin.com/jobs/view/4487337038/) | McLaren Automotive Ltd |  | Woking | 3 |  | 2026-11-19 |
 | drafted | 2 | [AI & Digital Adoption Manager - London](https://www.reed.co.uk/jobs/ai-digital-adoption-manager-london/57597347) | Circle Recruitment | £65,000 - £74,500 | London | 3 |  | 2026-11-24 |
+| drafted | 3 | [Event Operations Administrator](https://www.linkedin.com/jobs/view/4493689363/?trackingId=wM2e5w0QQc%2Bad7fCW5wU6A%3D%3D) | Formula 1 |  |  | 1 |  | 2026-11-24 |
 | applied | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 | Follow up if no reply by 28 Nov | 2026-11-21 |
 | applied | 2 | [Product Operations Manager](https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960) | Electronic Arts |  | London | 5 | Follow up if no reply by 26 Nov | 2026-11-19 |
 | applied | 2 | [Event Project Director](https://www.reed.co.uk/jobs/event-project-director/57586682) | Live Recruitment | £55,000 - £60,000 | GU227LA | 3 | Follow up if no reply by 1 Dec | 2026-11-24 |
