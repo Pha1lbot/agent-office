@@ -3817,10 +3817,10 @@
       "source": "LinkedIn alert",
       "fit": 2,
       "priority": 1,
-      "status": "drafted",
+      "status": "skipped",
       "notes": "Track: Head of Operations at scale-ups; Concern: sector not shown; on-site; may be a recruiter advert",
       "found": "2026-11-20",
-      "updated": "2026-11-20",
+      "updated": "2026-11-24",
       "history": [
         {
           "date": "2026-11-20",
@@ -3834,6 +3834,11 @@
         {
           "date": "2026-11-20",
           "status": "drafted"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "skip",
