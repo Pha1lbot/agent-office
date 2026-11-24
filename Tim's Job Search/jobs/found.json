@@ -1514,48 +1514,6 @@
   ],
   "runs": [
     {
-      "at": "2026-11-19T07:34",
-      "via": "web",
-      "found": 0,
-      "note": "Old URL now redirects to eventjobsite.com; only catering/box-office roles near Newcastle shown",
-      "source": "Event Industry Jobs"
-    },
-    {
-      "at": "2026-11-19T07:34",
-      "via": "web",
-      "found": 0,
-      "note": "403 to automated readers on this PC too",
-      "source": "Work in Sports"
-    },
-    {
-      "at": "2026-11-20T10:51",
-      "via": "feed",
-      "found": 0,
-      "note": "5000 jobs listed, 32 looked possible from their titles, 32 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-20T10:51",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
-    {
-      "at": "2026-11-20T10:51",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
-    {
-      "at": "2026-11-20T10:51",
-      "via": "feed",
-      "found": 0,
-      "note": "3 of 3 boards read",
-      "source": "Company hiring pages: Ashby"
-    },
-    {
       "at": "2026-11-20T10:51",
       "via": "feed",
       "found": 0,
@@ -1722,63 +1680,105 @@
       "found": 0,
       "note": "812 results read",
       "source": "Reed"
+    },
+    {
+      "at": "2026-11-24T10:41",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 11 looked possible from their titles, 11 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-24T10:41",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-24T10:41",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-24T10:41",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-24T10:41",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-24T10:41",
+      "via": "feed",
+      "found": 0,
+      "note": "816 results read",
+      "source": "Reed"
     }
   ],
   "last_email_scan": "2026-11-21T13:05:00Z",
   "sources": {
     "Hitmarker": {
       "total": 3,
-      "last_checked": "2026-11-23T11:04",
+      "last_checked": "2026-11-24T10:41",
       "result": "ok",
       "found": 0,
-      "note": "5000 jobs listed, 10 looked possible from their titles, 10 read",
-      "last_ok": "2026-11-23T11:04",
+      "note": "5000 jobs listed, 11 looked possible from their titles, 11 read",
+      "last_ok": "2026-11-24T10:41",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-23T11:04",
+      "last_checked": "2026-11-24T10:41",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-23T11:04",
+      "last_ok": "2026-11-24T10:41",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-23T11:04",
+      "last_checked": "2026-11-24T10:41",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-23T11:04",
+      "last_ok": "2026-11-24T10:41",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-23T11:04",
+      "last_checked": "2026-11-24T10:41",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-23T11:04",
+      "last_ok": "2026-11-24T10:41",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-23T11:04",
+      "last_checked": "2026-11-24T10:41",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-23T11:04",
+      "last_ok": "2026-11-24T10:41",
       "failures": 0
     },
     "Reed": {
       "total": 14,
-      "last_checked": "2026-11-23T11:05",
+      "last_checked": "2026-11-24T10:41",
       "result": "ok",
       "found": 0,
-      "note": "812 results read",
+      "note": "816 results read",
       "failures": 0,
-      "last_ok": "2026-11-23T11:05"
+      "last_ok": "2026-11-24T10:41"
     },
     "Event Industry Jobs": {
       "total": 0,
