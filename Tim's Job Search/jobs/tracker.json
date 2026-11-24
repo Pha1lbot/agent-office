@@ -4162,6 +4162,28 @@
       "verdict": "skip",
       "verdict_why": "Product operations at a geopolitical risk firm, not one of Tim's sectors.",
       "reason": "Hal: product ops at a risk firm, wrong sector"
+    },
+    {
+      "id": "2026-11-24-formula-1-event-operations-administrator",
+      "title": "Event Operations Administrator",
+      "company": "Formula 1",
+      "location": "",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4493689363/?trackingId=wM2e5w0QQc%2Bad7fCW5wU6A%3D%3D",
+      "source": "Tim",
+      "fit": null,
+      "priority": 3,
+      "status": "found",
+      "notes": "",
+      "found": "2026-11-24",
+      "updated": "2026-11-24",
+      "history": [
+        {
+          "date": "2026-11-24",
+          "status": "found",
+          "by": "tim"
+        }
+      ]
     }
   ],
   "actions": [
@@ -4700,6 +4722,14 @@
       "at": "2026-11-24T19:32",
       "done": true,
       "handled": "2026-11-24T19:36"
+    },
+    {
+      "id": "i44",
+      "role": "2026-11-24-formula-1-event-operations-administrator",
+      "task": "Read the advert, write the listing, score the fit and give a verdict",
+      "title": "Event Operations Administrator @ Formula 1",
+      "at": "2026-11-24T19:53",
+      "done": false
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 2 · shortlisted: 2 · drafted: 6 · applied: 9 · rejected: 1 · skipped: 104
+found: 3 · shortlisted: 2 · drafted: 6 · applied: 9 · rejected: 1 · skipped: 104
 
 ## Next actions
 
@@ -20,6 +20,7 @@ found: 2 · shortlisted: 2 · drafted: 6 · applied: 9 · rejected: 1 · skipped
 |---|---|---|---|---|---|---|---|---|
 | found | 1 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
 | found | 2 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
+| found | 3 | [Event Operations Administrator](https://www.linkedin.com/jobs/view/4493689363/?trackingId=wM2e5w0QQc%2Bad7fCW5wU6A%3D%3D) | Formula 1 |  |  |  |  | 2026-11-24 |
 | shortlisted | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 2 |  | 2026-11-24 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Event Production Manager](https://www.linkedin.com/jobs/view/4485388728/) | Formula 1 | Not listed | London | 3 |  | 2026-11-20 |
