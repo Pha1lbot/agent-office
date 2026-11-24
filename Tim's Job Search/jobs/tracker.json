@@ -2736,15 +2736,20 @@
       "source": "LinkedIn alert",
       "fit": 3,
       "priority": 1,
-      "status": "found",
+      "status": "shortlisted",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
       "found": "2026-11-13",
-      "updated": "2026-11-13",
+      "updated": "2026-11-24",
       "history": [
         {
           "date": "2026-11-13",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "shortlisted",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
@@ -3261,7 +3266,7 @@
       "url": "https://www.linkedin.com/jobs/view/4491094037/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 2,
+      "priority": 1,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
       "found": "2026-11-16",
@@ -3538,7 +3543,7 @@
       "url": "https://www.linkedin.com/jobs/view/4486847589/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 3,
+      "priority": 2,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: on-site; Manager level",
       "found": "2026-11-19",
@@ -3824,14 +3829,19 @@
       "source": "Tim",
       "fit": 2,
       "priority": 6,
-      "status": "found",
+      "status": "skipped",
       "notes": "",
       "found": "2026-11-20",
-      "updated": "2026-11-20",
+      "updated": "2026-11-24",
       "history": [
         {
           "date": "2026-11-20",
           "status": "found",
+          "by": "tim"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "skipped",
           "by": "tim"
         }
       ],
@@ -3939,19 +3949,25 @@
       "source": "LinkedIn alert",
       "fit": 3,
       "priority": 4,
-      "status": "found",
+      "status": "skipped",
       "notes": "Track: Head of Operations at scale-ups; Concern: 12-month contract, travel sector",
       "found": "2026-11-21",
-      "updated": "2026-11-21",
+      "updated": "2026-11-24",
       "history": [
         {
           "date": "2026-11-21",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
-      "verdict_why": "Senior strategy and operations role; a 12-month contract in business travel, not Tim's usual sectors."
+      "verdict_why": "Senior strategy and operations role; a 12-month contract in business travel, not Tim's usual sectors.",
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-21-ges-global-experience-specialists-senior-core-services-delivery-manager",
@@ -3963,19 +3979,25 @@
       "source": "LinkedIn alert",
       "fit": 3,
       "priority": 5,
-      "status": "found",
+      "status": "skipped",
       "notes": "Track: Live events and event production; Concern: on-site",
       "found": "2026-11-21",
-      "updated": "2026-11-21",
+      "updated": "2026-11-24",
       "history": [
         {
           "date": "2026-11-21",
           "status": "found",
           "by": "hal"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
-      "verdict_why": "Senior delivery role at a big events contractor; fits Tim's logistics and crews, but it's on-site."
+      "verdict_why": "Senior delivery role at a big events contractor; fits Tim's logistics and crews, but it's on-site.",
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-21-carrington-recruitment-solutions-ltd-ai-digital-adoption-manager-ai-trainer-d",
@@ -4633,6 +4655,22 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "AI & Digital Adoption Manager - London @ Circle Recruitment",
       "at": "2026-11-21T15:28",
+      "done": false
+    },
+    {
+      "id": "i42",
+      "role": "2026-11-13-fever-regional-manager",
+      "task": "Draft a tailored CV and cover letter",
+      "title": "Regional Manager @ Fever",
+      "at": "2026-11-24T19:32",
+      "done": false
+    },
+    {
+      "id": "i43",
+      "role": "2026-11-13-fever-regional-manager",
+      "task": "Give a verdict: worth applying?",
+      "title": "Regional Manager @ Fever",
+      "at": "2026-11-24T19:32",
       "done": false
     }
   ]

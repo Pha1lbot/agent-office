@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 6 · shortlisted: 3 · drafted: 5 · applied: 8 · rejected: 1 · skipped: 101
+found: 2 · shortlisted: 4 · drafted: 5 · applied: 8 · rejected: 1 · skipped: 104
 
 ## Next actions
 
@@ -17,12 +17,9 @@ found: 6 · shortlisted: 3 · drafted: 5 · applied: 8 · rejected: 1 · skipped
 
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
 |---|---|---|---|---|---|---|---|---|
-| found | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-13 |
-| found | 2 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
-| found | 3 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
-| found | 4 | [Senior Strategy & Operations Manager, Navan Signature - 12 Month FTC](https://www.linkedin.com/jobs/view/4485310401/) | Reed & Mackay |  | London (Hybrid) | 3 |  | 2026-11-21 |
-| found | 5 | [Senior Core Services Delivery Manager](https://www.linkedin.com/jobs/view/4484510791/) | GES - Global Experience Specialists |  | London Area (On-site) | 3 |  | 2026-11-21 |
-| found | 6 | [Operations Manager](https://www.reed.co.uk/jobs/operations-manager/57595613?source=details.similarjobs) | Reed | £22 - £30 per hour | Chessington | 2 |  | 2026-11-20 |
+| found | 1 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 3 |  | 2026-11-16 |
+| found | 2 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
+| shortlisted | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 3 |  | 2026-11-24 |
 | shortlisted | 1 | [10079148: VP DX & AI Transformation Manager](https://www.reed.co.uk/jobs/10079148-vp-dx-ai-transformation-manager/57596847) | Robert Walters |  | London | 4 |  | 2026-11-21 |
 | shortlisted | 2 | [AI & Digital Adoption Manager - London](https://www.reed.co.uk/jobs/ai-digital-adoption-manager-london/57597347) | Circle Recruitment | £65,000 - £74,500 | London | 3 |  | 2026-11-21 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
@@ -57,14 +54,17 @@ found: 6 · shortlisted: 3 · drafted: 5 · applied: 8 · rejected: 1 · skipped
 | skipped | 3 | [Senior Producer, Events](https://www.linkedin.com/jobs/view/4483027028/) | Premier | £50k–£65k | London area, hybrid | 3 |  | 2026-11-09 |
 | skipped | 3 | [Digital Enablement Manager, AI Adoption, Artificial Intelligence, Digital Business Change, London](https://www.reed.co.uk/jobs/digital-enablement-manager-ai-adoption-artificial-intelligence-digital-business-change-london/57568616) | Carrington Recruitment Solutions Ltd | £70,000 - £75,000 | WC1V6AZ | 3 |  | 2026-11-20 |
 | skipped | 3 | [Operations Director](https://www.reed.co.uk/jobs/operations-director/57584295) | Insight Select Ltd | £80,000 - £120,000 | BR60SX | 1 |  | 2026-11-20 |
+| skipped | 4 | [Senior Strategy & Operations Manager, Navan Signature - 12 Month FTC](https://www.linkedin.com/jobs/view/4485310401/) | Reed & Mackay |  | London (Hybrid) | 3 |  | 2026-11-24 |
 | skipped | 5 | [Head of Political Events and Operations](https://www.linkedin.com/jobs/view/4483585204/) | The Conservative Party | Not listed | London area | 3 |  | 2026-11-09 |
 | skipped | 5 | [UK Operations Director](https://www.linkedin.com/jobs/view/4475864821/) | Prose on Pixels | Not listed | London | 3 |  | 2026-11-09 |
 | skipped | 5 | [Head of EventTech](https://www.linkedin.com/jobs/view/4482835745/) | Infopro Digital | Not listed | London, hybrid | 3 |  | 2026-11-20 |
+| skipped | 5 | [Senior Core Services Delivery Manager](https://www.linkedin.com/jobs/view/4484510791/) | GES - Global Experience Specialists |  | London Area (On-site) | 3 |  | 2026-11-24 |
 | skipped | 6 | [Senior Program Activation Manager, Twitch Brand](https://www.linkedin.com/jobs/view/4455794115/) | Amazon | Not listed | London | 3 |  | 2026-11-13 |
 | skipped | 6 | [Chief Operating Officer - Live event production](https://uk.linkedin.com/jobs/view/chief-operating-officer-live-event-production-at-disrupt-search-4480513001) | Disrupt Search (agency client) | not stated | London Area | 3 |  | 2026-11-16 |
 | skipped | 6 | [Head of Operations](https://www.linkedin.com/jobs/view/4461930505/) | TryHackMe |  | London (Remote) | 2 |  | 2026-11-18 |
 | skipped | 6 | [Company Operations Lead](https://www.linkedin.com/jobs/view/4479584002/) | ElevenLabs |  | United Kingdom (Remote) | 2 |  | 2026-11-17 |
 | skipped | 6 | [Chief Operating Officer](https://www.linkedin.com/jobs/view/4476423376/) | Hexagon World Series |  | Wimbledon (Hybrid) | 3 |  | 2026-11-20 |
+| skipped | 6 | [Operations Manager](https://www.reed.co.uk/jobs/operations-manager/57595613?source=details.similarjobs) | Reed | £22 - £30 per hour | Chessington | 2 |  | 2026-11-24 |
 | skipped | 7 | [Marketing Production Manager, Sports](https://www.linkedin.com/jobs/view/4475056502/) | Prime Video & Amazon MGM Studios | Not listed | London | 3 |  | 2026-11-13 |
 | skipped | 7 | [Stadium Managers](https://www.linkedin.com/jobs/view/4490097957/) | UK & Ireland 2028 Limited |  | Wembley (Hybrid) | 3 |  | 2026-11-20 |
 | skipped | 8 | Director of Live Operations | Bauer Media |  | Remote, UK or Germany | 3 |  | 2026-11-13 |
