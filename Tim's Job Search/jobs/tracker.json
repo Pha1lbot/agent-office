@@ -2734,7 +2734,7 @@
       "pay": "",
       "url": "https://www.linkedin.com/jobs/view/4463091092/",
       "source": "LinkedIn alert",
-      "fit": 3,
+      "fit": 2,
       "priority": 1,
       "status": "shortlisted",
       "notes": "Track: Live events and event production; Concern: Not clear it is senior or an events role; pay not shown; Posted 2026-11-13",
@@ -2752,8 +2752,8 @@
           "by": "tim"
         }
       ],
-      "verdict": "maybe",
-      "verdict_why": "Live events: Fever runs live entertainment experiences; may be a city operations lead"
+      "verdict": "skip",
+      "verdict_why": "Advert excludes event-production backgrounds, wants MBA/consulting/P&L experience Tim doesn't have"
     },
     {
       "id": "2026-11-13-disrupt-talent-senior-operations-manager-b2b-exhibition",
@@ -3370,10 +3370,10 @@
       "source": "Reed",
       "fit": 3,
       "priority": 2,
-      "status": "drafted",
+      "status": "applied",
       "notes": "Track: Live events and event production; Concern: recruiter's advert (employer may not be named); Posted 2026-11-18",
       "found": "2026-11-18",
-      "updated": "2026-11-18",
+      "updated": "2026-11-24",
       "history": [
         {
           "date": "2026-11-18",
@@ -3389,10 +3389,16 @@
           "date": "2026-11-18",
           "status": "drafted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "applied",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
-      "verdict_why": "Pay/seniority/commute fit but no agency-side hospitality/experiential track record and ~5-6 weeks/year travel exceeds Tim's preference"
+      "verdict_why": "Pay/seniority/commute fit but no agency-side hospitality/experiential track record and ~5-6 weeks/year travel exceeds Tim's preference",
+      "next": "Follow up if no reply by 1 Dec"
     },
     {
       "id": "2026-11-18-insight-select-ltd-operations-director",
@@ -3889,10 +3895,10 @@
       "source": "Reed",
       "fit": 4,
       "priority": 1,
-      "status": "shortlisted",
+      "status": "drafted",
       "notes": "Track: AI operations, enablement and transformation; Posted 2026-11-20",
       "found": "2026-11-21",
-      "updated": "2026-11-21",
+      "updated": "2026-11-24",
       "history": [
         {
           "date": "2026-11-21",
@@ -3903,6 +3909,10 @@
           "date": "2026-11-21",
           "status": "shortlisted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "drafted"
         }
       ],
       "verdict": "apply",
@@ -3919,10 +3929,10 @@
       "source": "Reed",
       "fit": 3,
       "priority": 2,
-      "status": "shortlisted",
+      "status": "drafted",
       "notes": "Track: AI operations, enablement and transformation; Concern: recruiter's advert (employer may not be named); Posted 2026-11-20",
       "found": "2026-11-21",
-      "updated": "2026-11-21",
+      "updated": "2026-11-24",
       "history": [
         {
           "date": "2026-11-21",
@@ -3933,6 +3943,10 @@
           "date": "2026-11-21",
           "status": "shortlisted",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "drafted"
         }
       ],
       "verdict": "maybe",
@@ -4286,6 +4300,17 @@
       "options": [
         "Remove them",
         "Keep them"
+      ]
+    },
+    {
+      "id": "a18",
+      "text": "Rita scored Fever Regional Manager fit 2, verdict skip (advert wants MBA/consulting/P&L experience, excludes event-production backgrounds) - but you'd already shortlisted it. Still draft a CV, or drop it?",
+      "role": "2026-11-13-fever-regional-manager",
+      "done": false,
+      "created": "2026-11-24",
+      "options": [
+        "Still draft it",
+        "Drop it"
       ]
     }
   ],
@@ -4647,7 +4672,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "10079148: VP DX & AI Transformation Manager @ Robert Walters",
       "at": "2026-11-21T15:28",
-      "done": false
+      "done": true,
+      "handled": "2026-11-24T19:39"
     },
     {
       "id": "i41",
@@ -4655,7 +4681,8 @@
       "task": "Draft a tailored CV and cover letter",
       "title": "AI & Digital Adoption Manager - London @ Circle Recruitment",
       "at": "2026-11-21T15:28",
-      "done": false
+      "done": true,
+      "handled": "2026-11-24T19:39"
     },
     {
       "id": "i42",
@@ -4671,7 +4698,8 @@
       "task": "Give a verdict: worth applying?",
       "title": "Regional Manager @ Fever",
       "at": "2026-11-24T19:32",
-      "done": false
+      "done": true,
+      "handled": "2026-11-24T19:36"
     }
   ]
 }

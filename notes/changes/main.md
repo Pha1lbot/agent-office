@@ -11,6 +11,10 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-24: Job search: office changes, 2 drafted, 1 verdict given
+
+Tim's office inbox had 4 items from his edits in the Roles tab. Rita read the Fever Regional Manager advert (no listing.md existed yet) and gave it fit 2 / verdict skip, which conflicts with Tim having already shortlisted it — raised as an action for Tim rather than drafting against a skip verdict. Wren drafted CV and cover letter (plus Word/PDF files) for the Robert Walters VP DX & AI Transformation Manager and Circle Recruitment AI & Digital Adoption Manager roles, both now `drafted`.
+
 ### 2026-11-21: Job search: daily search, 4 new leads, 6 dismissed
 
 **What changed:** `jobs/found.json`, `jobs/scout-state.json`, `jobs/tracker.json`, `jobs/tracker.md` and `jobs/today.md` (in Tim's office). Tim asked to start today's search. Scout reached 6 of 6 feed sources and queued 3 Reed roles. One new LinkedIn alert email listed 6 roles, and all were queued. Kept as leads: Robert Walters VP DX & AI Transformation Manager (Apply), Circle Recruitment AI & Digital Adoption Manager (£65-74.5k), Reed & Mackay Senior Strategy & Operations Manager (12-month contract) and GES Senior Core Services Delivery Manager (on-site); the last three are Maybes. Dismissed: a Carrington repost, Pentland Brands (admin), NBCUniversal (broadcast production), Royal College of Radiologists (Manager level) and Sibylline (wrong sector). The closed-postings check dismissed Movember (closing date passed). Rita checked Access Jobs and The Unit List and found both are gone. They were logged as blocked, and an action asks Tim whether to remove them from `search.json`.
