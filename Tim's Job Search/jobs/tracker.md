@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 1 · shortlisted: 1 · drafted: 8 · applied: 9 · rejected: 1 · skipped: 105
+found: 1 · shortlisted: 1 · drafted: 7 · applied: 9 · rejected: 1 · skipped: 106
 
 ## Next actions
 
@@ -25,7 +25,6 @@ found: 1 · shortlisted: 1 · drafted: 8 · applied: 9 · rejected: 1 · skipped
 | drafted | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 2 |  | 2026-11-24 |
 | drafted | 1 | [Senior Project Manager (AI Adoption)](https://www.reed.co.uk/jobs/senior-project-manager-ai-adoption/57564062) | Pontoon | £650 - £700 | London | 3 |  | 2026-11-16 |
 | drafted | 1 | [Senior Paddock and Logistics Manager](https://www.linkedin.com/jobs/view/4491094037/) | Formula E |  | London | 2 |  | 2026-11-24 |
-| drafted | 1 | [10079148: VP DX & AI Transformation Manager](https://www.reed.co.uk/jobs/10079148-vp-dx-ai-transformation-manager/57596847) | Robert Walters |  | London | 4 |  | 2026-11-24 |
 | drafted | 2 | [Events Operations Lead](https://www.linkedin.com/jobs/view/4487337038/) | McLaren Automotive Ltd |  | Woking | 3 |  | 2026-11-19 |
 | drafted | 2 | [AI & Digital Adoption Manager - London](https://www.reed.co.uk/jobs/ai-digital-adoption-manager-london/57597347) | Circle Recruitment | £65,000 - £74,500 | London | 3 |  | 2026-11-24 |
 | drafted | 3 | [Event Operations Administrator](https://www.linkedin.com/jobs/view/4493689363/?trackingId=wM2e5w0QQc%2Bad7fCW5wU6A%3D%3D) | Formula 1 |  |  | 1 |  | 2026-11-24 |
@@ -46,6 +45,7 @@ found: 1 · shortlisted: 1 · drafted: 8 · applied: 9 · rejected: 1 · skipped
 | skipped | 1 | [Change & Adoption Manager - AI](https://www.reed.co.uk/jobs/change-adoption-manager-ai/57583404) | British Heart Foundation | £54,000 - £58,000 | London | 3 |  | 2026-11-20 |
 | skipped | 1 | [Senior Operations Manager](https://www.linkedin.com/jobs/view/4490662182/) | Reed | £50K-£60K | London (hybrid) | 4 |  | 2026-11-20 |
 | skipped | 1 | [Director of Operations](https://www.linkedin.com/jobs/view/4492211056/) | Sarafin Partners | £65K-£90K | Sutton (on-site) | 2 |  | 2026-11-24 |
+| skipped | 1 | [10079148: VP DX & AI Transformation Manager](https://www.reed.co.uk/jobs/10079148-vp-dx-ai-transformation-manager/57596847) | Robert Walters |  | London | 4 |  | 2026-11-24 |
 | skipped | 2 | [Senior Operations & Event Producer](https://www.linkedin.com/jobs/view/4473635792/) | This is Beyond | £60k–£65k | London area, hybrid | 3 |  | 2026-11-09 |
 | skipped | 2 | [Head of Delivery, Central & East](https://www.linkedin.com/jobs/view/4483015001/) | LTA | Not listed | London area | 2 |  | 2026-11-20 |
 | skipped | 2 | [Senior Event Operations Manager, POSSIBLE Europe](https://www.linkedin.com/jobs/view/4482511217/) | Hyve Group | Not listed | London | 3 |  | 2026-11-20 |

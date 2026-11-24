@@ -3915,7 +3915,7 @@
       "source": "Reed",
       "fit": 4,
       "priority": 1,
-      "status": "drafted",
+      "status": "skipped",
       "notes": "Track: AI operations, enablement and transformation; Posted 2026-11-20",
       "found": "2026-11-21",
       "updated": "2026-11-24",
@@ -3933,11 +3933,17 @@
         {
           "date": "2026-11-24",
           "status": "drafted"
+        },
+        {
+          "date": "2026-11-24",
+          "status": "skipped",
+          "by": "tim"
         }
       ],
       "verdict": "apply",
       "verdict_why": "Senior AI transformation role in London; matches Tim's AI enablement track.",
-      "priority_by_tim": true
+      "priority_by_tim": true,
+      "reason": "Wrong kind of work"
     },
     {
       "id": "2026-11-21-circle-recruitment-ai-digital-adoption-manager-london",
