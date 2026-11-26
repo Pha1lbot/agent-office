@@ -1510,51 +1510,43 @@
         "reason": "Hal: product ops at a risk firm, wrong sector",
         "at": "2026-11-21T14:39"
       }
+    },
+    {
+      "id": "f68",
+      "title": "AI Product Manager – Agentic Systems (LLM)",
+      "company": "INTEC SELECT LIMITED",
+      "location": "SW100AB",
+      "pay": "£550 - £565",
+      "link": "https://www.reed.co.uk/jobs/ai-product-manager--agentic-systems-llm/57613344",
+      "posted": "2026-11-25",
+      "source": "Reed",
+      "via": "feed",
+      "fit": "strong",
+      "why": "Product and implementation in event, sport, gaming and workforce tech: the title matches 'Product Manager' and the advert uses the track's words",
+      "concern": "",
+      "track": "Product and implementation in event, sport, gaming and workf",
+      "summary": "AI Product Manager – Agentic Systems (LLM) Circa 565 per day. Outside IR35. 6 Month Initial Contract. London – Hybrid. The role for AI Product Manager – Agentic Systems (LLM) Our client is a globally established major events and media business, operating across multiple high-valu",
+      "found_at": "2026-11-26T09:12"
+    },
+    {
+      "id": "f69",
+      "title": "Technical Program Manager - AI & Product Operations",
+      "company": "Harvey Nash",
+      "location": "London",
+      "pay": "",
+      "link": "https://www.reed.co.uk/jobs/technical-program-manager-ai-product-operations/57613379",
+      "posted": "2026-11-25",
+      "source": "Reed",
+      "via": "feed",
+      "fit": "possible",
+      "why": "AI operations, enablement and transformation: the title matches 'AI Programme Manager' and the advert uses the track's words",
+      "concern": "recruiter's advert (employer may not be named)",
+      "track": "AI operations, enablement and transformation",
+      "summary": "Role: Technical Program Manager - AI & Product Operations Contract Duration: 6+ months Location: London, UK Job Type: Contract Hybrid Working: 3 days office and 2 days Remote Role Overview We are looking for a technically strong and highly motivated Global Solutions Associate to",
+      "found_at": "2026-11-26T09:12"
     }
   ],
   "runs": [
-    {
-      "at": "2026-11-20T10:51",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: SmartRecruiters"
-    },
-    {
-      "at": "2026-11-20T10:51",
-      "via": "feed",
-      "found": 0,
-      "note": "827 results read",
-      "source": "Reed"
-    },
-    {
-      "at": "2026-11-20T10:52",
-      "via": "email",
-      "found": 3,
-      "note": "4 alert emails read, 24 roles seen, 3 queued",
-      "source": "LinkedIn Jobs"
-    },
-    {
-      "at": "2026-11-20T10:52",
-      "via": "email",
-      "found": 0,
-      "note": "Only a temporary-jobs digest and a survey; not read",
-      "source": "Reed alerts"
-    },
-    {
-      "at": "2026-11-20T10:52",
-      "via": "email",
-      "found": 0,
-      "note": "No Indeed alert emails",
-      "source": "Indeed UK"
-    },
-    {
-      "at": "2026-11-20T10:53",
-      "via": "web",
-      "found": 0,
-      "note": "403 to automated readers, from this PC too; read it by hand",
-      "source": "Esports Insider jobs"
-    },
     {
       "at": "2026-11-20T10:53",
       "via": "web",
@@ -1722,63 +1714,105 @@
       "found": 0,
       "note": "816 results read",
       "source": "Reed"
+    },
+    {
+      "at": "2026-11-26T09:11",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 71 looked possible from their titles, 71 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-26T09:11",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-26T09:11",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-26T09:11",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-26T09:11",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-26T09:12",
+      "via": "feed",
+      "found": 2,
+      "note": "805 results read",
+      "source": "Reed"
     }
   ],
   "last_email_scan": "2026-11-21T13:05:00Z",
   "sources": {
     "Hitmarker": {
       "total": 3,
-      "last_checked": "2026-11-24T10:41",
+      "last_checked": "2026-11-26T09:11",
       "result": "ok",
       "found": 0,
-      "note": "5000 jobs listed, 11 looked possible from their titles, 11 read",
-      "last_ok": "2026-11-24T10:41",
+      "note": "5000 jobs listed, 71 looked possible from their titles, 71 read",
+      "last_ok": "2026-11-26T09:11",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-24T10:41",
+      "last_checked": "2026-11-26T09:11",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-24T10:41",
+      "last_ok": "2026-11-26T09:11",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-24T10:41",
+      "last_checked": "2026-11-26T09:11",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-24T10:41",
+      "last_ok": "2026-11-26T09:11",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-24T10:41",
+      "last_checked": "2026-11-26T09:11",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-24T10:41",
+      "last_ok": "2026-11-26T09:11",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-24T10:41",
+      "last_checked": "2026-11-26T09:11",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-24T10:41",
+      "last_ok": "2026-11-26T09:11",
       "failures": 0
     },
     "Reed": {
-      "total": 14,
-      "last_checked": "2026-11-24T10:41",
+      "total": 16,
+      "last_checked": "2026-11-26T09:12",
       "result": "ok",
-      "found": 0,
-      "note": "816 results read",
+      "found": 2,
+      "note": "805 results read",
       "failures": 0,
-      "last_ok": "2026-11-24T10:41"
+      "last_ok": "2026-11-26T09:12"
     },
     "Event Industry Jobs": {
       "total": 0,
