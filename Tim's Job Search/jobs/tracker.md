@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 1 · shortlisted: 1 · drafted: 7 · applied: 9 · rejected: 1 · skipped: 106
+found: 3 · shortlisted: 1 · drafted: 7 · applied: 9 · rejected: 1 · skipped: 106
 
 ## Next actions
 
@@ -19,7 +19,9 @@ found: 1 · shortlisted: 1 · drafted: 7 · applied: 9 · rejected: 1 · skipped
 
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
 |---|---|---|---|---|---|---|---|---|
-| found | 1 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
+| found | 1 | [AI Product Manager – Agentic Systems (LLM)](https://www.reed.co.uk/jobs/ai-product-manager--agentic-systems-llm/57613344) | INTEC SELECT LIMITED | £550 - £565 | SW100AB | 4 |  | 2026-11-26 |
+| found | 2 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
+| found | 3 | [Technical Program Manager - AI & Product Operations](https://www.reed.co.uk/jobs/technical-program-manager-ai-product-operations/57613379) | Harvey Nash |  | London | 3 |  | 2026-11-26 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Event Production Manager](https://www.linkedin.com/jobs/view/4485388728/) | Formula 1 | Not listed | London | 3 |  | 2026-11-20 |
 | drafted | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 2 |  | 2026-11-24 |

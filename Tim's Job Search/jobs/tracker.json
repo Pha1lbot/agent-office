@@ -3564,7 +3564,7 @@
       "url": "https://www.linkedin.com/jobs/view/4486847589/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 1,
+      "priority": 2,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: on-site; Manager level",
       "found": "2026-11-19",
@@ -4222,6 +4222,54 @@
       ],
       "verdict": "skip",
       "verdict_why": "Entry-level admin role, far below Tim's 15-year Head of Operations seniority"
+    },
+    {
+      "id": "2026-11-26-intec-select-limited-ai-product-manager-agentic-systems-llm",
+      "title": "AI Product Manager – Agentic Systems (LLM)",
+      "company": "INTEC SELECT LIMITED",
+      "location": "SW100AB",
+      "pay": "£550 - £565",
+      "url": "https://www.reed.co.uk/jobs/ai-product-manager--agentic-systems-llm/57613344",
+      "source": "Reed",
+      "fit": 4,
+      "priority": 1,
+      "status": "found",
+      "notes": "Track: Product and implementation in event, sport, gaming and workf; Posted 2026-11-25",
+      "found": "2026-11-26",
+      "updated": "2026-11-26",
+      "history": [
+        {
+          "date": "2026-11-26",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "apply",
+      "verdict_why": "Strong fit: AI Product Manager contract, good day rate (565/day), London hybrid"
+    },
+    {
+      "id": "2026-11-26-harvey-nash-technical-program-manager-ai-product-ope",
+      "title": "Technical Program Manager - AI & Product Operations",
+      "company": "Harvey Nash",
+      "location": "London",
+      "pay": "",
+      "url": "https://www.reed.co.uk/jobs/technical-program-manager-ai-product-operations/57613379",
+      "source": "Reed",
+      "fit": 3,
+      "priority": 3,
+      "status": "found",
+      "notes": "Track: AI operations, enablement and transformation; Concern: recruiter's advert (employer may not be named); Posted 2026-11-25",
+      "found": "2026-11-26",
+      "updated": "2026-11-26",
+      "history": [
+        {
+          "date": "2026-11-26",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Possible fit: AI/Technical Program Manager contract, pay not stated, recruiter advert so employer unclear"
     }
   ],
   "actions": [

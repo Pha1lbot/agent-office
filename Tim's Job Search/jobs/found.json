@@ -1526,7 +1526,13 @@
       "concern": "",
       "track": "Product and implementation in event, sport, gaming and workf",
       "summary": "AI Product Manager – Agentic Systems (LLM) Circa 565 per day. Outside IR35. 6 Month Initial Contract. London – Hybrid. The role for AI Product Manager – Agentic Systems (LLM) Our client is a globally established major events and media business, operating across multiple high-valu",
-      "found_at": "2026-11-26T09:12"
+      "found_at": "2026-11-26T09:12",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-26-intec-select-limited-ai-product-manager-agentic-systems-llm",
+        "reason": "",
+        "at": "2026-11-26T09:13"
+      }
     },
     {
       "id": "f69",
@@ -1543,7 +1549,13 @@
       "concern": "recruiter's advert (employer may not be named)",
       "track": "AI operations, enablement and transformation",
       "summary": "Role: Technical Program Manager - AI & Product Operations Contract Duration: 6+ months Location: London, UK Job Type: Contract Hybrid Working: 3 days office and 2 days Remote Role Overview We are looking for a technically strong and highly motivated Global Solutions Associate to",
-      "found_at": "2026-11-26T09:12"
+      "found_at": "2026-11-26T09:12",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-26-harvey-nash-technical-program-manager-ai-product-ope",
+        "reason": "",
+        "at": "2026-11-26T09:13"
+      }
     }
   ],
   "runs": [

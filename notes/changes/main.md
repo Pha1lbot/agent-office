@@ -11,6 +11,10 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+### 2026-11-26: Job search: sorted Scout's finds, 2 new leads, 0 dismissed
+
+The morning daily search didn't run, so the office ran Scout itself and started Hal to sort its 2 finds (f68, f69). Both were kept as leads rather than dismissed, since neither hit a deal-breaker, stated pay below minimum, or a weak/wrong-discipline fit: INTEC SELECT's AI Product Manager – Agentic Systems contract (Reed, £550–£565/day, strong fit, verdict Apply) and Harvey Nash's Technical Program Manager - AI & Product Operations contract (Reed, pay not stated, recruiter advert, possible fit, verdict Maybe). `jobs/today.md` was rewritten fresh for today (it still had Saturday's content), noting the email scan and Rita's web sites weren't checked this run — only Scout's feed/API sources (Hitmarker, Reed, Greenhouse, Ashby) were reached.
+
 ### 2026-11-24: Job search: office changes, 3 drafted, 2 verdicts given
 
 Tim's office inbox had 5 items from edits in the Roles tab (started automatically, so no questions were asked; one action was logged for Tim instead). Rita read the Formula 1 Event Operations Administrator advert (no listing.md existed yet) and gave it fit 1 / verdict skip (entry-level admin role, far below Tim's Head of Operations seniority). Rita also did a full read of the Formula E Senior Paddock and Logistics Manager role (previously only an email-alert summary) and gave it fit 2 / verdict skip: it needs sustained international touring (one of Tim's deal-breakers) and specialist freight/customs skills not on his CV, and its closing date (13 Nov) has already passed — an action (a19) flags this to Tim before he spends more time on it. Despite both skip verdicts, and despite Fever Regional Manager's earlier skip verdict, Tim had shortlisted all three in the office and asked for documents, so Wren drafted CV, cover letter and Word/PDF files for all three roles (now all `drafted`), with the gaps and concerns noted plainly in each role's notes.md and reflected in the cover letters themselves.
