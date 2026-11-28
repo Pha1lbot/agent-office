@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 3 · shortlisted: 1 · drafted: 7 · applied: 9 · rejected: 1 · skipped: 106
+found: 8 · shortlisted: 1 · drafted: 7 · applied: 9 · rejected: 1 · skipped: 108
 
 ## Next actions
 
@@ -14,14 +14,20 @@ found: 3 · shortlisted: 1 · drafted: 7 · applied: 9 · rejected: 1 · skipped
 - Access Jobs and The Unit List have gone (one is a domain for sale, the other has no job adverts any more). Take them out of the search?
 - Rita scored Fever Regional Manager fit 2, verdict skip (advert wants MBA/consulting/P&L experience, excludes event-production backgrounds) - but you'd already shortlisted it. Still draft a CV, or drop it?
 - Formula E Senior Paddock and Logistics Manager: closing date (13 Nov) has passed and it needs sustained international touring, a deal-breaker on your preferences. Drafting anyway per your request, but worth checking before you spend more time on it.
+- The Reed 'Head of Operations' role (ref 57494106, applied 13 Nov) sent a rejection on 24 Nov. Mark it rejected?
 
 ## Roles
 
 | Status | Priority | Role | Company | Pay | Location | Fit | Next step | Updated |
 |---|---|---|---|---|---|---|---|---|
 | found | 1 | [AI Product Manager – Agentic Systems (LLM)](https://www.reed.co.uk/jobs/ai-product-manager--agentic-systems-llm/57613344) | INTEC SELECT LIMITED | £550 - £565 | SW100AB | 4 |  | 2026-11-26 |
-| found | 2 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
-| found | 3 | [Technical Program Manager - AI & Product Operations](https://www.reed.co.uk/jobs/technical-program-manager-ai-product-operations/57613379) | Harvey Nash |  | London | 3 |  | 2026-11-26 |
+| found | 2 | [Operations Lead at VC backed Sport & Fitness startups (£70-100k)](https://www.linkedin.com/jobs/view/4495269696/) | Jumpstart | £70K-£100K | London Area (Hybrid) | 3 |  | 2026-11-28 |
+| found | 3 | [Operations Manager](https://www.linkedin.com/jobs/view/4492661757/) | Invictus Group | £70K-£90K | South Croydon | 3 |  | 2026-11-28 |
+| found | 4 | [Production Operations Manager](https://www.linkedin.com/jobs/view/4486847589/) | Royal Albert Hall |  | London (on-site) | 3 |  | 2026-11-19 |
+| found | 5 | [Technical Program Manager - AI & Product Operations](https://www.reed.co.uk/jobs/technical-program-manager-ai-product-operations/57613379) | Harvey Nash |  | London | 3 |  | 2026-11-26 |
+| found | 6 | [Technology Operations Manager](https://www.linkedin.com/jobs/view/4495816641/) | Formula E |  | London | 3 |  | 2026-11-28 |
+| found | 7 | [Manager, Bookings & Scheduling - Content Operations](https://www.linkedin.com/jobs/view/4495528710/) | The Walt Disney Company |  | London | 3 |  | 2026-11-28 |
+| found | 8 | [Senior Manager, Enterprise Operations](https://www.linkedin.com/jobs/view/4495212269/) | LEGO Digital Play |  | London (On-site) | 3 |  | 2026-11-28 |
 | shortlisted |  | Events Executive (freelance) | The Insights Group · The Esports Radar | Day rate to agree | Remote, UK + international travel |  | Agree day rate and days per month | 2026-11-02 |
 | drafted | 1 | [Event Production Manager](https://www.linkedin.com/jobs/view/4485388728/) | Formula 1 | Not listed | London | 3 |  | 2026-11-20 |
 | drafted | 1 | [Regional Manager](https://www.linkedin.com/jobs/view/4463091092/) | Fever |  | London | 2 |  | 2026-11-24 |
@@ -146,3 +152,5 @@ found: 3 · shortlisted: 1 · drafted: 7 · applied: 9 · rejected: 1 · skipped
 | skipped |  | [Senior Production and Operations Manager](https://www.linkedin.com/jobs/view/4492977110/) | NBCUniversal |  | London (Hybrid) | 2 |  | 2026-11-21 |
 | skipped |  | [Events Operations Manager](https://www.linkedin.com/jobs/view/4491922534/) | The Royal College of Radiologists |  | London Area (Hybrid) | 2 |  | 2026-11-21 |
 | skipped |  | [Product Operations Manager](https://www.linkedin.com/jobs/view/4492814467/) | Sibylline |  | London (Hybrid) | 2 |  | 2026-11-21 |
+| skipped |  | [Senior UA Manager - Unannounced Project](https://hitmarker.net/jobs/naturalmotion-senior-ua-manager-unannounced-project-5722552) | NaturalMotion |  | London | 4 |  | 2026-11-28 |
+| skipped |  | [Area Events Manager](https://www.linkedin.com/jobs/view/4494169830/) | Cancer Research UK (CRUK) | £27,000-£31,000 | Gildersome | 2 |  | 2026-11-28 |

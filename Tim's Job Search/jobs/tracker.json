@@ -3564,7 +3564,7 @@
       "url": "https://www.linkedin.com/jobs/view/4486847589/",
       "source": "LinkedIn alert",
       "fit": 3,
-      "priority": 2,
+      "priority": 4,
       "status": "found",
       "notes": "Track: Sports and venues operations; Concern: on-site; Manager level",
       "found": "2026-11-19",
@@ -4256,7 +4256,7 @@
       "url": "https://www.reed.co.uk/jobs/technical-program-manager-ai-product-operations/57613379",
       "source": "Reed",
       "fit": 3,
-      "priority": 3,
+      "priority": 5,
       "status": "found",
       "notes": "Track: AI operations, enablement and transformation; Concern: recruiter's advert (employer may not be named); Posted 2026-11-25",
       "found": "2026-11-26",
@@ -4270,6 +4270,186 @@
       ],
       "verdict": "maybe",
       "verdict_why": "Possible fit: AI/Technical Program Manager contract, pay not stated, recruiter advert so employer unclear"
+    },
+    {
+      "id": "2026-11-28-jumpstart-operations-lead-at-vc-backed-sport-fitne",
+      "title": "Operations Lead at VC backed Sport & Fitness startups (£70-100k)",
+      "company": "Jumpstart",
+      "location": "London Area (Hybrid)",
+      "pay": "£70K-£100K",
+      "url": "https://www.linkedin.com/jobs/view/4495269696/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 2,
+      "status": "found",
+      "notes": "Track: Head of Operations at scale-ups; Concern: Recruiter listing; the actual employer isn't named",
+      "found": "2026-11-28",
+      "updated": "2026-11-28",
+      "history": [
+        {
+          "date": "2026-11-28",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Heads operations for a growing sport and fitness start-up, close to your sport and live-ops leadership."
+    },
+    {
+      "id": "2026-11-28-formula-e-technology-operations-manager",
+      "title": "Technology Operations Manager",
+      "company": "Formula E",
+      "location": "London",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4495816641/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 6,
+      "status": "found",
+      "notes": "Track: Sports and venues operations; Concern: Likely heavy travel; pay not shown",
+      "found": "2026-11-28",
+      "updated": "2026-11-28",
+      "history": [
+        {
+          "date": "2026-11-28",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Event technology operations for a global race series, close to your live-event tech and studio builds."
+    },
+    {
+      "id": "2026-11-28-the-walt-disney-company-manager-bookings-scheduling-content-oper",
+      "title": "Manager, Bookings & Scheduling - Content Operations",
+      "company": "The Walt Disney Company",
+      "location": "London",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4495528710/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 7,
+      "status": "found",
+      "notes": "Track: Live events and event production; Concern: May be junior to your level; pay not shown",
+      "found": "2026-11-28",
+      "updated": "2026-11-28",
+      "history": [
+        {
+          "date": "2026-11-28",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Scheduling and booking operations in media, like your crew rotas, bookings and studio scheduling."
+    },
+    {
+      "id": "2026-11-28-lego-digital-play-senior-manager-enterprise-operations",
+      "title": "Senior Manager, Enterprise Operations",
+      "company": "LEGO Digital Play",
+      "location": "London (On-site)",
+      "pay": "",
+      "url": "https://www.linkedin.com/jobs/view/4495212269/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 8,
+      "status": "found",
+      "notes": "Track: Esports and gaming operations; Concern: On-site; 'enterprise operations' may mean IT",
+      "found": "2026-11-28",
+      "updated": "2026-11-28",
+      "history": [
+        {
+          "date": "2026-11-28",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Senior operations role in LEGO's games and digital play arm, near your gaming operations background."
+    },
+    {
+      "id": "2026-11-28-invictus-group-operations-manager",
+      "title": "Operations Manager",
+      "company": "Invictus Group",
+      "location": "South Croydon",
+      "pay": "£70K-£90K",
+      "url": "https://www.linkedin.com/jobs/view/4492661757/",
+      "source": "LinkedIn alert",
+      "fit": 3,
+      "priority": 3,
+      "status": "found",
+      "notes": "Track: Head of Operations at scale-ups; Concern: Sector not stated (likely security or facilities)",
+      "found": "2026-11-28",
+      "updated": "2026-11-28",
+      "history": [
+        {
+          "date": "2026-11-28",
+          "status": "found",
+          "by": "hal"
+        }
+      ],
+      "verdict": "maybe",
+      "verdict_why": "Operations manager at a pay level that fits, within commuting distance of Epsom."
+    },
+    {
+      "id": "2026-11-28-naturalmotion-senior-ua-manager-unannounced-project",
+      "title": "Senior UA Manager - Unannounced Project",
+      "company": "NaturalMotion",
+      "location": "London",
+      "pay": "",
+      "url": "https://hitmarker.net/jobs/naturalmotion-senior-ua-manager-unannounced-project-5722552",
+      "source": "Hitmarker",
+      "fit": 4,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Project and programme management; Posted 2026-11-27",
+      "found": "2026-11-28",
+      "updated": "2026-11-28",
+      "history": [
+        {
+          "date": "2026-11-28",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-28",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Project and programme management: the title matches 'Senior Project Manager' and the advert uses the track's words",
+      "reason": "Hal: user acquisition (marketing), wrong discipline"
+    },
+    {
+      "id": "2026-11-28-cancer-research-uk-cruk-area-events-manager",
+      "title": "Area Events Manager",
+      "company": "Cancer Research UK (CRUK)",
+      "location": "Gildersome",
+      "pay": "£27,000-£31,000",
+      "url": "https://www.linkedin.com/jobs/view/4494169830/",
+      "source": "LinkedIn alert",
+      "fit": 2,
+      "priority": null,
+      "status": "skipped",
+      "notes": "Track: Live events and event production; Concern: Pay £27-31k and based near Leeds",
+      "found": "2026-11-28",
+      "updated": "2026-11-28",
+      "history": [
+        {
+          "date": "2026-11-28",
+          "status": "found",
+          "by": "hal"
+        },
+        {
+          "date": "2026-11-28",
+          "status": "skipped",
+          "by": "hal"
+        }
+      ],
+      "verdict": "skip",
+      "verdict_why": "Events role, but a regional fundraising post.",
+      "reason": "Hal: pay £27-31k, based near Leeds"
     }
   ],
   "actions": [
@@ -4427,6 +4607,17 @@
       "role": "2026-11-16-formula-e-senior-paddock-and-logistics-manager",
       "done": false,
       "created": "2026-11-24"
+    },
+    {
+      "id": "a20",
+      "text": "The Reed 'Head of Operations' role (ref 57494106, applied 13 Nov) sent a rejection on 24 Nov. Mark it rejected?",
+      "role": "2026-11-12-reed-head-of-operations",
+      "done": false,
+      "created": "2026-11-28",
+      "options": [
+        "Mark rejected",
+        "Leave it"
+      ]
     }
   ],
   "inbox": [

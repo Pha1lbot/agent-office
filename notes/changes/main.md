@@ -11,6 +11,8 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+- 2026-11-28: Job search: daily search, 5 new leads, 2 dismissed (run from a cloud session at Tim's request; Reed not reached from the cloud; one-tap question added about the Reed Head of Operations rejection email).
+
 ### 2026-11-26: Job search: sorted Scout's finds, 2 new leads, 0 dismissed
 
 The morning daily search didn't run, so the office ran Scout itself and started Hal to sort its 2 finds (f68, f69). Both were kept as leads rather than dismissed, since neither hit a deal-breaker, stated pay below minimum, or a weak/wrong-discipline fit: INTEC SELECT's AI Product Manager – Agentic Systems contract (Reed, £550–£565/day, strong fit, verdict Apply) and Harvey Nash's Technical Program Manager - AI & Product Operations contract (Reed, pay not stated, recruiter advert, possible fit, verdict Maybe). `jobs/today.md` was rewritten fresh for today (it still had Saturday's content), noting the email scan and Rita's web sites weren't checked this run — only Scout's feed/API sources (Hitmarker, Reed, Greenhouse, Ashby) were reached.

@@ -1556,107 +1556,170 @@
         "reason": "",
         "at": "2026-11-26T09:13"
       }
+    },
+    {
+      "id": "f70",
+      "title": "Senior UA Manager - Unannounced Project",
+      "company": "NaturalMotion",
+      "location": "London",
+      "pay": "",
+      "link": "https://hitmarker.net/jobs/naturalmotion-senior-ua-manager-unannounced-project-5722552",
+      "posted": "2026-11-27",
+      "source": "Hitmarker",
+      "via": "feed",
+      "fit": "strong",
+      "why": "Project and programme management: the title matches 'Senior Project Manager' and the advert uses the track's words",
+      "concern": "",
+      "track": "Project and programme management",
+      "summary": "Who We Are: NaturalMotion is an award-winning UK game studio dedicated to crafting world-class mobile experiences. Alongside our continued live-service development on CSR Racing 2 (#1 drag racing series of all time), our team is stepping into its next chapter with an ambitious, u",
+      "found_at": "2026-11-28T09:04",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-28-naturalmotion-senior-ua-manager-unannounced-project",
+        "reason": "Hal: user acquisition (marketing), wrong discipline",
+        "at": "2026-11-28T09:05"
+      }
+    },
+    {
+      "id": "f71",
+      "title": "Operations Lead at VC backed Sport & Fitness startups (£70-100k)",
+      "company": "Jumpstart",
+      "location": "London Area (Hybrid)",
+      "pay": "£70K-£100K",
+      "link": "https://www.linkedin.com/jobs/view/4495269696/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Heads operations for a growing sport and fitness start-up, close to your sport and live-ops leadership.",
+      "concern": "Recruiter listing; the actual employer isn't named",
+      "track": "Head of Operations at scale-ups",
+      "summary": "Operations lead placed into a VC-backed sport and fitness start-up.",
+      "found_at": "2026-11-28T09:05",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-28-jumpstart-operations-lead-at-vc-backed-sport-fitne",
+        "reason": "",
+        "at": "2026-11-28T09:05"
+      }
+    },
+    {
+      "id": "f72",
+      "title": "Technology Operations Manager",
+      "company": "Formula E",
+      "location": "London",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4495816641/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Event technology operations for a global race series, close to your live-event tech and studio builds.",
+      "concern": "Likely heavy travel; pay not shown",
+      "track": "Sports and venues operations",
+      "summary": "Runs technology operations at Formula E events under the event lead.",
+      "found_at": "2026-11-28T09:05",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-28-formula-e-technology-operations-manager",
+        "reason": "",
+        "at": "2026-11-28T09:05"
+      }
+    },
+    {
+      "id": "f73",
+      "title": "Manager, Bookings & Scheduling - Content Operations",
+      "company": "The Walt Disney Company",
+      "location": "London",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4495528710/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Scheduling and booking operations in media, like your crew rotas, bookings and studio scheduling.",
+      "concern": "May be junior to your level; pay not shown",
+      "track": "Live events and event production",
+      "summary": "Manages bookings and scheduling in Disney's content operations team.",
+      "found_at": "2026-11-28T09:05",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-28-the-walt-disney-company-manager-bookings-scheduling-content-oper",
+        "reason": "",
+        "at": "2026-11-28T09:05"
+      }
+    },
+    {
+      "id": "f74",
+      "title": "Senior Manager, Enterprise Operations",
+      "company": "LEGO Digital Play",
+      "location": "London (On-site)",
+      "pay": "",
+      "link": "https://www.linkedin.com/jobs/view/4495212269/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Senior operations role in LEGO's games and digital play arm, near your gaming operations background.",
+      "concern": "On-site; 'enterprise operations' may mean IT",
+      "track": "Esports and gaming operations",
+      "summary": "Senior manager running enterprise operations for LEGO Digital Play.",
+      "found_at": "2026-11-28T09:05",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-28-lego-digital-play-senior-manager-enterprise-operations",
+        "reason": "",
+        "at": "2026-11-28T09:05"
+      }
+    },
+    {
+      "id": "f75",
+      "title": "Operations Manager",
+      "company": "Invictus Group",
+      "location": "South Croydon",
+      "pay": "£70K-£90K",
+      "link": "https://www.linkedin.com/jobs/view/4492661757/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "possible",
+      "why": "Operations manager at a pay level that fits, within commuting distance of Epsom.",
+      "concern": "Sector not stated (likely security or facilities)",
+      "track": "Head of Operations at scale-ups",
+      "summary": "Operations manager role in South Croydon.",
+      "found_at": "2026-11-28T09:05",
+      "triage": {
+        "action": "added",
+        "role": "2026-11-28-invictus-group-operations-manager",
+        "reason": "",
+        "at": "2026-11-28T09:05"
+      }
+    },
+    {
+      "id": "f76",
+      "title": "Area Events Manager",
+      "company": "Cancer Research UK (CRUK)",
+      "location": "Gildersome",
+      "pay": "£27,000-£31,000",
+      "link": "https://www.linkedin.com/jobs/view/4494169830/",
+      "posted": "",
+      "source": "LinkedIn alert",
+      "via": "email",
+      "fit": "weak",
+      "why": "Events role, but a regional fundraising post.",
+      "concern": "Pay £27-31k and based near Leeds",
+      "track": "Live events and event production",
+      "summary": "Regional fundraising events manager for CRUK.",
+      "found_at": "2026-11-28T09:05",
+      "triage": {
+        "action": "dismissed",
+        "role": "2026-11-28-cancer-research-uk-cruk-area-events-manager",
+        "reason": "Hal: pay £27-31k, based near Leeds",
+        "at": "2026-11-28T09:05"
+      }
     }
   ],
   "runs": [
-    {
-      "at": "2026-11-20T10:53",
-      "via": "web",
-      "found": 0,
-      "note": "Fetch tool refuses the domain; read it by hand",
-      "source": "Guardian Jobs"
-    },
-    {
-      "at": "2026-11-21T14:37",
-      "via": "feed",
-      "found": 0,
-      "note": "5000 jobs listed, 16 looked possible from their titles, 16 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-21T14:37",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
-    {
-      "at": "2026-11-21T14:37",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: Lever"
-    },
-    {
-      "at": "2026-11-21T14:37",
-      "via": "feed",
-      "found": 0,
-      "note": "3 of 3 boards read",
-      "source": "Company hiring pages: Ashby"
-    },
-    {
-      "at": "2026-11-21T14:37",
-      "via": "feed",
-      "found": 0,
-      "note": "no company boards set yet (run `scout.py discover`)",
-      "source": "Company hiring pages: SmartRecruiters"
-    },
-    {
-      "at": "2026-11-21T14:37",
-      "via": "feed",
-      "found": 3,
-      "note": "812 results read",
-      "source": "Reed"
-    },
-    {
-      "at": "2026-11-21T14:38",
-      "via": "email",
-      "found": 6,
-      "note": "",
-      "source": "LinkedIn Jobs"
-    },
-    {
-      "at": "2026-11-21T14:38",
-      "via": "email",
-      "found": 0,
-      "note": "No Indeed alert emails",
-      "source": "Indeed UK"
-    },
-    {
-      "at": "2026-11-21T14:38",
-      "via": "email",
-      "found": 0,
-      "note": "Only the temporary-jobs digest; not read",
-      "source": "Reed alerts"
-    },
-    {
-      "at": "2026-11-21T14:39",
-      "via": "web",
-      "found": 0,
-      "note": "Domain now a GoDaddy for-sale page; board gone",
-      "source": "Access Jobs"
-    },
-    {
-      "at": "2026-11-21T14:39",
-      "via": "web",
-      "found": 0,
-      "note": "Site now a Padlet of TV/film freelancer resources, no job adverts",
-      "source": "The Unit List"
-    },
-    {
-      "at": "2026-11-23T11:04",
-      "via": "feed",
-      "found": 0,
-      "note": "5000 jobs listed, 10 looked possible from their titles, 10 read",
-      "source": "Hitmarker"
-    },
-    {
-      "at": "2026-11-23T11:04",
-      "via": "feed",
-      "found": 0,
-      "note": "7 of 7 boards read",
-      "source": "Company hiring pages: Greenhouse"
-    },
     {
       "at": "2026-11-23T11:04",
       "via": "feed",
@@ -1768,62 +1831,160 @@
       "found": 2,
       "note": "805 results read",
       "source": "Reed"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 1,
+      "note": "5000 jobs listed, 19 looked possible from their titles, 19 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 0,
+      "note": "add REED_API_KEY to shared/job-search/.env",
+      "source": "Reed"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 0,
+      "note": "5000 jobs listed, 0 looked possible from their titles, 0 read",
+      "source": "Hitmarker"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 0,
+      "note": "7 of 7 boards read",
+      "source": "Company hiring pages: Greenhouse"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: Lever"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 0,
+      "note": "3 of 3 boards read",
+      "source": "Company hiring pages: Ashby"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 0,
+      "note": "no company boards set yet (run `scout.py discover`)",
+      "source": "Company hiring pages: SmartRecruiters"
+    },
+    {
+      "at": "2026-11-28T09:04",
+      "via": "feed",
+      "found": 0,
+      "note": "HTTP 401",
+      "source": "Reed"
+    },
+    {
+      "at": "2026-11-28T09:05",
+      "via": "email",
+      "found": 6,
+      "note": "5 alert emails read, 38 roles seen, 6 queued",
+      "source": "LinkedIn Jobs"
+    },
+    {
+      "at": "2026-11-28T09:05",
+      "via": "email",
+      "found": 0,
+      "note": "No Indeed alert emails since 21 Nov",
+      "source": "Indeed UK"
     }
   ],
-  "last_email_scan": "2026-11-21T13:05:00Z",
+  "last_email_scan": "2026-11-28T09:10:00Z",
   "sources": {
     "Hitmarker": {
-      "total": 3,
-      "last_checked": "2026-11-26T09:11",
-      "result": "ok",
+      "total": 4,
+      "last_checked": "2026-11-28T09:04",
+      "result": "empty",
       "found": 0,
-      "note": "5000 jobs listed, 71 looked possible from their titles, 71 read",
-      "last_ok": "2026-11-26T09:11",
+      "note": "5000 jobs listed, 0 looked possible from their titles, 0 read",
+      "last_ok": "2026-11-28T09:04",
       "failures": 0
     },
     "Company hiring pages: Greenhouse": {
       "total": 0,
-      "last_checked": "2026-11-26T09:11",
+      "last_checked": "2026-11-28T09:04",
       "result": "ok",
       "found": 0,
       "note": "7 of 7 boards read",
-      "last_ok": "2026-11-26T09:11",
+      "last_ok": "2026-11-28T09:04",
       "failures": 0
     },
     "Company hiring pages: Lever": {
       "total": 0,
-      "last_checked": "2026-11-26T09:11",
+      "last_checked": "2026-11-28T09:04",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-26T09:11",
+      "last_ok": "2026-11-28T09:04",
       "failures": 0
     },
     "Company hiring pages: Ashby": {
       "total": 0,
-      "last_checked": "2026-11-26T09:11",
+      "last_checked": "2026-11-28T09:04",
       "result": "ok",
       "found": 0,
       "note": "3 of 3 boards read",
-      "last_ok": "2026-11-26T09:11",
+      "last_ok": "2026-11-28T09:04",
       "failures": 0
     },
     "Company hiring pages: SmartRecruiters": {
       "total": 0,
-      "last_checked": "2026-11-26T09:11",
+      "last_checked": "2026-11-28T09:04",
       "result": "empty",
       "found": 0,
       "note": "no company boards set yet (run `scout.py discover`)",
-      "last_ok": "2026-11-26T09:11",
+      "last_ok": "2026-11-28T09:04",
       "failures": 0
     },
     "Reed": {
       "total": 16,
-      "last_checked": "2026-11-26T09:12",
-      "result": "ok",
-      "found": 2,
-      "note": "805 results read",
-      "failures": 0,
+      "last_checked": "2026-11-28T09:04",
+      "result": "error",
+      "found": 0,
+      "note": "HTTP 401",
+      "failures": 2,
       "last_ok": "2026-11-26T09:12"
     },
     "Event Industry Jobs": {
@@ -1844,22 +2005,22 @@
       "failures": 3
     },
     "LinkedIn Jobs": {
-      "total": 22,
-      "last_checked": "2026-11-21T14:38",
+      "total": 28,
+      "last_checked": "2026-11-28T09:05",
       "result": "ok",
       "found": 6,
-      "note": "",
+      "note": "5 alert emails read, 38 roles seen, 6 queued",
       "failures": 0,
-      "last_ok": "2026-11-21T14:38"
+      "last_ok": "2026-11-28T09:05"
     },
     "Indeed UK": {
       "total": 0,
-      "last_checked": "2026-11-21T14:38",
+      "last_checked": "2026-11-28T09:05",
       "result": "empty",
       "found": 0,
-      "note": "No Indeed alert emails",
+      "note": "No Indeed alert emails since 21 Nov",
       "failures": 0,
-      "last_ok": "2026-11-21T14:38"
+      "last_ok": "2026-11-28T09:05"
     },
     "Esports Insider jobs": {
       "total": 0,

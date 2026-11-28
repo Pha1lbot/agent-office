@@ -1,17 +1,23 @@
-# Today: Thursday 26 November 2026
+# Today: Saturday 28 November 2026
 
-## Top picks
-1. **AI Product Manager – Agentic Systems (LLM), INTEC SELECT LIMITED** (Reed): London hybrid, £550–£565/day, 6-month contract outside IR35. Strong fit, Apply.
-2. **Technical Program Manager - AI & Product Operations, Harvey Nash** (Reed): London, hybrid (3 days office), 6+ month contract. Pay not stated and it's a recruiter advert (employer not named). Possible fit, Maybe.
+## New leads (5), best first
+1. **Operations Lead, VC-backed sport and fitness start-ups (Jumpstart)**: London, hybrid, £70–100k. Head of Operations at a scale-up in sport; a recruiter listing, so the employer isn't named yet.
+2. **Technology Operations Manager, Formula E**: London. Event technology operations for the race series; pay not shown, likely lots of travel.
+3. **Operations Manager, Invictus Group**: South Croydon, £70–90k. Right pay and within reach of Epsom; sector not stated.
+4. **Manager, Bookings & Scheduling (Content Operations), Disney**: London. Bookings and scheduling in media; may be below your level.
+5. **Senior Manager, Enterprise Operations, LEGO Digital Play**: London, on-site. Gaming-adjacent; "enterprise operations" may mean IT.
 
-## Dismissed today
-None.
+## Dismissed (2)
+- NaturalMotion, Senior UA Manager: user acquisition is marketing, not operations.
+- Cancer Research UK, Area Events Manager: £27–31k and based near Leeds.
+Restore either from Leads → Dismissed.
 
 ## How the search went
-Scout only (the morning daily search didn't run): reached 6 of 14 sources — Hitmarker, Reed, and the Greenhouse and Ashby company boards, all checked this morning. Lever and SmartRecruiters have no company boards set up yet. **The email scan and Rita's two web sites were not checked** — this was a Scout-finds sort, not a full daily search.
+Reached 5 of 6 Scout sources (Hitmarker, Greenhouse and Ashby boards); Reed didn't work from the cloud session (its key isn't being passed through; your office on your PC reaches it). LinkedIn alerts read (5 emails, 38 roles seen, 6 queued); no Indeed alert emails. Not reached: Event Industry Jobs, Work in Sports, Guardian Jobs, The Unit List and Access Jobs (blocked in the cloud), and Esports Insider (blocks automated readers).
+Closed-postings check: nothing newly closed; 11 LinkedIn adverts can't be checked automatically.
 
 ## Waiting on you
-- **Drafts to check:** Formula 1 Event Production Manager, Fever Regional Manager, Pontoon Senior Project Manager (AI Adoption), Formula E Senior Paddock and Logistics Manager, McLaren Events Operations Lead, Circle Recruitment AI & Digital Adoption Manager, Formula 1 Event Operations Administrator.
-- **The Insights Group** (shortlisted): agree the day rate.
-- **Follow-ups due soon:** Reed Head of Operations (20 Nov), PGA National Tournaments Manager (26 Nov), Electronic Arts Product Operations Manager (26 Nov).
-- **Questions in Next actions:** preference review due (41 decisions since 11 Nov), whether to remove Access Jobs and The Unit List, Fever Regional Manager (draft or drop?), plus notes on several weak-fit drafts (Capital.com, Sarafin Partners, LTA Head of Delivery, Formula E).
+- The Reed Head of Operations role (applied 13 Nov) sent a rejection on 24 Nov: a one-tap question in Next actions asks whether to mark it rejected.
+- 7 drafted CVs to check, and 8 leads to look at.
+- Follow-ups due: Reed Head of Events (28 Nov), PGA National Tournaments Manager (26 Nov), and older ones (Hexagon, Razer, BA, NetEase).
+- The preference review question is still waiting for your answer.
