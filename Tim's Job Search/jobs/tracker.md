@@ -43,7 +43,7 @@ found: 8 · shortlisted: 1 · drafted: 7 · applied: 8 · rejected: 2 · skipped
 | applied |  | [Senior Operations Resource Planning Manager](https://careers.ba.com/job/heathrow/senior-operations-resource-planning-manager/22348/100605084528) | British Airways | Similar BA planning role listed at £50k–£70k, unconfirmed | Waterside (BA Head Office), Heathrow | 2 | Follow up if no reply by 18 Nov | 2026-11-11 |
 | applied |  | [Esport Specialist](https://www.linkedin.com/jobs/view/4308233024/) | NetEase Games |  | UK remote | 2 | Follow up if no reply by 15 Nov | 2026-11-08 |
 | applied |  | [Director of Team Operations](https://uk.linkedin.com/jobs/view/director-of-team-operations-at-hexagon-world-series-4476411854) | Hexagon World Series | not stated | London, UK or Madrid, Spain | 3 | Follow up if no reply by 13 Nov | 2026-11-11 |
-| rejected | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 | Follow up if no reply by 20 Nov | 2026-11-28 |
+| rejected | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 |  | 2026-11-28 |
 | rejected |  | [Senior Manager, Admin & Operations (Football Schools)](https://www.linkedin.com/jobs/view/4475254089/) | Chelsea FC | Not shown | Cobham and Stamford Bridge, on-site |  | Follow up if no reply by 13 Nov | 2026-11-17 |
 | skipped | 1 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-20 |
 | skipped | 1 | [Senior Production Manager](https://www.linkedin.com/jobs/view/4482124492/) | The Crowd | £60k–£70k | London area, hybrid | 4 |  | 2026-11-08 |
