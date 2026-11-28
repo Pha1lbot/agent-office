@@ -2,7 +2,7 @@
 
 Built from `tracker.json` by `shared/tools/tracker.py`. Do not edit by hand.
 
-found: 8 · shortlisted: 1 · drafted: 7 · applied: 9 · rejected: 1 · skipped: 108
+found: 8 · shortlisted: 1 · drafted: 7 · applied: 8 · rejected: 2 · skipped: 108
 
 ## Next actions
 
@@ -14,7 +14,6 @@ found: 8 · shortlisted: 1 · drafted: 7 · applied: 9 · rejected: 1 · skipped
 - Access Jobs and The Unit List have gone (one is a domain for sale, the other has no job adverts any more). Take them out of the search?
 - Rita scored Fever Regional Manager fit 2, verdict skip (advert wants MBA/consulting/P&L experience, excludes event-production backgrounds) - but you'd already shortlisted it. Still draft a CV, or drop it?
 - Formula E Senior Paddock and Logistics Manager: closing date (13 Nov) has passed and it needs sustained international touring, a deal-breaker on your preferences. Drafting anyway per your request, but worth checking before you spend more time on it.
-- The Reed 'Head of Operations' role (ref 57494106, applied 13 Nov) sent a rejection on 24 Nov. Mark it rejected?
 
 ## Roles
 
@@ -39,12 +38,12 @@ found: 8 · shortlisted: 1 · drafted: 7 · applied: 9 · rejected: 1 · skipped
 | applied | 1 | [Head of Events](https://www.reed.co.uk/jobs/head-of-events/57519147) | Reed | £550 - £650 | EC2V7HH | 4 | Follow up if no reply by 28 Nov | 2026-11-21 |
 | applied | 2 | [Product Operations Manager](https://hitmarker.net/jobs/electronic-arts-product-operations-manager-12-month-contract-5645960) | Electronic Arts |  | London | 5 | Follow up if no reply by 26 Nov | 2026-11-19 |
 | applied | 2 | [Event Project Director](https://www.reed.co.uk/jobs/event-project-director/57586682) | Live Recruitment | £55,000 - £60,000 | GU227LA | 3 | Follow up if no reply by 1 Dec | 2026-11-24 |
-| applied | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 | Follow up if no reply by 20 Nov | 2026-11-13 |
 | applied | 23 | [National Tournaments Manager](https://www.linkedin.com/jobs/view/4488144154/) | The Professional Golfers' Association (The PGA) |  | Hybrid | 2 | Follow up if no reply by 26 Nov | 2026-11-19 |
 | applied |  | Associate Manager, Marketing Operations (EMEA) | Razer | €65k–€92k | Amsterdam or Hamburg |  | Follow up if no reply by 12 Nov | 2026-11-11 |
 | applied |  | [Senior Operations Resource Planning Manager](https://careers.ba.com/job/heathrow/senior-operations-resource-planning-manager/22348/100605084528) | British Airways | Similar BA planning role listed at £50k–£70k, unconfirmed | Waterside (BA Head Office), Heathrow | 2 | Follow up if no reply by 18 Nov | 2026-11-11 |
 | applied |  | [Esport Specialist](https://www.linkedin.com/jobs/view/4308233024/) | NetEase Games |  | UK remote | 2 | Follow up if no reply by 15 Nov | 2026-11-08 |
 | applied |  | [Director of Team Operations](https://uk.linkedin.com/jobs/view/director-of-team-operations-at-hexagon-world-series-4476411854) | Hexagon World Series | not stated | London, UK or Madrid, Spain | 3 | Follow up if no reply by 13 Nov | 2026-11-11 |
+| rejected | 16 | [Head of Operations](https://www.reed.co.uk/jobs/head-of-operations/57494106) | Reed | £35 - £45 | SM12DE | 3 | Follow up if no reply by 20 Nov | 2026-11-28 |
 | rejected |  | [Senior Manager, Admin & Operations (Football Schools)](https://www.linkedin.com/jobs/view/4475254089/) | Chelsea FC | Not shown | Cobham and Stamford Bridge, on-site |  | Follow up if no reply by 13 Nov | 2026-11-17 |
 | skipped | 1 | [Global Hub Operations Director](https://www.linkedin.com/jobs/view/4477453462/) | WPP Production | Not listed | London, hybrid | 3 |  | 2026-11-20 |
 | skipped | 1 | [Senior Production Manager](https://www.linkedin.com/jobs/view/4482124492/) | The Crowd | £60k–£70k | London area, hybrid | 4 |  | 2026-11-08 |

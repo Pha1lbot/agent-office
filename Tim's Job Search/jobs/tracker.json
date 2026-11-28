@@ -2547,10 +2547,10 @@
       "source": "Reed",
       "fit": 3,
       "priority": 16,
-      "status": "applied",
+      "status": "rejected",
       "notes": "Track: Head of Operations at scale-ups; Posted 2026-10-26",
       "found": "2026-11-12",
-      "updated": "2026-11-13",
+      "updated": "2026-11-28",
       "history": [
         {
           "date": "2026-11-12",
@@ -2571,11 +2571,17 @@
           "date": "2026-11-13",
           "status": "applied",
           "by": "tim"
+        },
+        {
+          "date": "2026-11-28",
+          "status": "rejected",
+          "by": "tim"
         }
       ],
       "verdict": "maybe",
       "verdict_why": "Head of Operations at scale-ups: the title matches 'Head of Operations' and the advert uses the track's words",
-      "next": "Follow up if no reply by 20 Nov"
+      "next": "Follow up if no reply by 20 Nov",
+      "reason": "Reed's automated email on 24 Nov: not progressing (ref 57494106)"
     },
     {
       "id": "2026-11-12-the-professional-golfers-association-the-national-tournaments-manager",
@@ -4612,12 +4618,13 @@
       "id": "a20",
       "text": "The Reed 'Head of Operations' role (ref 57494106, applied 13 Nov) sent a rejection on 24 Nov. Mark it rejected?",
       "role": "2026-11-12-reed-head-of-operations",
-      "done": false,
+      "done": true,
       "created": "2026-11-28",
       "options": [
         "Mark rejected",
         "Leave it"
-      ]
+      ],
+      "completed": "2026-11-28"
     }
   ],
   "inbox": [

@@ -11,6 +11,8 @@ The main branch of Tim's agent office. Small changes are committed straight here
 
 Newest entries first. Never delete or rewrite old entries.
 
+- 2026-11-28: Job search: Reed Head of Operations (ref 57494106) set to rejected at Tim's request, after Reed's automated email of 24 Nov; the one-tap question about it (a20) closed.
+
 - 2026-11-28: Job search: daily search, 5 new leads, 2 dismissed (run from a cloud session at Tim's request; Reed not reached from the cloud; one-tap question added about the Reed Head of Operations rejection email).
 
 ### 2026-11-26: Job search: sorted Scout's finds, 2 new leads, 0 dismissed
